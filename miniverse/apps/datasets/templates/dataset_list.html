@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+
+{% block maincontent %}
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>DOI</th>
+            <th>DV object id</th>
+            <th>type</th>
+        </tr>
+    </thead>
+{% for ds in datasets %}
+    <tr>
+        <td><a href="{% url 'view_dataset_detail' ds.dvobject.id %}">{{ ds }}</td>
+        <td>{{ ds.dvobject.id }}</td>
+        <td>{{ ds.dvobject.dtype }}</td>
+    </tr>
+{% endfor %}
+</table>
+
+
+{% endblock %}

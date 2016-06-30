@@ -1,0 +1,49 @@
+
+<h3>hallo</h3>
+{{ metadata_blocks }}
+{% for mblock in metadata_blocks.values %}
+    <h2>{{ mblock }}</h2>
+    {% for ds in mblock.dataset_fields %}
+        {{ ds }}<br />
+    {% endfor %}
+{% endfor %}
+
+<h3>goodbye</h3>
+
+
+{% for mf in metadata_fields %}
+<div class="row">
+    <div class="col-xs-3">
+        <span title="{{ mf.datasetfieldtype.description }}"  data-placement="tooltip top" data-toggle="tooltip">
+            <b>{{ mf.datasetfieldtype.title }}</b> (ds.id: {{mf.id }})
+        </span>
+    </div>
+    <div class="col-xs-6">
+        {% if mf %}
+            {% with ds_field_obj=mf  %}
+                {% include "datasetfields/metadata_value.html" %}
+            {% endwith %}
+        {% endif %}
+        {% if mf.secondary_fields %}
+            {% for sf in mf.secondary_fields %}
+                {% with ds_field_obj=sf use_title=True %}
+                    {% include "datasetfields/metadata_value.html" %}
+                {% endwith %}
+
+                <br />
+            {% endfor %}
+        {% endif %}
+        <hr />
+    </div>
+</div>
+<div class="row">
+    <div class="cols-xs-6">
+        <hr />
+    </div>
+</div>
+{% endfor %}
+
+
+<!--
+<span class="tooltiplabel text-info" data-original-title="The unique persistent identifier for a Dataset, which can be a Handle or DOI in Dataverse." data-placement="auto right" data-toggle="tooltip"> Dataset Persistent ID </span>
+-->

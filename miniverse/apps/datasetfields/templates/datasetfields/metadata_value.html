@@ -1,0 +1,20 @@
+{% if use_title %}
+    <span data-toggle="tooltip" data-placement="top" title="{{ ds_field_obj.datasetfieldtype.description }}" >
+        <b>{{ ds_field_obj.datasetfieldtype.title }}</b>
+    </span>&nbsp;&nbsp;
+{% endif %}
+{% if ds_field_obj.flat_val %}
+    {{ ds_field_obj.flat_val.value|safe }}
+{% else %}{% if ds_field_obj.vocab_list %}
+    {{ ds_field_obj.vocab_list|join:", " }}
+{% else %}{% if ds_field_obj.secondary_fields %}
+    {#(second)#}
+{% else %}
+    (not found)
+{% endif %}{% endif %}{% endif %}
+
+{% comment %}
+    {% if sf.datasetfieldtype.description %}
+        <br /><i>{{ ds_field_obj.datasetfieldtype.description }}</i>
+    {% endif %}
+{% endcomment %}

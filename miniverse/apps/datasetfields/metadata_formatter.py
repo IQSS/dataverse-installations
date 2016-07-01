@@ -70,7 +70,8 @@ class MetadataFormatter(object):
         # -------------------------------------------
         kwargs = dict(parentdatasetfield__id__in=ds_field_ids)
         compound_id_pairs = DatasetFieldCompoundValue.objects.values_list(\
-            'id', 'parentdatasetfield').filter(**kwargs)
+            'id', 'parentdatasetfield').filter(**kwargs\
+            ).order_by('displayorder')
 
 
         # -------------------------------------------
@@ -92,7 +93,9 @@ class MetadataFormatter(object):
         kwargs2 = dict(parentdatasetfieldcompoundvalue__id__in=ds_compound_ids)
         secondary_ds_fields = DatasetField.objects.select_related(\
             'datasetfieldtype', 'parentdatasetfieldcompoundvalue'
-            ).filter(**kwargs2)
+            ).filter(**kwargs2\
+            ).order_by('parentdatasetfieldcompoundvalue_id',\
+                'datasetfieldtype__displayorder')
 
         # -------------------------------------------
         # (3c) Map the Primary DatasetField objects to

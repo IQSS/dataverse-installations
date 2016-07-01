@@ -3,8 +3,6 @@
 {% for mblock in metadata_blocks.values %}
     <h2>{{ mblock }}</h2>
     {% for mf in mblock.dataset_fields %}
-
-    {#% for mf in metadata_fields %#}
     <div class="row">
         <div class="col-xs-3">
             <span title="{{ mf.datasetfieldtype.description }}"  data-placement="tooltip top" data-toggle="tooltip">
@@ -20,13 +18,18 @@
             {% if mf.secondary_fields %}
                 {% for sf in mf.secondary_fields %}
                     {% with ds_field_obj=sf use_title=True %}
+                        {# If there are multiple items, separate them. #}
+                        {% ifchanged sf.parentdatasetfieldcompoundvalue_id %}
+                            {% if not forloop.first %}
+                                <hr />
+                            {% endif %}
+                        {% endifchanged %}
                         {% include "datasetfields/metadata_value.html" %}
                     {% endwith %}
 
                     <br />
                 {% endfor %}
             {% endif %}
-            <hr />
         </div>
     </div>
     <div class="row">

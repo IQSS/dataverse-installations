@@ -3,9 +3,9 @@
 {{ metadata_blocks }}
 {% for mblock in metadata_blocks.values %}
     <h2>{{ mblock }}</h2>
-    {% for ds in mblock.dataset_fields %}
+    {% for ds in dataset_fields %}
         {{ ds }}<br />
-    {% endfor %}
+    {% endfor $}
 {% endfor %}
 
 <h3>goodbye</h3>

@@ -3,7 +3,10 @@
 
 {% block maincontent %}
 
-<h2>{{ dataset }}</h2>
+<h2>
+    {% if dataset_title %}{{ dataset_title }}<br />{% endif %}
+    {{ dataset }}
+</h2>
 <div class="panel panel-default">
   <div class="panel-heading">Dataset Versions</div>
   <div class="panel-body">

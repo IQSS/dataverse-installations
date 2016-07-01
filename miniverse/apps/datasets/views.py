@@ -2,13 +2,14 @@ from django.shortcuts import render, render_to_response
 from django.http import HttpResponse, Http404
 
 from apps.datasets.models import Dataset, DatasetVersion
+from apps.datasetfields.utils import get_dataset_title
 from apps.datasetfields.models import DatasetField, DatasetFieldValue, DatasetFieldType
 from apps.datasetfields.metadata_formatter import MetadataFormatter
 
 # Create your views here.
 def view_list_datasets(request):
 
-    datasets = Dataset.objects.all()
+    datasets = Dataset.objects.all().order_by('-dvobject_id')
     #datasets = Dataset.objects.select_related('id').all()
     #datasets = DatasetVersion.objects.select_related('dataset').all()
 
@@ -38,6 +39,11 @@ def view_dataset_detail(request, dataset_id):
 
         lookup.update(dict(metadata_fields=mdf.metadata_fields,\
                         metadata_blocks=mdf.metadata_blocks))
+
+
+        success, dataset_title_or_err = get_dataset_title(latest_version)
+        if success:
+            lookup['dataset_title'] = dataset_title_or_err
 
         #ds_fields = DatasetField.objects.select_related('datasetfieldtype', 'parentdatasetfieldcompoundvalue').filter(datasetversion=latest_version)
 

@@ -1,6 +1,6 @@
 {% if use_title %}
     <span data-toggle="tooltip" data-placement="top" title="{{ ds_field_obj.datasetfieldtype.description }}" >
-        <b>{{ ds_field_obj.datasetfieldtype.title }}</b>
+        <b>{{ ds_field_obj.datasetfieldtype.title }}</b> ({{ ds_field_obj.id }}, {{ ds_field_obj.parentdatasetfieldcompoundvalue_id }})
     </span>&nbsp;&nbsp;
 {% endif %}
 {% if ds_field_obj.flat_val %}

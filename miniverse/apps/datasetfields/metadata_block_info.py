@@ -40,14 +40,14 @@ class MetadataBlockInfo(object):
         """
         Return a (key, value) where the value may be a string or list
         """
-        print 'ds_field', ds_field, ds_field.datasetfieldtype.title
+        print 'ds_field', ds_field, ds_field.datasetfieldtype.name
         #import ipdb; ipdb.set_trace()
 
         if ds_field.flat_val:
-            return (ds_field.datasetfieldtype.title, ds_field.flat_val.value)
+            return (ds_field.datasetfieldtype.name, ds_field.flat_val.value)
         elif ds_field.vocab_list:
             fmt_vocal_list = [ ds_value.value for ds_value in ds_field.vocab_list]
-            return (ds_field.datasetfieldtype.title, fmt_vocal_list)
+            return (ds_field.datasetfieldtype.name, fmt_vocal_list)
         elif getattr(ds_field, 'secondary_fields', None) is not None:
             d2 = OrderedDict()
             print 'ds_field.secondary_fields', ds_field.secondary_fields
@@ -55,6 +55,6 @@ class MetadataBlockInfo(object):
                 key, val = self.get_dataset_field_as_json(ds_sec_field)
                 if key != None and val!= None:
                     d2[key] = val
-            return (ds_field.datasetfieldtype.title, d2)
+            return (ds_field.datasetfieldtype.name, d2)
         else:
             return None, None

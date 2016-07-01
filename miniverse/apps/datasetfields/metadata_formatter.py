@@ -1,6 +1,8 @@
+import json
 from apps.datasetfields.models import DatasetField, DatasetFieldType,\
     DatasetFieldValue, DatasetFieldCompoundValue,\
     DatasetFieldControlledVocabularyValue
+from apps.datasetfields.metadata_block_info import MetadataBlockInfo
 from collections import OrderedDict
 from apps.utils.msg_util import *
 
@@ -12,24 +14,6 @@ class DatasetValue(object):
 
     def __str__(self):
         return '%s' % (self.value)
-
-class MetadataBlockInfo(object):
-
-    def __init__(self, name, metadata_block):
-        self.name = name
-        self.metadata_block = metadata_block # metadata_block object
-        self.dataset_fields = []
-
-    def __str__(self):
-        if self.metadata_block:
-            return self.metadata_block.displayname
-
-        return self.name
-
-    def add_dataset_field(self, ds_field):
-        if ds_field is None:
-            return
-        self.dataset_fields.append(ds_field)
 
 
 class MetadataFormatter(object):
@@ -242,3 +226,15 @@ class MetadataFormatter(object):
         #for key, val in vocab_lookup.items():
         #    msg('%s -> [%s]' % (key, val))
         return vocab_lookup
+
+    def as_json(self):
+
+        d = OrderedDict()
+        for mb_name, mb in self.metadata_blocks.items():
+            val = mb.as_json()
+            if val:
+                d[mb_name] = val
+
+        overarching_dict = OrderedDict()
+        overarching_dict['metadata_blocks'] = d
+        return json.dumps(overarching_dict, indent=4)

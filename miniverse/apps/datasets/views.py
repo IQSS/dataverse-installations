@@ -36,9 +36,11 @@ def view_dataset_detail(request, dataset_id):
         latest_version = dataset_versions[0]
 
         mdf = MetadataFormatter(latest_version)
+        #print mdf.as_json()
 
         lookup.update(dict(metadata_fields=mdf.metadata_fields,\
-                        metadata_blocks=mdf.metadata_blocks))
+                        metadata_blocks=mdf.metadata_blocks,\
+                        metadata_json=mdf.as_json()))
 
 
         success, dataset_title_or_err = get_dataset_title(latest_version)

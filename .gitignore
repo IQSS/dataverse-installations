@@ -89,3 +89,15 @@ ENV/
 .ropeproject
 
 miniverse/test_setup/dataverse.sqlite3
+
+miniverse/static/bootstrap-3.3.6-dist.zip
+
+miniverse/static/bootstrap/css/bootstrap-theme.css.map
+
+miniverse/static/bootstrap/css/bootstrap-theme.min.css.map
+
+miniverse/static/bootstrap/css/bootstrap.css.map
+
+miniverse/static/bootstrap/css/bootstrap.min.css.map
+
+bootstrap-3.3.6-dist.zip

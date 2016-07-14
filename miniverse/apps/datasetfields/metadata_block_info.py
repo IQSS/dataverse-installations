@@ -44,17 +44,45 @@ class MetadataBlockInfo(object):
         #import ipdb; ipdb.set_trace()
 
         if ds_field.flat_val:
-            return (ds_field.datasetfieldtype.name, ds_field.flat_val.value)
+            if ds_field.allow_multiples():
+                return (ds_field.datasetfieldtype.name, [ds_field.flat_val.value])
+            else:
+                return (ds_field.datasetfieldtype.name, ds_field.flat_val.value)
         elif ds_field.vocab_list:
             fmt_vocal_list = [ ds_value.value for ds_value in ds_field.vocab_list]
             return (ds_field.datasetfieldtype.name, fmt_vocal_list)
         elif getattr(ds_field, 'secondary_fields', None) is not None:
-            d2 = OrderedDict()
             print 'ds_field.secondary_fields', ds_field.secondary_fields
-            for ds_sec_field in ds_field.secondary_fields:
-                key, val = self.get_dataset_field_as_json(ds_sec_field)
-                if key != None and val!= None:
-                    d2[key] = val
+            if ds_field.allow_multiples():
+                val_list = []
+                last_parent_id = None
+                mini_dict = OrderedDict()
+                for ds_sec_field in ds_field.secondary_fields:
+                    if last_parent_id != None and\
+                        last_parent_id != ds_sec_field.parentdatasetfieldcompoundvalue_id:
+                        val_list.append(mini_dict)
+                        mini_dict = OrderedDict()
+
+                    key, val = self.get_dataset_field_as_json(ds_sec_field)
+                    if key != None and val!= None:
+                        mini_dict[key] = val
+
+
+                    last_parent_id = ds_sec_field.parentdatasetfieldcompoundvalue_id
+
+                if len(mini_dict) > 0:
+                    val_list.append(mini_dict)
+                    #if key != None and val!= None:
+                    #    key_name = key
+                    #    val_list.append(val)
+                return (ds_field.datasetfieldtype.name, val_list)
+
+            else:
+                d2 = OrderedDict()
+                for ds_sec_field in ds_field.secondary_fields:
+                    key, val = self.get_dataset_field_as_json(ds_sec_field)
+                    if key != None and val!= None:
+                        d2[key] = val
             return (ds_field.datasetfieldtype.name, d2)
         else:
             return None, None

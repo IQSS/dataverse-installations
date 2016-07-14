@@ -72,6 +72,12 @@ class DatasetField(models.Model):
     parentdatasetfieldcompoundvalue = models.ForeignKey('DatasetFieldCompoundValue', blank=True, null=True)
     template = models.ForeignKey(Template, blank=True, null=True)
 
+    def allow_multiples(self):
+        """
+        Retrieve the "allowmultiples" from the DatasetFieldType
+        """
+        return self.datasetfieldtype.allowmultiples
+
     def __str__(self):
         if not self.id:
             return '(not saved)'

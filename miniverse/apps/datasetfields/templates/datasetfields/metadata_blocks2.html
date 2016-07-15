@@ -1,6 +1,6 @@
 
-<h3>hallo</h3>
 <pre>{{ metadata_json }}</pre>
+
 {% for mblock in metadata_blocks.values %}
     <h2>{{ mblock }}</h2>
     {% for mf in mblock.dataset_fields %}
@@ -41,6 +41,8 @@
     {% endfor %}
 {% endfor %}
 
+{% comment %}
+{% endcomment %}
 
 <!--
 <span class="tooltiplabel text-info" data-original-title="The unique persistent identifier for a Dataset, which can be a Handle or DOI in Dataverse." data-placement="auto right" data-toggle="tooltip"> Dataset Persistent ID </span>

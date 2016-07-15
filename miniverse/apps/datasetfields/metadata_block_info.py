@@ -50,7 +50,15 @@ class MetadataBlockInfo(object):
                 return (ds_field.datasetfieldtype.name, ds_field.flat_val.value)
         elif ds_field.vocab_list:
             fmt_vocal_list = [ ds_value.value for ds_value in ds_field.vocab_list]
-            return (ds_field.datasetfieldtype.name, fmt_vocal_list)
+            if ds_field.allow_multiples():
+                return (ds_field.datasetfieldtype.name, fmt_vocal_list)
+            else:
+                if len(fmt_vocal_list) > 0:
+                    return (ds_field.datasetfieldtype.name, fmt_vocal_list[0])
+                else:
+                    return (ds_field.datasetfieldtype.name, None)
+
+
         elif getattr(ds_field, 'secondary_fields', None) is not None:
             print 'ds_field.secondary_fields', ds_field.secondary_fields
             if ds_field.allow_multiples():

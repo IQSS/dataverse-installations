@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 from .models import Dataverse, CitationPageCheck, DataverseTheme, Template
-from apps.datasets.models import Dataset
+from dv_apps.datasets.models import Dataset
 
 """
 class DatasetInline(admin.TabularInline):

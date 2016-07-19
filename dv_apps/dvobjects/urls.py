@@ -1,5 +1,5 @@
 from django.conf.urls import include, url
-from apps.dvobjects.views import view_test_query
+from dv_apps.dvobjects.views import view_test_query
 
 urlpatterns = (
 

@@ -1,6 +1,6 @@
 python manage.py shell
 
-from apps.datasets.models import Dataset, DatasetVersion
+from dv_apps.datasets.models import Dataset, DatasetVersion
 
 l = DatasetVersion.objects.all()
 

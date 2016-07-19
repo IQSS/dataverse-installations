@@ -1,5 +1,5 @@
 from django.db import models
-from apps.dvobjects.models import DvObject
+from dv_apps.dvobjects.models import DvObject
 
 
 VERSION_STATE_RELEASED = 'RELEASED'

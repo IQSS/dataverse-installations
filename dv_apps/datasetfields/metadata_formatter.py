@@ -1,10 +1,10 @@
 import json
-from apps.datasetfields.models import DatasetField, DatasetFieldType,\
+from dv_apps.datasetfields.models import DatasetField, DatasetFieldType,\
     DatasetFieldValue, DatasetFieldCompoundValue,\
     DatasetFieldControlledVocabularyValue
-from apps.datasetfields.metadata_block_info import MetadataBlockInfo
+from dv_apps.datasetfields.metadata_block_info import MetadataBlockInfo
 from collections import OrderedDict
-from apps.utils.msg_util import *
+from dv_apps.utils.msg_util import *
 
 class DatasetValue(object):
 

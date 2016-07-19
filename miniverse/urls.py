@@ -7,11 +7,15 @@ admin.site.site_header = 'Dataverse DB'
 urlpatterns = [
     # Examples:
     # url(r'^$', 'miniverse.views.home', name='home'),
-    url(r'^dr2m/', include('apps.dvobjects.urls')),
+    url(r'^dr2m/', include('dv_apps.dvobjects.urls')),
 
-    url(r'^dataset/', include('apps.datasets.urls')),
+    url(r'^dataset/', include('dv_apps.datasets.urls')),
+
+    url(r'^metrics/', include('dv_apps.metrics.urls')),
 
     url(r'^miniverse-admin/', include(admin.site.urls)),
+
+
 ]
 
 if settings.DEBUG:

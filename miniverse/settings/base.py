@@ -16,6 +16,9 @@ from os.path import abspath, dirname
 from os.path import join
 BASE_DIR = dirname(dirname(dirname(abspath(__file__))))
 
+import sys
+sys.path.append(BASE_DIR)
+sys.path.append(join(BASE_DIR, 'miniverse'))
 #print 'Base dir', BASE_DIR
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
@@ -38,15 +41,16 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.humanize',
-    'apps.terms_of_use',
-    'apps.actionlog',
-    'apps.dataverse_auth',
-    'apps.dvobjects',
-    'apps.dataverses',
-    'apps.datasets',
-    'apps.datafiles',
-    'apps.datasetfields',
-    'apps.data_previewer',
+    'dv_apps.terms_of_use',
+    'dv_apps.actionlog',
+    'dv_apps.dataverse_auth',
+    'dv_apps.dvobjects',
+    'dv_apps.dataverses',
+    'dv_apps.datasets',
+    'dv_apps.datafiles',
+    'dv_apps.datasetfields',
+    'dv_apps.data_previewer',
+    'dv_apps.metrics',
 )
 
 MIDDLEWARE_CLASSES = (

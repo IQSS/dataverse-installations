@@ -1,6 +1,6 @@
 from django.db import models
-from apps.dvobjects.models import DvObject
-from apps.terms_of_use.models import TermsOfUseAndAccess
+from dv_apps.dvobjects.models import DvObject
+from dv_apps.terms_of_use.models import TermsOfUseAndAccess
 
 class Dataverse(models.Model):
 

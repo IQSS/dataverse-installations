@@ -9,7 +9,7 @@ if __name__ == '__main__':
     django.setup()
     os.environ.setdefault("DJANGO_SETTINGS_MODULE", "miniverse.settings.local")
 
-from apps.dataverses.models import Dataverse, CitationPageCheck
+from dv_apps.dataverses.models import Dataverse, CitationPageCheck
 import requests
 
 
@@ -139,8 +139,8 @@ if __name__ == '__main__':
 <textarea rows="3" cols="54" class="form-control">&lt;script src=&quot;#{systemConfig.dataverseSiteUrl}/resources/js/widgets.js?alias=#{themeWidgetFragment.editDv.alias}&amp;amp;dvUrl=#{systemConfig.dataverseSiteUrl}&amp;amp;widgetScope=#{themeWidgetFragment.editDv.alias}&amp;amp;widget=iframe&amp;amp;heightPx=500&quot;&gt;&lt;/script&gt;</textarea>
 """
 """
-from apps.dataverses.citation_url_checker import CitationURLChecker
-from apps.dataverses.models import Dataverse
+from dv_apps.dataverses.citation_url_checker import CitationURLChecker
+from dv_apps.dataverses.models import Dataverse
 dv = Dataverse.objects.get(pk=1)
 cc = CitationURLChecker(dv, 'raman_prasad@harvard.edu')
 """

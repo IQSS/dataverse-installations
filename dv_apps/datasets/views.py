@@ -1,10 +1,10 @@
 from django.shortcuts import render, render_to_response
 from django.http import HttpResponse, Http404
 
-from apps.datasets.models import Dataset, DatasetVersion
-from apps.datasetfields.utils import get_dataset_title
-from apps.datasetfields.models import DatasetField, DatasetFieldValue, DatasetFieldType
-from apps.datasetfields.metadata_formatter import MetadataFormatter
+from dv_apps.datasets.models import Dataset, DatasetVersion
+from dv_apps.datasetfields.utils import get_dataset_title
+from dv_apps.datasetfields.models import DatasetField, DatasetFieldValue, DatasetFieldType
+from dv_apps.datasetfields.metadata_formatter import MetadataFormatter
 
 # Create your views here.
 def view_list_datasets(request):

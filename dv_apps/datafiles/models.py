@@ -1,6 +1,6 @@
 from django.db import models
 
-from apps.dvobjects.models import DvObject
+from dv_apps.dvobjects.models import DvObject
 
 class Datafile(models.Model):
     id = models.OneToOneField(DvObject, db_column='id', primary_key=True)

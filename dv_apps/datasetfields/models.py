@@ -1,8 +1,8 @@
 from django.db import models
 
-from apps.dvobjects.models import DvObject
-from apps.datasets.models import DatasetVersion
-from apps.dataverses.models import Template
+from dv_apps.dvobjects.models import DvObject
+from dv_apps.datasets.models import DatasetVersion
+from dv_apps.dataverses.models import Template
 
 
 class MetadataBlock(models.Model):

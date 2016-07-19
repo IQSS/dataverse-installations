@@ -1,5 +1,5 @@
-from apps.datasets.models import Dataset, DatasetVersion
-from apps.datasetfields.models import DatasetField, DatasetFieldValue, DatasetFieldType
+from dv_apps.datasets.models import Dataset, DatasetVersion
+from dv_apps.datasetfields.models import DatasetField, DatasetFieldValue, DatasetFieldType
 
 
 

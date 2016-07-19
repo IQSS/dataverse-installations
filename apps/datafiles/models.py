@@ -23,6 +23,6 @@ class Datafile(models.Model):
         return '%s' % self.id
 
     class Meta:
+        ordering = ('id',)
         managed = False
         db_table = 'datafile'
-

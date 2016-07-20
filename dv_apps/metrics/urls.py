@@ -1,10 +1,18 @@
 from django.conf.urls import url
 #from dv_apps.metrics.views import view_dataset_count
-from . import views
+from . import views_api
+
+
+REGEX_YYYY_MM_DD = '\d{4}-\d{1,2}-\d{1,2}'
+#REGEX_YYYY_MM_DD = '(19|20)\d{2}-\d{1,2}-\d{1,2}'
 
 urlpatterns = [
-    url(r'^datasets/count$', views.view_dataset_count, name='view_dataset_count'),
-    #url(r'^view/(?P<dataset_id>\d{1,8})?', view_dataset_detail, name='view_dataset_detail'),
+    url(r'^datasets/count$', views_api.view_dataset_count, name='view_dataset_count'),
+
+    url(r'^datasets/count/(?P<start_date_str>%s)$' % REGEX_YYYY_MM_DD, views_api.view_dataset_count, name='view_dataset_count_start_date'),
+
+    url(r'^datasets/count/(?P<start_date_str>{0})/(?P<end_date_str>{0})$'.format(REGEX_YYYY_MM_DD), views_api.view_dataset_count, name='view_dataset_count_start_end_dates'),
+
     #url(r'^t/(?P<username>\w{1,50})', 'view_test_query', name='view_test_query_with_username'),
 
     #url(r'^test-query', 'view_test_query', name='view_test_query'),

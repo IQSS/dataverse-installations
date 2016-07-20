@@ -6,7 +6,6 @@ from dv_apps.datasetfields.utils import get_dataset_title
 from dv_apps.datasetfields.models import DatasetField, DatasetFieldValue, DatasetFieldType
 from dv_apps.datasetfields.metadata_formatter import MetadataFormatter
 
-# Create your views here.
 def view_list_datasets(request):
 
     datasets = Dataset.objects.all().order_by('-dvobject_id')

@@ -12,18 +12,28 @@ LOCAL_SETUP_DIR = join(BASE_DIR, 'test_setup')
 if not isdir(LOCAL_SETUP_DIR):
     makedirs(LOCAL_SETUP_DIR)
 
+#DATABASE_ROUTERS = ['miniverse.settings.db_router_auth.AuthRouter', 'miniverse.settings.db_router_dataverse.DataverseRouter']
+
 DATABASES = {
-    'xdefault': {
+    'auth_db': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': join(LOCAL_SETUP_DIR, 'dataverse.sqlite3'),
+        'NAME': join(LOCAL_SETUP_DIR, 'metrics_auth.db3'),
     },
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'dvndb',
-        'USER': 'dvnapp',
+        'USER': 'postgres',
+        'PASSWORD': '123',
+        'HOST': 'localhost'
+    },
+    'xdataverse': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'dvndb_demo',
+        'USER': 'postgres',
         'PASSWORD': '123',
         'HOST': 'localhost'
     }
+
 }
 
 

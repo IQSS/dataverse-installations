@@ -16,10 +16,7 @@ from os.path import abspath, dirname
 from os.path import join
 BASE_DIR = dirname(dirname(dirname(abspath(__file__))))
 
-import sys
-sys.path.append(BASE_DIR)
-sys.path.append(join(BASE_DIR, 'miniverse'))
-#print 'Base dir', BASE_DIR
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
 

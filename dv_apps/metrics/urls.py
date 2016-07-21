@@ -10,6 +10,10 @@ urlpatterns = [
     url(r'^datasets/count/simple$', views_api.view_simple_dataset_count, name='view_simple_dataset_count'),
 
     url(r'^datasets/count$', views_api.view_dataset_count, name='view_dataset_count'),
+    
+    url(r'^datasets/count/jcabanas$', views_api.view_jcabanas, name='view_jcabanas'),
+    
+    
 
     url(r'^datasets/count/(?P<start_date_str>%s)$' % REGEX_YYYY_MM_DD, views_api.view_dataset_count, name='view_dataset_count_start_date'),
 

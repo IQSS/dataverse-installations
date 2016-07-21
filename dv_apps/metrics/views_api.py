@@ -1,8 +1,9 @@
 """
 Metric views, returning JSON repsonses
 """
+
 from django.shortcuts import render
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
 from dv_apps.utils.date_helper import format_yyyy_mm_dd
 
 from dv_apps.datasets.models import Dataset
@@ -16,6 +17,14 @@ def view_simple_dataset_count(request):
 
     return JsonResponse(resp_dict)
 
+def view_jcabanas(request):
+    
+    dataset_count = Dataset.objects.all().count()
+    
+    d = dict(
+        dataset_count = dataset_count,   
+    )
+    return render(request, 'metrics.html', d)
 
 def view_dataset_count(request, start_date_str=None, end_date_str=None):
     """Return the dataset count"""

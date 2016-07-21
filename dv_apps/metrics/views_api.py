@@ -20,10 +20,21 @@ def view_simple_dataset_count(request):
 
 def view_jcabanas(request):
 
-    dataset_count = Dataset.objects.all().count()
+    dataset_counts_by_month = Dataset.objects.filter(dvobject__createdate__year=2015\
+        ).annotate(month=TruncMonth('dvobject__createdate')\
+        ).values('month'\
+        ).annotate(cnt=models.Count('dvobject_id')\
+        ).values('month', 'cnt'\
+        ).order_by('month')
+    
+    running_total = 0
+    for d in dataset_counts_by_month:
+        running_total += d['cnt']
+        d['running_total'] = running_total
+        print d
 
     d = dict(
-        dataset_count = dataset_count,
+        dataset_counts_by_month = dataset_counts_by_month,
     )
     return render(request, 'metrics.html', d)
 

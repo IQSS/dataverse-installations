@@ -5,6 +5,7 @@ Metric views, returning JSON repsonses
 from django.shortcuts import render
 from django.http import JsonResponse, HttpResponse
 from dv_apps.utils.date_helper import format_yyyy_mm_dd
+from django.db import models
 
 from dv_apps.datasets.models import Dataset
 
@@ -18,28 +19,37 @@ def view_simple_dataset_count(request):
     return JsonResponse(resp_dict)
 
 def view_jcabanas(request):
-    
+
     dataset_count = Dataset.objects.all().count()
-    
+
     d = dict(
-        dataset_count = dataset_count,   
+        dataset_count = dataset_count,
     )
     return render(request, 'metrics.html', d)
 
-def view_dataset_count(request, start_date_str=None, end_date_str=None):
-    """Return the dataset count"""
+
+def view_dataset_count(request):
+    """Return the dataset count
+    Optional params:
+        start_date = YYYY-MM-DD
+        end_date = YYYY-MM-DD
+    start_date may be used without end date
+    """
     #import ipdb; ipdb.set_trace()
 
     filter_params = {}
     resp_dict = {}
 
+    start_date_str = request.GET.get('start_date', None)
+    end_date_str = request.GET.get('end_date', None)
+
     """Format the start date and add it to the query"""
     if start_date_str is not None:
         convert_worked, sdate = format_yyyy_mm_dd(start_date_str)
         if not convert_worked:
-            resp_dict['status'] = 'error'
-            resp_dict['results'] = [dict(message="Start date is invalid.  Use YYYY-MM-DD format.", code='InvalidArgument')]
-            return JsonResponse(resp_dict, status=400)
+            err_dict = dict(status="ERROR",
+                        message='Start date is invalid.  Use YYYY-MM-DD format.')
+            return JsonResponse(err_dict, status=400)
 
         filter_params['dvobject__createdate__gte'] = sdate
         resp_dict['start_date'] = sdate.date()
@@ -60,13 +70,41 @@ def view_dataset_count(request, start_date_str=None, end_date_str=None):
         filter_params['dvobject__createdate__lte'] = edate
         resp_dict['end_date'] = edate.date()
 
-
-
-    print('filter_params', filter_params)
     dataset_count = Dataset.objects.filter(**filter_params).count()
-    #resp_dict['status'] = 'success'
 
     resp_dict['dataset_count'] = dataset_count
     ok_dict = dict(status="OK",
                 data=resp_dict)
     return JsonResponse(ok_dict)
+
+class TruncMonth(models.Func):
+    function = 'EXTRACT'
+    template = '%(function)s(MONTH from %(expressions)s)'
+    output_field = models.IntegerField()
+
+
+def view_dataset_counts_by_month(self, selected_year=2016):
+    """Counts of datasets by month"""
+
+    dataset_counts_by_month = Dataset.objects.filter(dvobject__createdate__year=selected_year\
+        ).annotate(month=TruncMonth('dvobject__createdate')\
+        ).values('month'\
+        ).annotate(cnt=models.Count('dvobject_id')\
+        ).values('month', 'cnt'\
+        ).order_by('month')
+
+    year_total_cnt = [x['cnt'] for x in dataset_counts_by_month]
+
+
+    data_dict = dict(dataset_counts_by_month=list(dataset_counts_by_month),\
+                year_count=sum(year_total_cnt))
+
+    ok_dict = dict(status="OK",
+                data=data_dict)
+
+    return JsonResponse(ok_dict)
+
+
+#def view_dataset_counts_by_month2(self):
+
+#    return render('counts_by_month.html', {})

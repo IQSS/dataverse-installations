@@ -15,9 +15,12 @@ urlpatterns = [
     
     
 
-    url(r'^datasets/count/(?P<start_date_str>%s)$' % REGEX_YYYY_MM_DD, views_api.view_dataset_count, name='view_dataset_count_start_date'),
+    url(r'^datasets/count-by-month$', views_api.view_dataset_counts_by_month, name='view_dataset_counts_by_month'),
 
-    url(r'^datasets/count/(?P<start_date_str>{0})/(?P<end_date_str>{0})$'.format(REGEX_YYYY_MM_DD), views_api.view_dataset_count, name='view_dataset_count_start_end_dates'),
+
+    #url(r'^datasets/count/(?P<start_date_str>%s)$' % REGEX_YYYY_MM_DD, views_api.view_dataset_count, name='view_dataset_count_start_date'),
+
+    #url(r'^datasets/count/(?P<start_date_str>{0})/(?P<end_date_str>{0})$'.format(REGEX_YYYY_MM_DD), views_api.view_dataset_count, name='view_dataset_count_start_end_dates'),
 
     #url(r'^t/(?P<username>\w{1,50})', 'view_test_query', name='view_test_query_with_username'),
 

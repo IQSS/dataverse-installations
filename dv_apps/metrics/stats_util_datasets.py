@@ -41,20 +41,42 @@ class StatsMakerDatasets(object):
     def add_error(self, err_msg, bad_http_status_code=None):
         self.error_found = True
         self.error_message = err_msg
-        if bad_status:
+        if bad_http_status_code:
             self.bad_http_status_code = bad_http_status_code
 
     def was_error_found(self):
         return self.error_found
 
+
+    def get_http_error_dict(self):
+        """
+        Return a dict usable in a JsonResponse object
+        """
+        if not self.was_error_found():
+            raise AttributeError("Only call this if was_error_found() is true")
+
+        return dict(status="ERROR",\
+                message=self.error_message)
+
+    def get_http_err_code(self):
+        """
+        Return an HTTP status code usable in a JsonResponse object
+        """
+        if not self.was_error_found():
+            raise AttributeError("Only call this if was_error_found() is true")
+
+        return self.bad_http_status_code
+
     def get_error_msg_return(self):
         if not self.was_error_found():
-            raise AttributeError("Only call this if error_fund is true")
+            raise AttributeError("Only call this if was_error_found() is true")
+
         return False, self.error_message
 
     def load_dates_from_kwargs(self, **kwargs):
 
-        # Allow start/end date objects
+
+        # Add a start date, if it exists
         start_date_str = kwargs.get('start_date', None)
         if start_date_str is not None:
             convert_worked, self.start_date = format_yyyy_mm_dd(start_date_str)
@@ -62,25 +84,41 @@ class StatsMakerDatasets(object):
                 self.add_error('Start date is invalid.  Use YYYY-MM-DD format.', 400)
                 return
 
+        # Add an end date, if it exists
         end_date_str = kwargs.get('end_date', None)
-        if self.start_date and end_date_str:
+        if end_date_str:
             convert_worked, self.end_date = format_yyyy_mm_dd(end_date_str)
             if not convert_worked:
                 self.add_error('End date is invalid.  Use YYYY-MM-DD format.', 400)
                 return
 
-            # Make sure start date isn't after end date
-            if self.start_date > self.end_date:
+        # Sanity check: Make sure start date isn't after end date
+        if self.start_date and self.end_date:   # do start and end dates exist
+            if self.start_date > self.end_date: # sanity check
                 self.add_error('The start date cannot be after the end date.', 400)
                 return
 
+        # Add a year, if it exists
         self.selected_year = kwargs.get('selected_year', None)
         if self.selected_year:
-            if not (self.selected_year.isdigit() and self.selected_year >= 1000\
-                and self.selected_year < 10000):
-                self.add_error('The year must be a 4-digit number (YYYY)')
+            if not (self.selected_year.isdigit() and len(self.selected_year) == 4):
+                self.add_error('The year must be a 4-digit number (YYYY)a')
                 return
 
+        # Sanity check the selected_year and start_date
+        if self.selected_year and self.start_date:
+            if int(self.selected_year) < self.start_date.year:
+                self.add_error("'The 'selected_year' (%s)"
+                        "' cannot be before the 'start_date' year (%s)" %\
+                            (self.selected_year, self.start_date.date()))
+                return
+
+        if self.selected_year and self.end_date:
+            if int(self.selected_year) > self.end_date.year:
+                self.add_error("'The 'selected_year' (%s)"
+                        "' cannot be after the 'end_date' year (%s)" %\
+                            (self.selected_year, self.end_date.date()))
+                return
 
 
 
@@ -96,6 +134,9 @@ class StatsMakerDatasets(object):
 
         if self.end_date:
             filter_params['%s__lte' % date_var_name] = self.end_date
+
+        if self.selected_year:
+            filter_params['%s__year' % date_var_name] = self.selected_year
 
         return filter_params
 
@@ -117,7 +158,10 @@ class StatsMakerDatasets(object):
         if self.was_error_found():
             return self.get_error_msg_return()
 
+        # Retrieve the date parameters
         filter_params = self.get_date_filter_params()
+
+        print 'filter_params', filter_params
 
         # add date filter
         ds_counts_by_month = Dataset.objects.filter(**filter_params)

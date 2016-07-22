@@ -74,8 +74,13 @@ class StatsMakerDatasets(object):
         return False, self.error_message
 
     def load_dates_from_kwargs(self, **kwargs):
+        """
+        Accepts any, all or none of:
 
-
+            start_date = YYYY-MM-DD
+            end_date = YYYY-MM-DD
+            selected_year = YYYY
+        """
         # Add a start date, if it exists
         start_date_str = kwargs.get('start_date', None)
         if start_date_str is not None:
@@ -113,6 +118,7 @@ class StatsMakerDatasets(object):
                             (self.selected_year, self.start_date.date()))
                 return
 
+        # Sanity check the selected_year and end_date
         if self.selected_year and self.end_date:
             if int(self.selected_year) > self.end_date.year:
                 self.add_error("'The 'selected_year' (%s)"

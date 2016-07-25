@@ -32,14 +32,17 @@ class StatsMakerDatasets(object):
         start_date = string in YYYY-MM-DD format
         end_date = string in YYYY-MM-DD format
         """
+        # error related variables
         self.error_found = False
         self.error_message = None
+        self.bad_http_status_code = None
 
         # optional datetime objects holding
         self.start_date = None
         self.end_date = None
         self.selected_year = None
-        self.bad_http_status_code = None
+        self.time_sort = None
+
 
         # load dates
         self.load_dates_from_kwargs(**kwargs)
@@ -86,6 +89,7 @@ class StatsMakerDatasets(object):
             start_date = YYYY-MM-DD
             end_date = YYYY-MM-DD
             selected_year = YYYY
+            time_sort = a\d
         """
         # Add a start date, if it exists
         start_date_str = kwargs.get('start_date', None)
@@ -132,6 +136,11 @@ class StatsMakerDatasets(object):
                             (self.selected_year, self.end_date.date()))
                 return
 
+        self.time_sort = str(kwargs.get('time_sort', ''))
+        if self.time_sort == 'd':   # descending
+            self.time_sort = '-'
+        else:                       # ascending
+            self.time_sort = ''
 
 
     def get_date_filter_params(self, date_var_name='dvobject__createdate'):
@@ -184,7 +193,7 @@ class StatsMakerDatasets(object):
             ).values('month_yyyy_dd'\
             ).annotate(cnt=models.Count('dvobject_id')\
             ).values('month_yyyy_dd', 'cnt'\
-            ).order_by('month_yyyy_dd')
+            ).order_by('%smonth_yyyy_dd' % self.time_sort)
 
         running_total = 0
         for d in ds_counts_by_month:

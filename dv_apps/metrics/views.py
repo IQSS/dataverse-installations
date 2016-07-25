@@ -13,10 +13,7 @@ from dv_apps.datasets.models import Dataset
 def view_simple_dataset_count2(request):
     """Stripped down example"""
 
-    kwargs = dict(start_date=request.GET.get('start_date', None),\
-                end_date=request.GET.get('end_date', None),\
-                selected_year=request.GET.get('selected_year', None))
-    smd = StatsMakerDatasets(**kwargs)
+    smd = StatsMakerDatasets(**request.GET.dict())
 
     success, dataset_count = smd.get_dataset_count()
     if not success:

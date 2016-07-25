@@ -38,6 +38,8 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.humanize',
+
+    # Existing DV tables
     'dv_apps.terms_of_use',
     'dv_apps.actionlog',
     'dv_apps.dataverse_auth',
@@ -46,6 +48,8 @@ INSTALLED_APPS = (
     'dv_apps.datasets',
     'dv_apps.datafiles',
     'dv_apps.datasetfields',
+
+    # Experiments/Add-ons
     'dv_apps.data_previewer',
     'dv_apps.metrics',
 )

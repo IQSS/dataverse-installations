@@ -8,7 +8,7 @@ from django.http import JsonResponse
 #from django.db.models.functions import TruncMonth  # 1.10
 from django.db.models import Count
 from django.db import models
-from dv_apps.utils.date_helper import format_yyyy_mm_dd
+from dv_apps.utils.date_helper import format_yyyy_mm_dd, get_month_name
 from dv_apps.datasets.models import Dataset
 
 class TruncMonth(models.Func):
@@ -16,6 +16,12 @@ class TruncMonth(models.Func):
     template = '%(function)s(MONTH from %(expressions)s)'
     output_field = models.IntegerField()
 
+class TruncYearMonth(models.Func):
+    function = 'to_char'
+    template = "%(function)s(%(expressions)s, 'YYYY-MM')"
+    output_field = models.CharField()
+
+    #to_char(createdate, 'YYYY-MM')
 
 class StatsMakerDatasets(object):
 
@@ -173,16 +179,24 @@ class StatsMakerDatasets(object):
         ds_counts_by_month = Dataset.objects.filter(**filter_params)
         # add the rest of the filters
         ds_counts_by_month = ds_counts_by_month.annotate(\
-            month=TruncMonth('dvobject__createdate')\
-            ).values('month'\
+            #month=TruncMonth('dvobject__createdate')\
+            month_yyyy_dd=TruncYearMonth('dvobject__createdate')\
+            ).values('month_yyyy_dd'\
             ).annotate(cnt=models.Count('dvobject_id')\
-            ).values('month', 'cnt'\
-            ).order_by('month')
+            ).values('month_yyyy_dd', 'cnt'\
+            ).order_by('month_yyyy_dd')
 
         running_total = 0
         for d in ds_counts_by_month:
             running_total += d['cnt']
             d['running_total'] = running_total
-            print d
-
+            d['year_num'] = int(d['month_yyyy_dd'][0:4])
+            month_num = int(d['month_yyyy_dd'][5:])
+            d['month_num'] = month_num
+            month_name_found, month_name = get_month_name(month_num)
+            if month_name_found:
+                d['month_name'] = month_name
+            else:
+                # Log it!!!!!!
+                pass
         return True, ds_counts_by_month

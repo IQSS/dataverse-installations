@@ -1,0 +1,25 @@
+<!-- NOTES: remember to name the visualization div with viz plus a unique ID# -->
+
+<div id="viz2" class="viz"></div>
+<script>
+
+  var sample_data = [
+    {"name": "alpha", "skill": "power", "value": "{{dataset_count}}" },
+    {"name": "alpha", "skill": "courage", "value": 8},
+    {"name": "alpha", "skill": "wisdom", "value": 2},
+    {"name": "beta", "skill": "power", "value": 5},
+    {"name": "beta", "skill": "courage", "value": 4},
+    {"name": "beta", "skill": "wisdom", "value": 6}
+  ];
+  var visualization = d3plus.viz()
+    .container("#viz2")
+    .data(sample_data)
+    .id(["name", "skill"])
+    .size("value")
+    .type("radar")
+    .title("Put Title Here")
+    .footer("{%lorem%}")
+    .resize(true)
+    .draw();
+       
+</script>

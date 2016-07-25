@@ -1,0 +1,24 @@
+<!-- REMEMEBER TO CHANGE .container AND THE div id-->
+
+<div id="viz3" class="viz"></div>
+
+<script>
+  var data = [
+    {"value": 100, "name": "alpha"},
+    {"value": 70, "name": "beta"},
+    {"value": 40, "name": "gamma"},
+    {"value": 15, "name": "delta"},
+    {"value": 5, "name": "epsilon"},
+    {"value": 1, "name": "zeta"}
+  ]
+  d3plus.viz()
+    .container("#viz3")
+    .data(data)
+    .type("pie")
+    .id("name")
+    .size("value")
+    .title("Put Title Here")
+    .footer("{%lorem%}")
+    .resize(true)
+    .draw()
+</script>

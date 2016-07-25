@@ -26,7 +26,7 @@ class Dataverse(models.Model):
 
     defaultcontributorrole = models.ForeignKey('Dataverserole')
     defaulttemplate = models.ForeignKey('Template', blank=True, null=True, related_name='dv_default_template')
-    citation_redirect_url = models.CharField(db_column='citationredirecturl', max_length=255, blank=True, null=True)
+    #citation_redirect_url = models.CharField(db_column='citationredirecturl', max_length=255, blank=True, null=True)
 
     """
         defaultcontributorrole = models.ForeignKey('Dataverserole')

@@ -1,3 +1,6 @@
+"""
+DOESN'T WORK WITH CURRENT DB / EXPERIMENTAL CODE FOR WHEN citationredirecturl WAS A COLUMN
+"""
 if __name__ == '__main__':
     import os, sys
     import django

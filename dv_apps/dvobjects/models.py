@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import User
+#from django.contrib.auth.models import User
 
 DTYPES = ('Dataverse', 'Dataset', 'DataFile')
 DTYPE_CHOICES = [ (d, d) for d in DTYPES]

@@ -48,6 +48,7 @@ INSTALLED_APPS = (
     'dv_apps.datasets',
     'dv_apps.datafiles',
     'dv_apps.datasetfields',
+    'dv_apps.guestbook',
 
     # Experiments/Add-ons
     'dv_apps.data_previewer',

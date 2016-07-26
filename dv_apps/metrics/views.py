@@ -24,12 +24,12 @@ def view_simple_dataset_count2(request):
 
     resp_dict = OrderedDict({'dataset_count' : dataset_count})
 
-<<<<<<< Updated upstream
+#<<<<<<< Updated upstream
     success, dataset_counts_by_month = smd.get_dataset_counts_by_create_date()
-=======
+#=======
     success, dataset_counts_by_month = smd.get_dataset_count_by_month()
     
->>>>>>> Stashed changes
+#>>>>>>> Stashed changes
     if success:
         resp_dict['dataset_counts_by_month'] = list(dataset_counts_by_month)
 

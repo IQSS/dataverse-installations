@@ -18,12 +18,18 @@ def view_simple_dataset_count2(request):
 
 
     success, dataset_count = smd.get_dataset_count()
+    
     if not success:
         return JsonResponse(smd.get_http_error_dict(), status=smd.get_http_err_code())
 
     resp_dict = OrderedDict({'dataset_count' : dataset_count})
 
+<<<<<<< Updated upstream
     success, dataset_counts_by_month = smd.get_dataset_counts_by_create_date()
+=======
+    success, dataset_counts_by_month = smd.get_dataset_count_by_month()
+    
+>>>>>>> Stashed changes
     if success:
         resp_dict['dataset_counts_by_month'] = list(dataset_counts_by_month)
 

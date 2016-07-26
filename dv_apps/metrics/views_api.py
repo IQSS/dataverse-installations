@@ -8,6 +8,7 @@ from dv_apps.utils.date_helper import format_yyyy_mm_dd
 from django.db import models
 
 from dv_apps.datasets.models import Dataset
+from .stats_util_datasets import StatsMakerDatasets
 
 def view_simple_dataset_count(request):
     """Stripped down example"""
@@ -32,10 +33,21 @@ def view_jcabanas(request):
         running_total += d['cnt']
         d['running_total'] = running_total
         print d
+        
+    smd = StatsMakerDatasets()
 
+    success, count_test = smd.get_dataset_count()
+    if not success:
+        return JsonResponse(smd.get_http_error_dict(), status=smd.get_http_err_code())
+    
+    print count_test
+    
     d = dict(
         dataset_counts_by_month = dataset_counts_by_month,
     )
+    
+    
+    
     return render(request, 'metrics.html', d)
 
 

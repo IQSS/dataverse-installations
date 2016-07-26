@@ -24,3 +24,20 @@ def get_month_name(month_num):
         return False, 'The month must be a *number* between 1 and 12'
     except:
         return False, 'The month must be a *number* between 1 and 12'
+
+
+def month_year_iterator( start_month, start_year, end_month, end_year ):
+    """Return a month year iterator:
+    g = month_year_iterator(01, 2013, 5, 2014)
+        g.next()
+        (2013, 1)
+        g.next()
+        (2013, 2), etc
+
+    source: http://stackoverflow.com/questions/5734438/how-to-create-a-month-iterator
+    """
+    ym_start = 12 * start_year + start_month - 1
+    ym_end= 12 * end_year + end_month - 1
+    for ym in range(ym_start, ym_end):
+        y, m = divmod(ym, 12)
+        yield y, m+1

@@ -7,9 +7,9 @@
   "July", "August", "September", "October", "November", "December"];
 
   var sample_data = [
-    {%for i in dataverse_counts_by_month%}
+    {%for i in file_counts_by_month%}
 
-    {"month": monthNames[{{i.month}}-1], "monthNum": {{i.month}}, "name":"Total Dataverses", "Number": {{i.running_total}}}
+    {"month": monthNames[{{i.month}}-1], "monthNum": {{i.month}}, "name":"Total Files", "Number": {{i.running_total}}}
 
     {%if not forloop.last%},{%endif%}
     {%endfor%}
@@ -19,7 +19,7 @@
   // instantiate d3plus
   
   var attributes = [
-    {"name": "Total Dataverses", "hex": "#EADE56"}
+    {"name": "Total Files", "hex": "#EADE56"}
   ]
   
   var visualization = d3plus.viz()

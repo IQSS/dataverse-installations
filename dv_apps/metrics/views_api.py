@@ -9,6 +9,7 @@ from django.db import models
 from django.db.models import Count
 from dv_apps.datasets.models import Dataset
 from dv_apps.dataverses.models import Dataverse
+from dv_apps.guestbook.models import GuestBookResponse
 from .stats_util_datasets import StatsMakerDatasets
 
 def view_simple_dataset_count(request):
@@ -57,11 +58,26 @@ def view_jcabanas(request):
         print d
 
     dataverse_counts_by_type = Dataverse.objects.values('dataversetype').annotate(type_count=models.Count('dataversetype'))
+    
+    file_counts_by_month = GuestBookResponse.objects.filter(downloadtype='Download'\
+        ).annotate(month=TruncMonth('responsetime')\
+        ).values('month'\
+        ).annotate(cnt=models.Count('guestbook_id')\
+        ).values('month', 'cnt'\
+        ).order_by('month')
+    
+    file_running_total = 0
+    for d in file_counts_by_month:
+        file_running_total += d['cnt']
+        d['running_total'] = file_running_total
+        print d
+
 
     d = dict(
         dataset_counts_by_month = dataset_counts_by_month,
         dataverse_counts_by_month = dataverse_counts_by_month,
         dataverse_counts_by_type = dataverse_counts_by_type,
+        file_counts_by_month = file_counts_by_month,
     )
 
 

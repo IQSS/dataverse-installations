@@ -6,7 +6,7 @@ from django.shortcuts import render
 from django.http import JsonResponse, HttpResponse
 from dv_apps.utils.date_helper import format_yyyy_mm_dd
 from django.db import models
-
+from django.db.models import Count
 from dv_apps.datasets.models import Dataset
 from dv_apps.dataverses.models import Dataverse
 from .stats_util_datasets import StatsMakerDatasets
@@ -56,9 +56,12 @@ def view_jcabanas(request):
         d['running_total'] = dataverse_running_total
         print d
     
+    dataverse_counts_by_type = Dataverse.objects.values('dataversetype').annotate(type_count=models.Count('dataversetype'))
+    
     d = dict(
         dataset_counts_by_month = dataset_counts_by_month,
         dataverse_counts_by_month = dataverse_counts_by_month,
+        dataverse_counts_by_type = dataverse_counts_by_type,
     )
     
     

@@ -60,3 +60,8 @@ DEBUG_TOOLBAR_PATCH_SETTINGS = False
 # http://django-debug-toolbar.readthedocs.org/en/latest/installation.html
 INTERNAL_IPS = ('127.0.0.1',)
 ########## END TOOLBAR CONFIGURATION
+
+
+MEDIA_ROOT = join(BASE_DIR,"media")
+
+MEDIA_URL = '/media/'

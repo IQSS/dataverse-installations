@@ -1,0 +1,7066 @@
+[
+{
+    "model": "installations.installation",
+    "pk": 1740,
+    "fields": {
+        "name": "Abacus",
+        "lat": "49.259982",
+        "lng": "-123.250212",
+        "logo": "uploads/abacus_0HNfKvQ.png",
+        "marker": "uploads/abacus_markers_6TLH3Lm.png",
+        "description": "",
+        "url": "",
+        "version": ""
+    }
+},
+{
+    "model": "installations.installation",
+    "pk": 1741,
+    "fields": {
+        "name": "CIMMYT",
+        "lat": "19.531535",
+        "lng": "-98.846064",
+        "logo": "uploads/cimmyt_j7jO6Xy.gif",
+        "marker": "uploads/CIMMTY_markers.png",
+        "description": "",
+        "url": "",
+        "version": ""
+    }
+},
+{
+    "model": "installations.installation",
+    "pk": 1742,
+    "fields": {
+        "name": "DANS",
+        "lat": "52.547260",
+        "lng": "5.242346",
+        "logo": "uploads/dans_Nauljlp.png",
+        "marker": "uploads/dans_markers_Tw2L2Bo.png",
+        "description": "",
+        "url": "",
+        "version": ""
+    }
+},
+{
+    "model": "installations.installation",
+    "pk": 1743,
+    "fields": {
+        "name": "DataSpace@HKUST",
+        "lat": "22.336281",
+        "lng": "114.266721",
+        "logo": "uploads/dataspace_ISryrwD.png",
+        "marker": "uploads/dataspace_markers.png",
+        "description": "",
+        "url": "",
+        "version": ""
+    }
+},
+{
+    "model": "installations.installation",
+    "pk": 1744,
+    "fields": {
+        "name": "Fudan University",
+        "lat": "31.298531",
+        "lng": "121.501446",
+        "logo": "uploads/fudan_b7fzN3V.png",
+        "marker": "uploads/fudan_markers.png",
+        "description": "",
+        "url": "",
+        "version": ""
+    }
+},
+{
+    "model": "installations.installation",
+    "pk": 1745,
+    "fields": {
+        "name": "Harvard University",
+        "lat": "42.380098",
+        "lng": "-71.116629",
+        "logo": "uploads/harvard_Y6AiJl8.png",
+        "marker": "uploads/harvard_markers.png",
+        "description": "",
+        "url": "",
+        "version": ""
+    }
+},
+{
+    "model": "installations.installation",
+    "pk": 1746,
+    "fields": {
+        "name": "Heidelberg University",
+        "lat": "41.113927",
+        "lng": "-83.166451",
+        "logo": "uploads/heidelberg_7WQFIve.jpg",
+        "marker": "uploads/heidelberg_markers.png",
+        "description": "",
+        "url": "",
+        "version": ""
+    }
+},
+{
+    "model": "installations.installation",
+    "pk": 1747,
+    "fields": {
+        "name": "IBICT",
+        "lat": "-15.805842",
+        "lng": "-47.881369",
+        "logo": "uploads/ibict_ix6dfk3.png",
+        "marker": "uploads/IBICT_markers.png",
+        "description": "",
+        "url": "",
+        "version": ""
+    }
+},
+{
+    "model": "installations.installation",
+    "pk": 1748,
+    "fields": {
+        "name": "International Institute of Social History",
+        "lat": "52.369021",
+        "lng": "4.939226",
+        "logo": "uploads/international_k27aWpB.png",
+        "marker": "uploads/international_markers.png",
+        "description": "",
+        "url": "",
+        "version": ""
+    }
+},
+{
+    "model": "installations.installation",
+    "pk": 1749,
+    "fields": {
+        "name": "Johns Hopkins",
+        "lat": "39.329055",
+        "lng": "-76.620335",
+        "logo": "uploads/johns_eFZvImY.gif",
+        "marker": "uploads/johns_markers.png",
+        "description": "",
+        "url": "",
+        "version": ""
+    }
+},
+{
+    "model": "installations.installation",
+    "pk": 1750,
+    "fields": {
+        "name": "Libra Data",
+        "lat": "38.034578",
+        "lng": "-78.507394",
+        "logo": "uploads/libra_ZeX7n6C.png",
+        "marker": "uploads/libra_markers.png",
+        "description": "",
+        "url": "",
+        "version": ""
+    }
+},
+{
+    "model": "installations.installation",
+    "pk": 1751,
+    "fields": {
+        "name": "The Odum Institute",
+        "lat": "35.905022",
+        "lng": "-79.050851",
+        "logo": "uploads/odum_hY2vXqi.png",
+        "marker": "",
+        "description": "",
+        "url": "",
+        "version": ""
+    }
+},
+{
+    "model": "installations.installation",
+    "pk": 1752,
+    "fields": {
+        "name": "Peking University",
+        "lat": "39.993923",
+        "lng": "116.306539",
+        "logo": "uploads/peking_jO7WFRU.png",
+        "marker": "",
+        "description": "",
+        "url": "",
+        "version": ""
+    }
+},
+{
+    "model": "installations.installation",
+    "pk": 1753,
+    "fields": {
+        "name": "UiT",
+        "lat": "69.679749",
+        "lng": "18.971270",
+        "logo": "uploads/uit_aSHkW2r_TifIwOi.jpg",
+        "marker": "",
+        "description": "",
+        "url": "",
+        "version": ""
+    }
+},
+{
+    "model": "installations.installation",
+    "pk": 1754,
+    "fields": {
+        "name": "UnBral Fronteiras",
+        "lat": "-23.565774",
+        "lng": "-46.319782",
+        "logo": "uploads/unbral_I4Bf8fp.jpg",
+        "marker": "",
+        "description": "",
+        "url": "",
+        "version": ""
+    }
+},
+{
+    "model": "installations.installation",
+    "pk": 1755,
+    "fields": {
+        "name": "University of Alberta",
+        "lat": "53.494321",
+        "lng": "-113.549027",
+        "logo": "uploads/alberta_FVBsSen_6JJGAtE.png",
+        "marker": "",
+        "description": "",
+        "url": "",
+        "version": ""
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 25638,
+    "fields": {
+        "name": "Humboldt University Berlin",
+        "lat": "52.432122",
+        "lng": "13.533304",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 25639,
+    "fields": {
+        "name": "Humboldt-University Berlin",
+        "lat": "52.520007",
+        "lng": "13.404954",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 25640,
+    "fields": {
+        "name": "Icahn School of Medicine at Mount Sinai",
+        "lat": "40.947043",
+        "lng": "-73.029550",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 25641,
+    "fields": {
+        "name": "ICAR-NAARM, Hyderabad-500030, India",
+        "lat": "17.320213",
+        "lng": "78.402032",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 25642,
+    "fields": {
+        "name": "ICE",
+        "lat": "-14.075460",
+        "lng": "-75.734181",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 25643,
+    "fields": {
+        "name": "ICNA",
+        "lat": "50.857956",
+        "lng": "32.397489",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 25644,
+    "fields": {
+        "name": "ICTP, Trieste",
+        "lat": "45.649526",
+        "lng": "13.776818",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 25645,
+    "fields": {
+        "name": "IE Business School",
+        "lat": "53.386225",
+        "lng": "-6.257450",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 25646,
+    "fields": {
+        "name": "ifrc",
+        "lat": "14.744924",
+        "lng": "-17.518351",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 25647,
+    "fields": {
+        "name": "IISH",
+        "lat": "14.411518",
+        "lng": "120.983232",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26296,
+    "fields": {
+        "name": "Grupo EUMEDNET de la Universidad de M\u00e1laga",
+        "lat": "36.918621",
+        "lng": "-4.292741",
+        "host": 1742
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26297,
+    "fields": {
+        "name": "GSD",
+        "lat": "25.142567",
+        "lng": "86.012303",
+        "host": 1742
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26298,
+    "fields": {
+        "name": "guilan",
+        "lat": "37.280946",
+        "lng": "49.592413",
+        "host": 1742
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26299,
+    "fields": {
+        "name": "Harvaerd University",
+        "lat": "42.380098",
+        "lng": "-71.116629",
+        "host": 1742
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26300,
+    "fields": {
+        "name": "Harvard; American Univ.",
+        "lat": "64.842797",
+        "lng": "-147.857441",
+        "host": 1742
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26301,
+    "fields": {
+        "name": "Harvard College",
+        "lat": "42.380098",
+        "lng": "-71.116629",
+        "host": 1742
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26302,
+    "fields": {
+        "name": "Harvard College Library",
+        "lat": "42.379662",
+        "lng": "-71.120389",
+        "host": 1742
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26303,
+    "fields": {
+        "name": "Harvard College Observatory",
+        "lat": "42.381849",
+        "lng": "-71.128881",
+        "host": 1742
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26304,
+    "fields": {
+        "name": "Harvard Extension School",
+        "lat": "34.721733",
+        "lng": "-86.585394",
+        "host": 1742
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26305,
+    "fields": {
+        "name": "Harvard Gov.",
+        "lat": "61.229444",
+        "lng": "-149.878489",
+        "host": 1742
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26306,
+    "fields": {
+        "name": "Harvard Medical School, Mass General Hospital, Brandeis University",
+        "lat": "38.219042",
+        "lng": "-85.755118",
+        "host": 1742
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26307,
+    "fields": {
+        "name": "Harvard Physics",
+        "lat": "42.379662",
+        "lng": "-71.120389",
+        "host": 1742
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26308,
+    "fields": {
+        "name": "Harvard, Princeton",
+        "lat": "40.392746",
+        "lng": "-74.662037",
+        "host": 1742
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26309,
+    "fields": {
+        "name": "Harvard School of Education",
+        "lat": "42.349804",
+        "lng": "-71.101425",
+        "host": 1742
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26310,
+    "fields": {
+        "name": "Harvard University Library",
+        "lat": "42.379662",
+        "lng": "-71.120389",
+        "host": 1742
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26311,
+    "fields": {
+        "name": "HBS",
+        "lat": "44.245524",
+        "lng": "-68.345202",
+        "host": 1742
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26312,
+    "fields": {
+        "name": "HCL",
+        "lat": "17.456484",
+        "lng": "78.588086",
+        "host": 1742
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26313,
+    "fields": {
+        "name": "Heidelberg University",
+        "lat": "38.556158",
+        "lng": "-121.394293",
+        "host": 1742
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26314,
+    "fields": {
+        "name": "HKS",
+        "lat": "32.334457",
+        "lng": "-90.222168",
+        "host": 1742
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26315,
+    "fields": {
+        "name": "HMDC",
+        "lat": "40.784739",
+        "lng": "-74.106556",
+        "host": 1742
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26316,
+    "fields": {
+        "name": "Hochschule Mannheim",
+        "lat": "49.469597",
+        "lng": "8.483938",
+        "host": 1742
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26317,
+    "fields": {
+        "name": "home",
+        "lat": "38.636036",
+        "lng": "-90.226920",
+        "host": 1742
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26318,
+    "fields": {
+        "name": "Hospital in Singapore",
+        "lat": "1.278654",
+        "lng": "103.835131",
+        "host": 1742
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26319,
+    "fields": {
+        "name": "HRC, Princeton University",
+        "lat": "40.349287",
+        "lng": "-74.658233",
+        "host": 1742
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26320,
+    "fields": {
+        "name": "HSCB",
+        "lat": "52.921560",
+        "lng": "-1.476313",
+        "host": 1742
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26321,
+    "fields": {
+        "name": "HU",
+        "lat": "47.162494",
+        "lng": "19.503304",
+        "host": 1742
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26392,
+    "fields": {
+        "name": "aberta University",
+        "lat": "39.742608",
+        "lng": "-84.180434",
+        "host": 1740
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26393,
+    "fields": {
+        "name": "Aberystwyth",
+        "lat": "52.415303",
+        "lng": "-4.082920",
+        "host": 1740
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26394,
+    "fields": {
+        "name": "Aberystwyth University",
+        "lat": "52.417776",
+        "lng": "-4.065922",
+        "host": 1740
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26395,
+    "fields": {
+        "name": "Abilene Christian University",
+        "lat": "32.470595",
+        "lng": "-99.711557",
+        "host": 1740
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26396,
+    "fields": {
+        "name": "AEA",
+        "lat": "0.490741",
+        "lng": "173.831061",
+        "host": 1740
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26397,
+    "fields": {
+        "name": "Africa Rice Center",
+        "lat": "5.571801",
+        "lng": "-0.147963",
+        "host": 1740
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26398,
+    "fields": {
+        "name": "AIIMS Jodhpur",
+        "lat": "26.243773",
+        "lng": "72.993332",
+        "host": 1740
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26399,
+    "fields": {
+        "name": "ALBA",
+        "lat": "32.792903",
+        "lng": "-95.634404",
+        "host": 1740
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26400,
+    "fields": {
+        "name": "Allen University",
+        "lat": "34.283893",
+        "lng": "-82.216656",
+        "host": 1740
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26401,
+    "fields": {
+        "name": "AMC, Amsterdam",
+        "lat": "52.370216",
+        "lng": "4.895168",
+        "host": 1740
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26402,
+    "fields": {
+        "name": "American Statistical Association",
+        "lat": "40.575645",
+        "lng": "-105.081890",
+        "host": 1740
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26403,
+    "fields": {
+        "name": "American University, Washington, D.C.",
+        "lat": "38.945505",
+        "lng": "-77.088103",
+        "host": 1740
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26404,
+    "fields": {
+        "name": "Amrita University",
+        "lat": "12.889430",
+        "lng": "77.673127",
+        "host": 1740
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26405,
+    "fields": {
+        "name": "Andhra University",
+        "lat": "17.728721",
+        "lng": "83.324159",
+        "host": 1740
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26406,
+    "fields": {
+        "name": "Annenberg School for Communication",
+        "lat": "34.021991",
+        "lng": "-118.286052",
+        "host": 1740
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26407,
+    "fields": {
+        "name": "Anonymous",
+        "lat": "64.623756",
+        "lng": "21.201180",
+        "host": 1740
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26408,
+    "fields": {
+        "name": "Antwerp University",
+        "lat": "42.437430",
+        "lng": "-83.165570",
+        "host": 1740
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26409,
+    "fields": {
+        "name": "Appalachian State University",
+        "lat": "36.213064",
+        "lng": "-81.691352",
+        "host": 1740
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26410,
+    "fields": {
+        "name": "Appalachian State Universityy",
+        "lat": "36.213064",
+        "lng": "-81.691352",
+        "host": 1740
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26411,
+    "fields": {
+        "name": "Aristotle University of Thessaloniki",
+        "lat": "40.640063",
+        "lng": "22.944419",
+        "host": 1740
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26412,
+    "fields": {
+        "name": "Aston University",
+        "lat": "52.483756",
+        "lng": "-1.890664",
+        "host": 1740
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26413,
+    "fields": {
+        "name": "ASU",
+        "lat": "50.223883",
+        "lng": "12.195013",
+        "host": 1740
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26414,
+    "fields": {
+        "name": "Auburn University",
+        "lat": "32.603373",
+        "lng": "-85.486112",
+        "host": 1740
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26415,
+    "fields": {
+        "name": "Australian National Univesity",
+        "lat": "-34.919438",
+        "lng": "138.613989",
+        "host": 1740
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26416,
+    "fields": {
+        "name": "Australian Parliament",
+        "lat": "-35.306486",
+        "lng": "149.123710",
+        "host": 1740
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26417,
+    "fields": {
+        "name": "Australian Treasury",
+        "lat": "-31.955389",
+        "lng": "115.860500",
+        "host": 1740
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26418,
+    "fields": {
+        "name": "Bank of Italy",
+        "lat": "41.542563",
+        "lng": "-95.936363",
+        "host": 1740
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26419,
+    "fields": {
+        "name": "Bar Ilan University",
+        "lat": "32.013978",
+        "lng": "34.747186",
+        "host": 1740
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26420,
+    "fields": {
+        "name": "Beijing Jiaotong University",
+        "lat": "39.953371",
+        "lng": "116.342794",
+        "host": 1740
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26421,
+    "fields": {
+        "name": "Beijing University",
+        "lat": "39.934574",
+        "lng": "116.342378",
+        "host": 1740
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26422,
+    "fields": {
+        "name": "Berkeley Earth",
+        "lat": "32.970638",
+        "lng": "-80.022620",
+        "host": 1740
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26423,
+    "fields": {
+        "name": "Berkman",
+        "lat": "44.018520",
+        "lng": "-92.444654",
+        "host": 1740
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26424,
+    "fields": {
+        "name": "Binghamton Neighborhood Project",
+        "lat": "42.098687",
+        "lng": "-75.917974",
+        "host": 1740
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26425,
+    "fields": {
+        "name": "Binghamton SUNY",
+        "lat": "42.098687",
+        "lng": "-75.917974",
+        "host": 1740
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26426,
+    "fields": {
+        "name": "BioKin Ltd",
+        "lat": "17.537790",
+        "lng": "78.178018",
+        "host": 1740
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26427,
+    "fields": {
+        "name": "BioMed Central",
+        "lat": "39.655518",
+        "lng": "-79.957009",
+        "host": 1740
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26428,
+    "fields": {
+        "name": "BIOS",
+        "lat": "44.050465",
+        "lng": "-0.871128",
+        "host": 1740
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26429,
+    "fields": {
+        "name": "blah",
+        "lat": "44.888444",
+        "lng": "-83.742337",
+        "host": 1740
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26430,
+    "fields": {
+        "name": "Bogor Agricultural University (IPB)",
+        "lat": "-6.597147",
+        "lng": "106.806039",
+        "host": 1740
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26431,
+    "fields": {
+        "name": "Boston",
+        "lat": "42.360082",
+        "lng": "-71.058880",
+        "host": 1740
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26432,
+    "fields": {
+        "name": "Boston Area Research Initiative",
+        "lat": "42.360082",
+        "lng": "-71.058880",
+        "host": 1740
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26433,
+    "fields": {
+        "name": "Boston College Psychology Department",
+        "lat": "42.360082",
+        "lng": "-71.058880",
+        "host": 1740
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26434,
+    "fields": {
+        "name": "Boston University Department of Political Science",
+        "lat": "42.360082",
+        "lng": "-71.058880",
+        "host": 1740
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26435,
+    "fields": {
+        "name": "Bradley Research",
+        "lat": "35.897095",
+        "lng": "-78.906439",
+        "host": 1740
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26436,
+    "fields": {
+        "name": "Bradley University",
+        "lat": "40.739997",
+        "lng": "-74.177531",
+        "host": 1740
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26437,
+    "fields": {
+        "name": "Brain Institute - Federal University of Rio Grande do Norte, Brazil",
+        "lat": "-5.402580",
+        "lng": "-36.954107",
+        "host": 1740
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26438,
+    "fields": {
+        "name": "Brazil",
+        "lat": "-14.235004",
+        "lng": "-51.925280",
+        "host": 1740
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26439,
+    "fields": {
+        "name": "Bristol-UWE",
+        "lat": "51.504189",
+        "lng": "-2.549542",
+        "host": 1740
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26440,
+    "fields": {
+        "name": "Brown University",
+        "lat": "30.229102",
+        "lng": "-96.135515",
+        "host": 1740
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26441,
+    "fields": {
+        "name": "BSA",
+        "lat": "29.582721",
+        "lng": "-98.629168",
+        "host": 1740
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26442,
+    "fields": {
+        "name": "Buffalo State College",
+        "lat": "40.984180",
+        "lng": "-77.164042",
+        "host": 1740
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26443,
+    "fields": {
+        "name": "bwh",
+        "lat": "43.532934",
+        "lng": "-80.227053",
+        "host": 1740
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26444,
+    "fields": {
+        "name": "BYU",
+        "lat": "40.252547",
+        "lng": "-111.657614",
+        "host": 1740
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26445,
+    "fields": {
+        "name": "C",
+        "lat": "33.480726",
+        "lng": "-112.087559",
+        "host": 1740
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26446,
+    "fields": {
+        "name": "Cairo University",
+        "lat": "30.026077",
+        "lng": "31.200952",
+        "host": 1740
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26447,
+    "fields": {
+        "name": "California Votes Initiative",
+        "lat": "36.778261",
+        "lng": "-119.417932",
+        "host": 1740
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26448,
+    "fields": {
+        "name": "Cambridge Replication",
+        "lat": "42.373616",
+        "lng": "-71.109734",
+        "host": 1740
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26449,
+    "fields": {
+        "name": "Canada",
+        "lat": "56.130366",
+        "lng": "-106.346771",
+        "host": 1740
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26450,
+    "fields": {
+        "name": "Canadian Forces College",
+        "lat": "44.227730",
+        "lng": "-76.469502",
+        "host": 1740
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26451,
+    "fields": {
+        "name": "Capella University",
+        "lat": "33.640985",
+        "lng": "-117.807277",
+        "host": 1740
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26452,
+    "fields": {
+        "name": "Cardiff University",
+        "lat": "51.491908",
+        "lng": "-3.186836",
+        "host": 1740
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26453,
+    "fields": {
+        "name": "CARI",
+        "lat": "46.493558",
+        "lng": "8.819752",
+        "host": 1740
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26454,
+    "fields": {
+        "name": "Carilion Clinic",
+        "lat": "37.263573",
+        "lng": "-79.940824",
+        "host": 1740
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26455,
+    "fields": {
+        "name": "Carlos III University",
+        "lat": "40.406957",
+        "lng": "-3.710160",
+        "host": 1740
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26456,
+    "fields": {
+        "name": "Carnegie Mellon University 19704",
+        "lat": "40.443229",
+        "lng": "-79.944137",
+        "host": 1740
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26457,
+    "fields": {
+        "name": "Carroll College",
+        "lat": "41.488616",
+        "lng": "-81.530978",
+        "host": 1740
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26458,
+    "fields": {
+        "name": "Case study",
+        "lat": "41.526036",
+        "lng": "-81.384362",
+        "host": 1740
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26459,
+    "fields": {
+        "name": "Center for Astrophysics",
+        "lat": "40.007947",
+        "lng": "-105.246346",
+        "host": 1740
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26460,
+    "fields": {
+        "name": "Center for International Development",
+        "lat": "36.127345",
+        "lng": "-97.068730",
+        "host": 1740
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26461,
+    "fields": {
+        "name": "Center for Nanotechnology in Society, University of California Santa Barbara",
+        "lat": "33.685802",
+        "lng": "-117.808283",
+        "host": 1740
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26462,
+    "fields": {
+        "name": "Center for Political Studies, Ann Arbor, MI",
+        "lat": "42.280826",
+        "lng": "-83.743038",
+        "host": 1740
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26463,
+    "fields": {
+        "name": "Center for Social Research",
+        "lat": "39.163729",
+        "lng": "-86.519825",
+        "host": 1740
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26464,
+    "fields": {
+        "name": "Central Michigan University",
+        "lat": "43.460048",
+        "lng": "-83.966440",
+        "host": 1740
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26465,
+    "fields": {
+        "name": "Central University of Himachal Pradesh, Dharamshala, India-176215",
+        "lat": "32.219042",
+        "lng": "76.323404",
+        "host": 1740
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26466,
+    "fields": {
+        "name": "Centre for the Study of Democracy, Leuphana University L\u00fcneburg",
+        "lat": "53.246421",
+        "lng": "10.411518",
+        "host": 1740
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26467,
+    "fields": {
+        "name": "CEU",
+        "lat": "39.537754",
+        "lng": "-119.817101",
+        "host": 1740
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26468,
+    "fields": {
+        "name": "CHAI",
+        "lat": "11.700000",
+        "lng": "108.316667",
+        "host": 1740
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26469,
+    "fields": {
+        "name": "Chicago-Kent College of Law, Illinois Institute of Technology",
+        "lat": "41.831385",
+        "lng": "-87.627222",
+        "host": 1740
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26470,
+    "fields": {
+        "name": "chulalongkorn",
+        "lat": "13.692255",
+        "lng": "100.620080",
+        "host": 1740
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26471,
+    "fields": {
+        "name": "Chulalongkorn University",
+        "lat": "44.031540",
+        "lng": "-123.067287",
+        "host": 1740
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26472,
+    "fields": {
+        "name": "CIAT",
+        "lat": "30.441208",
+        "lng": "-84.342250",
+        "host": 1740
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26473,
+    "fields": {
+        "name": "CIDE",
+        "lat": "41.892221",
+        "lng": "33.003676",
+        "host": 1740
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26474,
+    "fields": {
+        "name": "cirad.fr",
+        "lat": "43.646251",
+        "lng": "3.870279",
+        "host": 1740
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26475,
+    "fields": {
+        "name": "City & County of San Francisco",
+        "lat": "37.786662",
+        "lng": "-122.399972",
+        "host": 1741
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26476,
+    "fields": {
+        "name": "City University of Hong Kong",
+        "lat": "22.337487",
+        "lng": "114.172002",
+        "host": 1741
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26477,
+    "fields": {
+        "name": "CMU 19-704",
+        "lat": "46.193832",
+        "lng": "6.151685",
+        "host": 1741
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26478,
+    "fields": {
+        "name": "CNH",
+        "lat": "43.370971",
+        "lng": "-72.368226",
+        "host": 1741
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26479,
+    "fields": {
+        "name": "College of New Rochelle",
+        "lat": "40.911488",
+        "lng": "-73.782355",
+        "host": 1741
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26480,
+    "fields": {
+        "name": "Colorado College",
+        "lat": "31.587615",
+        "lng": "-97.160881",
+        "host": 1741
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26481,
+    "fields": {
+        "name": "Colorado State University",
+        "lat": "40.574775",
+        "lng": "-105.080707",
+        "host": 1741
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26482,
+    "fields": {
+        "name": "Colorado State University - Pueblo",
+        "lat": "38.316295",
+        "lng": "-104.593260",
+        "host": 1741
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26483,
+    "fields": {
+        "name": "Colorado Youth Advisory Council",
+        "lat": "39.550051",
+        "lng": "-105.782067",
+        "host": 1741
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26484,
+    "fields": {
+        "name": "Columbia",
+        "lat": "34.000710",
+        "lng": "-81.034814",
+        "host": 1741
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26485,
+    "fields": {
+        "name": "Community Development Department of Thailand",
+        "lat": "13.696588",
+        "lng": "100.722705",
+        "host": 1741
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26486,
+    "fields": {
+        "name": "Complex Systems Institute of Paris Ile-de-France",
+        "lat": "48.856614",
+        "lng": "2.352222",
+        "host": 1741
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26487,
+    "fields": {
+        "name": "Consejer\u00eda de la Presidencia, Sevilla, Spain",
+        "lat": "37.389092",
+        "lng": "-5.984459",
+        "host": 1741
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26488,
+    "fields": {
+        "name": "Consulting researcher",
+        "lat": "41.330732",
+        "lng": "69.335050",
+        "host": 1741
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26489,
+    "fields": {
+        "name": "Continued Education",
+        "lat": "39.537754",
+        "lng": "-119.817101",
+        "host": 1741
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26490,
+    "fields": {
+        "name": "Corporation",
+        "lat": "38.795318",
+        "lng": "-85.650326",
+        "host": 1741
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26491,
+    "fields": {
+        "name": "Cracow UNiversity of Economics, Department of Entrepreneurhsip and Innovation",
+        "lat": "50.064650",
+        "lng": "19.944980",
+        "host": 1741
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26492,
+    "fields": {
+        "name": "CRUZEIRO DO SUL",
+        "lat": "-7.627998",
+        "lng": "-72.676149",
+        "host": 1741
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26493,
+    "fields": {
+        "name": "CSIRO",
+        "lat": "-37.905104",
+        "lng": "145.128721",
+        "host": 1741
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26494,
+    "fields": {
+        "name": "CU",
+        "lat": "21.521757",
+        "lng": "-77.781167",
+        "host": 1741
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26495,
+    "fields": {
+        "name": "CUL",
+        "lat": "46.697971",
+        "lng": "10.089326",
+        "host": 1741
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26567,
+    "fields": {
+        "name": "CUNY / College of Staten Island",
+        "lat": "35.299676",
+        "lng": "-119.103198",
+        "host": 1743
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26568,
+    "fields": {
+        "name": "Cyber Research Centre",
+        "lat": "17.451985",
+        "lng": "78.347331",
+        "host": 1743
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26569,
+    "fields": {
+        "name": "Dana",
+        "lat": "35.329283",
+        "lng": "-82.375395",
+        "host": 1743
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26570,
+    "fields": {
+        "name": "DANS",
+        "lat": "44.041667",
+        "lng": "-103.045833",
+        "host": 1743
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26571,
+    "fields": {
+        "name": "database",
+        "lat": "53.792766",
+        "lng": "-3.048931",
+        "host": 1743
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26572,
+    "fields": {
+        "name": "Davidson College",
+        "lat": "39.009776",
+        "lng": "-76.952473",
+        "host": 1743
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26573,
+    "fields": {
+        "name": "Deakin University",
+        "lat": "-37.846380",
+        "lng": "145.113887",
+        "host": 1743
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26574,
+    "fields": {
+        "name": "Demand",
+        "lat": "32.821143",
+        "lng": "130.700656",
+        "host": 1743
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26575,
+    "fields": {
+        "name": "Demo",
+        "lat": "46.086715",
+        "lng": "10.338453",
+        "host": 1743
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26576,
+    "fields": {
+        "name": "Denison University",
+        "lat": "42.017925",
+        "lng": "-95.322202",
+        "host": 1743
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26577,
+    "fields": {
+        "name": "Department of Defense",
+        "lat": "39.700815",
+        "lng": "-74.410880",
+        "host": 1743
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26578,
+    "fields": {
+        "name": "Department of Economics, Business and Statistics, University of Milan",
+        "lat": "45.465422",
+        "lng": "9.185924",
+        "host": 1743
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26579,
+    "fields": {
+        "name": "Department of Geography, University of Bonn",
+        "lat": "50.737430",
+        "lng": "7.098207",
+        "host": 1743
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26580,
+    "fields": {
+        "name": "Department of Neurosciences and Behavior, Ribeir\u00e3o Preto Medical School, University of S\u00e3o Paulo. Ribeir\u00e3o Preto, S\u00e3o Paulo, Brazil",
+        "lat": "-21.170401",
+        "lng": "-47.810324",
+        "host": 1743
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26581,
+    "fields": {
+        "name": "Dickinson College",
+        "lat": "38.981278",
+        "lng": "-76.934041",
+        "host": 1743
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26582,
+    "fields": {
+        "name": "DIT",
+        "lat": "-8.556856",
+        "lng": "125.560314",
+        "host": 1743
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26583,
+    "fields": {
+        "name": "Drew University",
+        "lat": "44.966977",
+        "lng": "-93.164349",
+        "host": 1743
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26584,
+    "fields": {
+        "name": "Drexel Univerity",
+        "lat": "38.667915",
+        "lng": "-90.332226",
+        "host": 1743
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26585,
+    "fields": {
+        "name": "DSA",
+        "lat": "42.253596",
+        "lng": "-71.788220",
+        "host": 1743
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26586,
+    "fields": {
+        "name": "dsafsd",
+        "lat": "41.689764",
+        "lng": "-73.875874",
+        "host": 1743
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26587,
+    "fields": {
+        "name": "Dublin Institute of Technology",
+        "lat": "53.350489",
+        "lng": "-6.269209",
+        "host": 1743
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26588,
+    "fields": {
+        "name": "Duke NUS",
+        "lat": "1.281204",
+        "lng": "103.834222",
+        "host": 1743
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26589,
+    "fields": {
+        "name": "DVN",
+        "lat": "41.611846",
+        "lng": "-90.589609",
+        "host": 1743
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26590,
+    "fields": {
+        "name": "ECM",
+        "lat": "-26.475967",
+        "lng": "-49.089498",
+        "host": 1743
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26591,
+    "fields": {
+        "name": "ECON",
+        "lat": "54.132291",
+        "lng": "-1.521370",
+        "host": 1743
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26592,
+    "fields": {
+        "name": "Economic and Social Research Institute and Vrije U Amsterdam",
+        "lat": "52.370216",
+        "lng": "4.895168",
+        "host": 1743
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26593,
+    "fields": {
+        "name": "Economics IT",
+        "lat": "12.873843",
+        "lng": "80.219730",
+        "host": 1743
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26594,
+    "fields": {
+        "name": "Edinburgh",
+        "lat": "55.953252",
+        "lng": "-3.188267",
+        "host": 1743
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26595,
+    "fields": {
+        "name": "Edmond J. Safra Center for Ethics, Harvard",
+        "lat": "35.652832",
+        "lng": "-97.478095",
+        "host": 1743
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26596,
+    "fields": {
+        "name": "EECS at UC Berkeley",
+        "lat": "37.880594",
+        "lng": "-122.244796",
+        "host": 1743
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26597,
+    "fields": {
+        "name": "ELTE",
+        "lat": "52.241033",
+        "lng": "7.522493",
+        "host": 1743
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26598,
+    "fields": {
+        "name": "EMBRAPA",
+        "lat": "-5.032610",
+        "lng": "-42.793079",
+        "host": 1743
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26599,
+    "fields": {
+        "name": "EPFL",
+        "lat": "46.518986",
+        "lng": "6.567601",
+        "host": 1743
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26600,
+    "fields": {
+        "name": "ERF",
+        "lat": "38.991972",
+        "lng": "-76.936811",
+        "host": 1743
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26601,
+    "fields": {
+        "name": "ESG UQAM",
+        "lat": "45.514886",
+        "lng": "-73.559727",
+        "host": 1743
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26602,
+    "fields": {
+        "name": "etd",
+        "lat": "26.615961",
+        "lng": "-80.087757",
+        "host": 1743
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26603,
+    "fields": {
+        "name": "ethz",
+        "lat": "47.376536",
+        "lng": "8.548093",
+        "host": 1743
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26604,
+    "fields": {
+        "name": "EU-project",
+        "lat": "21.005178",
+        "lng": "101.408100",
+        "host": 1743
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26605,
+    "fields": {
+        "name": "EUR",
+        "lat": "41.826610",
+        "lng": "12.466720",
+        "host": 1743
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26606,
+    "fields": {
+        "name": "Facebook",
+        "lat": "37.481672",
+        "lng": "-122.155597",
+        "host": 1743
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26607,
+    "fields": {
+        "name": "Faculty of Agronomy, University of La Paz, Bolivia",
+        "lat": "-16.489689",
+        "lng": "-68.119294",
+        "host": 1743
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26608,
+    "fields": {
+        "name": "Faculty of Dentistry , Mahidol University",
+        "lat": "13.793216",
+        "lng": "100.324246",
+        "host": 1743
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26609,
+    "fields": {
+        "name": "Faculty of Ecology, University of Ecology and Management, Laboratory of Applied Plant Ecology, Faculty of Ecology, University of Ecology and Management, Warsaw",
+        "lat": "52.229676",
+        "lng": "21.012229",
+        "host": 1743
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26610,
+    "fields": {
+        "name": "Fairbank Center",
+        "lat": "41.352338",
+        "lng": "-86.306075",
+        "host": 1743
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26611,
+    "fields": {
+        "name": "fd",
+        "lat": "50.563678",
+        "lng": "9.732740",
+        "host": 1743
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26612,
+    "fields": {
+        "name": "Fielding University",
+        "lat": "28.023229",
+        "lng": "-82.466850",
+        "host": 1743
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26613,
+    "fields": {
+        "name": "Field Programs, Simon Fraser University",
+        "lat": "52.124815",
+        "lng": "-106.589195",
+        "host": 1743
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26614,
+    "fields": {
+        "name": "FIT Vutbr",
+        "lat": "49.226851",
+        "lng": "16.596786",
+        "host": 1743
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26615,
+    "fields": {
+        "name": "FORS",
+        "lat": "40.422768",
+        "lng": "-86.914127",
+        "host": 1743
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26616,
+    "fields": {
+        "name": "Forsyth Institute and Harvard School of Dental Medicine",
+        "lat": "33.034297",
+        "lng": "-83.938242",
+        "host": 1743
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26617,
+    "fields": {
+        "name": "Forum One",
+        "lat": "50.111787",
+        "lng": "8.649576",
+        "host": 1743
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26618,
+    "fields": {
+        "name": "Free University of Berlin",
+        "lat": "52.520007",
+        "lng": "13.404954",
+        "host": 1743
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26619,
+    "fields": {
+        "name": "gemeente",
+        "lat": "52.656532",
+        "lng": "6.238099",
+        "host": 1743
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26620,
+    "fields": {
+        "name": "Georgetown",
+        "lat": "30.633262",
+        "lng": "-97.677984",
+        "host": 1743
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26621,
+    "fields": {
+        "name": "Georgetown Unviersity",
+        "lat": "38.907609",
+        "lng": "-77.072258",
+        "host": 1743
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26622,
+    "fields": {
+        "name": "Georgia Inst. of Technology",
+        "lat": "33.778463",
+        "lng": "-84.398881",
+        "host": 1743
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26623,
+    "fields": {
+        "name": "Georgia Tech",
+        "lat": "33.778463",
+        "lng": "-84.398881",
+        "host": 1743
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26624,
+    "fields": {
+        "name": "Ghana Center",
+        "lat": "5.562925",
+        "lng": "-0.191835",
+        "host": 1743
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26625,
+    "fields": {
+        "name": "GIS",
+        "lat": "28.366667",
+        "lng": "55.533333",
+        "host": 1743
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26626,
+    "fields": {
+        "name": "Gobabeb Training and Research Centre",
+        "lat": "-23.561836",
+        "lng": "15.041312",
+        "host": 1743
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26627,
+    "fields": {
+        "name": "Goethe University",
+        "lat": "38.554705",
+        "lng": "-121.337282",
+        "host": 1743
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26628,
+    "fields": {
+        "name": "Goethe University Frankfurt",
+        "lat": "50.170375",
+        "lng": "8.629308",
+        "host": 1743
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26629,
+    "fields": {
+        "name": "Golden-Wallerstein-Lange Project  - UCLA",
+        "lat": "40.538291",
+        "lng": "-78.352858",
+        "host": 1743
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26630,
+    "fields": {
+        "name": "Government of Canada",
+        "lat": "64.062716",
+        "lng": "-139.433561",
+        "host": 1743
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26631,
+    "fields": {
+        "name": "Government of Sierra Leone",
+        "lat": "7.527022",
+        "lng": "-12.499915",
+        "host": 1743
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26632,
+    "fields": {
+        "name": "Graduate Student",
+        "lat": "40.251258",
+        "lng": "-111.652524",
+        "host": 1743
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26633,
+    "fields": {
+        "name": "Grand Valley State University",
+        "lat": "40.813327",
+        "lng": "-77.823777",
+        "host": 1743
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26634,
+    "fields": {
+        "name": "Green Mountain College",
+        "lat": "13.331360",
+        "lng": "77.094754",
+        "host": 1743
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26635,
+    "fields": {
+        "name": "GREO",
+        "lat": "47.622521",
+        "lng": "-2.854347",
+        "host": 1743
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26636,
+    "fields": {
+        "name": "Griffith University",
+        "lat": "-27.963265",
+        "lng": "153.384564",
+        "host": 1743
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26637,
+    "fields": {
+        "name": "Grinnell College",
+        "lat": "41.925861",
+        "lng": "-91.649628",
+        "host": 1743
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26638,
+    "fields": {
+        "name": "Imperial College",
+        "lat": "51.517725",
+        "lng": "-0.173229",
+        "host": 1744
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26639,
+    "fields": {
+        "name": "InDe (Information Design)",
+        "lat": "28.511244",
+        "lng": "77.081382",
+        "host": 1744
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26640,
+    "fields": {
+        "name": "Indiana- Purdue University",
+        "lat": "40.413345",
+        "lng": "-86.940581",
+        "host": 1744
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26641,
+    "fields": {
+        "name": "Indiana University, Bloomington",
+        "lat": "39.167047",
+        "lng": "-86.526937",
+        "host": 1744
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26642,
+    "fields": {
+        "name": "Indian Statistical Institute-Bangalore",
+        "lat": "12.971599",
+        "lng": "77.594563",
+        "host": 1744
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26643,
+    "fields": {
+        "name": "INFO 780",
+        "lat": "45.863714",
+        "lng": "-104.598189",
+        "host": 1744
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26644,
+    "fields": {
+        "name": "Information Resources, Inc.",
+        "lat": "41.827733",
+        "lng": "123.429261",
+        "host": 1744
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26645,
+    "fields": {
+        "name": "INSP",
+        "lat": "36.087739",
+        "lng": "-80.241586",
+        "host": 1744
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26646,
+    "fields": {
+        "name": "Institute for Fiscal Studies",
+        "lat": "39.997838",
+        "lng": "116.322407",
+        "host": 1744
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26647,
+    "fields": {
+        "name": "Institute of Mathematical Statistics",
+        "lat": "40.821508",
+        "lng": "-73.949058",
+        "host": 1744
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26648,
+    "fields": {
+        "name": "Institute of Philosophy and Sociology, Polish Academy of Sciences, Warsaw, Poland",
+        "lat": "52.229676",
+        "lng": "21.012229",
+        "host": 1744
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26649,
+    "fields": {
+        "name": "Institute of Psychology, Chinese Academy of Sciences",
+        "lat": "39.962393",
+        "lng": "116.324806",
+        "host": 1744
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26650,
+    "fields": {
+        "name": "Institution1",
+        "lat": "57.669854",
+        "lng": "-2.498019",
+        "host": 1744
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26651,
+    "fields": {
+        "name": "Instituto de Ciencia Politica",
+        "lat": "38.713138",
+        "lng": "-9.197693",
+        "host": 1744
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26652,
+    "fields": {
+        "name": "Instituto de Estudios Avanzados Universidad de Santiago de Chile",
+        "lat": "-33.448890",
+        "lng": "-70.669266",
+        "host": 1744
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26653,
+    "fields": {
+        "name": "Interdisciplinary Scientific Research",
+        "lat": "28.061512",
+        "lng": "-82.414336",
+        "host": 1744
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26654,
+    "fields": {
+        "name": "International Development Department, University of Birmingham",
+        "lat": "33.520661",
+        "lng": "-86.802490",
+        "host": 1744
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26655,
+    "fields": {
+        "name": "International Journal",
+        "lat": "39.957183",
+        "lng": "116.413902",
+        "host": 1744
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26656,
+    "fields": {
+        "name": "International Peace Research Insistute, Oslo",
+        "lat": "59.913869",
+        "lng": "10.752245",
+        "host": 1744
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26657,
+    "fields": {
+        "name": "International Studies Association",
+        "lat": "39.935982",
+        "lng": "116.370903",
+        "host": 1744
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26658,
+    "fields": {
+        "name": "iowa state",
+        "lat": "41.878002",
+        "lng": "-93.097702",
+        "host": 1744
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26659,
+    "fields": {
+        "name": "Iowa State Univeristy",
+        "lat": "41.655016",
+        "lng": "-91.556835",
+        "host": 1744
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26660,
+    "fields": {
+        "name": "IQSS, Harvard University / MIT",
+        "lat": "38.986677",
+        "lng": "-76.939504",
+        "host": 1744
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26661,
+    "fields": {
+        "name": "ISP",
+        "lat": "40.789845",
+        "lng": "-73.097568",
+        "host": 1744
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26662,
+    "fields": {
+        "name": "IST 676",
+        "lat": "43.224884",
+        "lng": "-77.592499",
+        "host": 1744
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26663,
+    "fields": {
+        "name": "Istanbul Technical University",
+        "lat": "41.008238",
+        "lng": "28.978359",
+        "host": 1744
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26664,
+    "fields": {
+        "name": "IT",
+        "lat": "41.871940",
+        "lng": "12.567380",
+        "host": 1744
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26665,
+    "fields": {
+        "name": "ito",
+        "lat": "34.965670",
+        "lng": "139.101936",
+        "host": 1744
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26666,
+    "fields": {
+        "name": "Jacobs University Bremen",
+        "lat": "53.168271",
+        "lng": "8.650538",
+        "host": 1744
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26667,
+    "fields": {
+        "name": "Javier M\u00e1rquez",
+        "lat": "19.401555",
+        "lng": "-102.061808",
+        "host": 1744
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26668,
+    "fields": {
+        "name": "J. E. Purkyne University",
+        "lat": "50.666275",
+        "lng": "14.031738",
+        "host": 1744
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26669,
+    "fields": {
+        "name": "JMU/UT-Arlington",
+        "lat": "37.079419",
+        "lng": "-111.664488",
+        "host": 1744
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26670,
+    "fields": {
+        "name": "JNU",
+        "lat": "58.357981",
+        "lng": "-134.583179",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26671,
+    "fields": {
+        "name": "john",
+        "lat": "41.819803",
+        "lng": "-71.370670",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26672,
+    "fields": {
+        "name": "journalist",
+        "lat": "31.801562",
+        "lng": "-85.957883",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26673,
+    "fields": {
+        "name": "Kalamazoo Valley Community College",
+        "lat": "42.292916",
+        "lng": "-85.583687",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26674,
+    "fields": {
+        "name": "Kapital Trading, LLC",
+        "lat": "25.113706",
+        "lng": "55.234913",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26675,
+    "fields": {
+        "name": "Kaplan",
+        "lat": "29.997984",
+        "lng": "-92.284852",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26676,
+    "fields": {
+        "name": "Kennesaw State",
+        "lat": "34.035138",
+        "lng": "-84.582593",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26677,
+    "fields": {
+        "name": "Kiel Institute for the World Economy",
+        "lat": "54.323293",
+        "lng": "10.122765",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26678,
+    "fields": {
+        "name": "King Edward Medical University, Lahore",
+        "lat": "31.554606",
+        "lng": "74.357158",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26679,
+    "fields": {
+        "name": "King's College London - University of S\u00e3o Paulo",
+        "lat": "-23.550520",
+        "lng": "-46.633309",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26680,
+    "fields": {
+        "name": "KISTI",
+        "lat": "67.262278",
+        "lng": "33.542124",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26681,
+    "fields": {
+        "name": "KN",
+        "lat": "17.357822",
+        "lng": "-62.782998",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26682,
+    "fields": {
+        "name": "KNAW",
+        "lat": "38.020133",
+        "lng": "-75.408649",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26683,
+    "fields": {
+        "name": "kntu",
+        "lat": "48.504674",
+        "lng": "32.216126",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26684,
+    "fields": {
+        "name": "Koeln",
+        "lat": "50.937531",
+        "lng": "6.960279",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26685,
+    "fields": {
+        "name": "Korbel School, University of Denver",
+        "lat": "39.739236",
+        "lng": "-104.990251",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26686,
+    "fields": {
+        "name": "koy",
+        "lat": "57.161452",
+        "lng": "-154.229793",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26687,
+    "fields": {
+        "name": "kt",
+        "lat": "49.773979",
+        "lng": "10.211522",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26688,
+    "fields": {
+        "name": "KUT",
+        "lat": "20.790970",
+        "lng": "-156.326934",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26689,
+    "fields": {
+        "name": "Lampang Rajabhat University",
+        "lat": "18.288840",
+        "lng": "99.490874",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26690,
+    "fields": {
+        "name": "Lancaster University",
+        "lat": "54.007001",
+        "lng": "-2.785272",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26691,
+    "fields": {
+        "name": "LBT",
+        "lat": "34.610658",
+        "lng": "-79.059420",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26692,
+    "fields": {
+        "name": "Lehigh University",
+        "lat": "64.839152",
+        "lng": "-147.858826",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26693,
+    "fields": {
+        "name": "Leiden University Center for Linguistics",
+        "lat": "52.156949",
+        "lng": "4.481357",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26694,
+    "fields": {
+        "name": "Library",
+        "lat": "38.098957",
+        "lng": "-78.970349",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26695,
+    "fields": {
+        "name": "LLAS, CAS",
+        "lat": "39.033732",
+        "lng": "-3.987205",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26696,
+    "fields": {
+        "name": "LMU Munich",
+        "lat": "48.135125",
+        "lng": "11.581981",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26697,
+    "fields": {
+        "name": "London School of Economics",
+        "lat": "51.394968",
+        "lng": "-0.272012",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26698,
+    "fields": {
+        "name": "Loyola Marymount University",
+        "lat": "33.968100",
+        "lng": "-118.421271",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26699,
+    "fields": {
+        "name": "Loyola University Chicago",
+        "lat": "41.861056",
+        "lng": "-87.836494",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26700,
+    "fields": {
+        "name": "Loyola University Maryland",
+        "lat": "39.346225",
+        "lng": "-76.621307",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26701,
+    "fields": {
+        "name": "lsbu",
+        "lat": "51.499042",
+        "lng": "-0.103110",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26702,
+    "fields": {
+        "name": "LSE",
+        "lat": "43.875330",
+        "lng": "-91.263547",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26703,
+    "fields": {
+        "name": "LSU",
+        "lat": "30.472386",
+        "lng": "-92.433504",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26704,
+    "fields": {
+        "name": "MacArthur Foundation",
+        "lat": "26.829783",
+        "lng": "-80.100320",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26705,
+    "fields": {
+        "name": "Macquarie University",
+        "lat": "-32.922419",
+        "lng": "151.651420",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26706,
+    "fields": {
+        "name": "Maebashi Institute of Technology",
+        "lat": "36.389482",
+        "lng": "139.063428",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26707,
+    "fields": {
+        "name": "MAP",
+        "lat": "36.812104",
+        "lng": "34.641481",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26708,
+    "fields": {
+        "name": "maravilhion",
+        "lat": "-26.755959",
+        "lng": "-53.196508",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26709,
+    "fields": {
+        "name": "Massachusetts General Hospital",
+        "lat": "42.363664",
+        "lng": "-71.069230",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26710,
+    "fields": {
+        "name": "Massachusetts Institute of Technology (MIT)",
+        "lat": "42.359100",
+        "lng": "-71.093400",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26711,
+    "fields": {
+        "name": "MAUD",
+        "lat": "33.332901",
+        "lng": "-94.342696",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26712,
+    "fields": {
+        "name": "Max Planck Institut",
+        "lat": "50.173706",
+        "lng": "8.630351",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26713,
+    "fields": {
+        "name": "McGill",
+        "lat": "39.404938",
+        "lng": "-114.778628",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26714,
+    "fields": {
+        "name": "McMaster University",
+        "lat": "34.002682",
+        "lng": "-81.026104",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26715,
+    "fields": {
+        "name": "Med. Univ. Vienna",
+        "lat": "48.208174",
+        "lng": "16.373819",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26716,
+    "fields": {
+        "name": "Memi",
+        "lat": "37.275107",
+        "lng": "21.698609",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26717,
+    "fields": {
+        "name": "Middlebury College",
+        "lat": "32.849739",
+        "lng": "-96.737108",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26718,
+    "fields": {
+        "name": "Midwestern University",
+        "lat": "41.830530",
+        "lng": "-87.999756",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26719,
+    "fields": {
+        "name": "Mills College",
+        "lat": "37.781684",
+        "lng": "-122.181700",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26720,
+    "fields": {
+        "name": "Ministry of Economic and Finance, Senegal, West Africa",
+        "lat": "14.497401",
+        "lng": "-14.452362",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26721,
+    "fields": {
+        "name": "MIT Libraries",
+        "lat": "19.850629",
+        "lng": "75.323686",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26722,
+    "fields": {
+        "name": "MKJ",
+        "lat": "36.894663",
+        "lng": "-81.349223",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26723,
+    "fields": {
+        "name": "MOI UNIVERSITY",
+        "lat": "0.291032",
+        "lng": "35.303922",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26724,
+    "fields": {
+        "name": "Mondriaan",
+        "lat": "52.025758",
+        "lng": "4.175378",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26725,
+    "fields": {
+        "name": "Montclair State University",
+        "lat": "40.859683",
+        "lng": "-74.200616",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26726,
+    "fields": {
+        "name": "Monterey Institute of International Studies",
+        "lat": "36.600238",
+        "lng": "-121.894676",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26727,
+    "fields": {
+        "name": "Moorea IDEA",
+        "lat": "-17.538844",
+        "lng": "-149.829523",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26728,
+    "fields": {
+        "name": "Mount Holyoke College",
+        "lat": "40.009127",
+        "lng": "-83.053064",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26729,
+    "fields": {
+        "name": "MPC",
+        "lat": "21.644432",
+        "lng": "-157.927765",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26730,
+    "fields": {
+        "name": "MTSU",
+        "lat": "35.848804",
+        "lng": "-86.360472",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26731,
+    "fields": {
+        "name": "Murray State University",
+        "lat": "40.903857",
+        "lng": "-77.584721",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26732,
+    "fields": {
+        "name": "muthyam",
+        "lat": "18.336563",
+        "lng": "78.813487",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26733,
+    "fields": {
+        "name": "MZES, University of Mannheim",
+        "lat": "49.487459",
+        "lng": "8.466040",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26734,
+    "fields": {
+        "name": "NA",
+        "lat": "-22.957640",
+        "lng": "18.490410",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26735,
+    "fields": {
+        "name": "naa",
+        "lat": "60.257259",
+        "lng": "6.568503",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26736,
+    "fields": {
+        "name": "Nanchang University",
+        "lat": "28.684353",
+        "lng": "115.904990",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26737,
+    "fields": {
+        "name": "Nankai University",
+        "lat": "39.103690",
+        "lng": "117.178747",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26738,
+    "fields": {
+        "name": "NARI",
+        "lat": "21.773524",
+        "lng": "72.074962",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26739,
+    "fields": {
+        "name": "National University of Defence Technology",
+        "lat": "28.219384",
+        "lng": "113.000291",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26740,
+    "fields": {
+        "name": "NDSU",
+        "lat": "46.892650",
+        "lng": "-96.806927",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26741,
+    "fields": {
+        "name": "NetworkGames",
+        "lat": "12.969768",
+        "lng": "77.630594",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26742,
+    "fields": {
+        "name": "New Haven Independent",
+        "lat": "37.794115",
+        "lng": "-85.483703",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26743,
+    "fields": {
+        "name": "New York University Law Review",
+        "lat": "40.712784",
+        "lng": "-74.005941",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26744,
+    "fields": {
+        "name": "NH Dept of Education",
+        "lat": "42.271597",
+        "lng": "-71.011496",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26745,
+    "fields": {
+        "name": "NIH",
+        "lat": "38.999265",
+        "lng": "-77.098411",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26746,
+    "fields": {
+        "name": "NIRSA",
+        "lat": "23.784777",
+        "lng": "86.703906",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26747,
+    "fields": {
+        "name": "NIT, Rourkela",
+        "lat": "22.251088",
+        "lng": "84.908841",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26748,
+    "fields": {
+        "name": "No one",
+        "lat": "51.713379",
+        "lng": "5.373596",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26749,
+    "fields": {
+        "name": "North Carolina Central University",
+        "lat": "35.972982",
+        "lng": "-78.896289",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26750,
+    "fields": {
+        "name": "Northeastern University, Harvard University",
+        "lat": "42.338676",
+        "lng": "-71.090611",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26751,
+    "fields": {
+        "name": "Northwest A&F University, China",
+        "lat": "34.256581",
+        "lng": "108.961413",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26752,
+    "fields": {
+        "name": "Northwestern",
+        "lat": "37.123428",
+        "lng": "-81.844293",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26753,
+    "fields": {
+        "name": "Northwestern University",
+        "lat": "41.895412",
+        "lng": "-87.619735",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26754,
+    "fields": {
+        "name": "Norwich",
+        "lat": "52.630886",
+        "lng": "1.297355",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26755,
+    "fields": {
+        "name": "Nottingham University",
+        "lat": "52.943651",
+        "lng": "-1.187340",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26756,
+    "fields": {
+        "name": "nso",
+        "lat": "-32.036468",
+        "lng": "150.831136",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26757,
+    "fields": {
+        "name": "Nuffield College",
+        "lat": "-34.918698",
+        "lng": "138.615605",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26758,
+    "fields": {
+        "name": "NUS",
+        "lat": "45.739933",
+        "lng": "7.467472",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26759,
+    "fields": {
+        "name": "NY State Museum",
+        "lat": "40.712784",
+        "lng": "-74.005941",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26760,
+    "fields": {
+        "name": "OHIM",
+        "lat": "35.080229",
+        "lng": "-106.741066",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26761,
+    "fields": {
+        "name": "Ohio State",
+        "lat": "40.417287",
+        "lng": "-82.907123",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26762,
+    "fields": {
+        "name": "Oklahoma State University",
+        "lat": "36.123128",
+        "lng": "-97.102810",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26763,
+    "fields": {
+        "name": "Old Dominion University",
+        "lat": "36.883896",
+        "lng": "-76.304021",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26764,
+    "fields": {
+        "name": "Onondaga County Legislature- research",
+        "lat": "42.444204",
+        "lng": "-84.562196",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26765,
+    "fields": {
+        "name": "Ontario Council of University Libraries",
+        "lat": "34.063344",
+        "lng": "-117.650888",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26766,
+    "fields": {
+        "name": "Open University",
+        "lat": "6.559688",
+        "lng": "79.973960",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26767,
+    "fields": {
+        "name": "Oregon Health & Science University",
+        "lat": "45.499098",
+        "lng": "-122.685461",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26768,
+    "fields": {
+        "name": "Osaka University",
+        "lat": "27.950784",
+        "lng": "-82.726034",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26769,
+    "fields": {
+        "name": "Oxford e-Research Centre",
+        "lat": "34.366839",
+        "lng": "-89.539000",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26770,
+    "fields": {
+        "name": "Oxford Internet Institute",
+        "lat": "51.755617",
+        "lng": "-1.258863",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26771,
+    "fields": {
+        "name": "Oxford Journals",
+        "lat": "40.718591",
+        "lng": "-74.079020",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26772,
+    "fields": {
+        "name": "Palgrave",
+        "lat": "52.360858",
+        "lng": "1.104258",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26773,
+    "fields": {
+        "name": "Paris School of Economics",
+        "lat": "48.856614",
+        "lng": "2.352222",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26774,
+    "fields": {
+        "name": "Partnership for a Healthier Alexandria",
+        "lat": "38.804836",
+        "lng": "-77.046921",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26775,
+    "fields": {
+        "name": "Patterson School",
+        "lat": "35.980760",
+        "lng": "-82.318688",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26776,
+    "fields": {
+        "name": "Personal",
+        "lat": "-25.302752",
+        "lng": "-56.900168",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26777,
+    "fields": {
+        "name": "PIDS",
+        "lat": "45.008856",
+        "lng": "5.309182",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26778,
+    "fields": {
+        "name": "Pine Biotech",
+        "lat": "37.540455",
+        "lng": "-77.450440",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26779,
+    "fields": {
+        "name": "pittsburgh",
+        "lat": "40.440625",
+        "lng": "-79.995886",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26780,
+    "fields": {
+        "name": "Polar Science Center, Applied Physics Laboratory, University of Washington",
+        "lat": "31.767879",
+        "lng": "-106.440736",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26781,
+    "fields": {
+        "name": "polio",
+        "lat": "43.249764",
+        "lng": "-5.713494",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26782,
+    "fields": {
+        "name": "Polytechnic Of Namibia",
+        "lat": "4.910689",
+        "lng": "-1.756106",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26783,
+    "fields": {
+        "name": "Pondicherrry University, India",
+        "lat": "12.026344",
+        "lng": "79.849281",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26784,
+    "fields": {
+        "name": "Population Council, University of Manitoba",
+        "lat": "53.760861",
+        "lng": "-98.813876",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26785,
+    "fields": {
+        "name": "Poznan University of Medical Sciences, Poznan, Poland",
+        "lat": "52.406374",
+        "lng": "16.925168",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26786,
+    "fields": {
+        "name": "Poznan University of Technology",
+        "lat": "52.406374",
+        "lng": "16.925168",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26787,
+    "fields": {
+        "name": "Prairie View A&M University",
+        "lat": "30.095232",
+        "lng": "-95.980614",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26788,
+    "fields": {
+        "name": "Private practice, Merrimack, NH",
+        "lat": "42.867869",
+        "lng": "-71.494832",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26789,
+    "fields": {
+        "name": "Professional association",
+        "lat": "27.208326",
+        "lng": "-81.831701",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26790,
+    "fields": {
+        "name": "PS Kenya",
+        "lat": "33.704476",
+        "lng": "-102.579184",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26791,
+    "fields": {
+        "name": "PSU",
+        "lat": "55.486044",
+        "lng": "28.763625",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26792,
+    "fields": {
+        "name": "PUCP",
+        "lat": "-12.069248",
+        "lng": "-77.079751",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26793,
+    "fields": {
+        "name": "Purchase College",
+        "lat": "41.043186",
+        "lng": "-73.696111",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26794,
+    "fields": {
+        "name": "Qingdao agricultual university",
+        "lat": "36.068491",
+        "lng": "120.338303",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26795,
+    "fields": {
+        "name": "Radcliffe College",
+        "lat": "51.515456",
+        "lng": "-0.138830",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26796,
+    "fields": {
+        "name": "Reaserch Project",
+        "lat": "33.386628",
+        "lng": "-112.372768",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26797,
+    "fields": {
+        "name": "Regensburg University",
+        "lat": "30.571974",
+        "lng": "-96.306771",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26798,
+    "fields": {
+        "name": "ResearchBench",
+        "lat": "40.759270",
+        "lng": "-111.836871",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26799,
+    "fields": {
+        "name": "Research center",
+        "lat": "35.438639",
+        "lng": "-88.635381",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26800,
+    "fields": {
+        "name": "Research Center, UC Berkeley",
+        "lat": "37.880594",
+        "lng": "-122.244796",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26801,
+    "fields": {
+        "name": "Research Collaboration",
+        "lat": "24.177562",
+        "lng": "120.604051",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26802,
+    "fields": {
+        "name": "Research Institute",
+        "lat": "33.419731",
+        "lng": "-111.939105",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26803,
+    "fields": {
+        "name": "Research-Project-2012",
+        "lat": "33.386628",
+        "lng": "-112.372768",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26804,
+    "fields": {
+        "name": "Research Support Service at Copenhagen University Library and Information Service",
+        "lat": "55.676097",
+        "lng": "12.568337",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26805,
+    "fields": {
+        "name": "Rhode Island Hospital",
+        "lat": "41.825733",
+        "lng": "-71.409759",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26806,
+    "fields": {
+        "name": "Ridley Hall",
+        "lat": "41.496508",
+        "lng": "-75.684217",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26807,
+    "fields": {
+        "name": "RMIT University",
+        "lat": "-37.808383",
+        "lng": "144.963329",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26808,
+    "fields": {
+        "name": "Rochester Institute of Technology",
+        "lat": "43.080076",
+        "lng": "-77.673773",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26809,
+    "fields": {
+        "name": "Royal Library, Copenhagen",
+        "lat": "55.674641",
+        "lng": "12.581240",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26810,
+    "fields": {
+        "name": "RP",
+        "lat": "50.118346",
+        "lng": "7.308953",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26811,
+    "fields": {
+        "name": "rpu",
+        "lat": "51.595255",
+        "lng": "18.730956",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26812,
+    "fields": {
+        "name": "Rutgers Univeristy",
+        "lat": "38.982409",
+        "lng": "-76.957849",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26813,
+    "fields": {
+        "name": "Ryerson University, Toronto",
+        "lat": "43.648766",
+        "lng": "-79.402482",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26814,
+    "fields": {
+        "name": "sacred heart community service",
+        "lat": "53.329588",
+        "lng": "-6.253897",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26815,
+    "fields": {
+        "name": "Saint Louis University",
+        "lat": "38.685394",
+        "lng": "-90.287589",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26816,
+    "fields": {
+        "name": "Saint Thomas University",
+        "lat": "30.612568",
+        "lng": "-96.289690",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26817,
+    "fields": {
+        "name": "Santa Monica College",
+        "lat": "32.808726",
+        "lng": "-96.739353",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26818,
+    "fields": {
+        "name": "Sapienza, Rome University",
+        "lat": "41.471660",
+        "lng": "12.909918",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26819,
+    "fields": {
+        "name": "sas",
+        "lat": "66.761345",
+        "lng": "124.123753",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26820,
+    "fields": {
+        "name": "School of Law and Government, Dublin City University",
+        "lat": "53.385381",
+        "lng": "-6.258854",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26821,
+    "fields": {
+        "name": "School of Public Affairs, Arizona State University",
+        "lat": "33.420534",
+        "lng": "-111.933982",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26822,
+    "fields": {
+        "name": "science/physicsand chemistry",
+        "lat": "10.761083",
+        "lng": "78.808826",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26823,
+    "fields": {
+        "name": "Sciences Po",
+        "lat": "48.853901",
+        "lng": "2.329122",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26824,
+    "fields": {
+        "name": "Scuola Superiore Sant'Anna, Pisa, Italy",
+        "lat": "43.722839",
+        "lng": "10.401689",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26825,
+    "fields": {
+        "name": "SDU",
+        "lat": "-22.911144",
+        "lng": "-43.164876",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26826,
+    "fields": {
+        "name": "Semitic Museum",
+        "lat": "42.378070",
+        "lng": "-71.113936",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26827,
+    "fields": {
+        "name": "senate",
+        "lat": "59.935280",
+        "lng": "30.302728",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26828,
+    "fields": {
+        "name": "SFU",
+        "lat": "35.599877",
+        "lng": "139.535259",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26829,
+    "fields": {
+        "name": "shef",
+        "lat": "34.765089",
+        "lng": "-87.698641",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26830,
+    "fields": {
+        "name": "Shenyang Sport University",
+        "lat": "41.768025",
+        "lng": "123.403345",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26831,
+    "fields": {
+        "name": "Shippensburg University",
+        "lat": "40.057917",
+        "lng": "-77.522435",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26832,
+    "fields": {
+        "name": "Shiraz Azad University",
+        "lat": "29.798816",
+        "lng": "52.501522",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26833,
+    "fields": {
+        "name": "Siena Heights University",
+        "lat": "42.693600",
+        "lng": "-73.789994",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26834,
+    "fields": {
+        "name": "Silesian University of Technology",
+        "lat": "50.289040",
+        "lng": "18.676240",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26835,
+    "fields": {
+        "name": "Simmons",
+        "lat": "35.186587",
+        "lng": "-102.063946",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26836,
+    "fields": {
+        "name": "Slovenia",
+        "lat": "46.151241",
+        "lng": "14.995463",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26837,
+    "fields": {
+        "name": "SMC University",
+        "lat": "34.015388",
+        "lng": "-118.445659",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26838,
+    "fields": {
+        "name": "south China normal university",
+        "lat": "23.140348",
+        "lng": "113.345387",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26839,
+    "fields": {
+        "name": "SPMIC, University of Nottingham",
+        "lat": "64.887699",
+        "lng": "-147.862916",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26840,
+    "fields": {
+        "name": "Sri Balaji Vidyapeeth University",
+        "lat": "18.472656",
+        "lng": "73.860725",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26841,
+    "fields": {
+        "name": "Stanford Center for the Study of Poverty and Inequality",
+        "lat": "37.424106",
+        "lng": "-122.166076",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26842,
+    "fields": {
+        "name": "Stanford University and University of California, Berkeley",
+        "lat": "37.880594",
+        "lng": "-122.244796",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26843,
+    "fields": {
+        "name": "Stanford University's Center for the Study of Poverty and Inequality",
+        "lat": "37.424106",
+        "lng": "-122.166076",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26844,
+    "fields": {
+        "name": "Stanford Unviersity",
+        "lat": "33.651830",
+        "lng": "-117.838942",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26845,
+    "fields": {
+        "name": "State University of New York at Albany",
+        "lat": "41.744007",
+        "lng": "-73.931050",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26846,
+    "fields": {
+        "name": "Statistical Services Centre, University of Reading, UK",
+        "lat": "51.454264",
+        "lng": "-0.978130",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26847,
+    "fields": {
+        "name": "stc",
+        "lat": "40.654546",
+        "lng": "-80.305289",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26848,
+    "fields": {
+        "name": "Stockholm Universtity",
+        "lat": "41.468543",
+        "lng": "-81.563626",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26849,
+    "fields": {
+        "name": "Stress Research Institute, Stockholm University",
+        "lat": "41.468543",
+        "lng": "-81.563626",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26850,
+    "fields": {
+        "name": "Sukhothai Thammathirat",
+        "lat": "13.107653",
+        "lng": "99.916738",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26851,
+    "fields": {
+        "name": "SUN",
+        "lat": "43.506916",
+        "lng": "-114.299335",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26852,
+    "fields": {
+        "name": "SUNY Binghamton",
+        "lat": "42.017637",
+        "lng": "-76.343866",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26853,
+    "fields": {
+        "name": "Surveytap",
+        "lat": "26.137612",
+        "lng": "91.788509",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26854,
+    "fields": {
+        "name": "Sydney University",
+        "lat": "-30.473096",
+        "lng": "149.661216",
+        "host": 1745
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26855,
+    "fields": {
+        "name": "Tata Institute of Social Sciences",
+        "lat": "18.030046",
+        "lng": "76.053109",
+        "host": 1746
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26856,
+    "fields": {
+        "name": "TBA",
+        "lat": "41.800548",
+        "lng": "43.443623",
+        "host": 1746
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26857,
+    "fields": {
+        "name": "Team Work",
+        "lat": "33.935164",
+        "lng": "-84.520769",
+        "host": 1746
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26858,
+    "fields": {
+        "name": "Test2",
+        "lat": "38.979082",
+        "lng": "-80.167311",
+        "host": 1746
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26859,
+    "fields": {
+        "name": "testito",
+        "lat": "17.137609",
+        "lng": "-100.470217",
+        "host": 1746
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26860,
+    "fields": {
+        "name": "Thammasat University",
+        "lat": "14.067015",
+        "lng": "100.609510",
+        "host": 1746
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26861,
+    "fields": {
+        "name": "The College of New Jersey",
+        "lat": "39.101768",
+        "lng": "-74.819703",
+        "host": 1746
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26862,
+    "fields": {
+        "name": "The Florida State University",
+        "lat": "30.401116",
+        "lng": "-84.336955",
+        "host": 1746
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26863,
+    "fields": {
+        "name": "The Forsyth Institute",
+        "lat": "32.019116",
+        "lng": "-81.086276",
+        "host": 1746
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26864,
+    "fields": {
+        "name": "The Hong Kong Polytechnic University",
+        "lat": "22.305748",
+        "lng": "114.179826",
+        "host": 1746
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26865,
+    "fields": {
+        "name": "The Johns Hopkins University",
+        "lat": "39.327260",
+        "lng": "-76.600343",
+        "host": 1746
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26866,
+    "fields": {
+        "name": "The Pennsylvania State University (Penn State)",
+        "lat": "40.793395",
+        "lng": "-77.860001",
+        "host": 1746
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26867,
+    "fields": {
+        "name": "The Rockefeller University",
+        "lat": "40.762622",
+        "lng": "-73.955942",
+        "host": 1746
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26868,
+    "fields": {
+        "name": "The Royal Library of Copenhagen",
+        "lat": "55.674641",
+        "lng": "12.581240",
+        "host": 1746
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26869,
+    "fields": {
+        "name": "Thesis- UK Prague",
+        "lat": "50.075538",
+        "lng": "14.437800",
+        "host": 1746
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26870,
+    "fields": {
+        "name": "The University of Alabama",
+        "lat": "35.055402",
+        "lng": "-84.985071",
+        "host": 1746
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26871,
+    "fields": {
+        "name": "The University of Colorado at Boulder",
+        "lat": "40.008222",
+        "lng": "-105.259112",
+        "host": 1746
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26872,
+    "fields": {
+        "name": "The University of Georgia",
+        "lat": "41.722926",
+        "lng": "44.779722",
+        "host": 1746
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26873,
+    "fields": {
+        "name": "The University of Memphis",
+        "lat": "35.145680",
+        "lng": "-90.054554",
+        "host": 1746
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26874,
+    "fields": {
+        "name": "The University of Reading",
+        "lat": "38.999952",
+        "lng": "-77.005513",
+        "host": 1746
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26875,
+    "fields": {
+        "name": "The University of Sydney",
+        "lat": "-30.473096",
+        "lng": "149.661216",
+        "host": 1746
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26876,
+    "fields": {
+        "name": "The University of Texas at Austin",
+        "lat": "30.285028",
+        "lng": "-97.733523",
+        "host": 1746
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26877,
+    "fields": {
+        "name": "The University of Texas at Dallas",
+        "lat": "32.985454",
+        "lng": "-96.754319",
+        "host": 1746
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26878,
+    "fields": {
+        "name": "The University of Texas at El Paso",
+        "lat": "30.876675",
+        "lng": "-96.606466",
+        "host": 1746
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26879,
+    "fields": {
+        "name": "The Wharton School",
+        "lat": "40.430222",
+        "lng": "-79.974455",
+        "host": 1746
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26880,
+    "fields": {
+        "name": "The World Bank",
+        "lat": "28.591598",
+        "lng": "77.221590",
+        "host": 1746
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26881,
+    "fields": {
+        "name": "Thomson Reuters",
+        "lat": "12.971167",
+        "lng": "77.610994",
+        "host": 1746
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26882,
+    "fields": {
+        "name": "Tianjin university",
+        "lat": "39.110096",
+        "lng": "117.167145",
+        "host": 1746
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26883,
+    "fields": {
+        "name": "Tilburg University, VU University, Pavlov Behavioral Science",
+        "lat": "51.560596",
+        "lng": "5.091914",
+        "host": 1746
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26884,
+    "fields": {
+        "name": "Trial",
+        "lat": "44.032239",
+        "lng": "3.998110",
+        "host": 1746
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26885,
+    "fields": {
+        "name": "TST",
+        "lat": "7.509426",
+        "lng": "99.616463",
+        "host": 1746
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26886,
+    "fields": {
+        "name": "TU Braunschweig",
+        "lat": "52.313832",
+        "lng": "10.548240",
+        "host": 1746
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26887,
+    "fields": {
+        "name": "TU Ilmenau",
+        "lat": "50.684350",
+        "lng": "10.925473",
+        "host": 1746
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26888,
+    "fields": {
+        "name": "uab",
+        "lat": "33.496137",
+        "lng": "-86.810718",
+        "host": 1746
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26889,
+    "fields": {
+        "name": "UAMS",
+        "lat": "34.747870",
+        "lng": "-92.339597",
+        "host": 1746
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26890,
+    "fields": {
+        "name": "U.C. Berkeley",
+        "lat": "37.880594",
+        "lng": "-122.244796",
+        "host": 1746
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26891,
+    "fields": {
+        "name": "UC-Berkeley",
+        "lat": "-34.480556",
+        "lng": "150.846111",
+        "host": 1746
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26892,
+    "fields": {
+        "name": "UCD",
+        "lat": "53.309408",
+        "lng": "-6.218881",
+        "host": 1746
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26893,
+    "fields": {
+        "name": "UC Irvine",
+        "lat": "-37.017060",
+        "lng": "142.679391",
+        "host": 1746
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26894,
+    "fields": {
+        "name": "UCLA Anderson",
+        "lat": "34.072505",
+        "lng": "-118.444752",
+        "host": 1746
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26895,
+    "fields": {
+        "name": "UC Merced",
+        "lat": "37.366463",
+        "lng": "-120.424690",
+        "host": 1746
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26896,
+    "fields": {
+        "name": "UCR",
+        "lat": "9.934131",
+        "lng": "-84.052602",
+        "host": 1746
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26897,
+    "fields": {
+        "name": "UC Riverside",
+        "lat": "33.977204",
+        "lng": "-117.332266",
+        "host": 1746
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26898,
+    "fields": {
+        "name": "UC-San Diego",
+        "lat": "-32.207918",
+        "lng": "148.392835",
+        "host": 1746
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26899,
+    "fields": {
+        "name": "UC Santa Barbara",
+        "lat": "33.685802",
+        "lng": "-117.808283",
+        "host": 1746
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26900,
+    "fields": {
+        "name": "UC Santa Cruz",
+        "lat": "-28.038626",
+        "lng": "153.398171",
+        "host": 1746
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26901,
+    "fields": {
+        "name": "UCSB",
+        "lat": "34.407581",
+        "lng": "-119.844996",
+        "host": 1746
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26902,
+    "fields": {
+        "name": "UCSF",
+        "lat": "37.784614",
+        "lng": "-122.440028",
+        "host": 1746
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26903,
+    "fields": {
+        "name": "UDENAR",
+        "lat": "19.145178",
+        "lng": "81.425151",
+        "host": 1746
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26904,
+    "fields": {
+        "name": "UFABC (Brazil)",
+        "lat": "-23.646048",
+        "lng": "-46.527660",
+        "host": 1746
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26905,
+    "fields": {
+        "name": "UFAL",
+        "lat": "-9.554181",
+        "lng": "-35.775286",
+        "host": 1746
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26906,
+    "fields": {
+        "name": "UFPE (Fed Univ. of Pernambuco)",
+        "lat": "-8.813717",
+        "lng": "-36.954107",
+        "host": 1746
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26907,
+    "fields": {
+        "name": "ugent",
+        "lat": "51.051754",
+        "lng": "3.723547",
+        "host": 1746
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26908,
+    "fields": {
+        "name": "UM2",
+        "lat": "42.930344",
+        "lng": "143.168804",
+        "host": 1746
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26909,
+    "fields": {
+        "name": "umad",
+        "lat": "47.162494",
+        "lng": "19.503304",
+        "host": 1746
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26910,
+    "fields": {
+        "name": "UMaryland College Park iSchool",
+        "lat": "39.027585",
+        "lng": "-76.987744",
+        "host": 1746
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26911,
+    "fields": {
+        "name": "UMass Amherst",
+        "lat": "42.394206",
+        "lng": "-72.533515",
+        "host": 1746
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26912,
+    "fields": {
+        "name": "UMass Poll at the University of Massachusetts Amherst",
+        "lat": "42.370100",
+        "lng": "-72.533294",
+        "host": 1746
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26913,
+    "fields": {
+        "name": "UMCP",
+        "lat": "38.991972",
+        "lng": "-76.936811",
+        "host": 1746
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26914,
+    "fields": {
+        "name": "UMSA",
+        "lat": "-16.539299",
+        "lng": "-68.067840",
+        "host": 1746
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26915,
+    "fields": {
+        "name": "UNAM",
+        "lat": "19.318890",
+        "lng": "-99.184368",
+        "host": 1746
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26916,
+    "fields": {
+        "name": "UNAM (Mexico), UAH (Spain)",
+        "lat": "19.318890",
+        "lng": "-99.184368",
+        "host": 1746
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26917,
+    "fields": {
+        "name": "UnB - Universidade de Bras\u00edlia",
+        "lat": "-15.763433",
+        "lng": "-47.863711",
+        "host": 1746
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26918,
+    "fields": {
+        "name": "UNC",
+        "lat": "49.941215",
+        "lng": "-119.396203",
+        "host": 1746
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26919,
+    "fields": {
+        "name": "UNC Chapel Hill",
+        "lat": "35.925797",
+        "lng": "-79.166112",
+        "host": 1746
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26920,
+    "fields": {
+        "name": "UNCuyo",
+        "lat": "-40.763196",
+        "lng": "-71.663516",
+        "host": 1746
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26921,
+    "fields": {
+        "name": "Undergraduate Research",
+        "lat": "32.784272",
+        "lng": "-79.937710",
+        "host": 1746
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26922,
+    "fields": {
+        "name": "UNICEF",
+        "lat": "42.450734",
+        "lng": "19.258194",
+        "host": 1746
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26923,
+    "fields": {
+        "name": "Union College",
+        "lat": "-27.500464",
+        "lng": "153.010869",
+        "host": 1746
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26924,
+    "fields": {
+        "name": "United Nations",
+        "lat": "-13.833340",
+        "lng": "-171.754490",
+        "host": 1746
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26925,
+    "fields": {
+        "name": "United States Naval Academy",
+        "lat": "38.983648",
+        "lng": "-76.482335",
+        "host": 1746
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26926,
+    "fields": {
+        "name": "univeristy",
+        "lat": "28.073540",
+        "lng": "-82.437359",
+        "host": 1746
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26927,
+    "fields": {
+        "name": "Univeristy of Leicester",
+        "lat": "42.238106",
+        "lng": "-71.916422",
+        "host": 1746
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26928,
+    "fields": {
+        "name": "Univeristy of Texas Rio Grande Valley",
+        "lat": "30.289296",
+        "lng": "-97.744508",
+        "host": 1746
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26929,
+    "fields": {
+        "name": "Universal Distributions",
+        "lat": "30.387200",
+        "lng": "-97.729994",
+        "host": 1746
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26930,
+    "fields": {
+        "name": "Universidad de Colima",
+        "lat": "19.245345",
+        "lng": "-103.700682",
+        "host": 1746
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26931,
+    "fields": {
+        "name": "Universidad de Salamanca",
+        "lat": "40.423372",
+        "lng": "-3.707792",
+        "host": 1746
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26932,
+    "fields": {
+        "name": "Universidad de San Andres",
+        "lat": "40.427215",
+        "lng": "-3.703635",
+        "host": 1746
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26933,
+    "fields": {
+        "name": "Universidade de S\u00e3o Paulo",
+        "lat": "-22.661920",
+        "lng": "-50.406152",
+        "host": 1746
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26934,
+    "fields": {
+        "name": "Universidade Federal da Para\u00c3\u00adba",
+        "lat": "-9.954165",
+        "lng": "-67.838402",
+        "host": 1746
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26935,
+    "fields": {
+        "name": "Universidad Mayor de San Andres",
+        "lat": "40.427215",
+        "lng": "-3.703635",
+        "host": 1746
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26936,
+    "fields": {
+        "name": "Universidad Nacional Aut\u00f3noma de Mexico",
+        "lat": "19.318890",
+        "lng": "-99.184368",
+        "host": 1746
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26937,
+    "fields": {
+        "name": "Universidad Nacional Aut\u00f3noma de M\u00e9xico",
+        "lat": "19.318890",
+        "lng": "-99.184368",
+        "host": 1746
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26938,
+    "fields": {
+        "name": "Universidad Nacional de La Plata",
+        "lat": "-34.782927",
+        "lng": "-58.445453",
+        "host": 1746
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26939,
+    "fields": {
+        "name": "Universidad Polit\u00e9cnica de San Luis Potos\u00ed",
+        "lat": "22.156470",
+        "lng": "-100.985541",
+        "host": 1746
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26940,
+    "fields": {
+        "name": "UNIVERSIDAD POLITECNICA DE VALENCIA",
+        "lat": "39.480419",
+        "lng": "-0.345977",
+        "host": 1746
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26941,
+    "fields": {
+        "name": "Universit\u00c3\\u0083\u00c2\\u0083\u00c3\\u0082\u00c2\u00a9 Catholique de Lille & University of Cagliari",
+        "lat": "39.223841",
+        "lng": "9.121661",
+        "host": 1746
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26942,
+    "fields": {
+        "name": "Universita' degli Studi di Milano",
+        "lat": "45.460366",
+        "lng": "9.193986",
+        "host": 1746
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26943,
+    "fields": {
+        "name": "Universit\u00e0 di Firenze",
+        "lat": "43.778074",
+        "lng": "11.259690",
+        "host": 1746
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26944,
+    "fields": {
+        "name": "Universit\u00e0  di Roma Sapienza (Facolt\u00e0 di Sociologia)",
+        "lat": "41.914108",
+        "lng": "12.497358",
+        "host": 1746
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26945,
+    "fields": {
+        "name": "Universit\u00e4t Bremen",
+        "lat": "53.074231",
+        "lng": "8.801978",
+        "host": 1746
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26946,
+    "fields": {
+        "name": "Universitat de Barcelona",
+        "lat": "41.385446",
+        "lng": "2.163762",
+        "host": 1746
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26947,
+    "fields": {
+        "name": "Universitat de Valencia",
+        "lat": "39.471793",
+        "lng": "-0.372502",
+        "host": 1746
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26948,
+    "fields": {
+        "name": "Universit\u00e9 du Qu\u00e9bec \u00e0 Montr\u00e9al",
+        "lat": "45.503160",
+        "lng": "-73.616467",
+        "host": 1746
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26949,
+    "fields": {
+        "name": "Universiteit Hasselt",
+        "lat": "50.925095",
+        "lng": "5.391164",
+        "host": 1746
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26950,
+    "fields": {
+        "name": "UNIVERSITE LIBRE DE BRUXELLES",
+        "lat": "50.813598",
+        "lng": "4.382165",
+        "host": 1746
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26951,
+    "fields": {
+        "name": "University at Albany",
+        "lat": "42.562222",
+        "lng": "-71.214761",
+        "host": 1746
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26952,
+    "fields": {
+        "name": "University at Albany, SUNY",
+        "lat": "42.686248",
+        "lng": "-73.816345",
+        "host": 1746
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26953,
+    "fields": {
+        "name": "University Hospital Essen",
+        "lat": "51.455643",
+        "lng": "7.011555",
+        "host": 1746
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26954,
+    "fields": {
+        "name": "University - MIT",
+        "lat": "38.986677",
+        "lng": "-76.939504",
+        "host": 1746
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26955,
+    "fields": {
+        "name": "University of Alabama-Birmingham",
+        "lat": "33.501942",
+        "lng": "-86.804726",
+        "host": 1746
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26956,
+    "fields": {
+        "name": "University of Applied Sciences Chur",
+        "lat": "46.850784",
+        "lng": "9.531986",
+        "host": 1746
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26957,
+    "fields": {
+        "name": "University of Bamberg",
+        "lat": "30.352810",
+        "lng": "-81.573855",
+        "host": 1746
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26958,
+    "fields": {
+        "name": "University of Barcelona",
+        "lat": "33.676669",
+        "lng": "-117.820700",
+        "host": 1746
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26959,
+    "fields": {
+        "name": "University of Bath, UK",
+        "lat": "51.363937",
+        "lng": "-2.325886",
+        "host": 1746
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26960,
+    "fields": {
+        "name": "University of Birmingham",
+        "lat": "52.451260",
+        "lng": "-1.936680",
+        "host": 1746
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26961,
+    "fields": {
+        "name": "University of Brasilia",
+        "lat": "-15.765157",
+        "lng": "-47.869904",
+        "host": 1746
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26962,
+    "fields": {
+        "name": "University of Bras\u00edlia",
+        "lat": "-15.765157",
+        "lng": "-47.869904",
+        "host": 1746
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26963,
+    "fields": {
+        "name": "University of Bremen, Germany",
+        "lat": "53.167809",
+        "lng": "8.649378",
+        "host": 1746
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26964,
+    "fields": {
+        "name": "University of Bristol",
+        "lat": "51.461926",
+        "lng": "-2.552221",
+        "host": 1746
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26965,
+    "fields": {
+        "name": "University of Calgary",
+        "lat": "32.857463",
+        "lng": "-117.203898",
+        "host": 1746
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26966,
+    "fields": {
+        "name": "University of California - Berkeley",
+        "lat": "37.880594",
+        "lng": "-122.244796",
+        "host": 1746
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26967,
+    "fields": {
+        "name": "University of California - Los Angeles",
+        "lat": "33.651770",
+        "lng": "-117.831736",
+        "host": 1746
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26968,
+    "fields": {
+        "name": "University of California, Riverside",
+        "lat": "33.977204",
+        "lng": "-117.332266",
+        "host": 1746
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26969,
+    "fields": {
+        "name": "University of Campinas",
+        "lat": "-23.303538",
+        "lng": "-51.189300",
+        "host": 1746
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26970,
+    "fields": {
+        "name": "University of Canterbury",
+        "lat": "40.030103",
+        "lng": "-83.028142",
+        "host": 1746
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26971,
+    "fields": {
+        "name": "University of Chicago Press",
+        "lat": "41.785742",
+        "lng": "-87.590304",
+        "host": 1746
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26972,
+    "fields": {
+        "name": "University of Colorado at Boulder",
+        "lat": "40.008222",
+        "lng": "-105.259112",
+        "host": 1746
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26973,
+    "fields": {
+        "name": "University of Colorado, Boulder",
+        "lat": "40.007166",
+        "lng": "-105.262707",
+        "host": 1746
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26974,
+    "fields": {
+        "name": "University of Delaware",
+        "lat": "33.710533",
+        "lng": "-117.775909",
+        "host": 1746
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26975,
+    "fields": {
+        "name": "University of Delhi",
+        "lat": "28.708040",
+        "lng": "77.211055",
+        "host": 1746
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26976,
+    "fields": {
+        "name": "University of Denver",
+        "lat": "39.672988",
+        "lng": "-104.965171",
+        "host": 1746
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26977,
+    "fields": {
+        "name": "University of Duisburg-Essen",
+        "lat": "51.428784",
+        "lng": "6.786888",
+        "host": 1746
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26978,
+    "fields": {
+        "name": "University of Edinburgh",
+        "lat": "55.946269",
+        "lng": "-3.184724",
+        "host": 1746
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26979,
+    "fields": {
+        "name": "University of Geneva (Switzerland)",
+        "lat": "46.224374",
+        "lng": "6.100861",
+        "host": 1746
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26980,
+    "fields": {
+        "name": "University of Georgia, UCLA",
+        "lat": "40.538291",
+        "lng": "-78.352858",
+        "host": 1746
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26981,
+    "fields": {
+        "name": "University of Glasgow",
+        "lat": "55.871510",
+        "lng": "-4.288761",
+        "host": 1746
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26982,
+    "fields": {
+        "name": "University of G\u00f6ttingen",
+        "lat": "51.560846",
+        "lng": "9.952558",
+        "host": 1746
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26983,
+    "fields": {
+        "name": "University of Groningen",
+        "lat": "53.219384",
+        "lng": "6.566502",
+        "host": 1746
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26984,
+    "fields": {
+        "name": "University of haifa",
+        "lat": "32.759028",
+        "lng": "35.021463",
+        "host": 1746
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26985,
+    "fields": {
+        "name": "University of Heidelberg",
+        "lat": "38.556158",
+        "lng": "-121.394293",
+        "host": 1746
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26986,
+    "fields": {
+        "name": "University of Helsinki",
+        "lat": "32.083852",
+        "lng": "34.791970",
+        "host": 1746
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26987,
+    "fields": {
+        "name": "University of Idaho",
+        "lat": "33.424469",
+        "lng": "-111.886932",
+        "host": 1746
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26988,
+    "fields": {
+        "name": "University of Illinois, Chicago",
+        "lat": "41.869666",
+        "lng": "-87.670447",
+        "host": 1746
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26989,
+    "fields": {
+        "name": "University of Illinois @ Urbana-Champaign",
+        "lat": "40.109309",
+        "lng": "-88.228389",
+        "host": 1746
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26990,
+    "fields": {
+        "name": "University of Illinois, Urbana-Champaign",
+        "lat": "40.109309",
+        "lng": "-88.228389",
+        "host": 1746
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26991,
+    "fields": {
+        "name": "University of Innsbruck",
+        "lat": "30.578166",
+        "lng": "-96.308325",
+        "host": 1746
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26992,
+    "fields": {
+        "name": "University of Jyv\u00e4skyl\u00e4",
+        "lat": "62.242603",
+        "lng": "25.747257",
+        "host": 1746
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26993,
+    "fields": {
+        "name": "University of Kansas",
+        "lat": "38.899144",
+        "lng": "-94.725489",
+        "host": 1746
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26994,
+    "fields": {
+        "name": "University of Konstanz",
+        "lat": "33.687031",
+        "lng": "-84.424246",
+        "host": 1746
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26995,
+    "fields": {
+        "name": "University of Lausanne",
+        "lat": "46.528786",
+        "lng": "6.652862",
+        "host": 1747
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26996,
+    "fields": {
+        "name": "University of Lethbridge",
+        "lat": "49.678669",
+        "lng": "-112.859628",
+        "host": 1747
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26997,
+    "fields": {
+        "name": "University of Leuven",
+        "lat": "50.669851",
+        "lng": "4.616256",
+        "host": 1747
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26998,
+    "fields": {
+        "name": "University of Liege",
+        "lat": "41.841727",
+        "lng": "-71.428574",
+        "host": 1747
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 26999,
+    "fields": {
+        "name": "University of Li\u00e8ge",
+        "lat": "41.841727",
+        "lng": "-71.428574",
+        "host": 1747
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 27000,
+    "fields": {
+        "name": "University of Limerick",
+        "lat": "52.679230",
+        "lng": "-8.566300",
+        "host": 1747
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 27001,
+    "fields": {
+        "name": "University of Lincoln/University of Birmingham",
+        "lat": "33.520661",
+        "lng": "-86.802490",
+        "host": 1747
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 27002,
+    "fields": {
+        "name": "University of Ljubljana",
+        "lat": "46.051214",
+        "lng": "14.518528",
+        "host": 1747
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 27003,
+    "fields": {
+        "name": "University of Louisville",
+        "lat": "38.211201",
+        "lng": "-85.758974",
+        "host": 1747
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 27004,
+    "fields": {
+        "name": "University of Luxembourg",
+        "lat": "49.815273",
+        "lng": "6.129583",
+        "host": 1747
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 27005,
+    "fields": {
+        "name": "University of Maine, Orono",
+        "lat": "44.892264",
+        "lng": "-68.671449",
+        "host": 1747
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 27006,
+    "fields": {
+        "name": "University of Malaya",
+        "lat": "3.119148",
+        "lng": "101.657914",
+        "host": 1747
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 27007,
+    "fields": {
+        "name": "University of Manchester, UK",
+        "lat": "53.093181",
+        "lng": "-2.423664",
+        "host": 1747
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 27008,
+    "fields": {
+        "name": "University of Massachusetts at Amherst",
+        "lat": "42.384818",
+        "lng": "-72.532696",
+        "host": 1747
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 27009,
+    "fields": {
+        "name": "University of Massachusetts, Boston",
+        "lat": "42.351508",
+        "lng": "-71.109333",
+        "host": 1747
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 27010,
+    "fields": {
+        "name": "University of Memphis",
+        "lat": "35.145680",
+        "lng": "-90.054554",
+        "host": 1747
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 27011,
+    "fields": {
+        "name": "University of Michigan`",
+        "lat": "42.320138",
+        "lng": "-83.230993",
+        "host": 1747
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 27012,
+    "fields": {
+        "name": "University of Michigan Law School",
+        "lat": "42.308440",
+        "lng": "-83.067765",
+        "host": 1747
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 27013,
+    "fields": {
+        "name": "University of Milan, Bicocca",
+        "lat": "45.519352",
+        "lng": "9.208257",
+        "host": 1747
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 27014,
+    "fields": {
+        "name": "University of Minnesota Duluth",
+        "lat": "46.817722",
+        "lng": "-92.082814",
+        "host": 1747
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 27015,
+    "fields": {
+        "name": "University of Nairobi",
+        "lat": "-1.273994",
+        "lng": "36.807776",
+        "host": 1747
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 27016,
+    "fields": {
+        "name": "University of Neuch\u00e2tel",
+        "lat": "46.989987",
+        "lng": "6.929273",
+        "host": 1747
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 27017,
+    "fields": {
+        "name": "University of Nevada, Reno",
+        "lat": "39.544073",
+        "lng": "-119.814501",
+        "host": 1747
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 27018,
+    "fields": {
+        "name": "University of Nizwa",
+        "lat": "22.917103",
+        "lng": "57.536292",
+        "host": 1747
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 27019,
+    "fields": {
+        "name": "University of North Carolina - Chapel Hill",
+        "lat": "35.902511",
+        "lng": "-79.019700",
+        "host": 1747
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 27020,
+    "fields": {
+        "name": "University of Oklahoma",
+        "lat": "35.192446",
+        "lng": "-97.443288",
+        "host": 1747
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 27021,
+    "fields": {
+        "name": "University of Potsdam",
+        "lat": "52.413230",
+        "lng": "12.969760",
+        "host": 1747
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 27022,
+    "fields": {
+        "name": "University of Pretoria",
+        "lat": "-25.732856",
+        "lng": "28.200759",
+        "host": 1747
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 27023,
+    "fields": {
+        "name": "University of Puerto Rico",
+        "lat": "18.467947",
+        "lng": "-66.121530",
+        "host": 1747
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 27024,
+    "fields": {
+        "name": "University of Reading, UK",
+        "lat": "51.454910",
+        "lng": "-1.004295",
+        "host": 1747
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 27025,
+    "fields": {
+        "name": "University of Real Estate",
+        "lat": "39.536202",
+        "lng": "-119.815217",
+        "host": 1747
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 27026,
+    "fields": {
+        "name": "University of Rhode Island",
+        "lat": "39.005088",
+        "lng": "-76.923950",
+        "host": 1747
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 27027,
+    "fields": {
+        "name": "University of Rochester, University of Connecticut, University of New Hampshire",
+        "lat": "43.139353",
+        "lng": "-70.936120",
+        "host": 1747
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 27028,
+    "fields": {
+        "name": "University of Salzburg",
+        "lat": "33.613685",
+        "lng": "-117.844713",
+        "host": 1747
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 27029,
+    "fields": {
+        "name": "University of Salzburg (Austria)",
+        "lat": "47.823262",
+        "lng": "13.041194",
+        "host": 1747
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 27030,
+    "fields": {
+        "name": "university of sargodha",
+        "lat": "32.070209",
+        "lng": "72.683703",
+        "host": 1747
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 27031,
+    "fields": {
+        "name": "University of security studies",
+        "lat": "34.363818",
+        "lng": "-89.538339",
+        "host": 1747
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 27032,
+    "fields": {
+        "name": "University of Sheffield",
+        "lat": "40.767976",
+        "lng": "-77.871590",
+        "host": 1747
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 27033,
+    "fields": {
+        "name": "University of Southampton, UK",
+        "lat": "50.936344",
+        "lng": "-1.396810",
+        "host": 1747
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 27034,
+    "fields": {
+        "name": "University of South Australia",
+        "lat": "-35.240234",
+        "lng": "149.087676",
+        "host": 1747
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 27035,
+    "fields": {
+        "name": "University of Southern Maine",
+        "lat": "43.897846",
+        "lng": "-69.923322",
+        "host": 1747
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 27036,
+    "fields": {
+        "name": "University of Surrey",
+        "lat": "51.242301",
+        "lng": "-0.590483",
+        "host": 1747
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 27037,
+    "fields": {
+        "name": "University of Tampere, Finland",
+        "lat": "61.497752",
+        "lng": "23.760954",
+        "host": 1747
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 27038,
+    "fields": {
+        "name": "University of Technology Sydney ( UTS)",
+        "lat": "-33.882677",
+        "lng": "151.200946",
+        "host": 1747
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 27039,
+    "fields": {
+        "name": "University of Texas at Dallas",
+        "lat": "32.985454",
+        "lng": "-96.754319",
+        "host": 1747
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 27040,
+    "fields": {
+        "name": "University of Texas at El Paso",
+        "lat": "30.876675",
+        "lng": "-96.606466",
+        "host": 1747
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 27041,
+    "fields": {
+        "name": "University of Texas, Austin",
+        "lat": "30.285868",
+        "lng": "-97.735654",
+        "host": 1747
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 27042,
+    "fields": {
+        "name": "University of Texas--Dallas",
+        "lat": "32.986040",
+        "lng": "-96.763826",
+        "host": 1747
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 27043,
+    "fields": {
+        "name": "University of the Aegean",
+        "lat": "33.679102",
+        "lng": "-117.829257",
+        "host": 1747
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 27044,
+    "fields": {
+        "name": "University of Tsukuba, Japan",
+        "lat": "36.083486",
+        "lng": "140.076642",
+        "host": 1747
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 27045,
+    "fields": {
+        "name": "University of Tuebingen",
+        "lat": "48.521636",
+        "lng": "9.057645",
+        "host": 1747
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 27046,
+    "fields": {
+        "name": "University of Turku",
+        "lat": "60.451813",
+        "lng": "22.266630",
+        "host": 1747
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 27047,
+    "fields": {
+        "name": "University of Valenciennes",
+        "lat": "50.357113",
+        "lng": "3.518332",
+        "host": 1747
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 27048,
+    "fields": {
+        "name": "University of Valladolid",
+        "lat": "28.106854",
+        "lng": "-82.474494",
+        "host": 1747
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 27049,
+    "fields": {
+        "name": "University of Vermont",
+        "lat": "31.586364",
+        "lng": "-97.156480",
+        "host": 1747
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 27050,
+    "fields": {
+        "name": "University of Vienna",
+        "lat": "33.614001",
+        "lng": "-117.844001",
+        "host": 1747
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 27051,
+    "fields": {
+        "name": "University of Warwick",
+        "lat": "52.379411",
+        "lng": "-1.563191",
+        "host": 1747
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 27052,
+    "fields": {
+        "name": "University of Western Australia",
+        "lat": "-33.917119",
+        "lng": "151.225318",
+        "host": 1747
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 27053,
+    "fields": {
+        "name": "University of Windsor",
+        "lat": "42.304192",
+        "lng": "-83.065824",
+        "host": 1747
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 27054,
+    "fields": {
+        "name": "University of Winnipeg",
+        "lat": "49.808154",
+        "lng": "-97.137652",
+        "host": 1747
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 27055,
+    "fields": {
+        "name": "University of Wisconsin Madison",
+        "lat": "43.076592",
+        "lng": "-89.405225",
+        "host": 1747
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 27056,
+    "fields": {
+        "name": "University of Wisconsin- Madison",
+        "lat": "43.076592",
+        "lng": "-89.405225",
+        "host": 1747
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 27057,
+    "fields": {
+        "name": "University of Wisconsin, Madison and University of Rochester",
+        "lat": "43.130897",
+        "lng": "-77.625478",
+        "host": 1747
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 27058,
+    "fields": {
+        "name": "University of Wyoming",
+        "lat": "40.729849",
+        "lng": "-77.902401",
+        "host": 1747
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 27059,
+    "fields": {
+        "name": "University of York",
+        "lat": "39.681847",
+        "lng": "-104.960305",
+        "host": 1747
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 27060,
+    "fields": {
+        "name": "University project",
+        "lat": "40.666732",
+        "lng": "-77.947225",
+        "host": 1747
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 27061,
+    "fields": {
+        "name": "University Utrecht",
+        "lat": "52.090737",
+        "lng": "5.121420",
+        "host": 1747
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 27062,
+    "fields": {
+        "name": "university zurich",
+        "lat": "47.358830",
+        "lng": "8.559589",
+        "host": 1747
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 27063,
+    "fields": {
+        "name": "Univ of Utah",
+        "lat": "33.424931",
+        "lng": "-111.888453",
+        "host": 1747
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 27064,
+    "fields": {
+        "name": "Unkown",
+        "lat": "34.287346",
+        "lng": "-86.251718",
+        "host": 1747
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 27065,
+    "fields": {
+        "name": "unniversity",
+        "lat": "28.073540",
+        "lng": "-82.437359",
+        "host": 1747
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 27066,
+    "fields": {
+        "name": "UN Office for the Coordination of Humanitarian Affairs; University of Konstanz",
+        "lat": "47.677950",
+        "lng": "9.173238",
+        "host": 1747
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 27067,
+    "fields": {
+        "name": "UNSW",
+        "lat": "-33.918488",
+        "lng": "151.227858",
+        "host": 1747
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 27068,
+    "fields": {
+        "name": "UNSW Australia",
+        "lat": "-35.292708",
+        "lng": "149.165180",
+        "host": 1747
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 27069,
+    "fields": {
+        "name": "UO",
+        "lat": "-22.517371",
+        "lng": "166.769359",
+        "host": 1747
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 27070,
+    "fields": {
+        "name": "UofA",
+        "lat": "32.230034",
+        "lng": "-110.950540",
+        "host": 1747
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 27071,
+    "fields": {
+        "name": "UPB",
+        "lat": "28.068371",
+        "lng": "-82.408804",
+        "host": 1747
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 27072,
+    "fields": {
+        "name": "Upitt",
+        "lat": "35.558922",
+        "lng": "-77.424297",
+        "host": 1747
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 27073,
+    "fields": {
+        "name": "U.S. Census Bureau",
+        "lat": "60.786024",
+        "lng": "-161.880203",
+        "host": 1747
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 27074,
+    "fields": {
+        "name": "U.S. Department of Education",
+        "lat": "42.271597",
+        "lng": "-71.011496",
+        "host": 1747
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 27075,
+    "fields": {
+        "name": "USFS",
+        "lat": "46.438447",
+        "lng": "-84.711031",
+        "host": 1747
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 27076,
+    "fields": {
+        "name": "U.S. Government",
+        "lat": "30.683875",
+        "lng": "-88.061508",
+        "host": 1747
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 27077,
+    "fields": {
+        "name": "UT-Austin",
+        "lat": "38.672193",
+        "lng": "-112.121592",
+        "host": 1747
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 27078,
+    "fields": {
+        "name": "Utrecht University, Department of Farm Animal Health",
+        "lat": "52.090737",
+        "lng": "5.121420",
+        "host": 1747
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 27079,
+    "fields": {
+        "name": "Utrecht University; University of California, Los Angeles",
+        "lat": "34.020185",
+        "lng": "-118.405905",
+        "host": 1747
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 27080,
+    "fields": {
+        "name": "UWA",
+        "lat": "42.282048",
+        "lng": "-72.214793",
+        "host": 1747
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 27081,
+    "fields": {
+        "name": "UWM",
+        "lat": "43.044272",
+        "lng": "-88.032001",
+        "host": 1747
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 27082,
+    "fields": {
+        "name": "UW-Madison",
+        "lat": "43.076393",
+        "lng": "-89.432172",
+        "host": 1747
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 27083,
+    "fields": {
+        "name": "Vancouver Island University",
+        "lat": "49.352838",
+        "lng": "-124.412842",
+        "host": 1747
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 27084,
+    "fields": {
+        "name": "V-Dem Institute, Department of Political Science, University of Gothenburg",
+        "lat": "57.708870",
+        "lng": "11.974560",
+        "host": 1747
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 27085,
+    "fields": {
+        "name": "Virginia Tech",
+        "lat": "36.874358",
+        "lng": "-76.174544",
+        "host": 1747
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 27086,
+    "fields": {
+        "name": "VTMap",
+        "lat": "44.558803",
+        "lng": "-72.577842",
+        "host": 1747
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 27087,
+    "fields": {
+        "name": "Walter Sisulu University South Africa",
+        "lat": "-33.916110",
+        "lng": "18.426092",
+        "host": 1747
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 27088,
+    "fields": {
+        "name": "Warsaw University of Technology",
+        "lat": "52.229676",
+        "lng": "21.012229",
+        "host": 1747
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 27089,
+    "fields": {
+        "name": "Washington University",
+        "lat": "31.767879",
+        "lng": "-106.440736",
+        "host": 1747
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 27090,
+    "fields": {
+        "name": "Washington University in St Louis",
+        "lat": "38.684649",
+        "lng": "-90.330885",
+        "host": 1747
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 27091,
+    "fields": {
+        "name": "Washington University in St.Louis",
+        "lat": "38.684649",
+        "lng": "-90.330885",
+        "host": 1747
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 27092,
+    "fields": {
+        "name": "WAYNE STATE UNIVERSITY",
+        "lat": "40.811234",
+        "lng": "-77.812110",
+        "host": 1747
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 27093,
+    "fields": {
+        "name": "Westchester University",
+        "lat": "32.851137",
+        "lng": "-96.806484",
+        "host": 1747
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 27094,
+    "fields": {
+        "name": "Western Carolina University",
+        "lat": "36.001426",
+        "lng": "-78.890628",
+        "host": 1747
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 27095,
+    "fields": {
+        "name": "West University of Timisoara",
+        "lat": "45.748872",
+        "lng": "21.208679",
+        "host": 1747
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 27096,
+    "fields": {
+        "name": "West Virginia University",
+        "lat": "40.064405",
+        "lng": "-80.720152",
+        "host": 1747
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 27097,
+    "fields": {
+        "name": "Wharton",
+        "lat": "29.311637",
+        "lng": "-96.102737",
+        "host": 1747
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 27098,
+    "fields": {
+        "name": "Whitworth University",
+        "lat": "33.583740",
+        "lng": "-84.450228",
+        "host": 1747
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 27099,
+    "fields": {
+        "name": "Williams College",
+        "lat": "39.147208",
+        "lng": "-84.473881",
+        "host": 1747
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 27100,
+    "fields": {
+        "name": "Wilmu",
+        "lat": "39.626355",
+        "lng": "-75.675062",
+        "host": 1747
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 27101,
+    "fields": {
+        "name": "WIT",
+        "lat": "-23.751944",
+        "lng": "30.971944",
+        "host": 1747
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 27102,
+    "fields": {
+        "name": "Woods Hole Oceanographic Institution",
+        "lat": "41.534499",
+        "lng": "-70.653101",
+        "host": 1748
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 27103,
+    "fields": {
+        "name": "Word Bank",
+        "lat": "35.618146",
+        "lng": "-105.243171",
+        "host": 1748
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 27104,
+    "fields": {
+        "name": "Wright State University",
+        "lat": "39.787537",
+        "lng": "-84.065138",
+        "host": 1748
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 27105,
+    "fields": {
+        "name": "wwlac",
+        "lat": "15.248252",
+        "lng": "120.021109",
+        "host": 1748
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 27106,
+    "fields": {
+        "name": "WZB - Social Science Research Center Berlin",
+        "lat": "42.660913",
+        "lng": "-73.368721",
+        "host": 1748
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 27107,
+    "fields": {
+        "name": "Xiangya Hospital of Central South University",
+        "lat": "28.186978",
+        "lng": "112.993985",
+        "host": 1748
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 27108,
+    "fields": {
+        "name": "Yale",
+        "lat": "43.130026",
+        "lng": "-82.798263",
+        "host": 1748
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 27109,
+    "fields": {
+        "name": "ZHAW",
+        "lat": "47.497476",
+        "lng": "8.730492",
+        "host": 1748
+    }
+},
+{
+    "model": "installations.institution",
+    "pk": 27110,
+    "fields": {
+        "name": "\u590d\u65e6\u5927\u5b66",
+        "lat": "31.296494",
+        "lng": "121.504356",
+        "host": 1748
+    }
+}
+]

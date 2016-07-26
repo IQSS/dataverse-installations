@@ -49,6 +49,7 @@ INSTALLED_APPS = (
     'dv_apps.datafiles',
     'dv_apps.datasetfields',
     'dv_apps.guestbook',
+    'dv_apps.installations',
 
     # Experiments/Add-ons
     'dv_apps.data_previewer',
@@ -147,3 +148,7 @@ TEMPLATES = [
         },
     },
 ]
+
+MEDIA_ROOT = join(BASE_DIR,"media")
+
+MEDIA_URL = '/media/'

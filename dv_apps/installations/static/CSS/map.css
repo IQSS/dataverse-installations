@@ -1,0 +1,104 @@
+/* H1 Styles*/
+h1 {
+    font-family: monospace;
+    text-align: center;
+    font-size: 4em;
+    background-color: white;
+    margin-top: 0em;
+}
+/* Page Body Styles*/
+html, body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    background-color: lightgray;
+}
+/*map styles*/
+#map {
+    height: 480px;
+    width: 980px;
+    margin: auto;
+    position: relative;
+    top: 0px;
+}
+.large {
+    width: 56px;
+    height: 56px;
+    margin: 0px;
+    margin-top: 2px;
+    margin-bottom: 0px;
+    border: 2px solid orange; 
+
+    overflow: hidden;
+    background-color: white;
+    float: left;
+}
+.small {            
+    width: 46px;
+    height: 46px;
+    margin: 5px;
+    margin-top: 12px;
+    margin-bottom: 0px;
+    border: 2px solid black; 
+
+    overflow: hidden;
+    background-color: white;
+    float: left;
+}
+.img{
+    height: 48px;
+    margin: auto;
+    margin-top: auto;
+    margin-bottom: 0;
+    border: 0;
+    background-color: white;
+
+}
+.controlUI {
+    background-color: transparent;
+    cursor: pointer;
+    margin-bottom: 0;
+    margin-right: 0;
+    display: inline-block;
+    width: 700px;
+    height: 65px;
+    overflow: auto;
+}
+.controlUI2 {
+    width: 700px;
+    height: 80px;
+    position: absolute;
+    right: 0;
+    margin: 0;
+    display: inline-block;
+    overflow: auto;
+}
+.rightArrow {
+    height: 40px;
+    width: 20px;
+    position: absolute;
+    top: 17px;
+    right: -25px;
+}
+.leftArrow {
+    height: 40px;
+    width: 20px;
+    position: absolute;
+    top: 17px;
+    left: -25px;
+}
+.metricsdiv {
+    height: auto;
+    width: auto;
+}
+
+.metrics {
+    font-size: 1.5em;
+    font-family: monospace;
+}
+.metricstitle {
+    font-size: 1.5em;
+    font-family: monospace;
+    text-align: center;
+    font-weight:normal;
+}

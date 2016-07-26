@@ -1,0 +1,25 @@
+{% load staticfiles %}
+<link rel='stylesheet' href='{% static "CSS/map.css" %}'>
+
+<h1>HOME PAGE</h1>
+<h2>Site Map</h2>
+<h3>Map Database Web Page</h3>
+<p><b>http://127.0.0.1:8000/index/</b></p>
+    <ul>
+        <li><p>Installations</p>
+            <a href=http://127.0.0.1:8000 {%url 'institution_index'%}>{%url 'institution_index'%}</a>
+        </li>
+        <ul>
+            <li><p>Institutions affiliated with ******(i.e harvard)</p>
+                http://127.0.0.1:8000/installations/******
+            </li>  
+    </ul>
+         <li><p>Institutions with their host Installation</p>
+             http://127.0.0.1:8000/institutions/ (not yet created)
+        </li>
+        
+        <li><p>Map page</p>
+             http://127.0.0.1:8000/map/
+        </li>
+        
+    </ul>

@@ -4,7 +4,7 @@
     {%load staticfiles%}
 
 <meta charset="utf-8">
-    
+
 <script src="http://www.d3plus.org/js/topojson.js"></script>
 
 <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
@@ -103,6 +103,7 @@
     {%include "visuals/datasets.html" %}
     </div>
 
+
     <div class="col-xs-12 col-md-6">
     {%include "visuals/datasets_affiliations.html" %}
     </div>
@@ -116,20 +117,24 @@
         </div>
     </div>
 
-       <!-- Viz block section -->
-    <div class="row">
 
-    <div class="col-xs-12 col-md-6">
-    
-    </div>
+     <!-- Viz block section -->
+  <div class="row">
 
-    <div class="col-xs-12 col-md-6">
-    
-    </div>
+  <div class="col-xs-12 col-md-6">
+  {%include "visuals/files.html" %}
+  </div>
 
-    </div>
-    <hr>
-     <!-- END -->
+
+  <div class="col-xs-12 col-md-6">
+  {%include "visuals/files_downloads.html" %}
+  </div>
+
+  </div>
+  <hr>
+   <!-- END -->
+
+
 
 
 

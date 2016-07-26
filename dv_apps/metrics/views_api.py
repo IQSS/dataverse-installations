@@ -28,44 +28,44 @@ def view_jcabanas(request):
         ).annotate(cnt=models.Count('dvobject_id')\
         ).values('month', 'cnt'\
         ).order_by('month')
-    
+
     running_total = 0
     for d in dataset_counts_by_month:
         running_total += d['cnt']
         d['running_total'] = running_total
         print d
-        
+
     smd = StatsMakerDatasets()
 
     success, count_test = smd.get_dataset_count()
     if not success:
         return JsonResponse(smd.get_http_error_dict(), status=smd.get_http_err_code())
-    
+
     print count_test
-    
+
     dataverse_counts_by_month = Dataverse.objects.filter(id__createdate__year=2015\
         ).annotate(month=TruncMonth('id__createdate')\
         ).values('month'\
         ).annotate(cnt=models.Count('id_id')\
         ).values('month', 'cnt'\
         ).order_by('month')
-    
+
     dataverse_running_total = 0
     for d in dataverse_counts_by_month:
         dataverse_running_total += d['cnt']
         d['running_total'] = dataverse_running_total
         print d
-    
+
     dataverse_counts_by_type = Dataverse.objects.values('dataversetype').annotate(type_count=models.Count('dataversetype'))
-    
+
     d = dict(
         dataset_counts_by_month = dataset_counts_by_month,
         dataverse_counts_by_month = dataverse_counts_by_month,
         dataverse_counts_by_type = dataverse_counts_by_type,
     )
-    
-    
-    
+
+
+
     return render(request, 'metrics.html', d)
 
 

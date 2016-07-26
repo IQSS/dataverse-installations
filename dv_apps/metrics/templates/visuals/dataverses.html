@@ -10,13 +10,18 @@
     {%for i in dataverse_counts_by_month%}
 
     {"month": monthNames[{{i.month}}-1], "monthNum": {{i.month}}, "name":"Total Dataverses", "Number": {{i.running_total}}}
-//
-//    {"month": monthNames[{{i.month}}-1], "monthNum": {{i.month}}, "name":"New Datasets", "value": {{i.cnt}}}
 
     {%if not forloop.last%},{%endif%}
     {%endfor%}
     ]
+  
+  
   // instantiate d3plus
+  
+  var attributes = [
+    {"name": "Total Dataverses", "hex": "#CF3636"}
+  ]
+  
   var visualization = d3plus.viz()
     .container("#viz1")  // container DIV to hold the visualization
     .data(sample_data)  // data to use with the visualization
@@ -25,6 +30,8 @@
     .text("name")       // key to use for display text
     .y("Number")         // key to use for y-axis
     .x("month")          // key to use for x-axis
+    .attrs(attributes)
+    .color("hex")
     .order({
         "sort": "asc",
         "value": "monthNum"

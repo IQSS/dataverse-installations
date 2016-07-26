@@ -4,19 +4,18 @@
 <script>
   // sample data array
   var monthNames = ["January", "February", "March", "April", "May", "June",
-  "July", "August", "September", "October", "November", "December"
-                   ];
+  "July", "August", "September", "October", "November", "December"];
 
   var sample_data = [
-    {%for i in dataset_counts_by_month%}
+    {%for i in dataverse_counts_by_month%}
 
-    {"month": monthNames[{{i.month}}-1], "monthNum": {{i.month}}, "name":"Cumulative Datasets", "Number": {{i.running_total}}}
+    {"month": monthNames[{{i.month}}-1], "monthNum": {{i.month}}, "name":"Total Dataverses", "Number": {{i.running_total}}}
 //
 //    {"month": monthNames[{{i.month}}-1], "monthNum": {{i.month}}, "name":"New Datasets", "value": {{i.cnt}}}
 
     {%if not forloop.last%},{%endif%}
     {%endfor%}
-  ]
+    ]
   // instantiate d3plus
   var visualization = d3plus.viz()
     .container("#viz1")  // container DIV to hold the visualization

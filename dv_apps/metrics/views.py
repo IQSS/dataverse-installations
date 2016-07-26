@@ -10,6 +10,7 @@ from dv_apps.utils.date_helper import format_yyyy_mm_dd
 from django.db import models
 from .stats_util_datasets import StatsMakerDatasets
 from dv_apps.datasets.models import Dataset
+from dv_apps.dataverses.models import Dataverse
 
 def view_simple_dataset_count2(request):
     """Stripped down example"""

@@ -10,9 +10,7 @@
   var sample_data = [
     {%for i in dataset_counts_by_month%}
 
-    {"month": monthNames[{{i.month}}-1], "monthNum": {{i.month}}, "name":"Cumulative Datasets", "Number": {{i.running_total}}}
-//
-//    {"month": monthNames[{{i.month}}-1], "monthNum": {{i.month}}, "name":"New Datasets", "value": {{i.cnt}}}
+    {"month": monthNames[{{i.month}}-1], "monthNum": {{i.month}}, "name":"Total Datasets", "Number": {{i.running_total}}}
 
     {%if not forloop.last%},{%endif%}
     {%endfor%}

@@ -8,6 +8,7 @@ from dv_apps.utils.date_helper import format_yyyy_mm_dd
 from django.db import models
 
 from dv_apps.datasets.models import Dataset
+from dv_apps.dataverses.models import Dataverse
 from .stats_util_datasets import StatsMakerDatasets
 
 def view_simple_dataset_count(request):
@@ -42,8 +43,22 @@ def view_jcabanas(request):
     
     print count_test
     
+    dataverse_counts_by_month = Dataverse.objects.filter(id__createdate__year=2015\
+        ).annotate(month=TruncMonth('id__createdate')\
+        ).values('month'\
+        ).annotate(cnt=models.Count('id_id')\
+        ).values('month', 'cnt'\
+        ).order_by('month')
+    
+    dataverse_running_total = 0
+    for d in dataverse_counts_by_month:
+        dataverse_running_total += d['cnt']
+        d['running_total'] = dataverse_running_total
+        print d
+    
     d = dict(
         dataset_counts_by_month = dataset_counts_by_month,
+        dataverse_counts_by_month = dataverse_counts_by_month,
     )
     
     

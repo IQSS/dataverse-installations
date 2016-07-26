@@ -1,6 +1,7 @@
 <!doctype html>
 <html>
 <head>
+    {%load staticfiles%}
 
 <meta charset="utf-8">
 
@@ -28,15 +29,21 @@
     } 
     
     h1 {
-        font-family: monospace;
+        font-family: sans-serif;
         font-size: 3em;
         text-align:center;
-        background-color: orange;
+        font-weight: bold;
     }
     
     h2 {
-        font-family: monospace;
-        font-size: 2em;
+        font-family: sans-serif;
+        font-size: 1.25em;
+        text-align:center;
+    }
+    
+    h3 {
+        font-family: sans-serif;
+        font-size: 1.5em;
         text-align:left;
         text-indent:75px;
         font-weight:bold;
@@ -45,17 +52,24 @@
     hr {
         border-width: 4px;
     }
+    .title {
+        max-height:100%;
+        max-width:100%;
+    }
+    
     </style>
        
 </head>
 
 <body>
+    <img src="{% static 'Screen%20Shot%202016-07-26%20at%2010.49.45%20AM.png' %}" alt="My image" class="title">
     
-    <h1>THE METRICS PROJECT PROTOTYPE PAGE</h1>
+    <h1>Harvard Dataverse</h1>
+    <h2>Open for all researchers worldwide from all diciplines to deposit data</h2>
     
     <div class="row">
         <div class="col-xs-12 col-md-12">
-            <h2>Dataverses</h2>
+            <h3>Dataverses</h3>
         </div>    
     </div>
     
@@ -76,7 +90,7 @@
     
     <div class="row">
         <div class="col-xs-12 col-md-12">
-            <h2>Datasets</h2>
+            <h3>Datasets</h3>
         </div>    
     </div>
     

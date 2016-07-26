@@ -1,3 +1,5 @@
+from topojson import topojson
+
 <!doctype html>
 <html>
 <head>
@@ -19,28 +21,28 @@
 <script src="http://www.d3plus.org/js/d3.js"></script>
 <script src="http://www.d3plus.org/js/d3plus.js"></script>
 
-<style>   
+<style>
     .viz {
-        height:500px; 
-        margin:75px; 
+        height:500px;
+        margin:75px;
         padding:0px;
         margin-top:50px;
         margin-bottom: 25px;
-    } 
-    
+    }
+
     h1 {
         font-family: sans-serif;
         font-size: 3em;
         text-align:center;
         font-weight: bold;
     }
-    
+
     h2 {
         font-family: sans-serif;
         font-size: 1.25em;
         text-align:center;
     }
-    
+
     h3 {
         font-family: sans-serif;
         font-size: 1.5em;
@@ -56,59 +58,59 @@
         max-height:100%;
         max-width:100%;
     }
-    
+
     </style>
-       
+
 </head>
 
 <body>
     <img src="{% static 'Screen%20Shot%202016-07-26%20at%2010.49.45%20AM.png' %}" alt="My image" class="title">
-    
+
     <h1>Harvard Dataverse</h1>
     <h2>Open for all researchers worldwide from all diciplines to deposit data</h2>
-    
+
     <div class="row">
         <div class="col-xs-12 col-md-12">
             <h3>Dataverses</h3>
-        </div>    
+        </div>
     </div>
-    
+
     <!-- Viz block section -->
     <div class="row">
-    
+
     <div class="col-xs-12 col-md-6">
-    {%include "visuals/sample2.html" %}  
+    {%include "visuals/dataverses.html" %}
     </div>
-        
+
     <div class="col-xs-12 col-md-6">
-    {%include "visuals/sample.html" %}
+    {%include "visuals/dataverses_categories.html" %}
     </div>
-    
+
     </div>
     <hr>
      <!-- END -->
-    
+
     <div class="row">
         <div class="col-xs-12 col-md-12">
             <h3>Datasets</h3>
-        </div>    
+        </div>
     </div>
-    
+
        <!-- Viz block section -->
     <div class="row">
-    
+
     <div class="col-xs-12 col-md-6">
-    {%include "visuals/datasets.html" %}  
+    {%include "visuals/datasets.html" %}
     </div>
-        
+
     <div class="col-xs-12 col-md-6">
-    {%include "visuals/sample3.html" %} 
+    {%include "visuals/datasets_affiliations.html" %}
     </div>
-     
+
     </div>
     <hr>
      <!-- END -->
-    
+
 
 
 

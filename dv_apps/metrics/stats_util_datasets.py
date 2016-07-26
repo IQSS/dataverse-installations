@@ -172,7 +172,18 @@ class StatsMakerDatasets(object):
 
         return True, Dataset.objects.filter(**filter_params).count()
 
-    def get_dataset_count_by_month(self):
+
+    def get_dataset_counts_by_create_date(self):
+
+        return self.get_dataset_count_by_month(date_param='dvobject__createdate')
+
+
+    def get_dataset_counts_by_publication_date(self):
+
+        return self.get_dataset_count_by_month(date_param='dvobject__publicationdate')
+
+
+    def get_dataset_count_by_month(self, date_param='dvobject__createdate'):
         """
         Return dataset counts by month
         """
@@ -182,14 +193,19 @@ class StatsMakerDatasets(object):
         # Retrieve the date parameters
         filter_params = self.get_date_filter_params()
 
-        print 'filter_params', filter_params
+        # Exclude where dates are null
+        exclude_params = { '%s__isnull' % date_param : True}
+        #exclude_params = { '%s__isnull' % date_param : ''}
 
         # add date filter
-        ds_counts_by_month = Dataset.objects.filter(**filter_params)
+        ds_counts_by_month = Dataset.objects.exclude(**exclude_params).filter(**filter_params)
+
+        print 'ds_counts_by_month', ds_counts_by_month.count()
+
         # add the rest of the filters
         ds_counts_by_month = ds_counts_by_month.annotate(\
             #month=TruncMonth('dvobject__createdate')\
-            month_yyyy_dd=TruncYearMonth('dvobject__createdate')\
+            month_yyyy_dd=TruncYearMonth('%s' % date_param)\
             ).values('month_yyyy_dd'\
             ).annotate(cnt=models.Count('dvobject_id')\
             ).values('month_yyyy_dd', 'cnt'\

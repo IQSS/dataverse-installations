@@ -1,0 +1,140 @@
+CUNY / College of Staten Island	35.2996762	-119.1031985
+Cyber Research Centre	17.4519846	78.3473313
+Dana	35.3292829	-82.3753952
+Dana Farber Cancer Institute		
+DANS	44.0416666	-103.0458333
+DANS Institute of the Royal Netherlands Academy of Arts and Sciences		
+Dansk Data Arkiv		
+Dansk Data Arkiv, Denmark		
+DANS & Utrecht University		
+Data activism		
+database	53.7927656	-3.0489311
+DataShop		
+Davidson College	39.0097761	-76.9524726
+Davis Center for Russian and Eurasian Studies		
+Deakin University	-37.8463802	145.113887
+Decision Analysis Institute		
+Demand	32.8211432	130.7006558
+Demo	46.0867153	10.3384526
+Denison University	42.0179247	-95.3222015
+Departamento de Astronomía, Universidad de Chile		
+Department of Audiology (ESTSP-IPP)		
+Department of Audiology(ESTSP-IPP)		
+Department of Computer Science and Technology, Nanjing University		
+Department of Defense	39.7008147	-74.4108805
+Department of Economics, Business and Statistics, University of Milan	45.4654219	9.1859243
+Department of Geography, University of Bonn	50.73743	7.0982068
+Department of Goverment, IQSS, Harvard University		
+Department of Health Sciences, Genoa University, Italy		
+Department of Neurosciences and Behavior, Ribeirão Preto Medical School, University of São Paulo. Ribeirão Preto, São Paulo, Brazil	-21.1704008	-47.8103238
+Department of Political Science, Texas A&M University		
+DESIDOC		
+dfgsdfg		
+Dickinson College	38.9812785	-76.9340409
+dissertation		
+DIT	-8.5568557	125.5603143
+DIW Berlin		
+Donders Institute for Brain, Cognition and Behaviour		
+Doris Duke Charitable Foundation		
+Drew University	44.9669774	-93.1643494
+Drexel Univerity	38.6679152	-90.3322259
+DSA	42.253596	-71.78822
+dsafsd	41.6897639	-73.8758737
+Dublin Institute of Technology	53.3504889	-6.2692091
+Duke NUS	1.2812045	103.8342225
+Durham University		
+DVN	41.6118464	-90.5896094
+Early Voting Information Center		
+EBAPE/FGV		
+E&C, Department of farm animal health		
+Eclipse Live Entertainment Network IP		
+ECM	-26.4759667	-49.0894984
+ECON	54.1322914	-1.5213699
+Economic and Social Data Service, UK		
+Economic and Social Research Institute and Vrije U Amsterdam	52.3702157	4.8951679
+Economic Data Excellence		
+Economics IT	12.8738429	80.2197299
+Edinburgh	55.953252	-3.188267
+Edmond J. Safra Center for Ethics, Harvard	35.6528323	-97.4780954
+EECS at UC Berkeley	37.8805941	-122.2447958
+Election Law Journal		
+Electrical Engineering, Lakehead Unversity		
+Elsevier Labs		
+ELTE	52.2410327	7.5224934
+Ely Research Institute		
+EMBL-EBI		
+EMBRAPA	-5.0326098	-42.7930786
+Empresa Brasileira de Pesquisa Agropecuária		
+EPFL	46.5189865	6.5676007
+EPLIES		
+EPP		
+Erasmus University Rotterdam		
+ERF	38.9919723	-76.9368108
+Escuela de Estudios Políticos y Administrativos-UCV		
+ESG UQAM	45.5148865	-73.5597267
+etd	26.6159606	-80.0877574
+ethz	47.3765359	8.5480928
+EU-project	21.0051778	101.4081004
+EUR	41.8266105	12.4667204
+European Commission, Joint Research Centre		
+European Cooperative Programme for Plant Genetic Resources		
+Evaluation Case Studies Project		
+eXascale Infolab		
+F1000Research		
+Facebook	37.4816716	-122.1555969
+Faculty of Agronomy, University of La Paz, Bolivia	-16.489689	-68.1192936
+Faculty of Dentistry , Mahidol University	13.7932157	100.3242456
+Faculty of Ecology, University of Ecology and Management, Laboratory of Applied Plant Ecology, Faculty of Ecology, University of Ecology and Management, Warsaw	52.2296756	21.0122287
+Faculty of Law, Universitas Muhammadiyah Sidoarjo		
+Fairbank Center	41.3523375	-86.3060753
+FALL2014.IST676		
+FAS - OEB		
+FCT/UNL		
+fd	50.5636784	9.7327403
+Federal University of ABC		
+FGV/EPGE		
+FGV-Rio		
+FHI 360, CHARME, ICMR		
+Fielding University	28.0232294	-82.4668505
+Field Programs, Simon Fraser University	52.124815	-106.589195
+FIT Vutbr	49.226851	16.5967858
+FORS	40.4227675	-86.9141266
+Forsyth Institute and Harvard School of Dental Medicine	33.0342974	-83.938242
+Forum One	50.1117868	8.6495762
+Free University of Berlin	52.5200066	13.404954
+FRNBY		
+FSD Kenya		
+Fu Jen Catholic University		
+Fundação Getúlio Vargas		
+FXb Center		
+GBTA Foundation		
+gemeente	52.6565325	6.2380987
+Geodataverse		
+GeoHistoricalData Research Project		
+Georgetown	30.6332618	-97.6779842
+Georgetown Law Center		
+Georgetown Unviersity	38.9076089	-77.0722585
+Georgia Institute of Technology, Center for Relativistic Astrophysics		
+Georgia Inst. of Technology	33.7784626	-84.3988806
+Georgia Tech	33.7784626	-84.3988806
+Gerald R. Ford School of Public Policy, University of Michigan		
+Ghana Center	5.5629253	-0.1918349
+GIAP Journals		
+GIS	28.366667	55.533333
+GIS-studio		
+Global Rice Science Partnership (GRiSP)		
+GMAP Center		
+Gobabeb Training and Research Centre	-23.5618364	15.0413125
+Goethe University	38.5547053	-121.3372825
+Goethe University Frankfurt	50.1703746	8.6293081
+Golden-Wallerstein-Lange Project  - UCLA	40.5382913	-78.3528584
+Government Department, Harvard University		
+Government of Canada	64.0627163	-139.4335608
+Government of Sierra Leone	7.5270221	-12.499915
+Graduate Student	40.2512584	-111.6525242
+Grand Valley State University	40.813327	-77.8237769
+Green Mountain College	13.3313599	77.0947538
+GREO	47.622521	-2.854347
+Griffith University	-27.963265	153.384564
+GRIIDC		
+Grinnell College	41.925861	-91.6496279

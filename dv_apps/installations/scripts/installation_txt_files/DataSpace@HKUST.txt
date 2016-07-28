@@ -1,0 +1,99 @@
+GRiSP		
+Grupo EUMEDNET de la Universidad de Málaga	36.9186207	-4.2927412
+GSD	25.1425671	86.0123026
+GSE - COACHE		
+guilan	37.2809455	49.5924134
+Hacettepe University Department of Computer Education and Instructional Technology		
+Harvaerd University	42.3800977	-71.1166286
+Harvard, American Astronomical Society		
+Harvard; American Univ.	64.8427969	-147.8574413
+Harvard and Sydney Universities		
+Harvard Business School & Faculty of Arts and Sciences		
+Harvard Center for Geographic Analysis and Todd Mostak		
+Harvard College	42.3800977	-71.1166286
+Harvard College Library	42.3796618	-71.1203887
+Harvard College Observatory	42.3818494	-71.1288814
+Harvard Decision Science Lab		
+Harvard, Department of Economics		
+Harvard Department of Government		
+Harvard Economics		
+Harvard Extension School	34.7217326	-86.5853945
+Harvard FAS		
+Harvard, FAS Faculty Affairs		
+Harvard Gov.	61.2294445	-149.8784888
+Harvard Government Department		
+Harvard Graduate School of Education		
+Harvard GSD		
+Harvard Medical School, Department of Psychiatry, MGH		
+Harvard Medical School, Mass General Hospital, Brandeis University	38.2190415	-85.7551181
+Harvard Physics	42.3796618	-71.1203887
+Harvard, Princeton	40.3927458	-74.6620368
+Harvard-Radcliffe Class of 1977		
+Harvard School of Education	42.3498041	-71.1014251
+Harvard School of Engineering and Applied Sciences		
+Harvard School of Public Health - Kuwait Project		
+Harvard Smithsonian		
+Harvard-Smithsonian Center for		
+Harvard-Smithsonian CfA		
+Harvard/Smithsonian CfA		
+Harvard T H Chan School of Public Health		
+Harvard Ukrainian Research Institute (HURI)		
+Harvard U/MCB		
+Harvard University, Center for Astrophysics		
+Harvard University Department of Government		
+Harvard University, Department of Sociology		
+Harvard University Graduate School of Design		
+Harvard University - HMDC		
+Harvard University Institute for Quantitative Social Science		
+Harvard University - John F. Kennedy School of Government		
+Harvard University Kennedy School of Government		
+Harvard University, Kennedy School of Government		
+Harvard University Library	42.3796618	-71.1203887
+Harvard University, National Bureau of Economic Research		
+Harvard University, OEB, Giribet Lab		
+Harvard University Sociology		
+HBS	44.2455239	-68.3452024
+HBS; FAS; HGSE		
+HBS/NBER		
+HCL	17.4564844	78.5880855
+HDSL		
+Health and Education Research Operative Services		
+HEC Montreal		
+Heidelberg University	38.5561576	-121.394293
+Herschel/Extinction research project		
+Hesser College		
+History Department, Harvard University		
+HKS	32.334457	-90.222168
+HKS, Joan Shorenstein Center		
+Hlakanphila Analytics		
+HLFPPT, Alliance, KHPT, FHI360, TAI, Pathfinder, Project Orchid, TCIF, PSI		
+HMDC	40.784739	-74.106556
+Hochschule Mannheim	49.469597	8.4839384
+home	38.636036	-90.22692
+Hospital in Singapore	1.2786544	103.8351313
+HPL UChicago		
+HRC, Princeton University	40.3492867	-74.6582332
+HSCB	52.9215603	-1.4763126
+HSE, Lomonosov Moscow State University		
+HSPH Center for Decision Science		
+HSPH Center for Population and Development Studies		
+HU	47.162494	19.503304
+Human Genetics and Cognitive Functions - Insitut Pasteur		
+human-innovations		
+Human Rights Scores		
+Humboldt University Berlin	52.4321218	13.5333041
+Humboldt-University Berlin	52.5200066	13.404954
+Humidtropics		
+Hungarian Central Statistical Office		
+HW1		
+Icahn School of Medicine at Mount Sinai	40.9470432	-73.0295495
+ICAR-NAARM, Hyderabad-500030, India	17.3202127	78.4020322
+ICE	-14.07546	-75.7341811
+ICNA	50.8579559	32.3974889
+ICTP, Trieste	45.6495264	13.7768182
+IDSA		
+IE Business School	53.3862248	-6.2574495
+IESE Business School		
+ifrc	14.744924	-17.5183513
+IIPE		
+IISH	14.4115183	120.9832319

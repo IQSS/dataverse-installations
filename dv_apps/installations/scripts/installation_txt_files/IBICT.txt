@@ -1,0 +1,154 @@
+University of Konstanz, Department of Politics and Public Administration		
+University of Konstanz, Dept. Politics and Public Administration		
+University of Lausanne	46.5287859	6.6528621
+University of Lethbridge	49.6786693	-112.8596281
+University of Leuven	50.6698511	4.6162556
+University of Liege	41.8417268	-71.4285737
+University of Liège	41.8417268	-71.4285737
+University of Limerick	52.67923	-8.5663
+University of Lincoln/University of Birmingham	33.5206608	-86.80249
+University of Ljubljana	46.0512135	14.5185278
+University of Ljubljana, Biotechnical Faculty, Department of Animal Science		
+University of Louisville	38.2112014	-85.7589743
+University of Luxembourg	49.815273	6.129583
+University of Maine		
+University of Maine, Orono	44.8922637	-68.6714486
+University of Malaya	3.1191481	101.6579145
+University of Manchester, UK	53.0931809	-2.4236635
+University of Maryland, GVPT		
+University of Massachusetts at Amherst	42.3848177	-72.5326959
+University of Massachusetts, Boston	42.3515084	-71.1093333
+University of Memphis	35.1456797	-90.0545542
+University of Michigan`	42.320138	-83.230993
+University of Michigan Law School	42.3084397	-83.0677648
+University of Milan, Bicocca	45.5193521	9.2082569
+University of Minnesota Duluth	46.8177225	-92.0828144
+University of Minnesota Law School		
+University of Nairobi	-1.2739945	36.8077759
+University of Nebraska-Lincoln		
+University of Neuchâtel	46.9899874	6.9292732
+University of Nevada, Reno	39.5440732	-119.8145014
+University of Nizwa	22.9171031	57.536292
+University of North Carolina - Chapel Hill	35.9025108	-79.0196995
+University of Oklahoma	35.1924456	-97.4432884
+University of Oxford IT Services		
+University of Potsdam	52.41323	12.96976
+University of Pretoria	-25.7328565	28.2007589
+University of Puerto Rico	18.467947	-66.12153
+University of Reading, UK	51.4549096	-1.0042953
+University of Real Estate	39.5362023	-119.8152173
+University of Rhode Island	39.005088	-76.9239504
+University of Rochester, University of Connecticut, University of New Hampshire	43.139353	-70.9361201
+University of Salzburg	33.6136852	-117.8447127
+University of Salzburg (Austria)	47.8232621	13.0411939
+university of Sao Paulo		
+University of SÃ£o Paulo		
+university of sargodha	32.0702086	72.6837029
+University of security studies	34.3638185	-89.5383392
+University of Sheffield	40.7679764	-77.87159
+University of Southampton, UK	50.936344	-1.39681
+University of South Australia	-35.2402344	149.0876758
+University of Southern Maine	43.8978458	-69.9233225
+University of Surrey	51.2423009	-0.5904827
+University of Tampere, Finland	61.4977524	23.7609535
+University of Technology Sydney ( UTS)	-33.8826769	151.2009462
+University of Tennessee-Knoxville		
+University of Tennessee--Knoxville		
+University of Tennessee, Knoxville		
+University of Texas at Dallas	32.9854538	-96.7543188
+University of Texas at El Paso	30.876675	-96.6064659
+University of Texas, Austin	30.2858682	-97.7356543
+University of Texas--Dallas	32.9860399	-96.7638255
+University of Texas of the Permian Basin		
+University of Thai Chamber of Commerce		
+University of the Aegean	33.6791019	-117.8292574
+University of the Basque Country		
+University of the Thai Chamber of Commerce		
+University of Tokyo		
+University of Tsukuba, Japan	36.0834857	140.0766423
+University of Tuebingen	48.5216364	9.0576448
+University of Turku	60.4518126	22.2666303
+University of Valenciennes	50.357113	3.518332
+University of Valladolid	28.106854	-82.4744939
+University of Vermont	31.5863636	-97.1564797
+University of Vienna	33.6140008	-117.8440006
+University of Warsaw, Poland		
+University of Warwick	52.379411	-1.563191
+University of Western Australia	-33.9171191	151.2253175
+University of Windsor	42.3041924	-83.0658244
+University of Winnipeg	49.8081541	-97.1376524
+University of Wisconsinâ\u0080\u0093Madison		
+University of Wisconsin Madison	43.0765915	-89.4052247
+University of Wisconsin- Madison	43.0765915	-89.4052247
+University of Wisconsin, Madison and University of Rochester	43.1308971	-77.625478
+University of Wyoming	40.7298487	-77.9024014
+University of York	39.6818471	-104.9603049
+University project	40.6667322	-77.9472246
+University Utrecht	52.0907374	5.1214201
+University Versailles St-Quentin		
+university zurich	47.3588302	8.5595886
+UNIVIE		
+Univ of Utah	33.4249307	-111.8884532
+Univ. Simón Bolívar. Center for Marine Biodiversity		
+Unkown	34.2873457	-86.2517178
+unniversity	28.0735403	-82.4373589
+UN Office for the Coordination of Humanitarian Affairs; University of Konstanz	47.6779496	9.1732384
+UNSW	-33.918488	151.227858
+UNSW Australia	-35.2927076	149.1651801
+UNU-EHS		
+UN WFP Nepal		
+UO	-22.5173713	166.7693594
+UofA	32.2300342	-110.9505396
+UONBI		
+UPB	28.0683713	-82.4088045
+UPC BCN Tech		
+Upitt	35.5589221	-77.4242972
+U.S. Census Bureau	60.7860244	-161.880203
+U.S. Department of Education	42.2715969	-71.0114965
+U.S. Department of Health & Human Services		
+US Elections Project		
+USFS	46.4384472	-84.7110309
+U.S. Government	30.6838747	-88.0615083
+UT-Austin	38.6721931	-112.1215921
+utcc		
+Utrecht University, Department of Farm Animal Health	52.0907374	5.1214201
+Utrecht University/ ISCTE-IUL		
+Utrecht University; University of California, Los Angeles	34.0201854	-118.4059051
+UvA SILS Cards pilot		
+UvA SILS-CNS		
+UWA	42.282048	-72.2147928
+UWM	43.0442725	-88.0320014
+UW-Madison	43.0763931	-89.4321717
+Vancouver Island University	49.3528378	-124.4128425
+VATT & CEP/LSE		
+V-Dem Institute, Department of Political Science, University of Gothenburg	57.70887	11.97456
+Virginia Law Review		
+Virginia Tech	36.8743583	-76.1745441
+Virtual Worlds Research Consortium		
+Visible Past		
+VTCSOM		
+VTMap	44.5588028	-72.5778415
+VU University Amsterdam		
+Walker Muscle Physiology Lab		
+Walter Sisulu University South Africa	-33.9161099	18.426092
+Warsaw University of Technology	52.2296756	21.0122287
+Waseda University		
+Washington University	31.767879	-106.440736
+Washington University in St Louis	38.6846489	-90.3308854
+Washington University in St.Louis	38.6846489	-90.3308854
+WAVA Agricultural Research		
+WAYNE STATE UNIVERSITY	40.811234	-77.8121099
+Weatherhead Center for International Affairs, Harvard University		
+WebIndoPro		
+WenbiaoFeng		
+Westchester University	32.851137	-96.8064839
+Western Carolina University	36.0014261	-78.8906282
+West University of Timisoara	45.7488716	21.2086793
+West Virginia University	40.0644053	-80.7201522
+Wharton	29.3116366	-96.1027371
+Whitworth University	33.5837399	-84.4502278
+Widener Library, Harvard University		
+Wiley Online Library		
+Williams College	39.1472083	-84.4738811
+Wilmu	39.626355	-75.675062
+WIT	-23.7519444	30.9719444

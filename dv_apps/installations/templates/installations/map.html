@@ -15,39 +15,61 @@
       
     <h1 id="prototype">Dataverse.org MAP PROTOTYPE</h1>
       
-    <div id="map"></div>
-      
+    <div id="map" onload="listen()"></div>
+    
     <script>
+    
+/*    NOTES for futher development: 
         
-    //Containers:
+BUGS
+          Marker Z index issues should be resolved on highlighting and zooming 
+DATA STRUCTURE 
+          large array datastructure should be done away with in favor for direct database querries with 
+            django template language
+FUNCTIONS
+          setDefaultViewMethod objects should be updated
+MAP INTERACTION
+          map mouseover and click functionality should be user tested
+          markers have a bug where they are only clickable incertain locations due to underlying institution markers
+          control bar should support click and drag scrolling
+STYLE
+          logos should dynamically resize to fit their containers on mouseover
+EXTENSIONS
+          filtering functionality should be added with a checkbox menu
+        
+Javascript dependent on GoogleMaps API V3
+Style Sheets & Static Logo location: < miniverse/dv_apps/installations/static/ >
+Documentation link: https://developers.google.com/maps/documentation/javascript/3.exp/reference
+*/
+//////////////////////////////////////////////////////////////////////////////////////////////////////////           
+    //Object containers:
         //infoWindow Container 
+        
+        //infowindows on click
         var infoArray = [];
+        //mouseover titles
         var nameArray = [];
+        
         //mapMarker Container
+        
+        //big orange markers
         var markerArray = [];
+        //small installation dots
         var installationContainer = [];
+        //highlighted installation dots
         var installationContainerHighlighted = [];
-        //contains Polylines and markers
-        var hostedInstitutionsArray = [];
-   
-        //Functions:
+        
+    //Functions
         
         //-----initialize map at Center----- 
         function initMap() {
-            function addInstallation() {
-                var arr = [];
-                for(var i = 5; i < arguments.length; i = i + 2){
-                    var location = new google.maps.LatLng(arguments[i], arguments[i+1]);
-                    arr.push(location); 
-                }
-                locationArray[locationArray.length] = [new google.maps.LatLng(arguments[0], arguments[1]), arguments[2], arguments[3], arguments[4], arr]    
-            }
             
-            //Installation Location Data
-//0           1       2         3         4       5              6           7      8
-//coordinates size    name      logo      null    description    version     marker []
+//              Installation Location Data Array Oragnization:
+//index: 0           1       2         3         4       5              6           7
+//  coordinates     size    name      logo      null   description    version     marker
+             
             
-            
+            //django generated array with the above information            
             var locationArray = [
             {%for i in install_list%}{% spaceless %}
              [new google.maps.LatLng({{i.lat}},{{i.lng}}), 52, "{{i.name}}", {%if i.logo%}"{{i.logo.url}}"{%else%}"{% static 'logos/harvard.png' %}"{%endif%}, null, "{{i.description}}", "{{i.version}}", {%if i.marker%}"{{i.marker.url}}"{%else%}""{%endif%}]
@@ -56,6 +78,11 @@
             {%endfor%}
             ]
             
+//              Institution Location Data Array Oragnization
+// index: 0
+//      coordinates
+            
+            //django generated array with the above information      
             var institutionArray = [
             {%for a in arr%}
                 [{% spaceless %}
@@ -66,52 +93,72 @@
                 {% endspaceless %}]{% if not forloop.last %},{%endif%}
                 {%endfor%}     
             ]
+/*Edit Default map Options HERE
             
-            //Map Options
+            Map Options automatically passed through newMap function
+            
+            NOTE - the setDefaultView(dataverseMap) function does not automatically update these values.
+            further development should fix this inefficiency
+            
+            BE SURE TO UPDATE VALUES IN THE setDefaultView function if the center or zoom values are altered */
+            
             var center = new google.maps.LatLng(30, 0);
             var zoom = 2;
             var minZoom = 2;
+            var streetViewControl = false;
+            var mapTypeControl = false;
             
-            //Map Constructor
-            var dataverseMap = newMap(center, zoom, minZoom);
-      
-            initInstitutions(institutionArray, dataverseMap);
-            for(var i = 0; i < institutionArray.length; i++){
-                initInstitutionsHighlight(institutionArray, dataverseMap, locationArray[i][7], i);
-            }
-                
-             //initiate dataverse markers
+//INITIATION FUNCTION CALLS        
+            //Map Constructor (the newMap function returns the constructed map)
+            var dataverseMap = newMap(center, zoom, minZoom, streetViewControl, mapTypeControl);
+            
+            //Installation Constructor
             for (var i = 0; i < locationArray.length; i++){ 
                 initMarker(i, locationArray, dataverseMap);
                 //initHostedInstitutions(i, locationArray, dataverseMap);
             };
-
-            //Control Bar
+            
+            //Institutions Constructor
+            initInstitutions(institutionArray, dataverseMap);
+            for(var i = 0; i < institutionArray.length; i++){
+                initInstitutionsHighlight(institutionArray, dataverseMap, locationArray[i][7], i);
+            };
+            
+            //Control Bar Constructor
             initControlBar(dataverseMap, locationArray, infoArray, markerArray); 
         }
         
-        //creates new map at location center 
-        function newMap(center, zoom, minZoom) { 
+//INITIATION FUNCTION DEFINITIONS
+        
+        //creates new map with specified options
+        function newMap(center, zoom, minZoom, streetViewControl, mapTypeControl) { 
             var dataverseMap = new google.maps.Map(document.getElementById('map'), {
                 center: center,
                 zoom: zoom,
                 minZoom: minZoom,
-                streetViewControl: false
+                streetViewControl: streetViewControl,
+                mapTypeControl: mapTypeControl
             });
             return dataverseMap;
         }
         
         //creates control bar object
         function initControlBar(map, locationArray, infoArray, markerArray){
+            //creates div
             var controlBarDiv = document.createElement('div');
-            controlBarDiv.style.position = 'absolute';
-            controlBarDiv.style.top = '404px';
-            controlBarDiv.style.overflow = 'show';
-            var controlBar = new ControlBar(controlBarDiv, map, locationArray, infoArray, markerArray);
-            controlBarDiv.index = 0;
+            
+            //css and Id features
+            controlBarDiv.classList.add('controlBar');
+            controlBarDiv.id='control';
+            
+            //constructs control bar
+            var controlBar = new ControlBar(controlBarDiv, map, locationArray);
+            
+            //stores control bar
             map.controls[google.maps.ControlPosition.BOTTOM_CENTER].push(controlBarDiv);
         }
-             
+        
+        //initialize grey Institution markers and store them in their container
         function initInstitutions(institutionArray, dataverseMap){
             for(var i = 0; i < institutionArray.length; i++){
                 var Array = [];
@@ -128,11 +175,11 @@
                 installationContainer.push(Array);
             }
         }
-             
+         
+        //initialize colorful Institution markers and store them in their container
         function initInstitutionsHighlight(institutionArray, dataverseMap, custom_marker, i){
             var Array = [];
             for(var j = 0; j < institutionArray[i].length; j++){
-                    console.log("'"+ custom_marker + "'")
                     var newMarker = new google.maps.Marker({
                         position: institutionArray[i][j],
                         map: dataverseMap,
@@ -144,41 +191,54 @@
             }
             installationContainerHighlighted.push(Array);
         }
-            
+          
+/***NOTE** this method contains features which are not in use including:
+      -installation size thresholds for variable marker size
+      -wigit infoWindow popup instead of metric page popout 
+          (commented out as alternate HTML string below)*/
+        
+        
+        
         //initialize markers & infowindows at dataverses in map data
         function initMarker(i, locationArray, dataverseMap){
         
-            //size threshold for icon imag
+            //Installation size threshold for icon image - hard coded ints give arbitrary size thresholds
             var threshold1 = 11;
             var threshold2 = 52;
          
-            //info window
+            //Installation Mouseover Title - if the map has a non-null description field in the database, it will render below the title
             
             if(locationArray[i][5] !== 'None')
-                var titleString = '<h2 style="font-family:monospace; font-size: 1.25em;">' + locationArray[i][2] + '</h2>'+ '<p>' + locationArray[i][5] + '</p>';
-            else var titleString = '<h2 style="font-family:monospace; font-size: 1.25em;">' + locationArray[i][2] + '</h2>'
+                var titleString = '<h2 style="font-family:inherit; font-size: 1.25em;">' + locationArray[i][2] + '</h2>'+ '<p>' + locationArray[i][5] + '</p>';
             
-            //Widget Infowindows -- Uncomment to activate
+            else var titleString = '<h2 style="font-family:inherit; font-size: 1.25em;">' + locationArray[i][2] + '</h2>'
+            
+            
+            //Widget Infowindows -- Uncomment/comment to activate/deactivate ***either or***
             /*
             if (Number(locationArray[i][6]) < 4.4) {
-                console.log(Number(locationArray[i][6]));
                 var contentString = titleString;
             }
             else {
                 var contentString = 
                     '<div id="window" style="width:500px; height:289px; border:0; margin:0" >' +
 
-                    '<h1 id="title" style="font-size: 20px; margin:0; margin-top:0; margin-bottom:0; font-family:monospace; border:0px white;">' + locationArray[i][2] + '</h1>' +
+                    '<h1 id="title" style="font-size: 20px; margin:0; margin-top:0; margin-bottom:0; font-family:inherit; border:0px white;">' + locationArray[i][2] + '</h1>' +
 
                     '<iframe id="dataverse-widget" src="https://dataverse-internal.iq.harvard.edu/dataverse/root?widget=dataverse@root" width="100%" height="260" style="border:0; background:url(https://dataverse-internal.iq.harvard.edu/resources/images/ajax-loading.gif) no-repeat 50% 50%;"></iframe>' + '</div>'
                 }
             */
             
+            /*Metric Info Windows -- Uncomment/comment to activate/deactivate ***either or***
+            Creates an infowindow with *Dummy* Metrics currently as well as a title linked to the root 
+            dataverse*/
+            
             var contentString = 
-                    '<div id="window" style="width:500px; height:289px; border:0; margin:0" >' +
+                    '<div id="window" style="max-width:500px; width: 100%; max-height:289px; height:50% border:0; margin:0" >' +
 
-                    '<h1 id="title" style="font-size: 20px; margin:0; margin-top:0; margin-bottom:0; font-family:monospace; border:0px white;">' + '<a href="https://dataverse-internal.iq.harvard.edu/">' + locationArray[i][2] + '</a>' + '</h1>' + '<div class="metricsdiv">' + '<h2 class="metricstitle">Dataverse Metrics</h2>' + '<ul class="metrics">' + '<li>' + 'Dataverses: (1,767)' + '</li>' + '<br>' + '<li>' + 'Datasets: (62,026)' + '</li>' + '<br>' + '<li>' + 'Files: (332,593)' + '</li>' + '<br>' + '<li>' + 'Downloads: (1,822,212)' + '</li>'+ '<br>' + '</ul>' + '</div>' + '</div>'
-
+                    '<h1 id="title" style="font-size: 20px; margin:0; margin-top:0; margin-bottom:0; font-family:inherit; border:0px white;">' + '<a href="https://dataverse-internal.iq.harvard.edu/">' + locationArray[i][2] + '</a>' + '</h1>' + '<div class="metricsdiv">' + '<h2 class="metricstitle">Dataverse Metrics</h2>' + '<ul class="metrics">' + '<li>' + 'Dataverses: (1,767)' + '</li>' + '<br>' + '<li>' + 'Datasets: (62,026)' + '</li>' + '<br>' + '<li>' + 'Files: (332,593)' + '</li>' + '<br>' + '<li>' + 'Downloads: (1,822,212)' + '</li>'+ '<br>' + '</ul>' + '</div>' + '</div>'
+            
+//Out of Use Feature -- choose to initialize different sized icons based on above thresholds 
             
             //Initialize small icon
             if(locationArray[i][1] < threshold1){
@@ -191,16 +251,17 @@
                     map: dataverseMap,
                     icon: small
                 });
+                
                 var infowindow = new google.maps.InfoWindow({
                 content: contentString
                 });
                 
                 var titlewindow = new google.maps.InfoWindow({
                     content: titleString,
-                    disableAutoPan: true
-                    
+                    disableAutoPan: true   
                 });
                 
+                //listeners associated with markers and windows
                 newMarker.addListener('click', function() {
                     closeAllInfoWindows();
                     infowindow.open(dataverseMap, newMarker);
@@ -212,12 +273,18 @@
                     showAllMarkers();
                     dataverseMap.panTo({lat: 30, lng: 0});
                     dataverseMap.setZoom(2);
+                    for(var i = 0; i < locationArray.length; i++){
+                        document.getElementById(i).classList.remove('large');
+                        document.getElementById(i).classList.add('small');
+                    }
                 });
                 
+                //push to appropriate containers
                 markerArray.push(newMarker);
                 infoArray.push(infowindow);
                 nameArray.push(titlewindow);
-                
+             
+            //Initialize medium icon
             } else if(locationArray[i][1] < threshold2){
                 var medium = {
                     url: "{% static 'medium.png' %}",
@@ -248,11 +315,17 @@
                     showAllMarkers();
                     dataverseMap.panTo({lat: 30, lng: 0});
                     dataverseMap.setZoom(2);
+                    for(var i = 0; i < locationArray.length; i++){
+                        document.getElementById(i).classList.remove('large');
+                        document.getElementById(i).classList.add('small');
+                    }
                 });
                 
                 markerArray.push(newMarker);
                 infoArray.push(infowindow);
                 nameArray.push(titlewindow);
+                
+            //Initialize Large Icon
             } else {
                 var large = {
                     url: "{% static 'large.png' %}",
@@ -283,6 +356,10 @@
                     showAllMarkers();
                     dataverseMap.panTo({lat: 30, lng: 0});
                     dataverseMap.setZoom(2);
+                    for(var i = 0; i < locationArray.length; i++){
+                        document.getElementById(i).classList.remove('large');
+                        document.getElementById(i).classList.add('small');
+                    }
                 });
         
                 markerArray.push(newMarker);
@@ -291,31 +368,18 @@
             }   
         }
         
-        function showHostedInstitutions(i, dataverseMap){
-            var subverse = hostedInstitutionsArray[i];
-            for(var i = 0; i < subverse.length; i = i + 2){  
-            subverse[i].setMap(dataverseMap);
-            subverse[i+1].setMap(dataverseMap);
-            }
-        }
-        //closes all clusters
-        function closeAllClusters(){
-            for(var j = 0; j < hostedInstitutionsArray.length; j++){
-                var subverse = hostedInstitutionsArray[j];
-                for(var i = 0; i < subverse.length; i = i + 2){ 
-                    subverse[i].setMap(null);
-                    subverse[i+1].setMap(null);
-                }
-            } 
-        }
+//MANIPULATION FUNCTIONS
         
-        //closes all open infoWindows
+        //INFO WINDOWS
+        
+        //close all open infoWindows
         function closeAllInfoWindows(){
             for(var i = 0; i < infoArray.length; i++){
                     infoArray[i].close();
             }
         }
         
+        //close all windows except indicated window by id
         function closeAllInfoWindows(id){
             for(var i = 0; i < infoArray.length; i++){
                 if(id == i)
@@ -326,21 +390,25 @@
             }
         }
         
+        //open title on map at specified index
         function openTitle(index, dataverseMap) {
             nameArray[index].open(dataverseMap, markerArray[index]);
         }
         
+        //close all titles
         function closeAllTitles(){
             for(var i = 0; i < nameArray.length; i++){
                 nameArray[i].close();
-            }
-            
+            }  
         }
         
+        //returns boolean representing if the infowindow argument is open or not
         function isInfoWindowOpen(infoWindow){
             var map = infoWindow.getMap();
             return (map !== null && typeof map !== "undefined");
         }
+        
+        //MARKERS
         
         //hides all markers
         function hideAllMarkers(){
@@ -359,7 +427,8 @@
                 }
             }
         }
-             
+        
+        //hides singular marker
         function hideMarker(marker){
             markerArray[marker].setOpacity(.4);
         }
@@ -371,16 +440,22 @@
                 markerArray[i].setZIndex(google.maps.MAX_ZINDEX + 1)
             }
         }
-             
+        
+        //shows singular marker
         function showMarker(marker){
             markerArray[marker].setOpacity(1);
         }
     
-        
+        //MAP OPTIONS
+    
+    
+        //sets viewport back to specified defaults 
         function setDefaultView(dataverseMap){
             dataverseMap.setCenter({lat: 30, lng: 0});
             dataverseMap.setZoom(2);
         }
+        
+        //CONTROL BAR
         
         //expands and highlights logo
         function expandLogo(id){
@@ -405,12 +480,14 @@
             }   
         }
         
+        //shrinks singular logo and removes highlight
         function shrinkLogo(i){
             var obj = document.getElementById(i);
             if (obj != null)
                 obj.classList.add('small');
         }
         
+        //Smooth scrolling left (see formula to alter scroll speed and style)
         function scrollLeftDiv(int){
              if (int == 0)
                 return;
@@ -420,6 +497,7 @@
             }, (800/(int+8))-4);
         }
         
+        //Smooth scrolling right (see formula to alter scroll speed and style)
         function scrollRightDiv(int){
              if (int == 0)
                 return;
@@ -430,14 +508,16 @@
         }
         
         //Control Bar CSS, click, and animation settings
-        function ControlBar(controlDiv, dataverseMap, locationArray, infoArray, markerArray) {
-
+        function ControlBar(controlDiv, dataverseMap, locationArray) {
+            
             // Countainer CSS
             var controlUI = document.createElement('div');
+            controlUI.id='ui_div';
             controlUI.classList.add('controlUI');
             controlDiv.appendChild(controlUI);
             
             var controlUI2 = document.createElement('div');
+            controlUI2.id='ui2_div';
             controlUI2.classList.add('controlUI2');
             controlUI2.id = 'D';
             controlUI.appendChild(controlUI2);
@@ -456,25 +536,27 @@
             var rightBtn = document.createElement('div');
             controlUI.appendChild(rightBtn);
             
+            //right button image
             var rightChevron = document.createElement('img');
             rightChevron.src = "{% static 'logos/chevron_right.png' %}";
             rightChevron.classList.add('rightArrow');
             rightBtn.appendChild(rightChevron);
             
+            //left button image
             var leftChevron = document.createElement('img');
             leftChevron.src = "{% static 'logos/chevron_left.png' %}";
             leftChevron.classList.add('leftArrow');
             leftBtn.appendChild(leftChevron);
             
+            //button click listeners
             leftChevron.addEventListener('click', function(){
                 scrollRightDiv(120);
             });
-            
             rightChevron.addEventListener('click', function(){
                 scrollLeftDiv(120);
             });
             
-            // Set CSS for each icon
+            // Set CSS classes
             for(var i = 0; i < locationArray.length; i++){
             //img container
                 var imgDiv = document.createElement('div');
@@ -487,10 +569,12 @@
                 img.classList.add('img');
                 imgDiv.appendChild(img);
                 
-                //event listeners for icon mouseover and click
-                imgDiv.addEventListener('mouseenter', function mouseover(imgDiv) {
+//EVENT LISTENERS
+                
+                imgDiv.addEventListener('mouseenter', function (imgDiv) {
                     var index = this.id;
-                    var center = locationArray[index][0];
+                    
+                    //infowindow actions
                     if(isInfoWindowOpen(infoArray[parseInt(index)]));
                     else {
                         expandLogo(index); 
@@ -498,14 +582,13 @@
                         openTitle(index, dataverseMap);
                     }
                     
+                    //installations hidden, and highlights shown
                     for(var j = 0; j < installationContainer.length; j++){
                         for(var k = 0; k < installationContainer[j].length; k++){
                             installationContainer[j][k].setOpacity(.05);
                         }
                     }
-                    
-                    
-                    for(var j = 0; j < installationContainer[index].length; j++){
+                    for(var j = 0; j < installationContainerHighlighted[index].length; j++){
                         if(installationContainerHighlighted[index][j].opacity == 0){
                             installationContainer[index][j].setOpacity(0);  
                             installationContainerHighlighted[index][j].setOpacity(.6);
@@ -514,20 +597,25 @@
                             }
                         }
                     }
-                    
+                    //markers brought to front
                     for(var i = 0; i < markerArray.length; i++){
                         markerArray[i].setZIndex(google.maps.MAX_ZINDEX + 1);
                     }
+                    
                 });
                 
-                imgDiv.addEventListener('mouseleave', function mouseout(imgDiv) {
+                
+                imgDiv.addEventListener('mouseleave', function(imgDiv) {
                     var index = this.id;
+                    
+                    //if the window is not open shink the logo
                     if(!isInfoWindowOpen(infoArray[parseInt(index)]))
                         shrinkLogo(index);
-                    var center = locationArray[index][0];
-                    closeAllTitles();
-                    shrinkLogo();
                     
+                    //close title windows
+                    closeAllTitles();
+                    
+                    //installations shown at variable opacity zoom dependent
                     for(var j = 0; j < installationContainer.length; j++){
                         for(var k = 0; k < installationContainer[j].length; k++){
                             if(dataverseMap.getZoom() == 2)
@@ -539,48 +627,53 @@
                             else installationContainer[j][k].setOpacity(.8);
                         }
                     }
-                    
+                    //highlights hidden
                     for(var j = 0; j < installationContainer.length; j++){
                         for(var k = 0; k < installationContainer[j].length; k++){
                             installationContainerHighlighted[j][k].setOpacity(0);
                         }   
                     }
-                    
+                    //markers brought to front
                     for(var i = 0; i < markerArray.length; i++){
                         markerArray[i].setZIndex(google.maps.MAX_ZINDEX + 1);
                     }
-                    
-                    
-
                 }); 
                 
+                //logo click
                 imgDiv.addEventListener('click', function click(imgDiv) {
                     var index = this.id;
+                    
+                    //close all windows
                     closeAllInfoWindows();
+                    //close all titles
                     closeAllTitles();
                     
+                    //zooms in to appropriate level (at least 3)
                     if (dataverseMap.getZoom() < 3){ 
                         dataverseMap.setZoom(dataverseMap.getZoom() + 1);
                     }    
+                    //opens proper info window
                     infoArray[index].open(dataverseMap, markerArray[index]);
-                    showAllMarkers();
                 });    
             }
             
+//MAP LISTENERS
             dataverseMap.addListener('dblclick', function(){ 
                 closeAllInfoWindows();
-                showAllMarkers();
             });
             
+            //set Z index of markers to front after map load
             dataverseMap.addListener('tilesloaded', function(){
                 for(var i = 0; i < markerArray.length; i++){
                     markerArray[i].setZIndex(google.maps.MAX_ZINDEX + 1);
                 }
             });
             
+            //changes marker opacity based on zoom level and brings markers to front
             dataverseMap.addListener('zoom_changed', function(){ 
+                //reset marker opacity based on zoom
                 for(var i = 0; i < installationContainer.length; i++){
-                    for(var j = 0; j < installationContainer[i].length; j++){ 
+                    for(var j = 0; j < installationContainer[i].length; j++){
                         if(dataverseMap.getZoom() == 2)
                         installationContainer[i][j].setOpacity(.3);
                         else if(dataverseMap.getZoom() < 4)
@@ -588,20 +681,58 @@
                         else if(dataverseMap.getZoom() < 6)
                             installationContainer[i][j].setOpacity(.6);
                         else installationContainer[i][j].setOpacity(.8);
-                            installationContainer[i][j].setZIndex(google.maps.MAX_ZINDEX*(-1));
+                        installationContainer[i][j].setZIndex(google.maps.MAX_ZINDEX*(-1));
                         
-                        for(var i = 0; i < markerArray.length; i++){
-                                markerArray[i].setZIndex(google.maps.MAX_ZINDEX + 1);
+                        for(var k = 0; k < markerArray.length; k++){
+                                markerArray[k].setZIndex(google.maps.MAX_ZINDEX + 1);
                         }
                     }
                 }
+                
+                //bring markers to front 
                 for(var i = 0; i < markerArray.length; i++){
                     markerArray[i].setZIndex(google.maps.MAX_ZINDEX + 1);  
                     showAllMarkers();
                 }
             });
+            
+            //wait until the map objects are loaded and the map is idle
+            google.maps.event.addListenerOnce(dataverseMap, 'idle', function(){
+        
+                //check for bounds changes and adjust control bar dynamically based on certain pixel widths
+                //responsive design adjustments should be made here
+                google.maps.event.addListener(dataverseMap, 'bounds_changed', function(){
+                    var map_div = document.getElementById('map');
+                    
+                    if (map_div.offsetWidth < 600){
+                        if (map_div.offsetWidth < 500)
+                            document.getElementById('control').style.display = 'none';
+                        dataverseMap.setOptions({zoomControl:true});
+                        dataverseMap.setOptions({
+                        zoomControlOptions: {
+                            position: google.maps.ControlPosition.TOP_LEFT
+                            }
+                        })
+                    } else if (map_div.offsetHeight < 400){
+                        document.getElementById('control').style.display = 'none';
+                        dataverseMap.setOptions({zoomControl:true});
+                        dataverseMap.setOptions({
+                        zoomControlOptions: {
+                            position: google.maps.ControlPosition.TOP_LEFT
+                            }
+                        })
+                    } else {
+                        document.getElementById('control').style.display = 'inline'; dataverseMap.setOptions({zoomControl:true});
+                        dataverseMap.setOptions({
+                            zoomControlOptions: {
+                            position: google.maps.ControlPosition.RIGHT_BOTTOM
+                            }
+                        })
+                    }  
+                });    
+            });
+            
         }
-  
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC8D0vQA1vP9HbbDwaye36Q4xGJO2t_Lik&callback=initMap"
     async defer></script>

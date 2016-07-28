@@ -1,6 +1,6 @@
 /* H1 Styles*/
 h1 {
-    font-family: monospace;
+    font-family:'Muli', Helvetica, sans-serif !important;
     text-align: center;
     font-size: 4em;
     background-color: white;
@@ -15,12 +15,18 @@ html, body {
 }
 /*map styles*/
 #map {
-    height: 480px;
-    width: 980px;
+    height: 90%;
+    width: 90%;
+    max-height: 480px;
+    min-height: 280px;
+    max-width: 980px;
+    min-width: 350px;
     margin: auto;
+    margin-bottom: 0;
     position: relative;
     top: 0px;
 }
+
 .large {
     width: 56px;
     height: 56px;
@@ -54,22 +60,27 @@ html, body {
     background-color: white;
 
 }
+
+.controlBar{
+    position: relative;
+    bottom: 200px;
+    width: 75%;
+    overflow: show;
+}
 .controlUI {
     background-color: transparent;
     cursor: pointer;
     margin-bottom: 0;
-    margin-right: 0;
     display: inline-block;
-    width: 700px;
+    width: 100%;
     height: 65px;
     overflow: auto;
+    margin: 0;
 }
 .controlUI2 {
-    width: 700px;
-    height: 80px;
-    position: absolute;
-    right: 0;
-    margin: 0;
+    width: 100%;
+    height: 62px;
+    margin: auto;
     display: inline-block;
     overflow: auto;
 }
@@ -93,12 +104,12 @@ html, body {
 }
 
 .metrics {
-    font-size: 1.5em;
-    font-family: monospace;
+    font-size: 1.25em;
+    font-family: inherit;
 }
 .metricstitle {
     font-size: 1.5em;
-    font-family: monospace;
+    font-family: inherit;
     text-align: center;
     font-weight:normal;
 }

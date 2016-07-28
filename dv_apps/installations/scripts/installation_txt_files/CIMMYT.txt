@@ -1,0 +1,40 @@
+Cired		
+Citizen Science Association		
+City & County of San Francisco	37.7866619	-122.3999719
+City University of Hong Kong	22.3374868	114.1720025
+city university of hong kong, web mining lab		
+civ_gha		
+CLACSO-Consejo Latinoamericano de Ciencias Sociales		
+CMU 19-704	46.1938318	6.1516853
+CMU EPP		
+CNH	43.3709711	-72.3682262
+cnic		
+College of New Rochelle	40.9114882	-73.7823549
+Colorado College	31.5876146	-97.1608812
+Colorado State University	40.5747751	-105.0807072
+Colorado State University - Pueblo	38.3162948	-104.5932603
+Colorado Youth Advisory Council	39.5500507	-105.7820674
+Columbia	34.0007104	-81.0348144
+Columbia University QMSS		
+Committee on Sustainability Assesment		
+Community Action in Integrated and Market Oriented Feed-Livestock Production in Central and South Asia Project		
+Community Development Department of Thailand	13.6965875	100.7227053
+Complex Systems Institute of Paris Ile-de-France	48.856614	2.3522219
+Consejería de la Presidencia, Sevilla, Spain	37.3890924	-5.9844589
+Consortium for Strategic Emerging Technologies and Public Policy		
+Consultative Group on International Agricultural Research (CGIAR)		
+Consulting researcher	41.3307316	69.3350503
+Contemporary Literary Review India		
+Continued Education	39.537754	-119.8171013
+Copenhagen Business  School		
+Corporation	38.7953175	-85.6503263
+COS		
+Cracow UNiversity of Economics, Department of Entrepreneurhsip and Innovation	50.0646501	19.9449799
+CREATE THRio Study		
+CRUZEIRO DO SUL	-7.6279977	-72.6761487
+CSIR		
+CSIR-CSIO		
+CSIRO	-37.9051042	145.1287212
+cts.umn.edu		
+CU	21.521757	-77.781167
+CUL	46.6979713	10.0893262

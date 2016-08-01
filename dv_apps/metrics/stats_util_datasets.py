@@ -4,7 +4,10 @@ This may be used for APIs, views with visualizations, etc.
 """
 #from django.db.models.functions import TruncMonth  # 1.10
 from collections import OrderedDict
+
 from django.db import models
+from django.db.models import Q
+
 from dv_apps.utils.date_helper import format_yyyy_mm_dd, get_month_name,\
     month_year_iterator
 #from dv_apps.dvobjects.models import DvObject, DTYPE_DATASET
@@ -260,14 +263,14 @@ class StatsMakerDatasets(object):
         """
         Return the count of published Dataverses
         """
-        return self.get_dataverse_count(**self.get_is_published_filter_param())
+        return self.get_dataset_count(**self.get_is_published_filter_param())
 
 
     def get_dataset_count_unpublished(self):
         """
         Return the count of unpublished Dataverses
         """
-        return self.get_dataverse_count(**self.get_is_NOT_published_filter_param())
+        return self.get_dataset_count(**self.get_is_NOT_published_filter_param())
 
     # ----------------------------
     #   Dataset counts by create date

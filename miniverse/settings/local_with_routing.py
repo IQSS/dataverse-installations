@@ -31,11 +31,19 @@ DATABASES = {
 """
 'default': {
     'ENGINE': 'django.db.backends.postgresql_psycopg2',
+    'NAME': 'dvndb_demo',
+    'USER': 'postgres',
+    'PASSWORD': '123',
+    'HOST': 'localhost'
+}
+
+'default': {
+    'ENGINE': 'django.db.backends.postgresql_psycopg2',
     'NAME': 'dvndb',
     'USER': 'rp',
     'PASSWORD': '123',
     'HOST': 'localhost'
-},
+}
 """
 
 SESSION_COOKIE_NAME = 'dv_metrics'

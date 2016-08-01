@@ -1,7 +1,11 @@
 from django.db import models
 #from django.contrib.auth.models import User
 
-DTYPES = ('Dataverse', 'Dataset', 'DataFile')
+DTYPE_DATAVERSE = 'Dataverse'
+DTYPE_DATASET = 'Dataset'
+DTYPE_DATAFILE = 'DataFile'
+
+DTYPES = (DTYPE_DATAVERSE, DTYPE_DATASET, DTYPE_DATAFILE)
 DTYPE_CHOICES = [ (d, d) for d in DTYPES]
 
 

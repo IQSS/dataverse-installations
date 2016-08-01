@@ -4,6 +4,10 @@ from django.db import models
 from dv_apps.dvobjects.models import DvObject
 from dv_apps.datasets.models import DatasetVersion
 
+RESPONSE_TYPE_DOWNLOAD = 'Download'
+RESPONSE_TYPE_EXPLORE = 'Explore'
+RESPONSE_TYPE_SUBSET = 'Subset'
+
 class GuestBook(models.Model):
     createtime = models.DateTimeField()
     emailrequired = models.NullBooleanField()

@@ -43,6 +43,10 @@ def view_simple_dataset_count2(request):
     if success:
         resp_dict['file_downloads_by_month'] = list(file_downloads_by_month)
 
+    success, dv_counts_by_type = smd.get_dataverse_counts_by_type()
+    if success:
+        resp_dict['dv_counts_by_type'] = dv_counts_by_type
+
     d = dict(JSON_STATS=json.dumps(resp_dict, indent=4))
     return render(request, 'metrics_api.html', d)
 

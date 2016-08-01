@@ -2,6 +2,8 @@ from django.db import models
 from dv_apps.dvobjects.models import DvObject
 from dv_apps.terms_of_use.models import TermsOfUseAndAccess
 
+DATAVERSE_TYPE_UNCATEGORIZED = 'UNCATEGORIZED'
+
 class Dataverse(models.Model):
 
     id = models.OneToOneField(DvObject, db_column='id', primary_key=True)

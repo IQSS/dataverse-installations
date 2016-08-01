@@ -2,7 +2,7 @@
 Create metrics for Datasets.
 This may be used for APIs, views with visualizations, etc.
 """
-
+from decimal import Decimal
 from django.shortcuts import render
 from django.http import JsonResponse
 #from django.db.models.functions import TruncMonth  # 1.10
@@ -13,6 +13,7 @@ from dv_apps.utils.date_helper import format_yyyy_mm_dd, get_month_name,\
     month_year_iterator
 from dv_apps.dvobjects.models import DvObject, DTYPE_DATASET
 from dv_apps.datasets.models import Dataset
+from dv_apps.dataverses.models import Dataverse, DATAVERSE_TYPE_UNCATEGORIZED
 from dv_apps.guestbook.models import GuestBookResponse, RESPONSE_TYPE_DOWNLOAD
 
 class TruncMonth(models.Func):
@@ -219,7 +220,6 @@ class StatsMakerDatasets(object):
                             ).exclude(**exclude_params\
                             ).filter(**filter_params)
 
-
         # annotate query adding "month_yyyy_dd" and "cnt"
         #
         ds_counts_by_month = ds_counts_by_month.annotate(\
@@ -363,7 +363,6 @@ class StatsMakerDatasets(object):
         if self.was_error_found():
             return self.get_error_msg_return()
 
-
         filter_params = self.get_date_filter_params(date_var_name='responsetime')
         filter_params['downloadtype'] = RESPONSE_TYPE_DOWNLOAD
 
@@ -394,5 +393,68 @@ class StatsMakerDatasets(object):
                 pass
 
             formatted_records.append(d)
+
+        return True, formatted_records
+
+
+    def get_dataverse_counts_by_type(self, uncategorized_replacement_name=None):
+        """
+        Return dataverse counts by 'dataversetype'
+
+        Optional if a dataverse is uncategorized:
+            - Specifying 'uncategorized_replacement_name' will
+                set "UNCATEGORIZED" to another string
+
+        Returns: { "dv_counts_by_type": [
+                        {
+                            "total_count": 356,
+                            "dataversetype": "RESEARCH_PROJECTS",
+                            "type_count": 85,
+                            "percent_string": "23.9%"
+                        },
+                        {
+                            "total_count": 356,
+                            "dataversetype": "TEACHING_COURSES",
+                            "type_count": 10,
+                            "percent_string": "2.8%"
+                        }
+                            ... etc
+                    ]
+                }
+        """
+        if self.was_error_found():
+            return self.get_error_msg_return()
+
+        # Retrieve the date parameters
+        #
+        filter_params = self.get_date_filter_params('dvobject__createdate')
+
+        dataverse_counts_by_type = Dataverse.objects.select_related('dvobject'\
+                    ).filter(**filter_params\
+                    ).values('dataversetype'\
+                    ).annotate(type_count=models.Count('dataversetype'))
+
+        # Count all dataverses
+        #
+        total_count = sum([rec.get('type_count', 0) for rec in dataverse_counts_by_type])
+        total_count = total_count + 0.0
+
+        # Format the records, adding 'total_count' and 'percent_string' to each one
+        #
+        formatted_records = []
+        for rec in dataverse_counts_by_type:
+
+            if total_count > 0:
+                float_percent = rec.get('type_count', 0) / total_count
+                rec['percent_string'] = '{0:.1%}'.format(float_percent)
+                rec['total_count'] = int(total_count)
+
+            # Optional: Add alternate name for DATAVERSE_TYPE_UNCATEGORIZED
+            #
+            if uncategorized_replacement_name:
+                if rec['dataversetype'] == DATAVERSE_TYPE_UNCATEGORIZED:
+                    rec['dataversetype'] = uncategorized_replacement_name
+
+            formatted_records.append(rec)
 
         return True, formatted_records

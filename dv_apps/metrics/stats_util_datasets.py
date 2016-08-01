@@ -2,17 +2,14 @@
 Create metrics for Datasets.
 This may be used for APIs, views with visualizations, etc.
 """
-from decimal import Decimal
-from django.shortcuts import render
-from django.http import JsonResponse
 #from django.db.models.functions import TruncMonth  # 1.10
 from collections import OrderedDict
-from django.db.models import Count
 from django.db import models
 from dv_apps.utils.date_helper import format_yyyy_mm_dd, get_month_name,\
     month_year_iterator
-from dv_apps.dvobjects.models import DvObject, DTYPE_DATASET
+#from dv_apps.dvobjects.models import DvObject, DTYPE_DATASET
 from dv_apps.datasets.models import Dataset
+from dv_apps.datafiles.models import Datafile
 from dv_apps.dataverses.models import Dataverse, DATAVERSE_TYPE_UNCATEGORIZED
 from dv_apps.guestbook.models import GuestBookResponse, RESPONSE_TYPE_DOWNLOAD
 
@@ -122,8 +119,12 @@ class StatsMakerDatasets(object):
         self.selected_year = kwargs.get('selected_year', None)
         if self.selected_year:
             if not (self.selected_year.isdigit() and len(self.selected_year) == 4):
-                self.add_error('The year must be a 4-digit number (YYYY)a')
+                self.add_error('The year must be a 4-digit number (YYYY)')
                 return
+            if int(self.selected_year) < 0:
+                self.add_error('The year must cannot be less than 1.')
+            if int(self.selected_year) == 0:
+                self.add_error('The year must cannot be zero.')
 
         # Sanity check the selected_year and start_date
         if self.selected_year and self.start_date:
@@ -167,9 +168,22 @@ class StatsMakerDatasets(object):
 
         return filter_params
 
+
+    def get_datafile_count(self):
+        """
+        Return the Datafile count
+        """
+        if self.was_error_found():
+            return self.get_error_msg_return()
+
+        filter_params = self.get_date_filter_params()
+
+        return True, Datafile.objects.filter(**filter_params).count()
+
+
     def get_dataset_count(self):
         """
-        Return the dataset count
+        Return the Dataset count
         """
         if self.was_error_found():
             return self.get_error_msg_return()
@@ -179,17 +193,57 @@ class StatsMakerDatasets(object):
         return True, Dataset.objects.filter(**filter_params).count()
 
 
-    def get_dataset_counts_by_create_date(self):
+    def get_dataverse_count(self):
+        """
+        Return the Dataverse count
+        """
+        if self.was_error_found():
+            return self.get_error_msg_return()
 
+        filter_params = self.get_date_filter_params()
+
+        return True, Dataverse.objects.filter(**filter_params).count()
+
+
+    def get_dataset_counts_by_create_date(self):
+        """
+        Get # of datasets created each month
+        """
         return self.get_dataset_count_by_month(date_param='dvobject__createdate')
 
 
-    def get_dataset_counts_by_publication_date(self):
+    def get_published_dataset_counts_by_create_date(self):
+        """
+        Get # of --PUBLISHED-- datasets created each month
+        """
+        extra_filters = dict(dvobject__publicationdate__isnull=False)
+        return self.get_dataset_count_by_month(date_param='dvobject__createdate',\
+                    **extra_filters)
 
+    def get_unpublished_dataset_counts_by_create_date(self):
+        """
+        Get # of --UNPUBLISHED-- datasets created each month
+        """
+        extra_filters = dict(dvobject__publicationdate__isnull=True)
+        return self.get_dataset_count_by_month(date_param='dvobject__createdate',\
+                    **extra_filters)
+
+    def get_dataset_counts_by_publication_date(self):
+        """
+        Get # of datasets published each month
+        """
         return self.get_dataset_count_by_month(date_param='dvobject__publicationdate')
 
+    def get_dataset_counts_by_modification_date(self):
+        """
+        Get # of datasets modified each month
 
-    def get_dataset_count_by_month(self, date_param='dvobject__createdate'):
+        Not great b/c only the last modified date is recorded
+        """
+        return self.get_dataset_count_by_month(date_param='dvobject__modificationtime')
+
+
+    def get_dataset_count_by_month(self, date_param='dvobject__createdate', **extra_filters):
         """
         Return dataset counts by month
         """
@@ -209,6 +263,12 @@ class StatsMakerDatasets(object):
         # Retrieve the date parameters
         #
         filter_params = self.get_date_filter_params()
+
+        # Add extra filters from kwargs
+        #
+        if extra_filters:
+            for k, v in extra_filters.items():
+                filter_params[k] = v
 
         # -----------------------------------
         # (2) Construct query
@@ -359,7 +419,10 @@ class StatsMakerDatasets(object):
         return True, formatted_list
 
     def get_downloads_by_month(self):
-
+        """
+        Using the GuestBookResponse object, find the number of file
+        downloads per month
+        """
         if self.was_error_found():
             return self.get_error_msg_return()
 
@@ -454,6 +517,68 @@ class StatsMakerDatasets(object):
             if uncategorized_replacement_name:
                 if rec['dataversetype'] == DATAVERSE_TYPE_UNCATEGORIZED:
                     rec['dataversetype'] = uncategorized_replacement_name
+
+            formatted_records.append(rec)
+
+        return True, formatted_records
+
+    def get_dataverse_affiliation_counts(self):
+        """
+        Return dataverse counts by 'affiliation'
+
+        Optional if a dataverse is uncategorized:
+            - Specifying 'uncategorized_replacement_name' will
+                set "UNCATEGORIZED" to another string
+
+        Returns: { "dv_counts_by_type": [
+                        {
+                            "total_count": 356,
+                            "dataversetype": "RESEARCH_PROJECTS",
+                            "type_count": 85,
+                            "percent_string": "23.9%"
+                        },
+                        {
+                            "total_count": 356,
+                            "dataversetype": "TEACHING_COURSES",
+                            "type_count": 10,
+                            "percent_string": "2.8%"
+                        }
+                            ... etc
+                    ]
+                }
+        """
+        if self.was_error_found():
+            return self.get_error_msg_return()
+
+        # Retrieve the date parameters
+        #
+        filter_params = self.get_date_filter_params('dvobject__createdate')
+
+        dataverse_counts_by_affil = Dataverse.objects.select_related('dvobject'\
+                    ).filter(**filter_params\
+                    ).values('affiliation'\
+                    ).annotate(affil_count=models.Count('affiliation'))
+
+        # Count all dataverses
+        #
+        total_count = sum([rec.get('affil_count', 0) for rec in dataverse_counts_by_affil])
+        total_count = total_count + 0.0
+
+        # Format the records, adding 'total_count' and 'percent_string' to each one
+        #
+        formatted_records = []
+        for rec in dataverse_counts_by_affil:
+
+            if total_count > 0:
+                float_percent = rec.get('affil_count', 0) / total_count
+                rec['percent_string'] = '{0:.1%}'.format(float_percent)
+                rec['total_count'] = int(total_count)
+
+            # Optional: Add alternate name for DATAVERSE_TYPE_UNCATEGORIZED
+            #
+            #if uncategorized_replacement_name:
+            #    if rec['dataversetype'] == DATAVERSE_TYPE_UNCATEGORIZED:
+            #        rec['dataversetype'] = uncategorized_replacement_name
 
             formatted_records.append(rec)
 

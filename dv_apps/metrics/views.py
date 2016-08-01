@@ -2,16 +2,17 @@
 Metric views, returning JSON repsonses
 """
 
-from django.shortcuts import render
 from collections import OrderedDict
 import json
-from django.http import JsonResponse, HttpResponse
-from dv_apps.utils.date_helper import format_yyyy_mm_dd
-from django.db import models
-from .stats_util_datasets import StatsMakerDatasets
-from dv_apps.datasets.models import Dataset
-from dv_apps.dataverses.models import Dataverse
 
+from django.shortcuts import render
+from django.http import JsonResponse, HttpResponse
+from django.views.decorators.cache import cache_page
+
+from dv_apps.metrics.stats_util_datasets import StatsMakerDatasets
+
+
+#@cache_page(60 * 6)
 def view_simple_dataset_count2(request):
     """Stripped down example"""
 
@@ -30,6 +31,19 @@ def view_simple_dataset_count2(request):
         resp_dict['combined_counts'] = list(combined_counts)
     """
 
+    success, dataverse_count = smd.get_dataverse_count()
+    if success:
+        resp_dict['dataverse_count'] = dataverse_count
+
+    success, dataset_count = smd.get_dataset_count()
+    if success:
+        resp_dict['dataset_count'] = dataset_count
+
+    success, datafile_count = smd.get_datafile_count()
+    if success:
+        resp_dict['datafile_count'] = datafile_count
+
+
     success, dataset_counts_by_month = smd.get_dataset_counts_by_create_date()
     if success:
         resp_dict['dataset_counts_by_month'] = list(dataset_counts_by_month)
@@ -38,6 +52,9 @@ def view_simple_dataset_count2(request):
     if success:
         resp_dict['datasets_published_counts_by_month'] = list(datasets_published_counts_by_month)
 
+    success, datasets_modified_counts_by_month = smd.get_dataset_counts_by_modification_date()
+    if success:
+        resp_dict['datasets_modified_counts_by_month'] = datasets_modified_counts_by_month
 
     success, file_downloads_by_month = smd.get_downloads_by_month()
     if success:
@@ -46,6 +63,10 @@ def view_simple_dataset_count2(request):
     success, dv_counts_by_type = smd.get_dataverse_counts_by_type()
     if success:
         resp_dict['dv_counts_by_type'] = dv_counts_by_type
+
+    success, dv_counts_by_affil = smd.get_dataverse_affiliation_counts()
+    if success:
+        resp_dict['dv_counts_by_affil'] = dv_counts_by_affil
 
     d = dict(JSON_STATS=json.dumps(resp_dict, indent=4))
     return render(request, 'metrics_api.html', d)

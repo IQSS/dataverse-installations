@@ -58,6 +58,19 @@ def view_simple_dataset_count2(request):
 
 
     # -------------------------
+    # Datafiles by content type
+    # -------------------------
+    #success, number_of_datafile_types = smd.get_number_of_datafile_types()
+    #if success:
+    #    resp_dict['number_of_datafile_types'] = list(number_of_datafile_types)
+
+    success, datafile_content_type_counts = smd.get_datafile_content_type_counts()
+    if success:
+        resp_dict['datafile_content_type_counts'] = datafile_content_type_counts
+
+
+
+    # -------------------------
     # Datasets created each month
     # -------------------------
     success, dataset_counts_by_month = smd.get_dataset_counts_by_create_date()
@@ -95,9 +108,9 @@ def view_simple_dataset_count2(request):
     # -------------------------
     # Dataverses categorized by affiliation
     # -------------------------
-    success, dv_counts_by_affil = smd.get_dataverse_affiliation_counts()
+    success, dv_counts_by_affiliation = smd.get_dataverse_affiliation_counts()
     if success:
-        resp_dict['dv_counts_by_affil'] = dv_counts_by_affil
+        resp_dict['dv_counts_by_affiliation'] = dv_counts_by_affiliation
 
     d = dict(JSON_STATS=json.dumps(resp_dict, indent=4))
     return render(request, 'metrics_api.html', d)

@@ -603,26 +603,21 @@ class StatsMakerDatasets(object):
         """
         Return dataverse counts by 'affiliation'
 
-        Optional if a dataverse is uncategorized:
-            - Specifying 'uncategorized_replacement_name' will
-                set "UNCATEGORIZED" to another string
-
-        Returns: { "dv_counts_by_type": [
-                        {
-                            "total_count": 356,
-                            "dataversetype": "RESEARCH_PROJECTS",
-                            "type_count": 85,
-                            "percent_string": "23.9%"
-                        },
-                        {
-                            "total_count": 356,
-                            "dataversetype": "TEACHING_COURSES",
-                            "type_count": 10,
-                            "percent_string": "2.8%"
-                        }
-                            ... etc
-                    ]
-                }
+        Returns: dv_counts_by_affiliation": [
+            {
+                "affiliation": "University of Oxford",
+                "affil_count": 2,
+                "total_count": 191,
+                "percent_string": "1.0%"
+            },
+            {
+                "affiliation": "University of Illinois",
+                "affil_count": 1,
+                "total_count": 191,
+                "percent_string": "0.5%"
+            }
+            ...
+        ]
         """
         if self.was_error_found():
             return self.get_error_msg_return()
@@ -651,12 +646,84 @@ class StatsMakerDatasets(object):
                 rec['percent_string'] = '{0:.1%}'.format(float_percent)
                 rec['total_count'] = int(total_count)
 
-            # Optional: Add alternate name for DATAVERSE_TYPE_UNCATEGORIZED
-            #
-            #if uncategorized_replacement_name:
-            #    if rec['dataversetype'] == DATAVERSE_TYPE_UNCATEGORIZED:
-            #        rec['dataversetype'] = uncategorized_replacement_name
+            formatted_records.append(rec)
 
+        return True, formatted_records
+
+    '''
+    def get_number_of_datafile_types(self):
+        """Return the number of distinct contenttypes found in Datafile objects"""
+        if self.was_error_found():
+            return self.get_error_msg_return()
+
+        # Retrieve the date parameters
+        #
+        filter_params = self.get_date_filter_params('dvobject__createdate')
+
+        datafile_counts_by_type = Datafile.objects.select_related('dvobject'\
+                    ).filter(**filter_params\
+                    ).values('contenttype'\
+                    ).distinct().count()
+
+        return True, dict(datafile_counts_by_type=datafile_counts_by_type)
+    '''
+
+    def get_datafile_content_type_counts(self):
+        """
+        Return datafile counts by 'content type'
+
+        "datafile_content_type_counts": [
+                {
+                    "total_count": 1584,
+                    "contenttype": "text/tab-separated-values",
+                    "type_count": 187,
+                    "percent_string": "11.8%"
+                },
+                {
+                    "total_count": 1584,
+                    "contenttype": "image/jpeg",
+                    "type_count": 182,
+                    "percent_string": "11.5%"
+                },
+                {
+                    "total_count": 1584,
+                    "contenttype": "text/plain",
+                    "type_count": 147,
+                    "percent_string": "9.3%"
+                }
+            ]
+        """
+        if self.was_error_found():
+            return self.get_error_msg_return()
+
+        # Retrieve the date parameters
+        #
+        filter_params = self.get_date_filter_params('dvobject__createdate')
+
+        datafile_counts_by_type = Datafile.objects.select_related('dvobject'\
+                    ).filter(**filter_params\
+                    ).values('contenttype'\
+                    ).order_by('contenttype'\
+                    ).annotate(type_count=models.Count('contenttype')\
+                    ).order_by('-type_count')
+
+        # Count all dataverses
+        #
+        total_count = sum([rec.get('type_count', 0) for rec in datafile_counts_by_type])
+        total_count = total_count + 0.0
+
+        # Format the records, adding 'total_count' and 'percent_string' to each one
+        #
+        formatted_records = []
+        #num = 0
+        for rec in datafile_counts_by_type:
+
+            if total_count > 0:
+                float_percent = rec.get('type_count', 0) / total_count
+                rec['percent_string'] = '{0:.1%}'.format(float_percent)
+                rec['total_count'] = int(total_count)
+                #num+=1
+                #rec['num'] = num
             formatted_records.append(rec)
 
         return True, formatted_records

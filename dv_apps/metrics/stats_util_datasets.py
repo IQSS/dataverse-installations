@@ -572,7 +572,9 @@ class StatsMakerDatasets(object):
         dataverse_counts_by_type = Dataverse.objects.select_related('dvobject'\
                     ).filter(**filter_params\
                     ).values('dataversetype'\
-                    ).annotate(type_count=models.Count('dataversetype'))
+                    ).order_by('dataversetype'\
+                    ).annotate(type_count=models.Count('dataversetype')\
+                    ).order_by('-type_count')
 
         # Count all dataverses
         #
@@ -629,7 +631,9 @@ class StatsMakerDatasets(object):
         dataverse_counts_by_affil = Dataverse.objects.select_related('dvobject'\
                     ).filter(**filter_params\
                     ).values('affiliation'\
-                    ).annotate(affil_count=models.Count('affiliation'))
+                    ).order_by('affiliation'\
+                    ).annotate(affil_count=models.Count('affiliation')\
+                    ).order_by('-affil_count')
 
         # Count all dataverses
         #

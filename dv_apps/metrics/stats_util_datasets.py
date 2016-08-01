@@ -11,7 +11,9 @@ from django.db.models import Count
 from django.db import models
 from dv_apps.utils.date_helper import format_yyyy_mm_dd, get_month_name,\
     month_year_iterator
+from dv_apps.dvobjects.models import DvObject, DTYPE_DATASET
 from dv_apps.datasets.models import Dataset
+from dv_apps.guestbook.models import GuestBookResponse, RESPONSE_TYPE_DOWNLOAD
 
 class TruncMonth(models.Func):
     function = 'EXTRACT'
@@ -138,6 +140,7 @@ class StatsMakerDatasets(object):
                             (self.selected_year, self.end_date.date()))
                 return
 
+        # Optional time sort parameter
         self.time_sort = str(kwargs.get('time_sort', ''))
         if self.time_sort == 'd':   # descending
             self.time_sort = '-'
@@ -216,6 +219,7 @@ class StatsMakerDatasets(object):
                             ).exclude(**exclude_params\
                             ).filter(**filter_params)
 
+
         # annotate query adding "month_yyyy_dd" and "cnt"
         #
         ds_counts_by_month = ds_counts_by_month.annotate(\
@@ -224,6 +228,8 @@ class StatsMakerDatasets(object):
             ).annotate(cnt=models.Count('dvobject_id')\
             ).values('month_yyyy_dd', 'cnt'\
             ).order_by('%smonth_yyyy_dd' % self.time_sort)
+
+        #print (ds_counts_by_month)
 
         # -----------------------------------
         # (3) Format results
@@ -293,7 +299,7 @@ class StatsMakerDatasets(object):
                             )
 
     def get_dataset_counts_by_create_date_and_pub_date(self):
-        """Combine create and publication date stats info"""
+        """INCOMPLETE - Combine create and publication date stats info"""
 
         if self.was_error_found():
             return self.get_error_msg_return()
@@ -351,3 +357,42 @@ class StatsMakerDatasets(object):
 
 
         return True, formatted_list
+
+    def get_downloads_by_month(self):
+
+        if self.was_error_found():
+            return self.get_error_msg_return()
+
+
+        filter_params = self.get_date_filter_params(date_var_name='responsetime')
+        filter_params['downloadtype'] = RESPONSE_TYPE_DOWNLOAD
+
+        file_counts_by_month = GuestBookResponse.objects.filter(**filter_params\
+            ).annotate(month_yyyy_dd=TruncYearMonth('responsetime')\
+            ).values('month_yyyy_dd'\
+            ).annotate(cnt=models.Count('guestbook_id')\
+            ).values('month_yyyy_dd', 'cnt'\
+            ).order_by('%smonth_yyyy_dd' % self.time_sort)
+
+        formatted_records = []  # move from a queryset to a []
+        file_running_total = 0
+        for d in file_counts_by_month:
+            file_running_total += d['cnt']
+            d['running_total'] = file_running_total
+
+            # Add year and month numbers
+            d['year_num'] = int(d['month_yyyy_dd'][0:4])
+            month_num = int(d['month_yyyy_dd'][5:])
+            d['month_num'] = month_num
+
+            # Add month name
+            month_name_found, month_name = get_month_name(month_num)
+            if month_name_found:
+                d['month_name'] = month_name
+            else:
+                # Log it!!!!!!
+                pass
+
+            formatted_records.append(d)
+
+        return True, formatted_records

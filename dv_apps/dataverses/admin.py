@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Dataverse, CitationPageCheck, DataverseTheme, Template
+from .models import Dataverse, DataverseTheme, Template #CitationPageCheck
 from dv_apps.datasets.models import Dataset
 
 """
@@ -21,10 +21,10 @@ class DatasetInline(admin.TabularInline):
 class DataverseAdmin(admin.ModelAdmin):
     #inlines = (DatasetInline,)
     save_on_top = True
-    list_display = ('id',  'name', 'alias', 'affiliation', 'dataversetype', )
+    list_display = ('dvobject',  'name', 'alias', 'affiliation', 'dataversetype', )
     #readonly_fields = ('createdate', 'modificationtime')
     list_filter= ('permissionroot', 'dataversetype', )
-    list_display_links = ('id', 'name')
+    list_display_links = ('dvobject', 'name')
 admin.site.register(Dataverse, DataverseAdmin)
 
 class DataverseThemeAdmin(admin.ModelAdmin):
@@ -46,13 +46,15 @@ class DataverseTheme(models.Model):
     textcolor = models.CharField(max_length=255, blank=True, null=True)
     dataverse = models.ForeignKey('Dvobject', blank=True, null=True)
 """
+
+"""
 class CitationPageCheckAdmin(admin.ModelAdmin):
     save_on_top = True
     list_display = ('dataverse',  'citation_found', 'modified', 'created', 'citation_url', )
     readonly_fields = ('created', 'modified')
     list_filter= ('citation_found',)
 admin.site.register(CitationPageCheck, CitationPageCheckAdmin)
-
+"""
 
 
 class TemplateAdmin(admin.ModelAdmin ):

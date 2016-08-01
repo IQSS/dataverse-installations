@@ -6,7 +6,7 @@ DATAVERSE_TYPE_UNCATEGORIZED = 'UNCATEGORIZED'
 
 class Dataverse(models.Model):
 
-    id = models.OneToOneField(DvObject, db_column='id', primary_key=True)
+    dvobject = models.OneToOneField(DvObject, db_column='id', primary_key=True)
 
     name = models.CharField(max_length=255)
     alias = models.CharField(max_length=255)
@@ -97,6 +97,7 @@ class Template(models.Model):
         managed = False
         db_table = 'template'
 
+"""
 class CitationPageCheck(models.Model):
     dataverse = models.ForeignKey(Dataverse)
     citation_url = models.URLField()
@@ -112,3 +113,4 @@ class CitationPageCheck(models.Model):
 
     class Meta:
         ordering = ('-created', 'dataverse')
+"""

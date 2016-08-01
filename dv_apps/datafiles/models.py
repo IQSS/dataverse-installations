@@ -3,7 +3,7 @@ from django.db import models
 from dv_apps.dvobjects.models import DvObject
 
 class Datafile(models.Model):
-    id = models.OneToOneField(DvObject, db_column='id', primary_key=True)
+    dvobject = models.OneToOneField(DvObject, db_column='id', primary_key=True)
 
     name = models.CharField(max_length=255, blank=True, null=True)
 
@@ -20,9 +20,9 @@ class Datafile(models.Model):
     restricted = models.BooleanField()
 
     def __str__(self):
-        return '%s' % self.id
+        return '%s' % self.dvobject
 
     class Meta:
-        ordering = ('id',)
+        ordering = ('dvobject',)
         managed = False
         db_table = 'datafile'

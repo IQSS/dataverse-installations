@@ -169,7 +169,18 @@ class StatsMakerDatasets(object):
         return filter_params
 
 
-    def get_datafile_count(self):
+    def get_is_published_filter_param(self):
+
+        return dict(dvobject__publicationdate__isnull=False)
+
+    def get_is_NOT_published_filter_param(self):
+
+        return dict(dvobject__publicationdate__isnull=True)
+
+    # ----------------------------
+    #  Datafile counts
+    # ----------------------------
+    def get_datafile_count(self, **extra_filters):
         """
         Return the Datafile count
         """
@@ -177,23 +188,44 @@ class StatsMakerDatasets(object):
             return self.get_error_msg_return()
 
         filter_params = self.get_date_filter_params()
+        if extra_filters:
+            for k, v in extra_filters.items():
+                filter_params[k] = v
 
         return True, Datafile.objects.filter(**filter_params).count()
 
-
-    def get_dataset_count(self):
+    def get_datafile_count_published(self):
         """
-        Return the Dataset count
+        Return the count of published Dataverses
         """
-        if self.was_error_found():
-            return self.get_error_msg_return()
-
-        filter_params = self.get_date_filter_params()
-
-        return True, Dataset.objects.filter(**filter_params).count()
+        return self.get_datafile_count(**self.get_is_published_filter_param())
 
 
-    def get_dataverse_count(self):
+    def get_datafile_count_unpublished(self):
+        """
+        Return the count of published Dataverses
+        """
+        return self.get_datafile_count(**self.get_is_NOT_published_filter_param())
+
+
+    # ----------------------------
+    #  Dataverse counts
+    # ----------------------------
+    def get_dataverse_count_published(self):
+        """
+        Return the count of published Dataverses
+        """
+        return self.get_dataverse_count(**self.get_is_published_filter_param())
+
+
+    def get_dataverse_count_unpublished(self):
+        """
+        Return the count of unpublished Dataverses
+        """
+        return self.get_dataverse_count(**self.get_is_NOT_published_filter_param())
+
+
+    def get_dataverse_count(self, **extra_filters):
         """
         Return the Dataverse count
         """
@@ -201,38 +233,80 @@ class StatsMakerDatasets(object):
             return self.get_error_msg_return()
 
         filter_params = self.get_date_filter_params()
+        if extra_filters:
+            for k, v in extra_filters.items():
+                filter_params[k] = v
 
         return True, Dataverse.objects.filter(**filter_params).count()
 
+    # ----------------------------
+    #   Dataset counts (single number totals)
+    # ----------------------------
+    def get_dataset_count(self, **extra_filters):
+        """
+        Return the Dataset count
+        """
+        if self.was_error_found():
+            return self.get_error_msg_return()
 
-    def get_dataset_counts_by_create_date(self):
+        filter_params = self.get_date_filter_params()
+        if extra_filters:
+            for k, v in extra_filters.items():
+                filter_params[k] = v
+
+        return True, Dataset.objects.filter(**filter_params).count()
+
+    def get_dataset_count_published(self):
+        """
+        Return the count of published Dataverses
+        """
+        return self.get_dataverse_count(**self.get_is_published_filter_param())
+
+
+    def get_dataset_count_unpublished(self):
+        """
+        Return the count of unpublished Dataverses
+        """
+        return self.get_dataverse_count(**self.get_is_NOT_published_filter_param())
+
+    # ----------------------------
+    #   Dataset counts by create date
+    # ----------------------------
+    def get_dataset_counts_by_create_date(self, **extra_filters):
         """
         Get # of datasets created each month
         """
+        if self.was_error_found():
+            return self.get_error_msg_return()
+
+        filter_params = self.get_date_filter_params()
+        if extra_filters:
+            for k, v in extra_filters.items():
+                filter_params[k] = v
+
         return self.get_dataset_count_by_month(date_param='dvobject__createdate')
 
 
-    def get_published_dataset_counts_by_create_date(self):
+    def get_dataset_counts_by_create_date_published(self):
         """
         Get # of --PUBLISHED-- datasets created each month
         """
-        extra_filters = dict(dvobject__publicationdate__isnull=False)
-        return self.get_dataset_count_by_month(date_param='dvobject__createdate',\
-                    **extra_filters)
+        return self.get_dataset_counts_by_create_date(**self.get_is_published_filter_param())
 
-    def get_unpublished_dataset_counts_by_create_date(self):
+
+    def get_dataset_counts_by_create_date_unpublished(self):
         """
         Get # of --UNPUBLISHED-- datasets created each month
         """
-        extra_filters = dict(dvobject__publicationdate__isnull=True)
-        return self.get_dataset_count_by_month(date_param='dvobject__createdate',\
-                    **extra_filters)
+        return self.get_dataset_counts_by_create_date(**self.get_is_NOT_published_filter_param())
+
 
     def get_dataset_counts_by_publication_date(self):
         """
         Get # of datasets published each month
         """
         return self.get_dataset_count_by_month(date_param='dvobject__publicationdate')
+
 
     def get_dataset_counts_by_modification_date(self):
         """

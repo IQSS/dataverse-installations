@@ -44,10 +44,10 @@ def view_jcabanas(request):
 
     print count_test
 
-    dataverse_counts_by_month = Dataverse.objects.filter(id__createdate__year=2015\
-        ).annotate(month=TruncMonth('id__createdate')\
+    dataverse_counts_by_month = Dataverse.objects.filter(dvobject__createdate__year=2015\
+        ).annotate(month=TruncMonth('dvobject__createdate')\
         ).values('month'\
-        ).annotate(cnt=models.Count('id_id')\
+        ).annotate(cnt=models.Count('dvobject_id')\
         ).values('month', 'cnt'\
         ).order_by('month')
 
@@ -58,14 +58,14 @@ def view_jcabanas(request):
         print d
 
     dataverse_counts_by_type = Dataverse.objects.values('dataversetype').annotate(type_count=models.Count('dataversetype'))
-    
+
     file_counts_by_month = GuestBookResponse.objects.filter(downloadtype='Download'\
         ).annotate(month=TruncMonth('responsetime')\
         ).values('month'\
         ).annotate(cnt=models.Count('guestbook_id')\
         ).values('month', 'cnt'\
         ).order_by('month')
-    
+
     file_running_total = 0
     for d in file_counts_by_month:
         file_running_total += d['cnt']

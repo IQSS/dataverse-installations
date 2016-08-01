@@ -18,52 +18,83 @@ def view_simple_dataset_count2(request):
 
     smd = StatsMakerDatasets(**request.GET.dict())
 
-    success, dataset_count = smd.get_dataset_count()
+    # Start an OrderedDict
+    resp_dict = OrderedDict()
 
+    # -------------------------
+    # Dataverse counts
+    # -------------------------
+    # Note: For regular use, the success_flag should be checked every time_sort
+    #
+    success, count_results_or_err = smd.get_dataverse_count()
     if not success:
-        return JsonResponse(smd.get_http_error_dict(), status=smd.get_http_err_code())
+        return JsonResponse(count_results_or_err)
 
-    resp_dict = OrderedDict({'dataset_count' : dataset_count})
+    dataverse_counts = dict(dataverse_count=count_results_or_err)
 
-    """
-    success, combined_counts = smd.get_dataset_counts_by_create_date_and_pub_date()
-    if success:
-        resp_dict['combined_counts'] = list(combined_counts)
-    """
-
-    success, dataverse_count = smd.get_dataverse_count()
-    if success:
-        resp_dict['dataverse_count'] = dataverse_count
-
-    success, dataset_count = smd.get_dataset_count()
-    if success:
-        resp_dict['dataset_count'] = dataset_count
-
-    success, datafile_count = smd.get_datafile_count()
-    if success:
-        resp_dict['datafile_count'] = datafile_count
+    success_flag, dataverse_counts['dataverse_count_published'] = smd.get_dataverse_count_published()
+    success_flag, dataverse_counts['dataverse_count_unpublished'] = smd.get_dataverse_count_unpublished()
+    resp_dict['dataverse_counts'] = dataverse_counts
 
 
+    # -------------------------
+    # Dataset counts
+    # -------------------------
+    dataset_counts = {}
+    success_flag, dataset_counts['dataset_count'] = smd.get_dataset_count()
+    success_flag, dataset_counts['dataset_count_published'] = smd.get_dataset_count_published()
+    success_flag, dataset_counts['dataset_count_unpublished'] = smd.get_dataset_count_unpublished()
+    resp_dict['dataset_counts'] = dataset_counts
+
+
+    # -------------------------
+    # Datafile counts
+    # -------------------------
+    datafile_counts = {}
+    success_flag, datafile_counts['datafile_count'] = smd.get_datafile_count()
+    success_flag, datafile_counts['datafile_count_published'] = smd.get_datafile_count_published()
+    success_flag, datafile_counts['datafile_count_unpublished'] = smd.get_datafile_count_unpublished()
+    resp_dict['datafile_counts'] = datafile_counts
+
+
+    # -------------------------
+    # Datasets created each month
+    # -------------------------
     success, dataset_counts_by_month = smd.get_dataset_counts_by_create_date()
     if success:
         resp_dict['dataset_counts_by_month'] = list(dataset_counts_by_month)
 
+    # -------------------------
+    # Datasets published each month
+    # -------------------------
     success, datasets_published_counts_by_month = smd.get_dataset_counts_by_publication_date()
     if success:
         resp_dict['datasets_published_counts_by_month'] = list(datasets_published_counts_by_month)
 
+    # -------------------------
+    # Datasets modified by month BUT not historical -- only last mod. date shown
+    # -------------------------
     success, datasets_modified_counts_by_month = smd.get_dataset_counts_by_modification_date()
     if success:
         resp_dict['datasets_modified_counts_by_month'] = datasets_modified_counts_by_month
 
+    # -------------------------
+    # Files downloaded each month
+    # -------------------------
     success, file_downloads_by_month = smd.get_downloads_by_month()
     if success:
         resp_dict['file_downloads_by_month'] = list(file_downloads_by_month)
 
+    # -------------------------
+    # Dataverses categorized by type
+    # -------------------------
     success, dv_counts_by_type = smd.get_dataverse_counts_by_type()
     if success:
         resp_dict['dv_counts_by_type'] = dv_counts_by_type
 
+    # -------------------------
+    # Dataverses categorized by affiliation
+    # -------------------------
     success, dv_counts_by_affil = smd.get_dataverse_affiliation_counts()
     if success:
         resp_dict['dv_counts_by_affil'] = dv_counts_by_affil

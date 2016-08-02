@@ -397,6 +397,99 @@ class StatsMakerDatasets(object):
 
         return True, formatted_records
 
+
+
+    def get_dataverse_counts_by_month_unpublished(self):
+        """
+        Get # of --UNPUBLISHED-- datasets created each month
+        """
+        return self.get_dataverse_counts_by_month(**self.get_is_NOT_published_filter_param())
+
+
+    def get_dataverse_counts_by_month_published(self):
+        """
+        Get # of --UNPUBLISHED-- datasets created each month
+        """
+        return self.get_dataverse_counts_by_month(**self.get_is_published_filter_param())
+
+
+    def get_dataverse_counts_by_month(self, date_param='dvobject__createdate', **extra_filters):
+        """
+        Return Dataverse counts by month
+        """
+        # Was an error found earlier?
+        #
+        if self.was_error_found():
+            return self.get_error_msg_return()
+
+        # -----------------------------------
+        # (1) Build query filters
+        # -----------------------------------
+
+        # Exclude records where dates are null
+        #   - e.g. a record may not have a publication date
+        exclude_params = { '%s__isnull' % date_param : True}
+
+        # Retrieve the date parameters
+        #
+        filter_params = self.get_date_filter_params()
+
+        # Add extra filters from kwargs
+        #
+        if extra_filters:
+            for k, v in extra_filters.items():
+                filter_params[k] = v
+
+        # -----------------------------------
+        # (2) Construct query
+        # -----------------------------------
+
+        # add exclude filters date filters
+        #
+        dv_counts_by_month = Dataverse.objects.select_related('dvobject'\
+                            ).exclude(**exclude_params\
+                            ).filter(**filter_params)
+
+        # annotate query adding "month_yyyy_dd" and "cnt"
+        #
+        dv_counts_by_month = dv_counts_by_month.annotate(\
+            month_yyyy_dd=TruncYearMonth('%s' % date_param)\
+            ).values('month_yyyy_dd'\
+            ).annotate(cnt=models.Count('dvobject_id')\
+            ).values('month_yyyy_dd', 'cnt'\
+            ).order_by('%smonth_yyyy_dd' % self.time_sort)
+
+        #print (ds_counts_by_month)
+
+        # -----------------------------------
+        # (3) Format results
+        # -----------------------------------
+        running_total = 0   # hold the running total count
+        formatted_records = []  # move from a queryset to a []
+
+        for d in dv_counts_by_month:
+            # running total
+            running_total += d['cnt']
+            d['running_total'] = running_total
+
+            # Add year and month numbers
+            d['year_num'] = int(d['month_yyyy_dd'][0:4])
+            month_num = int(d['month_yyyy_dd'][5:])
+            d['month_num'] = month_num
+
+            # Add month name
+            month_name_found, month_name = get_month_name(month_num)
+            if month_name_found:
+                d['month_name'] = month_name
+            else:
+                # Log it!!!!!!
+                pass
+
+            # Add formatted record
+            formatted_records.append(d)
+
+        return True, formatted_records
+
     def make_month_lookup(self, stats_queryset):
         """Make a dict from the 'stats_queryset' with a key of YYYY-MMDD"""
 

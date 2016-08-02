@@ -69,6 +69,13 @@ def view_simple_dataset_count2(request):
         resp_dict['datafile_content_type_counts'] = datafile_content_type_counts
 
 
+    # -------------------------
+    # Dataverses created each month
+    # -------------------------
+    success, dataverse_counts_by_month = smd.get_dataverse_counts_by_month()
+    if success:
+        resp_dict['dataverse_counts_by_month'] = list(dataverse_counts_by_month)
+
 
     # -------------------------
     # Datasets created each month

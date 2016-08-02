@@ -1,15 +1,18 @@
 from django.conf.urls import url
 #from dv_apps.metrics.views import view_dataset_count
-from . import views_api, views
+from . import views_api, views, views_public_metrics
 
 
 REGEX_YYYY_MM_DD = '\d{4}-\d{1,2}-\d{1,2}'
 #REGEX_YYYY_MM_DD = '(19|20)\d{2}-\d{1,2}-\d{1,2}'
 
 urlpatterns = [
+
     url(r'^datasets/count/simple$', views_api.view_simple_dataset_count, name='view_simple_dataset_count'),
 
     url(r'^datasets/count/simple2$', views.view_simple_dataset_count2, name='view_simple_dataset_count2'),
+
+    url(r'^datasets/count/simple3$', views_public_metrics.view_public_visualizations, name='view_public_visualizations'),
 
     url(r'^datasets/count$', views_api.view_dataset_count, name='view_dataset_count'),
 

@@ -6,14 +6,15 @@
   var datasets_by_month = [
     {%for i in dataset_counts_by_month%}
 
-    {"month": "{{ i.month_name }} {{ i.year_num }}", "monthNum": {{ i.month_num }}, "name":"Total Datasets", "Number": {{i.running_total}}, "month_sort" : "{{ i.month_yyyy_dd }}"}
-
+    {"month": "{{ i.month_name }} {{ i.year_num }}", "monthNum": {{ i.month_num }}, "name":"Total Datasets", "Number": {{i.running_total}}, "month_sort" : "{{ i.month_yyyy_dd }}"},
+    {"month": "{{ i.month_name }} {{ i.year_num }}", "monthNum": {{ i.month_num }}, "name":"Monthly Datasets", "Number": {{i.cnt}}, "month_sort" : "{{ i.month_yyyy_dd }}"}
     {%if not forloop.last%},{%endif%}
     {%endfor%}
   ]
   // instantiate d3plus
    var attributes = [
-    {"name": "Total Datasets", "hex": "#E58433"}
+    {"name": "Total Datasets", "hex": "#E58433"},
+    {"name": "Monthly Datasets", "hex": "#ffcc00"}
   ]
 
   var visualization = d3plus.viz()

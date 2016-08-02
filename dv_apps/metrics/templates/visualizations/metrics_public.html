@@ -83,7 +83,7 @@
     </div>
 
     <div class="col-xs-12 col-md-6">
-    {#%include "visualizations/dataverses_categories.html" %#}
+    {%include "visualizations/dataverses_categories.html" %}
     </div>
 
     </div>
@@ -99,8 +99,8 @@
        <!-- Viz block section -->
     <div class="row">
 
-    <div class="col-xs-12 col-md-6">
-    {%include "visualizations/datasets.html" %}
+    <div class="col-xs-12 col-md-12">
+    {#%include "visualizations/datasets.html" %#}
     </div>
 
 
@@ -121,8 +121,9 @@
      <!-- Viz block section -->
   <div class="row">
 
-  <div class="col-xs-12 col-md-6">
+  <div class="col-xs-12 col-md-12">
   {#%include "visualizations/files.html" %#}
+    {%include "visualizations/datafile_content_types.html" %}
   </div>
 
 

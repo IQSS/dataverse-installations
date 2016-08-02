@@ -287,7 +287,8 @@ class StatsMakerDatasets(object):
             for k, v in extra_filters.items():
                 filter_params[k] = v
 
-        return self.get_dataset_count_by_month(date_param='dvobject__createdate')
+        return self.get_dataset_count_by_month(date_param='dvobject__createdate',\
+            **extra_filters)
 
 
     def get_dataset_counts_by_create_date_published(self):
@@ -335,7 +336,10 @@ class StatsMakerDatasets(object):
 
         # Exclude records where dates are null
         #   - e.g. a record may not have a publication date
-        exclude_params = { '%s__isnull' % date_param : True}
+        if date_param == 'dvobject__createdate':
+            exclude_params = {}
+        else:
+            exclude_params = { '%s__isnull' % date_param : True}
 
         # Retrieve the date parameters
         #
@@ -366,7 +370,7 @@ class StatsMakerDatasets(object):
             ).values('month_yyyy_dd', 'cnt'\
             ).order_by('%smonth_yyyy_dd' % self.time_sort)
 
-        #print (ds_counts_by_month)
+        print ds_counts_by_month.query
 
         # -----------------------------------
         # (3) Format results
@@ -629,8 +633,21 @@ class StatsMakerDatasets(object):
 
         return True, formatted_records
 
+    def get_dataverse_counts_by_type_published(self, uncategorized_replacement_name=None):
+        """Return dataverse counts by 'dataversetype' for published dataverses"""
 
-    def get_dataverse_counts_by_type(self, uncategorized_replacement_name=None):
+        return self.get_dataverse_counts_by_type(uncategorized_replacement_name,\
+                **self.get_is_published_filter_param())
+
+
+    def get_dataverse_counts_by_type_unpublished(self, uncategorized_replacement_name=None):
+        """Return dataverse counts by 'dataversetype' for unpublished dataverses"""
+
+        return self.get_dataverse_counts_by_type(uncategorized_replacement_name,\
+                **self.get_is_NOT_published_filter_param())
+
+
+    def get_dataverse_counts_by_type(self, uncategorized_replacement_name=None, **extra_filters):
         """
         Return dataverse counts by 'dataversetype'
 
@@ -662,6 +679,11 @@ class StatsMakerDatasets(object):
         #
         filter_params = self.get_date_filter_params('dvobject__createdate')
 
+        # Add extra filters
+        if extra_filters:
+            for k, v in extra_filters.items():
+                filter_params[k] = v
+
         dataverse_counts_by_type = Dataverse.objects.select_related('dvobject'\
                     ).filter(**filter_params\
                     ).values('dataversetype'\
@@ -689,6 +711,8 @@ class StatsMakerDatasets(object):
             if uncategorized_replacement_name:
                 if rec['dataversetype'] == DATAVERSE_TYPE_UNCATEGORIZED:
                     rec['dataversetype'] = uncategorized_replacement_name
+
+            rec['dataversetype_label'] = rec['dataversetype'].replace('_', ' ')
 
             formatted_records.append(rec)
 
@@ -765,7 +789,19 @@ class StatsMakerDatasets(object):
         return True, dict(datafile_counts_by_type=datafile_counts_by_type)
     '''
 
-    def get_datafile_content_type_counts(self):
+    def get_datafile_content_type_counts_published(self):
+        """Return datafile counts by 'content type' for published files"""
+
+        return self.get_datafile_content_type_counts(\
+            **self.get_is_published_filter_param())
+
+    def get_datafile_content_type_counts_unpublished(self):
+        """Return datafile counts by 'content type' for unpublished files"""
+
+        return self.get_datafile_content_type_counts(\
+            **self.get_is_NOT_published_filter_param())
+
+    def get_datafile_content_type_counts(self, **extra_filters):
         """
         Return datafile counts by 'content type'
 
@@ -796,6 +832,11 @@ class StatsMakerDatasets(object):
         # Retrieve the date parameters
         #
         filter_params = self.get_date_filter_params('dvobject__createdate')
+
+        # Add extra filters
+        if extra_filters:
+            for k, v in extra_filters.items():
+                filter_params[k] = v
 
         datafile_counts_by_type = Datafile.objects.select_related('dvobject'\
                     ).filter(**filter_params\

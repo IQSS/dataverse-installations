@@ -633,21 +633,21 @@ class StatsMakerDatasets(object):
 
         return True, formatted_records
 
-    def get_dataverse_counts_by_type_published(self, uncategorized_replacement_name=None):
+    def get_dataverse_counts_by_type_published(self, exclude_uncategorized=True):
         """Return dataverse counts by 'dataversetype' for published dataverses"""
 
-        return self.get_dataverse_counts_by_type(uncategorized_replacement_name,\
+        return self.get_dataverse_counts_by_type(exclude_uncategorized,\
                 **self.get_is_published_filter_param())
 
 
-    def get_dataverse_counts_by_type_unpublished(self, uncategorized_replacement_name=None):
+    def get_dataverse_counts_by_type_unpublished(self, exclude_uncategorized=True):
         """Return dataverse counts by 'dataversetype' for unpublished dataverses"""
 
-        return self.get_dataverse_counts_by_type(uncategorized_replacement_name,\
+        return self.get_dataverse_counts_by_type(exclude_uncategorized,\
                 **self.get_is_NOT_published_filter_param())
 
 
-    def get_dataverse_counts_by_type(self, uncategorized_replacement_name=None, **extra_filters):
+    def get_dataverse_counts_by_type(self, exclude_uncategorized=True, **extra_filters):
         """
         Return dataverse counts by 'dataversetype'
 
@@ -684,8 +684,14 @@ class StatsMakerDatasets(object):
             for k, v in extra_filters.items():
                 filter_params[k] = v
 
+        if exclude_uncategorized:
+            exclude_params = dict(dataversetype=DATAVERSE_TYPE_UNCATEGORIZED)
+        else:
+            exclude_params = {}
+
         dataverse_counts_by_type = Dataverse.objects.select_related('dvobject'\
                     ).filter(**filter_params\
+                    ).exclude(**exclude_params\
                     ).values('dataversetype'\
                     ).order_by('dataversetype'\
                     ).annotate(type_count=models.Count('dataversetype')\
@@ -705,12 +711,6 @@ class StatsMakerDatasets(object):
                 float_percent = rec.get('type_count', 0) / total_count
                 rec['percent_string'] = '{0:.1%}'.format(float_percent)
                 rec['total_count'] = int(total_count)
-
-            # Optional: Add alternate name for DATAVERSE_TYPE_UNCATEGORIZED
-            #
-            if uncategorized_replacement_name:
-                if rec['dataversetype'] == DATAVERSE_TYPE_UNCATEGORIZED:
-                    rec['dataversetype'] = uncategorized_replacement_name
 
             rec['dataversetype_label'] = rec['dataversetype'].replace('_', ' ')
 

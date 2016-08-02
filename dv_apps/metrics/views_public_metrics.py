@@ -42,7 +42,7 @@ def view_public_visualizations(request):
     # Dataverse counts by type
     # -------------------------
     success, dataverse_counts_by_type =\
-        smd.get_dataverse_counts_by_type_published(uncategorized_replacement_name='No name')
+        smd.get_dataverse_counts_by_type_published(exclude_uncategorized=True)
     if success:
         resp_dict['dataverse_counts_by_type'] = dataverse_counts_by_type
 

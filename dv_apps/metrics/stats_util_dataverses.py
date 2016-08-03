@@ -1,0 +1,305 @@
+"""
+Create metrics for Dataverses.
+This may be used for APIs, views with visualizations, etc.
+"""
+from django.db import models
+
+from dv_apps.utils.date_helper import get_month_name_abbreviation
+from dv_apps.dataverses.models import Dataverse, DATAVERSE_TYPE_UNCATEGORIZED
+from dv_apps.metrics.stats_util_base import StatsMakerBase, TruncYearMonth
+
+
+class StatsMakerDataverses(StatsMakerBase):
+    """
+    Utility class to create stats for Dataverses
+    """
+    def __init__(self, **kwargs):
+        """
+        Start and end dates are optional.
+
+        start_date = string in YYYY-MM-DD format
+        end_date = string in YYYY-MM-DD format
+        """
+        super(StatsMakerDataverses, self).__init__(**kwargs)
+
+    # ----------------------------
+    #  Dataverse counts
+    # ----------------------------
+    def get_dataverse_count_published(self):
+        """
+        Return the count of published Dataverses
+        """
+        return self.get_dataverse_count(**self.get_is_published_filter_param())
+
+
+    def get_dataverse_count_unpublished(self):
+        """
+        Return the count of unpublished Dataverses
+        """
+        return self.get_dataverse_count(**self.get_is_NOT_published_filter_param())
+
+
+    def get_dataverse_count(self, **extra_filters):
+        """
+        Return the Dataverse count -- a single number
+        """
+        if self.was_error_found():
+            return self.get_error_msg_return()
+
+        filter_params = self.get_date_filter_params()
+        if extra_filters:
+            for k, v in extra_filters.items():
+                filter_params[k] = v
+
+        return True, Dataverse.objects.filter(**filter_params).count()
+
+    # ----------------------------
+    #  Dataverse counts by month
+    # ----------------------------
+    def get_dataverse_counts_by_month_unpublished(self):
+        """
+        Get # of --UNPUBLISHED-- datasets created each month
+        """
+        return self.get_dataverse_counts_by_month(**self.get_is_NOT_published_filter_param())
+
+
+    def get_dataverse_counts_by_month_published(self):
+        """
+        Get # of --UNPUBLISHED-- datasets created each month
+        """
+        return self.get_dataverse_counts_by_month(**self.get_is_published_filter_param())
+
+
+    def get_dataverse_counts_by_month(self, date_param='dvobject__createdate', **extra_filters):
+        """
+        Return Dataverse counts by month
+        """
+        # Was an error found earlier?
+        #
+        if self.was_error_found():
+            return self.get_error_msg_return()
+
+        # -----------------------------------
+        # (1) Build query filters
+        # -----------------------------------
+
+        # Exclude records where dates are null
+        #   - e.g. a record may not have a publication date
+        exclude_params = { '%s__isnull' % date_param : True}
+
+        # Retrieve the date parameters
+        #
+        filter_params = self.get_date_filter_params()
+
+        # Add extra filters from kwargs
+        #
+        if extra_filters:
+            for k, v in extra_filters.items():
+                filter_params[k] = v
+
+        # -----------------------------------
+        # (2) Construct query
+        # -----------------------------------
+
+        # add exclude filters date filters
+        #
+        dv_counts_by_month = Dataverse.objects.select_related('dvobject'\
+                            ).exclude(**exclude_params\
+                            ).filter(**filter_params)
+
+        # annotate query adding "month_yyyy_dd" and "cnt"
+        #
+        dv_counts_by_month = dv_counts_by_month.annotate(\
+            month_yyyy_dd=TruncYearMonth('%s' % date_param)\
+            ).values('month_yyyy_dd'\
+            ).annotate(cnt=models.Count('dvobject_id')\
+            ).values('month_yyyy_dd', 'cnt'\
+            ).order_by('%smonth_yyyy_dd' % self.time_sort)
+
+        #print (ds_counts_by_month)
+
+        # -----------------------------------
+        # (3) Format results
+        # -----------------------------------
+        running_total = 0   # hold the running total count
+        formatted_records = []  # move from a queryset to a []
+
+        for d in dv_counts_by_month:
+            # running total
+            running_total += d['cnt']
+            d['running_total'] = running_total
+
+            # Add year and month numbers
+            d['year_num'] = int(d['month_yyyy_dd'][0:4])
+            month_num = int(d['month_yyyy_dd'][5:])
+            d['month_num'] = month_num
+
+            # Add month name
+            month_name_found, month_name = get_month_name_abbreviation(month_num)
+            if month_name_found:
+                d['month_name'] = month_name
+            else:
+                # Log it!!!!!!
+                pass
+
+            # Add formatted record
+            formatted_records.append(d)
+
+        return True, formatted_records
+
+
+    def get_dataverse_counts_by_type_published(self, exclude_uncategorized=True):
+        """Return dataverse counts by 'dataversetype' for published dataverses"""
+
+        return self.get_dataverse_counts_by_type(exclude_uncategorized,\
+                **self.get_is_published_filter_param())
+
+
+    def get_dataverse_counts_by_type_unpublished(self, exclude_uncategorized=True):
+        """Return dataverse counts by 'dataversetype' for unpublished dataverses"""
+
+        return self.get_dataverse_counts_by_type(exclude_uncategorized,\
+                **self.get_is_NOT_published_filter_param())
+
+
+    def get_dataverse_counts_by_type(self, exclude_uncategorized=True, **extra_filters):
+        """
+        Return dataverse counts by 'dataversetype'
+
+        Optional if a dataverse is uncategorized:
+            - Specifying 'uncategorized_replacement_name' will
+                set "UNCATEGORIZED" to another string
+
+        Returns: { "dv_counts_by_type": [
+                        {
+                            "total_count": 356,
+                            "dataversetype": "RESEARCH_PROJECTS",
+                            "type_count": 85,
+                            "percent_string": "23.9%"
+                        },
+                        {
+                            "total_count": 356,
+                            "dataversetype": "TEACHING_COURSES",
+                            "type_count": 10,
+                            "percent_string": "2.8%"
+                        }
+                            ... etc
+                    ]
+                }
+        """
+        if self.was_error_found():
+            return self.get_error_msg_return()
+
+        # Retrieve the date parameters
+        #
+        filter_params = self.get_date_filter_params('dvobject__createdate')
+
+        # Add extra filters
+        if extra_filters:
+            for k, v in extra_filters.items():
+                filter_params[k] = v
+
+        if exclude_uncategorized:
+            exclude_params = dict(dataversetype=DATAVERSE_TYPE_UNCATEGORIZED)
+        else:
+            exclude_params = {}
+
+        dataverse_counts_by_type = Dataverse.objects.select_related('dvobject'\
+                    ).filter(**filter_params\
+                    ).exclude(**exclude_params\
+                    ).values('dataversetype'\
+                    ).order_by('dataversetype'\
+                    ).annotate(type_count=models.Count('dataversetype')\
+                    ).order_by('-type_count')
+
+        # Count all dataverses
+        #
+        total_count = sum([rec.get('type_count', 0) for rec in dataverse_counts_by_type])
+        total_count = total_count + 0.0
+
+        # Format the records, adding 'total_count' and 'percent_string' to each one
+        #
+        formatted_records = []
+        for rec in dataverse_counts_by_type:
+
+            if total_count > 0:
+                float_percent = rec.get('type_count', 0) / total_count
+                rec['percent_string'] = '{0:.1%}'.format(float_percent)
+                rec['total_count'] = int(total_count)
+
+            rec['dataversetype_label'] = rec['dataversetype'].replace('_', ' ')
+
+            formatted_records.append(rec)
+
+        return True, formatted_records
+
+    def get_dataverse_affiliation_counts(self):
+        """
+        Return dataverse counts by 'affiliation'
+
+        Returns: dv_counts_by_affiliation": [
+            {
+                "affiliation": "University of Oxford",
+                "affil_count": 2,
+                "total_count": 191,
+                "percent_string": "1.0%"
+            },
+            {
+                "affiliation": "University of Illinois",
+                "affil_count": 1,
+                "total_count": 191,
+                "percent_string": "0.5%"
+            }
+            ...
+        ]
+        """
+        if self.was_error_found():
+            return self.get_error_msg_return()
+
+        # Retrieve the date parameters
+        #
+        filter_params = self.get_date_filter_params('dvobject__createdate')
+
+        dataverse_counts_by_affil = Dataverse.objects.select_related('dvobject'\
+                    ).filter(**filter_params\
+                    ).values('affiliation'\
+                    ).order_by('affiliation'\
+                    ).annotate(affil_count=models.Count('affiliation')\
+                    ).order_by('-affil_count')
+
+        # Count all dataverses
+        #
+        total_count = sum([rec.get('affil_count', 0) for rec in dataverse_counts_by_affil])
+        total_count = total_count + 0.0
+
+        # Format the records, adding 'total_count' and 'percent_string' to each one
+        #
+        formatted_records = []
+        for rec in dataverse_counts_by_affil:
+
+            if total_count > 0:
+                float_percent = rec.get('affil_count', 0) / total_count
+                rec['percent_string'] = '{0:.1%}'.format(float_percent)
+                rec['total_count'] = int(total_count)
+
+            formatted_records.append(rec)
+
+        return True, formatted_records
+
+    '''
+    def get_number_of_datafile_types(self):
+        """Return the number of distinct contenttypes found in Datafile objects"""
+        if self.was_error_found():
+            return self.get_error_msg_return()
+
+        # Retrieve the date parameters
+        #
+        filter_params = self.get_date_filter_params('dvobject__createdate')
+
+        datafile_counts_by_type = Datafile.objects.select_related('dvobject'\
+                    ).filter(**filter_params\
+                    ).values('contenttype'\
+                    ).distinct().count()
+
+        return True, dict(datafile_counts_by_type=datafile_counts_by_type)
+    '''

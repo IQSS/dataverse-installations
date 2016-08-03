@@ -19,6 +19,9 @@ DATABASES = {
     'django_contrib_db': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': join(LOCAL_SETUP_DIR, 'metrics_auth.db3'),
+        'TEST': {
+            'MIRROR': 'default',
+        },
     },
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
@@ -41,6 +44,14 @@ DATABASES = {
     'ENGINE': 'django.db.backends.postgresql_psycopg2',
     'NAME': 'dvndb',
     'USER': 'rp',
+    'PASSWORD': '123',
+    'HOST': 'localhost'
+}
+
+'default': {
+    'ENGINE': 'django.db.backends.postgresql_psycopg2',
+    'NAME': 'dvn_thedata',
+    'USER': 'postgres',
     'PASSWORD': '123',
     'HOST': 'localhost'
 }

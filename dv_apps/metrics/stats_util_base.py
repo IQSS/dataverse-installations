@@ -11,14 +11,25 @@ from django.db.models import Q
 from dv_apps.utils.date_helper import format_yyyy_mm_dd, get_month_name,\
     month_year_iterator
 from dv_apps.dvobjects.models import DvObject, DTYPE_DATASET, DTYPE_DATAFILE
+
 from dv_apps.datasets.models import Dataset
 from dv_apps.datafiles.models import Datafile
 from dv_apps.dataverses.models import Dataverse, DATAVERSE_TYPE_UNCATEGORIZED
 from dv_apps.guestbook.models import GuestBookResponse, RESPONSE_TYPE_DOWNLOAD
-from dv_apps.metrics.stats_util_base import StatsMakerBase, TruncYearMonth
 
+class TruncMonth(models.Func):
+    function = 'EXTRACT'
+    template = '%(function)s(MONTH from %(expressions)s)'
+    output_field = models.IntegerField()
 
-class StatsMakerDatasets(StatsMakerBase):
+class TruncYearMonth(models.Func):
+    function = 'to_char'
+    template = "%(function)s(%(expressions)s, 'YYYY-MM')"
+    output_field = models.CharField()
+
+    #to_char(createdate, 'YYYY-MM')
+
+class StatsMakerBase(object):
 
     def __init__(self, **kwargs):
         """
@@ -27,7 +38,156 @@ class StatsMakerDatasets(StatsMakerBase):
         start_date = string in YYYY-MM-DD format
         end_date = string in YYYY-MM-DD format
         """
-        super(StatsMakerDatasets, self).__init__(**kwargs)
+        # error related variables
+        self.error_found = False
+        self.error_message = None
+        self.bad_http_status_code = None
+
+        # optional datetime objects holding
+        self.start_date = None
+        self.end_date = None
+        self.selected_year = None
+        self.time_sort = None
+
+
+        # load dates
+        self.load_dates_from_kwargs(**kwargs)
+
+    def add_error(self, err_msg, bad_http_status_code=None):
+        self.error_found = True
+        self.error_message = err_msg
+        if bad_http_status_code:
+            self.bad_http_status_code = bad_http_status_code
+
+    def was_error_found(self):
+        return self.error_found
+
+
+    def get_http_error_dict(self):
+        """
+        Return a dict usable in a JsonResponse object
+        """
+        if not self.was_error_found():
+            raise AttributeError("Only call this if was_error_found() is true")
+
+        return dict(status="ERROR",\
+                message=self.error_message)
+
+    def get_http_err_code(self):
+        """
+        Return an HTTP status code usable in a JsonResponse object
+        """
+        if not self.was_error_found():
+            raise AttributeError("Only call this if was_error_found() is true")
+
+        return self.bad_http_status_code
+
+    def get_error_msg_return(self):
+        if not self.was_error_found():
+            raise AttributeError("Only call this if was_error_found() is true")
+
+        return False, self.error_message
+
+    def load_dates_from_kwargs(self, **kwargs):
+        """
+        Accepts any, all or none of:
+
+            start_date = YYYY-MM-DD
+            end_date = YYYY-MM-DD
+            selected_year = YYYY
+            time_sort = a\d
+        """
+        # Add a start date, if it exists
+        start_date_str = kwargs.get('start_date', None)
+        if start_date_str is not None:
+            convert_worked, self.start_date = format_yyyy_mm_dd(start_date_str)
+            if not convert_worked:
+                self.add_error('Start date is invalid.  Use YYYY-MM-DD format.', 400)
+                return
+
+        # Add an end date, if it exists
+        end_date_str = kwargs.get('end_date', None)
+        if end_date_str:
+            convert_worked, self.end_date = format_yyyy_mm_dd(end_date_str)
+            if not convert_worked:
+                self.add_error('End date is invalid.  Use YYYY-MM-DD format.', 400)
+                return
+
+        # Sanity check: Make sure start date isn't after end date
+        if self.start_date and self.end_date:   # do start and end dates exist
+            if self.start_date > self.end_date: # sanity check
+                self.add_error('The start date cannot be after the end date.', 400)
+                return
+
+        # Add a year, if it exists
+        self.selected_year = kwargs.get('selected_year', None)
+        if self.selected_year:
+            if not (self.selected_year.isdigit() and len(self.selected_year) == 4):
+                self.add_error('The year must be a 4-digit number (YYYY)')
+                return
+            if int(self.selected_year) < 0:
+                self.add_error('The year must cannot be less than 1.')
+            if int(self.selected_year) == 0:
+                self.add_error('The year must cannot be zero.')
+
+        # Sanity check the selected_year and start_date
+        if self.selected_year and self.start_date:
+            if int(self.selected_year) < self.start_date.year:
+                self.add_error("'The 'selected_year' (%s)"
+                        "' cannot be before the 'start_date' year (%s)" %\
+                            (self.selected_year, self.start_date.date()))
+                return
+
+        # Sanity check the selected_year and end_date
+        if self.selected_year and self.end_date:
+            if int(self.selected_year) > self.end_date.year:
+                self.add_error("'The 'selected_year' (%s)"
+                        "' cannot be after the 'end_date' year (%s)" %\
+                            (self.selected_year, self.end_date.date()))
+                return
+
+        # Optional time sort parameter
+        self.time_sort = str(kwargs.get('time_sort', ''))
+        if self.time_sort == 'd':   # descending
+            self.time_sort = '-'
+        else:                       # ascending
+            self.time_sort = ''
+
+
+    def get_date_filter_params(self, date_var_name='dvobject__createdate'):
+        """
+        Create filter params for django queryset
+
+        Default is checking the Dataset create date parameter
+        """
+        filter_params = {}
+        if self.start_date:
+            filter_params['%s__gte' % date_var_name] = self.start_date
+
+        if self.end_date:
+            filter_params['%s__lte' % date_var_name] = self.end_date
+
+        if self.selected_year:
+            filter_params['%s__year' % date_var_name] = self.selected_year
+
+        return filter_params
+
+
+    def get_is_published_filter_param(self, dvobject_var_name='dvobject'):
+        """
+        Check if the dvobject has a publication date--which indicates
+        that it has been published
+        """
+        date_var = '%s__publicationdate__isnull' % dvobject_var_name
+        return {date_var : False}
+
+    def get_is_NOT_published_filter_param(self, dvobject_var_name='dvobject'):
+        """
+        Check if the dvobject has a null publication date--which indicates
+        that it has NOT been published
+        """
+        date_var = '%s__publicationdate__isnull' % dvobject_var_name
+        return {date_var : True}
 
     # ----------------------------
     #  Datafile counts

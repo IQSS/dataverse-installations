@@ -1,0 +1,40 @@
+<!-- NOTES: remember to name the visualization div with viz plus a unique ID# -->
+
+<div id="viz-file-downloads" class="viz"></div>
+<script>
+
+  var file_downloads_by_month = [
+    {% for i in file_downloads_by_month %}
+
+    {"Month": "{{ i.month_name }} {{ i.year_num }}", "monthNum": {{i.month_num}}, "name":"File Downloads", "Total Downloads": {{i.running_total}}, "month_sort" : "{{ i.month_yyyy_dd }}", "display_name":"{{ i.month_name }} {{ i.year_num }}: {{ i.cnt }} downloads"}
+    {%if not forloop.last%},{%endif%}
+    {%endfor%}
+    ]
+
+
+  // instantiate d3plus
+
+  var attributes = [
+    {"name": "File Downloads", "hex": "#b94617"}
+  ]
+
+  var visualization = d3plus.viz()
+    .container("#viz-file-downloads")  // container DIV to hold the visualization
+    .data(file_downloads_by_month)  // data to use with the visualization
+    .type("bar")       // visualization type
+    .id("name")         // key for which our data is unique on
+    .text("display_name")       // key to use for display text
+    .y("Total Downloads")         // key to use for y-axis
+    //.x({"stacked": true, "value": "month"}))          // key to use for x-axis
+    .x("Month")
+    .attrs(attributes)
+    .color("hex")
+    .order({
+        "sort": "asc",
+        "value": "month_sort"
+     })
+    .resize(true)
+    .title("File Downloads Over Time")
+    .draw()             // finally, draw the visualization!
+
+</script>

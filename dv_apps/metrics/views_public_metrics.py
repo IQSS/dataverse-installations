@@ -15,11 +15,15 @@ from dv_apps.datasets.models import Dataset
 from dv_apps.dataverses.models import Dataverse
 from dv_apps.guestbook.models import GuestBookResponse
 from .stats_util_datasets import StatsMakerDatasets
+from .stats_util_dataverses import StatsMakerDataverses
+from .stats_util_files import StatsMakerFiles
 
 #@cache_page(60 * 15)
 def view_public_visualizations(request):
 
-    smd = StatsMakerDatasets(**request.GET.dict())
+    stats_datasets = StatsMakerDatasets(**request.GET.dict())
+    stats_dvs = StatsMakerDataverses(**request.GET.dict())
+    stats_files = StatsMakerFiles(**request.GET.dict())
 
     # Start an OrderedDict
     resp_dict = OrderedDict()
@@ -27,14 +31,14 @@ def view_public_visualizations(request):
     # -------------------------
     # Dataverses created each month
     # -------------------------
-    '''success, dataverse_counts_by_month = smd.get_dataverse_counts_by_month()
+    success, dataverse_counts_by_month = stats_dvs.get_dataverse_counts_by_month()
     if success:
         resp_dict['dataverse_counts_by_month'] = list(dataverse_counts_by_month)
-    '''
+
     # -------------------------
     # Datasets created each month
     # -------------------------
-    success, dataset_counts_by_month = smd.get_dataset_counts_by_create_date_published()
+    success, dataset_counts_by_month = stats_datasets.get_dataset_counts_by_create_date_published()
     if success:
         resp_dict['dataset_counts_by_month'] = list(dataset_counts_by_month)
 
@@ -42,17 +46,21 @@ def view_public_visualizations(request):
     # Dataverse counts by type
     # -------------------------
     success, dataverse_counts_by_type =\
-        smd.get_dataverse_counts_by_type_published(exclude_uncategorized=True)
+        stats_dvs.get_dataverse_counts_by_type_published(exclude_uncategorized=True)
     if success:
         resp_dict['dataverse_counts_by_type'] = dataverse_counts_by_type
 
 
-    #success, datafile_content_type_counts = smd.get_datafile_content_type_counts_published()
-    success, datafile_content_type_counts = smd.get_datafile_content_type_counts()
+    #success, datafile_content_type_counts = stats_files.get_datafile_content_type_counts_published()
+    success, datafile_content_type_counts = stats_files.get_datafile_content_type_counts()
     if success:
         resp_dict['datafile_content_type_counts'] = datafile_content_type_counts[:15]
         #resp_dict['JSON_STATS'] = json.dumps(datafile_content_type_counts)
 
+    success, file_downloads_by_month = stats_files.get_file_downloads_by_month_published()
+    if success:
+        resp_dict['file_downloads_by_month'] = list(file_downloads_by_month)
+        print 'file_downloads_by_month', file_downloads_by_month
     """
 
     # -------------------------

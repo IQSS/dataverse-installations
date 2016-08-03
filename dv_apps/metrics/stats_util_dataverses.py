@@ -70,6 +70,20 @@ class StatsMakerDataverses(StatsMakerBase):
         return self.get_dataverse_counts_by_month(**self.get_is_published_filter_param())
 
 
+    def get_dataverse_count_start_point(self, **extra_filters):
+        """Get the startpoint when keeping a running total of file downloads"""
+
+        start_point_filters = self.get_running_total_base_date_filters()
+        if start_point_filters is None:
+            return 0
+
+        if extra_filters:
+            for k, v in extra_filters.items():
+                start_point_filters[k] = v
+
+        return Dataverse.objects.select_related('dvobject').filter(**start_point_filters).count()
+
+
     def get_dataverse_counts_by_month(self, date_param='dvobject__createdate', **extra_filters):
         """
         Return Dataverse counts by month
@@ -121,7 +135,8 @@ class StatsMakerDataverses(StatsMakerBase):
         # -----------------------------------
         # (3) Format results
         # -----------------------------------
-        running_total = 0   # hold the running total count
+        # hold the running total count
+        running_total = self.get_dataverse_count_start_point(**extra_filters)
         formatted_records = []  # move from a queryset to a []
 
         for d in dv_counts_by_month:

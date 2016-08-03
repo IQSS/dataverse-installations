@@ -164,6 +164,9 @@ class StatsMakerBase(object):
         if self.selected_year:
             filter_params['%s__year__lt' % date_var_name] = self.selected_year
 
+        if len(filter_params) == 0:
+            return None
+
         return filter_params
 
 

@@ -81,6 +81,9 @@ class StatsMakerFiles(StatsMakerBase):
         """Get the startpoint when keeping a running total of file downloads"""
 
         start_point_filters = self.get_running_total_base_date_filters(date_var_name='responsetime')
+        if start_point_filters is None:
+            return 0
+
         if extra_filters:
             for k, v in extra_filters.items():
                 start_point_filters[k] = v
@@ -152,6 +155,9 @@ class StatsMakerFiles(StatsMakerBase):
         """Get the startpoint when keeping a running total of file downloads"""
 
         start_point_filters = self.get_running_total_base_date_filters()
+        if start_point_filters is None:
+            return 0
+
         if extra_filters:
             for k, v in extra_filters.items():
                 start_point_filters[k] = v

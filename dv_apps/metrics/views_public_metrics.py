@@ -18,7 +18,7 @@ from .stats_util_datasets import StatsMakerDatasets
 from .stats_util_dataverses import StatsMakerDataverses
 from .stats_util_files import StatsMakerFiles
 
-#@cache_page(60 * 15)
+@cache_page(60 * 15)
 def view_public_visualizations(request):
 
     stats_datasets = StatsMakerDatasets(**request.GET.dict())
@@ -51,24 +51,22 @@ def view_public_visualizations(request):
         resp_dict['dataverse_counts_by_type'] = dataverse_counts_by_type
 
 
-    #success, datafile_content_type_counts = stats_files.get_datafile_content_type_counts_published()
-    success, datafile_content_type_counts = stats_files.get_datafile_content_type_counts()
+    # -------------------------
+    # File counts by month
+    # -------------------------
+    success, file_counts_by_month = stats_files.get_file_count_by_month_published()
     if success:
-        resp_dict['datafile_content_type_counts'] = datafile_content_type_counts[:15]
-        #resp_dict['JSON_STATS'] = json.dumps(datafile_content_type_counts)
+        resp_dict['file_counts_by_month'] = list(file_counts_by_month)
 
     success, file_downloads_by_month = stats_files.get_file_downloads_by_month_published()
     if success:
         resp_dict['file_downloads_by_month'] = list(file_downloads_by_month)
         print 'file_downloads_by_month', file_downloads_by_month
-    """
 
-    # -------------------------
-    # File counts by month
-    # -------------------------
-    success, file_counts_by_month = smd.get_downloads_by_month()
-    if success:
-        resp_dict['file_counts_by_month'] = list(file_counts_by_month)
-    """
+    #success, datafile_content_type_counts =\ #stats_files.get_datafile_content_type_counts_published()
+    #if success:
+    #    resp_dict['datafile_content_type_counts'] = datafile_content_type_counts[:15]
+
+
 
     return render(request, 'visualizations/metrics_public.html', resp_dict)

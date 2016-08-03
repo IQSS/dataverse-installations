@@ -8,7 +8,8 @@ from collections import OrderedDict
 from django.db import models
 from django.db.models import Q
 
-from dv_apps.utils.date_helper import format_yyyy_mm_dd, get_month_name,\
+from dv_apps.utils.date_helper import format_yyyy_mm_dd,\
+    get_month_name_abbreviation,\
     month_year_iterator
 from dv_apps.dvobjects.models import DvObject, DTYPE_DATASET, DTYPE_DATAFILE
 from dv_apps.datasets.models import Dataset
@@ -238,7 +239,7 @@ class StatsMakerDatasets(StatsMakerBase):
             d['month_num'] = month_num
 
             # Add month name
-            month_name_found, month_name = get_month_name(month_num)
+            month_name_found, month_name = get_month_name_abbreviation(month_num)
             if month_name_found:
                 d['month_name'] = month_name
             else:
@@ -331,7 +332,7 @@ class StatsMakerDatasets(StatsMakerBase):
             d['month_num'] = month_num
 
             # Add month name
-            month_name_found, month_name = get_month_name(month_num)
+            month_name_found, month_name = get_month_name_abbreviation(month_num)
             if month_name_found:
                 d['month_name'] = month_name
             else:
@@ -471,7 +472,7 @@ class StatsMakerDatasets(StatsMakerBase):
             d['month_num'] = month_num
 
             # Add month name
-            month_name_found, month_name = get_month_name(month_num)
+            month_name_found, month_name = get_month_name_abbreviation(month_num)
             if month_name_found:
                 d['month_name'] = month_name
             else:

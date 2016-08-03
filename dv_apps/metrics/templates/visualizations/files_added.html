@@ -1,13 +1,13 @@
 {% load humanize %}
 <!-- NOTES: remember to name the visualization div with viz plus a unique ID# -->
 
-<div id="viz-file-downloads" class="viz"></div>
+<div id="viz-file_counts_by_month" class="viz"></div>
 <script>
 
-  var file_downloads_by_month = [
-    {% for i in file_downloads_by_month %}
+  var file_counts_by_month = [
+    {% for i in file_counts_by_month %}
 
-    {"Month": "{{ i.month_name }} {{ i.year_num }}", "monthNum": {{i.month_num}}, "name":"File Downloads", "Total Downloads": {{i.running_total}}, "month_sort" : "{{ i.month_yyyy_dd }}", "display_name":"{{ i.month_name }} {{ i.year_num }}: {{ i.cnt|intcomma }} downloads / total: {{ i.running_total|intcomma }}"}
+    {"Month": "{{ i.month_name }} {{ i.year_num }}", "monthNum": {{i.month_num}}, "name":"Files Added", "Total Files": {{i.running_total}}, "month_sort" : "{{ i.month_yyyy_dd }}", "display_name":"{{ i.month_name }} {{ i.year_num }}: {{ i.cnt|intcomma }} added / total: {{ i.running_total|intcomma }}"}
     {%if not forloop.last%},{%endif%}
     {%endfor%}
     ]
@@ -16,16 +16,16 @@
   // instantiate d3plus
 
   var attributes = [
-    {"name": "File Downloads", "hex": "#b94617"}
+    {"name": "Files Added", "hex": "#006699"}
   ]
 
   var visualization = d3plus.viz()
-    .container("#viz-file-downloads")  // container DIV to hold the visualization
-    .data(file_downloads_by_month)  // data to use with the visualization
+    .container("#viz-file_counts_by_month")  // container DIV to hold the visualization
+    .data(file_counts_by_month)  // data to use with the visualization
     .type("bar")       // visualization type
     .id("name")         // key for which our data is unique on
     .text({"value":"display_name"})       // key to use for display text
-    .y("Total Downloads")         // key to use for y-axis
+    .y("Total Files")         // key to use for y-axis
     //.x({"stacked": true, "value": "month"}))          // key to use for x-axis
     .x({"value":"Month"})
     .attrs(attributes)
@@ -35,7 +35,7 @@
         "value": "month_sort"
      })
     .resize(true)
-    .title("File Downloads Over Time")
+    .title("Files Added Over Time")
     .draw()             // finally, draw the visualization!
 
 </script>

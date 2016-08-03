@@ -88,6 +88,7 @@ class StatsMakerBase(object):
 
         return False, self.error_message
 
+
     def load_dates_from_kwargs(self, **kwargs):
         """
         Accepts any, all or none of:
@@ -152,6 +153,18 @@ class StatsMakerBase(object):
             self.time_sort = '-'
         else:                       # ascending
             self.time_sort = ''
+
+
+    def get_running_total_base_date_filters(self, date_var_name='dvobject__createdate'):
+        """If we have a running total, get the start point filters"""
+        filter_params = {}
+        if self.start_date:
+            filter_params['%s__lt' % date_var_name] = self.start_date
+
+        if self.selected_year:
+            filter_params['%s__year__lt' % date_var_name] = self.selected_year
+
+        return filter_params
 
 
     def get_date_filter_params(self, date_var_name='dvobject__createdate'):

@@ -18,7 +18,7 @@ from .stats_util_datasets import StatsMakerDatasets
 from .stats_util_dataverses import StatsMakerDataverses
 from .stats_util_files import StatsMakerFiles
 
-@cache_page(60 * 15)
+#@cache_page(60 * 15)
 def view_public_visualizations(request):
 
     stats_datasets = StatsMakerDatasets(**request.GET.dict())

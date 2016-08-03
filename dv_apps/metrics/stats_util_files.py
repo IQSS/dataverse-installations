@@ -77,6 +77,16 @@ class StatsMakerFiles(StatsMakerBase):
         return self.get_file_downloads_by_month(**params)
 
 
+    def get_file_download_start_point(self, **extra_filters):
+        """Get the startpoint when keeping a running total of file downloads"""
+
+        start_point_filters = self.get_running_total_base_date_filters(date_var_name='responsetime')
+        if extra_filters:
+            for k, v in extra_filters.items():
+                start_point_filters[k] = v
+
+        return GuestBookResponse.objects.filter(**start_point_filters).count()
+
     def get_file_downloads_by_month(self, **extra_filters):
         """
         Using the GuestBookResponse object, find the number of file
@@ -96,12 +106,12 @@ class StatsMakerFiles(StatsMakerBase):
         file_counts_by_month = GuestBookResponse.objects.filter(**filter_params\
             ).annotate(month_yyyy_dd=TruncYearMonth('responsetime')\
             ).values('month_yyyy_dd'\
-            ).annotate(cnt=models.Count('guestbook_id')\
+            ).annotate(cnt=models.Count('id')\
             ).values('month_yyyy_dd', 'cnt'\
             ).order_by('%smonth_yyyy_dd' % self.time_sort)
 
         formatted_records = []  # move from a queryset to a []
-        file_running_total = 0
+        file_running_total = self.get_file_download_start_point(**extra_filters)
         for d in file_counts_by_month:
             file_running_total += d['cnt']
             d['running_total'] = file_running_total
@@ -136,6 +146,17 @@ class StatsMakerFiles(StatsMakerBase):
         """Unpublished file counts by month"""
 
         return self.get_file_downloads_by_month(**self.get_is_NOT_published_filter_param())
+
+
+    def get_file_count_start_point(self, **extra_filters):
+        """Get the startpoint when keeping a running total of file downloads"""
+
+        start_point_filters = self.get_running_total_base_date_filters()
+        if extra_filters:
+            for k, v in extra_filters.items():
+                start_point_filters[k] = v
+
+        return Datafile.objects.select_related('dvobject').filter(**start_point_filters).count()
 
 
     def get_file_count_by_month(self, date_param='dvobject__createdate', **extra_filters):
@@ -192,7 +213,7 @@ class StatsMakerFiles(StatsMakerBase):
         # -----------------------------------
         # (3) Format results
         # -----------------------------------
-        running_total = 0   # hold the running total count
+        running_total = self.get_file_count_start_point(**extra_filters)   # hold the running total count
         formatted_records = []  # move from a queryset to a []
 
         for d in file_counts_by_month:

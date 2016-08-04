@@ -8,6 +8,8 @@ REGEX_YYYY_MM_DD = '\d{4}-\d{1,2}-\d{1,2}'
 
 urlpatterns = [
 
+    url(r'^files/types$', views_public_metrics.view_files_by_type, name='view_files_by_type'),
+
     url(r'^datasets/count/simple$', views_api.view_simple_dataset_count, name='view_simple_dataset_count'),
 
     url(r'^datasets/count/simple2$', views.view_simple_dataset_count2, name='view_simple_dataset_count2'),
@@ -16,7 +18,9 @@ urlpatterns = [
 
     url(r'^datasets/count$', views_api.view_dataset_count, name='view_dataset_count'),
 
-    url(r'^datasets/count/jcabanas$', views_api.view_jcabanas, name='view_jcabanas'),
+
+
+    #url(r'^datasets/count/jcabanas$', views_api.view_jcabanas, name='view_jcabanas'),
 
     url(r'^datasets/count-by-month$', views_api.view_dataset_counts_by_month, name='view_dataset_counts_by_month'),
 

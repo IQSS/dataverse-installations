@@ -18,6 +18,25 @@ from .stats_util_datasets import StatsMakerDatasets
 from .stats_util_dataverses import StatsMakerDataverses
 from .stats_util_files import StatsMakerFiles
 
+
+def view_files_by_type(request):
+
+    stats_files = StatsMakerFiles(**request.GET.dict())
+
+    # Start an OrderedDict
+    resp_dict = OrderedDict()
+
+    # -------------------------
+    # Dataverses created each month
+    # -------------------------
+    success, file_content_types = stats_files.get_datafile_content_type_counts_published()
+    if success:
+        resp_dict['file_content_types'] = list(file_content_types)
+        resp_dict['file_content_types_json'] = json.dumps(file_content_types, indent=4)
+
+    return render(request, 'visualizations/file_content_types.html', resp_dict)
+
+
 #@cache_page(60 * 15)
 def view_public_visualizations(request):
 

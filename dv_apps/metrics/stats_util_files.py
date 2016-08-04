@@ -84,11 +84,18 @@ class StatsMakerFiles(StatsMakerBase):
         if start_point_filters is None:
             return 0
 
+        start_point_filters.update(self.get_download_type_filter())
+
         if extra_filters:
             for k, v in extra_filters.items():
                 start_point_filters[k] = v
 
+        print GuestBookResponse.objects.filter(**start_point_filters).query
+
         return GuestBookResponse.objects.filter(**start_point_filters).count()
+
+    def get_download_type_filter(self):
+        return dict(downloadtype=RESPONSE_TYPE_DOWNLOAD)
 
     def get_file_downloads_by_month(self, **extra_filters):
         """
@@ -99,7 +106,7 @@ class StatsMakerFiles(StatsMakerBase):
             return self.get_error_msg_return()
 
         filter_params = self.get_date_filter_params(date_var_name='responsetime')
-        filter_params['downloadtype'] = RESPONSE_TYPE_DOWNLOAD
+        filter_params.update(self.get_download_type_filter())
 
         # Add extra filters, if they exist
         if extra_filters:
@@ -113,10 +120,11 @@ class StatsMakerFiles(StatsMakerBase):
             ).values('yyyy_mm', 'cnt'\
             ).order_by('%syyyy_mm' % self.time_sort)
 
-        print 'file_counts_by_month.query', file_counts_by_month.query
+        #print 'file_counts_by_month.query', file_counts_by_month.query
 
         formatted_records = []  # move from a queryset to a []
         file_running_total = self.get_file_download_start_point(**extra_filters)
+        print 'file_running_total', file_running_total
         for d in file_counts_by_month:
             file_running_total += d['cnt']
             d['running_total'] = file_running_total

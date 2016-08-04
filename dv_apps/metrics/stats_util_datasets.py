@@ -174,7 +174,7 @@ class StatsMakerDatasets(StatsMakerBase):
             ).values('yyyy_mm', 'cnt'\
             ).order_by('%syyyy_mm' % self.time_sort)
 
-        print ds_counts_by_month.query
+        #print ds_counts_by_month.query
 
         # -----------------------------------
         # (3) Format results

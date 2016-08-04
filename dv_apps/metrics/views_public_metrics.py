@@ -70,6 +70,12 @@ def view_public_visualizations(request):
         resp_dict['dataverse_counts_by_type'] = dataverse_counts_by_type
 
 
+    success, file_content_types = stats_files.get_datafile_content_type_counts_published()
+    if success:
+        resp_dict['file_content_types'] = list(file_content_types)
+        #resp_dict['file_content_types_json'] = json.dumps(file_content_types, indent=4)
+
+
     # -------------------------
     # File counts by month
     # -------------------------

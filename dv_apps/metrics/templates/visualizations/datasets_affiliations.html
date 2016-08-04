@@ -1,0 +1,30 @@
+{% load humanize %}
+<div id="viz-datasets_by_month" class="viz"></div>
+<script>
+
+var datasets_by_month = [
+  {%for i in dataset_counts_by_month%}
+
+  {"Month": "{{ i.month_name }} {{ i.year_num }}", "monthNum": {{ i.month_num }}, "name":"Total Datasets", "Number of Published Datasets": {{ i.running_total }}, "month_sort" : "{{ i.month_yyyy_dd }}",  "display_name":"{{ i.month_name }} {{ i.year_num }}: {{ i.cnt|intcomma }} new Datasets; Total of {{ i.running_total|intcomma }} "}
+  {%if not forloop.last%},{%endif%}
+  {%endfor%}
+]
+
+var attributes = [
+ {"name": "Total Datasets", "hex": "#E58433"},
+ {"name": "Monthly Datasets", "hex": "#ffcc00"}
+]
+
+
+
+  // instantiate d3plus
+  var visualization = d3plus.viz()
+    .container("#viz-datasets_by_month")     // container DIV to hold the visualization
+    .data(datasets_by_month)     // data to use with the visualization
+    .type("bubbles")       // visualization type
+    .id("name") // nesting keys
+    .depth(1)              // 0-based depth
+    .size("value")         // key name to size bubbles
+    .color("group")        // color by each group
+    .draw()                // finally, draw the visualization!
+</script>

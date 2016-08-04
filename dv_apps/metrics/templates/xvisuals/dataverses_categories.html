@@ -5,11 +5,11 @@
 <script>
   // sample data array
     var sample_data = [
-    
+
     {%for i in dataverse_counts_by_type%}
-        {"dataverse count": {{i.type_count}}, "name": "{{i.dataversetype}}"} 
+        {"dataverse count": {{i.type_count}}, "name": "{{i.dataversetype}}"}
     {%if not forloop.last%},{%endif%}
-    {%endfor%}        
+    {%endfor%}
 ]
 
   // instantiate d3plus

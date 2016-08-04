@@ -1,0 +1,127 @@
+{% load humanize %}
+<!doctype html>
+<html>
+<head>
+{%load staticfiles%}
+
+<meta charset="utf-8">
+
+<script src="http://www.d3plus.org/js/topojson.js"></script>
+
+<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+    <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+<script src="http://www.d3plus.org/js/d3.js"></script>
+<script src="http://www.d3plus.org/js/d3plus.js"></script>
+
+<style>
+    .viz {
+        height:500px;
+        margin:75px;
+        padding:0px;
+        margin-top:50px;
+        margin-bottom: 25px;
+    }
+
+    h1 {
+        font-family: sans-serif;
+        font-size: 3em;
+        text-align:center;
+        font-weight: bold;
+    }
+
+    h2 {
+        font-family: sans-serif;
+        font-size: 1.25em;
+        text-align:center;
+    }
+
+    h3 {
+        font-family: sans-serif;
+        font-size: 1.5em;
+        text-align:left;
+        text-indent:75px;
+        font-weight:bold;
+        margin-top:100px;
+    }
+    hr {
+        border-width: 4px;
+    }
+    .title {
+        max-height:100%;
+        max-width:100%;
+    }
+
+    </style>
+
+</head>
+
+<body>
+<div class="content">
+    <div class="row">
+        <div class="col-xs-12 col-md-12">
+            <h3>File content types</h3>
+        </div>
+    </div>
+
+    <!-- Viz block section -->
+    <div class="row">
+        <div class="col-xs-12 col-md-12">
+            <div id="viz-file_content_types" class="viz"></div>
+            <script>
+
+  var file_content_types = [
+    {% for i in file_content_types %}
+
+        {#{"group": "group1", "TypeCount": "{{ i.type_count}}", "PercentString": "{{ i.percent_string }}", "ContentType": "{{ i.contenttype }}"}#}
+        {"value":{{ i.type_count }}, "name":"{{ i.short_content_type}}", "group" : "group1", "label":"{{ i.short_content_type}} - {{ i.percent_string }}"}
+        {%if not forloop.last%},{%endif%}
+    {%endfor%}
+    ]
+
+
+
+
+      // instantiate d3plus
+      var visualization = d3plus.viz()
+        .container("#viz-file_content_types")     // container DIV to hold the visualization
+        .data(file_content_types)     // data to use with the visualization
+        .type("bubbles")       // visualization type
+        .id(["group", "name"])            // nesting keys
+        .text("label")
+        .depth(1)              // 0-based depth
+        .size("value")                          // key name to size bubbles
+        .color("group")        // color by each group
+        .draw()                // finally, draw the visualization
+
+
+
+
+
+
+            </script>
+        </div>
+    </div>
+
+    <!-- JSON to work with -->
+    <div class="row">
+
+        <div class="col-xs-12">
+            <div class="panel panel-default">
+                <div class="panel-body"><pre>{{ file_content_types_json }}
+                </pre></div>
+        </div>
+
+    </div>
+   <!-- END -->
+</div>
+</body>
+</html>

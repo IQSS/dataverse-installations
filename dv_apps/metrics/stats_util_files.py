@@ -113,6 +113,8 @@ class StatsMakerFiles(StatsMakerBase):
             ).values('month_yyyy_dd', 'cnt'\
             ).order_by('%smonth_yyyy_dd' % self.time_sort)
 
+        print 'file_counts_by_month.query', file_counts_by_month.query
+
         formatted_records = []  # move from a queryset to a []
         file_running_total = self.get_file_download_start_point(**extra_filters)
         for d in file_counts_by_month:
@@ -340,6 +342,12 @@ class StatsMakerFiles(StatsMakerBase):
                 float_percent = rec.get('type_count', 0) / total_count
                 rec['percent_string'] = '{0:.1%}'.format(float_percent)
                 rec['total_count'] = int(total_count)
+
+                contenttype_parts = rec['contenttype'].split('/')
+                if len(contenttype_parts) > 1:
+                    rec['short_content_type'] = '/'.join(contenttype_parts[1:])
+                else:
+                    rec['short_content_type'] = rec['contenttype']
                 #num+=1
                 #rec['num'] = num
             formatted_records.append(rec)

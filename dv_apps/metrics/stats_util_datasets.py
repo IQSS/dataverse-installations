@@ -168,11 +168,11 @@ class StatsMakerDatasets(StatsMakerBase):
         # annotate query adding "month_yyyy_dd" and "cnt"
         #
         ds_counts_by_month = ds_counts_by_month.annotate(\
-            month_yyyy_dd=TruncYearMonth('%s' % date_param)\
-            ).values('month_yyyy_dd'\
+            yyyy_mm=TruncYearMonth('%s' % date_param)\
+            ).values('yyyy_mm'\
             ).annotate(cnt=models.Count('dvobject_id')\
-            ).values('month_yyyy_dd', 'cnt'\
-            ).order_by('%smonth_yyyy_dd' % self.time_sort)
+            ).values('yyyy_mm', 'cnt'\
+            ).order_by('%syyyy_mm' % self.time_sort)
 
         print ds_counts_by_month.query
 
@@ -187,14 +187,14 @@ class StatsMakerDatasets(StatsMakerBase):
             # running total
             running_total += d['cnt']
             d['running_total'] = running_total
+            d['month_yyyy_dd'] = d['yyyy_mm'].strftime('%Y-%m')
 
             # Add year and month numbers
-            d['year_num'] = int(d['month_yyyy_dd'][0:4])
-            month_num = int(d['month_yyyy_dd'][5:])
-            d['month_num'] = month_num
+            d['year_num'] = d['yyyy_mm'].year
+            d['month_num'] = d['yyyy_mm'].month
 
             # Add month name
-            month_name_found, month_name = get_month_name_abbreviation(month_num)
+            month_name_found, month_name = get_month_name_abbreviation(d['yyyy_mm'].month)
             if month_name_found:
                 d['month_name'] = month_name
             else:

@@ -91,7 +91,7 @@ def view_public_visualizations(request):
     #success, datafile_content_type_counts =\ #stats_files.get_datafile_content_type_counts_published()
     #if success:
     #    resp_dict['datafile_content_type_counts'] = datafile_content_type_counts[:15]
-
+    
 
 
     return render(request, 'visualizations/metrics_public.html', resp_dict)

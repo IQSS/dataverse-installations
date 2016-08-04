@@ -22,12 +22,12 @@ class TruncMonth(models.Func):
     template = '%(function)s(MONTH from %(expressions)s)'
     output_field = models.IntegerField()
 
-class TruncYearMonth(models.Func):
+class xTruncYearMonth(models.Func):
     function = 'to_char'
     template = "%(function)s(%(expressions)s, 'YYYY-MM')"
     output_field = models.CharField()
 
-class xTruncYearMonth(models.Func):
+class TruncYearMonth(models.Func):
     function = 'date_trunc'
     template = "%(function)s('month',%(expressions)s)"
     output_field = models.DateTimeField()

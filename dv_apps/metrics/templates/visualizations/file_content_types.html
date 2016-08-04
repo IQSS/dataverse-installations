@@ -82,7 +82,7 @@
     {% for i in file_content_types %}
 
         {#{"group": "group1", "TypeCount": "{{ i.type_count}}", "PercentString": "{{ i.percent_string }}", "ContentType": "{{ i.contenttype }}"}#}
-        {"value":{{ i.type_count }}, "name":"{{ i.contenttype}}", "group" : "group1", "label":"{{ i.contenttype}} - {{ i.percent_string }}"}
+        {"value":{{ i.type_count }}, "name":"{{ i.short_content_type}}", "group" : "group1", "label":"{{ i.short_content_type}} - {{ i.percent_string }}"}
         {%if not forloop.last%},{%endif%}
     {%endfor%}
     ]

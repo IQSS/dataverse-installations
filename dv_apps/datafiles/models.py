@@ -3,6 +3,11 @@ from django.db import models
 from dv_apps.dvobjects.models import DvObject
 from dv_apps.datasets.models import DatasetVersion
 
+INGEST_STATUS_NONE = 'A' # ASCII 65
+INGEST_STATUS_SCHEDULED = 'B' # ASCII 66
+INGEST_STATUS_INPROGRESS = 'C' # ASCII 67
+INGEST_STATUS_ERROR = 'D' # ASCII 68
+
 class Datafile(models.Model):
     dvobject = models.OneToOneField(DvObject, db_column='id', primary_key=True)
 

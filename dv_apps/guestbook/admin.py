@@ -1,8 +1,6 @@
 from django.contrib import admin
 from dv_apps.guestbook.models import GuestBook, GuestBookResponse
 
-
-
 class GuestBookAdmin(admin.ModelAdmin ):
     save_on_top = True
     list_display = ('id',  'dataverse', 'name')

@@ -3,19 +3,10 @@ Create metrics for Datasets.
 This may be used for APIs, views with visualizations, etc.
 """
 #from django.db.models.functions import TruncMonth  # 1.10
-from collections import OrderedDict
-
 from django.db import models
-from django.db.models import Q
 
-from dv_apps.utils.date_helper import format_yyyy_mm_dd, get_month_name,\
-    month_year_iterator
-from dv_apps.dvobjects.models import DvObject, DTYPE_DATASET, DTYPE_DATAFILE
-
-from dv_apps.datasets.models import Dataset
-from dv_apps.datafiles.models import Datafile
-from dv_apps.dataverses.models import Dataverse, DATAVERSE_TYPE_UNCATEGORIZED
-from dv_apps.guestbook.models import GuestBookResponse, RESPONSE_TYPE_DOWNLOAD
+from dv_apps.utils.date_helper import format_yyyy_mm_dd
+from dv_apps.dvobjects.models import DVOBJECT_CREATEDATE_ATTR
 
 class TruncMonth(models.Func):
     function = 'EXTRACT'
@@ -161,7 +152,7 @@ class StatsMakerBase(object):
             self.time_sort = ''
 
 
-    def get_running_total_base_date_filters(self, date_var_name='dvobject__createdate'):
+    def get_running_total_base_date_filters(self, date_var_name=DVOBJECT_CREATEDATE_ATTR):
         """If we have a running total, get the start point filters"""
         filter_params = {}
         if self.start_date:
@@ -176,7 +167,7 @@ class StatsMakerBase(object):
         return filter_params
 
 
-    def get_date_filter_params(self, date_var_name='dvobject__createdate'):
+    def get_date_filter_params(self, date_var_name=DVOBJECT_CREATEDATE_ATTR):
         """
         Create filter params for django queryset
 

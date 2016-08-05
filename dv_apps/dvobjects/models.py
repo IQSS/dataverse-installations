@@ -8,6 +8,7 @@ DTYPE_DATAFILE = 'DataFile'
 DTYPES = (DTYPE_DATAVERSE, DTYPE_DATASET, DTYPE_DATAFILE)
 DTYPE_CHOICES = [ (d, d) for d in DTYPES]
 
+DVOBJECT_CREATEDATE_ATTR = 'dvobject__createdate'
 
 class DvObject(models.Model):
 

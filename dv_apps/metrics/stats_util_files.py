@@ -3,16 +3,14 @@ Create metrics for Datasets.
 This may be used for APIs, views with visualizations, etc.
 """
 #from django.db.models.functions import TruncMonth  # 1.10
-from collections import OrderedDict
-
 from django.db import models
-from django.db.models import Q
 
 from dv_apps.utils.date_helper import get_month_name_abbreviation
-from dv_apps.dvobjects.models import DvObject, DTYPE_DATASET, DTYPE_DATAFILE
+from dv_apps.dvobjects.models import DvObject, DTYPE_DATAFILE
 from dv_apps.datafiles.models import Datafile
 from dv_apps.guestbook.models import GuestBookResponse, RESPONSE_TYPE_DOWNLOAD
 from dv_apps.metrics.stats_util_base import StatsMakerBase, TruncYearMonth
+from dv_apps.dvobjects.models import DVOBJECT_CREATEDATE_ATTR
 
 
 class StatsMakerFiles(StatsMakerBase):
@@ -179,7 +177,7 @@ class StatsMakerFiles(StatsMakerBase):
         return Datafile.objects.select_related('dvobject').filter(**start_point_filters).count()
 
 
-    def get_file_count_by_month(self, date_param='dvobject__createdate', **extra_filters):
+    def get_file_count_by_month(self, date_param=DVOBJECT_CREATEDATE_ATTR, **extra_filters):
         """
         File counts by month
         """
@@ -194,7 +192,7 @@ class StatsMakerFiles(StatsMakerBase):
 
         # Exclude records where dates are null
         #   - e.g. a record may not have a publication date
-        if date_param == 'dvobject__createdate':
+        if date_param == DVOBJECT_CREATEDATE_ATTR:
             exclude_params = {}
         else:
             exclude_params = { '%s__isnull' % date_param : True}
@@ -272,7 +270,7 @@ class StatsMakerFiles(StatsMakerBase):
 
         # Retrieve the date parameters
         #
-        filter_params = self.get_date_filter_params('dvobject__createdate')
+        filter_params = self.get_date_filter_params(DVOBJECT_CREATEDATE_ATTR)
 
         datafile_counts_by_type = Datafile.objects.select_related('dvobject'\
                     ).filter(**filter_params\
@@ -329,7 +327,7 @@ class StatsMakerFiles(StatsMakerBase):
 
         # Retrieve the date parameters
         #
-        filter_params = self.get_date_filter_params('dvobject__createdate')
+        filter_params = self.get_date_filter_params(DVOBJECT_CREATEDATE_ATTR)
 
         # Add extra filters
         if extra_filters:

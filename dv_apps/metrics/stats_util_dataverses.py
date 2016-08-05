@@ -7,7 +7,8 @@ from django.db import models
 from dv_apps.utils.date_helper import get_month_name_abbreviation
 from dv_apps.dataverses.models import Dataverse, DATAVERSE_TYPE_UNCATEGORIZED
 from dv_apps.metrics.stats_util_base import StatsMakerBase, TruncYearMonth
-
+from dv_apps.dvobjects.models import DVOBJECT_CREATEDATE_ATTR
+from dv_apps.harvesting.models import HarvestingDataverseConfig
 
 class StatsMakerDataverses(StatsMakerBase):
     """
@@ -21,6 +22,11 @@ class StatsMakerDataverses(StatsMakerBase):
         end_date = string in YYYY-MM-DD format
         """
         super(StatsMakerDataverses, self).__init__(**kwargs)
+
+        # Default to include harvested Dataverses
+        # Note!  To really work, this logic needs to be applied to
+        #   Datasets, Datafiles, etc.
+        self.include_harvested = kwargs.get('include_harvested', True)
 
     # ----------------------------
     #  Dataverse counts
@@ -51,7 +57,12 @@ class StatsMakerDataverses(StatsMakerBase):
             for k, v in extra_filters.items():
                 filter_params[k] = v
 
-        return True, Dataverse.objects.filter(**filter_params).count()
+        if self.include_harvested:
+            return True, Dataverse.objects.filter(**filter_params).count()
+        else:
+            return True, Dataverse.objects.filter(**filter_params\
+                    ).exclude(self.get_harvested_dataverse_ids()\
+                    ).count()
 
     # ----------------------------
     #  Dataverse counts by month
@@ -81,10 +92,19 @@ class StatsMakerDataverses(StatsMakerBase):
             for k, v in extra_filters.items():
                 start_point_filters[k] = v
 
-        return Dataverse.objects.select_related('dvobject').filter(**start_point_filters).count()
+        exclude_params = {}
+        if self.include_harvested:
+            exclude_params['dvobject__id__in'] = self.get_harvested_dataverse_ids()
 
+        return Dataverse.objects.select_related('dvobject').filter(**start_point_filters).exclude(**exclude_params).count()
 
-    def get_dataverse_counts_by_month(self, date_param='dvobject__createdate', **extra_filters):
+    def get_harvested_dataverse_ids(self):
+        """Return the ids of harvested Dataverses"""
+
+        return HarvestingDataverseConfig.objects.values_list('dataverse__id'\
+                , flat=True).all()
+
+    def get_dataverse_counts_by_month(self, date_param=DVOBJECT_CREATEDATE_ATTR, **extra_filters):
         """
         Return Dataverse counts by month
         """
@@ -99,7 +119,10 @@ class StatsMakerDataverses(StatsMakerBase):
 
         # Exclude records where dates are null
         #   - e.g. a record may not have a publication date
+
         exclude_params = { '%s__isnull' % date_param : True}
+        if self.include_harvested:
+            exclude_params['dvobject__id__in'] = self.get_harvested_dataverse_ids()
 
         # Retrieve the date parameters
         #
@@ -212,7 +235,7 @@ class StatsMakerDataverses(StatsMakerBase):
 
         # Retrieve the date parameters
         #
-        filter_params = self.get_date_filter_params('dvobject__createdate')
+        filter_params = self.get_date_filter_params(DVOBJECT_CREATEDATE_ATTR)
 
         # Add extra filters
         if extra_filters:
@@ -278,7 +301,7 @@ class StatsMakerDataverses(StatsMakerBase):
 
         # Retrieve the date parameters
         #
-        filter_params = self.get_date_filter_params('dvobject__createdate')
+        filter_params = self.get_date_filter_params(DVOBJECT_CREATEDATE_ATTR)
 
         dataverse_counts_by_affil = Dataverse.objects.select_related('dvobject'\
                     ).filter(**filter_params\
@@ -314,7 +337,7 @@ class StatsMakerDataverses(StatsMakerBase):
 
         # Retrieve the date parameters
         #
-        filter_params = self.get_date_filter_params('dvobject__createdate')
+        filter_params = self.get_date_filter_params(DVOBJECT_CREATEDATE_ATTR)
 
         datafile_counts_by_type = Datafile.objects.select_related('dvobject'\
                     ).filter(**filter_params\

@@ -6,17 +6,12 @@ This may be used for APIs, views with visualizations, etc.
 from collections import OrderedDict
 
 from django.db import models
-from django.db.models import Q
 
-from dv_apps.utils.date_helper import format_yyyy_mm_dd,\
-    get_month_name_abbreviation,\
+from dv_apps.utils.date_helper import get_month_name_abbreviation,\
     month_year_iterator
-from dv_apps.dvobjects.models import DvObject, DTYPE_DATASET, DTYPE_DATAFILE
 from dv_apps.datasets.models import Dataset
-from dv_apps.datafiles.models import Datafile
-from dv_apps.dataverses.models import Dataverse, DATAVERSE_TYPE_UNCATEGORIZED
-from dv_apps.guestbook.models import GuestBookResponse, RESPONSE_TYPE_DOWNLOAD
 from dv_apps.metrics.stats_util_base import StatsMakerBase, TruncYearMonth
+from dv_apps.dvobjects.models import DVOBJECT_CREATEDATE_ATTR
 
 
 class StatsMakerDatasets(StatsMakerBase):
@@ -77,7 +72,7 @@ class StatsMakerDatasets(StatsMakerBase):
             for k, v in extra_filters.items():
                 filter_params[k] = v
 
-        return self.get_dataset_count_by_month(date_param='dvobject__createdate',\
+        return self.get_dataset_count_by_month(date_param=DVOBJECT_CREATEDATE_ATTR,\
             **extra_filters)
 
 
@@ -125,7 +120,7 @@ class StatsMakerDatasets(StatsMakerBase):
         return Dataset.objects.select_related('dvobject').filter(**start_point_filters).count()
 
 
-    def get_dataset_count_by_month(self, date_param='dvobject__createdate', **extra_filters):
+    def get_dataset_count_by_month(self, date_param=DVOBJECT_CREATEDATE_ATTR, **extra_filters):
         """
         Return dataset counts by month
         """
@@ -140,7 +135,7 @@ class StatsMakerDatasets(StatsMakerBase):
 
         # Exclude records where dates are null
         #   - e.g. a record may not have a publication date
-        if date_param == 'dvobject__createdate':
+        if date_param == DVOBJECT_CREATEDATE_ATTR:
             exclude_params = {}
         else:
             exclude_params = { '%s__isnull' % date_param : True}

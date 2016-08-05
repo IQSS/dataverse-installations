@@ -48,7 +48,10 @@ INSTALLED_APPS = (
     'dv_apps.datasets',
     'dv_apps.datafiles',
     'dv_apps.datasetfields',
+    'dv_apps.harvesting',
     'dv_apps.guestbook',
+
+    # Maps
     'dv_apps.installations',
 
     # Experiments/Add-ons

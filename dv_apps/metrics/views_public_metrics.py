@@ -76,7 +76,7 @@ def view_public_visualizations(request):
     # -------------------------
     # Dataverses created each month
     # -------------------------
-    success, dataverse_counts_by_month = stats_dvs.get_dataverse_counts_by_month()
+    success, dataverse_counts_by_month = stats_dvs.get_dataverse_counts_by_month_published()
     if success:
         resp_dict['dataverse_counts_by_month'] = list(dataverse_counts_by_month)
 

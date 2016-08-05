@@ -34,8 +34,7 @@ class FileMetadata(models.Model):
     restricted = models.NullBooleanField()
     version = models.BigIntegerField(blank=True, null=True)
     datafile = models.ForeignKey(DvObject)
-    #datafile = models.ForeignKey(Datafile)
-    #datasetversion = models.ForeignKey(DatasetVersion)
+    datasetversion = models.ForeignKey(DatasetVersion)
 
     def __str__(self):
         return self.label

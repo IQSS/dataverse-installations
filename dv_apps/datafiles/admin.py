@@ -16,4 +16,6 @@ class FileMetadataAdmin(admin.ModelAdmin):
     search_fields = ('label', 'description')
     list_display = ('label', 'version', 'restricted', 'description', )
     list_filter= ('restricted',)
+    fields = ( 'label', 'description', 'version', 'datafile',)# 'datasetversion')
+
 admin.site.register(FileMetadata, FileMetadataAdmin)

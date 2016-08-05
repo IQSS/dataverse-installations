@@ -25,8 +25,10 @@ from dv_apps.metrics.stats_util_files import StatsMakerFiles
 def view_file_extensions_in_type(request, file_type='application/octet-stream'):
     """Query as experiment.  View extensions for unidentified queries"""
 
+    #file_type = 'data/various-formats'
     ids = Datafile.objects.filter(contenttype=file_type).values_list('dvobject__id', flat=True)
 
+    #ids = Datafile.objects.all().values_list('dvobject__id', flat=True)
     l = FileMetadata.objects.filter(datafile__in=ids).values_list('label', flat=True)
 
     ext_list = [splitext(label)[-1] for label in l]
@@ -35,7 +37,10 @@ def view_file_extensions_in_type(request, file_type='application/octet-stream'):
     for ext in ext_list:
         extension_counts[ext] = extension_counts.get(ext, 0) + 1
 
-    d = dict(extension_counts=extension_counts)
+    ext_pairs = extension_counts.items()
+    ext_pairs = sorted(ext_pairs, key=lambda k: k[1], reverse=True)
+
+    d = dict(extension_counts=ext_pairs)
 
     return JsonResponse(d)
 

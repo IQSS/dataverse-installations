@@ -130,7 +130,9 @@ class StatsMakerDataverses(StatsMakerBase):
             ).values('yyyy_mm', 'cnt'\
             ).order_by('%syyyy_mm' % self.time_sort)
 
-        #print (ds_counts_by_month)
+        print '-' * 40
+        print dv_counts_by_month.query
+        print '-' * 40
 
         # -----------------------------------
         # (3) Format results

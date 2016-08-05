@@ -10,6 +10,8 @@ urlpatterns = [
 
     url(r'^files/types$', views_public_metrics.view_files_by_type, name='view_files_by_type'),
 
+    url(r'^files/extensions$', views_public_metrics.view_file_extensions_in_type, name='view_file_extensions_in_type'),
+
     url(r'^datasets/count/simple$', views_api.view_simple_dataset_count, name='view_simple_dataset_count'),
 
     url(r'^datasets/count/simple2$', views.view_simple_dataset_count2, name='view_simple_dataset_count2'),

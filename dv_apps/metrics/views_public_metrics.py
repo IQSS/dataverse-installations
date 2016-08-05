@@ -3,6 +3,7 @@ Metric views, returning JSON repsonses
 """
 from collections import OrderedDict
 import json
+from os.path import splitext
 
 from django.shortcuts import render
 from django.http import JsonResponse, HttpResponse
@@ -21,14 +22,22 @@ from dv_apps.metrics.stats_util_dataverses import StatsMakerDataverses
 from dv_apps.metrics.stats_util_files import StatsMakerFiles
 
 
-def view_file_extensions_in_type(request, file_type):
+def view_file_extensions_in_type(request, file_type='application/octet-stream'):
     """Query as experiment.  View extensions for unidentified queries"""
 
-    ids = Datafile.objects.filter(contenttype=file_type).values('id', flat_list=True)
+    ids = Datafile.objects.filter(contenttype=file_type).values_list('dvobject__id', flat=True)
 
-    l = FileMetadata.objects.filter(datafile__id__in=ids).values('label', flat_list=True)
+    l = FileMetadata.objects.filter(datafile__in=ids).values_list('label', flat=True)
 
-    return JsonResponse(json.dumps(l))
+    ext_list = [splitext(label)[-1] for label in l]
+
+    extension_counts = {}
+    for ext in ext_list:
+        extension_counts[ext] = extension_counts.get(ext, 0) + 1
+
+    d = dict(extension_counts=extension_counts)
+
+    return JsonResponse(d)
 
 
 def view_files_by_type(request):

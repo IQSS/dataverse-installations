@@ -68,6 +68,7 @@
 
     <h1>Harvard Dataverse</h1>
     <h2>Open for all researchers worldwide from all disciplines to deposit data</h2>
+    {% comment %}  {% endcomment %}
 
     <div class="row">
         <div class="col-xs-12 col-md-12">
@@ -120,17 +121,29 @@
 
      <!-- Viz block section -->
   <div class="row">
+      <div class="col-xs-12 col-md-6">
+        {% include "visualizations/files_added.html" %}
+      </div>
 
-  <div class="col-xs-12 col-md-6">
-    {% include "visualizations/files_added.html" %}
+      <div class="col-xs-12 col-md-6">
+          {%include "visualizations/files_downloads.html" %}
+      </div>
   </div>
 
 
-  <div class="col-xs-12 col-md-6">
-      {%include "visualizations/files_downloads.html" %}
+  <div class="row">
+      <div class="col-xs-12 col-md-12">
+          <h3>Other File Stats</h3>
+      </div>
   </div>
 
+
+  <div class="row">
+      <div class="col-xs-12">
+        {% include "visualizations/file_types_bar.html" %}
+      </div>
   </div>
+
   <hr>
    <!-- END -->
     </body>

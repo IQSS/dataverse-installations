@@ -85,14 +85,12 @@ def view_simple_dataset_count2(request):
         datafile_counts['datafile_count_unpublished'] = stats_file_count_unpublished.result_data
 
 
-
     # -------------------------
     # Dataverses created each month
     # -------------------------
     dataverse_counts_by_month = stats_dvs.get_dataverse_counts_by_month()
     if not dataverse_counts_by_month.has_error():
         resp_dict['dataverse_counts_by_month'] = list(dataverse_counts_by_month.result_data)
-
 
     # -------------------------
     # Datasets created each month

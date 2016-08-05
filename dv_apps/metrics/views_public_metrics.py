@@ -98,6 +98,7 @@ def view_public_visualizations(request):
     if not stats_file_content_types.has_error():
         resp_dict['file_content_types'] = list(stats_file_content_types.result_data)
         resp_dict['file_content_types_sql'] = stats_file_content_types.sql_query
+        resp_dict['file_content_types_top_20'] = list(stats_file_content_types.result_data)[:20]
         #resp_dict['file_content_types_json'] = json.dumps(file_content_types, indent=4)
 
     # -------------------------

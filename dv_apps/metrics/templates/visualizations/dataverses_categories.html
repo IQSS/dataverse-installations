@@ -1,4 +1,11 @@
 <!-- NOTES: remember to name the visualization div with viz plus a unique ID# -->
+{% if dv_counts_by_category_sql %}
+<div id="sql-dataverses">
+    {% with SQL_STRING=dv_counts_by_category_sql %}
+        {% include "visualizations/query_panel.html" %}
+    {% endwith %}
+</div>
+{% endif %}
 <div id="viz-dv-categories" class="viz"></div>
 
 <script>

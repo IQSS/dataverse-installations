@@ -32,14 +32,20 @@ def view_simple_dataset_count2(request):
     # -------------------------
     # Note: For regular use, the success_flag should be checked every time_sort
     #
-    success, count_results_or_err = stats_dvs.get_dataverse_count()
-    if not success:
-        return JsonResponse(count_results_or_err)
+    stats_dv_count = stats_dvs.get_dataverse_count()
+    if stats_dv_count.has_error():
+        return JsonResponse(dict(error_message=stats_dv_count.error_message))
 
-    dataverse_counts = dict(dataverse_count=count_results_or_err)
+    dataverse_counts = dict(dataverse_count=stats_dv_count.result_data)
 
-    success_flag, dataverse_counts['dataverse_count_published'] = stats_dvs.get_dataverse_count_published()
-    success_flag, dataverse_counts['dataverse_count_unpublished'] = stats_dvs.get_dataverse_count_unpublished()
+    stats_dv_count_published = stats_dvs.get_dataverse_count_published()
+    if not stats_dv_count_published.has_error():
+        dataverse_counts['dataverse_count_published'] = stats_dv_count_published.result_data
+
+    stats_dv_count_unpublished = stats_dvs.get_dataverse_count_unpublished()
+    if not stats_dv_count_unpublished.has_error():
+        dataverse_counts['dataverse_count_unpublished'] = stats_dv_count_unpublished.result_data
+
     resp_dict['dataverse_counts'] = dataverse_counts
 
 
@@ -47,9 +53,18 @@ def view_simple_dataset_count2(request):
     # Dataset counts
     # -------------------------
     dataset_counts = {}
-    success_flag, dataset_counts['dataset_count'] = stats_datasets.get_dataset_count()
-    success_flag, dataset_counts['dataset_count_published'] = stats_datasets.get_dataset_count_published()
-    success_flag, dataset_counts['dataset_count_unpublished'] = stats_datasets.get_dataset_count_unpublished()
+    stats_ds_count = stats_datasets.get_dataset_count()
+    if stats_ds_count.was_succcess():
+        dataset_counts['dataset_count'] = stats_ds_count.result_data
+
+    stats_ds_count_published = stats_datasets.get_dataset_count_published()
+    if stats_ds_count_published.was_succcess():
+        dataset_counts['dataset_count_published'] = stats_ds_count_published.result_data
+
+    stats_ds_count_unpublished = stats_datasets.get_dataset_count_unpublished()
+    if stats_ds_count_unpublished.was_succcess():
+        dataset_counts['dataset_count_unpublished'] = stats_ds_count_unpublished.result_data
+
     resp_dict['dataset_counts'] = dataset_counts
 
 
@@ -57,73 +72,78 @@ def view_simple_dataset_count2(request):
     # Datafile counts
     # -------------------------
     datafile_counts = {}
-    success_flag, datafile_counts['datafile_count'] = stats_files.get_datafile_count()
-    success_flag, datafile_counts['datafile_count_published'] = stats_files.get_datafile_count_published()
-    success_flag, datafile_counts['datafile_count_unpublished'] = stats_files.get_datafile_count_unpublished()
-    resp_dict['datafile_counts'] = datafile_counts
+    stats_file_count = stats_files.get_datafile_count()
+    if stats_file_count.was_succcess():
+        datafile_counts['datafile_count'] = stats_file_count.result_data
 
+    stats_file_count_published = stats_files.get_datafile_count_published()
+    if stats_file_count_published.was_succcess():
+        datafile_counts['datafile_count_published'] = stats_file_count_published.result_data
 
-    # -------------------------
-    # Datafiles by content type
-    # -------------------------
-    #success, number_of_datafile_types = smd.get_number_of_datafile_types()
-    #if success:
-    #    resp_dict['number_of_datafile_types'] = list(number_of_datafile_types)
+    stats_file_count_unpublished = stats_files.get_datafile_count_unpublished()
+    if stats_file_count_unpublished.was_succcess():
+        datafile_counts['datafile_count_unpublished'] = stats_file_count_unpublished.result_data
 
-    success, datafile_content_type_counts = stats_files.get_datafile_content_type_counts()
-    if success:
-        resp_dict['datafile_content_type_counts'] = datafile_content_type_counts
 
 
     # -------------------------
     # Dataverses created each month
     # -------------------------
-    success, dataverse_counts_by_month = stats_dvs.get_dataverse_counts_by_month()
-    if success:
-        resp_dict['dataverse_counts_by_month'] = list(dataverse_counts_by_month)
+    dataverse_counts_by_month = stats_dvs.get_dataverse_counts_by_month()
+    if not dataverse_counts_by_month.has_error():
+        resp_dict['dataverse_counts_by_month'] = list(dataverse_counts_by_month.result_data)
 
 
     # -------------------------
     # Datasets created each month
     # -------------------------
-    success, dataset_counts_by_month = stats_datasets.get_dataset_counts_by_create_date()
-    if success:
-        resp_dict['dataset_counts_by_month'] = list(dataset_counts_by_month)
+    dataset_counts_by_month = stats_datasets.get_dataset_counts_by_create_date()
+    if not dataset_counts_by_month.has_error():
+        resp_dict['dataset_counts_by_month'] = list(dataset_counts_by_month.result_data)
 
     # -------------------------
     # Datasets published each month
     # -------------------------
-    success, datasets_published_counts_by_month = stats_datasets.get_dataset_counts_by_publication_date()
-    if success:
-        resp_dict['datasets_published_counts_by_month'] = list(datasets_published_counts_by_month)
+    datasets_published_counts_by_month = stats_datasets.get_dataset_counts_by_publication_date()
+    if not datasets_published_counts_by_month.has_error():
+        resp_dict['datasets_published_counts_by_month'] =\
+         list(datasets_published_counts_by_month.result_data)
 
     # -------------------------
     # Datasets modified by month BUT not historical -- only last mod. date shown
     # -------------------------
-    success, datasets_modified_counts_by_month = stats_datasets.get_dataset_counts_by_modification_date()
-    if success:
-        resp_dict['datasets_modified_counts_by_month'] = datasets_modified_counts_by_month
+    datasets_modified_counts_by_month = stats_datasets.get_dataset_counts_by_modification_date()
+    if not datasets_modified_counts_by_month.has_error():
+        resp_dict['datasets_modified_counts_by_month'] = datasets_modified_counts_by_month.result_data
 
     # -------------------------
     # Files downloaded each month
     # -------------------------
-    success, file_downloads_by_month = stats_files.get_file_downloads_by_month_published()
-    if success:
-        resp_dict['file_downloads_by_month'] = list(file_downloads_by_month)
+    file_downloads_by_month = stats_files.get_file_downloads_by_month_published()
+    if not file_downloads_by_month.has_error():
+        resp_dict['file_downloads_by_month'] = list(file_downloads_by_month.result_data)
+
+    # -------------------------
+    # Datafiles by content type
+    # -------------------------
+    datafile_content_type_counts = stats_files.get_datafile_content_type_counts()
+    if not datafile_content_type_counts.has_error():
+        resp_dict['datafile_content_type_counts'] = datafile_content_type_counts.result_data
+
 
     # -------------------------
     # Dataverses categorized by type
     # -------------------------
-    success, dv_counts_by_type = stats_dvs.get_dataverse_counts_by_type()
-    if success:
-        resp_dict['dv_counts_by_type'] = dv_counts_by_type
+    dv_counts_by_type = stats_dvs.get_dataverse_counts_by_type()
+    if not dv_counts_by_type.has_error():
+        resp_dict['dv_counts_by_type'] = dv_counts_by_type.result_data
 
     # -------------------------
     # Dataverses categorized by affiliation
     # -------------------------
-    success, dv_counts_by_affiliation = stats_dvs.get_dataverse_affiliation_counts()
-    if success:
-        resp_dict['dv_counts_by_affiliation'] = dv_counts_by_affiliation
+    dv_counts_by_affiliation = stats_dvs.get_dataverse_affiliation_counts()
+    if not dv_counts_by_affiliation.has_error():
+        resp_dict['dv_counts_by_affiliation'] = dv_counts_by_affiliation.result_data
 
     d = dict(JSON_STATS=json.dumps(resp_dict, indent=4))
     return render(request, 'metrics_api.html', d)

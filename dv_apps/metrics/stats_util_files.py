@@ -10,6 +10,7 @@ from dv_apps.dvobjects.models import DvObject, DTYPE_DATAFILE
 from dv_apps.datafiles.models import Datafile
 from dv_apps.guestbook.models import GuestBookResponse, RESPONSE_TYPE_DOWNLOAD
 from dv_apps.metrics.stats_util_base import StatsMakerBase, TruncYearMonth
+from dv_apps.metrics.stats_result import StatsResult
 from dv_apps.dvobjects.models import DVOBJECT_CREATEDATE_ATTR
 
 
@@ -41,7 +42,11 @@ class StatsMakerFiles(StatsMakerBase):
             for k, v in extra_filters.items():
                 filter_params[k] = v
 
-        return True, Datafile.objects.filter(**filter_params).count()
+        q = Datafile.objects.filter(**filter_params)
+        sql_query = str(q.query)
+
+        return StatsResult.build_success_result(q.count(), sql_query)
+        #    return True, Datafile.objects.filter(**filter_params).count()
 
     def get_datafile_count_published(self):
         """
@@ -88,9 +93,11 @@ class StatsMakerFiles(StatsMakerBase):
             for k, v in extra_filters.items():
                 start_point_filters[k] = v
 
-        print GuestBookResponse.objects.filter(**start_point_filters).query
+        q = GuestBookResponse.objects.filter(**start_point_filters)
+        sql_query = str(q.query)
 
-        return GuestBookResponse.objects.filter(**start_point_filters).count()
+        return q.count()
+
 
     def get_download_type_filter(self):
         return dict(downloadtype=RESPONSE_TYPE_DOWNLOAD)
@@ -119,10 +126,13 @@ class StatsMakerFiles(StatsMakerBase):
             ).order_by('%syyyy_mm' % self.time_sort)
 
         #print 'file_counts_by_month.query', file_counts_by_month.query
+        sql_query = str(file_counts_by_month.query)
 
         formatted_records = []  # move from a queryset to a []
         file_running_total = self.get_file_download_start_point(**extra_filters)
+
         print 'file_running_total', file_running_total
+
         for d in file_counts_by_month:
             file_running_total += d['cnt']
             d['running_total'] = file_running_total
@@ -146,7 +156,9 @@ class StatsMakerFiles(StatsMakerBase):
 
             formatted_records.append(d)
 
-        return True, formatted_records
+        return StatsResult.build_success_result(formatted_records, sql_query)
+
+        #return True, formatted_records
 
 
     # ----------------------------
@@ -226,7 +238,7 @@ class StatsMakerFiles(StatsMakerBase):
             ).values('yyyy_mm', 'cnt'\
             ).order_by('%syyyy_mm' % self.time_sort)
 
-        #print file_counts_by_month.query
+        sql_query = str(file_counts_by_month.query)
 
         # -----------------------------------
         # (3) Format results
@@ -259,7 +271,9 @@ class StatsMakerFiles(StatsMakerBase):
             # Add formatted record
             formatted_records.append(d)
 
-        return True, formatted_records
+        return StatsResult.build_success_result(formatted_records, sql_query)
+
+        #return True, formatted_records
 
 
     '''
@@ -341,6 +355,8 @@ class StatsMakerFiles(StatsMakerBase):
                     ).annotate(type_count=models.Count('contenttype')\
                     ).order_by('-type_count')
 
+        sql_query = str(datafile_counts_by_type.query)
+
         # Count all dataverses
         #
         total_count = sum([rec.get('type_count', 0) for rec in datafile_counts_by_type])
@@ -366,11 +382,12 @@ class StatsMakerFiles(StatsMakerBase):
                 #rec['num'] = num
             formatted_records.append(rec)
 
-        return True, formatted_records
+        return StatsResult.build_success_result(formatted_records, sql_query)
+
 
     def get_files_per_dataset(self):
         """
-        To do
+        To do.....
         """
 
         # Pull file counts under each dataset

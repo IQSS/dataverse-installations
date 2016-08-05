@@ -7,6 +7,7 @@ from django.db import models
 
 from dv_apps.utils.date_helper import format_yyyy_mm_dd
 from dv_apps.dvobjects.models import DVOBJECT_CREATEDATE_ATTR
+from dv_apps.metrics.stats_result import StatsResult
 
 class TruncMonth(models.Func):
     function = 'EXTRACT'
@@ -22,6 +23,7 @@ class TruncYearMonth(models.Func):
     function = 'date_trunc'
     template = "%(function)s('month',%(expressions)s)"
     output_field = models.DateTimeField()
+
 
 #select date_trunc('month', responsetime) as mth, count(id) from guestbookresponse group by mth;
     #to_char(createdate, 'YYYY-MM')
@@ -83,7 +85,8 @@ class StatsMakerBase(object):
         if not self.was_error_found():
             raise AttributeError("Only call this if was_error_found() is true")
 
-        return False, self.error_message
+        return StatsResult.build_error_result(self.error_message,\
+            self.bad_http_status_code)
 
 
     def load_dates_from_kwargs(self, **kwargs):
@@ -193,6 +196,7 @@ class StatsMakerBase(object):
         """
         date_var = '%s__publicationdate__isnull' % dvobject_var_name
         return {date_var : False}
+
 
     def get_is_NOT_published_filter_param(self, dvobject_var_name='dvobject'):
         """

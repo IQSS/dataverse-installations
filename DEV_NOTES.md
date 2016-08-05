@@ -31,3 +31,7 @@ python manage.py createsuperuser --database django_contrib_db
 - python manage check
 - python manage.py loaddata dv_apps/installations/fixtures/installations.json
 - python manage.py runserver
+
+## readonly user
+
+GRANT SELECT ON ALL TABLES IN SCHEMA public TO dv_readonly;

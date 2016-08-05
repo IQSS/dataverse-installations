@@ -6,37 +6,27 @@ from . import views_api, views, views_public_metrics
 REGEX_YYYY_MM_DD = '\d{4}-\d{1,2}-\d{1,2}'
 #REGEX_YYYY_MM_DD = '(19|20)\d{2}-\d{1,2}-\d{1,2}'
 
+
+
 urlpatterns = [
+
+    # http://127.0.0.1:8000/metrics/basic-visualizations
+    url(r'^basic-visualizations$', views_public_metrics.view_public_visualizations, name='view_public_visualizations'),
 
     url(r'^files/types$', views_public_metrics.view_files_by_type, name='view_files_by_type'),
 
-    url(r'^files/extensions$', views_public_metrics.view_file_extensions_in_type, name='view_file_extensions_in_type'),
+    url(r'^files/extensions$', views_public_metrics.view_file_extensions_within_type, name='view_file_extensions_within_type'),
 
     url(r'^datasets/count/simple$', views_api.view_simple_dataset_count, name='view_simple_dataset_count'),
 
     url(r'^datasets/count/simple2$', views.view_simple_dataset_count2, name='view_simple_dataset_count2'),
 
-    url(r'^datasets/count/simple3$', views_public_metrics.view_public_visualizations, name='view_public_visualizations'),
-
     url(r'^datasets/count$', views_api.view_dataset_count, name='view_dataset_count'),
-
-
 
     #url(r'^datasets/count/jcabanas$', views_api.view_jcabanas, name='view_jcabanas'),
 
     url(r'^datasets/count-by-month$', views_api.view_dataset_counts_by_month, name='view_dataset_counts_by_month'),
 
 
-    #url(r'^datasets/count/(?P<start_date_str>%s)$' % REGEX_YYYY_MM_DD, views_api.view_dataset_count, name='view_dataset_count_start_date'),
-
-    #url(r'^datasets/count/(?P<start_date_str>{0})/(?P<end_date_str>{0})$'.format(REGEX_YYYY_MM_DD), views_api.view_dataset_count, name='view_dataset_count_start_end_dates'),
-
-    #url(r'^t/(?P<username>\w{1,50})', 'view_test_query', name='view_test_query_with_username'),
-
-    #url(r'^test-query', 'view_test_query', name='view_test_query'),
-
- #   url(r'^send-metadata-to-dataverse/(?P<import_success_id>\d{1,10})/$', 'send_metadata_to_dataverse', name="send_metadata_to_dataverse"),
-
-  #  url(r'^params-for-datavarse/(?P<import_success_id>\d{1,10})/$', 'show_import_success_params', name="show_import_success_params"),
 
 ]

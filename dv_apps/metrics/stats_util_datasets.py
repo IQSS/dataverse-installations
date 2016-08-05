@@ -12,6 +12,7 @@ from dv_apps.utils.date_helper import get_month_name_abbreviation,\
 from dv_apps.datasets.models import Dataset
 from dv_apps.metrics.stats_util_base import StatsMakerBase, TruncYearMonth
 from dv_apps.dvobjects.models import DVOBJECT_CREATEDATE_ATTR
+from dv_apps.metrics.stats_result import StatsResult
 
 
 class StatsMakerDatasets(StatsMakerBase):
@@ -42,7 +43,11 @@ class StatsMakerDatasets(StatsMakerBase):
             for k, v in extra_filters.items():
                 filter_params[k] = v
 
-        return True, Dataset.objects.filter(**filter_params).count()
+        q = Dataset.objects.filter(**filter_params)
+        sql_query = str(q.query)
+
+        return StatsResult.build_success_result(q.count(), sql_query)
+
 
     def get_dataset_count_published(self):
         """
@@ -169,7 +174,8 @@ class StatsMakerDatasets(StatsMakerBase):
             ).values('yyyy_mm', 'cnt'\
             ).order_by('%syyyy_mm' % self.time_sort)
 
-        #print ds_counts_by_month.query
+        # store query string
+        sql_query = str(ds_counts_by_month.query)
 
         # -----------------------------------
         # (3) Format results
@@ -202,7 +208,8 @@ class StatsMakerDatasets(StatsMakerBase):
             # Add formatted record
             formatted_records.append(d)
 
-        return True, formatted_records
+        return StatsResult.build_success_result(formatted_records, sql_query)
+
 
 
     def make_month_lookup(self, stats_queryset):

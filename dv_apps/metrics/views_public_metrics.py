@@ -22,7 +22,7 @@ from dv_apps.metrics.stats_util_dataverses import StatsMakerDataverses
 from dv_apps.metrics.stats_util_files import StatsMakerFiles
 
 
-def view_file_extensions_in_type(request, file_type='application/octet-stream'):
+def view_file_extensions_within_type(request, file_type='application/octet-stream'):
     """Query as experiment.  View extensions for unidentified queries"""
 
     #file_type = 'data/various-formats'
@@ -76,43 +76,54 @@ def view_public_visualizations(request):
     # -------------------------
     # Dataverses created each month
     # -------------------------
-    success, dataverse_counts_by_month = stats_dvs.get_dataverse_counts_by_month_published()
-    if success:
-        resp_dict['dataverse_counts_by_month'] = list(dataverse_counts_by_month)
-
-    # -------------------------
-    # Datasets created each month
-    # -------------------------
-    success, dataset_counts_by_month = stats_datasets.get_dataset_counts_by_create_date_published()
-    if success:
-        resp_dict['dataset_counts_by_month'] = list(dataset_counts_by_month)
+    stats_result_dv_counts = stats_dvs.get_dataverse_counts_by_month_published()
+    #import ipdb; ipdb.set_trace()
+    if not stats_result_dv_counts.has_error():
+        resp_dict['dataverse_counts_by_month'] = list(stats_result_dv_counts.result_data)
+        resp_dict['dataverse_counts_by_month_sql'] = stats_result_dv_counts.sql_query
 
     # -------------------------
     # Dataverse counts by type
     # -------------------------
-    success, dataverse_counts_by_type =\
+    stats_result_dv_counts_by_type =\
         stats_dvs.get_dataverse_counts_by_type_published(exclude_uncategorized=True)
-    if success:
-        resp_dict['dataverse_counts_by_type'] = dataverse_counts_by_type
+    if not stats_result_dv_counts_by_type.has_error():
+        resp_dict['dataverse_counts_by_type'] = stats_result_dv_counts_by_type.result_data
+        resp_dict['dv_counts_by_category_sql'] = stats_result_dv_counts_by_type.sql_query
 
-
-    success, file_content_types = stats_files.get_datafile_content_type_counts_published()
-    if success:
-        resp_dict['file_content_types'] = list(file_content_types)
+    # -------------------------
+    # File counts by content type
+    # -------------------------
+    stats_file_content_types = stats_files.get_datafile_content_type_counts_published()
+    if not stats_file_content_types.has_error():
+        resp_dict['file_content_types'] = list(stats_file_content_types.result_data)
+        resp_dict['file_content_types_sql'] = stats_file_content_types.sql_query
         #resp_dict['file_content_types_json'] = json.dumps(file_content_types, indent=4)
 
+    # -------------------------
+    # Datasets created each month
+    # -------------------------
+    stats_monthly_ds_counts = stats_datasets.get_dataset_counts_by_create_date_published()
+    if not stats_monthly_ds_counts.has_error():
+        resp_dict['dataset_counts_by_month'] = list(stats_monthly_ds_counts.result_data)
+        resp_dict['dataset_counts_by_month_sql'] = stats_monthly_ds_counts.sql_query
+
 
     # -------------------------
-    # File counts by month
+    # Files created, by month
     # -------------------------
-    success, file_counts_by_month = stats_files.get_file_count_by_month_published()
-    if success:
-        resp_dict['file_counts_by_month'] = list(file_counts_by_month)
+    stats_monthly_file_counts = stats_files.get_file_count_by_month_published()
+    if not stats_monthly_file_counts.has_error():
+        resp_dict['file_counts_by_month'] = list(stats_monthly_file_counts.result_data)
+        resp_dict['file_counts_by_month_sql'] = stats_monthly_file_counts.sql_query
 
-    success, file_downloads_by_month = stats_files.get_file_downloads_by_month_published()
-    if success:
-        resp_dict['file_downloads_by_month'] = list(file_downloads_by_month)
-        print 'file_downloads_by_month', file_downloads_by_month
+    # -------------------------
+    # Files downloaded, by month
+    # -------------------------
+    stats_monthly_downloads = stats_files.get_file_downloads_by_month_published()
+    if not stats_monthly_downloads.has_error():
+        resp_dict['file_downloads_by_month'] = list(stats_monthly_downloads.result_data)
+        resp_dict['file_downloads_by_month_sql'] = stats_monthly_downloads.sql_query
 
     #success, datafile_content_type_counts =\ #stats_files.get_datafile_content_type_counts_published()
     #if success:

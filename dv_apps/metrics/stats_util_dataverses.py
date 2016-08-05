@@ -7,6 +7,7 @@ from django.db import models
 from dv_apps.utils.date_helper import get_month_name_abbreviation
 from dv_apps.dataverses.models import Dataverse, DATAVERSE_TYPE_UNCATEGORIZED
 from dv_apps.metrics.stats_util_base import StatsMakerBase, TruncYearMonth
+from dv_apps.metrics.stats_result import StatsResult
 from dv_apps.dvobjects.models import DVOBJECT_CREATEDATE_ATTR
 from dv_apps.harvesting.models import HarvestingDataverseConfig
 
@@ -58,11 +59,16 @@ class StatsMakerDataverses(StatsMakerBase):
                 filter_params[k] = v
 
         if self.include_harvested:
-            return True, Dataverse.objects.filter(**filter_params).count()
+            q = Dataverse.objects.filter(**filter_params)
         else:
-            return True, Dataverse.objects.filter(**filter_params\
+            q = Dataverse.objects.filter(**filter_params\
                     ).exclude(self.get_harvested_dataverse_ids()\
-                    ).count()
+                    )
+
+        sql_query = str(q.query)
+
+        return StatsResult.build_success_result(q.count(), sql_query)
+
 
     # ----------------------------
     #  Dataverse counts by month
@@ -153,9 +159,11 @@ class StatsMakerDataverses(StatsMakerBase):
             ).values('yyyy_mm', 'cnt'\
             ).order_by('%syyyy_mm' % self.time_sort)
 
-        print '-' * 40
-        print dv_counts_by_month.query
-        print '-' * 40
+
+        # -----------------------------------
+        # (2a) Get SQL query string
+        # -----------------------------------
+        sql_query = str(dv_counts_by_month.query)
 
         # -----------------------------------
         # (3) Format results
@@ -188,7 +196,7 @@ class StatsMakerDataverses(StatsMakerBase):
             # Add formatted record
             formatted_records.append(d)
 
-        return True, formatted_records
+        return StatsResult.build_success_result(formatted_records, sql_query)
 
 
     def get_dataverse_counts_by_type_published(self, exclude_uncategorized=True):
@@ -255,6 +263,11 @@ class StatsMakerDataverses(StatsMakerBase):
                     ).annotate(type_count=models.Count('dataversetype')\
                     ).order_by('-type_count')
 
+        # -----------------------------------
+        # Get SQL query string
+        # -----------------------------------
+        sql_query = str(dataverse_counts_by_type.query)
+
         # Count all dataverses
         #
         total_count = sum([rec.get('type_count', 0) for rec in dataverse_counts_by_type])
@@ -274,7 +287,8 @@ class StatsMakerDataverses(StatsMakerBase):
 
             formatted_records.append(rec)
 
-        return True, formatted_records
+        return StatsResult.build_success_result(formatted_records, sql_query)
+
 
     def get_dataverse_affiliation_counts(self):
         """
@@ -310,6 +324,11 @@ class StatsMakerDataverses(StatsMakerBase):
                     ).annotate(affil_count=models.Count('affiliation')\
                     ).order_by('-affil_count')
 
+        # -----------------------------------
+        # Get SQL query string
+        # -----------------------------------
+        sql_query = str(dataverse_counts_by_affil.query)
+
         # Count all dataverses
         #
         total_count = sum([rec.get('affil_count', 0) for rec in dataverse_counts_by_affil])
@@ -327,7 +346,7 @@ class StatsMakerDataverses(StatsMakerBase):
 
             formatted_records.append(rec)
 
-        return True, formatted_records
+        return StatsResult.build_success_result(formatted_records, sql_query)
 
     '''
     def get_number_of_datafile_types(self):

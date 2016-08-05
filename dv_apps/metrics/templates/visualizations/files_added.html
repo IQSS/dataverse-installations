@@ -7,7 +7,7 @@
   var file_counts_by_month = [
     {% for i in file_counts_by_month %}
 
-    {"Month": "{{ i.month_name }} {{ i.year_num }}", "monthNum": {{i.month_num}}, "name":"Files Added", "Total Files": {{i.running_total}}, "month_sort" : "{{ i.month_yyyy_dd }}", "display_name":"{{ i.month_name }} {{ i.year_num }}: {{ i.cnt|intcomma }} added / total: {{ i.running_total|intcomma }}"}
+    {"Month": "{{ i.month_name }} {{ i.year_num }}", "monthNum": {{i.month_num}}, "name":"Files Added", "Total Files": {{i.running_total}}, "month_sort" : "{{ i.month_year }}", "display_name":"{{ i.month_name }} {{ i.year_num }}: {{ i.cnt|intcomma }} added / total: {{ i.running_total|intcomma }}"}
     {%if not forloop.last%},{%endif%}
     {%endfor%}
     ]

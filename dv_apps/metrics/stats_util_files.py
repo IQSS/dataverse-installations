@@ -129,7 +129,7 @@ class StatsMakerFiles(StatsMakerBase):
             file_running_total += d['cnt']
             d['running_total'] = file_running_total
 
-            d['month_yyyy_dd'] = d['yyyy_mm'].strftime('%Y-%m')
+            # d['month_year'] = d['yyyy_mm'].strftime('%Y-%m')
 
             # Add year and month numbers
             d['year_num'] = d['yyyy_mm'].year
@@ -142,6 +142,9 @@ class StatsMakerFiles(StatsMakerBase):
             else:
                 # Log it!!!!!!
                 pass
+
+            # change the datetime object to a string
+            d['yyyy_mm'] = d['yyyy_mm'].strftime('%Y-%m')
 
             formatted_records.append(d)
 
@@ -216,7 +219,7 @@ class StatsMakerFiles(StatsMakerBase):
                             ).exclude(**exclude_params\
                             ).filter(**filter_params)
 
-        # annotate query adding "month_yyyy_dd" and "cnt"
+        # annotate query adding "month_year" and "cnt"
         #
         file_counts_by_month = file_counts_by_month.annotate(\
             yyyy_mm=TruncYearMonth('%s' % date_param)\
@@ -238,7 +241,7 @@ class StatsMakerFiles(StatsMakerBase):
             running_total += d['cnt']
             d['running_total'] = running_total
 
-            d['month_yyyy_dd'] = d['yyyy_mm'].strftime('%Y-%m')
+            # d['month_year'] = d['yyyy_mm'].strftime('%Y-%m')
 
             # Add year and month numbers
             d['year_num'] = d['yyyy_mm'].year
@@ -251,6 +254,9 @@ class StatsMakerFiles(StatsMakerBase):
             else:
                 # Log it!!!!!!
                 pass
+
+            # change the datetime object to a string
+            d['yyyy_mm'] = d['yyyy_mm'].strftime('%Y-%m')
 
             # Add formatted record
             formatted_records.append(d)

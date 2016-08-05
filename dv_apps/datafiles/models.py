@@ -1,6 +1,7 @@
 from django.db import models
 
 from dv_apps.dvobjects.models import DvObject
+from dv_apps.datasets.models import DatasetVersion
 
 class Datafile(models.Model):
     dvobject = models.OneToOneField(DvObject, db_column='id', primary_key=True)
@@ -26,3 +27,23 @@ class Datafile(models.Model):
         ordering = ('dvobject',)
         managed = False
         db_table = 'datafile'
+
+class FileMetadata(models.Model):
+    description = models.TextField(blank=True, null=True)
+    label = models.CharField(max_length=255)
+    restricted = models.NullBooleanField()
+    version = models.BigIntegerField(blank=True, null=True)
+    datafile = models.ForeignKey(DvObject)
+    #datafile = models.ForeignKey(Datafile)
+    #datasetversion = models.ForeignKey(DatasetVersion)
+
+    def __str__(self):
+        return self.label
+
+    class Meta:
+        #ordering = ('datafile',)
+        managed = False
+
+    class Meta:
+        managed = False
+        db_table = 'filemetadata'

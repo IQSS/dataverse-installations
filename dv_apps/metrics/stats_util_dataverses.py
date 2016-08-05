@@ -121,7 +121,7 @@ class StatsMakerDataverses(StatsMakerBase):
                             ).exclude(**exclude_params\
                             ).filter(**filter_params)
 
-        # annotate query adding "month_yyyy_dd" and "cnt"
+        # annotate query adding "month_year" and "cnt"
         #
         dv_counts_by_month = dv_counts_by_month.annotate(\
             yyyy_mm=TruncYearMonth('%s' % date_param)\
@@ -143,7 +143,7 @@ class StatsMakerDataverses(StatsMakerBase):
             # running total
             running_total += d['cnt']
             d['running_total'] = running_total
-            d['month_yyyy_dd'] = d['yyyy_mm'].strftime('%Y-%m')
+            # d['month_year'] = d['yyyy_mm'].strftime('%Y-%m')
 
             # Add year and month numbers
             d['year_num'] = d['yyyy_mm'].year
@@ -156,6 +156,9 @@ class StatsMakerDataverses(StatsMakerBase):
             else:
                 # Log it!!!!!!
                 pass
+
+            # change the datetime object to a string
+            d['yyyy_mm'] = d['yyyy_mm'].strftime('%Y-%m')
 
             # Add formatted record
             formatted_records.append(d)

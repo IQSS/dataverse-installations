@@ -7,16 +7,28 @@ import json
 from django.shortcuts import render
 from django.http import JsonResponse, HttpResponse
 from django.views.decorators.cache import cache_page
-
-from dv_apps.utils.date_helper import format_yyyy_mm_dd
+from django.http import JsonResponse, HttpResponse
 from django.db import models
 from django.db.models import Count
+
+from dv_apps.utils.date_helper import format_yyyy_mm_dd
+from dv_apps.datafiles.models import Datafile, FileMetadata
 from dv_apps.datasets.models import Dataset
 from dv_apps.dataverses.models import Dataverse
 from dv_apps.guestbook.models import GuestBookResponse
-from .stats_util_datasets import StatsMakerDatasets
-from .stats_util_dataverses import StatsMakerDataverses
-from .stats_util_files import StatsMakerFiles
+from dv_apps.metrics.stats_util_datasets import StatsMakerDatasets
+from dv_apps.metrics.stats_util_dataverses import StatsMakerDataverses
+from dv_apps.metrics.stats_util_files import StatsMakerFiles
+
+
+def view_file_extensions_in_type(request, file_type):
+    """Query as experiment.  View extensions for unidentified queries"""
+
+    ids = Datafile.objects.filter(contenttype=file_type).values('id', flat_list=True)
+
+    l = FileMetadata.objects.filter(datafile__id__in=ids).values('label', flat_list=True)
+
+    return JsonResponse(json.dumps(l))
 
 
 def view_files_by_type(request):
@@ -91,7 +103,7 @@ def view_public_visualizations(request):
     #success, datafile_content_type_counts =\ #stats_files.get_datafile_content_type_counts_published()
     #if success:
     #    resp_dict['datafile_content_type_counts'] = datafile_content_type_counts[:15]
-    
+
 
 
     return render(request, 'visualizations/metrics_public.html', resp_dict)

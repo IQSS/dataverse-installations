@@ -103,3 +103,5 @@ miniverse/static/bootstrap/css/bootstrap.min.css.map
 bootstrap-3.3.6-dist.zip
 
 test_setup/dataverse.sqlite3
+
+test_data/dvn.db.dump.2016.0721.sql

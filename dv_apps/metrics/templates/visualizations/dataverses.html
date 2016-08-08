@@ -13,7 +13,8 @@
   var dataverse_counts_by_month = [
     {%for i in dataverse_counts_by_month%}
 
-    {"month": "{{ i.month_name }} {{ i.year_num }}", "monthNum": {{i.month_num}}, "name":"Total Dataverses", "Number": {{i.running_total}}, "month_sort" : "{{ i.yyyy_mm }}", "display_name":"{{ i.month_name }} {{ i.year_num }}: {{ i.cnt }} New Dataverses"}
+    {"Month": "{{ i.month_name }} {{ i.year_num }}", "monthNum": {{i.month_num}}, "name":"Total Dataverses", "Number of Dataverses": {{i.running_total}}, "month_sort" : "{{ i.yyyy_mm }}", "display_name":"{{ i.month_name }} {{ i.year_num }}: {{ i.cnt }} New Dataverses"},
+    {"Month": "{{ i.month_name }} {{ i.year_num }}", "monthNum": {{i.month_num}}, "name":"Monthly Dataverses", "Number of Dataverses": {{i.cnt}}, "month_sort" : "{{ i.yyyy_mm }}", "display_name":"{{ i.month_name }} {{ i.year_num }}: {{ i.cnt }} New Dataverses"}
     {%if not forloop.last%},{%endif%}
     {%endfor%}
     ]
@@ -22,7 +23,8 @@
   // instantiate d3plus
 
   var attributes = [
-    {"name": "Total Dataverses", "hex": "#CF3636"}
+    {"name": "Total Dataverses", "hex": "#CF3636"},
+    {"name": "Monthly Dataverses", "hex": "#ffcc00"},
   ]
 
   var visualization = d3plus.viz()
@@ -31,14 +33,15 @@
     .type("bar")       // visualization type
     .id("name")         // key for which our data is unique on
     .text("display_name")       // key to use for display text
-    .y("Number")         // key to use for y-axis
-    .x("month")          // key to use for x-axis
+    .y("Number of Dataverses")         // key to use for y-axis
+    .x("Month")          // key to use for x-axis
     .attrs(attributes)
     .color("hex")
     .order({
         "sort": "asc",
         "value": "month_sort"
      })
+    .legend({"labels":true})
     .resize(true)
     .title("Growth Over Time")
     //.footer("{%lorem%}")

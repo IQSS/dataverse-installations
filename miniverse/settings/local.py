@@ -39,7 +39,7 @@ DATABASES = {
 SESSION_COOKIE_NAME = 'dv_metrics'
 
 # where static files are collected
-STATIC_ROOT = join(LOCAL_SETUP_DIR, 'static')
+STATIC_ROOT = join(LOCAL_SETUP_DIR, 'staticfiles')
 if not isdir(STATIC_ROOT):
     makedirs(STATIC_ROOT)
 

@@ -14,6 +14,12 @@ python manage.py migrate contenttypes --database django_contrib_db --run-syncdb
 python manage.py createsuperuser --database django_contrib_db
 ```
 
+##
+
+- users per month
+- how many files have statistics
+    - needs datatable list
+
 ## Install (need to detail in readme)
 
 - pip install

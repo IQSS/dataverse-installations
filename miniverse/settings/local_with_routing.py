@@ -25,7 +25,7 @@ DATABASES = {
     },
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'dvn_thedata',   #  dvn_thedata dvndb_demo
+        'NAME': 'dvndb_demo',   #  dvn_thedata dvndb_demo
         'USER': 'postgres', # dv_readonly, postgres
         'PASSWORD': '123',
         'HOST': 'localhost'
@@ -60,7 +60,7 @@ DATABASES = {
 SESSION_COOKIE_NAME = 'dv_metrics'
 
 # where static files are collected
-STATIC_ROOT = join(LOCAL_SETUP_DIR, 'static')
+STATIC_ROOT = join(LOCAL_SETUP_DIR, 'staticfiles')
 if not isdir(STATIC_ROOT):
     makedirs(STATIC_ROOT)
 

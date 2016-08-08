@@ -5,5 +5,9 @@ django-model-utils>=2.2
 psycopg2==2.6
 pandas==0.16.1
 requests>=2.10.0
+
+# Serving static files
+whitenoise==3.2
+
 # Debugging:
 ipdb==0.10.1

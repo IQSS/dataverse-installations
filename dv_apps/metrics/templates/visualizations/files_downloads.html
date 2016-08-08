@@ -7,7 +7,8 @@
   var file_downloads_by_month = [
     {% for i in file_downloads_by_month %}
 
-    {"Month": "{{ i.month_name }} {{ i.year_num }}", "monthNum": {{i.month_num}}, "name":"File Downloads", "Total Downloads": {{i.running_total}}, "month_sort" : "{{ i.yyyy_mm }}", "display_name":"{{ i.month_name }} {{ i.year_num }}: {{ i.cnt|intcomma }} downloads / total: {{ i.running_total|intcomma }}"}
+    {"Month": "{{ i.month_name }} {{ i.year_num }}", "monthNum": {{i.month_num}}, "name":"Total File Downloads", "File Downloads": {{i.running_total}}, "month_sort" : "{{ i.yyyy_mm }}", "display_name":"{{ i.month_name }} {{ i.year_num }}: {{ i.cnt|intcomma }} downloads / total: {{ i.running_total|intcomma }}"},
+    {"Month": "{{ i.month_name }} {{ i.year_num }}", "monthNum": {{i.month_num}}, "name":"Monthly File Downloads", "File Downloads": {{i.cnt}}, "month_sort" : "{{ i.yyyy_mm }}", "display_name":"{{ i.month_name }} {{ i.year_num }}: {{ i.cnt|intcomma }} downloads / total: {{ i.running_total|intcomma }}"}
     {%if not forloop.last%},{%endif%}
     {%endfor%}
     ]
@@ -16,7 +17,8 @@
   // instantiate d3plus
 
   var attributes = [
-    {"name": "File Downloads", "hex": "#b94617"}
+    {"name": "Total File Downloads", "hex": "#b94617"},
+    {"name": "Monthly File Downloads", "hex": "#ffcc00"}
   ]
 
   var visualization = d3plus.viz()
@@ -25,7 +27,7 @@
     .type("bar")       // visualization type
     .id("name")         // key for which our data is unique on
     .text({"value":"display_name"})       // key to use for display text
-    .y("Total Downloads")         // key to use for y-axis
+    .y("File Downloads")         // key to use for y-axis
     //.x({"stacked": true, "value": "month"}))          // key to use for x-axis
     .x({"value":"Month"})
     .attrs(attributes)

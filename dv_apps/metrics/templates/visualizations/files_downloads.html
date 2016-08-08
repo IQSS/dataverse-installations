@@ -7,8 +7,8 @@
   var file_downloads_by_month = [
     {% for i in file_downloads_by_month %}
 
-    {"Month": "{{ i.month_name }} {{ i.year_num }}", "monthNum": {{i.month_num}}, "name":"Total File Downloads", "File Downloads": {{i.running_total}}, "month_sort" : "{{ i.yyyy_mm }}", "display_name":"{{ i.month_name }} {{ i.year_num }}: {{ i.cnt|intcomma }} downloads / total: {{ i.running_total|intcomma }}"},
-    {"Month": "{{ i.month_name }} {{ i.year_num }}", "monthNum": {{i.month_num}}, "name":"Monthly File Downloads", "File Downloads": {{i.cnt}}, "month_sort" : "{{ i.yyyy_mm }}", "display_name":"{{ i.month_name }} {{ i.year_num }}: {{ i.cnt|intcomma }} downloads / total: {{ i.running_total|intcomma }}"}
+    {"Month": "{{ i.month_name }} {{ i.year_num }}", "monthNum": {{i.month_num}}, "name":"Total File Downloads", "File Downloads": {{i.running_total}}, "month_sort" : "{{ i.yyyy_mm }}", "display_name":"{{ i.month_name }} {{ i.year_num }}: {{ i.cnt|intcomma }} downloads / total: {{ i.running_total|intcomma }}"}
+    {#{"Month": "{{ i.month_name }} {{ i.year_num }}", "monthNum": {{i.month_num}}, "name":"Monthly File Downloads", "File Downloads": {{i.cnt}}, "month_sort" : "{{ i.yyyy_mm }}", "display_name":"{{ i.month_name }} {{ i.year_num }}: {{ i.cnt|intcomma }} downloads / total: {{ i.running_total|intcomma }}"}#}
     {%if not forloop.last%},{%endif%}
     {%endfor%}
     ]

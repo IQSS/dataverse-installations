@@ -131,8 +131,6 @@ class StatsMakerFiles(StatsMakerBase):
         formatted_records = []  # move from a queryset to a []
         file_running_total = self.get_file_download_start_point(**extra_filters)
 
-        print 'file_running_total', file_running_total
-
         for d in file_counts_by_month:
             file_running_total += d['cnt']
             d['running_total'] = file_running_total

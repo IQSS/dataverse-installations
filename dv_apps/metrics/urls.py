@@ -22,6 +22,11 @@ urlpatterns = [
     # views_test
     url(r'^dv-tree$', views_test.view_dataverse_tree, name='view_dataverse_tree'),
 
+    url(r'^dvtree.json$', views_test.get_dataverse_tree_json, name='get_dataverse_tree_json'),
+
+    url(r'^dv-tree2$', views_test.view_dataverse_tree2, name='view_dataverse_tree2'),
+
+
     #url(r'^datasets/count/simple$', views_api.view_simple_dataset_count, name='view_simple_dataset_count'),
 
     url(r'^datasets/count/simple2$', views.view_simple_dataset_count2, name='view_simple_dataset_count2'),

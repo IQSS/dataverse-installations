@@ -47,7 +47,9 @@ var svg = d3.select("body").append("svg")
   .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-d3.json("{% static "metrics/viz/bostock_flare.json" %}", function(error, flare) {
+//get_dataverse_tree_json
+//d3.json("{% static "metrics/viz/bostock_flare.json" %}", function(error, flare) {
+d3.json("{% url 'get_dataverse_tree_json' %}", function(error, flare) {
   if (error) throw error;
 
   flare.x0 = 0;

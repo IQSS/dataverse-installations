@@ -41,3 +41,7 @@ python manage.py createsuperuser --database django_contrib_db
 ## readonly user
 
 GRANT SELECT ON ALL TABLES IN SCHEMA public TO dv_readonly;
+
+## tree view 2
+
+http://bl.ocks.org/robschmuecker/7926762

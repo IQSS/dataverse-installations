@@ -169,7 +169,7 @@ Documentation link: https://developers.google.com/maps/documentation/javascript/
                         icon: "{% static 'subs.png' %}",
                         zIndex: google.maps.Marker.MIN_ZINDEX - 1
                     });
-                    newMarker.setOpacity(.3);
+                    newMarker.setOpacity(.4);
                     Array.push(newMarker);
                 }
                 installationContainer.push(Array);
@@ -618,9 +618,7 @@ Documentation link: https://developers.google.com/maps/documentation/javascript/
                     //installations shown at variable opacity zoom dependent
                     for(var j = 0; j < installationContainer.length; j++){
                         for(var k = 0; k < installationContainer[j].length; k++){
-                            if(dataverseMap.getZoom() == 2)
-                                installationContainer[j][k].setOpacity(.3);
-                            else if(dataverseMap.getZoom() < 4)
+                            if(dataverseMap.getZoom() < 4)
                                 installationContainer[j][k].setOpacity(.4);
                             else if(dataverseMap.getZoom() < 6)
                                 installationContainer[j][k].setOpacity(.6);
@@ -674,9 +672,7 @@ Documentation link: https://developers.google.com/maps/documentation/javascript/
                 //reset marker opacity based on zoom
                 for(var i = 0; i < installationContainer.length; i++){
                     for(var j = 0; j < installationContainer[i].length; j++){
-                        if(dataverseMap.getZoom() == 2)
-                        installationContainer[i][j].setOpacity(.3);
-                        else if(dataverseMap.getZoom() < 4)
+                        if(dataverseMap.getZoom() < 4)
                             installationContainer[i][j].setOpacity(.4);
                         else if(dataverseMap.getZoom() < 6)
                             installationContainer[i][j].setOpacity(.6);

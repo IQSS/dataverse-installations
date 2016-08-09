@@ -1,16 +1,43 @@
 """
 Metric views, returning JSON repsonses
 """
+import json
 
+from django.conf import settings
 from django.shortcuts import render
 from django.http import JsonResponse, HttpResponse
-from dv_apps.utils.date_helper import format_yyyy_mm_dd
 from django.db import models
 from django.db.models import Count
+
+from dv_apps.utils.date_helper import format_yyyy_mm_dd
 from dv_apps.datasets.models import Dataset
 from dv_apps.dataverses.models import Dataverse
 from dv_apps.guestbook.models import GuestBookResponse
 from .stats_util_datasets import StatsMakerDatasets
+
+
+def view_dataset_counts_by_month(request):
+
+    stats_datasets = StatsMakerDatasets(**request.GET.dict())
+
+    stats_result = stats_datasets.get_dataset_counts_by_create_date_published()
+    if stats_result.has_error():
+        err_dict = dict(status="ERROR",
+            message=stats_result.error_message)
+        return JsonResponse(err_dict, status=400)
+
+    resp_dict = dict(status="OK", data=stats_result.result_data)
+    if settings.DEBUG:
+        if stats_result.sql_query:
+            resp_dict['debug'] = dict(sql_query=stats_result.sql_query)
+
+    if 'pretty' in request.GET:
+        return HttpResponse('<pre>%s</pre>' % json.dumps(resp_dict, indent=4))
+    else:
+        return JsonResponse(resp_dict)
+
+
+
 
 def view_simple_dataset_count(request):
     """Stripped down example"""
@@ -140,7 +167,7 @@ class TruncMonth(models.Func):
     output_field = models.IntegerField()
 
 
-def view_dataset_counts_by_month(self, selected_year=2016):
+def xview_dataset_counts_by_month(self, selected_year=2016):
     """Counts of datasets by month"""
 
     dataset_counts_by_month = Dataset.objects.filter(dvobject__createdate__year=selected_year\

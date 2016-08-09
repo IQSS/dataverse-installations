@@ -3,28 +3,21 @@
 #
 #
 #
-
-
-
-
-
-
-
 import os, sys
 from os.path import isdir, realpath
 
-proj_path = "../"
+proj_path = "../../../"
 sys.path.append(proj_path)
 
 #sys.exit(0)
 # This is so Django knows where to find stuff.
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "Map_Database.settings")
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "miniverse.settings.local")
 import django
 import re
 django.setup()
 from django.conf import settings
 print settings.MEDIA_URL
-from installations.models import Installation, Institution
+from dv_apps.installations.models import Installation, Institution
 
 # flat file -- replace with Google API
 fname = 'installation_data.txt'
@@ -52,27 +45,27 @@ for line in lines:
         continue
 
     name, lat, lng = items
-    
-    
+
+
 
     obj, created = Installation.objects.get_or_create(
         name = name,
         defaults = {'lat':lat, 'lng':lng}
     )
-      
+
     #print obj, created
     if (created):
         print created, ",", name, "installation was created"
     else:
         print created, ",", name, "installation not created"
-        
+
 print 'institutions:'
 
 fname2 = 'institution_data.txt'
 lines = open(fname2, 'r').readlines()
 for line in lines:
     line = line.strip()
-    
+
     if len(line) == 0:
         continue    # go to the next line
 
@@ -85,22 +78,28 @@ for line in lines:
         continue
 
     name, lat, lng = items
-    
+
+    # If it exists, delete the institution
+    # so it can be refreshed
     Institution.objects.filter(name=name).delete()
-    
-    inst = Installation.objects.filter(name=sys.argv[1])
-    
+
+    if len(sys.argv) >= 2:
+        inst = Installation.objects.filter(name=sys.argv[1])
+        host = inst[0]
+    else:
+        host=None
+
     obj, created = Institution.objects.get_or_create(
         name = name,
-        defaults = {'lat':lat, 'lng':lng, 'host':inst[0],}
+        defaults = {'lat':lat, 'lng':lng, 'host':host,}
     )
-      
+
     #print obj, created
     if (created):
         print created, ",", name, "institution was created"
     else:
         print created, ",", name, "institution not created"
-        
+
     #fmt_line = """%s is located at (%s, %s)""" % (name, lat, lng)
 
     #print fmt_line

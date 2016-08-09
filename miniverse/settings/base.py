@@ -157,3 +157,5 @@ TEMPLATES = [
 MEDIA_ROOT = join(BASE_DIR,"media")
 
 MEDIA_URL = '/media/'
+
+#STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'

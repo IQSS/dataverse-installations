@@ -12,8 +12,8 @@ def view_swagger_spec(request):
 
 info:
   version: 1.0.0
-  title: Metrics API
-  description: A simple API to learn how to write OpenAPI Specification
+  title: Dataverser Metrics API
+  description: A "closed" test API for Dataverse metrics
 
 schemes:
   - http
@@ -25,6 +25,19 @@ paths:
     get:
       summary: Number of new Datasets added each month
       description: Returns a list of counts and cumulative counts of all datasts added in a month
+      parameters:
+       - name: start_date
+         in: query
+         description: Optional. Inclusive start date in YYYY-MM-DD format
+         type: string
+       - name: end_date
+         in: query
+         description: Optional. Inclusive end date in YYYY-MM-DD format
+         type: string
+       - name: selected_year
+         in: query
+         description: Optional. Selected year in YYYY
+         type: string
       responses:
         200:
           description: A list of Dataset counts by month
@@ -44,6 +57,8 @@ paths:
                   type: integer
                 month_num:
                   type: integer
+        400:
+          description: Parameter error
 """
 
     response = HttpResponse(spec)

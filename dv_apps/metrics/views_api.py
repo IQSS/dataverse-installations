@@ -17,6 +17,17 @@ from dv_apps.guestbook.models import GuestBookResponse
 from .stats_util_datasets import StatsMakerDatasets
 
 
+def send_cors_response(response):
+    """Quick hack to allow CORS...."""
+
+    response["Access-Control-Allow-Origin"] = "*"
+    response["Access-Control-Allow-Methods"] = "POST, GET, OPTIONS"
+    response["Access-Control-Max-Age"] = "1000"
+    response["Access-Control-Allow-Headers"] = "*"
+
+    return response
+
+
 def view_dataset_counts_by_month(request):
 
     stats_datasets = StatsMakerDatasets(**request.GET.dict())
@@ -25,7 +36,7 @@ def view_dataset_counts_by_month(request):
     if stats_result.has_error():
         err_dict = dict(status="ERROR",
             message=stats_result.error_message)
-        return JsonResponse(err_dict, status=400)
+        return send_cors_response(JsonResponse(err_dict, status=400))
 
     resp_dict = OrderedDict()
     resp_dict['status'] = "OK"
@@ -37,12 +48,7 @@ def view_dataset_counts_by_month(request):
     if 'pretty' in request.GET:
         return HttpResponse('<pre>%s</pre>' % json.dumps(resp_dict, indent=4))
 
-    response = JsonResponse(resp_dict)
-    response["Access-Control-Allow-Origin"] = "*"
-    response["Access-Control-Allow-Methods"] = "POST, GET, OPTIONS"
-    response["Access-Control-Max-Age"] = "1000"
-    response["Access-Control-Allow-Headers"] = "*"
-    return response
+    return send_cors_response(JsonResponse(resp_dict))
 
 
 

@@ -129,7 +129,7 @@ class StatsMakerBase(object):
             if int(self.selected_year) < 0:
                 self.add_error('The year must cannot be less than 1.')
             if int(self.selected_year) == 0:
-                self.add_error('The year must cannot be zero.')
+                self.add_error('The year cannot be zero.')
 
         # Sanity check the selected_year and start_date
         if self.selected_year and self.start_date:
@@ -142,7 +142,7 @@ class StatsMakerBase(object):
         # Sanity check the selected_year and end_date
         if self.selected_year and self.end_date:
             if int(self.selected_year) > self.end_date.year:
-                self.add_error("'The 'selected_year' (%s)"
+                self.add_error("The 'selected_year' (%s)"
                         "' cannot be after the 'end_date' year (%s)" %\
                             (self.selected_year, self.end_date.date()))
                 return
@@ -151,8 +151,12 @@ class StatsMakerBase(object):
         self.time_sort = str(kwargs.get('time_sort', ''))
         if self.time_sort == 'd':   # descending
             self.time_sort = '-'
+        elif self.time_sort in ['a', '']:   # ascending
+            self.time_sort = '-'
         else:                       # ascending
-            self.time_sort = ''
+            self.add_error("'The 'time_sort' value"
+                " must be 'a' for ascending or 'd' for descending.")
+            return
 
 
     def get_running_total_base_date_filters(self, date_var_name=DVOBJECT_CREATEDATE_ATTR):

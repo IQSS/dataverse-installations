@@ -14,9 +14,11 @@ class Installation(models.Model):
     description = models.TextField(null=True, blank=True)
     url = models.TextField(null=True, blank=True)
     version = models.CharField(max_length=6, unique=False, null=True, blank=True)
+
     def __str__(self):
         return self.name
-    pass
+
+
 
 @python_2_unicode_compatible
 class Institution(models.Model):

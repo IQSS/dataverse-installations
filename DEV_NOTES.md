@@ -45,3 +45,8 @@ GRANT SELECT ON ALL TABLES IN SCHEMA public TO dv_readonly;
 ## tree view 2
 
 http://bl.ocks.org/robschmuecker/7926762
+
+
+## swagger ui
+
+127.0.0.1:8000/static/swagger-ui/index.html

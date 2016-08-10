@@ -1,10 +1,35 @@
-from django.shortcuts import render
-from django.http import JsonResponse, HttpResponse
 from django.views.decorators.cache import cache_page
-from django.http import JsonResponse, HttpResponse
-from django.db import models
-from django.db.models import Count
-from django.db.models import F
+from django.shortcuts import render
+from django.template.loader import render_to_string
+
+from django.http import HttpResponse
+
+from dv_apps.metrics.stats_view_base import DatasetCountByMonthView
+
+# Make a list of class based views
+#  (each one has a "get_swagger_spec()" method)
+#
+VIEW_CLASSES_FOR_SPEC = [DatasetCountByMonthView]
+
+#@cache_page(60*3)
+def view_dynamic_swagger_spec(request):
+    global VIEW_CLASSES_FOR_SPEC
+
+    # Iterate through the class-based views and
+    # generate a swagger spec for each endpoint
+    endpoints = []
+    for vclass in VIEW_CLASSES_FOR_SPEC:
+        endpoints.append(vclass().get_swagger_spec())
+
+    # Add the endpoints to a dict
+    d = dict(endpoints=endpoints)
+
+    # render the full swagger spec
+    yaml_spec = render_to_string('swagger_spec/basic_spec_01.yaml', d)
+
+    return HttpResponse(yaml_spec)
+
+
 
 def view_swagger_spec(request):
     """Show the swaggger spec!"""

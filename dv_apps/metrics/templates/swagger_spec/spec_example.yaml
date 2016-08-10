@@ -2,7 +2,7 @@ swagger: "2.0"
 
 info:
 version: 0.5.0
-title: Dataverser Metrics API
+title: Dataverse Metrics API
 description: An API for Dataverse metrics. (internal use)
 
 schemes:

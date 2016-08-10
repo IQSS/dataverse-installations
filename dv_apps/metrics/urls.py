@@ -29,8 +29,11 @@ urlpatterns = [
     url(r'^datasets/count/simple2$', views.view_simple_dataset_count2, name='view_simple_dataset_count2'),
 
     # swagger
-    url(r'^v1/swagger.yaml$', views_swagger.view_swagger_spec, name='view_swagger_spec'),
+    url(r'^v1/swagger-static.yaml$', views_swagger.view_swagger_spec, name='view_swagger_spec'),
 
+    url(r'^v1/swagger.yaml$', views_swagger.view_dynamic_swagger_spec, name='view_dynamic_swagger_spec'),
+
+    # API endpoints
     url(r'^v1/datasets/count/monthly$', DatasetCountByMonth.as_view(), name='view_dataset_counts_by_month'),
 
     #url(r'^datasets/count/jcabanas$', views_api.view_jcabanas, name='view_jcabanas'),

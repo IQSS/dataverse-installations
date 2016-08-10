@@ -40,7 +40,7 @@ from dv_apps.metrics.stats_view_base import *
 d = DatasetCountByMonth()
 d.get_swagger_spec()
 """
-class DatasetCountByMonth(StatsView):
+class DatasetCountByMonthView(StatsView):
 
     api_path = '/datasets/count/monthly'
     summary = 'Number of new Datasets added each month'

@@ -11,7 +11,7 @@ def view_swagger_spec(request):
     spec = """swagger: "2.0"
 
 info:
-  version: 1.0.0
+  version: 0.5.0
   title: Dataverser Metrics API
   description: An API for Dataverse metrics. (internal use)
 
@@ -34,23 +34,10 @@ paths:
         200:
           description: A list of Dataset counts by month
           schema:
-            type: array
-            items:
-              properties:
-                cnt:
-                  type: integer
-                running_total:
-                  type: integer
-                yyyy_mm:
-                  type: string
-                month_name:
-                  type: string
-                year_num:
-                  type: integer
-                month_num:
-                  type: integer
+            $ref: "#/definitions/MonthCounts"
         400:
           description: Parameter error
+
 
 # define reusable parameters:
 parameters:
@@ -79,6 +66,26 @@ parameters:
     in: query
     description: Optional. Returns HTML response showing formatted JSON
     type: boolean
+
+definitions:
+  MonthCount:
+    properties:
+      cnt:
+        type: integer
+      running_total:
+        type: integer
+      yyyy_mm:
+        type: string
+      month_name:
+        type: string
+      year_num:
+        type: integer
+      month_num:
+        type: integer
+  MonthCounts:
+    type: array
+    items:
+      $ref: "#/definitions/MonthCount"
 """
 
     response = HttpResponse(spec)

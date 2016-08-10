@@ -2,6 +2,7 @@ from django.conf.urls import url
 #from dv_apps.metrics.views import view_dataset_count
 from dv_apps.metrics import views, views_api, views_test,\
     views_public_metrics, views_swagger
+from dv_apps.metrics.views_dataset_counts import DatasetCountByMonth
 
 
 urlpatterns = [
@@ -30,7 +31,7 @@ urlpatterns = [
     # swagger
     url(r'^v1/swagger.yaml$', views_swagger.view_swagger_spec, name='view_swagger_spec'),
 
-    url(r'^v1/datasets/count/monthly$', views_api.view_dataset_counts_by_month, name='view_dataset_counts_by_month'),
+    url(r'^v1/datasets/count/monthly$', DatasetCountByMonth.as_view(), name='view_dataset_counts_by_month'),
 
     #url(r'^datasets/count/jcabanas$', views_api.view_jcabanas, name='view_jcabanas'),
 

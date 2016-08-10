@@ -37,7 +37,8 @@
       if (url && url.length > 1) {
         url = decodeURIComponent(url[1]);
       } else {
-        url = "http://petstore.swagger.io/v2/swagger.json";
+        url = "http://127.0.0.1:8000/metrics/v1/swagger.yaml";
+        //url = "http://petstore.swagger.io/v2/swagger.json";
       }
 
       hljs.configure({
@@ -46,6 +47,7 @@
 
       // Pre load translate...
       if(window.SwaggerTranslator) {
+          console.log('translate');
         window.SwaggerTranslator.translate();
       }
       window.swaggerUi = new SwaggerUi({
@@ -69,7 +71,7 @@
           }
         },
         onFailure: function(data) {
-          log("Unable to Load SwaggerUI");
+          console.log("Unable to Load SwaggerUI");
         },
         docExpansion: "none",
         jsonEditor: false,
@@ -84,6 +86,7 @@
           console.log.apply(console, arguments);
         }
       }
+      console.log('ok...');
   });
   </script>
 </head>

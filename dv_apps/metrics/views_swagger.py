@@ -13,7 +13,7 @@ def view_swagger_spec(request):
 info:
   version: 1.0.0
   title: Dataverser Metrics API
-  description: A "closed" test API for Dataverse metrics
+  description: An API for Dataverse metrics. (internal use)
 
 schemes:
   - http
@@ -26,18 +26,10 @@ paths:
       summary: Number of new Datasets added each month
       description: Returns a list of counts and cumulative counts of all datasts added in a month
       parameters:
-       - name: start_date
-         in: query
-         description: Optional. Inclusive start date in YYYY-MM-DD format
-         type: string
-       - name: end_date
-         in: query
-         description: Optional. Inclusive end date in YYYY-MM-DD format
-         type: string
-       - name: selected_year
-         in: query
-         description: Optional. Selected year in YYYY
-         type: string
+        - $ref: "#/parameters/startDateParam"
+        - $ref: "#/parameters/endDateParam"
+        - $ref: "#/parameters/selectedYearParam"
+        - $ref: "#/parameters/prettyJSONParam"
       responses:
         200:
           description: A list of Dataset counts by month
@@ -59,6 +51,34 @@ paths:
                   type: integer
         400:
           description: Parameter error
+
+# define reusable parameters:
+parameters:
+  startDateParam:
+    name: start_date
+    in: query
+    description: Optional. Inclusive start date in YYYY-MM-DD format
+    type: string
+  endDateParam:
+    name: end_date
+    in: query
+    description: Optional. Inclusive end date in YYYY-MM-DD format
+    type: string
+  selectedYearParam:
+    name: selected_year
+    in: query
+    description: Optional. Selected year in YYYY format
+    type: string
+  timeSortParam:
+    name: time_sort
+    in: query
+    description: Optional. Sort by time.  'a' = ascending; 'd' = descending
+    type: string
+  prettyJSONParam:
+    name: pretty
+    in: query
+    description: Optional. Returns HTML response showing formatted JSON
+    type: boolean
 """
 
     response = HttpResponse(spec)

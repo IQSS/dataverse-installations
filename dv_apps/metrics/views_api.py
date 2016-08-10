@@ -2,6 +2,7 @@
 Metric views, returning JSON repsonses
 """
 import json
+from collections import OrderedDict
 
 from django.conf import settings
 from django.shortcuts import render
@@ -26,15 +27,22 @@ def view_dataset_counts_by_month(request):
             message=stats_result.error_message)
         return JsonResponse(err_dict, status=400)
 
-    resp_dict = dict(status="OK", data=stats_result.result_data)
-    if settings.DEBUG:
-        if stats_result.sql_query:
-            resp_dict['debug'] = dict(sql_query=stats_result.sql_query)
+    resp_dict = OrderedDict()
+    resp_dict['status'] = "OK"
+    if settings.DEBUG and stats_result.sql_query:
+        resp_dict['debug'] = dict(sql_query=stats_result.sql_query)
+    resp_dict['data'] = stats_result.result_data
+
 
     if 'pretty' in request.GET:
         return HttpResponse('<pre>%s</pre>' % json.dumps(resp_dict, indent=4))
-    else:
-        return JsonResponse(resp_dict)
+
+    response = JsonResponse(resp_dict)
+    response["Access-Control-Allow-Origin"] = "*"
+    response["Access-Control-Allow-Methods"] = "POST, GET, OPTIONS"
+    response["Access-Control-Max-Age"] = "1000"
+    response["Access-Control-Allow-Headers"] = "*"
+    return response
 
 
 
@@ -47,6 +55,13 @@ def view_simple_dataset_count(request):
     resp_dict = {'dataset_count' : dataset_count}
 
     return JsonResponse(resp_dict)
+
+
+class TruncMonth(models.Func):
+    function = 'EXTRACT'
+    template = '%(function)s(MONTH from %(expressions)s)'
+    output_field = models.IntegerField()
+
 
 def view_jcabanas(request):
 
@@ -160,35 +175,3 @@ def view_dataset_count(request):
     ok_dict = dict(status="OK",
                 data=resp_dict)
     return JsonResponse(ok_dict)
-
-class TruncMonth(models.Func):
-    function = 'EXTRACT'
-    template = '%(function)s(MONTH from %(expressions)s)'
-    output_field = models.IntegerField()
-
-
-def xview_dataset_counts_by_month(self, selected_year=2016):
-    """Counts of datasets by month"""
-
-    dataset_counts_by_month = Dataset.objects.filter(dvobject__createdate__year=selected_year\
-        ).annotate(month=TruncMonth('dvobject__createdate')\
-        ).values('month'\
-        ).annotate(cnt=models.Count('dvobject_id')\
-        ).values('month', 'cnt'\
-        ).order_by('month')
-
-    year_total_cnt = [x['cnt'] for x in dataset_counts_by_month]
-
-
-    data_dict = dict(dataset_counts_by_month=list(dataset_counts_by_month),\
-                year_count=sum(year_total_cnt))
-
-    ok_dict = dict(status="OK",
-                data=data_dict)
-
-    return JsonResponse(ok_dict)
-
-
-#def view_dataset_counts_by_month2(self):
-
-#    return render('counts_by_month.html', {})

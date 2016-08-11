@@ -25,6 +25,7 @@ class StatsViewSwagger(View):
     BASIC_DATE_PARAMS = ['startDateParam', 'endDateParam', 'selectedYearParam']
     UNPUBLISHED_PARAMS = ['unpublishedParam', 'unpublishedAndPublishedParam']
     PRETTY_JSON_PARAM = ['prettyJSONParam']
+    DV_TYPE_UNCATEGORIZED_PARAM = ['showUncategorizedParam']
 
     # ---------------------------------------------
     # Swagger attributes to be defined for each subclass

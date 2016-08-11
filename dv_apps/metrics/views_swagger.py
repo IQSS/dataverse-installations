@@ -7,7 +7,8 @@ from django.http import HttpResponse
 from dv_apps.metrics.stats_views_datasets import DatasetCountByMonthView
 from dv_apps.metrics.stats_views_dataverses import DataverseTotalCounts,\
     DataverseCountByMonthView,\
-    DataverseAffiliationCounts
+    DataverseAffiliationCounts,\
+    DataverseTypeCounts
 from dv_apps.metrics.stats_views_files import FileCountByMonthView
 
 
@@ -18,6 +19,7 @@ Make a list of class based views
 VIEW_CLASSES_FOR_SPEC = [DataverseTotalCounts,\
             DataverseCountByMonthView,\
             DataverseAffiliationCounts,\
+            DataverseTypeCounts,\
             DatasetCountByMonthView,\
             FileCountByMonthView]
 

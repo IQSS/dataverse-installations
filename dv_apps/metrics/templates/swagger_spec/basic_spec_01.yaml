@@ -59,6 +59,11 @@ parameters:
     in: query
     description: Optional. Returns HTML response showing formatted JSON
     type: boolean
+  showUncategorizedParam:
+    name: show_uncategorized
+    in: query
+    description: Optional. For Dataverse type counts, show uncategorized Dataverses.
+    type: boolean
 
 # ------------------------------
 # Define response definitions

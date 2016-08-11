@@ -6,6 +6,7 @@ class DataverseCountByMonthView(StatsViewSwagger):
     """API View - Dataverse counts by Month."""
 
     # Define the swagger attributes
+    # Note: api_path must match the path in urls.py
     #
     api_path = '/dataverses/count/monthly'
     summary = ('Number of published Dataverses by'
@@ -32,6 +33,7 @@ class DataverseTotalCounts(StatsViewSwagger):
     """API View - Total count of all Dataverses"""
 
     # Define the swagger attributes
+    # Note: api_path must match the path in urls.py
     #
     api_path = '/dataverses/count'
     summary = ('Simple count of published Dataverses')
@@ -57,6 +59,7 @@ class DataverseAffiliationCounts(StatsViewSwagger):
     """API View - Number of Dataverses by Affiliation"""
 
     # Define the swagger attributes
+    # Note: api_path must match the path in urls.py
     #
     api_path = '/dataverses/count/by-affiliation'
     summary = ('Number of Dataverses by Affiliation')
@@ -81,6 +84,7 @@ class DataverseAffiliationCounts(StatsViewSwagger):
 class DataverseTypeCounts(StatsViewSwagger):
 
     # Define the swagger attributes
+    # Note: api_path must match the path in urls.py
     #
     api_path = '/dataverses/count/by-type'
     summary = ('Number of Dataverses by Type')

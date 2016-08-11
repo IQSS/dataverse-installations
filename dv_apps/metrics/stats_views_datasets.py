@@ -5,6 +5,7 @@ class DatasetCountByMonthView(StatsViewSwagger):
     """API View - Published Dataset counts by Month"""
 
     # Define the swagger attributes
+    # Note: api_path must match the path in urls.py
     #
     api_path = '/datasets/count/monthly'
     summary = ('Number of published Datasets by'

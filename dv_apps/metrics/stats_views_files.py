@@ -80,3 +80,28 @@ class FilesDownloadedByMonthView(StatsViewSwagger):
             stats_result = stats_files.get_file_downloads_by_month_published()
 
         return stats_result
+
+
+class FileCountsByContentTypeView(StatsViewSwagger):
+    """API View - Files counts by content type."""
+
+    # Define the swagger attributes
+    # Note: api_path must match the path in urls.py
+    #
+    api_path = '/files/count/by-type'
+    summary = ('Number of files by content type')
+    description = ('Returns a list of file counts by content type')
+    description_200 = 'A list of file counts by content type'
+
+    def get_stats_result(self, request):
+        """Return the StatsResult object for this statistic"""
+        stats_files = StatsMakerFiles(**request.GET.dict())
+
+        if self.is_published_and_unpublished(request):
+            stats_result = stats_files.get_datafile_content_type_counts()
+        elif self.is_unpublished(request):
+            stats_result = stats_files.get_datafile_content_type_counts_unpublished()
+        else:
+            stats_result = stats_files.get_datafile_content_type_counts_published()
+
+        return stats_result

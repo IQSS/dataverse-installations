@@ -9,7 +9,8 @@ from dv_apps.metrics.stats_views_dataverses import DataverseTotalCounts,\
     DataverseCountByMonthView,\
     DataverseAffiliationCounts,\
     DataverseTypeCounts
-from dv_apps.metrics.stats_views_files import FileCountByMonthView
+from dv_apps.metrics.stats_views_files import FileCountByMonthView,\
+    FileTotalCountsView
 
 
 """
@@ -21,7 +22,9 @@ VIEW_CLASSES_FOR_SPEC = [DataverseTotalCounts,\
             DataverseAffiliationCounts,\
             DataverseTypeCounts,\
             DatasetCountByMonthView,\
-            FileCountByMonthView]
+            FileTotalCountsView,\
+            FileCountByMonthView,\
+            ]
 
 #@cache_page(60*3)
 def view_dynamic_swagger_spec(request):

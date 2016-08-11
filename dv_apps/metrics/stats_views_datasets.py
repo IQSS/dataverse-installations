@@ -9,8 +9,7 @@ class DatasetCountByMonthView(StatsViewSwagger):
     api_path = '/datasets/count/monthly'
     summary = ('Number of published Datasets by'
             ' the month they were created*.  (*'
-            ' Not necessarily the same month they'
-            ' were published)')
+            ' Not month published)')
     description = ('Returns a list of counts and'
             ' cumulative counts of all datasts added in a month')
     description_200 = 'A list of Dataset counts by month'

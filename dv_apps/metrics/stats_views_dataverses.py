@@ -10,8 +10,7 @@ class DataverseCountByMonthView(StatsViewSwagger):
     api_path = '/dataverses/count/monthly'
     summary = ('Number of published Dataverses by'
             ' the month they were created*.  (*'
-            ' Not necessarily the same month they'
-            ' were published)')
+            ' Not month published)')
     description = ('Returns a list of counts and'
             ' cumulative counts of all Dataverses added in a month')
     description_200 = 'A list of Dataverse counts by month'

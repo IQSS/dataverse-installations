@@ -26,8 +26,6 @@ class StatsMakerDatasets(StatsMakerBase):
         """
         super(StatsMakerDatasets, self).__init__(**kwargs)
 
-
-
     # ----------------------------
     #   Dataset counts (single number totals)
     # ----------------------------

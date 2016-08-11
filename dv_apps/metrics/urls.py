@@ -7,7 +7,8 @@ from dv_apps.metrics.stats_views_dataverses import DataverseCountByMonthView,\
     DataverseTotalCounts,\
     DataverseAffiliationCounts,\
     DataverseTypeCounts
-from dv_apps.metrics.stats_views_files import FileCountByMonthView
+from dv_apps.metrics.stats_views_files import FileCountByMonthView,\
+    FileTotalCountsView
 
 urlpatterns = [
 
@@ -31,6 +32,7 @@ urlpatterns = [
     url(r'^datasets/count/simple2$', views.view_simple_dataset_count2, name='view_simple_dataset_count2'),
 ]
 
+
 urlpatterns += [
 
     # swagger
@@ -42,9 +44,9 @@ urlpatterns += [
     #
 
     # Dataverses
-    url(r'^v1/dataverses/count/monthly$', DataverseCountByMonthView.as_view(), name='view_dataverse_counts_by_month'),
-
     url(r'^v1/dataverses/count$', DataverseTotalCounts.as_view(), name='view_dataverse_counts'),
+
+    url(r'^v1/dataverses/count/monthly$', DataverseCountByMonthView.as_view(), name='view_dataverse_counts_by_month'),
 
     url(r'^v1/dataverses/count/by-affiliation$', DataverseAffiliationCounts.as_view(), name='view_dataverse_counts_by_affiliation'),
 
@@ -55,7 +57,9 @@ urlpatterns += [
     # Datasets
     url(r'^v1/datasets/count/monthly$', DatasetCountByMonthView.as_view(), name='view_dataset_counts_by_month'),
 
-    # Datasets
+    # Files
+    url(r'^v1/files/count$', FileTotalCountsView.as_view(), name='view_files_counts_by_month'),
+
     url(r'^v1/files/count/monthly$', FileCountByMonthView.as_view(), name='view_files_counts_by_month'),
 
 

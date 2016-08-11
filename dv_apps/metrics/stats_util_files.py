@@ -167,10 +167,15 @@ class StatsMakerFiles(StatsMakerBase):
 
         return self.get_file_count_by_month(**self.get_is_published_filter_param())
 
-    def get_file_downloads_by_month_unpublished(self):
+    def get_file_count_by_month_unpublished(self):
         """Unpublished file counts by month"""
 
-        return self.get_file_downloads_by_month(**self.get_is_NOT_published_filter_param())
+        return self.get_file_count_by_month(**self.get_is_NOT_published_filter_param())
+
+        #params = self.get_is_NOT_published_filter_param(dvobject_var_name='datafile')
+
+        #return self.get_file_downloads_by_month(**params)
+        #return self.get_file_downloads_by_month(**self.get_is_NOT_published_filter_param())
 
 
     def get_file_count_start_point(self, **extra_filters):

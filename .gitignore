@@ -108,7 +108,7 @@ test_data/dvn.db.dump.2016.0721.sql
 
 test_setup/staticfiles
 
-static/swagger-ui-master*
+static/swagger-ui-master.zip
 
 test_setup/metrics_auth.db3
 

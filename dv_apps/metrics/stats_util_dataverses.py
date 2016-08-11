@@ -290,9 +290,21 @@ class StatsMakerDataverses(StatsMakerBase):
         return StatsResult.build_success_result(formatted_records, sql_query)
 
 
-    def get_dataverse_affiliation_counts(self):
+    def get_dataverse_affiliation_counts_published(self):
+        """Return published Dataverse counts by affiliation"""
+
+        return self.get_dataverse_affiliation_counts(\
+                **self.get_is_published_filter_param())
+
+    def get_dataverse_affiliation_counts_unpublished(self):
+        """Return unpublished Dataverse counts by affiliation"""
+
+        return self.get_dataverse_affiliation_counts(\
+                **self.get_is_NOT_published_filter_param())
+
+    def get_dataverse_affiliation_counts(self, **extra_filters):
         """
-        Return dataverse counts by 'affiliation'
+        Return Dataverse counts by affiliation
 
         Returns: dv_counts_by_affiliation": [
             {
@@ -316,6 +328,10 @@ class StatsMakerDataverses(StatsMakerBase):
         # Retrieve the date parameters
         #
         filter_params = self.get_date_filter_params(DVOBJECT_CREATEDATE_ATTR)
+
+        if extra_filters:
+            for k, v in extra_filters.items():
+                filter_params[k] = v
 
         dataverse_counts_by_affil = Dataverse.objects.select_related('dvobject'\
                     ).filter(**filter_params\

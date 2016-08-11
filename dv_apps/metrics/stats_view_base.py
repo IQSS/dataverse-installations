@@ -12,9 +12,9 @@ def send_cors_response(response):
     """Quick hack to allow CORS...."""
 
     response["Access-Control-Allow-Origin"] = "*"
-    response["Access-Control-Allow-Methods"] = "POST, GET, OPTIONS"
-    response["Access-Control-Max-Age"] = "1000"
-    response["Access-Control-Allow-Headers"] = "*"
+    #response["Access-Control-Allow-Methods"] = "POST, GET, OPTIONS"
+    #response["Access-Control-Max-Age"] = "1000"
+    #response["Access-Control-Allow-Headers"] = "*"
 
     return response
 
@@ -23,7 +23,8 @@ class StatsViewSwagger(View):
     """Used to help build the swagger docs"""
 
     BASIC_DATE_PARAMS = ['startDateParam', 'endDateParam', 'selectedYearParam']
-    UNPUBLISHED_PARAM = ['unpublishedParam', 'unpublishedAndPublishedParam']
+    UNPUBLISHED_PARAMS = ['unpublishedParam', 'unpublishedAndPublishedParam']
+    PRETTY_JSON_PARAM = ['prettyJSONParam']
 
     # ---------------------------------------------
     # Swagger attributes to be defined for each subclass
@@ -32,7 +33,7 @@ class StatsViewSwagger(View):
     summary = 'add summary'
     description = 'add description'
     description_200 = 'description for the HTTP 200 response'
-    param_names = BASIC_DATE_PARAMS + UNPUBLISHED_PARAM + ['prettyJSONParam']
+    param_names = BASIC_DATE_PARAMS + UNPUBLISHED_PARAMS + PRETTY_JSON_PARAM
     # ---------------------------------------------
 
 

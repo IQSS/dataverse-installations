@@ -3,7 +3,9 @@ from django.conf.urls import url
 from dv_apps.metrics import views, views_api, views_test,\
     views_public_metrics, views_swagger
 from dv_apps.metrics.stats_views_datasets import DatasetCountByMonthView
-from dv_apps.metrics.stats_views_dataverses import DataverseCountByMonthView
+from dv_apps.metrics.stats_views_dataverses import DataverseCountByMonthView,\
+    DataverseTotalCounts,\
+    DataverseAffiliationCounts
 from dv_apps.metrics.stats_views_files import FileCountByMonthView
 
 urlpatterns = [
@@ -40,6 +42,12 @@ urlpatterns += [
 
     # Dataverses
     url(r'^v1/dataverses/count/monthly$', DataverseCountByMonthView.as_view(), name='view_dataverse_counts_by_month'),
+
+    url(r'^v1/dataverses/count$', DataverseTotalCounts.as_view(), name='view_dataverse_counts'),
+
+    url(r'^v1/dataverses/count/by-affiliation$', DataverseAffiliationCounts.as_view(), name='view_dataverse_counts_by_affiliation'),
+
+
 
     # Datasets
     url(r'^v1/datasets/count/monthly$', DatasetCountByMonthView.as_view(), name='view_dataset_counts_by_month'),

@@ -32,7 +32,7 @@ def view_public_visualizations_last12(request):
     return view_public_visualizations(request, **date_filters)
 
 
-@cache_page(60 * 60 * 3)
+#@cache_page(60 * 60 * 3)
 def view_public_visualizations(request, **kwargs):
     """
     Return HTML/D3Plus visualizations for a variety of public statistics

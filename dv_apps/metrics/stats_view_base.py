@@ -20,51 +20,92 @@ def send_cors_response(response):
     return response
 
 
-class StatsView(View):
+class StatsViewSwagger(View):
+    """Used to help build the swagger docs"""
 
+    BASIC_DATE_PARAMS = ['startDateParam', 'endDateParam', 'selectedYearParam']
+    UNPUBLISHED_PARAM = ['unpublishedParam', 'unpublishedAndPublishedParam']
+
+    # ---------------------------------------------
+    # Swagger attributes to be defined for each subclass
+    # ---------------------------------------------
     api_path = '/path/to/endpoint'
     summary = 'add summary'
     description = 'add description'
+    param_names = BASIC_DATE_PARAMS + UNPUBLISHED_PARAM + ['prettyJSONParam']
+    # ---------------------------------------------
 
+    
     def get_swagger_spec(self):
+        """Return a YAML representation of the swagger spec for this endpoint"""
 
         d = {}
         d['api_path'] = self.api_path
         d['summary'] = self.summary
         d['description'] = self.description
+        d['param_names'] = self.param_names
 
         return render_to_string('swagger_spec/single_endpoint.yaml', d)
 
-"""
-from dv_apps.metrics.stats_view_base import *
-d = DatasetCountByMonth()
-d.get_swagger_spec()
-"""
-class DatasetCountByMonthView(StatsView):
+    def is_unpublished(self, request):
+        """Return the result of the "?unpublished" query string param"""
 
-    api_path = '/datasets/count/monthly'
-    summary = 'Number of new Datasets added each month'
-    description = ('Returns a list of counts and'
-            ' cumulative counts of all datasts added in a month')
+        unpublished = request.GET.get('unpublished', False)
+        if unpublished is True or unpublished == 'true':
+            return True
+        return False
 
-    """View to Dataset counts by Month"""
+    def is_published_and_unpublished(self, request):
+        """Return the result of the "?pub_all" query string param"""
+
+        pub_all = request.GET.get('pub_all', False)
+        if pub_all is True or pub_all == 'true':
+            return True
+        return False
+
+
+    def get_stats_result(self, request):
+        """Return the StatsResult object for this statistic.
+        Overwrite this method for each subclass
+        """
+        raise Exception("This method must return a stats_result.StatsResult object")
+
+
     def get(self, request):
-        stats_datasets = StatsMakerDatasets(**request.GET.dict())
+        """Return a basic get request using the StatsResult object"""
 
-        stats_result = stats_datasets.get_dataset_counts_by_create_date_published()
+        # Get the StatsResult -- different for each subclass
+        stats_result = self.get_stats_result(request)
+        if stats_result is None:
+            err_dict = dict(status="ERROR",
+                message="Unknown processing error")
+            return send_cors_response(JsonResponse(err_dict, status=500))
+
+        # Was there an error? If so, return the error message
+        #
         if stats_result.has_error():
             err_dict = dict(status="ERROR",
                 message=stats_result.error_message)
             return send_cors_response(JsonResponse(err_dict, status=400))
 
+        # Create the dict for the response
+        #
         resp_dict = OrderedDict()
+
+        # status is "OK"
         resp_dict['status'] = "OK"
+
+        # Is we're in debug and the SQL query is available,
+        #   send it in
         if settings.DEBUG and stats_result.sql_query:
             resp_dict['debug'] = dict(sql_query=stats_result.sql_query)
+
+        # Set the actual stats data
         resp_dict['data'] = stats_result.result_data
 
-
+        # Is there a request to send the JSON formatted within HTML tags?
         if 'pretty' in request.GET:
             return HttpResponse('<pre>%s</pre>' % json.dumps(resp_dict, indent=4))
 
+        # Return the actual response
         return send_cors_response(JsonResponse(resp_dict))

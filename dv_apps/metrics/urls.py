@@ -2,8 +2,7 @@ from django.conf.urls import url
 #from dv_apps.metrics.views import view_dataset_count
 from dv_apps.metrics import views, views_api, views_test,\
     views_public_metrics, views_swagger
-from dv_apps.metrics.views_dataset_counts import DatasetCountByMonth
-
+from dv_apps.metrics.stats_views_datasets import DatasetCountByMonthView
 
 urlpatterns = [
 
@@ -24,22 +23,17 @@ urlpatterns = [
     url(r'^dv-tree2$', views_test.view_dataverse_tree2, name='view_dataverse_tree2'),
 
 
-    #url(r'^datasets/count/simple$', views_api.view_simple_dataset_count, name='view_simple_dataset_count'),
-
     url(r'^datasets/count/simple2$', views.view_simple_dataset_count2, name='view_simple_dataset_count2'),
+]
+
+urlpatterns += [
 
     # swagger
-    url(r'^v1/swagger-static.yaml$', views_swagger.view_swagger_spec, name='view_swagger_spec'),
+    url(r'^v1/swagger-test.yaml$', views_swagger.view_swagger_spec_test, name='view_swagger_spec_test'),
 
     url(r'^v1/swagger.yaml$', views_swagger.view_dynamic_swagger_spec, name='view_dynamic_swagger_spec'),
 
     # API endpoints
-    url(r'^v1/datasets/count/monthly$', DatasetCountByMonth.as_view(), name='view_dataset_counts_by_month'),
-
-    #url(r'^datasets/count/jcabanas$', views_api.view_jcabanas, name='view_jcabanas'),
-
-    #url(r'^datasets/count-by-month$', views_api.view_dataset_counts_by_month, name='view_dataset_counts_by_month'),
-
-
+    url(r'^v1/datasets/count/monthly$', DatasetCountByMonthView.as_view(), name='view_dataset_counts_by_month'),
 
 ]

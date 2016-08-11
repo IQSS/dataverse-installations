@@ -4,11 +4,12 @@ from django.template.loader import render_to_string
 
 from django.http import HttpResponse
 
-from dv_apps.metrics.stats_view_base import DatasetCountByMonthView
+from dv_apps.metrics.stats_views_datasets import DatasetCountByMonthView
 
-# Make a list of class based views
-#  (each one has a "get_swagger_spec()" method)
-#
+"""
+Make a list of class based views
+    (each one has a "get_swagger_spec()" method)
+"""
 VIEW_CLASSES_FOR_SPEC = [DatasetCountByMonthView]
 
 #@cache_page(60*3)
@@ -31,7 +32,7 @@ def view_dynamic_swagger_spec(request):
 
 
 
-def view_swagger_spec(request):
+def view_swagger_spec_test(request):
     """Show the swaggger spec!"""
     spec = """swagger: "2.0"
 

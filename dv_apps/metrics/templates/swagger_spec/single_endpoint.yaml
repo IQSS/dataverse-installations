@@ -1,13 +1,13 @@
-paths:
   {{ api_path }}:
     get:
       summary: {{ summary }}
       description: {{ description }}
-      parameters:
-        - $ref: "#/parameters/startDateParam"
-        - $ref: "#/parameters/endDateParam"
-        - $ref: "#/parameters/selectedYearParam"
-        - $ref: "#/parameters/prettyJSONParam"
+      parameters:{% for param_name in param_names %}
+         - $ref: "#/parameters/{{ param_name }}"{% endfor %}
+#        - $ref: "#/parameters/startDateParam"
+#        - $ref: "#/parameters/endDateParam"
+#        - $ref: "#/parameters/selectedYearParam"
+#        - $ref: "#/parameters/prettyJSONParam"
       responses:
         200:
           description: A list of Dataset counts by month

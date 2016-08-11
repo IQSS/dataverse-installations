@@ -6,7 +6,6 @@ from django.http import JsonResponse, HttpResponse
 from django.template.loader import render_to_string
 
 from django.views.generic import View
-from .stats_util_datasets import StatsMakerDatasets
 
 
 def send_cors_response(response):
@@ -32,10 +31,11 @@ class StatsViewSwagger(View):
     api_path = '/path/to/endpoint'
     summary = 'add summary'
     description = 'add description'
+    description_200 = 'description for the HTTP 200 response'
     param_names = BASIC_DATE_PARAMS + UNPUBLISHED_PARAM + ['prettyJSONParam']
     # ---------------------------------------------
 
-    
+
     def get_swagger_spec(self):
         """Return a YAML representation of the swagger spec for this endpoint"""
 
@@ -43,6 +43,7 @@ class StatsViewSwagger(View):
         d['api_path'] = self.api_path
         d['summary'] = self.summary
         d['description'] = self.description
+        d['description_200'] = self.description_200
         d['param_names'] = self.param_names
 
         return render_to_string('swagger_spec/single_endpoint.yaml', d)

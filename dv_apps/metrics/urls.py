@@ -2,7 +2,8 @@ from django.conf.urls import url
 #from dv_apps.metrics.views import view_dataset_count
 from dv_apps.metrics import views, views_api, views_test,\
     views_public_metrics, views_swagger
-from dv_apps.metrics.stats_views_datasets import DatasetCountByMonthView
+from dv_apps.metrics.stats_views_datasets import DatasetCountByMonthView,\
+    DataverseCountByMonthView
 
 urlpatterns = [
 
@@ -34,6 +35,12 @@ urlpatterns += [
     url(r'^v1/swagger.yaml$', views_swagger.view_dynamic_swagger_spec, name='view_dynamic_swagger_spec'),
 
     # API endpoints
+    #
+
+    # Dataverses
+    url(r'^v1/dataverses/count/monthly$', DataverseCountByMonthView.as_view(), name='view_dataverse_counts_by_month'),
+
+    # Datasets
     url(r'^v1/datasets/count/monthly$', DatasetCountByMonthView.as_view(), name='view_dataset_counts_by_month'),
 
 ]

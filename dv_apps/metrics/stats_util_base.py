@@ -152,7 +152,7 @@ class StatsMakerBase(object):
         if self.time_sort == 'd':   # descending
             self.time_sort = '-'
         elif self.time_sort in ['a', '']:   # ascending
-            self.time_sort = '-'
+            self.time_sort = ''
         else:                       # ascending
             self.add_error("'The 'time_sort' value"
                 " must be 'a' for ascending or 'd' for descending.")

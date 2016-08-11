@@ -10,7 +10,7 @@
 #        - $ref: "#/parameters/prettyJSONParam"
       responses:
         200:
-          description: A list of Dataset counts by month
+          description: {{ description_200 }}
           schema:
             $ref: "#/definitions/MonthCounts"
         400:

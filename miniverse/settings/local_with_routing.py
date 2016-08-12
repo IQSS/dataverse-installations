@@ -3,7 +3,7 @@ import json
 import sys
 from os import makedirs
 from os.path import join, normpath, isdir, isfile
-
+from miniverse.testrunners.disable_migrations import DisableMigrations
 from .base import *
 
 SECRET_KEY = 'make-a-secret-key'
@@ -14,24 +14,48 @@ if not isdir(LOCAL_SETUP_DIR):
 
 DATABASE_ROUTERS = ['miniverse.settings.db_django_contrib_router.DjangoContribRouter', ]
 
-
 DATABASES = {
+
     'django_contrib_db': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': join(LOCAL_SETUP_DIR, 'metrics_auth.db3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'metrics_internal',   #  dvn_thedata dvndb_demo
+        'USER': 'rp', # dv_readonly, postgres
+        'PASSWORD': '123',
+        'HOST': 'localhost',
         'TEST': {
             'MIRROR': 'default',
         },
     },
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'dvn_thedata',   #  dvn_thedata dvndb_demo
+        'NAME': 'dvndb_demo',   #  dvn_thedata dvndb_demo
         'USER': 'postgres', # dv_readonly, postgres
         'PASSWORD': '123',
-        'HOST': 'localhost'
+        'HOST': 'localhost',
+        'xTEST': {
+            'MIRROR': 'django_contrib_db',
+        },
     }
 }
 """
+    'django_contrib_db': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'metrics_internal',   #  dvn_thedata dvndb_demo
+        'USER': 'rp', # dv_readonly, postgres
+        'PASSWORD': '123',
+        'HOST': 'localhost',
+        'TEST': {
+            'MIRROR': 'default',
+        },
+    },
+'django_contrib_db': {
+    'ENGINE': 'django.db.backends.sqlite3',
+    'NAME': join(LOCAL_SETUP_DIR, 'metrics_auth.db3'),
+    'TEST': {
+        'MIRROR': 'default',
+    },
+},
+
 'default': {
     'ENGINE': 'django.db.backends.postgresql_psycopg2',
     'NAME': 'dvndb_demo',
@@ -81,3 +105,31 @@ DEBUG_TOOLBAR_PATCH_SETTINGS = False
 # http://django-debug-toolbar.readthedocs.org/en/latest/installation.html
 INTERNAL_IPS = ('127.0.0.1',)
 ########## END TOOLBAR CONFIGURATION
+
+if 'test' in sys.argv or 'test_coverage' in sys.argv:  # Covers regular testing and django-coverage
+
+    DATABASES['default']['ENGINE'] = 'django.db.backends.postgresql_psycopg2'
+    DATABASES['default']['HOST'] = 'localhost'
+    DATABASES['default']['USER'] = 'rp'
+    DATABASES['default']['PASSWORD'] = '123'
+
+    DATABASES['django_contrib_db']['ENGINE'] = 'django.db.backends.postgresql_psycopg2'
+    DATABASES['django_contrib_db']['HOST'] = 'localhost'
+    DATABASES['django_contrib_db']['USER'] = 'rp'
+    DATABASES['django_contrib_db']['PASSWORD'] = '123'
+
+
+    # The custom routers we're using to route certain ORM queries
+    # to the remote host conflict with our overridden db settings.
+    # Set DATABASE_ROUTERS to an empty list to return to the defaults
+    # during the test run.
+
+    DATABASE_ROUTERS = []
+
+    MIGRATION_MODULES = DisableMigrations()
+
+    # Set Django's test runner a custom class that will create
+    # 'unmanaged' tables
+    sys.path.append('/Users/rmp553/Documents/iqss-git/miniverse')
+    sys.path.append('/Users/rmp553/Documents/iqss-git/miniverse/miniverse')
+    TEST_RUNNER = 'miniverse.testrunners.managed_model_test_runner.ManagedModelTestRunner'

@@ -1,11 +1,12 @@
 """
 Used to create a test database when using unmanaged models.
-See these posts (including comments): https://www.caktusgroup.com/blog/2010/09/24/simplifying-the-testing-of-unmanaged-database-models-in-django/
-http://blog.birdhouse.org/2015/03/25/django-unit-tests-against-unmanaged-databases/
+See gist: https://gist.github.com/raprasad/f292f94657728de45d1614a741928308
+Also, see this post (including comments):
+ http://blog.birdhouse.org/2015/03/25/django-unit-tests-against-unmanaged-databases/
 """
-
 from django.test.runner import DiscoverRunner
 from django.apps import apps
+
 
 class ManagedModelTestRunner(DiscoverRunner):
     """
@@ -16,10 +17,12 @@ class ManagedModelTestRunner(DiscoverRunner):
     def setup_test_environment(self, *args, **kwargs):
 
         self.unmanaged_models = [m for m in apps.get_models() if not m._meta.managed]
-        #self.unmanaged_models = [m for m in get_models()
-        #                         if not m._meta.managed]
+
         for m in self.unmanaged_models:
             m._meta.managed = True
+
+
+        #import ipdb; ipdb.set_trace()
         super(ManagedModelTestRunner, self).setup_test_environment(*args,
                                                                    **kwargs)
 

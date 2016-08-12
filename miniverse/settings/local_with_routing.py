@@ -32,9 +32,6 @@ DATABASES = {
         'USER': 'postgres', # dv_readonly, postgres
         'PASSWORD': '123',
         'HOST': 'localhost',
-        'xTEST': {
-            'MIRROR': 'django_contrib_db',
-        },
     }
 }
 """

@@ -35,6 +35,9 @@ python-2.7.11
 
 ## set django vars
 
-- secret key
- - create a key: https://gist.github.com/joshsee/8c495c2da9b423d42e8d
- - set the key:  ```heroku config:set SECRET_KEY=[key from above]```
+- DJANGO_SETTINGS_MODULE
+  - set the var:  ```heroku config:set DJANGO_SETTINGS_MODULE=miniverse.settings.heroku_dev```
+
+- SECRET_KEY
+  - create a key: https://gist.github.com/joshsee/8c495c2da9b423d42e8d
+  - set the key:  ```heroku config:set SECRET_KEY=[key from above]```

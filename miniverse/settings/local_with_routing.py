@@ -8,7 +8,7 @@ from .base import *
 
 SECRET_KEY = 'make-a-secret-key'
 
-LOCAL_SETUP_DIR = join(BASE_DIR, 'test_setup')
+LOCAL_SETUP_DIR = join(PROJECT_ROOT, 'test_setup')
 if not isdir(LOCAL_SETUP_DIR):
     makedirs(LOCAL_SETUP_DIR)
 
@@ -17,11 +17,8 @@ DATABASE_ROUTERS = ['miniverse.settings.db_django_contrib_router.DjangoContribRo
 DATABASES = {
 
     'django_contrib_db': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'metrics_internal',   #  dvn_thedata dvndb_demo
-        'USER': 'rp', # dv_readonly, postgres
-        'PASSWORD': '123',
-        'HOST': 'localhost',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': join(LOCAL_SETUP_DIR, 'metrics_auth.db3'),
         'TEST': {
             'MIRROR': 'default',
         },

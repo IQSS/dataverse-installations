@@ -8,7 +8,7 @@ from .base import *
 
 SECRET_KEY = 'make-a-secret-key'
 
-LOCAL_SETUP_DIR = join(BASE_DIR, 'test_setup')
+LOCAL_SETUP_DIR = join(PROJECT_ROOT, 'test_setup')
 if not isdir(LOCAL_SETUP_DIR):
     makedirs(LOCAL_SETUP_DIR)
 
@@ -62,6 +62,6 @@ INTERNAL_IPS = ('127.0.0.1',)
 ########## END TOOLBAR CONFIGURATION
 
 
-MEDIA_ROOT = join(BASE_DIR,"media")
+MEDIA_ROOT = join(PROJECT_ROOT,"media")
 
 MEDIA_URL = '/media/'

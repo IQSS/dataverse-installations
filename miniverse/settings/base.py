@@ -10,12 +10,12 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.8/ref/settings/
 """
 
-# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+# Build paths inside the project like this: join(PROJECT_ROOT, ...)
 import os
 from os.path import abspath, dirname
 from os.path import join
-BASE_DIR = dirname(dirname(dirname(abspath(__file__))))
 
+PROJECT_ROOT = dirname(dirname(dirname(abspath(__file__))))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
@@ -36,11 +36,13 @@ INSTALLED_APPS = (
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'django.contrib.sites',
     'django.contrib.staticfiles',
     'django.contrib.humanize',
 
     # Existing DV tables
     'dv_apps.terms_of_use',
+
     'dv_apps.actionlog',
     'dv_apps.dataverse_auth',
     'dv_apps.dvobjects',
@@ -55,7 +57,7 @@ INSTALLED_APPS = (
     'dv_apps.installations',
 
     # Experiments/Add-ons
-    'dv_apps.data_previewer',
+    #'dv_apps.data_previewer',
     'dv_apps.metrics',
 )
 
@@ -78,8 +80,8 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            join(BASE_DIR, 'templates'),
-            join(BASE_DIR, 'templates', 'recipes'),
+            join(PROJECT_ROOT, 'templates'),
+            join(PROJECT_ROOT, 'templates', 'recipes'),
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -102,7 +104,7 @@ WSGI_APPLICATION = 'miniverse.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'NAME': os.path.join(PROJECT_ROOT, 'db.sqlite3'),
     }
 }
 
@@ -127,15 +129,15 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 # Static file sources
-STATICFILES_DIRS = [join(BASE_DIR, 'static')]
+STATICFILES_DIRS = [join(PROJECT_ROOT, 'static')]
 #print 'STATICFILES_DIRS', STATICFILES_DIRS
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            join(BASE_DIR, 'templates'),
-            join(BASE_DIR, 'templates', 'miniverse'),
+            join(PROJECT_ROOT, 'templates'),
+            join(PROJECT_ROOT, 'templates', 'miniverse'),
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -154,7 +156,7 @@ TEMPLATES = [
     },
 ]
 
-MEDIA_ROOT = join(BASE_DIR,"media")
+MEDIA_ROOT = join(PROJECT_ROOT,"media")
 
 MEDIA_URL = '/media/'
 

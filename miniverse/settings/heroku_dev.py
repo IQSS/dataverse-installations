@@ -22,6 +22,10 @@ HEROKU_DB_CONFIG = dj_database_url.config(conn_max_age=500)
 
 DATABASES['default'].update(HEROKU_DB_CONFIG)
 
+# Heroku specific urls
+ROOT_URLCONF = 'miniverse.urls_heroku_dev'
+
+
 """
 DATABASES = {
     'django_contrib_db': HEROKU_DB_CONFIG,

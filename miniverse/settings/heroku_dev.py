@@ -26,15 +26,16 @@ ALLOWED_HOSTS = ['54.235.72.96',]
 DATABASE_ROUTERS = ['miniverse.settings.db_django_contrib_router.DjangoContribRouter', ]
 
 
-HEROKU_DB_CONFIG = dj_database_url.config(conn_max_age=500)
-
-# Set the Miniverse admin url
-DATABASES['miniverse_admin_db'].update(HEROKU_DB_CONFIG)
-DATABASES['miniverse_admin_db']['TEST'] = {'MIRROR': 'default'}
-
 # Set the Dataverse url
 DV_DEMO_DATABASE_URL = dj_database_url.parse(os.environ['DV_DEMO_DATABASE_URL'])
 DATABASES['default'].update(DV_DEMO_DATABASE_URL)
+
+# Set the Miniverse admin url
+HEROKU_DB_CONFIG = dj_database_url.config(conn_max_age=500)
+
+DATABASES['miniverse_admin_db'].update(HEROKU_DB_CONFIG)
+DATABASES['miniverse_admin_db']['TEST'] = {'MIRROR': 'default'}
+
 
 # Heroku specific urls
 ROOT_URLCONF = 'miniverse.urls_heroku_dev'

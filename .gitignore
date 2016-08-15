@@ -115,3 +115,6 @@ test_setup/metrics_auth.db3
 test_setup/test_metrics.db3
 
 dvn.db.dump.2016.0721.sql
+
+staticfiles/*
+!staticfiles/PLACEHOLDER.md

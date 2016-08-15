@@ -14,7 +14,8 @@ SESSION_COOKIE_NAME = 'dv_metrics_dev'
 
 #INTERNAL_IPS = ()   # Heroku IP
 
-ALLOWED_HOSTS = ['54.235.72.96',]
+ALLOWED_HOSTS = ['services-dataverse.herokuapp.com', '52.86.18.14', '50.17.160.202' ]
+# proximo: 54.235.72.96
 
 
 ## Database settings via Heroku url

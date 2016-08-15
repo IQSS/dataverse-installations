@@ -1,11 +1,12 @@
 from __future__ import absolute_import
-#import sys
+import os
 from os.path import join#, normpath, isdir, isfile
 import dj_database_url
 
 from .base import *
 
 # Set the secret key
+print 'pre secret key'
 SECRET_KEY = os.environ['SECRET_KEY']
 
 # Cookie name

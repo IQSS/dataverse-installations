@@ -5,5 +5,8 @@ django-model-utils>=2.2
 psycopg2==2.6
 requests>=2.10.0
 
+# Database url parser
+dj-database-url==0.4.1
+
 # Serving static files
 whitenoise==3.2

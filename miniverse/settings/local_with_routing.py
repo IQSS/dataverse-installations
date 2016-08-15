@@ -14,9 +14,10 @@ if not isdir(LOCAL_SETUP_DIR):
 
 DATABASE_ROUTERS = ['miniverse.settings.db_django_contrib_router.DjangoContribRouter', ]
 
+
 DATABASES = {
 
-    'django_contrib_db': {
+    'miniverse_admin_db': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': join(LOCAL_SETUP_DIR, 'metrics_auth.db3'),
         'TEST': {
@@ -31,8 +32,11 @@ DATABASES = {
         'HOST': 'localhost',
     }
 }
+
+
+
 """
-    'django_contrib_db': {
+    'miniverse_admin_db': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'metrics_internal',   #  dvn_thedata dvndb_demo
         'USER': 'rp', # dv_readonly, postgres
@@ -42,7 +46,7 @@ DATABASES = {
             'MIRROR': 'default',
         },
     },
-'django_contrib_db': {
+'miniverse_admin_db': {
     'ENGINE': 'django.db.backends.sqlite3',
     'NAME': join(LOCAL_SETUP_DIR, 'metrics_auth.db3'),
     'TEST': {
@@ -107,10 +111,10 @@ if 'test' in sys.argv or 'test_coverage' in sys.argv:  # Covers regular testing 
     DATABASES['default']['USER'] = 'rp'
     DATABASES['default']['PASSWORD'] = '123'
 
-    DATABASES['django_contrib_db']['ENGINE'] = 'django.db.backends.postgresql_psycopg2'
-    DATABASES['django_contrib_db']['HOST'] = 'localhost'
-    DATABASES['django_contrib_db']['USER'] = 'rp'
-    DATABASES['django_contrib_db']['PASSWORD'] = '123'
+    DATABASES['miniverse_admin_db']['ENGINE'] = 'django.db.backends.postgresql_psycopg2'
+    DATABASES['miniverse_admin_db']['HOST'] = 'localhost'
+    DATABASES['miniverse_admin_db']['USER'] = 'rp'
+    DATABASES['miniverse_admin_db']['PASSWORD'] = '123'
 
 
     # The custom routers we're using to route certain ORM queries

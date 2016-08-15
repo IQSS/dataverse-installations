@@ -10,8 +10,8 @@ Working on metrics prototype by pointing Django at an existing dataverse Postgre
 Running django contrib apps via migrate:
 
 ```
-python manage.py migrate contenttypes --database django_contrib_db --run-syncdb
-python manage.py createsuperuser --database django_contrib_db
+python manage.py migrate contenttypes --database miniverse_admin_db --run-syncdb
+python manage.py createsuperuser --database miniverse_admin_db
 ```
 
 ##

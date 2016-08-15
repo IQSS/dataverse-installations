@@ -8,8 +8,8 @@ For these circumstances:
 Based on: https://docs.djangoproject.com/en/1.9/topics/db/multi-db/#database-routers
 """
 
-APPS_TO_ROUTE = [ 'auth', 'contenttypes', 'sessions', 'sites', 'admin', ]
-DB_REFERENCE_NAME = 'django_contrib_db'
+APPS_TO_ROUTE = [ 'auth', 'contenttypes', 'sessions', 'sites', 'admin', 'installations']
+DB_REFERENCE_NAME = 'miniverse_admin_db'
 
 def is_django_app_to_route(app_label):
     """Should we route this app?"""

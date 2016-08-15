@@ -6,7 +6,6 @@ import dj_database_url
 from .base import *
 
 # Set the secret key
-print 'pre secret key'
 SECRET_KEY = os.environ['SECRET_KEY']
 
 # Cookie name
@@ -19,9 +18,23 @@ ALLOWED_HOSTS = ['54.235.72.96',]
 
 
 ## Database settings via Heroku url
+#
+#  We have two databases:
+#   - Heroku db for django + "installations" app
+#   - external Dataverse db for reading stats
+#
+DATABASE_ROUTERS = ['miniverse.settings.db_django_contrib_router.DjangoContribRouter', ]
+
+
 HEROKU_DB_CONFIG = dj_database_url.config(conn_max_age=500)
 
-DATABASES['default'].update(HEROKU_DB_CONFIG)
+# Set the Miniverse admin url
+DATABASES['miniverse_admin_db'].update(HEROKU_DB_CONFIG)
+DATABASES['miniverse_admin_db']['TEST'] = {'MIRROR': 'default'}
+
+# Set the Dataverse url
+DV_DEMO_DATABASE_URL = dj_database_url.parse(os.environ['DV_DEMO_DATABASE_URL'])
+DATABASES['default'].update(DV_DEMO_DATABASE_URL)
 
 # Heroku specific urls
 ROOT_URLCONF = 'miniverse.urls_heroku_dev'
@@ -29,7 +42,7 @@ ROOT_URLCONF = 'miniverse.urls_heroku_dev'
 
 """
 DATABASES = {
-    'django_contrib_db': HEROKU_DB_CONFIG,
+    'miniverse_admin_db': HEROKU_DB_CONFIG,
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'dvn_thedata',   #  dvn_thedata dvndb_demo

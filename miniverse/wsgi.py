@@ -12,10 +12,6 @@ import os
 from django.core.wsgi import get_wsgi_application
 from whitenoise.django import DjangoWhiteNoise
 
-import sys
-print 'wsgi sys.path'
-for p in sys.path: print p
-
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "miniverse.settings.heroku_dev")
 
 application = get_wsgi_application()

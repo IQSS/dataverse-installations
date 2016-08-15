@@ -32,7 +32,7 @@ DATABASES['default'].update(DV_DEMO_DATABASE_URL)
 
 # Set the Miniverse admin url
 HEROKU_DB_CONFIG = dj_database_url.config(conn_max_age=500)
-
+DATABASES['miniverse_admin_db'] = {}
 DATABASES['miniverse_admin_db'].update(HEROKU_DB_CONFIG)
 DATABASES['miniverse_admin_db']['TEST'] = {'MIRROR': 'default'}
 

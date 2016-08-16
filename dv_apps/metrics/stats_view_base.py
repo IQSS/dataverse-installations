@@ -26,6 +26,16 @@ class StatsViewSwagger(View):
     UNPUBLISHED_PARAMS = ['unpublishedParam', 'unpublishedAndPublishedParam']
     PRETTY_JSON_PARAM = ['prettyJSONParam']
     DV_TYPE_UNCATEGORIZED_PARAM = ['showUncategorizedParam']
+    FILE_CONTENT_TYPE_PARAM = ['contentTypeParam']
+
+    RESULT_NAME_MONTH_COUNTS = 'MonthCounts'
+    RESULT_NAME_FILE_EXT_COUNTS = 'FileExtensionCounts'
+    RESULT_NAME_FILE_TYPE_COUNTS = 'FileTypeCounts'
+
+    RESULT_NAME_NUM_UNIQUE_EXT = 'NumberUniqueExtensions'
+    RESULT_NAME_AFFILIATION_COUNTS = 'AffiliationCounts'
+    RESULT_NAME_DATAVERSE_TYPE_COUNTS = 'DataverseTypeCount'
+
 
     # ---------------------------------------------
     # Swagger attributes to be defined for each subclass
@@ -35,6 +45,7 @@ class StatsViewSwagger(View):
     description = 'add description'
     description_200 = 'description for the HTTP 200 response'
     param_names = BASIC_DATE_PARAMS + UNPUBLISHED_PARAMS + PRETTY_JSON_PARAM
+    result_name = RESULT_NAME_MONTH_COUNTS
     # ---------------------------------------------
 
 
@@ -47,8 +58,17 @@ class StatsViewSwagger(View):
         d['description'] = self.description
         d['description_200'] = self.description_200
         d['param_names'] = self.param_names
+        d['result_name'] = self.result_name
 
         return render_to_string('swagger_spec/single_endpoint.yaml', d)
+
+    def get_content_type_param(self, request):
+        """Return the result of the "?unpublished" query string param"""
+
+        ctype = request.GET.get('ctype', None)   # add this as variable..
+        if ctype is not None and len(ctype) > 0:
+            return ctype
+        return None
 
     def is_unpublished(self, request):
         """Return the result of the "?unpublished" query string param"""

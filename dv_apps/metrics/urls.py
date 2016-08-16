@@ -10,7 +10,8 @@ from dv_apps.metrics.stats_views_dataverses import DataverseCountByMonthView,\
 from dv_apps.metrics.stats_views_files import FileCountByMonthView,\
     FileTotalCountsView,\
     FilesDownloadedByMonthView,\
-    FileCountsByContentTypeView
+    FileCountsByContentTypeView,\
+    FileExtensionsWithinContentType
 
 urlpatterns = [
 
@@ -68,5 +69,6 @@ urlpatterns += [
 
     url(r'^v1/files/downloads/count/monthly$', FilesDownloadedByMonthView.as_view(), name='view_file_download_counts_by_month'),
 
+    url(r'^v1/files/extensions$', FileExtensionsWithinContentType.as_view(), name='view_file_extensions_within_type'),
 
 ]

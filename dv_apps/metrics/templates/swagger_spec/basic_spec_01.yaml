@@ -64,6 +64,11 @@ parameters:
     in: query
     description: Optional. For Dataverse type counts, show uncategorized Dataverses.
     type: boolean
+  contentTypeParam:
+    name: ctype
+    in: query
+    description: Optional. Value from the Filemetadata 'contenttype' column. e.g. "application/octet-stream", "data/various-formats", etc
+    type: string
 
 # ------------------------------
 # Define response definitions
@@ -87,3 +92,63 @@ definitions:
     type: array
     items:
       $ref: "#/definitions/MonthCount"
+  FileExtensionCount:
+    properties:
+      extension:
+        type: string
+      count:
+        type: integer
+  FileExtensionCounts:
+    type: array
+    items:
+      $ref: "#/definitions/FileExtensionCount"
+  NumberUniqueExtensions:
+    properties:
+      number_unique_extensions:
+        type: integer
+  AffiliationCount:
+    properties:
+      affiliation:
+        type: string
+      affil_count:
+        type: integer
+      total_count:
+        type: integer
+      percent_string:
+        type: string
+  AffiliationCounts:
+    type: array
+    items:
+      $ref: "#/definitions/AffiliationCount"
+  DataverseTypeCount:
+    properties:
+      dataversetype:
+        type: string
+      dataversetype_label:
+        type: string
+      type_count:
+        type: integer
+      total_count:
+        type: integer
+      percent_string:
+        type: string
+  DataverseTypeCounts:
+    type: array
+    items:
+      $ref: "#/definitions/DataverseTypeCount"
+  FileTypeCount:
+    properties:
+      contenttype:
+        type: string
+      short_content_type:
+        type: string
+      type_count:
+        type: integer
+      total_count:
+        type: integer
+      percent_string:
+        type: string
+  FileTypeCounts:
+    type: array
+    items:
+      $ref: "#/definitions/FileTypeCount"

@@ -12,6 +12,7 @@ class FileTotalCountsView(StatsViewSwagger):
     description = ('Returns number of published Files')
     description_200 = 'Number of published Files'
     param_names = StatsViewSwagger.UNPUBLISHED_PARAMS + StatsViewSwagger.PRETTY_JSON_PARAM
+    result_name = StatsViewSwagger.RESULT_NAME_FILE_EXT_COUNTS
 
     def get_stats_result(self, request):
         """Return the StatsResult object for this statistic"""
@@ -92,6 +93,7 @@ class FileCountsByContentTypeView(StatsViewSwagger):
     summary = ('Number of files by content type')
     description = ('Returns a list of file counts by content type')
     description_200 = 'A list of file counts by content type'
+    result_name = StatsViewSwagger.RESULT_NAME_FILE_TYPE_COUNTS
 
     def get_stats_result(self, request):
         """Return the StatsResult object for this statistic"""
@@ -103,5 +105,32 @@ class FileCountsByContentTypeView(StatsViewSwagger):
             stats_result = stats_files.get_datafile_content_type_counts_unpublished()
         else:
             stats_result = stats_files.get_datafile_content_type_counts_published()
+
+        return stats_result
+
+
+class FileExtensionsWithinContentType(StatsViewSwagger):
+    """API View - Files counts by content type."""
+
+    # Define the swagger attributes
+    # Note: api_path must match the path in urls.py
+    #
+    api_path = '/files/extensions'
+    summary = ('File extension counts within a given content type.')
+    description = ('File extension counts within a given content type.')
+    description_200 = ('File extension counts within a given content type.')
+    param_names = StatsViewSwagger.FILE_CONTENT_TYPE_PARAM
+    result_name = StatsViewSwagger.RESULT_NAME_FILE_EXT_COUNTS #+\
+    #StatsViewSwagger.RESULT_NAME_FILE_EXT_COUNTS
+
+    def get_stats_result(self, request):
+        """Return the StatsResult object for this statistic"""
+        stats_files = StatsMakerFiles()
+
+        ctype = self.get_content_type_param(request)
+        if ctype is None:
+            stats_result = stats_files.view_file_extensions_within_type(None)
+        else:
+            stats_result = stats_files.view_file_extensions_within_type(ctype)
 
         return stats_result

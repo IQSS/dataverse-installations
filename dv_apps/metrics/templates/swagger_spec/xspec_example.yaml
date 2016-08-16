@@ -57,6 +57,11 @@ parameters:
     in: query
     description: Optional. Returns HTML response showing formatted JSON
     type: boolean
+  contentTypeParam:
+    name: ctype
+    in: query
+    description: Optional. Value from the Filemetadata 'contenttype' column
+    type: string
 
 # ------------------------------
 # Define response definitions

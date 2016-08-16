@@ -3,15 +3,11 @@
       summary: {{ summary }}
       description: {{ description }}
       parameters:{% for param_name in param_names %}
-         - $ref: "#/parameters/{{ param_name }}"{% endfor %}
-#        - $ref: "#/parameters/startDateParam"
-#        - $ref: "#/parameters/endDateParam"
-#        - $ref: "#/parameters/selectedYearParam"
-#        - $ref: "#/parameters/prettyJSONParam"
+         - $ref: "#/parameters/{{ param_name }}"{% endfor %} {# e.g. - $ref: "#/parameters/startDateParam"#}
       responses:
         200:
           description: {{ description_200 }}
           schema:
-            $ref: "#/definitions/MonthCounts"
+            $ref: "#/definitions/{{ result_name }}" {# e.g. $ref: "#/definitions/MonthCounts"#}
         400:
           description: Parameter error

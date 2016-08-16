@@ -12,7 +12,8 @@ from dv_apps.metrics.stats_views_dataverses import DataverseTotalCounts,\
 from dv_apps.metrics.stats_views_files import FileCountByMonthView,\
     FileTotalCountsView,\
     FilesDownloadedByMonthView,\
-    FileCountsByContentTypeView
+    FileCountsByContentTypeView,\
+    FileExtensionsWithinContentType
 
 
 """
@@ -28,6 +29,7 @@ VIEW_CLASSES_FOR_SPEC = [DataverseTotalCounts,\
             FileCountByMonthView,\
             FilesDownloadedByMonthView,\
             FileCountsByContentTypeView,\
+            FileExtensionsWithinContentType
             ]
 
 #@cache_page(60*3)

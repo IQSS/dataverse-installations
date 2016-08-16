@@ -2,12 +2,14 @@
 Create metrics for Datasets.
 This may be used for APIs, views with visualizations, etc.
 """
-#from django.db.models.functions import TruncMonth  # 1.10
+from os.path import splitext
+from collections import OrderedDict
+
 from django.db import models
 
 from dv_apps.utils.date_helper import get_month_name_abbreviation
 from dv_apps.dvobjects.models import DvObject, DTYPE_DATAFILE
-from dv_apps.datafiles.models import Datafile
+from dv_apps.datafiles.models import Datafile, FileMetadata
 from dv_apps.guestbook.models import GuestBookResponse, RESPONSE_TYPE_DOWNLOAD
 from dv_apps.metrics.stats_util_base import StatsMakerBase, TruncYearMonth
 from dv_apps.metrics.stats_result import StatsResult
@@ -402,3 +404,47 @@ class StatsMakerFiles(StatsMakerBase):
                     ).order_by('-parent_count')
 
         # Bin this data
+
+
+    def view_file_extensions_within_type(self, file_type='application/octet-stream'):
+        """View extensions for files based on their "Filemetadata.contenttype" value"""
+
+        #file_type = 'data/various-formats'
+
+        if file_type is None:
+            # Retrieve list of **all** file names -- this could be too much!
+            l = FileMetadata.objects.all().values_list('label', flat=True)
+        else:
+            # Retrieve ids of Datafile filtered by "contenttype"
+            ids = Datafile.objects.filter(contenttype=file_type).values_list('dvobject__id', flat=True)
+
+            # Retrieve the names of these Datafiles via the FileMetadata object
+            l = FileMetadata.objects.filter(datafile__in=ids).values_list('label', flat=True)
+
+        # Convert the file names to file extensions
+        ext_list = [splitext(label)[-1] for label in l]
+
+        # Make a dict counting the extensions
+        extension_counts = {}   # {file extension : count, file ext : count, etc}
+        for ext in ext_list:
+            extension_counts[ext] = extension_counts.get(ext, 0) + 1
+
+        # Sort the counts in descending order--highest count first
+        ext_pairs = extension_counts.items()
+        ext_pairs = sorted(ext_pairs, key=lambda k: k[1], reverse=True)
+
+        ext_list = []
+        total_count = sum(x[1] for x in ext_pairs) + 0.000
+        for ext_pair in ext_pairs:
+            d = OrderedDict(extension=ext_pair[0])
+            d['count'] = ext_pair[1]
+            d['total_count'] = int(total_count)
+            d['percent_string'] = '{0:.3%}'.format(ext_pair[1] / total_count)
+            ext_list.append(d)
+
+        d = OrderedDict(number_unique_extensions=len(ext_pairs))
+        d['file_extension_counts'] = ext_list
+
+        return StatsResult.build_success_result(d)
+
+        #return JsonResponse(d)

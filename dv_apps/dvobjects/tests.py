@@ -3,6 +3,7 @@ from dv_apps.dvobjects.models import DvObject
 
 class DvObjectsTestCase(TestCase):
 
+    fixtures = ['test_low_load.json',]
     #fixtures = ['test_2016_0812.json']
 
     def setUp(self):
@@ -15,6 +16,6 @@ class DvObjectsTestCase(TestCase):
         """Test to see if db created"""
 
         cnt = DvObject.objects.all().count()
-        self.assertEqual(cnt, 0)
-        #self.assertEqual(cnt, 2510)
         print 'num DvObjects', cnt
+        self.assertEqual(cnt, 21)
+        #self.assertEqual(cnt, 2510)

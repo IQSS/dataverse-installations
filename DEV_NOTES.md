@@ -1,5 +1,11 @@
 (development notes, not instructions)
 
+- [ ] Tests
+- [ ] Multiple dbs on heroku
+- [ ] S3 on heroku for uploads
+- 
+
+
 ## Metrics and multiple databases
 
 Working on metrics prototype by pointing Django at an existing dataverse Postgres db.  However, we don't want to add new tables to the Dataverse db:

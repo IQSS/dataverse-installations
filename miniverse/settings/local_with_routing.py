@@ -121,13 +121,15 @@ if 'test' in sys.argv or 'test_coverage' in sys.argv:  # Covers regular testing 
     # to the remote host conflict with our overridden db settings.
     # Set DATABASE_ROUTERS to an empty list to return to the defaults
     # during the test run.
-
     DATABASE_ROUTERS = []
 
     MIGRATION_MODULES = DisableMigrations()
 
     # Set Django's test runner a custom class that will create
     # 'unmanaged' tables
-    sys.path.append('/Users/rmp553/Documents/iqss-git/miniverse')
-    sys.path.append('/Users/rmp553/Documents/iqss-git/miniverse/miniverse')
     TEST_RUNNER = 'miniverse.testrunners.managed_model_test_runner.ManagedModelTestRunner'
+
+    # Disable timezone awareness to False to avoid warnings when loading fixtures
+    #   e.g. to avoid:  RuntimeWarning: (some object)received a naive datetime (2016-08-16
+    #        09:25:41.349000) while time zone support is active.
+    USE_TZ = False

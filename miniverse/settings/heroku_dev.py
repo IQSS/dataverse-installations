@@ -68,3 +68,6 @@ STATICFILES_DIRS = (
 )
 
 STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+
+SWAGGER_HOST = 'services-dataverse.herokuapp.com'
+SWAGGER_SCHEME = 'https'

@@ -6,10 +6,10 @@ info:
   version: 0.5.0
 
 # the domain of the service
-host: 127.0.0.1:8000
+host: {{ SWAGGER_HOST }}
 # array of all schemes that your API supports
 schemes:
-  - http
+  - {{ SWAGGER_SCHEME }}
 # will be prefixed to all paths
 basePath: /metrics/v1
 produces:

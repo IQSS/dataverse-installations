@@ -3,6 +3,7 @@ from django.shortcuts import render
 from django.template.loader import render_to_string
 
 from django.http import HttpResponse
+from django.conf import settings
 
 from dv_apps.metrics.stats_views_datasets import DatasetCountByMonthView
 from dv_apps.metrics.stats_views_dataverses import DataverseTotalCounts,\
@@ -43,7 +44,9 @@ def view_dynamic_swagger_spec(request):
         endpoints.append(vclass().get_swagger_spec())
 
     # Add the endpoints to a dict
-    d = dict(endpoints=endpoints)
+    d = dict(endpoints=endpoints,\
+             SWAGGER_HOST=settings.SWAGGER_HOST,\
+             SWAGGER_SCHEME=settings.SWAGGER_SCHEME)
 
     # render the full swagger spec
     yaml_spec = render_to_string('swagger_spec/basic_spec_01.yaml', d)

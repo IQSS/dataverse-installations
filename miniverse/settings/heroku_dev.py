@@ -89,7 +89,7 @@ AWS_STORAGE_BUCKET_NAME = os.environ['BUCKETEER_BUCKET_NAME']
 #
 MEDIAFILES_LOCATION = 'media'
 AWS_S3_CUSTOM_DOMAIN = 'https://bucketeer-38679028-08e1-4038-bf0e-bb761d97f8d7.s3.amazonaws.com'
-MEDIA_URL = "/public/"  # Will this work w/o full AWS_S3_CUSTOM_DOMAIN?
+MEDIA_URL = "%s/public/" % AWS_S3_CUSTOM_DOMAIN  # Will this work w/o full AWS_S3_CUSTOM_DOMAIN?
 #DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
 # --------------------------------
 

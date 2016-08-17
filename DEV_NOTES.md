@@ -108,4 +108,8 @@ DATABASES['default']['PORT'] = '5432'
 /bin/qgtunnel gunicorn miniverse.wsgi --log-file - --limit-request-line 8190
 ```
 
-###  Check heroku log for errors, you can also enable debug mode by doing export QGTUNNEL_DEBUG=true
+###  Check heroku log for errors, you can also enable debug mode by doing:
+
+```
+export QGTUNNEL_DEBUG=true
+```

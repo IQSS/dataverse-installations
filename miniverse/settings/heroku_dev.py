@@ -26,24 +26,26 @@ ALLOWED_HOSTS = ['services-dataverse.herokuapp.com', '52.86.18.14', '50.17.160.2
 #   - Heroku db for django + "installations" app
 #   - external Dataverse db for reading stats
 #
-DATABASE_ROUTERS = ['miniverse.settings.db_django_contrib_router.DjangoContribRouter', ]
+DATABASE_ROUTERS = ['miniverse.settings.db_dataverse_router.DataverseRouter', ]
 
-
-# Set the Dataverse url
-DV_DEMO_DATABASE_URL = dj_database_url.parse(os.environ['DV_DEMO_DATABASE_URL'])
-DATABASES['default'].update(DV_DEMO_DATABASE_URL)
-
-# Try some db routing via qtunnel.
-# .qgtunnel file has actual host of 'demo.dataverse.org:5432'
-DATABASES['default']['HOST'] = '127.0.0.1'
-DATABASES['default']['PORT'] = '5432'
 
 
 # Set the Miniverse admin url
 HEROKU_DB_CONFIG = dj_database_url.config(conn_max_age=500)
-DATABASES['miniverse_admin_db'] = {}
-DATABASES['miniverse_admin_db'].update(HEROKU_DB_CONFIG)
-DATABASES['miniverse_admin_db']['TEST'] = {'MIRROR': 'default'}
+DATABASES['default'] = {}
+DATABASES['default'].update(HEROKU_DB_CONFIG)
+DATABASES['default']['TEST'] = {'MIRROR': 'default'}
+
+
+# Set the Dataverse url -- this is a readonly db
+DV_DEMO_DATABASE_URL = dj_database_url.parse(os.environ['DV_DEMO_DATABASE_URL'])
+DATABASES['dataverse'].update(DV_DEMO_DATABASE_URL)
+
+# Try some db routing via qtunnel.
+# .qgtunnel file has actual host of 'demo.dataverse.org:5432'
+DATABASES['dataverse']['HOST'] = '127.0.0.1'
+DATABASES['dataverse']['PORT'] = '5432'
+
 
 
 # Heroku specific urls

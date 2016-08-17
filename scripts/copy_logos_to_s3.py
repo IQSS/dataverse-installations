@@ -33,7 +33,9 @@ def add_markers(makers_only=True):
     marker_dir = '../media/uploads'
     fnames = os.listdir(marker_dir)
 
+
     if markers_only:
+        # Only upload files ending in "_markers."
         fnames = [x for x in fnames if x.find('_markers.') > -1]
 
     current_keys = get_key_names()

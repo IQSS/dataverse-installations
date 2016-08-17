@@ -2,6 +2,8 @@
     get:
       summary: {{ summary }}
       description: {{ description }}
+      tags:{% for tag in tags %}
+        - {{ tag }}{% endfor %}
       parameters:{% for param_name in param_names %}
          - $ref: "#/parameters/{{ param_name }}"{% endfor %} {# e.g. - $ref: "#/parameters/startDateParam"#}
       responses:

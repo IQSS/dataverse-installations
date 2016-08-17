@@ -36,6 +36,10 @@ class StatsViewSwagger(View):
     RESULT_NAME_AFFILIATION_COUNTS = 'AffiliationCounts'
     RESULT_NAME_DATAVERSE_TYPE_COUNTS = 'DataverseTypeCount'
 
+    TAG_METRICS = 'metrics'
+    TAG_DATAVERSES = 'metrics - dataverses'
+    TAG_DATASETS = 'metrics - datasets'
+    TAG_DATAFILES = 'metrics - files'
 
     # ---------------------------------------------
     # Swagger attributes to be defined for each subclass
@@ -46,6 +50,7 @@ class StatsViewSwagger(View):
     description_200 = 'description for the HTTP 200 response'
     param_names = BASIC_DATE_PARAMS + UNPUBLISHED_PARAMS + PRETTY_JSON_PARAM
     result_name = RESULT_NAME_MONTH_COUNTS
+    tags = [TAG_METRICS]
     # ---------------------------------------------
 
 
@@ -59,6 +64,7 @@ class StatsViewSwagger(View):
         d['description_200'] = self.description_200
         d['param_names'] = self.param_names
         d['result_name'] = self.result_name
+        d['tags'] = self.tags
 
         return render_to_string('swagger_spec/single_endpoint.yaml', d)
 

@@ -15,6 +15,7 @@ class DataverseCountByMonthView(StatsViewSwagger):
     description = ('Returns a list of counts and'
             ' cumulative counts of all Dataverses added in a month')
     description_200 = 'A list of Dataverse counts by month'
+    tags = [StatsViewSwagger.TAG_DATAVERSES]
 
     def get_stats_result(self, request):
         """Return the StatsResult object for this statistic"""
@@ -40,6 +41,7 @@ class DataverseTotalCounts(StatsViewSwagger):
     description = ('Returns number of published Dataverses')
     description_200 = 'Number of published Dataverses'
     param_names = StatsViewSwagger.UNPUBLISHED_PARAMS + StatsViewSwagger.PRETTY_JSON_PARAM
+    tags = [StatsViewSwagger.TAG_DATAVERSES]
 
     def get_stats_result(self, request):
         """Return the StatsResult object for this statistic"""
@@ -67,6 +69,7 @@ class DataverseAffiliationCounts(StatsViewSwagger):
     description_200 = 'Number of published Dataverses by Affiliation.'
     param_names = StatsViewSwagger.UNPUBLISHED_PARAMS + StatsViewSwagger.PRETTY_JSON_PARAM
     result_name = StatsViewSwagger.RESULT_NAME_AFFILIATION_COUNTS
+    tags = [StatsViewSwagger.TAG_DATAVERSES]
 
     def get_stats_result(self, request):
         """Return the StatsResult object for this statistic"""
@@ -95,7 +98,8 @@ class DataverseTypeCounts(StatsViewSwagger):
                     StatsViewSwagger.PRETTY_JSON_PARAM +\
                     StatsViewSwagger.DV_TYPE_UNCATEGORIZED_PARAM
     result_name = StatsViewSwagger.RESULT_NAME_DATAVERSE_TYPE_COUNTS
-    
+    tags = [StatsViewSwagger.TAG_DATAVERSES]
+
     def is_show_uncategorized(self, request):
         """Return the result of the "?show_uncategorized" query string param"""
 

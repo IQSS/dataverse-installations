@@ -13,6 +13,7 @@ class FileTotalCountsView(StatsViewSwagger):
     description_200 = 'Number of published Files'
     param_names = StatsViewSwagger.UNPUBLISHED_PARAMS + StatsViewSwagger.PRETTY_JSON_PARAM
     result_name = StatsViewSwagger.RESULT_NAME_FILE_EXT_COUNTS
+    tags = [StatsViewSwagger.TAG_DATAFILES]
 
     def get_stats_result(self, request):
         """Return the StatsResult object for this statistic"""
@@ -43,6 +44,7 @@ class FileCountByMonthView(StatsViewSwagger):
     description = ('Returns a list of counts and'
             ' cumulative counts of all Files added in a month')
     description_200 = 'A list of File counts by month'
+    tags = [StatsViewSwagger.TAG_DATAFILES]
 
     def get_stats_result(self, request):
         """Return the StatsResult object for this statistic"""
@@ -68,6 +70,7 @@ class FilesDownloadedByMonthView(StatsViewSwagger):
     description = ('Returns a list of counts and'
             ' cumulative counts of all Files downloaded in a month')
     description_200 = 'A list of file download counts by month'
+    tags = [StatsViewSwagger.TAG_DATAFILES]
 
     def get_stats_result(self, request):
         """Return the StatsResult object for this statistic"""
@@ -94,6 +97,7 @@ class FileCountsByContentTypeView(StatsViewSwagger):
     description = ('Returns a list of file counts by content type')
     description_200 = 'A list of file counts by content type'
     result_name = StatsViewSwagger.RESULT_NAME_FILE_TYPE_COUNTS
+    tags = [StatsViewSwagger.TAG_DATAFILES]
 
     def get_stats_result(self, request):
         """Return the StatsResult object for this statistic"""
@@ -121,7 +125,7 @@ class FileExtensionsWithinContentType(StatsViewSwagger):
     description_200 = ('File extension counts within a given content type.')
     param_names = StatsViewSwagger.FILE_CONTENT_TYPE_PARAM
     result_name = StatsViewSwagger.RESULT_NAME_FILE_EXT_COUNTS #+\
-    #StatsViewSwagger.RESULT_NAME_FILE_EXT_COUNTS
+    tags = [StatsViewSwagger.TAG_DATAFILES]
 
     def get_stats_result(self, request):
         """Return the StatsResult object for this statistic"""

@@ -5,7 +5,8 @@ from django.template.loader import render_to_string
 from django.http import HttpResponse
 from django.conf import settings
 
-from dv_apps.metrics.stats_views_datasets import DatasetCountByMonthView
+from dv_apps.metrics.stats_views_datasets import DatasetCountByMonthView,\
+    DatasetTotalCounts
 from dv_apps.metrics.stats_views_dataverses import DataverseTotalCounts,\
     DataverseCountByMonthView,\
     DataverseAffiliationCounts,\
@@ -21,11 +22,16 @@ from dv_apps.metrics.stats_views_files import FileCountByMonthView,\
 Make a list of class based views
     (each one has a "get_swagger_spec()" method)
 """
-VIEW_CLASSES_FOR_SPEC = [DataverseTotalCounts,\
+VIEW_CLASSES_FOR_SPEC = [\
+            # dataverse stats
+            DataverseTotalCounts,\
             DataverseCountByMonthView,\
             DataverseAffiliationCounts,\
             DataverseTypeCounts,\
+            # dataset stats
+            DatasetTotalCounts,\
             DatasetCountByMonthView,\
+            # file stats
             FileTotalCountsView,\
             FileCountByMonthView,\
             FilesDownloadedByMonthView,\

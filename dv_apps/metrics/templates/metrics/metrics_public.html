@@ -144,10 +144,16 @@
       <div class="col-xs-12">
         {% include "metrics/visualizations/file_types_bar.html" %}
       </div>
+      <div class="col-xs-12">
+          <p style="padding:0 60px;">
+              <small>Stats generated: {% now "jS F Y H:i" %}</small>
+          </p>
+      </div>
+
   </div>
 
   <hr>
-   <!-- END -->
+  <!-- END -->
     </body>
 {% include "metrics/google_analytics_dev.html" %}
 </html>

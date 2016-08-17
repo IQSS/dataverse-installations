@@ -159,7 +159,6 @@ TEMPLATES = [
 ]
 
 MEDIA_ROOT = join(PROJECT_ROOT,"media")
-
 MEDIA_URL = '/media/'
 
 SWAGGER_HOST = '127.0.0.1:8000' # temp, this should come from sites framework

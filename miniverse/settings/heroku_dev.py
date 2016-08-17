@@ -20,6 +20,10 @@ SESSION_COOKIE_NAME = 'dv_metrics_dev'
 
 ALLOWED_HOSTS = ['services-dataverse.herokuapp.com', '52.86.18.14', '50.17.160.202' ]
 
+## Update INSTALLED_APPS to include Heroku specifc apps
+#
+INSTALLED_APPS += ['storages']
+
 
 ## Database settings via Heroku url
 #
@@ -82,6 +86,18 @@ AWS_ACCESS_KEY_ID = os.environ['BUCKETEER_AWS_ACCESS_KEY_ID']
 AWS_SECRET_ACCESS_KEY = os.environ['BUCKETEER_AWS_SECRET_ACCESS_KEY']
 AWS_STORAGE_BUCKET_NAME = os.environ['BUCKETEER_BUCKET_NAME']
 
+# Update media files url, etc
+#
+MEDIAFILES_LOCATION = 'media'
+AWS_S3_CUSTOM_DOMAIN = 'https://bucketeer-38679028-08e1-4038-bf0e-bb761d97f8d7.s3.amazonaws.com'
+MEDIA_URL = "/public/"  # Will this work w/o full AWS_S3_CUSTOM_DOMAIN?
+#DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
+# --------------------------------
 
+
+# --------------------------------
+# Used to generate the swagger spec.
+#   Hack: switch to using sites framework
+# --------------------------------
 SWAGGER_HOST = 'services-dataverse.herokuapp.com'
 SWAGGER_SCHEME = 'https'

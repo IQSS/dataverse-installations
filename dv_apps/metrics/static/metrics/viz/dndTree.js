@@ -1,7 +1,7 @@
 // Get JSON data
 
 //treeJSON = d3.json("manyNodes.json", function(error, treeData) {
-treeJSON = d3.json("/metrics/dvtree.json", function(error, treeData) {
+treeJSON = d3.json("/metrics/dv-tree.json", function(error, treeData) {
 
     // Calculate total nodes, max label length
     var totalNodes = 0;

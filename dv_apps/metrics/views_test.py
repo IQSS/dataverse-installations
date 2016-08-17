@@ -38,8 +38,15 @@ def view_dataverse_tree2(request):
 
     return render(request, 'metrics/viz-tree/rob-tree.html', d)
 
+def get_dataverse_full_tree_json(request):
+    """Return JSON with the full Datavese "tree" -- e.g. parent/child relations"""
 
-def get_dataverse_tree_json(request):
+    return get_dataverse_tree_json(request, skip_flat_dataverses=False)
+
+def get_dataverse_tree_json(request, skip_flat_dataverses=True):
+    """Return JSON with the Datavese "tree" -- e.g. parent/child relations
+    By default, don't show Dataverses that don't have any child Dataverses
+    """
 
     # Note: "F(..) allows aliasing of a field.  e.g. SELECT dvobject as id,...
     dvs = Dataverse.objects.select_related('dvobject').annotate(id=F('dvobject'), parent_id=F('dvobject__owner__id')).values('id', 'parent_id', 'name').all().order_by('name')
@@ -62,12 +69,16 @@ def get_dataverse_tree_json(request):
 
     fmt_list = []
     for info in full_tree.get('children'):
-        if info.has_key('children'):
+        if skip_flat_dataverses:
+            if info.has_key('children'):
+                fmt_list.append(info)
+        else:
             fmt_list.append(info)
 
     full_tree['children'] = fmt_list
 
     return JsonResponse(full_tree)
+
 
 def get_child_nodes(root_node, parent_child_lists, depth=0):
 
@@ -75,11 +86,14 @@ def get_child_nodes(root_node, parent_child_lists, depth=0):
 
     # Are there child nodes?
     if not child_nodes:
-        return OrderedDict(name=root_node['name'], value=randint(400, 500), depth=depth)
+        return OrderedDict(name=root_node['name'], depth=depth)
+        #return OrderedDict(name=root_node['name'], value=randint(400, 500), depth=depth)
     else:
         child_list = [] # create child list
         for cn in child_nodes:
             child_tree = get_child_nodes(cn, parent_child_lists, depth=depth+1)
+
+            # limit to dataverses with sub dataverses
             if child_tree and len(child_tree) > 0:
                 child_list.append(child_tree)
 

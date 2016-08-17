@@ -18,7 +18,7 @@ from dv_apps.metrics.stats_util_files import StatsMakerFiles
 
 ONE_HOUR_IN_SECONDS = 60 * 60 * 1
 
-@cache_page(ONE_HOUR_IN_SECONDS)
+#@cache_page(ONE_HOUR_IN_SECONDS)
 def view_public_visualizations_last12(request):
     """
     Return visualizations covering the last 12 months+.
@@ -34,7 +34,7 @@ def view_public_visualizations_last12(request):
     return view_public_visualizations(request, **date_filters)
 
 
-@cache_page(60 * 60 * 3)
+#@cache_page(60 * 60 * 3)
 def view_public_visualizations(request, **kwargs):
     """
     Return HTML/D3Plus visualizations for a variety of public statistics
@@ -113,7 +113,7 @@ def view_public_visualizations(request, **kwargs):
 
 
 
-    return render(request, 'visualizations/metrics_public.html', resp_dict)
+    return render(request, 'metrics/metrics_public.html', resp_dict)
 
 
 
@@ -156,4 +156,4 @@ def view_files_by_type(request):
         resp_dict['file_content_types'] = list(file_content_types)
         resp_dict['file_content_types_json'] = json.dumps(file_content_types, indent=4)
 
-    return render(request, 'visualizations/file_content_types.html', resp_dict)
+    return render(request, 'metrics/visualizations/file_content_types.html', resp_dict)

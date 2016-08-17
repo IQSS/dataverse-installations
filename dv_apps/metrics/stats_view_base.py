@@ -66,7 +66,7 @@ class StatsViewSwagger(View):
         d['result_name'] = self.result_name
         d['tags'] = self.tags
 
-        return render_to_string('swagger_spec/single_endpoint.yaml', d)
+        return render_to_string('metrics/swagger_spec/single_endpoint.yaml', d)
 
     def get_content_type_param(self, request):
         """Return the result of the "?unpublished" query string param"""

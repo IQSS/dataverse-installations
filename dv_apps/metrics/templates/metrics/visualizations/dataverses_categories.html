@@ -2,7 +2,7 @@
 {% if dv_counts_by_category_sql %}
 <div id="sql-dataverses">
     {% with SQL_STRING=dv_counts_by_category_sql %}
-        {% include "visualizations/query_panel.html" %}
+        {% include "metrics/visualizations/query_panel.html" %}
     {% endwith %}
 </div>
 {% endif %}

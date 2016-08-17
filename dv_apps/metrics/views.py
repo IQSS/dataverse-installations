@@ -144,7 +144,7 @@ def view_simple_dataset_count2(request):
         resp_dict['dv_counts_by_affiliation'] = dv_counts_by_affiliation.result_data
 
     d = dict(JSON_STATS=json.dumps(resp_dict, indent=4))
-    return render(request, 'metrics_api.html', d)
+    return render(request, 'metrics/metrics_api.html', d)
 
     return HttpResponse('<pre>' + json.dumps(resp_dict, indent=4) + '</pre>')
     return JsonResponse(resp_dict)

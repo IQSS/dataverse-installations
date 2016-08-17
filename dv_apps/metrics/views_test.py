@@ -30,13 +30,13 @@ def view_dataverse_tree(request):
 
     d = {}
 
-    return render(request, 'viz-tree/bostock_tree.html', d)
+    return render(request, 'metrics/viz-tree/bostock_tree.html', d)
 
 def view_dataverse_tree2(request):
 
     d = {}
 
-    return render(request, 'viz-tree/rob-tree.html', d)
+    return render(request, 'metrics/viz-tree/rob-tree.html', d)
 
 
 def get_dataverse_tree_json(request):
@@ -66,7 +66,7 @@ def get_dataverse_tree_json(request):
             fmt_list.append(info)
 
     full_tree['children'] = fmt_list
-    
+
     return JsonResponse(full_tree)
 
 def get_child_nodes(root_node, parent_child_lists, depth=0):

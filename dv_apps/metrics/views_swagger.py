@@ -55,7 +55,7 @@ def view_dynamic_swagger_spec(request):
              SWAGGER_SCHEME=settings.SWAGGER_SCHEME)
 
     # render the full swagger spec
-    yaml_spec = render_to_string('swagger_spec/basic_spec_01.yaml', d)
+    yaml_spec = render_to_string('metrics/swagger_spec/basic_spec_01.yaml', d)
 
     return HttpResponse(yaml_spec)
 

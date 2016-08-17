@@ -3,7 +3,7 @@
 {% if dataverse_counts_by_month_sql %}
 <div id="sql-dataverses">
     {% with SQL_STRING=dataverse_counts_by_month_sql %}
-        {% include "visualizations/query_panel.html" %}
+        {% include "metrics/visualizations/query_panel.html" %}
     {% endwith %}
 </div>
 {% endif %}

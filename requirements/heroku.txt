@@ -3,5 +3,5 @@
 # web server
 gunicorn==19.6.0
 
-# For S3 file storage
+# For S3 file storage on Heroku
 django-storages==1.5.0

@@ -5,7 +5,7 @@ import dj_database_url
 
 from .base import *
 
-SITE_ID = 1 # dev site
+SITE_ID = 2 # dev site
 
 # Set the secret key
 SECRET_KEY = os.environ['SECRET_KEY']

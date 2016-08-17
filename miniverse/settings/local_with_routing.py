@@ -6,7 +6,7 @@ from os.path import join, normpath, isdir, isfile
 from miniverse.testrunners.disable_migrations import DisableMigrations
 from .base import *
 
-SECRET_KEY = 'make-a-secret-key'
+SECRET_KEY = 'DEV-j94xnz*dj5f@_6-gt@ov)yjbcx0uagb7sv9a0j-(jo)j%m$el%'
 
 LOCAL_SETUP_DIR = join(PROJECT_ROOT, 'test_setup')
 if not isdir(LOCAL_SETUP_DIR):
@@ -16,13 +16,9 @@ DATABASE_ROUTERS = ['miniverse.settings.db_dataverse_router.DataverseRouter', ]
 
 
 DATABASES = {
-
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'metrics_internal',   #  dvn_thedata dvndb_demo
-        'USER': 'rp', # dv_readonly, postgres
-        'PASSWORD': '123',
-        'HOST': 'localhost',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': join(LOCAL_SETUP_DIR, 'miniverse_auth.db3'),
         'TEST': {
             'MIRROR': 'default',
         },

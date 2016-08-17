@@ -119,3 +119,5 @@ dvn.db.dump.2016.0721.sql
 staticfiles/*
 !staticfiles/PLACEHOLDER.md
 QUOTAGUARD-LICENSE.txt
+
+test_setup/metrics_auth.db3

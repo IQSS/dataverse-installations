@@ -27,12 +27,14 @@ def get_key_names():
         knames.append(k.name)
     return knames
 
-def add_markers():
+def add_markers(makers_only=True):
     """add markers"""
 
     marker_dir = '../media/uploads'
     fnames = os.listdir(marker_dir)
-    fnames = [x for x in fnames if x.find('_markers.') > -1]
+
+    if markers_only:
+        fnames = [x for x in fnames if x.find('_markers.') > -1]
 
     current_keys = get_key_names()
 

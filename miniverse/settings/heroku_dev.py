@@ -29,16 +29,15 @@ ALLOWED_HOSTS = ['services-dataverse.herokuapp.com', '52.86.18.14', '50.17.160.2
 DATABASE_ROUTERS = ['miniverse.settings.db_dataverse_router.DataverseRouter', ]
 
 
-
-# Set the Miniverse admin url
+# Set the default django database url - a Heroku Database
 HEROKU_DB_CONFIG = dj_database_url.config(conn_max_age=500)
-DATABASES['default'] = {}
 DATABASES['default'].update(HEROKU_DB_CONFIG)
 DATABASES['default']['TEST'] = {'MIRROR': 'default'}
 
 
-# Set the Dataverse url -- this is a readonly db
+# Set the Dataverse url -- this is an external readonly db
 DV_DEMO_DATABASE_URL = dj_database_url.parse(os.environ['DV_DEMO_DATABASE_URL'])
+DATABASES['dataverse'] = {}
 DATABASES['dataverse'].update(DV_DEMO_DATABASE_URL)
 
 # Try some db routing via qtunnel.

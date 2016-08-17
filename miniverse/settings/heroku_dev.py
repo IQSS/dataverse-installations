@@ -5,6 +5,7 @@ import dj_database_url
 
 from .base import *
 
+DEBUG=False
 
 # Site ID
 SITE_ID = 2

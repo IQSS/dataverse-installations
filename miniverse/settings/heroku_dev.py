@@ -5,7 +5,7 @@ import dj_database_url
 
 from .base import *
 
-SITE_ID = 1 # dev site
+SITE_ID = 2 # dev site
 
 # Set the secret key
 SECRET_KEY = os.environ['SECRET_KEY']
@@ -32,6 +32,12 @@ DATABASE_ROUTERS = ['miniverse.settings.db_django_contrib_router.DjangoContribRo
 # Set the Dataverse url
 DV_DEMO_DATABASE_URL = dj_database_url.parse(os.environ['DV_DEMO_DATABASE_URL'])
 DATABASES['default'].update(DV_DEMO_DATABASE_URL)
+
+# Try some db routing via qtunnel.
+# .qgtunnel file has actual host of 'demo.dataverse.org:5432'
+DATABASES['default']['HOST'] = '127.0.0.1'
+DATABASES['default']['PORT'] = '5432'
+
 
 # Set the Miniverse admin url
 HEROKU_DB_CONFIG = dj_database_url.config(conn_max_age=500)

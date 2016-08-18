@@ -118,7 +118,6 @@ def view_public_visualizations(request, **kwargs):
 
 
 
-
 def view_file_extensions_within_type(request, file_type='application/octet-stream'):
     """Query as experiment.  View extensions for unidentified queries"""
 

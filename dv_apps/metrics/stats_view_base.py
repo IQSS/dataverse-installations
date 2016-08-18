@@ -23,7 +23,12 @@ class StatsViewSwagger(View):
     """Used to help build the swagger docs"""
 
     BASIC_DATE_PARAMS = ['startDateParam', 'endDateParam', 'selectedYearParam']
-    UNPUBLISHED_PARAMS = ['unpublishedParam', 'unpublishedAndPublishedParam']
+
+    PUBLISH_PARAMS = ['publicationStateParam']
+    PUB_STATE_PUBLISHED = 'published'
+    PUB_STATE_UNPUBLISHED = 'unpublished'
+    PUB_STATE_ALL = 'all'
+
     PRETTY_JSON_PARAM = ['prettyJSONParam']
     DV_TYPE_UNCATEGORIZED_PARAM = ['showUncategorizedParam']
     FILE_CONTENT_TYPE_PARAM = ['contentTypeParam']
@@ -42,16 +47,24 @@ class StatsViewSwagger(View):
     TAG_DATAFILES = 'metrics - files'
 
     # ---------------------------------------------
+    # For holding errors found at the SwaggerView level
+    #   - e.g. bad url params not caught at a lower level
+    # ---------------------------------------------
+    error_found = False
+    error_message = None
+
+    # ---------------------------------------------
     # Swagger attributes to be defined for each subclass
     # ---------------------------------------------
     api_path = '/path/to/endpoint'
     summary = 'add summary'
     description = 'add description'
     description_200 = 'description for the HTTP 200 response'
-    param_names = BASIC_DATE_PARAMS + UNPUBLISHED_PARAMS + PRETTY_JSON_PARAM
+    param_names = BASIC_DATE_PARAMS + PUBLISH_PARAMS + PRETTY_JSON_PARAM
     result_name = RESULT_NAME_MONTH_COUNTS
     tags = [TAG_METRICS]
     # ---------------------------------------------
+
 
 
     def get_swagger_spec(self):
@@ -70,27 +83,21 @@ class StatsViewSwagger(View):
 
     def get_content_type_param(self, request):
         """Return the result of the "?unpublished" query string param"""
-
         ctype = request.GET.get('ctype', None)   # add this as variable..
         if ctype is not None and len(ctype) > 0:
             return ctype
         return None
 
-    def is_unpublished(self, request):
-        """Return the result of the "?unpublished" query string param"""
-
-        unpublished = request.GET.get('unpublished', False)
-        if unpublished is True or unpublished == 'true':
-            return True
-        return False
-
-    def is_published_and_unpublished(self, request):
-        """Return the result of the "?pub_all" query string param"""
-
-        pub_all = request.GET.get('pub_all', False)
-        if pub_all is True or pub_all == 'true':
-            return True
-        return False
+    def get_pub_state(self, request):
+        """Return the result of the "?pub_state" query string param
+        Default value is: "published"
+        Other choices: "unpublished", "all"
+        When checking, use:
+            - PUB_STATE_PUBLISHED
+            - PUB_STATE_UNPUBLISHED
+            - PUB_STATE_ALL
+        """
+        return request.GET.get('pub_state', self.PUB_STATE_PUBLISHED)
 
 
     def get_stats_result(self, request):

@@ -44,16 +44,14 @@ parameters:
     in: query
     description: Optional. Sort by time.  'a' = ascending; 'd' = descending
     type: string
-  unpublishedParam:
-    name: unpublished
+  publicationStateParam:
+    name: pub_state
     in: query
-    description: Optional. Include counts of ONLY unpublished objects.
-    type: boolean
-  unpublishedAndPublishedParam:
-    name: pub_all
-    in: query
-    description: Optional. Include counts of published AND unpublished objects.
-    type: boolean
+    description: Optional. Specify whether to include published records, unpublished records, or all. Defaults to "published"
+    enum:
+      - published
+      - unpublished
+      - all
   prettyJSONParam:
     name: pretty
     in: query

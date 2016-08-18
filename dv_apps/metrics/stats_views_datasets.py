@@ -13,16 +13,18 @@ class DatasetTotalCounts(StatsViewSwagger):
     summary = ('Simple count of published Datasets')
     description = ('Returns number of published Datasets')
     description_200 = 'Number of published Datasets'
-    param_names = StatsViewSwagger.UNPUBLISHED_PARAMS + StatsViewSwagger.PRETTY_JSON_PARAM
+    param_names = StatsViewSwagger.PUBLISH_PARAMS + StatsViewSwagger.PRETTY_JSON_PARAM
     tags = [StatsViewSwagger.TAG_DATASETS]
 
     def get_stats_result(self, request):
         """Return the StatsResult object for this statistic"""
         stats_datasets = StatsMakerDatasets(**request.GET.dict())
 
-        if self.is_published_and_unpublished(request):
+        pub_state = self.get_pub_state(request)
+
+        if pub_state == self.PUB_STATE_ALL:
             stats_result = stats_datasets.get_dataset_count()
-        elif self.is_unpublished(request):
+        elif pub_state == self.PUB_STATE_UNPUBLISHED:
             stats_result = stats_datasets.get_dataset_count_unpublished()
         else:
             stats_result = stats_datasets.get_dataset_count_published()
@@ -50,9 +52,11 @@ class DatasetCountByMonthView(StatsViewSwagger):
         """Return the StatsResult object for this statistic"""
         stats_datasets = StatsMakerDatasets(**request.GET.dict())
 
-        if self.is_published_and_unpublished(request):
+        pub_state = self.get_pub_state(request)
+
+        if pub_state == self.PUB_STATE_ALL:
             stats_result = stats_datasets.get_dataset_counts_by_create_date()
-        elif self.is_unpublished(request):
+        elif pub_state == self.PUB_STATE_UNPUBLISHED:
             stats_result = stats_datasets.get_dataset_counts_by_create_date_unpublished()
         else:
             stats_result = stats_datasets.get_dataset_counts_by_create_date_published()

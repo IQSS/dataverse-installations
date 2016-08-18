@@ -21,9 +21,11 @@ class DataverseCountByMonthView(StatsViewSwagger):
         """Return the StatsResult object for this statistic"""
         stats_datasets = StatsMakerDataverses(**request.GET.dict())
 
-        if self.is_published_and_unpublished(request):
+        pub_state = self.get_pub_state(request)
+
+        if pub_state == self.PUB_STATE_ALL:
             stats_result = stats_datasets.get_dataverse_counts_by_month()
-        elif self.is_unpublished(request):
+        elif pub_state == self.PUB_STATE_UNPUBLISHED:
             stats_result = stats_datasets.get_dataverse_counts_by_month_unpublished()
         else:
             stats_result = stats_datasets.get_dataverse_counts_by_month_published()
@@ -40,16 +42,18 @@ class DataverseTotalCounts(StatsViewSwagger):
     summary = ('Simple count of published Dataverses')
     description = ('Returns number of published Dataverses')
     description_200 = 'Number of published Dataverses'
-    param_names = StatsViewSwagger.UNPUBLISHED_PARAMS + StatsViewSwagger.PRETTY_JSON_PARAM
+    param_names = StatsViewSwagger.PUBLISH_PARAMS + StatsViewSwagger.PRETTY_JSON_PARAM
     tags = [StatsViewSwagger.TAG_DATAVERSES]
 
     def get_stats_result(self, request):
         """Return the StatsResult object for this statistic"""
         stats_datasets = StatsMakerDataverses(**request.GET.dict())
 
-        if self.is_published_and_unpublished(request):
+        pub_state = self.get_pub_state(request)
+
+        if pub_state == self.PUB_STATE_ALL:
             stats_result = stats_datasets.get_dataverse_count()
-        elif self.is_unpublished(request):
+        elif pub_state == self.PUB_STATE_UNPUBLISHED:
             stats_result = stats_datasets.get_dataverse_count_unpublished()
         else:
             stats_result = stats_datasets.get_dataverse_count_published()
@@ -67,7 +71,7 @@ class DataverseAffiliationCounts(StatsViewSwagger):
     summary = ('Number of Dataverses by Affiliation')
     description = ('Number of Dataverses by Affiliation.')
     description_200 = 'Number of published Dataverses by Affiliation.'
-    param_names = StatsViewSwagger.UNPUBLISHED_PARAMS + StatsViewSwagger.PRETTY_JSON_PARAM
+    param_names = StatsViewSwagger.PUBLISH_PARAMS + StatsViewSwagger.PRETTY_JSON_PARAM
     result_name = StatsViewSwagger.RESULT_NAME_AFFILIATION_COUNTS
     tags = [StatsViewSwagger.TAG_DATAVERSES]
 
@@ -75,9 +79,11 @@ class DataverseAffiliationCounts(StatsViewSwagger):
         """Return the StatsResult object for this statistic"""
         stats_datasets = StatsMakerDataverses(**request.GET.dict())
 
-        if self.is_published_and_unpublished(request):
+        pub_state = self.get_pub_state(request)
+
+        if pub_state == self.PUB_STATE_ALL:
             stats_result = stats_datasets.get_dataverse_affiliation_counts()
-        elif self.is_unpublished(request):
+        elif pub_state == self.PUB_STATE_UNPUBLISHED:
             stats_result = stats_datasets.get_dataverse_affiliation_counts_unpublished()
         else:
             stats_result = stats_datasets.get_dataverse_affiliation_counts_published()
@@ -94,7 +100,7 @@ class DataverseTypeCounts(StatsViewSwagger):
     summary = ('Number of Dataverses by Type')
     description = ('Number of Dataverses by Type.')
     description_200 = 'Number of published Dataverses by Type.'
-    param_names = StatsViewSwagger.UNPUBLISHED_PARAMS +\
+    param_names = StatsViewSwagger.PUBLISH_PARAMS +\
                     StatsViewSwagger.PRETTY_JSON_PARAM +\
                     StatsViewSwagger.DV_TYPE_UNCATEGORIZED_PARAM
     result_name = StatsViewSwagger.RESULT_NAME_DATAVERSE_TYPE_COUNTS
@@ -118,9 +124,11 @@ class DataverseTypeCounts(StatsViewSwagger):
         else:
             exclude_uncategorized = True
 
-        if self.is_published_and_unpublished(request):
+        pub_state = self.get_pub_state(request)
+
+        if pub_state == self.PUB_STATE_ALL:
             stats_result = stats_datasets.get_dataverse_counts_by_type(exclude_uncategorized)
-        elif self.is_unpublished(request):
+        elif pub_state == self.PUB_STATE_UNPUBLISHED:
             stats_result = stats_datasets.get_dataverse_counts_by_type_unpublished(exclude_uncategorized)
         else:
             stats_result = stats_datasets.get_dataverse_counts_by_type_published(exclude_uncategorized)

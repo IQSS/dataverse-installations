@@ -11,7 +11,7 @@ class FileTotalCountsView(StatsViewSwagger):
     summary = ('Simple count of published Files')
     description = ('Returns number of published Files')
     description_200 = 'Number of published Files'
-    param_names = StatsViewSwagger.UNPUBLISHED_PARAMS + StatsViewSwagger.PRETTY_JSON_PARAM
+    param_names = StatsViewSwagger.PUBLISH_PARAMS + StatsViewSwagger.PRETTY_JSON_PARAM
     result_name = StatsViewSwagger.RESULT_NAME_FILE_EXT_COUNTS
     tags = [StatsViewSwagger.TAG_DATAFILES]
 
@@ -19,9 +19,11 @@ class FileTotalCountsView(StatsViewSwagger):
         """Return the StatsResult object for this statistic"""
         stats_files = StatsMakerFiles(**request.GET.dict())
 
-        if self.is_published_and_unpublished(request):
+        pub_state = self.get_pub_state(request)
+
+        if pub_state == self.PUB_STATE_ALL:
             stats_result = stats_files.get_datafile_count()
-        elif self.is_unpublished(request):
+        elif pub_state == self.PUB_STATE_UNPUBLISHED:
             stats_result = stats_files.get_datafile_count_unpublished()
         else:
             stats_result = stats_files.get_datafile_count_published()
@@ -50,9 +52,11 @@ class FileCountByMonthView(StatsViewSwagger):
         """Return the StatsResult object for this statistic"""
         stats_files = StatsMakerFiles(**request.GET.dict())
 
-        if self.is_published_and_unpublished(request):
+        pub_state = self.get_pub_state(request)
+
+        if pub_state == self.PUB_STATE_ALL:
             stats_result = stats_files.get_file_count_by_month()
-        elif self.is_unpublished(request):
+        elif pub_state == self.PUB_STATE_UNPUBLISHED:
             stats_result = stats_files.get_file_count_by_month_unpublished()
         else:
             stats_result = stats_files.get_file_count_by_month_published()
@@ -76,9 +80,11 @@ class FilesDownloadedByMonthView(StatsViewSwagger):
         """Return the StatsResult object for this statistic"""
         stats_files = StatsMakerFiles(**request.GET.dict())
 
-        if self.is_published_and_unpublished(request):
+        pub_state = self.get_pub_state(request)
+
+        if pub_state == self.PUB_STATE_ALL:
             stats_result = stats_files.get_file_downloads_by_month()
-        elif self.is_unpublished(request):
+        elif pub_state == self.PUB_STATE_UNPUBLISHED:
             stats_result = stats_files.get_file_downloads_by_month_unpublished()
         else:
             stats_result = stats_files.get_file_downloads_by_month_published()
@@ -103,9 +109,11 @@ class FileCountsByContentTypeView(StatsViewSwagger):
         """Return the StatsResult object for this statistic"""
         stats_files = StatsMakerFiles(**request.GET.dict())
 
-        if self.is_published_and_unpublished(request):
+        pub_state = self.get_pub_state(request)
+
+        if pub_state == self.PUB_STATE_ALL:
             stats_result = stats_files.get_datafile_content_type_counts()
-        elif self.is_unpublished(request):
+        elif pub_state == self.PUB_STATE_UNPUBLISHED:
             stats_result = stats_files.get_datafile_content_type_counts_unpublished()
         else:
             stats_result = stats_files.get_datafile_content_type_counts_published()

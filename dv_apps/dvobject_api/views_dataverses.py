@@ -22,6 +22,7 @@ def get_pretty_val(request):
         return True
     return False
 
+@cache_page(60 * 60 * 2)
 def view_single_dataverse_by_alias(request, alias):
 
     try:
@@ -31,6 +32,7 @@ def view_single_dataverse_by_alias(request, alias):
 
     return view_single_dataverse(request, dv)
 
+@cache_page(60 * 60 * 2)
 def view_single_dataverse_by_id(request, dataverse_id):
 
     try:

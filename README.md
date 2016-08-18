@@ -16,6 +16,7 @@ Admin users who are not coming from an IP listed in ```settings.INTERNAL_IPS``` 
 
 - To completely disable this restriction:
     - In setttings.MIDDLEWARE_CLASSES, remove: ```dv_apps.admin_restrict.middleware.RestrictAdminMiddleware```
+    
 - To add acceptable addresses to ```settings.INTERNAL_IPS```
     - You can add full addresses.  e.g. 140.247.10.10
         - e.g., ```INTERNAL_IPS = ('140.247.10.10',)```
@@ -26,7 +27,7 @@ Admin users who are not coming from an IP listed in ```settings.INTERNAL_IPS``` 
     - For running django's test server, the default is:
         - e.g., ```INTERNAL_IPS = ('127.0.0.1', ...)```
 
-- Dev note: The code for ```RestrictAdminMiddleware``` is in ```dv_apps/middeware.py```
+  - Dev note: The code for ```RestrictAdminMiddleware``` is in ```dv_apps/middeware.py```
 ---
 
 

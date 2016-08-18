@@ -17,7 +17,7 @@ SECRET_KEY = os.environ['SECRET_KEY']
 SESSION_COOKIE_NAME = 'dv_metrics_dev'
 
 
-INTERNAL_IPS = ('140.247', '10.1')   # Heroku IP
+INTERNAL_IPS = ('140.247', '10.1', '66.30')   # Heroku IP
 
 ALLOWED_HOSTS = ['services-dataverse.herokuapp.com', '52.86.18.14', '50.17.160.202' ]
 

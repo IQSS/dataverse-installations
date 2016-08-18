@@ -17,13 +17,15 @@ SECRET_KEY = os.environ['SECRET_KEY']
 SESSION_COOKIE_NAME = 'dv_metrics_dev'
 
 
-#INTERNAL_IPS = ()   # Heroku IP
+INTERNAL_IPS = ('140.247', '10.1')   # Heroku IP
 
 ALLOWED_HOSTS = ['services-dataverse.herokuapp.com', '52.86.18.14', '50.17.160.202' ]
 
 ## Update INSTALLED_APPS to include Heroku specifc apps
 #
-INSTALLED_APPS += ['storages']
+INSTALLED_APPS += [ 'storages',
+                    'dv_apps.dvobject_api',
+                    ]
 
 
 ## Database settings via Heroku url

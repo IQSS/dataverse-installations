@@ -24,7 +24,6 @@ ALLOWED_HOSTS = ['services-dataverse.herokuapp.com', '52.86.18.14', '50.17.160.2
 ## Update INSTALLED_APPS to include Heroku specifc apps
 #
 INSTALLED_APPS += [ 'storages',
-                    'dv_apps.dvobject_api',
                     ]
 
 

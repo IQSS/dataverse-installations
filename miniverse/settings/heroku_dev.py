@@ -18,13 +18,16 @@ SESSION_COOKIE_NAME = 'dv_metrics_dev'
 
 
 INTERNAL_IPS = ('140.247', '10.1',)   # Heroku IP
+MIDDLEWARE_CLASSES += [
+    # Restrict by IP address
+    #'dv_apps.admin_restrict.middleware.RestrictAdminMiddleware',
+]
 
 ALLOWED_HOSTS = ['services-dataverse.herokuapp.com', '52.86.18.14', '50.17.160.202' ]
 
 ## Update INSTALLED_APPS to include Heroku specifc apps
 #
-INSTALLED_APPS += [ 'storages',
-                    ]
+INSTALLED_APPS += [ 'storages']
 
 
 ## Database settings via Heroku url

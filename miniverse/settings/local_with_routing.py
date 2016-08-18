@@ -21,6 +21,12 @@ ALLOWED_HOSTS = ('127.0.0.1', )
 # Need to set when RestrictAdminMiddleware is active
 INTERNAL_IPS = ('127.0.0.1',)
 
+MIDDLEWARE_CLASSES += [
+    # Restrict by IP address
+    'dv_apps.admin_restrict.middleware.RestrictAdminMiddleware',
+]
+
+
 
 DATABASES = {
     'default': {

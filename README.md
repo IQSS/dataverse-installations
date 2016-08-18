@@ -10,13 +10,21 @@ https://docs.google.com/document/d/1ThlSbw9LWtd12UzUmPxhXdlIlyCiROtBXdcIm8OGc2k/
 
 ## Restricted Django Admin - ```RestrictAdminMiddleware```
 
-By default Django Admin access is restricted to addresses listed in ```settings.INTERNAL_IPS```.
+Using middleware, the Django Admin access may be restricted to addresses listed in ```settings.INTERNAL_IPS```.
 
 Admin users who are not coming from an IP listed in ```settings.INTERNAL_IPS``` will receive a 404 error.
 
-- To completely disable this restriction:
-    - In setttings.MIDDLEWARE_CLASSES, remove: ```dv_apps.admin_restrict.middleware.RestrictAdminMiddleware```
-    
+- To enable this restriction:
+    - In settings.MIDDLEWARE_CLASSES, add: ```dv_apps.admin_restrict.middleware.RestrictAdminMiddleware```
+    - Example for ```settings.local``` which importing from ```settings.base```:
+
+```python
+MIDDLEWARE_CLASSES += [
+    # Restrict by IP address
+    'dv_apps.admin_restrict.middleware.RestrictAdminMiddleware',
+]
+```
+
 - To add acceptable addresses to ```settings.INTERNAL_IPS```
     - You can add full addresses.  e.g. 140.247.10.10
         - e.g., ```INTERNAL_IPS = ('140.247.10.10',)```

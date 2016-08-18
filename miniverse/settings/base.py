@@ -64,7 +64,7 @@ INSTALLED_APPS = [
     'dv_apps.dvobject_api',
 ]
 
-MIDDLEWARE_CLASSES = (
+MIDDLEWARE_CLASSES = [
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -74,9 +74,9 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'dv_apps.admin_restrict.middleware.RestrictAdminMiddleware',
-)
-
+]
+# Restrict by IP address
+#'dv_apps.admin_restrict.middleware.RestrictAdminMiddleware',
 
 ROOT_URLCONF = 'miniverse.urls'
 

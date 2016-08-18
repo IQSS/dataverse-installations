@@ -1,6 +1,7 @@
 from django.contrib import admin
 
-from .models import Dataverse, DataverseTheme, Template #CitationPageCheck
+from .models import Dataverse, DataverseTheme, Template,\
+    DataverseContact    #CitationPageCheck
 from dv_apps.datasets.models import Dataset
 
 """
@@ -55,9 +56,13 @@ class CitationPageCheckAdmin(admin.ModelAdmin):
     list_filter= ('citation_found',)
 admin.site.register(CitationPageCheck, CitationPageCheckAdmin)
 """
+class DataverseContactAdmin(admin.ModelAdmin):
+    list_display = ('contactemail', 'displayorder', 'dataverse')
+    save_on_top = True
+admin.site.register(DataverseContact, DataverseContactAdmin)
 
 
-class TemplateAdmin(admin.ModelAdmin ):
+class TemplateAdmin(admin.ModelAdmin):
     save_on_top = True
     list_display = ('name', 'dataverse', 'usagecount', 'createtime',)
     readonly_fields = ('createtime',)

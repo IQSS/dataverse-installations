@@ -1,9 +1,12 @@
 from django.db import models
+from django.utils.encoding import python_2_unicode_compatible
+
 from dv_apps.dvobjects.models import DvObject
 from dv_apps.terms_of_use.models import TermsOfUseAndAccess
 
 DATAVERSE_TYPE_UNCATEGORIZED = 'UNCATEGORIZED'
 
+@python_2_unicode_compatible
 class Dataverse(models.Model):
 
     dvobject = models.OneToOneField(DvObject, db_column='id', primary_key=True)
@@ -45,6 +48,7 @@ class Dataverse(models.Model):
         managed = False
         db_table = 'dataverse'
 
+
 class Dataverserole(models.Model):
     alias = models.CharField(unique=True, max_length=255)
     description = models.CharField(max_length=255, blank=True, null=True)
@@ -59,6 +63,7 @@ class Dataverserole(models.Model):
         managed = False
         db_table = 'dataverserole'
 
+@python_2_unicode_compatible
 class DataverseTheme(models.Model):
     """
     No id, created, modified
@@ -80,6 +85,27 @@ class DataverseTheme(models.Model):
     class Meta:
         managed = False
         db_table = 'dataversetheme'
+
+
+class DataverseContact(models.Model):
+    """
+    Bleh. Why isn't the FK a Dataverse?
+    How can the attribute "dataverse" be null?
+    """
+    contactemail = models.CharField(max_length=255)
+    displayorder = models.IntegerField(blank=True, null=True)
+    dataverse = models.ForeignKey(DvObject, blank=True, null=True)
+
+
+    def __str__(self):
+        if self.dataverse:
+            return self.contactemail
+
+    class Meta:
+        # real ordering is 'dataverse' first but don't want to incur cost
+        ordering = ('displayorder', 'contactemail',)
+        managed = False
+        db_table = 'dataversecontact'
 
 
 class Template(models.Model):

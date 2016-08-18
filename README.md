@@ -12,11 +12,11 @@ https://docs.google.com/document/d/1ThlSbw9LWtd12UzUmPxhXdlIlyCiROtBXdcIm8OGc2k/
 
 Using middleware, the Django Admin access may be restricted to addresses listed in ```settings.INTERNAL_IPS```.
 
-Admin users who are not coming from an IP listed in ```settings.INTERNAL_IPS``` will receive a 404 error.
+When this middeware is active, users going to Django admin urls who are not coming from an IP listed in ```settings.INTERNAL_IPS``` will receive a 404 error.
 
 - To enable this restriction:
     - In settings.MIDDLEWARE_CLASSES, add: ```dv_apps.admin_restrict.middleware.RestrictAdminMiddleware```
-    - Example for ```settings.local``` which importing from ```settings.base```:
+    - Example for ```settings.local``` which is importing from ```settings.base```:
 
 ```python
 MIDDLEWARE_CLASSES += [
@@ -26,14 +26,14 @@ MIDDLEWARE_CLASSES += [
 ```
 
 - To add acceptable addresses to ```settings.INTERNAL_IPS```
-    - You can add full addresses.  e.g. 140.247.10.10
-        - e.g., ```INTERNAL_IPS = ('140.247.10.10',)```
+    - You can add full addresses.  e.g. 211.247.10.10
+        - e.g., ```INTERNAL_IPS = ('211.247.10.10',)```
     - You can add the 1st two segments of the address:
-        - e.g., ```INTERNAL_IPS = ('140.247', ..)```
+        - e.g., ```INTERNAL_IPS = ('140.247', '211.247.10.10',)```
     - You can add the 1st three segments of the address:
-        - e.g., ```INTERNAL_IPS = ('140.247.10', ...)```
+        - e.g., ```INTERNAL_IPS = ('140.247.10', '211.247.10.10',)```
     - For running django's test server, the default is:
-        - e.g., ```INTERNAL_IPS = ('127.0.0.1', ...)```
+        - e.g., ```INTERNAL_IPS = ('127.0.0.1',)```
 
   - Dev note: The code for ```RestrictAdminMiddleware``` is in ```dv_apps/middeware.py```
 ---

@@ -75,7 +75,7 @@ class DataverseUtil(object):
         if self.dvobject.owner:
             dv_dict['ownerInfo']['ownerId'] = self.dvobject.owner.id
             dv_dict['ownerInfo']['isRootDataverse'] = False
-            #dv_dict['ownerInfo']['details'] = self.get_short_dv_info(self.dvobject.owner)
+            dv_dict['ownerInfo']['details'] = self.get_short_dv_info(self.dvobject.owner)
         else:
             dv_dict['ownerInfo']['ownerId'] = None
             dv_dict['ownerInfo']['isRootDataverse'] = True
@@ -98,7 +98,7 @@ class DataverseUtil(object):
         # -------------------------------
         # add the theme
         # -------------------------------
-        #dv_dict['theme'] = self.get_dataverse_theme()
+        dv_dict['theme'] = self.get_dataverse_theme()
 
         # -------------------------------
         # order the keys based on KEY_ORDER1

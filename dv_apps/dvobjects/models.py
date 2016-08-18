@@ -1,5 +1,6 @@
 from django.db import models
 #from django.contrib.auth.models import User
+from dv_apps.dataverse_auth.models import AuthenticatedUser
 
 DTYPE_DATAVERSE = 'Dataverse'
 DTYPE_DATASET = 'Dataset'
@@ -27,7 +28,7 @@ class DvObject(models.Model):
 
 
     #releaseuser = models.ForeignKey(User, blank=True, null=True)
-    #creator = models.ForeignKey(User, blank=True, null=True)
+    creator = models.ForeignKey(AuthenticatedUser, blank=True, null=True)
 
     def __str__(self):
         return '%s' % self.id

@@ -133,8 +133,8 @@ class DataverseUtil(object):
         fmt_dict['id'] = owner_dvobject.id
         fmt_dict['name'] = owner.name
         fmt_dict['alias'] = owner.alias
-        fmt_dict['description'] = owner.description
         fmt_dict['dv_link'] = self.get_dv_link(fmt_dict['alias'])
+        fmt_dict['description'] = owner.description
 
         return fmt_dict
 

@@ -19,6 +19,9 @@ urlpatterns = [
 
     url(r'^metrics/', include('dv_apps.metrics.urls')),
 
+    # temp experiment
+    url(r'^dvobjects/', include('dv_apps.dvobject_api.urls')),
+
     url(r'^miniverse-admin/', include(admin.site.urls)),
 
 ]

@@ -14,6 +14,13 @@ if not isdir(LOCAL_SETUP_DIR):
 
 DATABASE_ROUTERS = ['miniverse.settings.db_dataverse_router.DataverseRouter', ]
 
+DEBUG = True
+# Need when running DEBUG = False
+ALLOWED_HOSTS = ('127.0.0.1', )
+
+# Need to set when RestrictAdminMiddleware is active
+INTERNAL_IPS = ('127.0.0.1',)
+
 
 DATABASES = {
     'default': {
@@ -25,7 +32,7 @@ DATABASES = {
     },
     'dataverse': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'dvndb_demo',   #  dvn_thedata dvndb_demo
+        'NAME': 'dvn_thedata',   #  dvn_thedata dvndb_demo, dvndb
         'USER': 'postgres', # dv_readonly, postgres
         'PASSWORD': '123',
         'HOST': 'localhost',
@@ -100,7 +107,7 @@ MIDDLEWARE_CLASSES += (
 DEBUG_TOOLBAR_PATCH_SETTINGS = False
 
 # http://django-debug-toolbar.readthedocs.org/en/latest/installation.html
-INTERNAL_IPS = ('127.0.0.1',)
+
 ########## END TOOLBAR CONFIGURATION
 
 if 'test' in sys.argv or 'test_coverage' in sys.argv:  # Covers regular testing and django-coverage

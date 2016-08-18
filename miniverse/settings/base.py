@@ -61,6 +61,7 @@ INSTALLED_APPS = [
     # Experiments/Add-ons
     #'dv_apps.data_previewer',
     'dv_apps.metrics',
+    'dv_apps.dvobject_api',
 ]
 
 MIDDLEWARE_CLASSES = (
@@ -73,6 +74,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'dv_apps.admin_restrict.middleware.RestrictAdminMiddleware',
 )
 
 

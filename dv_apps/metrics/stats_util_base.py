@@ -125,20 +125,26 @@ class StatsMakerBase(object):
         if isinstance(self.selected_year, (int, long)):
             # convert back to a string for err checking, etc
             self.selected_year = '%s' % self.selected_year
+            self.selected_year = self.selected_year.zfill(4)
 
         if self.selected_year:
+            if not self.selected_year.isdigit():
+                self.add_error('The year must be digits.')
+                return
             if not (self.selected_year.isdigit() and len(self.selected_year) == 4):
-                self.add_error('The year must be a 4-digit number (YYYY)')
+                self.add_error('The year cannot be more than 4-digits (YYYY)')
                 return
             if int(self.selected_year) < 0:
                 self.add_error('The year must cannot be less than 1.')
+                return
             if int(self.selected_year) == 0:
                 self.add_error('The year cannot be zero.')
+                return
 
         # Sanity check the selected_year and start_date
         if self.selected_year and self.start_date:
             if int(self.selected_year) < self.start_date.year:
-                self.add_error("'The 'selected_year' (%s)"
+                self.add_error("The 'selected_year' (%s)"
                         "' cannot be before the 'start_date' year (%s)" %\
                             (self.selected_year, self.start_date.date()))
                 return

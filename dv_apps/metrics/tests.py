@@ -1,3 +1,11 @@
+"""
+Tests for the metrics functions.
+Note: This loads 10,000+ objects and uses them for all of the tests
+
+Example of calling a single test:
+python manage.py test dv_apps.metrics.tests.MetricsCountTests.test_date_params
+
+"""
 from __future__ import print_function
 
 from dv_apps.metrics.metrics_test_base import MetricsTestBase
@@ -7,15 +15,144 @@ from dv_apps.metrics.stats_util_datasets import StatsMakerDatasets
 from dv_apps.metrics.stats_util_files import StatsMakerFiles
 
 
+
 class MetricsCountTests(MetricsTestBase):
     """
     Test metrics from StatsMakerDataverses
     Note: MetricsTestBase loads 10k+ objects from fixtures
     """
 
-    def test_data_params(self):
+    def try_data_params(self, **params):
+        """Used for checking date param logic"""
+
+        stats_maker = StatsMakerDataverses(**params)
+        r = stats_maker.get_dataverse_count_published()
+        return r
+
+
+    def test_date_params(self):
         """Test date params"""
-        pass
+        # Note: All date param checking is in parent class StatsMakerBase
+        #   e.g. it's the same in:
+        #     StatsMakerDataverses, StatsMakerDatasets, and StatsMakerFiles
+        #
+
+        # Year cannot be zero
+        kwargs = dict(selected_year=0)
+        r = self.try_data_params(**kwargs)
+        self.assertEqual(r.has_error(), True)
+        self.assertEqual(r.error_message, 'The year cannot be zero.')
+
+        # Year cannot be negative
+        kwargs = dict(selected_year=-1)
+        r = self.try_data_params(**kwargs)
+        self.assertEqual(r.has_error(), True)
+        self.assertEqual(r.error_message, 'The year must be digits.')
+
+        kwargs = dict(selected_year='-1')
+        r = self.try_data_params(**kwargs)
+        self.assertEqual(r.has_error(), True)
+        self.assertEqual(r.error_message, 'The year must be digits.')
+
+        # Year cannot be a 'dog'
+        kwargs = dict(selected_year='dog')
+        r = self.try_data_params(**kwargs)
+        self.assertEqual(r.has_error(), True)
+        self.assertEqual(r.error_message, 'The year must be digits.')
+
+        # Year CAN be 9999
+        kwargs = dict(selected_year=9999)
+        r = self.try_data_params(**kwargs)
+        self.assertEqual(r.has_error(), False)
+
+        # Not more than 4-digit year
+        kwargs = dict(selected_year=10000)
+        r = self.try_data_params(**kwargs)
+        self.assertEqual(r.has_error(), True)
+        self.assertEqual(r.error_message, 'The year cannot be more than 4-digits (YYYY)')
+
+        # Not more than 4-digit year (as a string)
+        kwargs = dict(selected_year='10000')
+        r = self.try_data_params(**kwargs)
+        self.assertEqual(r.has_error(), True)
+        self.assertEqual(r.error_message, 'The year cannot be more than 4-digits (YYYY)')
+
+        # Bad year - '123'
+        kwargs = dict(start_date='123-02-01')
+        r = self.try_data_params(**kwargs)
+        self.assertEqual(r.has_error(), True)
+        self.assertEqual(r.error_message, 'Start date is invalid.  Use YYYY-MM-DD format.')
+
+        # Bad year - '0000'
+        kwargs = dict(start_date='0000-02-1')
+        r = self.try_data_params(**kwargs)
+        self.assertEqual(r.has_error(), True)
+        self.assertEqual(r.error_message, 'Start date is invalid.  Use YYYY-MM-DD format.')
+
+        # OK year - '0001', with day '1'
+        kwargs = dict(start_date='0001-02-1')
+        r = self.try_data_params(**kwargs)
+        self.assertEqual(r.has_error(), False)
+
+        # Bad day.  31st day of Feb
+        kwargs = dict(start_date='1968-02-31')
+        r = self.try_data_params(**kwargs)
+        self.assertEqual(r.has_error(), True)
+        self.assertEqual(r.error_message, 'Start date is invalid.  Use YYYY-MM-DD format.')
+
+        # End date (uses same function as start date check)
+        # Bad day. 14th month
+        kwargs = dict(end_date='1968-14-01')
+        r = self.try_data_params(**kwargs)
+        self.assertEqual(r.has_error(), True)
+        self.assertEqual(r.error_message, 'End date is invalid.  Use YYYY-MM-DD format.')
+
+        # OK - start day / end day
+        kwargs = dict(start_date='2000-01-01',\
+                    end_date='2000-01-02')
+        r = self.try_data_params(**kwargs)
+        self.assertEqual(r.has_error(), False)
+
+        # OK - start day / end day - same day
+        kwargs = dict(start_date='2000-01-01',\
+                    end_date='2000-01-01')
+        r = self.try_data_params(**kwargs)
+        self.assertEqual(r.has_error(), False)
+
+        # Bad - start day / end day
+        kwargs = dict(start_date='2010-01-01',\
+                    end_date='1968-12-01')
+        r = self.try_data_params(**kwargs)
+        self.assertEqual(r.has_error(), True)
+        self.assertEqual(r.error_message, 'The start date cannot be after the end date.')
+
+        # Bad - start day / end day
+        kwargs = dict(start_date='2010-01-02',\
+                    end_date='2010-01-01')
+        r = self.try_data_params(**kwargs)
+        self.assertEqual(r.has_error(), True)
+        self.assertEqual(r.error_message, 'The start date cannot be after the end date.')
+
+        # Bad selected_year, start_date combo
+        kwargs = dict(start_date='2015-01-02',\
+                    selected_year=2014)
+        r = self.try_data_params(**kwargs)
+        self.assertEqual(r.has_error(), True)
+        self.assertEqual(r.error_message, "The 'selected_year' (2014)' cannot be before the 'start_date' year (2015-01-02)")
+
+        # OK selected_year, start_date combo. selected_year not needed, but ok
+        kwargs = dict(start_date='2015-03-02',\
+                    selected_year=2015)
+        r = self.try_data_params(**kwargs)
+        self.assertEqual(r.has_error(), False)
+
+        # Bad selected_year, end_date combo
+        kwargs = dict(end_date='2012-01-02',\
+                    selected_year=2014)
+        r = self.try_data_params(**kwargs)
+        self.assertEqual(r.has_error(), True)
+        self.assertEqual(r.error_message, "The 'selected_year' (2014)' cannot be after the 'end_date' year (2012-01-02)")
+
 
     def test_01_dataverse_total_counts(self):
         """Count total dataverses: published, unpublished, all"""

@@ -1,67 +1,122 @@
-from django.test import TestCase
-from django.core import management
+from __future__ import print_function
+
+from dv_apps.metrics.metrics_test_base import MetricsTestBase
 
 from dv_apps.metrics.stats_util_dataverses import StatsMakerDataverses
-from dv_apps.dataverses.models import Dataverse
 
-class MetricsTestBase(TestCase):
+
+class MetricsCountTests(MetricsTestBase):
     """
-    Load database once--at the beginning of subclass creation.
-    All of the data is used for read-only tests so this saves considerable time.
+    Test metrics from StatsMakerDataverses
+    Note: MetricsTestBase loads 10k+ objects from fixtures
     """
 
-    @classmethod
-    def setUpClass(cls):
-        print 'load db'
-        management.call_command('loaddata', 'test_2016_0819.json', verbosity=3)
-
-    @classmethod
-    def tearDownClass(cls):
-        print 'flush db'
-        management.call_command('flush', verbosity=3, interactive=False)
-
-
-class MetricsCase(MetricsTestBase):
-
-    fixtures = ['test_2016_0812.json']
-
-    def setUp(self):
-        pass
-
-
-    def test_01_todo(self):
-        """Test to see if db created"""
-        print '--- TEST 1 ---'
+    def test_01_dataverse_total_counts(self):
+        """Count total dataverses: published, unpublished, all"""
+        print ('Count total dataverses: published, unpublished, all')
 
         stats_maker = StatsMakerDataverses()
-        stats_result = stats_maker.get_dataverse_counts_by_month()
 
-        #print 'stats_result.result_data', stats_result.result_data
-        print 'stats_result.result_data', len(stats_result.result_data)
+        # Count published dataverse
+        r = stats_maker.get_dataverse_count_published()
+        self.assertEqual(r.result_data, 187)
 
-        num_dvs = Dataverse.objects.all().count()
-        self.assertEqual(num_dvs, 356)
+        # Count unpublished dataverse
+        r = stats_maker.get_dataverse_count_unpublished()
+        self.assertEqual(r.result_data, 169)
 
-
-        self.assertEqual(stats_result.has_error(), False)
-        # 16 stats info objects
-        self.assertEqual(len(stats_result.result_data), 16)
-
-        # 1st object
-        first_object = stats_result.result_data[0]
-        self.assertEqual(first_object['cnt'], 39)
-        self.assertEqual(first_object['running_total'], 39)
-        self.assertEqual(first_object['yyyy_mm'], '2015-04')
-
-        # 2nd object
-        first_object = stats_result.result_data[1]
-        self.assertEqual(first_object['cnt'], 29)
-        self.assertEqual(first_object['running_total'], 68)
-        self.assertEqual(first_object['yyyy_mm'], '2015-05')
+        # Count all dataverses
+        r = stats_maker.get_dataverse_count()
+        self.assertEqual(r.result_data, 356)
 
 
-    def test_02_todo(self):
-        """Test to see if db created"""
-        print '--- TEST 2 ---'
-        num_dvs = Dataverse.objects.all().count()
-        self.assertEqual(num_dvs, 356)
+
+    def test_02_dataverse_counts_published(self):
+        """Test published dataverse counts by month"""
+        print ('Test published dataverse counts by month')
+
+        stats_maker = StatsMakerDataverses()
+
+        r = stats_maker.get_dataverse_counts_by_month_published()
+
+        # check number of months
+        self.assertEqual(len(r.result_data), 16)
+
+        # check 1st month
+        first_month = {'cnt': 26,
+             'month_name': 'Apr',
+             'month_num': 4,
+             'running_total': 26,
+             'year_num': 2015,
+             'yyyy_mm': '2015-04'}
+        self.assertEqual(r.result_data[0], first_month)
+
+        # check last month
+        last_month = {'cnt': 4,
+             'month_name': 'Jul',
+             'month_num': 7,
+             'running_total': 187,
+             'year_num': 2016,
+             'yyyy_mm': '2016-07'}
+        self.assertEqual(r.result_data[-1], last_month)
+
+
+
+    def test_03_dataverse_counts_unpublished(self):
+        """Test unpublished dataverse counts by month"""
+        print ('Test unpublished dataverse counts by month')
+
+        stats_maker = StatsMakerDataverses()
+
+        r = stats_maker.get_dataverse_counts_by_month_unpublished()
+
+        # check number of months
+        self.assertEqual(len(r.result_data), 16)
+
+        # check 1st month
+        first_month = {'cnt': 13,
+             'month_name': 'Apr',
+             'month_num': 4,
+             'running_total': 13,
+             'year_num': 2015,
+             'yyyy_mm': '2015-04'}
+        self.assertEqual(r.result_data[0], first_month)
+
+        # check last month
+        last_month = {'cnt': 6,
+             'month_name': 'Jul',
+             'month_num': 7,
+             'running_total': 169,
+             'year_num': 2016,
+             'yyyy_mm': '2016-07'}
+        self.assertEqual(r.result_data[-1], last_month)
+
+
+    def test_04_dataverse_counts_all(self):
+        """Test all dataverse counts by month"""
+        print ('Test all dataverse counts by month')
+
+        stats_maker = StatsMakerDataverses()
+
+        r = stats_maker.get_dataverse_counts_by_month()
+
+        # check number of months
+        self.assertEqual(len(r.result_data), 16)
+
+        # check 1st month
+        first_month = {'cnt': 39,
+             'month_name': 'Apr',
+             'month_num': 4,
+             'running_total': 39,
+             'year_num': 2015,
+             'yyyy_mm': '2015-04'}
+        self.assertEqual(r.result_data[0], first_month)
+
+        # check last month
+        last_month = {'cnt': 10,
+             'month_name': 'Jul',
+             'month_num': 7,
+             'running_total': 356,
+             'year_num': 2016,
+             'yyyy_mm': '2016-07'}
+        self.assertEqual(r.result_data[-1], last_month)

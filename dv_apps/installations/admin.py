@@ -7,6 +7,7 @@ class InstallationAdmin(admin.ModelAdmin):
     list_display = ['name']
 class InstitutionAdmin(admin.ModelAdmin):
     list_display = ['name', 'host']
-    
+    search_fields = ['name']
+
 admin.site.register(Installation, InstallationAdmin)
 admin.site.register(Institution, InstitutionAdmin)

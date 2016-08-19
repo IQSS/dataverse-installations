@@ -13,8 +13,8 @@
   var dataverse_counts_by_month = [
     {%for i in dataverse_counts_by_month%}
 
-    {"Month": "{{ i.month_name }} {{ i.year_num }}", "monthNum": {{i.month_num}}, "name":"Total Dataverses", "Number of Dataverses": {{i.running_total}}, "month_sort" : "{{ i.yyyy_mm }}", "display_name":"{{ i.month_name }} {{ i.year_num }}: {{ i.cnt }} New Dataverses"},
-    {"Month": "{{ i.month_name }} {{ i.year_num }}", "monthNum": {{i.month_num}}, "name":"Monthly Dataverses", "Number of Dataverses": {{i.cnt}}, "month_sort" : "{{ i.yyyy_mm }}", "display_name":"{{ i.month_name }} {{ i.year_num }}: {{ i.cnt }} New Dataverses"}
+    {"Month": "{{ i.month_name }} {{ i.year_num }}", "monthNum": {{i.month_num}}, "name":"Total Dataverses", "Number of Dataverses": {{i.running_total}}, "month_sort" : "{{ i.yyyy_mm }}", "display_name":"{{ i.month_name }} {{ i.year_num }}: {{ i.cnt }} New Dataverses"}
+    {#{"Month": "{{ i.month_name }} {{ i.year_num }}", "monthNum": {{i.month_num}}, "name":"Monthly Dataverses", "Number of Dataverses": {{i.cnt}}, "month_sort" : "{{ i.yyyy_mm }}", "display_name":"{{ i.month_name }} {{ i.year_num }}: {{ i.cnt }} New Dataverses"}#}
     {%if not forloop.last%},{%endif%}
     {%endfor%}
     ]
@@ -30,7 +30,7 @@
   var visualization = d3plus.viz()
     .container("#viz-dataverses")  // container DIV to hold the visualization
     .data(dataverse_counts_by_month)  // data to use with the visualization
-    .type("line")       // visualization type
+    .type("bar")       // visualization type
     .id("name")         // key for which our data is unique on
     .text("display_name")       // key to use for display text
     .y("Number of Dataverses")         // key to use for y-axis

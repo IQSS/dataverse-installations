@@ -122,6 +122,10 @@ class StatsMakerBase(object):
 
         # Add a year, if it exists
         self.selected_year = kwargs.get('selected_year', None)
+        if isinstance(self.selected_year, (int, long)):
+            # convert back to a string for err checking, etc
+            self.selected_year = '%s' % self.selected_year
+
         if self.selected_year:
             if not (self.selected_year.isdigit() and len(self.selected_year) == 4):
                 self.add_error('The year must be a 4-digit number (YYYY)')

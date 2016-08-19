@@ -32,16 +32,16 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': join(LOCAL_SETUP_DIR, 'miniverse_auth.db3'),
-        'TEST': {
-            'MIRROR': 'default',
-        },
     },
     'dataverse': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'dvn_thedata',   #  dvn_thedata dvndb_demo, dvndb
+        'NAME': 'dvndb_demo',   #  dvn_thedata dvndb_demo, dvndb
         'USER': 'postgres', # dv_readonly, postgres
         'PASSWORD': '123',
         'HOST': 'localhost',
+        'TEST': {
+            'MIRROR': 'default',
+        },
     }
 }
 
@@ -123,10 +123,12 @@ if 'test' in sys.argv or 'test_coverage' in sys.argv:  # Covers regular testing 
     DATABASES['default']['USER'] = 'rp'
     DATABASES['default']['PASSWORD'] = '123'
 
-    DATABASES['miniverse_admin_db']['ENGINE'] = 'django.db.backends.postgresql_psycopg2'
-    DATABASES['miniverse_admin_db']['HOST'] = 'localhost'
-    DATABASES['miniverse_admin_db']['USER'] = 'rp'
-    DATABASES['miniverse_admin_db']['PASSWORD'] = '123'
+    # For the testing, only one database is created, using MIRROR:
+    #  - See: https://docs.djangoproject.com/en/1.10/topics/testing/advanced/#testing-primary-replica-configurations
+    #DATABASES['dataverse']['ENGINE'] = 'django.db.backends.postgresql_psycopg2'
+    #DATABASES['dataverse']['HOST'] = 'localhost'
+    #DATABASES['dataverse']['USER'] = 'rp'
+    #DATABASES['dataverse']['PASSWORD'] = '123'
 
 
     # The custom routers we're using to route certain ORM queries

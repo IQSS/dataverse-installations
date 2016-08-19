@@ -16,6 +16,6 @@ class DvObjectsTestCase(TestCase):
         """Test to see if db created"""
 
         cnt = DvObject.objects.all().count()
-        print 'num DvObjects', cnt
+        #print 'num DvObjects', cnt
         self.assertEqual(cnt, 21)
         #self.assertEqual(cnt, 2510)

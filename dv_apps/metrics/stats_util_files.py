@@ -15,6 +15,7 @@ from dv_apps.metrics.stats_util_base import StatsMakerBase, TruncYearMonth
 from dv_apps.metrics.stats_result import StatsResult
 from dv_apps.dvobjects.models import DVOBJECT_CREATEDATE_ATTR
 
+FILE_TYPE_OCTET_STREAM = 'application/octet-stream'
 
 class StatsMakerFiles(StatsMakerBase):
 
@@ -406,7 +407,7 @@ class StatsMakerFiles(StatsMakerBase):
         # Bin this data
 
 
-    def view_file_extensions_within_type(self, file_type='application/octet-stream'):
+    def view_file_extensions_within_type(self, file_type=None):
         """View extensions for files based on their "Filemetadata.contenttype" value"""
 
         #file_type = 'data/various-formats'

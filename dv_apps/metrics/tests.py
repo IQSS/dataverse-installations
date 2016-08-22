@@ -8,11 +8,13 @@ python manage.py test dv_apps.metrics.tests.MetricsCountTests.test_date_params
 """
 from __future__ import print_function
 
-from dv_apps.metrics.metrics_test_base import MetricsTestBase
+from collections import OrderedDict
 
+from dv_apps.metrics.metrics_test_base import MetricsTestBase
 from dv_apps.metrics.stats_util_dataverses import StatsMakerDataverses
 from dv_apps.metrics.stats_util_datasets import StatsMakerDatasets
-from dv_apps.metrics.stats_util_files import StatsMakerFiles
+from dv_apps.metrics.stats_util_files import StatsMakerFiles,\
+    FILE_TYPE_OCTET_STREAM
 
 
 
@@ -677,3 +679,31 @@ class MetricsCountTests(MetricsTestBase):
           'total_count': 356,
           'type_count': 65}
         self.assertEqual(r.result_data[2], uncat_listing)
+
+
+    def test_19_file_extensions_within_type(self):
+        """19 - File extensions within type"""
+        print (self.test_19_file_extensions_within_type.__doc__)
+
+        stats_maker = StatsMakerFiles()
+        r = stats_maker.view_file_extensions_within_type(file_type=FILE_TYPE_OCTET_STREAM)
+
+        num_unique_extensions = r.result_data.get('number_unique_extensions')
+
+        # check number of extensions
+        #
+        self.assertEqual(num_unique_extensions, 67)
+
+        # check that list length matches number of extensions
+        #
+        ext_counts = r.result_data.get('file_extension_counts', [])
+        self.assertEqual(len(ext_counts), 67)
+
+        # check 5th listing in extension count list
+        #
+        listing_5 = OrderedDict([('extension', u'.xlsx'),
+                    ('count', 24),
+                    ('total_count', 667),
+                    ('percent_string', '3.598%')])
+
+        self.assertEqual(listing_5, ext_counts[4])

@@ -7,8 +7,20 @@ from .base import *
 
 DEBUG=False
 
+ADMINS = [ ('Raman', 'raman_prasad@harvard.edu'),
+    ('Raman (g)', 'prasad@g.harvard.edu')]
+
+# Mail settings
+EMAIL_HOST = os.environ['EMAIL_HOST']
+EMAIL_PORT = 587
+EMAIL_HOST_USER = os.environ['EMAIL_HOST_USER']
+EMAIL_HOST_PASSWORD =  os.environ['EMAIL_HOST_PASSWORD']
+DEFAULT_FROM_EMAIL = os.environ['EMAIL_HOST_USER']
+EMAIL_USE_TLS = True
+
+
 # Site ID
-SITE_ID = 2
+SITE_ID = 1
 
 # Set the secret key
 SECRET_KEY = os.environ['SECRET_KEY']
@@ -20,7 +32,9 @@ SESSION_COOKIE_NAME = 'dv_metrics_dev'
 INTERNAL_IPS = ('140.247', '10.1',)   # Heroku IP
 MIDDLEWARE_CLASSES += [
     # Restrict by IP address
-    #'dv_apps.admin_restrict.middleware.RestrictAdminMiddleware',
+    'dv_apps.admin_restrict.middleware.RestrictAdminMiddleware',
+    # Email about broken 404s
+    'django.middleware.common.BrokenLinkEmailsMiddleware',
 ]
 
 ALLOWED_HOSTS = ['services-dataverse.herokuapp.com', '52.86.18.14', '50.17.160.202' ]

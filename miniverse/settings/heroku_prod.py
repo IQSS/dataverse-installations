@@ -5,20 +5,27 @@ import dj_database_url
 
 from .base import *
 
+# -----------------------------------
+# DEBUG OFF
+# -----------------------------------
 DEBUG=False
 
+# -----------------------------------
 # ADMINS and MANAGERS
+# -----------------------------------
 
 # Receive 500 errors
 #
 ADMINS = [ ('Raman', 'raman_prasad@harvard.edu'),
-    ('Raman (g)', 'prasad@g.harvard.edu')]
+    ('Danny Brooke', 'dannybrooke@g.harvard.edu')]
 
 # Receive 404 errors
 #
 MANAGERS = ADMINS
 
+# -----------------------------------
 # Mail settings
+# -----------------------------------
 EMAIL_HOST = os.environ['EMAIL_HOST']
 EMAIL_PORT = 587
 EMAIL_HOST_USER = os.environ['EMAIL_HOST_USER']
@@ -27,21 +34,32 @@ DEFAULT_FROM_EMAIL = os.environ['EMAIL_HOST_USER']
 EMAIL_USE_TLS = True
 
 
+# -----------------------------------
 # Site ID
+# -----------------------------------
 SITE_ID = 1
 
+# -----------------------------------
 # Set the secret key
+# -----------------------------------
 SECRET_KEY = os.environ['SECRET_KEY']
 
+# -----------------------------------
 # Cookie name
-SESSION_COOKIE_NAME = 'dv_metrics_dev'
+# -----------------------------------
+SESSION_COOKIE_NAME = 'dv_metrics_prod'
 
-
+# -----------------------------------
+# INTERNAL_IPS for admin access
+# -----------------------------------
 INTERNAL_IPS = ['140.247', # Harvard
     '65.112',               # Harvard
     '10.1',                 # General internal address
     ]
 
+# -----------------------------------
+# Extra MIDDLEWARE_CLASSES
+# -----------------------------------
 MIDDLEWARE_CLASSES += [
     # Restrict by IP address
     'dv_apps.admin_restrict.middleware.RestrictAdminMiddleware',
@@ -49,22 +67,28 @@ MIDDLEWARE_CLASSES += [
     'django.middleware.common.BrokenLinkEmailsMiddleware',
 ]
 
+# -----------------------------------
+# ALLOWED_HOSTS
+# -----------------------------------
 ALLOWED_HOSTS = ['services-dataverse.herokuapp.com',
     '52.86.18.14',  # via Heroku quotaguard add-on
     '50.17.160.202', # via Heroku quotaguard add-on
     ]
 
+# -----------------------------------
+# Extra INSTALLED_APPS
+# -----------------------------------
 ## Update INSTALLED_APPS to include Heroku specifc apps
-#
 INSTALLED_APPS += [ 'storages']
 
 
-## Database settings via Heroku url
+# -----------------------------------
+# Database settings via Heroku url
 #
 #  We have two databases:
 #   - Heroku db for django + "installations" app
 #   - external Dataverse db for reading stats
-#
+# -----------------------------------
 DATABASE_ROUTERS = ['miniverse.db_routers.db_dataverse_router.DataverseRouter', ]
 
 
@@ -86,13 +110,16 @@ DATABASES['dataverse']['PORT'] = '5432'
 
 
 
-# User general urls -- but restrict for prod
-ROOT_URLCONF = 'miniverse.urls'
+# -----------------------------------
+# Heroku specific urls
+# -----------------------------------
+ROOT_URLCONF = 'miniverse.urls_heroku_prod'
 
 
+# -----------------------------------
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
-#
+# -----------------------------------
 STATIC_ROOT = join(PROJECT_ROOT, 'staticfiles')
 STATIC_URL = '/static/'
 

@@ -77,9 +77,10 @@ ALLOWED_HOSTS = ['services-dataverse.herokuapp.com',
 
 # -----------------------------------
 # Extra INSTALLED_APPS
+# - Update to include Heroku specifc apps
 # -----------------------------------
-## Update INSTALLED_APPS to include Heroku specifc apps
-INSTALLED_APPS += [ 'storages']
+INSTALLED_APPS += [ 'storages', # For amazon S3
+    ]
 
 
 # -----------------------------------

@@ -24,7 +24,7 @@
   var visualization = d3plus.viz()
     .container("#viz-file-downloads")  // container DIV to hold the visualization
     .data(file_downloads_by_month)  // data to use with the visualization
-    .type("bar")       // visualization type
+    .type("line")       // visualization type
     .id("name")         // key for which our data is unique on
     .text({"value":"display_name"})       // key to use for display text
     .y("File Downloads")         // key to use for y-axis

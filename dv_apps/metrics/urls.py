@@ -1,7 +1,7 @@
 from django.conf.urls import url
 #from dv_apps.metrics.views import view_dataset_count
 from dv_apps.metrics import views, views_api, views_test,\
-    views_public_metrics, views_swagger
+    views_public_metrics, views_swagger, views_error_test
 from dv_apps.metrics.stats_views_datasets import DatasetCountByMonthView,\
     DatasetTotalCounts
 from dv_apps.metrics.stats_views_dataverses import DataverseCountByMonthView,\
@@ -76,5 +76,14 @@ urlpatterns += [
     url(r'^v1/files/downloads/count/monthly$', FilesDownloadedByMonthView.as_view(), name='view_file_download_counts_by_month'),
 
     url(r'^v1/files/extensions$', FileExtensionsWithinContentType.as_view(), name='view_file_extensions_within_type'),
+
+]
+
+urlpatterns += [
+
+    url(r'^test-404$', views_error_test.view_test_404, name='view_test_404'),
+
+
+    url(r'^test-500$', views_error_test.view_test_500, name='view_test_500'),
 
 ]

@@ -537,18 +537,143 @@ class MetricsCountTests(MetricsTestBase):
              'type_count': 49}
         self.assertEqual(r.result_data[2], third_listing)
 
-'''
- get_datafile_content_type_counts_published(self):
-    """Return datafile counts by 'content type' for published files"""
 
-    return self.get_datafile_content_type_counts(\
-        **self.get_is_published_filter_param())
 
-def get_datafile_content_type_counts_unpublished(self):
-    """Return datafile counts by 'content type' for unpublished files"""
+    def test_16_dataverse_types_published(self):
+        """16 - Affiliations of published dataverses types"""
+        print (self.test_16_dataverse_types_published.__doc__)
 
-    return self.get_datafile_content_type_counts(\
-        **self.get_is_NOT_published_filter_param())
+        kwargs = dict(select_year=2016)
+        stats_maker = StatsMakerDataverses(**kwargs)
+        r = stats_maker.get_dataverse_counts_by_type_published()
 
-def get_datafile_content_type_counts(self, **extra_filte
-'''
+        # check number of entries
+        self.assertEqual(len(r.result_data), 6)
+
+        # check first listing
+        first_listing = {'dataversetype': u'RESEARCHERS',
+              'dataversetype_label': u'RESEARCHERS',
+              'percent_string': '34.0%',
+              'total_count': 153,
+              'type_count': 52}
+        self.assertEqual(r.result_data[0], first_listing)
+
+        # check last listing
+        last_listing = {'dataversetype': u'RESEARCH_GROUP',
+             'dataversetype_label': u'RESEARCH GROUP',
+             'percent_string': '1.3%',
+             'total_count': 153,
+             'type_count': 2}
+        self.assertEqual(r.result_data[-1], last_listing)
+
+        # -------------------------
+        # Include UNCATEGORIZED Dataverses
+        # -------------------------
+        kwargs = dict(select_year=2016)
+        stats_maker = StatsMakerDataverses(**kwargs)
+        r = stats_maker.get_dataverse_counts_by_type_published(exclude_uncategorized=False)
+
+        # check number of entries
+        self.assertEqual(len(r.result_data), 7)
+
+        # check UNCATEGORIZED listing
+        uncat_listing = {'dataversetype': u'UNCATEGORIZED',
+             'dataversetype_label': u'UNCATEGORIZED',
+             'percent_string': '18.2%',
+             'total_count': 187,
+             'type_count': 34}
+        self.assertEqual(r.result_data[3], uncat_listing)
+
+
+
+    def test_17_dataverse_types_unpublished(self):
+        """17 - Affiliations of unpublished dataverses types"""
+        print (self.test_17_dataverse_types_unpublished.__doc__)
+
+        kwargs = dict(select_year=2016)
+        stats_maker = StatsMakerDataverses(**kwargs)
+        r = stats_maker.get_dataverse_counts_by_type_unpublished()
+
+        # check number of entries
+        self.assertEqual(len(r.result_data), 6)
+
+        # check first listing
+        first_listing = {'dataversetype': u'RESEARCHERS',
+             'dataversetype_label': u'RESEARCHERS',
+             'percent_string': '44.2%',
+             'total_count': 138,
+             'type_count': 61}
+        self.assertEqual(r.result_data[0], first_listing)
+
+        # check last listing
+        last_listing = {'dataversetype': u'LABORATORY',
+             'dataversetype_label': u'LABORATORY',
+             'percent_string': '0.7%',
+             'total_count': 138,
+             'type_count': 1}
+
+        self.assertEqual(r.result_data[-1], last_listing)
+
+        # -------------------------
+        # Include UNCATEGORIZED Dataverses
+        # -------------------------
+        kwargs = dict(select_year=2016)
+        stats_maker = StatsMakerDataverses(**kwargs)
+        r = stats_maker.get_dataverse_counts_by_type_unpublished(exclude_uncategorized=False)
+
+        # check number of entries
+        self.assertEqual(len(r.result_data), 7)
+
+        # check UNCATEGORIZED listing
+        uncat_listing =  {'dataversetype': u'UNCATEGORIZED',
+              'dataversetype_label': u'UNCATEGORIZED',
+              'percent_string': '18.3%',
+              'total_count': 169,
+              'type_count': 31}
+        self.assertEqual(r.result_data[2], uncat_listing)
+
+    def test_18_dataverse_types_all(self):
+        """18 - Affiliations of all dataverses types"""
+        print (self.test_18_dataverse_types_all.__doc__)
+
+        kwargs = dict(select_year=2016)
+        stats_maker = StatsMakerDataverses(**kwargs)
+        r = stats_maker.get_dataverse_counts_by_type()
+
+        # check number of entries
+        self.assertEqual(len(r.result_data), 7)
+
+        # check first listing
+        first_listing = {'dataversetype': u'RESEARCHERS',
+              'dataversetype_label': u'RESEARCHERS',
+              'percent_string': '38.8%',
+              'total_count': 291,
+              'type_count': 113}
+        self.assertEqual(r.result_data[0], first_listing)
+
+        # check last listing
+        last_listing =  {'dataversetype': u'LABORATORY',
+              'dataversetype_label': u'LABORATORY',
+              'percent_string': '0.3%',
+              'total_count': 291,
+              'type_count': 1}
+
+        self.assertEqual(r.result_data[-1], last_listing)
+
+        # -------------------------
+        # Include UNCATEGORIZED Dataverses
+        # -------------------------
+        kwargs = dict(select_year=2016)
+        stats_maker = StatsMakerDataverses(**kwargs)
+        r = stats_maker.get_dataverse_counts_by_type(exclude_uncategorized=False)
+
+        # check number of entries
+        self.assertEqual(len(r.result_data), 8)
+
+        # check UNCATEGORIZED listing
+        uncat_listing =   {'dataversetype': u'UNCATEGORIZED',
+          'dataversetype_label': u'UNCATEGORIZED',
+          'percent_string': '18.3%',
+          'total_count': 356,
+          'type_count': 65}
+        self.assertEqual(r.result_data[2], uncat_listing)

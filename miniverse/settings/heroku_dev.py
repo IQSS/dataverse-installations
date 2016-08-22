@@ -7,8 +7,16 @@ from .base import *
 
 DEBUG=False
 
+# ADMINS and MANAGERS
+
+# Receive 500 errors
+#
 ADMINS = [ ('Raman', 'raman_prasad@harvard.edu'),
     ('Raman (g)', 'prasad@g.harvard.edu')]
+
+# Receive 404 errors
+#
+MANAGERS = ADMINS
 
 # Mail settings
 EMAIL_HOST = os.environ['EMAIL_HOST']
@@ -29,7 +37,11 @@ SECRET_KEY = os.environ['SECRET_KEY']
 SESSION_COOKIE_NAME = 'dv_metrics_dev'
 
 
-INTERNAL_IPS = ('140.247', '10.1',)   # Heroku IP
+INTERNAL_IPS = ['140.247', # Harvard
+    '65.112',               # Harvard
+    #'10.1',                 # General internal address
+    ]
+
 MIDDLEWARE_CLASSES += [
     # Restrict by IP address
     'dv_apps.admin_restrict.middleware.RestrictAdminMiddleware',
@@ -37,7 +49,10 @@ MIDDLEWARE_CLASSES += [
     'django.middleware.common.BrokenLinkEmailsMiddleware',
 ]
 
-ALLOWED_HOSTS = ['services-dataverse.herokuapp.com', '52.86.18.14', '50.17.160.202' ]
+ALLOWED_HOSTS = ['services-dataverse.herokuapp.com',
+    '52.86.18.14',  # via Heroku quotaguard add-on
+    '50.17.160.202', # via Heroku quotaguard add-on
+    ]
 
 ## Update INSTALLED_APPS to include Heroku specifc apps
 #
@@ -50,7 +65,7 @@ INSTALLED_APPS += [ 'storages']
 #   - Heroku db for django + "installations" app
 #   - external Dataverse db for reading stats
 #
-DATABASE_ROUTERS = ['miniverse.settings.db_dataverse_router.DataverseRouter', ]
+DATABASE_ROUTERS = ['miniverse.db_routers.db_dataverse_router.DataverseRouter', ]
 
 
 # Set the default django database url - a Heroku Database

@@ -12,7 +12,7 @@ LOCAL_SETUP_DIR = join(PROJECT_ROOT, 'test_setup')
 if not isdir(LOCAL_SETUP_DIR):
     makedirs(LOCAL_SETUP_DIR)
 
-DATABASE_ROUTERS = ['miniverse.settings.db_dataverse_router.DataverseRouter', ]
+DATABASE_ROUTERS = ['miniverse.db_routers.db_dataverse_router.DataverseRouter', ]
 
 DEBUG = True
 # Need when running DEBUG = False

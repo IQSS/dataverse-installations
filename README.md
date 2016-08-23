@@ -12,10 +12,10 @@ However, the repository was initially created as a way to explore/debug/prototyp
 - In use:
   - Retrieve basic metrics via API or as visualizations
   - Map visualization of Dataverse affiliations
-  - Contributions by [@jcabanas17](https://github.com/jcabanas17)
+  - Contributions by [@jcabanas17](https://github.com/jcabanas17), [@emunn](https://github.com/emunn),
 - Explore/Prototype
   - Using the Django ORM to explore the Dataverse database, create queries that are later translated to Java code
-  - Export caching metadata in JSON documents.   
+  - Store cached metadata in JSON documents.   
 
 
 ## Metrics set-up

@@ -7,7 +7,7 @@ from os.path import splitext
 from datetime import datetime, timedelta
 
 from django.shortcuts import render
-from django.http import JsonResponse, HttpResponse
+from django.http import JsonResponse, HttpResponse, HttpResponseRedirect
 from django.views.decorators.cache import cache_page
 from django.http import JsonResponse, HttpResponse, Http404
 
@@ -27,6 +27,9 @@ def view_public_visualizations_last12(request):
     e.g. If it's July 23, 2016, it will start from July 1, 2015
     e.g. If it's June 2, 2016, it will start from June 1, 2015
     """
+    #if not request.GET.get('iframe', None):
+    #    return HttpResponseRedirect('http://dataverse.org')
+
     one_year_ago = datetime.now() - timedelta(weeks=52)
 
     # start from the 1st day of last year's month

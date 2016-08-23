@@ -1,3 +1,5 @@
+### __DOCS IN PROGRESS..MORE COMPLETE BY AUG. 26__
+
 # Miniverse
 
 This repository may be configured to directly read an existing Dataverse 4.x database.
@@ -10,7 +12,7 @@ However, the repository was initially created as a way to explore/debug/prototyp
 - In use:
   - Retrieve basic metrics via API or as visualizations
   - Map visualization of Dataverse affiliations
-  - Contributions by @jcabanas17
+  - Contributions by [@jcabanas17](https://github.com/jcabanas17)
 - Explore/Prototype
   - Using the Django ORM to explore the Dataverse database, create queries that are later translated to Java code
   - Export caching metadata in JSON documents.   
@@ -53,11 +55,11 @@ Create a settings file for a two database set-up.
 #
 cp miniverse/settings/local_with_routing.py miniverse/settings/local_settings.py
 
-
 ```
 
 
-Documentation
+
+### Maps Documentation
 
 https://docs.google.com/document/d/1ThlSbw9LWtd12UzUmPxhXdlIlyCiROtBXdcIm8OGc2k/edit?usp=sharing
 

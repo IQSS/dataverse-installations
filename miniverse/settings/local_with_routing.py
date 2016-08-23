@@ -33,7 +33,7 @@ DATABASES = {
     },
     'dataverse': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'dvndb_demo',   #  dvn_thedata dvndb_demo, dvndb
+        'NAME': 'dvn_thedata',   #  dvn_thedata dvndb_demo, dvndb
         'USER': 'postgres', # dv_readonly, postgres
         'PASSWORD': '123',
         'HOST': 'localhost',

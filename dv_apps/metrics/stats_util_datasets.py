@@ -243,26 +243,26 @@ class StatsMakerDatasets(StatsMakerBase):
         # -----------------------------------
 
         # Retrieve the date parameters
-        #
+        # -----------------------------------
         filter_params = self.get_date_filter_params()
 
+        # -----------------------------------
         # Add extra filters from kwargs
-        #
+        # -----------------------------------
         if extra_filters:
             for k, v in extra_filters.items():
                 filter_params[k] = v
 
 
         # -----------------------------
-        # (1) Filter time and published/unpublished
-        #   based on dataset id
+        # Retrieve Dataset ids by time and published/unpublished
         # -----------------------------
         dataset_ids = Dataset.objects.select_related('dvobject'\
                         ).filter(**filter_params\
                         ).values_list('dvobject__id', flat=True)
 
         # -----------------------------
-        # Get the DatasetFieldType
+        # Get the DatasetFieldType for subject
         # -----------------------------
         search_attrs = dict(name='subject',\
                             required=True,\
@@ -275,16 +275,14 @@ class StatsMakerDatasets(StatsMakerBase):
         # -----------------------------
         # Get latest DatasetVersion ids
         # -----------------------------
-
-        # Get DatasetVersion info
         id_info_list = DatasetVersion.objects.filter(\
             dataset__in=dataset_ids\
             ).values('id', 'dataset_id', 'versionnumber', 'minorversionnumber'\
-            ).order_by('dataset_id', 'id', '-versionnumber', '-minorversionnumber')
+            ).order_by('dataset_id', '-id', '-versionnumber', '-minorversionnumber')
 
         # -----------------------------
-        #   Iterate through and get the DatasetVersion id
-        #        of the latest published version
+        # Iterate through and get the DatasetVersion id
+        #        of the latest version
         # -----------------------------
         dsv_ids = []
         last_dataset_id = None
@@ -299,8 +297,6 @@ class StatsMakerDatasets(StatsMakerBase):
         # -----------------------------
         search_attrs2 = dict(datasetversion__id__in=dsv_ids,\
                         datasetfieldtype__id=ds_field_type.id)
-        #search_attrs2 = dict(datasetversion=dataset_version,\
-        #                datasetfieldtype=ds_field_type)
         ds_field_ids = DatasetField.objects.select_related('datasetfieldtype').filter(**search_attrs2).values_list('id', flat=True)
 
         # -----------------------------
@@ -314,6 +310,11 @@ class StatsMakerDatasets(StatsMakerBase):
             ).values('subject', 'cnt'\
             ).order_by('-cnt')
 
+
+        # -----------------------------
+        # Iterate through the vocab values,
+        # process the totals, calculate percentage
+        # -----------------------------
         running_total = 0
         formatted_records = []  # move from a queryset to a []
         total_count = sum([rec['cnt'] for rec in ds_values]) + 0.00

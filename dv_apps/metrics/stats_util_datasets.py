@@ -6,10 +6,16 @@ This may be used for APIs, views with visualizations, etc.
 from collections import OrderedDict
 
 from django.db import models
+from django.utils.encoding import python_2_unicode_compatible
 
 from dv_apps.utils.date_helper import get_month_name_abbreviation,\
     month_year_iterator
-from dv_apps.datasets.models import Dataset
+from dv_apps.datasets.models import Dataset, DatasetVersion
+from dv_apps.datasetfields.models import DatasetField,\
+    DatasetFieldValue, DatasetFieldType,\
+    DatasetFieldControlledVocabularyValue,\
+    ControlledVocabularyValue
+
 from dv_apps.metrics.stats_util_base import StatsMakerBase, TruncYearMonth
 from dv_apps.dvobjects.models import DVOBJECT_CREATEDATE_ATTR
 from dv_apps.metrics.stats_result import StatsResult
@@ -207,6 +213,113 @@ class StatsMakerDatasets(StatsMakerBase):
             formatted_records.append(d)
 
         return StatsResult.build_success_result(formatted_records, sql_query)
+
+
+    def get_dataset_subject_counts_published(self):
+        """Published Dataset counts by subject"""
+
+        return self.get_dataset_subject_counts(**self.get_is_published_filter_param())
+
+
+    def get_dataset_subject_counts_unpublished(self):
+        """Unpublished Dataset counts by subject"""
+
+        return self.get_dataset_subject_counts(**self.get_is_unpublished_filter_param())
+
+
+    def get_dataset_subject_counts(self,  **extra_filters):
+        """Dataset counts by subjet"""
+
+        # Was an error found earlier?
+        #
+        if self.was_error_found():
+            return self.get_error_msg_return()
+
+        # -----------------------------------
+        # (1) Build query filters
+        # -----------------------------------
+
+        # Retrieve the date parameters
+        #
+        filter_params = self.get_date_filter_params()
+
+        # Add extra filters from kwargs
+        #
+        if extra_filters:
+            for k, v in extra_filters.items():
+                filter_params[k] = v
+
+        # -----------------------------
+        # Get the DatasetFieldType
+        # -----------------------------
+        search_attrs = dict(name='subject',\
+                            required=True,\
+                            metadatablock__name='citation')
+        try:
+            ds_field_type = DatasetFieldType.objects.get(**search_attrs)
+        except DatasetFieldType.DoesNotExist:
+            return False, 'DatasetFieldType for Citation title not found.  (kwargs: %s)' % search_attrs
+
+        # -----------------------------
+        # Get latest DatasetVersion ids
+        # -----------------------------
+
+        # Get published DatasetVersion info
+        id_info_list = DatasetVersion.objects.filter(releasetime__isnull=False\
+            ).values('id', 'dataset_id', 'versionnumber', 'minorversionnumber'\
+            ).order_by('dataset_id', '-versionnumber', '-minorversionnumber')
+
+        # -----------------------------
+        #   Iterate through and get the DatasetVersion id
+        #        of the latest published version
+        # -----------------------------
+        dsv_ids = []
+        last_dataset_id = None
+        for idx, info in enumerate(id_info_list):
+            '''d = OrderedDict()
+            d['dataset_id'] = info['dataset_id']
+            d['versionnumber'] = info['versionnumber']
+            d['minorversionnumber'] = info['minorversionnumber']
+            d['id'] = info['id']
+            '''
+            if idx == 0 or info['dataset_id'] != last_dataset_id:
+                dsv_ids.append(info['id'])
+
+            last_dataset_id = info['dataset_id']
+
+        # -----------------------------
+        # Get the DatasetField ids
+        # -----------------------------
+        search_attrs2 = dict(datasetversion__id__in=dsv_ids,\
+                        datasetfieldtype__id=ds_field_type.id)
+        #search_attrs2 = dict(datasetversion=dataset_version,\
+        #                datasetfieldtype=ds_field_type)
+        ds_field_ids = DatasetField.objects.select_related('datasetfieldtype').filter(**search_attrs2).values_list('id', flat=True)
+
+        # -----------------------------
+        # Finally, get the ControlledVocabularyValue
+        # -----------------------------
+        ''''
+    DatasetFieldControlledVocabularyValue,\
+    ControlledVocabularyValue
+        '''
+        ds_values = DatasetFieldControlledVocabularyValue.objects.select_related('controlledvocabularyvalues'\
+            ).filter(datasetfield__in=ds_field_ids\
+            ).values_list('controlledvocabularyvalues__strvalue', flat=True)
+
+        ds_values = list(ds_values)
+
+        print 'ds_values', ds_values
+        data_dict = OrderedDict()
+        data_dict['cnt_dsv_ids'] = len(dsv_ids)
+        data_dict['cnt_ds_field_ids'] = len(ds_field_ids)
+        data_dict['cnt_values'] = len(ds_values)
+        data_dict['ds_field_ids'] = len(ds_field_ids)
+        data_dict['dsv_ids'] = dsv_ids
+        data_dict['ds_values'] = ds_values
+
+        return StatsResult.build_success_result(data_dict)
+
 
 
 

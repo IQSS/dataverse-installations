@@ -87,6 +87,7 @@ class DataverseTheme(models.Model):
         db_table = 'dataversetheme'
 
 
+@python_2_unicode_compatible
 class DataverseContact(models.Model):
     """
     Bleh. Why isn't the FK a Dataverse?

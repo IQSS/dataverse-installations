@@ -62,3 +62,33 @@ class DatasetCountByMonthView(StatsViewSwagger):
             stats_result = stats_datasets.get_dataset_counts_by_create_date_published()
 
         return stats_result
+
+
+
+class DatasetSubjectCounts(StatsViewSwagger):
+    """API View - Number of Datasets by Subject"""
+
+    # Define the swagger attributes
+    # Note: api_path must match the path in urls.py
+    #
+    api_path = '/datasets/count/by-subject'
+    summary = ('Number of Datasets by Subject')
+    description = ('Number of Datasets by Subject')
+    description_200 = ('Number of Datasets by Subject')
+    tags = [StatsViewSwagger.TAG_DATASETS]
+
+
+    def get_stats_result(self, request):
+        """Return the StatsResult object for this statistic"""
+        stats_datasets = StatsMakerDatasets(**request.GET.dict())
+
+        pub_state = self.get_pub_state(request)
+
+        if pub_state == self.PUB_STATE_ALL:
+            stats_result = stats_datasets.get_dataset_subject_counts()
+        elif pub_state == self.PUB_STATE_UNPUBLISHED:
+            stats_result = stats_datasets.get_dataset_subject_counts_unpublished()
+        else:
+            stats_result = stats_datasets.get_dataset_subject_counts_published()
+
+        return stats_result

@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils.encoding import python_2_unicode_compatible
 
 from dv_apps.dvobjects.models import DvObject
 from dv_apps.datasets.models import DatasetVersion
@@ -89,10 +90,13 @@ class DatasetField(models.Model):
         db_table = 'datasetfield'
 
 
-
+@python_2_unicode_compatible
 class DatasetFieldControlledVocabularyValue(models.Model):
     datasetfield = models.ForeignKey(DatasetField, primary_key=True)
     controlledvocabularyvalues = models.ForeignKey(ControlledVocabularyValue)
+
+    def __str__(self):
+        return '%s' % self.datasetfield
 
     class Meta:
         managed = False
@@ -133,6 +137,7 @@ class DatasetFieldCompoundValue(models.Model):
         db_table = 'datasetfieldcompoundvalue'
 
 
+@python_2_unicode_compatible
 class DatasetFieldValue(models.Model):
     displayorder = models.IntegerField(blank=True, null=True)
     value = models.TextField(blank=True, null=True)

@@ -6,6 +6,8 @@ This may be used for APIs, views with visualizations, etc.
 from collections import OrderedDict
 
 from django.db import models
+from django.db.models import F
+
 from django.utils.encoding import python_2_unicode_compatible
 
 from dv_apps.utils.date_helper import get_month_name_abbreviation,\
@@ -276,12 +278,6 @@ class StatsMakerDatasets(StatsMakerBase):
         dsv_ids = []
         last_dataset_id = None
         for idx, info in enumerate(id_info_list):
-            '''d = OrderedDict()
-            d['dataset_id'] = info['dataset_id']
-            d['versionnumber'] = info['versionnumber']
-            d['minorversionnumber'] = info['minorversionnumber']
-            d['id'] = info['id']
-            '''
             if idx == 0 or info['dataset_id'] != last_dataset_id:
                 dsv_ids.append(info['id'])
 
@@ -297,26 +293,43 @@ class StatsMakerDatasets(StatsMakerBase):
         ds_field_ids = DatasetField.objects.select_related('datasetfieldtype').filter(**search_attrs2).values_list('id', flat=True)
 
         # -----------------------------
-        # Finally, get the ControlledVocabularyValue
+        # Finally, get the ControlledVocabularyValues
         # -----------------------------
-        ''''
-    DatasetFieldControlledVocabularyValue,\
-    ControlledVocabularyValue
-        '''
         ds_values = DatasetFieldControlledVocabularyValue.objects.select_related('controlledvocabularyvalues'\
             ).filter(datasetfield__in=ds_field_ids\
-            ).values_list('controlledvocabularyvalues__strvalue', flat=True)
+            ).annotate(subject=F('controlledvocabularyvalues__strvalue')
+            ).values('subject'\
+            ).annotate(cnt=models.Count('controlledvocabularyvalues__id')\
+            ).values('subject', 'cnt'\
+            ).order_by('-cnt')
 
-        ds_values = list(ds_values)
+        running_total = 0
+        formatted_records = []  # move from a queryset to a []
+        total_count = sum([rec['cnt'] for rec in ds_values]) + 0.00
 
-        print 'ds_values', ds_values
+        for info in ds_values:
+            rec = OrderedDict()
+            rec['subject'] = info['subject']
+
+            # count
+            rec['cnt'] = info['cnt']
+
+            # percent
+            float_percent = info['cnt'] / total_count
+            rec['percent_string'] = '{0:.1%}'.format(float_percent)
+
+            # total count
+            rec['total_count'] = int(total_count)
+
+            formatted_records.append(rec)
+
         data_dict = OrderedDict()
-        data_dict['cnt_dsv_ids'] = len(dsv_ids)
-        data_dict['cnt_ds_field_ids'] = len(ds_field_ids)
-        data_dict['cnt_values'] = len(ds_values)
-        data_dict['ds_field_ids'] = len(ds_field_ids)
-        data_dict['dsv_ids'] = dsv_ids
-        data_dict['ds_values'] = ds_values
+        data_dict['count'] = len(formatted_records)
+        data_dict['ds_values'] = formatted_records
+        #data_dict['cnt_dsv_ids'] = len(dsv_ids)
+        #data_dict['cnt_ds_field_ids'] = len(ds_field_ids)
+        #data_dict['ds_field_ids'] = len(ds_field_ids)
+        #data_dict['dsv_ids'] = dsv_ids
 
         return StatsResult.build_success_result(data_dict)
 

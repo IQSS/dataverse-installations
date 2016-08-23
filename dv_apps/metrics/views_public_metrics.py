@@ -85,6 +85,11 @@ def view_public_visualizations(request, **kwargs):
         resp_dict['dataset_counts_by_month_sql'] = stats_monthly_ds_counts.sql_query
 
 
+    stats_ds_count_by_subject = stats_datasets.get_dataset_subject_counts_published()
+    if not stats_monthly_ds_counts.has_error():
+        resp_dict['dataset_counts_by_subject'] = stats_ds_count_by_subject.result_data['ds_values']
+        #resp_dict['dataset_counts_by_month_sql'] = stats_monthly_ds_counts.sql_query
+
     # -------------------------
     # Files created, by month
     # -------------------------

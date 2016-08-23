@@ -2,7 +2,7 @@
 Serialize a Dataverse object, similar to the native API:
     http://guides.dataverse.org/en/latest/api/native-api.html
 
-Note: creator may be inaccurate.  These model assume it's an AuthenticatedUser
+Note: creator may be inaccurate.  These models assume it's an AuthenticatedUser
     - When is it not?  (e.g. group creates a Dataverse)
 """
 from collections import OrderedDict
@@ -14,8 +14,9 @@ from dv_apps.dataverses.models import Dataverse, DataverseContact, DataverseThem
 
 
 class DataverseUtil(object):
+    """Serialize a Dataverse object, similar to the Dataverse native API"""
 
-    # HACK URL - NEEDs to be based on installation
+    # Hack URL - NEEDs to be based on installation
     URL_BASE = 'https://dataverse.harvard.edu/dataverse'
 
     TIMESTAMP_MASK = '%Y-%m-%d %H:%M:%S'

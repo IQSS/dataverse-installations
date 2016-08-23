@@ -57,10 +57,12 @@ INSTALLED_APPS = [
 
     # Maps
     'dv_apps.installations',
-
-    # Experiments/Add-ons
-    #'dv_apps.data_previewer',
+    # Metrics
     'dv_apps.metrics',
+
+    # Experiments
+    #'dv_apps.data_previewer',
+    #'dv_apps.dataset_docs',
     'dv_apps.dvobject_api',
 ]
 

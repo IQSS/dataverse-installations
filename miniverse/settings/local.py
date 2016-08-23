@@ -21,7 +21,7 @@ DATABASES = {
     },
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'dvndb',
+        'NAME': 'dvndb_demo',
         'USER': 'postgres',
         'PASSWORD': '123',
         'HOST': 'localhost'

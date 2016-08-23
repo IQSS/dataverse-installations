@@ -1,41 +1,113 @@
 """
+Serialize a Dataset object, similar to the native API:
+    http://guides.dataverse.org/en/latest/api/native-api.html
+
+Note: creator may be inaccurate.  These models assume it's an AuthenticatedUser
+    - When is it not?  (e.g. group creates a Dataverse)
+"""
+from collections import OrderedDict
+
+from django.forms.models import model_to_dict
+
+from dv_apps.datasets.models import Dataset, DatasetVersion
+from dv_apps.datasetfields.utils import get_dataset_title
+from dv_apps.datasetfields.metadata_formatter import MetadataFormatter
 
 
-import requests
-dv_ids = [5, 6, 7, 8, 9, 10, 11, 16, 17, 18, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 34, 35, 36, 37, 38, 39, 40, 41, 43, 44, 45, 46, 47, 48, 49, 51, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 98, 99, 100, 101, 102, 104, 105]
 
-ds_ids = [46587, 46589, 46590, 46598, 46603, 46612, 46630, 46652, 46657, 46671, 46675, 46700, 46735, 46744, 46768, 46783, 46784, 46794, 46808, 46832, 46839, 46877, 46892, 46893, 46912, 46928, 46929, 46938, 46955, 46958, 47001, 47018, 47022, 47037, 47051, 47066, 47069, 47078, 47080, 47081, 47097, 47112, 47130, 47152, 47169, 47172, 47191, 47220, 47259, 47294]
+class DatasetUtil(object):
+    """Serialize a Dataset object, similar to the Dataverse native API"""
 
-url = 'https://dataverse.harvard.edu/api/datasets/4118'
-url = '127.0.0.1:8000/dvobjects/api/v1/dataverses/8'
+    # Hack URL - NEEDs to be based on installation
+    URL_BASE = 'https://dataverse.harvard.edu/dataset.xhtml?persistentId='
+
+    TIMESTAMP_MASK = '%Y-%m-%d %H:%M:%S'
+    KEY_ORDER1 = ['id',  'name', 'alias', 'dv_link',\
+         'affiliation', 'dataversetype', 'description',\
+         'publicationInfo',\
+         'contacts', 'creator',\
+         'ownerInfo', 'isRootDataverse',\
+         'theme',\
+         'metadatablockroot', 'templateroot',  'permissionroot',\
+         'themeroot',  'facetroot', 'guestbookroot',\
+         ]
 
 
-demo_dv_ids = [1, 2, 3, 4, 5, 6, 7, 27, 41, 48, 55, 60, 70, 84, 116, 119, 120, 121, 122, 127, 135, 142, 143, 150, 152, 159, 162, 166, 170, 171, 176, 179, 181, 185, 186, 187, 193, 196, 197, 205, 247, 253, 262, 269, 279, 283, 287, 293, 303, 305, 347, 352, 353, 354, 355, 363, 364, 365, 366, 368, 369, 380, 388, 394, 398, 399, 417, 427, 428, 436, 465, 497, 502, 505, 511, 524, 528, 531, 532, 537, 538, 541, 542, 544, 545, 546, 547, 548, 550, 551, 552, 554, 555, 559, 583, 584, 585, 588, 594, 598, 621, 626, 627, 636, 645, 653, 656, 663, 668, 675, 684, 685, 689, 692, 821, 824, 829, 830, 831, 837, 865, 1066, 1075, 1076, 1089, 1090, 1091, 1093, 1108, 1113, 1116, 1123, 1125, 1130, 1145, 1148, 1153, 1157, 1160, 1183, 1188, 1191, 1200, 1201, 1204, 1207, 1210, 1216, 1230, 1243, 1270, 1282, 1286, 1287, 1290, 1298, 1307, 1310, 1324, 1327, 1331, 1348, 1353, 1356, 1361, 1365, 1367, 1369, 1372, 1373, 1374, 1397, 1398, 1399, 1401, 1409, 1410, 1424, 1431, 1438, 1453, 1456, 1457, 1460, 1463, 1466, 1467, 1470, 1473, 1474, 1591, 1597, 1601, 1611, 1612, 1617, 1620, 1626, 1638, 1641, 1653, 1658, 1659, 1660, 1661, 1662, 1663, 1664, 1693, 1694, 1700, 1701, 1705, 1712, 1713, 1714, 1719, 1720, 1721, 1722, 1723, 1724, 1725, 1726, 1735, 1742, 1749, 1753, 1764, 1773, 1776, 1777, 1778, 1779, 1780, 1826, 1827, 1896, 1898, 2007, 2016, 2109, 2110, 2116, 2121, 2122, 2125, 2133, 2139, 2149, 2160, 2170, 2174, 2194, 2199, 2203, 2205, 2206, 2214, 2219, 2244, 2253, 2275, 2276, 2277, 2278, 2384, 2385, 2393, 2403, 2404, 2406, 2416, 2421, 2436, 2441, 2442, 2447, 2451, 2457, 2467, 2472, 2475, 2478, 2481, 2484, 2492, 2497, 2501, 2537, 2559, 2573, 2576, 2582, 2587, 2590, 2592, 2598, 2599, 2602, 2607, 2663, 2686, 2695, 2700, 2706, 2712, 2714, 2720, 2725, 2734, 2742, 2759, 2845, 2858, 3004, 3005, 3006, 3011, 3018, 3024, 3025, 3055, 3063, 3076, 3085, 3087, 3089, 3099, 3101, 3104, 3105, 3112, 3153, 3174, 3179, 3188, 3189, 3307, 3308, 3319, 3411, 3423, 3425, 3438, 4411, 4414, 4416, 4421, 4422, 4425, 4439, 4933, 4934, 5044, 5537]
+    def __init__(self, dataset_version):
+        assert isinstance(dataset_version, DatasetVersion), "You must pass a Dataverse object!"
 
-def run_api_call(metrics=False, limit=100):
-    cnt = 0
-    for id in demo_dv_ids in dv_ids:
-        cnt += 1
+        # set the DatasetVersion
+        self.dsv = dataset_version
 
-        # format url
+        # set the Dataset
+        self.ds = dataset_version.dataset
+
+        # set the DvObject
+        self.dvobject = dataset_version.dataset.dvobject
+
+
+    def as_json(self):
+        """Serialize the Dataset Version"""
+
+        # Get the title
         #
-        if metrics:
-            url = 'https://services-dataverse.herokuapp.com/dvobjects/api/v1/dataverses/%s' % id
+        success, dataset_title_or_err = get_dataset_title(self.dsv)
+        if not success:
+            return False, \
+                dict(error_message='Could not find Dataset title. %s' % dataset_title_or_err)
+
+        # -----------------------------------
+        # Hold the Dataset info, starting with title
+        # -----------------------------------
+        dsv_metadata = OrderedDict()
+        dsv_metadata['title'] = dataset_title_or_err
+        dsv_metadata['id'] = self.dvobject.id
+
+        # doi/handle
+        #
+        persistent_id_info = OrderedDict()
+        persistent_id_info['protocol'] = self.ds.protocol
+        persistent_id_info['authority'] = self.ds.authority
+        persistent_id_info['identifier'] = self.ds.identifier
+        persistent_id_info['persistentId'] = self.ds.identifier_string()
+
+        dsv_metadata['persistentIdInfo'] = persistent_id_info
+
+        # semanticVersionInfo
+        #
+        semantic_version_info = OrderedDict()
+        semantic_version_info['semantic_version'] = self.dsv.get_semantic_version()
+        semantic_version_info['versionNumber'] = self.dsv.versionnumber
+        semantic_version_info['versionMinorNumber'] = self.dsv.minorversionnumber
+        semantic_version_info['versionState'] = self.dsv.versionstate
+        dsv_metadata['semanticVersionInfo'] = semantic_version_info
+
+        dsv_metadata['dv_link'] = self.get_dv_link(semantic_version_info['semantic_version'])
+
+
+
+        # -----------------------------------
+        # Format the metadata blocks -- the heavy lift...
+        # -----------------------------------
+        mdf = MetadataFormatter(self.dsv)
+        dsv_metadata['metadata_blocks'] = mdf.as_dict().get('metadata_blocks',{})
+
+        return dsv_metadata
+
+    def get_dv_link(self, semantic_version):
+        """
+        Format a link to this Dataverse.
+        - Scratch work.  Need to get URL_BASE from settings or sites framework
+        """
+        if semantic_version:
+            return '%s%s&?version=%s' % (self.URL_BASE,\
+                self.ds.identifier_string(),\
+                semantic_version)
         else:
-            url = 'https://demo.dataverse.org/api/dataverses/%s' % id
+            return '%s/%s' % (self.URL_BASE,\
+                self.ds.identifier_string())
 
-
-        # make the call
-        #
-        print '(%d) %s' % (cnt, url)
-        r = requests.get(url)
-        print r.status_code
-
-        if cnt == limit:
-            break
-
-run_api_call()
-
+"""
 {
   "status": "OK",
   "data": {

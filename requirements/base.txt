@@ -10,3 +10,6 @@ dj-database-url==0.4.1
 
 # Serving static files
 whitenoise==3.2
+
+# Initially for sqlite use and until postgres update for bson (or nosql decision)
+jsonfield==1.0.3

@@ -227,8 +227,8 @@ class MetadataFormatter(object):
         #    msg('%s -> [%s]' % (key, val))
         return vocab_lookup
 
-    def as_json(self):
-
+    def as_json(self, as_dict=False):
+        """Return as a JSON string"""
         d = OrderedDict()
         for mb_name, mb in self.metadata_blocks.items():
             val = mb.as_json()
@@ -237,4 +237,14 @@ class MetadataFormatter(object):
 
         overarching_dict = OrderedDict()
         overarching_dict['metadata_blocks'] = d
-        return json.dumps(overarching_dict, indent=4)
+
+        if as_dict:
+            return overarching_dict
+        else:
+            return json.dumps(overarching_dict, indent=4)
+
+
+    def as_dict(self):
+        """Return as an OrderedDict"""
+
+        return self.as_json(as_dict=True)

@@ -10,7 +10,10 @@ May (potentially) be used to:
     - Generate API responses
     - Supply core data to render parts of the dataset landing page
         - e.g. Metadata blocks, file listings
-    -
+    - Creating Solr documents for indexing
+    - Format metadata for Dublin core
+    - Export metadata as JSON-LD
+    - Just get the metadata in a basic, usable format
 """
 from __future__ import unicode_literals
 

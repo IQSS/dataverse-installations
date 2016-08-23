@@ -12,7 +12,7 @@ LOCAL_SETUP_DIR = join(PROJECT_ROOT, 'test_setup')
 if not isdir(LOCAL_SETUP_DIR):
     makedirs(LOCAL_SETUP_DIR)
 
-DATABASE_ROUTERS = ['miniverse.db_routers.db_dataverse_router.DataverseRouter', ]
+DATABASE_ROUTERS = ['miniverse.db_routers.db_dataverse_router.DataverseRouter',]
 
 DEBUG = True
 # Need when running DEBUG = False
@@ -25,8 +25,6 @@ MIDDLEWARE_CLASSES += [
     # Restrict by IP address
     'dv_apps.admin_restrict.middleware.RestrictAdminMiddleware',
 ]
-
-
 
 DATABASES = {
     'default': {
@@ -46,49 +44,15 @@ DATABASES = {
 }
 
 
-
 """
-    'miniverse_admin_db': {
+    'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'metrics_internal',   #  dvn_thedata dvndb_demo
         'USER': 'rp', # dv_readonly, postgres
         'PASSWORD': '123',
         'HOST': 'localhost',
-        'TEST': {
-            'MIRROR': 'default',
         },
     },
-'miniverse_admin_db': {
-    'ENGINE': 'django.db.backends.sqlite3',
-    'NAME': join(LOCAL_SETUP_DIR, 'metrics_auth.db3'),
-    'TEST': {
-        'MIRROR': 'default',
-    },
-},
-
-'default': {
-    'ENGINE': 'django.db.backends.postgresql_psycopg2',
-    'NAME': 'dvndb_demo',
-    'USER': 'postgres',
-    'PASSWORD': '123',
-    'HOST': 'localhost'
-}
-
-'default': {
-    'ENGINE': 'django.db.backends.postgresql_psycopg2',
-    'NAME': 'dvndb',
-    'USER': 'rp',
-    'PASSWORD': '123',
-    'HOST': 'localhost'
-}
-
-'default': {
-    'ENGINE': 'django.db.backends.postgresql_psycopg2',
-    'NAME': 'dvn_thedata',
-    'USER': 'postgres',
-    'PASSWORD': '123',
-    'HOST': 'localhost'
-}
 """
 
 SESSION_COOKIE_NAME = 'dv_metrics'

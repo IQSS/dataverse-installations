@@ -56,3 +56,30 @@ Issues:
   - No routing on pages: https://services-dataverse.herokuapp.com/metrics/v1/files/count
   - Not routing on commands:
     - heroku run bin/qgsocksify python manage.py dbshell
+
+
+### email test
+
+```
+heroku run python manage.py shell
+
+from django.core.mail import send_mail
+
+to_mail = 'raman_prasad@harvard.edu'
+send_mail(
+    'Heroku dev - django server',
+    'We seem to have contact...',
+    'iqss.contact@gmail.com',
+    [to_mail],
+    fail_silently=False,
+)
+```
+
+```
+import requests
+my_referer = 'http://www.w3.org/hypertext/DataSources/Overview.html'
+url = 'https://services-dataverse.herokuapp.com/metrics/test-404'
+s = requests.Session()
+s.headers.update({'referer': my_referer})
+s.get(url)
+```

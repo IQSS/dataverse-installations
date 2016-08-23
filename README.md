@@ -1,5 +1,60 @@
-# miniverse
-Reference/Debug use: Using the Django ORM to explore the Dataverse database
+# Miniverse
+
+This repository may be configured to directly read an existing Dataverse 4.x database.
+This read access includes the ability to pull metrics from a Dataverse installation.  
+
+However, the repository was initially created as a way to explore/debug/prototype.
+
+## Functions
+
+- In use.  (Work by @jcabanas17):
+  - Retrieve basic metrics via API or as visualizations
+  - Map visualization of Dataverse affiliations
+- Explore/Prototype
+  - Using the Django ORM to explore the Dataverse database, create queries that are later translated to Java code
+  - Export caching metadata in JSON documents.   
+
+
+## Metrics set-up
+
+
+### Set-up
+
+This describes a set-up with two databases:
+  1. An existing Dataverse db in Postgres and credentials to at least read the db tables
+    - This Database is unmanaged.  e.g. Django does not update or attempt to update the tables.
+    - With proper user credentials, you can edit records via the Django Admin--but **DON'T** do this against a production Dataverse
+  2. A database for Django to create tables needed for the map and administration.  
+    - This can be any relational db.  (Have used Postgres and sqlite)
+
+
+### Step 1: Pip install, y'all
+
+This assumes you have [pip](https://pip.pypa.io/en/stable/installing/) and [virtualenv](https://virtualenv.pypa.io/en/stable/installation/) already running.
+
+- Pull down the miniverse repository
+- Install the requirements:
+
+```
+# cd into the repo
+cd miniverse
+
+# install the basic requirements
+pip install -r requirements/local.txt
+```
+
+### Step 2: Make a settings file
+
+Create a settings file for a two database set-up.
+
+```
+# Make your own settings file: copy "miniverse/settings/local_with_routing.py"
+#
+cp miniverse/settings/local_with_routing.py miniverse/settings/local_settings.py
+
+
+```
+
 
 Documentation
 

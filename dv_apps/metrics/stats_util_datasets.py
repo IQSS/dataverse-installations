@@ -226,7 +226,8 @@ class StatsMakerDatasets(StatsMakerBase):
     def get_dataset_subject_counts_unpublished(self):
         """Unpublished Dataset counts by subject"""
 
-        return self.get_dataset_subject_counts(**self.get_is_unpublished_filter_param())
+        return self.get_dataset_subject_counts(\
+                    **self.get_is_NOT_published_filter_param())
 
 
     def get_dataset_subject_counts(self,  **extra_filters):
@@ -251,6 +252,15 @@ class StatsMakerDatasets(StatsMakerBase):
             for k, v in extra_filters.items():
                 filter_params[k] = v
 
+
+        # -----------------------------
+        # (1) Filter time and published/unpublished
+        #   based on dataset id
+        # -----------------------------
+        dataset_ids = Dataset.objects.select_related('dvobject'\
+                        ).filter(**filter_params\
+                        ).values_list('dvobject__id', flat=True)
+
         # -----------------------------
         # Get the DatasetFieldType
         # -----------------------------
@@ -266,10 +276,11 @@ class StatsMakerDatasets(StatsMakerBase):
         # Get latest DatasetVersion ids
         # -----------------------------
 
-        # Get published DatasetVersion info
-        id_info_list = DatasetVersion.objects.filter(releasetime__isnull=False\
+        # Get DatasetVersion info
+        id_info_list = DatasetVersion.objects.filter(\
+            dataset__in=dataset_ids\
             ).values('id', 'dataset_id', 'versionnumber', 'minorversionnumber'\
-            ).order_by('dataset_id', '-versionnumber', '-minorversionnumber')
+            ).order_by('dataset_id', 'id', '-versionnumber', '-minorversionnumber')
 
         # -----------------------------
         #   Iterate through and get the DatasetVersion id

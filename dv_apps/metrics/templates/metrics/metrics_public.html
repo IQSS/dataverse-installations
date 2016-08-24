@@ -64,11 +64,14 @@
 </head>
 
 <body>
+<!-- START: Mock header -->
     <img src="{% static 'Screen Shot 2016-07-26 at 4.09.25 PM.png' %}" alt="My image" class="title">
+<!-- END: Mock header -->
 
     <h1>Harvard Dataverse</h1>
     <h2>Open for all researchers worldwide from all disciplines to deposit data</h2>
-    {% comment %}  {% endcomment %}
+
+<!-- START: Dataverses -->
 
     <div class="row">
         <div class="col-xs-12 col-md-12">
@@ -76,20 +79,22 @@
         </div>
     </div>
 
-    <!-- Viz block section -->
     <div class="row">
 
-    <div class="col-xs-12 col-md-6">
-    {% include "metrics/visualizations/dataverses.html" %}
+        <div class="col-xs-12 col-md-6">
+        {% include "metrics/visualizations/dataverses.html" %}
+        </div>
+
+        <div class="col-xs-12 col-md-6">
+        {% include "metrics/visualizations/dataverses_categories.html" %}
+        </div>
     </div>
 
-    <div class="col-xs-12 col-md-6">
-    {% include "metrics/visualizations/dataverses_categories.html" %}
-    </div>
+<!-- END: Dataverses -->
 
-    </div>
     <hr>
-     <!-- END -->
+
+ <!-- START: Datasets -->
 
     <div class="row">
         <div class="col-xs-12 col-md-12">
@@ -97,31 +102,28 @@
         </div>
     </div>
 
-       <!-- Viz block section -->
     <div class="row">
 
-    <div class="col-xs-12 col-md-6">
-    {% include "metrics/visualizations/datasets.html" %}
-    </div>
+        <div class="col-xs-12 col-md-6">
+        {% include "metrics/visualizations/datasets.html" %}
+        </div>
 
+        <div class="col-xs-12 col-md-6">
+        {% include "metrics/visualizations/datasets_by_subject.html" %}
+        {#% include "metrics/visualizations/file_content_types.html" %#}
+        </div>
 
-    <div class="col-xs-12 col-md-6">
-    {% include "metrics/visualizations/file_content_types.html" %}
     </div>
-
-    </div>
+<!-- END: Datasets -->
     <hr>
-     <!-- END -->
+<!-- START: Files -->
     <div class="row">
         <div class="col-xs-12 col-md-12">
             <h3>Published Files</h3>
         </div>
     </div>
 
-
-
-     <!-- Viz block section -->
-  <div class="row">
+    <div class="row">
       <div class="col-xs-12 col-md-6">
         {% include "metrics/visualizations/files_added.html" %}
       </div>
@@ -130,7 +132,19 @@
           {% include "metrics/visualizations/files_downloads.html" %}
       </div>
   </div>
-    <hr>
+<!-- END: Files -->
+
+  <hr>
+ <!-- START: Timestamp/footer -->
+  <div class="row">
+      <div class="col-xs-12">
+          <p style="padding:0 60px;">
+              <small>Stats generated: {% now "jS F Y H:i" %}</small>
+          </p>
+      </div>
+  </div>
+<!-- END: Timestamp/footer -->
+
 
 {% comment %}
 

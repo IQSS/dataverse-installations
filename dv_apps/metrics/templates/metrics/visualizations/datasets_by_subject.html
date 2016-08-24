@@ -1,0 +1,24 @@
+{% load humanize %}
+
+<div id="viz-datasets_by_subject" class="viz"></div>
+<script>
+
+  var dataset_counts_by_subject = [
+    {% for i in dataset_counts_by_subject %}
+        {"value":{{ i.cnt }},  "weight": {{ i.percent_number }}, "type": "{{ i.subject }}", "label":"{{ i.subject}} ({{ i.percent_string }})"}
+        {%if not forloop.last%},{%endif%}
+    {%endfor%}
+    ]
+
+      // instantiate d3plus
+      var visualization = d3plus.viz()
+        .container("#viz-datasets_by_subject")     // container DIV to hold the visualization
+        .data(dataset_counts_by_subject)     // data to use with the visualization
+        .type("tree_map")       // visualization type
+        .id("type")            // nesting keys
+        .text("label")
+        .size("value")      // sizing of blocks
+        .title("Datasets by Subject")         // key name to size bubbles
+        .draw()                // finally, draw the visualization
+
+</script>

@@ -13,7 +13,7 @@
 
     {% spaceless %}
     {%for i in dataverse_counts_by_type%}
-        {"dataverse count": {{i.type_count}}, "name": "{{ i.dataversetype_label }}", "percent_label" : "{{ i.percent_string }}"}{%if not forloop.last%},{%endif%}{%endfor%}
+        {"dataverse count": {{i.type_count}}, "name": "{{ i.dataversetype_label }} ({{ i.percent_string }})", "percent_label" : "{{ i.percent_string }}"}{%if not forloop.last%},{%endif%}{%endfor%}
     {% endspaceless %}
 ]
 

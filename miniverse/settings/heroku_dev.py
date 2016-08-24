@@ -8,7 +8,7 @@ from .base import *
 # -----------------------------------
 # DEBUG OFF
 # -----------------------------------
-DEBUG = True
+DEBUG = False
 
 # -----------------------------------
 # ADMINS and MANAGERS
@@ -53,9 +53,8 @@ SESSION_COOKIE_NAME = 'dv_metrics_dev'
 # INTERNAL_IPS for admin access
 # -----------------------------------
 INTERNAL_IPS = ['140.247', # Harvard
-    '65.112',               # Harvard
-    '10.252',                 # General internal address
-    '10.179',                 # General internal address
+    '65.112',            # Harvard
+    '10.252',            # Internal IP
     ]
 
 # -----------------------------------
@@ -63,7 +62,7 @@ INTERNAL_IPS = ['140.247', # Harvard
 # -----------------------------------
 MIDDLEWARE_CLASSES += [
     # Restrict by IP address
-    'dv_apps.admin_restrict.middleware.RestrictAdminMiddleware',
+    #'dv_apps.admin_restrict.middleware.RestrictAdminMiddleware',
     # Email about broken 404s
     'django.middleware.common.BrokenLinkEmailsMiddleware',
 ]

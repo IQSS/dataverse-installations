@@ -37,7 +37,7 @@ class RestrictAdminMiddleware(object):
         # -------------------------------------------
         if remote_addr is None:
             # We're not even here...
-            raise Http404
+            raise Http404('remote_addr: %s' % remote_addr)
 
         #--------------------------------------------------------
         # Is this an INTERNAL_IP address?
@@ -65,4 +65,4 @@ class RestrictAdminMiddleware(object):
         # You ain't got a thing, if you ain't got that admin
         # (no address match, show a 404)
         #--------------------------------------------------------
-        raise Http404
+        raise Http404('remote_addr: %s' % remote_addr)

@@ -7,7 +7,7 @@
   var file_counts_by_month = [
     {% for i in file_counts_by_month %}
 
-    {"Month": "{{ i.month_name }} {{ i.year_num }}", "monthNum": {{i.month_num}}, "name":"Total Files Added", "Total Files": {{i.running_total}}, "month_sort" : "{{ i.yyyy_mm }}", "display_name":"{{ i.month_name }} {{ i.year_num }}: {{ i.cnt|intcomma }} added / total: {{ i.running_total|intcomma }}"}
+    {"Month": "{{ i.month_name }} {{ i.year_num }}", "monthNum": {{i.month_num}}, "name":"Total Files Added", "Number of Files": {{i.running_total}}, "month_sort" : "{{ i.yyyy_mm }}", "display_name":"{{ i.month_name }} {{ i.year_num }}: {{ i.cnt|intcomma }} added / total: {{ i.running_total|intcomma }}"}
     {#{"Month": "{{ i.month_name }} {{ i.year_num }}", "monthNum": {{i.month_num}}, "name":"Monthly Files Added", "Total Files": {{i.cnt}}, "month_sort" : "{{ i.yyyy_mm }}", "display_name":"{{ i.month_name }} {{ i.year_num }}: {{ i.cnt|intcomma }} added / total: {{ i.running_total|intcomma }}"}#}
     {%if not forloop.last%},{%endif%}
     {%endfor%}
@@ -15,7 +15,6 @@
 
 
   // instantiate d3plus
-
   var attributes = [
     {"name": "Total Files Added", "hex": "#006699"},
     {"name": "Monthly Files Added", "hex": "#ffcc00"}
@@ -27,7 +26,7 @@
     .type("bar")       // visualization type
     .id("name")         // key for which our data is unique on
     .text({"value":"display_name"})       // key to use for display text
-    .y("Total Files")         // key to use for y-axis
+    .y("Number of Files")         // key to use for y-axis
     //.x({"stacked": true, "value": "month"}))          // key to use for x-axis
     .x({"value":"Month"})
     .attrs(attributes)
@@ -39,5 +38,4 @@
     .resize(true)
     .title("Files Added Over Time")
     .draw()             // finally, draw the visualization!
-
 </script>

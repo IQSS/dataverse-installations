@@ -9,12 +9,12 @@
 <div id="viz-dv-categories" class="viz"></div>
 
 <script>
-    var dataverse_type_data = [
+var dataverse_type_data = [
 
-    {% spaceless %}
-    {%for i in dataverse_counts_by_type%}
-        {"dataverse count": {{i.type_count}}, "name": "{{ i.dataversetype_label }} ({{ i.percent_string }})", "percent_label" : "{{ i.percent_string }}"}{%if not forloop.last%},{%endif%}{%endfor%}
-    {% endspaceless %}
+{% spaceless %}
+{%for i in dataverse_counts_by_type%}
+    {"dataverse count": {{i.type_count}}, "name": "{{ i.dataversetype_label }} ({{ i.percent_string }})", "percent_label" : "{{ i.percent_string }}"}{%if not forloop.last%},{%endif%}{%endfor%}
+{% endspaceless %}
 ]
 
   // instantiate d3plus
@@ -24,6 +24,8 @@
     .type("tree_map")   // visualization type
     .id("name")         // key for which our data is unique on
     .size("dataverse count")      // sizing of blocks
+    .color("dataverse count")
+    .legend(false)
     .resize(true)
     .title("Dataverses by Category")
     .draw()             // finally, draw the visualization!

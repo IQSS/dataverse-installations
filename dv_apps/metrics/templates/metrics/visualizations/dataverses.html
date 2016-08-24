@@ -8,8 +8,8 @@
 </div>
 {% endif %}
 <div id="viz-dataverses" class="viz"></div>
-<script>
 
+<script>
 {% comment %}
 Example of "dataverse_counts_by_month" that is being iterated through
 
@@ -21,9 +21,7 @@ Example of "dataverse_counts_by_month" that is being iterated through
       "month_name": "Apr",
       "running_total": 26
     },
-
 {% endcomment %}
-
 
   var dataverse_counts_by_month = [
     {%for i in dataverse_counts_by_month%}
@@ -33,7 +31,6 @@ Example of "dataverse_counts_by_month" that is being iterated through
     {%if not forloop.last%},{%endif%}
     {%endfor%}
     ]
-
 
   // instantiate d3plus
 
@@ -58,8 +55,7 @@ Example of "dataverse_counts_by_month" that is being iterated through
      })
     .legend({"labels":true})
     .resize(true)
-    .title("Growth Over Time")
+    .title("Dataverses Added Over Time")
     //.footer("{%lorem%}")
     .draw()             // finally, draw the visualization!
-
 </script>

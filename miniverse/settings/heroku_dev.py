@@ -8,7 +8,7 @@ from .base import *
 # -----------------------------------
 # DEBUG OFF
 # -----------------------------------
-DEBUG=False
+DEBUG=True
 
 # -----------------------------------
 # ADMINS and MANAGERS

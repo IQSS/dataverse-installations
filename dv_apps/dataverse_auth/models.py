@@ -1,4 +1,5 @@
 from django.db import models
+from datetime import datetime
 
 class AuthenticatedUser(models.Model):
     useridentifier = models.CharField(unique=True, max_length=255)
@@ -35,6 +36,15 @@ class ApiToken(models.Model):
 
     def __str__(self):
         return '%s - %s' % (self.authenticateduser, self.tokenstring)
+
+
+    def is_expired(self):
+        now = datetime.now()
+        if now > self.expiretime:
+            #self.disabled = True
+            #self.save()
+            return True
+        return False
 
     class Meta:
         ordering = ('-expiretime', 'authenticateduser')

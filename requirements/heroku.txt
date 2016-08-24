@@ -6,3 +6,6 @@ gunicorn==19.6.0
 # For S3 file storage on Heroku
 boto==2.42.0
 django-storages==1.5.0
+
+# debug
+django-debug-toolbar==1.4

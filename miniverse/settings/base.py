@@ -28,6 +28,9 @@ SECRET_KEY = 'SET-A-SECRET-KEY'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+METRICS_CACHE_VIEW = False
+METRICS_CACHE_VIEW_TIME = 60 * 60 * 2   # 2 HOURS
+
 ALLOWED_HOSTS = []
 
 # Application definition
@@ -161,6 +164,7 @@ TEMPLATES = [
         },
     },
 ]
+
 
 MEDIA_ROOT = join(PROJECT_ROOT,"media")
 MEDIA_URL = '/media/'

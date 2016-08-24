@@ -16,10 +16,9 @@ from dv_apps.metrics.stats_util_datasets import StatsMakerDatasets
 from dv_apps.metrics.stats_util_dataverses import StatsMakerDataverses
 from dv_apps.metrics.stats_util_files import StatsMakerFiles
 
-ONE_HOUR_IN_SECONDS = 60 * 60 * 1
-TWO_HOURS_IN_SECONDS = 60 * 60 * 2
+from dv_apps.utils.metrics_cache_time import get_metrics_cache_time
 
-#@cache_page(TWO_HOURS_IN_SECONDS)
+@cache_page(get_metrics_cache_time())
 def view_public_visualizations_last12(request):
     """
     Return visualizations covering the last 12 months+.
@@ -38,7 +37,7 @@ def view_public_visualizations_last12(request):
     return view_public_visualizations(request, **date_filters)
 
 
-#@cache_page(TWO_HOURS_IN_SECONDS)
+@cache_page(get_metrics_cache_time())
 def view_public_visualizations(request, **kwargs):
     """
     Return HTML/D3Plus visualizations for a variety of public statistics

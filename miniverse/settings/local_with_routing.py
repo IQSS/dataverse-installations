@@ -8,6 +8,9 @@ from .base import *
 
 SECRET_KEY = 'DEV-j94xnz*dj5f@_6-gt@ov)yjbcx0uagb7sv9a0j-(jo)j%m$el%'
 
+METRICS_CACHE_VIEW = True
+METRICS_CACHE_VIEW_TIME = 60 * 60 * 2   # 2 HOURS
+
 LOCAL_SETUP_DIR = join(PROJECT_ROOT, 'test_setup')
 if not isdir(LOCAL_SETUP_DIR):
     makedirs(LOCAL_SETUP_DIR)

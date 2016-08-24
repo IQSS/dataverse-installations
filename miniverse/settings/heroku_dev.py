@@ -10,6 +10,9 @@ from .base import *
 # -----------------------------------
 DEBUG = False
 
+METRICS_CACHE_VIEW = True
+METRICS_CACHE_VIEW_TIME = 60 * 60 * 2   # 2 HOURS
+
 # -----------------------------------
 # ADMINS and MANAGERS
 # -----------------------------------

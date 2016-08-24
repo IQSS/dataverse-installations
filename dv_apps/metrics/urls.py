@@ -1,6 +1,6 @@
 from django.conf.urls import url
 #from dv_apps.metrics.views import view_dataset_count
-from dv_apps.metrics import views, views_test,\
+from dv_apps.metrics import views_test,\
     views_public_metrics, views_swagger_spec, views_error_test
 from dv_apps.metrics.stats_views_datasets import DatasetCountByMonthView,\
     DatasetTotalCounts,\

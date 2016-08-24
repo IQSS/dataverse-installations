@@ -22,6 +22,7 @@ def view_map(request):
     d = dict(
         install_list = install_list,
         arr = arr,
+        installation_count=install_list.count()
     )
 
     d.update(get_total_published_counts())

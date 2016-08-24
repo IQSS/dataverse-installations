@@ -26,7 +26,8 @@
     .type("bar")       // visualization type
     .id("name")         // key for which our data is unique on
     .text({"html":"true", "value":"display_name"})       // key to use for display text
-    .y("Number of Datasets")         // key to use for y-axis
+    //.y("Number of Datasets")         // key to use for y-axis
+    .y({"value": "Number of Datasets", "scale": "discrete", "label": "Number of Datasetz"})
     .x({"value":"Month"})          // key to use for x-axis
     .attrs(attributes)
     .color("hex")

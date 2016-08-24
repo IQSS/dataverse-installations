@@ -1,5 +1,5 @@
 {% load staticfiles %}
-
+{% load humanize %}
 <!DOCTYPE html>
 <html>
   <head id='head'>
@@ -7,21 +7,25 @@
     <meta name="viewport" content="initial-scale=1.0">
     <meta charset="utf-8">
     {% load staticfiles %}
-    <link rel='stylesheet' href='{% static "CSS/map.css" %}'>
+    <link rel='stylesheet' href='{% static "maps/css/map.css" %}'>
   </head>
   <body style="background-color:#ffffff;">
 
     <!--Map Object-->
 
     <h1 id="prototype" style="font-size:140%; color:#333; padding: 20px 0 0 0;">Dataverse.org Map Prototype</h1>
-
+    <center><p>Available counts:
+        <br />dataverses: {{ total_dataverses|intcomma }}
+        <br />datasets: {{ total_datasets|intcomma }}
+        <br />files: {{ total_files|intcomma }}
+    </p></center>
     <div id="map" onload="listen()"></div>
 
     <script>
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
-    
-/*    NOTES for further development: 
-        
+
+/*    NOTES for further development:
+
 >>>>>>> Stashed changes
 BUGS
           Marker Z index issues should be resolved on highlighting and zooming

@@ -76,6 +76,7 @@ class DatasetSubjectCounts(StatsViewSwagger):
     description = ('Number of Datasets by Subject')
     description_200 = ('Number of Datasets by Subject')
     tags = [StatsViewSwagger.TAG_DATASETS]
+    result_name = StatsViewSwagger.RESULT_NAME_DATASET_SUBJECT_COUNTS
 
 
     def get_stats_result(self, request):

@@ -150,3 +150,19 @@ definitions:
     type: array
     items:
       $ref: "#/definitions/FileTypeCount"
+  DatasetSubjectCount:
+    properties:
+      subject:
+        type: string
+      count:
+        type: integer
+      percent_string:
+        type: string
+      percent_number:
+        type: number
+      total_count:
+        type: integer
+  DatasetSubjectCounts:
+    type: array
+    items:
+      $ref: "#/definitions/DatasetSubjectCount"

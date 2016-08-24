@@ -40,6 +40,7 @@ class StatsViewSwagger(View):
     RESULT_NAME_NUM_UNIQUE_EXT = 'NumberUniqueExtensions'
     RESULT_NAME_AFFILIATION_COUNTS = 'AffiliationCounts'
     RESULT_NAME_DATAVERSE_TYPE_COUNTS = 'DataverseTypeCount'
+    RESULT_NAME_DATASET_SUBJECT_COUNTS = 'DatasetSubjectCounts'
 
     TAG_METRICS = 'metrics'
     TAG_DATAVERSES = 'metrics - dataverses'

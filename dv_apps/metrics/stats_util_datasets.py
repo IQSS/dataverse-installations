@@ -325,11 +325,12 @@ class StatsMakerDatasets(StatsMakerBase):
 
             # count
             rec['cnt'] = info['cnt']
+            rec['count'] = info['cnt']
 
             # percent
             float_percent = info['cnt'] / total_count
             rec['percent_string'] = '{0:.1%}'.format(float_percent)
-            rec['percent_number'] = "%.3f" %(float_percent)
+            rec['percent_number'] = float("%.3f" %(float_percent))
 
             # total count
             rec['total_count'] = int(total_count)

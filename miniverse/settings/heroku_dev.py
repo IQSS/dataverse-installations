@@ -55,6 +55,7 @@ SESSION_COOKIE_NAME = 'dv_metrics_dev'
 INTERNAL_IPS = ['140.247', # Harvard
     '65.112',               # Harvard
     '10.252',                 # General internal address
+    '10.179',                 # General internal address
     ]
 
 # -----------------------------------

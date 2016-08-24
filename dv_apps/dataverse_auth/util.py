@@ -18,4 +18,8 @@ def is_apikey_valid(apikey):
     if api_info.is_expired():
         return False, "Sorry! Your API key is expired. "
 
+    if api_info.disabled is True:
+        return False, "Your API key is disabled."
+
+
     return True, None

@@ -26,5 +26,6 @@ def view_map(request):
     )
 
     d.update(get_total_published_counts())
+    
     print get_total_published_counts()
     return render(request, 'installations/map.html', d)

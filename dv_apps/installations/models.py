@@ -18,6 +18,30 @@ class Installation(models.Model):
     def __str__(self):
         return self.name
 
+    def view_logo_100(self):
+        #return self.logo.url
+        if self.logo:
+            return self.view_logo(force_width=100)
+        return 'n/a'
+    view_logo_100.allow_tags=True
+
+
+    def view_logo(self, force_width=None):
+        #return self.logo.url
+        if self.logo:
+            if force_width:
+                im = ('<img src="{0}" width="{1}"/ >'
+                    '<br />(width forced to {1}px)').format(\
+                        self.logo.url, force_width)
+                return im
+            else:
+                im = '<img src="%s" />' % (self.logo.url)
+                return im
+        return 'n/a'
+    view_logo.allow_tags=True
+
+    class Meta:
+        ordering = ('name',)
 
 
 @python_2_unicode_compatible

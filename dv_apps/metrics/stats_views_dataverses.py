@@ -42,7 +42,7 @@ class DataverseTotalCounts(StatsViewSwagger):
     summary = ('Simple count of published Dataverses')
     description = ('Returns number of published Dataverses')
     description_200 = 'Number of published Dataverses'
-    param_names = StatsViewSwagger.PUBLISH_PARAMS + StatsViewSwagger.PRETTY_JSON_PARAM
+    param_names = StatsViewSwagger.PARAM_DV_API_KEY + StatsViewSwagger.PUBLISH_PARAMS + StatsViewSwagger.PRETTY_JSON_PARAM
     tags = [StatsViewSwagger.TAG_DATAVERSES]
 
     def get_stats_result(self, request):
@@ -71,7 +71,7 @@ class DataverseAffiliationCounts(StatsViewSwagger):
     summary = ('Number of Dataverses by Affiliation')
     description = ('Number of Dataverses by Affiliation.')
     description_200 = 'Number of published Dataverses by Affiliation.'
-    param_names = StatsViewSwagger.PUBLISH_PARAMS + StatsViewSwagger.PRETTY_JSON_PARAM
+    param_names = StatsViewSwagger.PARAM_DV_API_KEY + StatsViewSwagger.PUBLISH_PARAMS + StatsViewSwagger.PRETTY_JSON_PARAM
     result_name = StatsViewSwagger.RESULT_NAME_AFFILIATION_COUNTS
     tags = [StatsViewSwagger.TAG_DATAVERSES]
 
@@ -100,7 +100,7 @@ class DataverseTypeCounts(StatsViewSwagger):
     summary = ('Number of Dataverses by Type')
     description = ('Number of Dataverses by Type.')
     description_200 = 'Number of published Dataverses by Type.'
-    param_names = StatsViewSwagger.PUBLISH_PARAMS +\
+    param_names = StatsViewSwagger.PARAM_DV_API_KEY + StatsViewSwagger.PUBLISH_PARAMS +\
                     StatsViewSwagger.PRETTY_JSON_PARAM +\
                     StatsViewSwagger.DV_TYPE_UNCATEGORIZED_PARAM
     result_name = StatsViewSwagger.RESULT_NAME_DATAVERSE_TYPE_COUNTS

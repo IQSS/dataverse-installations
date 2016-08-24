@@ -24,6 +24,7 @@ class StatsViewSwagger(View):
 
     BASIC_DATE_PARAMS = ['startDateParam', 'endDateParam', 'selectedYearParam']
 
+    PARAM_DV_API_KEY = ['dataverseAPIKey']
     PUBLISH_PARAMS = ['publicationStateParam']
     PUB_STATE_PUBLISHED = 'published'
     PUB_STATE_UNPUBLISHED = 'unpublished'
@@ -61,7 +62,7 @@ class StatsViewSwagger(View):
     summary = 'add summary'
     description = 'add description'
     description_200 = 'description for the HTTP 200 response'
-    param_names = BASIC_DATE_PARAMS + PUBLISH_PARAMS + PRETTY_JSON_PARAM
+    param_names = PARAM_DV_API_KEY + BASIC_DATE_PARAMS + PUBLISH_PARAMS + PRETTY_JSON_PARAM
     result_name = RESULT_NAME_MONTH_COUNTS
     tags = [TAG_METRICS]
     # ---------------------------------------------

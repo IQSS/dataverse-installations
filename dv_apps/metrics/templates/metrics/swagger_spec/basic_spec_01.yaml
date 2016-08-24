@@ -48,6 +48,7 @@ parameters:
     name: pub_state
     in: query
     description: Optional. Specify whether to include published records, unpublished records, or all. Defaults to "published"
+    type: string
     enum:
       - published
       - unpublished
@@ -66,6 +67,11 @@ parameters:
     name: ctype
     in: query
     description: Optional. Value from the Filemetadata 'contenttype' column. e.g. "application/octet-stream", "data/various-formats", etc
+    type: string
+  dataverseAPIKey:
+    name: key
+    in: query
+    description: Dataverse API key.  Required for production use.  See http://guides.dataverse.org/en/latest/api/native-api.html
     type: string
 
 # ------------------------------

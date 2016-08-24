@@ -15,7 +15,7 @@ class DatasetTotalCounts(StatsViewSwagger):
     summary = ('Simple count of published Datasets')
     description = ('Returns number of published Datasets')
     description_200 = 'Number of published Datasets'
-    param_names = StatsViewSwagger.PUBLISH_PARAMS + StatsViewSwagger.PRETTY_JSON_PARAM
+    param_names = StatsViewSwagger.PARAM_DV_API_KEY + StatsViewSwagger.PUBLISH_PARAMS + StatsViewSwagger.PRETTY_JSON_PARAM
     tags = [StatsViewSwagger.TAG_DATASETS]
 
     def get_stats_result(self, request):

@@ -11,7 +11,7 @@ class FileTotalCountsView(StatsViewSwagger):
     summary = ('Simple count of published Files')
     description = ('Returns number of published Files')
     description_200 = 'Number of published Files'
-    param_names = StatsViewSwagger.PUBLISH_PARAMS + StatsViewSwagger.PRETTY_JSON_PARAM
+    param_names = StatsViewSwagger.PARAM_DV_API_KEY + StatsViewSwagger.PUBLISH_PARAMS + StatsViewSwagger.PRETTY_JSON_PARAM
     result_name = StatsViewSwagger.RESULT_NAME_FILE_EXT_COUNTS
     tags = [StatsViewSwagger.TAG_DATAFILES]
 
@@ -131,7 +131,7 @@ class FileExtensionsWithinContentType(StatsViewSwagger):
     summary = ('File extension counts within a given content type.')
     description = ('File extension counts within a given content type.')
     description_200 = ('File extension counts within a given content type.')
-    param_names = StatsViewSwagger.FILE_CONTENT_TYPE_PARAM
+    param_names = StatsViewSwagger.PARAM_DV_API_KEY + StatsViewSwagger.FILE_CONTENT_TYPE_PARAM
     result_name = StatsViewSwagger.RESULT_NAME_FILE_EXT_COUNTS #+\
     tags = [StatsViewSwagger.TAG_DATAFILES]
 

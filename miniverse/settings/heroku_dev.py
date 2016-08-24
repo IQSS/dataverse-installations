@@ -8,7 +8,7 @@ from .base import *
 # -----------------------------------
 # DEBUG OFF
 # -----------------------------------
-DEBUG = False
+DEBUG = True
 
 # -----------------------------------
 # ADMINS and MANAGERS
@@ -17,7 +17,7 @@ DEBUG = False
 # Receive 500 errors
 #
 ADMINS = [ ('Raman', 'raman_prasad@harvard.edu'),
-    ('Raman (g)', 'prasad@g.harvard.edu')]
+    ('Raman (g.harvard)', 'prasad@g.harvard.edu')]
 
 # Receive 404 errors
 #

@@ -1,5 +1,7 @@
 from .stats_view_base import StatsViewSwagger
 from .stats_util_datasets import StatsMakerDatasets
+# limit the API rates
+from ratelimit.decorators import ratelimit
 
 
 
@@ -16,6 +18,7 @@ class DatasetTotalCounts(StatsViewSwagger):
     param_names = StatsViewSwagger.PUBLISH_PARAMS + StatsViewSwagger.PRETTY_JSON_PARAM
     tags = [StatsViewSwagger.TAG_DATASETS]
 
+    @ratelimit(key='ip', rate='1/h')
     def get_stats_result(self, request):
         """Return the StatsResult object for this statistic"""
         stats_datasets = StatsMakerDatasets(**request.GET.dict())

@@ -1,6 +1,6 @@
 from django.conf.urls import url
 #from dv_apps.metrics.views import view_dataset_count
-from dv_apps.metrics import views, views_api, views_test,\
+from dv_apps.metrics import views, views_test,\
     views_public_metrics, views_swagger, views_error_test
 from dv_apps.metrics.stats_views_datasets import DatasetCountByMonthView,\
     DatasetTotalCounts,\
@@ -36,8 +36,6 @@ urlpatterns = [
     url(r'^dv-tree2$', views_test.view_dataverse_tree2, name='view_dataverse_tree2'),
 
 
-
-    url(r'^datasets/count/simple2$', views.view_simple_dataset_count2, name='view_simple_dataset_count2'),
 ]
 
 

@@ -174,6 +174,7 @@ MIDDLEWARE_CLASSES += [
         - e.g., ```INTERNAL_IPS = ('127.0.0.1',)```
 
   - Dev note: The code for ```RestrictAdminMiddleware``` is in ```dv_apps/middeware.py```
+
 ---
 
 

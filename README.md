@@ -191,5 +191,4 @@ scripts/copy_logos_to_s3.py
 
 ## Load fixtures
 
-```heroku run python manage.py loaddata dv_apps/installations/fixtures/heroku_installations_2016_0811.json
-```
+  - ```heroku run python manage.py loaddata dv_apps/installations/fixtures/heroku_installations_2016_0811.json```

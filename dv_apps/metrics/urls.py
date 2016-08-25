@@ -22,6 +22,8 @@ urlpatterns = [
 
     url(r'^basic-viz/last12$', views_public_metrics.view_public_visualizations_last12, name='view_public_visualizations_last12'),
 
+    url(r'^basic-viz/last12-dataverse-org$', views_public_metrics.view_public_visualizations_last12_dataverse_org, name='view_public_visualizations_last12_dataverse_org'),
+
     url(r'^files/types$', views_public_metrics.view_files_by_type, name='view_files_by_type'),
 
     url(r'^files/extensions$', views_public_metrics.view_file_extensions_within_type, name='view_file_extensions_within_type'),

@@ -18,6 +18,9 @@ from dv_apps.metrics.stats_util_files import StatsMakerFiles
 
 from dv_apps.utils.metrics_cache_time import get_metrics_cache_time
 
+
+
+
 @cache_page(get_metrics_cache_time())
 def view_public_visualizations_last12(request):
     """
@@ -125,6 +128,20 @@ def view_public_visualizations(request, **kwargs):
 
     return render(request, 'metrics/metrics_public.html', resp_dict)
 
+
+
+@cache_page(get_metrics_cache_time())
+def view_public_visualizations_last12_dataverse_org(request):
+    """
+    Return visualizations covering the last 12 months+.
+
+    e.g. If it's July 23, 2016, it will start from July 1, 2015
+    e.g. If it's June 2, 2016, it will start from June 1, 2015
+    """
+    if not request.GET.get('iframe', None):
+        return HttpResponseRedirect('http://dataverse.org')
+
+    return view_public_visualizations(request)
 
 
 def view_file_extensions_within_type(request, file_type='application/octet-stream'):

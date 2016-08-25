@@ -168,14 +168,17 @@ Destroying test database for alias 'default'...
 
 ### Step 6: Load map test database
 
-From your virtual env run:
+- Load the latest fixture files.  The name will be in this format ```installations_YYYY_MMDD.json``` where YYYY_MMDD will be the date--use the latest.
+- From your virtual env run:
 
 ```
-python manage.py loaddata dv_apps/installations/fixtures/installations.json
+python manage.py loaddata dv_apps/installations/fixtures/installations_2016_0825.json
 ```
 
-If the command above worked, try this url:
+- If the command above worked, try this url:
   - http://127.0.0.1:8000/map
+
+- On Heroku, the command would be: ```heroku run python manage.py loaddata dv_apps/installations/fixtures/installations_2016_0825.json```
 
 ---
 

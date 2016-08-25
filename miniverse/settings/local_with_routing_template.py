@@ -33,6 +33,14 @@ METRICS_CACHE_VIEW_TIME = 60 * 60 * 2   # Cache for visualizations
 METRICS_CACHE_API_TIME = 60 * 15    # Cache for API endpoints
 
 # -----------------------------------
+# Swagger Specs.  The following attributes must be set to properly
+# generate the swagger spec and use the swagger UI
+# -----------------------------------
+SWAGGER_HOST = '127.0.0.1:8000' # temp, this should come from sites framework
+SWAGGER_SCHEME = 'http'
+
+
+# -----------------------------------
 # For local runs, this directory will include:
 #   - static files (after running 'collectstatic')
 #   - optional, sqlite db if that's used for the Django apps db

@@ -66,6 +66,10 @@ cp miniverse/settings/local_with_routing_template.py miniverse/settings/local_se
 1.  ```DATABASES```
   - Set the ```default``` credentials to a new database for holding the Django/Miniverse apps
   - Set the ```dataverse``` credentials to your existing Dataverse Postgres db
+1. ```SWAGGER_HOST```
+  - This defaults to ```127.0.0.1:8000```.  If you are not using the Django dev server, set it to your host.  e.g. "metrics.dataverse.org"
+1. ```SWAGGER_SCHEME```
+  - Related to the host aboe.  Set this value to ```http``` or ```https```.  Default is ```http```
 1. **Testing database**
   - If you are running the Django tests, go to (about) line 135 where it reads ```if 'test' in sys.argv or 'test_coverage' in sys.argv:```
   - Make these changes:
@@ -180,6 +184,7 @@ python manage.py loaddata dv_apps/installations/fixtures/installations_2016_0825
 
 - On Heroku, the command would be: ```heroku run python manage.py loaddata dv_apps/installations/fixtures/installations_2016_0825.json```
 
+---
 
 ## Logo update notes
 
@@ -221,8 +226,11 @@ In this scenario, the logo has changed, but also the references to it.  The step
 
 https://docs.google.com/document/d/1ThlSbw9LWtd12UzUmPxhXdlIlyCiROtBXdcIm8OGc2k/edit?usp=sharing
 
+## Swagger API docs
 
-# Other Setting Notes
+The swagger UI is available through the following url:
+
+  - http://127.0.0.1:8000/static/swagger-ui/index.html
 
 ## Restricted Django Admin - ```RestrictAdminMiddleware```
 

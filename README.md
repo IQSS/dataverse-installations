@@ -2,7 +2,7 @@
 
 # Miniverse
 
-This repository may be configured to directly read an existing Dataverse 4.x database.
+This repository may be configured to directly read an existing Dataverse 4.4+ database.
 This read access includes the ability to pull metrics from a Dataverse installation.  
 
 However, the repository was initially created as a way to explore/debug/prototype.
@@ -39,6 +39,9 @@ This assumes you have [pip](https://pip.pypa.io/en/stable/installing/) and [virt
 - Install the requirements:
 
 ```
+# Create a virtualenv
+mkvirtualenv miniverse
+
 # cd into the repo
 cd miniverse
 
@@ -48,15 +51,67 @@ pip install -r requirements/local.txt
 
 ### Step 2: Make a settings file
 
-Create a settings file for a two database set-up.
+- Create a settings file for a two database set-up.
 
 ```
-# Make your own settings file: copy "miniverse/settings/local_with_routing.py"
+# Make your own settings file: copy "miniverse/settings/local_with_routing_template.py"
 #
-cp miniverse/settings/local_with_routing.py miniverse/settings/local_settings.py
-
+cp miniverse/settings/local_with_routing_template.py miniverse/settings/local_settings.py
 ```
 
+- Within your new ```local_settings.py``` file, change the following values:
+
+1. ```SECRET_KEY``` - Set a new secret key value.
+  - See: https://docs.djangoproject.com/en/1.9/ref/settings/#secret-key
+  - Bad, insecure, but if you must run a local version _on your laptop_: http://www.miniwebtool.com/django-secret-key-generator/
+1.  ```DATABASES```
+  - Set the ```default``` credentials to a new database for holding the Django/Miniverse apps
+  - Set the ```dataverse``` credentials to your existing Dataverse Postgres db
+
+### Step 3: Make your settings file load when you invoke your virtualenv
+
+- From the top ```miniverse``` project directory, edit this file.  (Note: your virtualenv must be active.)
+
+```
+# open with vim
+vim $VIRTUAL_ENV/bin/postactivate
+# OR open with Atom (or open with anything else)
+atom vim $VIRTUAL_ENV/bin/postactivate
+```
+
+- Add 1 line to the bottom of the file so that the __complete__ file is:
+
+```
+#!/bin/bash
+# This hook is run after this virtualenv is activated.
+export DJANGO_SETTINGS_MODULE=miniverse.settings.local_settings
+```
+
+- Save and close the file
+- Type: ```source $VIRTUAL_ENV/bin/postactivate```
+
+- Now, each time you use your virtualenv, Django will know which settings to use
+
+### Step 4: Test your settings and run the dev server
+
+- Type ```python manage.py check```
+- If everything looks good, run these lines.  If any provide errors (not warnings),
+then re-examine.  (You will see a warning related to a "OneToOneField", that's OK)
+
+```
+python manage.py migrate    # creates needed tables
+python manage.py createsuperuser    # create a superuser for yourself
+python manage.py collectstatic    # collect your static files
+```
+
+See if things are working.  Try this:
+```
+python manage.py runserver
+```
+
+Try these urls:
+    - Visualization: http://127.0.0.1:8000/metrics/basic-viz
+    - APIs: http://127.0.0.1:8000/static/swagger-ui/index.html
 
 
 ### Maps Documentation

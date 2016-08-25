@@ -1,103 +1,142 @@
+"""
+Settings template for running two databases:
+    - Existing Dataverse databases (we only read it)
+    - Second database for Django core apps + Miniverse apps
+
+Please read through and change the settings where noted
+"""
 from __future__ import absolute_import
-import json
 import sys
 from os import makedirs
-from os.path import join, normpath, isdir, isfile
+from os.path import join, isdir
 from miniverse.testrunners.disable_migrations import DisableMigrations
 from .base import *
 
+# -----------------------------------
+# DEBUG
+#   - True: Dataverse Key required for API
+#       - Includes SQL for many of the API call results
+# -----------------------------------
+DEBUG = True
+
+# -----------------------------------
+# Secret key
+# -----------------------------------
 SECRET_KEY = 'DEV-j94xnz*dj5f@_6-gt@ov)yjbcx0uagb7sv9a0j-(jo)j%m$el%'
 
+# -----------------------------------
+# Metrics cache settings
+# -----------------------------------
 METRICS_CACHE_VIEW = True
-METRICS_CACHE_VIEW_TIME = 60 * 60 * 2   # 2 HOURS
-METRICS_CACHE_API_TIME = 30 * 60 
+METRICS_CACHE_VIEW_TIME = 60 * 60 * 2   # Cache for visualizations
+METRICS_CACHE_API_TIME = 60 * 15    # Cache for API endpoints
 
+# -----------------------------------
+# For local runs, this directory will include:
+#   - static files (after running 'collectstatic')
+#   - optional, sqlite db if that's used for the Django apps db
+# -----------------------------------
 LOCAL_SETUP_DIR = join(PROJECT_ROOT, 'test_setup')
 if not isdir(LOCAL_SETUP_DIR):
     makedirs(LOCAL_SETUP_DIR)
 
+# -----------------------------------
+# Database routing.
+#   e.g. between the Dataverse db and Django db
+# -----------------------------------
 DATABASE_ROUTERS = ['miniverse.db_routers.db_dataverse_router.DataverseRouter',]
 
-DEBUG = True
-
-# Need when running DEBUG = False
-ALLOWED_HOSTS = ('127.0.0.1', )
-
-# Need to set when RestrictAdminMiddleware is active
-INTERNAL_IPS = ('127.0.0.1',)
-
-MIDDLEWARE_CLASSES += [
-    # Restrict by IP address
-    'dv_apps.admin_restrict.middleware.RestrictAdminMiddleware',
-]
-
+# -----------------------------------
+# Database Setup
+#   - default -> Create a new db for the django/miniverse specific apps
+#       - May be any relational db type: postgres, sqlite, etc
+#   - dataverse -> Read-only users for the Dataverse Posgres db
+# -----------------------------------
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': join(LOCAL_SETUP_DIR, 'miniverse_auth.db3'),
+        'NAME': join(LOCAL_SETUP_DIR, 'miniverse_default.db3'),
     },
     'dataverse': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'dvndb_demo',   #  dvn_thedata dvndb_demo, dvndb
-        'USER': 'postgres', # dv_readonly, postgres
+        'NAME': 'dvndb_demo',
+        'USER': 'postgres',     # Set to a read-only user
         'PASSWORD': '123',
         'HOST': 'localhost',
         'TEST': {
-            'MIRROR': 'default',
+            'MIRROR': 'default', # For running tests, only create 1 db
         },
     }
 }
 
-"""
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'metrics_internal',   #  dvn_thedata dvndb_demo
-        'USER': 'rp', # dv_readonly, postgres
-        'PASSWORD': '123',
-        'HOST': 'localhost',
-        },
-    },
-"""
 
+# -----------------------------------
+# Need when running DEBUG = False
+# -----------------------------------
+ALLOWED_HOSTS = ('127.0.0.1', )
+
+# -----------------------------------
+# Need to set when RestrictAdminMiddleware is active
+# -----------------------------------
+INTERNAL_IPS = ('127.0.0.1',)
+
+
+# -----------------------------------
+# Optional MIDDLEWARE_CLASSES
+# -----------------------------------
+MIDDLEWARE_CLASSES += [
+    # Restrict by IP address
+    #'dv_apps.admin_restrict.middleware.RestrictAdminMiddleware',
+    # Email about broken 404s
+    #'django.middleware.common.BrokenLinkEmailsMiddleware',
+]
+
+# -----------------------------------
+# cookie name
+# -----------------------------------
 SESSION_COOKIE_NAME = 'dv_metrics'
 
-# where static files are collected
+# -----------------------------------
+# Where static files are collected
+# -----------------------------------
 STATIC_ROOT = join(LOCAL_SETUP_DIR, 'staticfiles')
 if not isdir(STATIC_ROOT):
     makedirs(STATIC_ROOT)
 
 
-########## TOOLBAR CONFIGURATION
+# -----------------------------------
+# Django Debug TOOLBAR CONFIGURATION
+# -----------------------------------
 # See: http://django-debug-toolbar.readthedocs.org/en/latest/installation.html#explicit-setup
+# -----------------------------------
 INSTALLED_APPS += (
     'debug_toolbar',
     'django.contrib.admindocs',
 )
 
-MIDDLEWARE_CLASSES += (
+MIDDLEWARE_CLASSES += [
     'debug_toolbar.middleware.DebugToolbarMiddleware',
-)
+]
 
 DEBUG_TOOLBAR_PATCH_SETTINGS = False
 
 # http://django-debug-toolbar.readthedocs.org/en/latest/installation.html
 
-########## END TOOLBAR CONFIGURATION
-
+# -----------------------------------
+# For running tests:
+#   - Only create 1 test database it has to be a Postgres db
+#   - Remove the Database routing
+#   - Disable migrations.  e.g., We don't want to run them
+#   - Set a new TEST_RUNNER:
+#          - We want to *create* unmanaged tables in the test db
+#   - Disable timezone awareness for fixture loading
+# -----------------------------------
 if 'test' in sys.argv or 'test_coverage' in sys.argv:  # Covers regular testing and django-coverage
 
     DATABASES['default']['ENGINE'] = 'django.db.backends.postgresql_psycopg2'
     DATABASES['default']['HOST'] = 'localhost'
     DATABASES['default']['USER'] = 'rp'
     DATABASES['default']['PASSWORD'] = '123'
-
-    # For the testing, only one database is created, using MIRROR:
-    #  - See: https://docs.djangoproject.com/en/1.10/topics/testing/advanced/#testing-primary-replica-configurations
-    #DATABASES['dataverse']['ENGINE'] = 'django.db.backends.postgresql_psycopg2'
-    #DATABASES['dataverse']['HOST'] = 'localhost'
-    #DATABASES['dataverse']['USER'] = 'rp'
-    #DATABASES['dataverse']['PASSWORD'] = '123'
-
 
     # The custom routers we're using to route certain ORM queries
     # to the remote host conflict with our overridden db settings.

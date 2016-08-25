@@ -121,3 +121,5 @@ staticfiles/*
 QUOTAGUARD-LICENSE.txt
 
 test_setup/metrics_auth.db3
+
+test_setup/miniverse_default.db3

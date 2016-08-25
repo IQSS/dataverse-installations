@@ -14,8 +14,9 @@ from .base import *
 
 # -----------------------------------
 # DEBUG
-#   - True: Dataverse Key required for API
+#   - False: Dataverse Key required for API
 #       - Includes SQL for many of the API call results
+#   - True: Django debug toolbar activated
 # -----------------------------------
 DEBUG = True
 

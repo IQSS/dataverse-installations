@@ -180,6 +180,37 @@ python manage.py loaddata dv_apps/installations/fixtures/installations_2016_0825
 
 - On Heroku, the command would be: ```heroku run python manage.py loaddata dv_apps/installations/fixtures/installations_2016_0825.json```
 
+
+## Logo update notes
+
+For logos (related to dv_apps.installations), we are  developing locally and then moving the logos and model references to dev/prod via github.  What does that mean?
+
+#### Scenario 1: Logo file changed directly (on local environment)
+
+If the logo is changed directly--not uploaded through the admin--then:
+
+  1.  Check it into github
+  2.  Push version to Heroku: ```git push heroku master```
+  3.  Copy the logos to S3 (which Heroku uses for media files):
+    - ```heroku run python scripts/copy_logos_to_s3.py```
+    - The ```copy_logos_to_s3.py``` script above reads the AWS creds from the Heroku environment
+    - If needed ```copy_logos_to_s3.py``` script may be run locally by putting the credentials in the local environ--or directly in the file (but don't check it in)
+
+That should do it.
+
+#### Scenario 2: Logo uploaded through local admin
+
+In this scenario, the logo has changed, but also the references to it.  The steps are similar, but note: 1 and 5:
+
+  1. Create new installation fixtures, naming the output file with the current date:
+    ```python manage.py dumpdata installations --indent=4 > dv_apps/installations/fixtures/installations_YYYY_MM.json```
+  2. Check the fixture and new image(s) into github.  (The file should have been uploaded to ```media/logos```)
+  3.  Push version to Heroku: ```git push heroku master```
+  4.  Copy the logos to S3 (which Heroku uses for media files):
+    - ```heroku run python scripts/copy_logos_to_s3.py```
+  5  Load the new fixtures on Heroku--using the name of the JSON file created in step 1:
+    - ``````heroku run python manage.py loaddata dv_apps/installations/fixtures/installations_YYYY_MM.json```
+
 ---
 
 ## (end of documentation, so far)

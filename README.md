@@ -1,4 +1,3 @@
-### __DOCS IN PROGRESS..MORE COMPLETE BY AUG. 26__
 
 # Miniverse
 
@@ -33,7 +32,7 @@ This describes a set-up with two databases:
 
 ### Step 1: Pip install, y'all
 
-This assumes you have [pip](https://pip.pypa.io/en/stable/installing/) and [virtualenv](https://virtualenv.pypa.io/en/stable/installation/) already running.
+This assumes you have installed [pip](https://pip.pypa.io/en/stable/installing/) and [virtualenv](https://virtualenv.pypa.io/en/stable/installation/).
 
 - Pull down the miniverse repository
 - Install the requirements:
@@ -67,6 +66,11 @@ cp miniverse/settings/local_with_routing_template.py miniverse/settings/local_se
 1.  ```DATABASES```
   - Set the ```default``` credentials to a new database for holding the Django/Miniverse apps
   - Set the ```dataverse``` credentials to your existing Dataverse Postgres db
+1. Testing database
+  - If you are running the Django tests, go to (about) line 135 where it reads ```if 'test' in sys.argv or 'test_coverage' in sys.argv:```
+  - Make these changes:
+    - Make sure the test db is a Postgres db
+    - Make sure the test db user has access to create a database and tables
 
 ### Step 3: Make your settings file load when you invoke your virtualenv
 
@@ -79,7 +83,9 @@ vim $VIRTUAL_ENV/bin/postactivate
 atom vim $VIRTUAL_ENV/bin/postactivate
 ```
 
-- Add 1 line to the bottom of the file so that the __complete__ file is:
+- Add this line to the bottom of the file:  
+  - ```export DJANGO_SETTINGS_MODULE=miniverse.settings.local_settings```
+- The _complete_ file, including your line, should be
 
 ```
 #!/bin/bash
@@ -95,8 +101,10 @@ export DJANGO_SETTINGS_MODULE=miniverse.settings.local_settings
 ### Step 4: Test your settings and run the dev server
 
 - Type ```python manage.py check```
-- If everything looks good, run these lines.  If any provide errors (not warnings),
-then re-examine.  (You will see a warning related to a "OneToOneField", that's OK)
+- If everything looks good, run these lines.  
+  - If any provide errors (not warnings),
+then re-examine.  
+  - You will see a warning related to a "OneToOneField", that's OK
 
 ```
 python manage.py migrate    # creates needed tables
@@ -110,16 +118,33 @@ python manage.py runserver
 ```
 
 Try these urls:
-    - Visualization: http://127.0.0.1:8000/metrics/basic-viz
-    - APIs: http://127.0.0.1:8000/static/swagger-ui/index.html
+  - Visualization: http://127.0.0.1:8000/metrics/basic-viz
+  - APIs: http://127.0.0.1:8000/static/swagger-ui/index.html
 
+
+### Step 5: Load map test database
+
+From your virtual env run:
+
+```
+python manage.py loaddata dv_apps/installations/fixtures/installations.json
+```
+
+If the command above worked, try this url:
+  - http://127.0.0.1:8000/map
+
+---
+
+## (end of documentation, so far)
+
+---
 
 ### Maps Documentation
 
 https://docs.google.com/document/d/1ThlSbw9LWtd12UzUmPxhXdlIlyCiROtBXdcIm8OGc2k/edit?usp=sharing
 
 
-# Setting Notes (read)
+# Other Setting Notes
 
 ## Restricted Django Admin - ```RestrictAdminMiddleware```
 
@@ -129,7 +154,7 @@ When this middeware is active, users going to Django admin urls who are not comi
 
 - To enable this restriction:
     - In settings.MIDDLEWARE_CLASSES, add: ```dv_apps.admin_restrict.middleware.RestrictAdminMiddleware```
-    - Example for ```settings.local``` which is importing from ```settings.base```:
+    - Example for ```settings.local_settings``` which is importing from ```settings.base```:
 
 ```python
 MIDDLEWARE_CLASSES += [

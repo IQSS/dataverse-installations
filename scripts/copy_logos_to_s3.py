@@ -7,12 +7,13 @@ from os.path import join
 from boto.s3.connection import S3Connection
 from boto.s3.key import Key
 
-aws_bucket_url = 'the-url'
-aws_access_key = 'ok-there'
-aws_secret = 'blah'
+
+aws_bucket_url = os.environ['BUCKETEER_AWS_PUBLIC_URL']
+aws_access_key = os.environ['BUCKETEER_AWS_ACCESS_KEY_ID']
+aws_secret = os.environ['BUCKETEER_AWS_SECRET_ACCESS_KEY']
 conn = S3Connection(aws_access_key, aws_secret)
 
-bucket_name = 'bucket-name'
+bucket_name = os.environ['BUCKETEER_BUCKET_NAME']
 bucket = conn.create_bucket(bucket_name)
 
 def list_items():

@@ -232,7 +232,7 @@ MIDDLEWARE_CLASSES += [
 - Can use boto script in:
 
 ```
-scripts/copy_logos_to_s3.py
+heroku run python scripts/copy_logos_to_s3.py
 ```
 
 - Add creds to script and run

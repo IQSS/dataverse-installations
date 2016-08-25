@@ -31,7 +31,7 @@ def get_key_names():
 def add_markers(overwrite=False, markers_only=False):
     """add markers"""
 
-    marker_dir = '../media/logos'
+    marker_dir = '/app/media/logos' # Heroku directory.  Local would be '../media/logos'
     fnames = os.listdir(marker_dir)
 
 

@@ -7,12 +7,12 @@ from os.path import join
 from boto.s3.connection import S3Connection
 from boto.s3.key import Key
 
-aws_bucket_url = 'https://bucketeer-some-url.s3.amazonaws.com'
-aws_access_key = 'aws-access'
-aws_secret = 'aws-secret'
+aws_bucket_url = 'https://bucketeer-38679028-08e1-4038-bf0e-bb761d97f8d7.s3.amazonaws.com/public/'
+aws_access_key = 'AKIAI52EVLMQHCJOXZGQ'
+aws_secret = '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'
 conn = S3Connection(aws_access_key, aws_secret)
 
-bucket_name = 'ye-bucket-name'
+bucket_name = 'bucketeer-38679028-08e1-4038-bf0e-bb761d97f8d7'
 bucket = conn.create_bucket(bucket_name)
 
 def list_items():
@@ -27,10 +27,10 @@ def get_key_names():
         knames.append(k.name)
     return knames
 
-def add_markers(makers_only=True):
+def add_markers(overwrite=False, markers_only=False):
     """add markers"""
 
-    marker_dir = '../media/uploads'
+    marker_dir = '../media/logos'
     fnames = os.listdir(marker_dir)
 
 
@@ -51,7 +51,11 @@ def add_markers(makers_only=True):
         # have we already uploaded this?
         if key_name in current_keys:
             print 'already in S3'
-            continue
+            if not overwrite:
+                print 'go to next item..'
+                continue
+            else:
+                print 'overwrite it..'
 
         # grab file contents
         full_name = join(marker_dir, marker_name)
@@ -67,9 +71,7 @@ def add_markers(makers_only=True):
         bucket.set_acl('public-read', key_name)
         print 'allow public read: %s/%s' % (aws_bucket_url, key_name)
 
-        if cnt==25:
-            break
 
 if __name__=='__main__':
     #list_items()
-    add_markers()
+    add_markers(overwrite=True)

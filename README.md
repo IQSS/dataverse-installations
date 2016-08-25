@@ -236,4 +236,6 @@ scripts/copy_logos_to_s3.py
 
 ## Load fixtures
 
-  - ```heroku run python manage.py loaddata dv_apps/installations/fixtures/heroku_installations_2016_0811.json```
+Load the latest fixture files.  The name will be in this format ```installations_YYYY_MMDD.json``` where YYYY_MMDD will be the date--use the latest.
+
+  - ```heroku run python manage.py loaddata dv_apps/installations/fixtures/installations_2016_0825.json```

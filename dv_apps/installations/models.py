@@ -25,6 +25,13 @@ class Installation(models.Model):
         return 'n/a'
     view_logo_100.allow_tags=True
 
+    def view_marker(self):
+        #return self.logo.url
+        if self.marker:
+            im = '<img src="%s" />' % (self.marker.url)
+            return im
+        return 'n/a'
+    view_marker.allow_tags=True
 
     def view_logo(self, force_width=None):
         #return self.logo.url

@@ -4,8 +4,8 @@ from django.contrib import admin
 from .models import Installation, Institution
 
 class InstallationAdmin(admin.ModelAdmin):
-    list_display = ['name', 'view_logo_100', 'version', 'description']
-    readonly_fields = ('view_logo', 'view_logo_100')
+    list_display = ['name', 'logo', 'view_logo_100', 'marker', 'view_marker', 'version', 'description']
+    readonly_fields = ('view_logo', 'view_logo_100', 'view_marker')
 """
 lat = models.DecimalField(max_digits=9, decimal_places=6, default=Decimal('0.0000'))
 lng = models.DecimalField(max_digits=9, decimal_places=6, default=Decimal('0.0000'))

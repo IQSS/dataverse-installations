@@ -8,7 +8,13 @@ For these circumstances:
 Based on: https://docs.djangoproject.com/en/1.9/topics/db/multi-db/#database-routers
 """
 
-APPS_TO_ROUTE = [ 'auth', 'contenttypes', 'sessions', 'sites', 'admin', 'installations', 'migrations']
+# django core apps
+DJANGO_APP_NAMES = [ 'auth', 'contenttypes', 'sessions', 'sites', 'admin', 'migrations']
+# miniverse specific apps
+MINIVERSE_APP_NAMES = ['installations']
+
+# apps to route - all others are assumed to be Dataverse specific
+APPS_TO_ROUTE = DJANGO_APP_NAMES + MINIVERSE_APP_NAMES
 DB_REFERENCE_NAME = 'dataverse'
 
 def is_dataverse_app_to_route(app_label):

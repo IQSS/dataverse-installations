@@ -1,5 +1,5 @@
-from .stats_view_base import StatsViewSwagger
-from .stats_util_datasets import StatsMakerDatasets
+from dv_apps.metrics.stats_view_base import StatsViewSwagger
+from dv_apps.metrics.stats_util_datasets import StatsMakerDatasets
 # limit the API rates
 #from ratelimit.decorators import ratelimit
 

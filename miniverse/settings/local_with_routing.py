@@ -10,6 +10,7 @@ SECRET_KEY = 'DEV-j94xnz*dj5f@_6-gt@ov)yjbcx0uagb7sv9a0j-(jo)j%m$el%'
 
 METRICS_CACHE_VIEW = True
 METRICS_CACHE_VIEW_TIME = 60 * 60 * 2   # 2 HOURS
+METRICS_CACHE_API_TIME = 30 * 60 
 
 LOCAL_SETUP_DIR = join(PROJECT_ROOT, 'test_setup')
 if not isdir(LOCAL_SETUP_DIR):
@@ -18,6 +19,7 @@ if not isdir(LOCAL_SETUP_DIR):
 DATABASE_ROUTERS = ['miniverse.db_routers.db_dataverse_router.DataverseRouter',]
 
 DEBUG = True
+
 # Need when running DEBUG = False
 ALLOWED_HOSTS = ('127.0.0.1', )
 

@@ -1,11 +1,19 @@
 import json
 from collections import OrderedDict
+from datetime import datetime
 
 from django.conf import settings
 from django.http import JsonResponse, HttpResponse
 from django.template.loader import render_to_string
 
 from django.views.generic import View
+
+# Apply API Key and page caching to API endpoints
+#
+from django.views.decorators.cache import cache_page
+from django.utils.decorators import method_decorator
+from dv_apps.dataverse_auth.decorator import apikey_required
+from dv_apps.utils.metrics_cache_time import get_metrics_api_cache_time
 
 
 def send_cors_response(response):
@@ -18,7 +26,8 @@ def send_cors_response(response):
 
     return response
 
-
+@method_decorator(apikey_required, name='get')
+@method_decorator(cache_page(get_metrics_api_cache_time()), name='get')
 class StatsViewSwagger(View):
     """Used to help build the swagger docs"""
 
@@ -108,15 +117,14 @@ class StatsViewSwagger(View):
         """
         raise Exception("This method must return a stats_result.StatsResult object")
 
-
     def get(self, request):
         """Return a basic get request using the StatsResult object"""
 
         # Get the StatsResult -- different for each subclass
         stats_result = self.get_stats_result(request)
         if stats_result is None:
-            err_dict = dict(status="ERROR",
-                message="Unknown processing error")
+            err_dict = dict(status="ERROR",\
+                    message="Unknown processing error")
             return send_cors_response(JsonResponse(err_dict, status=500))
 
         # Was there an error? If so, return the error message
@@ -138,8 +146,17 @@ class StatsViewSwagger(View):
         if settings.DEBUG and stats_result.sql_query:
             resp_dict['debug'] = dict(sql_query=stats_result.sql_query)
 
+        # Set a timestamp and params
+        resp_dict['info'] = OrderedDict()
+        resp_dict['info']['generation_time'] = datetime.now().strftime("%Y-%m-%dT%H:%M:%S")
+        if get_metrics_api_cache_time() > 0:
+            resp_dict['info']['cache_time_seconds'] = get_metrics_api_cache_time()
+        resp_dict['info']['params'] = request.GET
+
+
         # Set the actual stats data
         resp_dict['data'] = stats_result.result_data
+
 
         # Is there a request to send the JSON formatted within HTML tags?
         if 'pretty' in request.GET:

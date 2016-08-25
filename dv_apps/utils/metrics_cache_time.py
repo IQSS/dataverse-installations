@@ -8,3 +8,10 @@ def get_metrics_cache_time():
         # return TWO_HOURS_IN_SECONDS
     else:
         return 0
+
+def get_metrics_api_cache_time():
+    if settings.METRICS_CACHE_VIEW:
+        return settings.METRICS_CACHE_API_TIME
+        # return TWO_HOURS_IN_SECONDS
+    else:
+        return 0

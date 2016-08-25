@@ -9,16 +9,21 @@
     {% load staticfiles %}
     <link rel='stylesheet' href='{% static "maps/css/map.css" %}'>
   </head>
-  <body style="background-color:#ffffff;">
+  <body>
 
-    <!--Map Object-->
+    <!--Page Title-->
+    <h1>Dataverse Repositories - A World View</h1>
 
-    <h1 id="prototype" style="font-size:140%; color:#333; padding: 20px 0 0 0;">Dataverse.org Map Prototype</h1>
-    <center><p>Available counts:
-        <br />dataverses: {{ total_dataverses|intcomma }}
-        <br />datasets: {{ total_datasets|intcomma }}
-        <br />files: {{ total_files|intcomma }}
-    </p></center>
+    <!--Metrics-->
+    <div class="metrics-wrapper">
+        <span class="installs">{{ installation_count }} Installations</span>
+        <span class="dvs">{{ total_dataverses|intcomma }} Dataverses</span>
+        <span class="datasets">{{ total_datasets|intcomma }} Datasets</span>
+        <span class="files">{{ total_files|intcomma }} Files</span>
+        <!-- <span class="downloads">1,700,000+ Downloads</span> -->
+    </div>
+
+    <!--Map-->
     <div id="map" onload="listen()"></div>
 
     <script>
@@ -213,9 +218,9 @@ Documentation link: https://developers.google.com/maps/documentation/javascript/
             //Installation Mouseover Title - if the map has a non-null description field in the database, it will render below the title
 
             if(locationArray[i][5] !== 'None')
-                var titleString = '<h2 style="font-family:inherit; font-size: 1.25em;">' + locationArray[i][2] + '</h2>'+ '<p>' + locationArray[i][5] + '</p>';
+                var titleString = '<h2 class="title preview">' + locationArray[i][2] + '</h2>'+ '<p>' + locationArray[i][5] + '</p>';
 
-            else var titleString = '<h2 style="font-family:inherit; font-size: 1.25em;">' + locationArray[i][2] + '</h2>'
+            else var titleString = '<h2 class="title preview">' + locationArray[i][2] + '</h2>'
 
 
             //Widget Infowindows -- Uncomment/comment to activate/deactivate ***either or***
@@ -225,22 +230,21 @@ Documentation link: https://developers.google.com/maps/documentation/javascript/
             }
             else {
                 var contentString =
-                    '<div id="window" style="width:500px; height:289px; border:0; margin:0" >' +
+                    '<div class="window">' +
 
-                    '<h1 id="title" style="font-size: 20px; margin:0; margin-top:0; margin-bottom:0; font-family:inherit; border:0px white;">' + locationArray[i][2] + '</h1>' +
+                    '<h2 class="title">' + locationArray[i][2] + '</h2>' +
 
                     '<iframe id="dataverse-widget" src="https://dataverse-internal.iq.harvard.edu/dataverse/root?widget=dataverse@root" width="100%" height="260" style="border:0; background:url(https://dataverse-internal.iq.harvard.edu/resources/images/ajax-loading.gif) no-repeat 50% 50%;"></iframe>' + '</div>'
                 }
             */
 
             /*Metric Info Windows -- Uncomment/comment to activate/deactivate ***either or***
-            Creates an infowindow with *Dummy* Metrics currently as well as a title linked to the root
-            dataverse*/
+            Creates an infowindow with *Dummy* Metrics currently as well as a title linked to the root dataverse*/
 
             var contentString =
-                    '<div id="window" style="max-width:500px; width: 100%; max-height:289px; height:50% border:0; margin:0" >' +
+                    '<div class="window">' +
 
-                    '<h1 id="title" style="font-size: 20px; margin:0; margin-top:0; margin-bottom:0; font-family:inherit; border:0px white;">' + '<a href="https://dataverse-internal.iq.harvard.edu/">' + locationArray[i][2] + '</a>' + '</h1>' + '<div class="metricsdiv">' + '<h2 class="metricstitle">Dataverse Metrics</h2>' + '<ul class="metrics">' + '<li>' + 'Dataverses: (1,767)' + '</li>' + '<br>' + '<li>' + 'Datasets: (62,026)' + '</li>' + '<br>' + '<li>' + 'Files: (332,593)' + '</li>' + '<br>' + '<li>' + 'Downloads: (1,822,212)' + '</li>'+ '<br>' + '</ul>' + '</div>' + '</div>'
+                    '<h2 class="title">' + '<a href="https://dataverse-internal.iq.harvard.edu/" target="_blank">' + locationArray[i][2] + '</a>' + '</h2>' + '<ul class="metrics">' + '<li>' + 'Dataverses: (1,767)' + '</li>' + '<li>' + 'Datasets: (62,026)' + '</li>' + '<li>' + 'Files: (332,593)' + '</li>' + '<li>' + 'Downloads: (1,822,212)' + '</li>'+ '</ul>' + '</div>' + '</div>'
 
 //Out of Use Feature -- choose to initialize different sized icons based on above thresholds
 

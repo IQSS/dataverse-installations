@@ -1,19 +1,25 @@
-/* H1 Styles*/
-h1 {
-    font-family:'Muli', Helvetica, sans-serif !important;
-    text-align: center;
-    font-size: 4em;
-    background-color: white;
-    margin-top: 0em;
-}
-/* Page Body Styles*/
+/*body*/
 html, body {
     height: 100%;
-    width: 100%;
     margin: 0;
-    background-color: lightgray;
+    background-color: #fff;
+    font-size: 13px;
+    line-height: 1.5;
+    font-family: "Muli",Helvetica,sans-serif !important;
 }
-/*map styles*/
+/*metrics*/
+.metrics-wrapper {
+    padding:15px;
+    text-align:center;
+}
+.metrics-wrapper span {
+    display: inline-block;
+    width: 24.5%;
+    text-align: center;
+    color: #c55b28;
+    font-size: 16px;
+}
+/*map*/
 #map {
     height: 90%;
     width: 90%;
@@ -26,7 +32,6 @@ html, body {
     position: relative;
     top: 0px;
 }
-
 .large {
     width: 56px;
     height: 56px;
@@ -34,7 +39,6 @@ html, body {
     margin-top: 2px;
     margin-bottom: 0px;
     border: 2px solid orange; 
-
     overflow: hidden;
     background-color: white;
     float: left;
@@ -45,22 +49,16 @@ html, body {
     margin: 5px;
     margin-top: 12px;
     margin-bottom: 0px;
-    border: 2px solid black; 
-
+    border: 2px solid black;
     overflow: hidden;
     background-color: white;
     float: left;
 }
-.img{
-    height: 48px;
-    margin: auto;
-    margin-top: auto;
-    margin-bottom: 0;
-    border: 0;
-    background-color: white;
-
+img.img{
+    max-width: 100%;
+    height: auto;
+    display: block;
 }
-
 .controlBar{
     position: relative;
     bottom: 200px;
@@ -98,18 +96,27 @@ html, body {
     top: 17px;
     left: -25px;
 }
-.metricsdiv {
-    height: auto;
-    width: auto;
+.window {
+    max-width:500px;
+    width: 100%;
+    max-height:289px;
+    height:50%;
+    border:0;
+    margin:0
 }
-
-.metrics {
-    font-size: 1.25em;
-    font-family: inherit;
+h2.title {
+    margin: 0;
+    color: #c55b28;
 }
-.metricstitle {
-    font-size: 1.5em;
-    font-family: inherit;
-    text-align: center;
-    font-weight:normal;
+h2.title.preview {
+    margin: 1em 0 .5em 0;
+}
+h2.title a, h2.title a:hover {
+    color: #c55b28;
+    text-decoration: none;
+}
+.window ul.metrics, .window ul.metrics li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
 }

@@ -66,7 +66,7 @@ cp miniverse/settings/local_with_routing_template.py miniverse/settings/local_se
 1.  ```DATABASES```
   - Set the ```default``` credentials to a new database for holding the Django/Miniverse apps
   - Set the ```dataverse``` credentials to your existing Dataverse Postgres db
-1. Testing database
+1. **Testing database**
   - If you are running the Django tests, go to (about) line 135 where it reads ```if 'test' in sys.argv or 'test_coverage' in sys.argv:```
   - Make these changes:
     - Make sure the test db is a Postgres db
@@ -121,8 +121,52 @@ Try these urls:
   - Visualization: http://127.0.0.1:8000/metrics/basic-viz
   - APIs: http://127.0.0.1:8000/static/swagger-ui/index.html
 
+### Step 5: Run tests
 
-### Step 5: Load map test database
+If you have your **Testing Database** setting in place from Step 2,
+you can run the local tests:
+
+```python manage.py test dv_apps.metrics```
+
+If they work, you'll see something similar to this:
+
+```
+Installing json fixture 'test_2016_0819' from '/Users/rmp553/Documents/iqss-git/miniverse/dv_apps/metrics/fixtures'.
+Processed 10033 object(s).
+Resetting sequences
+Installed 10033 object(s) from 1 fixture(s)
+Test date params
+.01 - Count total dataverses: published, unpublished, all
+.02 - Test published dataverse counts by month
+.03 - Test unpublished dataverse counts by month
+.04 - Test all dataverse counts by month
+.05 - Count total datasets: published, unpublished, all
+.06 - Test published dataset counts by month
+.07 - Test unpublished dataset counts by month
+.08 - Test all dataset counts by month
+.09 - Count total files: published, unpublished, all
+.10 - File downloads by month: published,
+.11 - File downloads by month: unpublished,
+.12 - File downloads by month: all
+.13 - Content types of published files
+.14 - Content types of published files
+.15 - Content types of all files
+.16 - Affiliations of published dataverses types
+.17 - Affiliations of unpublished dataverses types
+.18 - Affiliations of all dataverses types
+.19 - File extensions within type
+.flush fixtures
+
+... (lots of other stuff) ...
+
+----------------------------------------------------------------------
+Ran 20 tests in 12.722s
+
+OK
+Destroying test database for alias 'default'...
+```
+
+### Step 6: Load map test database
 
 From your virtual env run:
 

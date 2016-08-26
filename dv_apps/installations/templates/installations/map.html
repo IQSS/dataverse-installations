@@ -77,17 +77,12 @@ Documentation link: https://developers.google.com/maps/documentation/javascript/
 
 //              Installation Location Data Array Oragnization:
 //index: 0           1       2         3         4       5              6           7
-//  coordinates     size    name      logo      null   description    version     marker
+//  coords        msize    name      logo      blank   desc         version     marker
 
-
-            //django generated array with the above information
+            // Array with the above information
             var locationArray = [
-            {%for i in install_list%}{% spaceless %}
-             [new google.maps.LatLng({{i.lat}},{{i.lng}}), 52, "{{i.name}}", {%if i.logo%}"{{i.logo.url}}"{%else%}"{% static 'logos/harvard.png' %}"{%endif%}, null, "{{i.description}}", "{{i.version}}", {%if i.marker%}"{{i.marker.url}}"{%else%}""{%endif%}]
-                {% if not forloop.last %},{%endif%}
-                {% endspaceless %}
-            {%endfor%}
-            ]
+            {%for i in install_list%}
+             {"coords":new google.maps.LatLng({{i.lat}},{{i.lng}}), "msize":52, "name":"{{i.name}}", "logo":{%if i.logo%}"{{i.logo.url}}"{%else%}"{% static 'logos/harvard.png' %}"{%endif%}, "blank":null, "desc":"{{i.description}}", "version":"{{i.version}}", "marker": {%if i.marker%}"{{i.marker.url}}"{%else%}""{%endif%}}{% if not forloop.last %},{%endif%}{%endfor%}]
 
 //              Institution Location Data Array Oragnization
 // index: 0
@@ -96,10 +91,10 @@ Documentation link: https://developers.google.com/maps/documentation/javascript/
             //django generated array with the above information
             var institutionArray = [
             {%for a in arr%}
-                [{% spaceless %}
+                [
                 {%for z in a%}{%if z.lat and z.lng%}{"name": "{{ z.name}}", "Coords" : new google.maps.LatLng(parseFloat({{z.lat}}),parseFloat({{z.lng}}))}
                 {%endif%}{% if not forloop.last %},{%endif%}{%endfor%}
-                {% endspaceless %}]{% if not forloop.last %},{%endif%}
+                ]{% if not forloop.last %},{%endif%}
                 {%endfor%}
             ]
 /*Edit Default map Options HERE
@@ -130,7 +125,7 @@ Documentation link: https://developers.google.com/maps/documentation/javascript/
             //Institutions Constructor
             initInstitutions(institutionArray, dataverseMap);
             for(var i = 0; i < institutionArray.length; i++){
-                initInstitutionsHighlight(institutionArray, dataverseMap, locationArray[i][7], i);
+                initInstitutionsHighlight(institutionArray, dataverseMap, locationArray[i].marker, i);
             };
 
             //Control Bar Constructor
@@ -216,22 +211,22 @@ Documentation link: https://developers.google.com/maps/documentation/javascript/
 
             //Installation Mouseover Title - if the map has a non-null description field in the database, it will render below the title
 
-            if(locationArray[i][5] !== 'None')
-                var titleString = '<h2 class="title preview">' + locationArray[i][2] + '</h2>'+ '<p>' + locationArray[i][5] + '</p>';
+            if(locationArray[i].desc !== 'None')
+                var titleString = '<h2 class="title preview">' + locationArray[i].name + '</h2>'+ '<p>' + locationArray[i].desc + '</p>';
 
-            else var titleString = '<h2 class="title preview">' + locationArray[i][2] + '</h2>'
+            else var titleString = '<h2 class="title preview">' + locationArray[i].desc + '</h2>'
 
 
             //Widget Infowindows -- Uncomment/comment to activate/deactivate ***either or***
             /*
-            if (Number(locationArray[i][6]) < 4.4) {
+            if (Number(locationArray[i].version) < 4.4) {
                 var contentString = titleString;
             }
             else {
                 var contentString =
                     '<div class="window">' +
 
-                    '<h2 class="title">' + locationArray[i][2] + '</h2>' +
+                    '<h2 class="title">' + locationArray[i].name + '</h2>' +
 
                     '<iframe id="dataverse-widget" src="https://dataverse-internal.iq.harvard.edu/dataverse/root?widget=dataverse@root" width="100%" height="260" style="border:0; background:url(https://dataverse-internal.iq.harvard.edu/resources/images/ajax-loading.gif) no-repeat 50% 50%;"></iframe>' + '</div>'
                 }
@@ -245,22 +240,22 @@ Documentation link: https://developers.google.com/maps/documentation/javascript/
             <span class="datasets">{{ total_datasets|intcomma }} Datasets</span>
             <span class="files">{{ total_files|intcomma }} Fi
             */
-            var contentString = '<div class="window"><h2 class="title">' + locationArray[i][2] +
+            var contentString = '<div class="window"><h2 class="title">' + locationArray[i].name +
                     '</h2></div>';
 /*                    '<div class="window">' +
 
-                    '<h2 class="title">' + '<a href="https://dataverse-internal.iq.harvard.edu/" target="_blank">' + locationArray[i][2] + '</a>' + '</h2>' + '<ul class="metrics">' + '<li>' + 'Dataverses: (1,767)' + '</li>' + '<li>' + 'Datasets: (62,026)' + '</li>' + '<li>' + 'Files: (332,593)' + '</li>' + '<li>' + 'Downloads: (1,822,212)' + '</li>'+ '</ul>' + '</div>' + '</div>'
+                    '<h2 class="title">' + '<a href="https://dataverse-internal.iq.harvard.edu/" target="_blank">' + locationArray[i].name + '</a>' + '</h2>' + '<ul class="metrics">' + '<li>' + 'Dataverses: (1,767)' + '</li>' + '<li>' + 'Datasets: (62,026)' + '</li>' + '<li>' + 'Files: (332,593)' + '</li>' + '<li>' + 'Downloads: (1,822,212)' + '</li>'+ '</ul>' + '</div>' + '</div>'
 */
 //Out of Use Feature -- choose to initialize different sized icons based on above thresholds
 
             //Initialize small icon
-            if(locationArray[i][1] < threshold1){
+            if(locationArray[i].msize < threshold1){
                 var small = {
                     url: "{% static 'small.png' %}",
                     anchor: new google.maps.Point(5,5)
                 }
                 var newMarker = new google.maps.Marker({
-                    position: locationArray[i][0],
+                    position: locationArray[i].coords,
                     map: dataverseMap,
                     icon: small
                 });
@@ -298,13 +293,13 @@ Documentation link: https://developers.google.com/maps/documentation/javascript/
                 nameArray.push(titlewindow);
 
             //Initialize medium icon
-            } else if(locationArray[i][1] < threshold2){
+        } else if(locationArray[i].msize < threshold2){
                 var medium = {
                     url: "{% static 'medium.png' %}",
                     anchor: new google.maps.Point(8,8)
                 }
                 var newMarker = new google.maps.Marker({
-                    position: locationArray[i][0],
+                    position: locationArray[i].coords,
                     map: dataverseMap,
                     icon: medium
                 });
@@ -345,7 +340,7 @@ Documentation link: https://developers.google.com/maps/documentation/javascript/
                     anchor: new google.maps.Point(13,13)
                 }
                 var newMarker = new google.maps.Marker({
-                    position: locationArray[i][0],
+                    position: locationArray[i].coords,
                     map: dataverseMap,
                     icon: large
                 });
@@ -578,7 +573,7 @@ Documentation link: https://developers.google.com/maps/documentation/javascript/
                 innerControlUI.appendChild(imgDiv);
              //img
                 var img = document.createElement('img');
-                img.src = locationArray[i][3];
+                img.src = locationArray[i].logo;
                 img.classList.add('img');
                 imgDiv.appendChild(img);
 

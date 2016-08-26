@@ -103,7 +103,8 @@ class StatsMakerFiles(StatsMakerBase):
 
 
     def get_download_type_filter(self):
-        return dict(downloadtype=RESPONSE_TYPE_DOWNLOAD)
+        return {}
+        #return dict(downloadtype=RESPONSE_TYPE_DOWNLOAD)
 
 
     def get_file_downloads_by_month(self, **extra_filters):

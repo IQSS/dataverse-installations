@@ -253,14 +253,6 @@ class StatsMakerDatasets(StatsMakerBase):
             for k, v in extra_filters.items():
                 filter_params[k] = v
 
-
-        # -----------------------------
-        # Retrieve Dataset ids by time and published/unpublished
-        # -----------------------------
-        dataset_ids = Dataset.objects.select_related('dvobject'\
-                        ).filter(**filter_params\
-                        ).values_list('dvobject__id', flat=True)
-
         # -----------------------------
         # Get the DatasetFieldType for subject
         # -----------------------------
@@ -271,6 +263,15 @@ class StatsMakerDatasets(StatsMakerBase):
             ds_field_type = DatasetFieldType.objects.get(**search_attrs)
         except DatasetFieldType.DoesNotExist:
             return False, 'DatasetFieldType for Citation title not found.  (kwargs: %s)' % search_attrs
+
+        # -----------------------------
+        # Retrieve Dataset ids by time and published/unpublished
+        # -----------------------------
+        dataset_ids = Dataset.objects.select_related('dvobject'\
+                        ).filter(**filter_params\
+                        ).values_list('dvobject__id', flat=True)
+
+
 
         # -----------------------------
         # Get latest DatasetVersion ids

@@ -21,12 +21,17 @@ from .base import *
 DEBUG = True
 
 # -----------------------------------
+# TIME_ZONE
+# -----------------------------------
+TIME_ZONE = 'America/New_York'
+
+# -----------------------------------
 # secret key
 # -----------------------------------
 SECRET_KEY = 'my-secret-key'
 
 # -----------------------------------
-# Metrics cache settings
+# CACHE settings for visualzations and API
 # -----------------------------------
 METRICS_CACHE_VIEW = True
 METRICS_CACHE_VIEW_TIME = 60 * 60 * 2   # Cache for visualizations

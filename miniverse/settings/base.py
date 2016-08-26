@@ -19,6 +19,8 @@ PROJECT_ROOT = dirname(dirname(dirname(abspath(__file__))))
 
 SITE_ID = 1
 
+TIME_ZONE = 'America/New_York'
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
 

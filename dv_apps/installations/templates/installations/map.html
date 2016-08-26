@@ -72,6 +72,19 @@ Documentation link: https://developers.google.com/maps/documentation/javascript/
 
     //Functions
 
+    // Attaches an info window to an Institution marker
+    function showInstitutionName(marker, nameMessage) {
+      var infowindow = new google.maps.InfoWindow({
+        content: nameMessage
+      });
+      marker.addListener('click', function() {
+        infowindow.open(marker.get('map'), marker);
+      });
+    }
+
+
+
+
         //-----initialize map at Center-----
         function initMap() {
 
@@ -175,6 +188,8 @@ Documentation link: https://developers.google.com/maps/documentation/javascript/
                         zIndex: google.maps.Marker.MIN_ZINDEX - 1
                     });
                     newMarker.setOpacity(.3);
+
+                    //showInstitutionName(newMarker, institutionArray[i][j].name);  // wait for now, need data cleaning
                     Array.push(newMarker);
                 }
                 installationContainer.push(Array);

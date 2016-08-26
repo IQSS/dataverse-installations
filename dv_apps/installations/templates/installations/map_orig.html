@@ -92,13 +92,15 @@ Documentation link: https://developers.google.com/maps/documentation/javascript/
 //              Institution Location Data Array Oragnization
 // index: 0
 //      coordinates
-{# ,"{{ z.name }}" #}
+
             //django generated array with the above information
             var institutionArray = [
             {%for a in arr%}
                 [{% spaceless %}
-                {%for z in a%}{%if z.lat and z.lng%}{"name": "{{ z.name}}", "Coords" : new google.maps.LatLng(parseFloat({{z.lat}}),parseFloat({{z.lng}}))}
-                {%endif%}{% if not forloop.last %},{%endif%}{%endfor%}
+                {%for z in a%}
+                 {%if z.lat and z.lng%}
+                new google.maps.LatLng(parseFloat({{z.lat}}),parseFloat({{z.lng}})){%endif%}{% if not forloop.last %},{%endif%}
+                {%endfor%}
                 {% endspaceless %}]{% if not forloop.last %},{%endif%}
                 {%endfor%}
             ]
@@ -172,9 +174,8 @@ Documentation link: https://developers.google.com/maps/documentation/javascript/
             for(var i = 0; i < institutionArray.length; i++){
                 var Array = [];
                 for(var j = 0; j < institutionArray[i].length; j++){
-                    //console.log("indices: " + i + "  " + j + institutionArray[i][j]);
                     var newMarker = new google.maps.Marker({
-                        position: institutionArray[i][j].Coords,
+                        position: institutionArray[i][j],
                         map: dataverseMap,
                         icon: "{% static 'subs.png' %}",
                         zIndex: google.maps.Marker.MIN_ZINDEX - 1
@@ -191,7 +192,7 @@ Documentation link: https://developers.google.com/maps/documentation/javascript/
             var Array = [];
             for(var j = 0; j < institutionArray[i].length; j++){
                     var newMarker = new google.maps.Marker({
-                        position: institutionArray[i][j].Coords,
+                        position: institutionArray[i][j],
                         map: dataverseMap,
                         icon: custom_marker,
                         zIndex: google.maps.Marker.MIN_ZINDEX - 1

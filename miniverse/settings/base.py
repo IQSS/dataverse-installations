@@ -36,8 +36,9 @@ METRICS_CACHE_API_TIME = 60 * 10    # 10 minutes
 
 ALLOWED_HOSTS = []
 
-# Application definition
 
+
+# Application definition
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -108,6 +109,9 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'miniverse.wsgi.application'
+
+# URL of the Dataverse db being read
+DATAVERSE_INSTALLATION_URL = 'https://dataverse.harvard.edu'
 
 
 # Database

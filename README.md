@@ -63,6 +63,9 @@ cp miniverse/settings/local_with_routing_template.py miniverse/settings/local_se
 1. ```SECRET_KEY``` - Set a new secret key value.
   - See: https://docs.djangoproject.com/en/1.9/ref/settings/#secret-key
   - Bad, insecure, but if you must run a local version _on your laptop_: http://www.miniwebtool.com/django-secret-key-generator/
+1. ```DATAVERSE_INSTALLATION_URL```
+  - Dataverse URL related to the Dataverse db being read.  No trailing slash.
+  - e.g. ```DATAVERSE_INSTALLATION_URL = 'https://demo.dataverse.org'```
 1.  ```DATABASES```
   - Set the ```default``` credentials to a new database for holding the Django/Miniverse apps
   - Set the ```dataverse``` credentials to your existing Dataverse Postgres db

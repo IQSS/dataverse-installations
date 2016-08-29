@@ -20,6 +20,11 @@ from .base import *
 DEBUG = True
 
 # -----------------------------------
+# TIME_ZONE
+# -----------------------------------
+TIME_ZONE = 'America/New_York'
+
+# -----------------------------------
 # Secret key
 # -----------------------------------
 SECRET_KEY = 'DEV-j94xnz*dj5f@_6-gt@ov)yjbcx0uagb7sv9a0j-(jo)j%m$el%'
@@ -28,8 +33,8 @@ SECRET_KEY = 'DEV-j94xnz*dj5f@_6-gt@ov)yjbcx0uagb7sv9a0j-(jo)j%m$el%'
 # Metrics cache settings
 # -----------------------------------
 METRICS_CACHE_VIEW = True
-METRICS_CACHE_VIEW_TIME = 60 * 60 * 2   # Cache for visualizations
-METRICS_CACHE_API_TIME = 60 * 15    # Cache for API endpoints
+METRICS_CACHE_VIEW_TIME = 0#60 * 60 * 2   # Cache for visualizations
+METRICS_CACHE_API_TIME = 0#60 * 15    # Cache for API endpoints
 
 # -----------------------------------
 # For local runs, this directory will include:
@@ -47,6 +52,11 @@ if not isdir(LOCAL_SETUP_DIR):
 DATABASE_ROUTERS = ['miniverse.db_routers.db_dataverse_router.DataverseRouter',]
 
 # -----------------------------------
+# URL of the Dataverse db being read
+# -----------------------------------
+DATAVERSE_INSTALLATION_URL = 'https://demo.dataverse.org'
+
+# -----------------------------------
 # Database Setup
 #   - default -> Create a new db for the django/miniverse specific apps
 #       - May be any relational db type: postgres, sqlite, etc
@@ -59,7 +69,7 @@ DATABASES = {
     },
     'dataverse': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'dvndb_demo',
+        'NAME': 'dvndb_demo',  # dvndb_demo, dvn_thedata
         'USER': 'postgres',     # Set to a read-only user
         'PASSWORD': '123',
         'HOST': 'localhost',

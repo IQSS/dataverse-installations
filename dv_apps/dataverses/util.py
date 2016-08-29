@@ -8,16 +8,18 @@ Note: creator may be inaccurate.  These models assume it's an AuthenticatedUser
 from collections import OrderedDict
 
 from django.forms.models import model_to_dict
+from django.conf import settings
 
 from dv_apps.dataverses.models import Dataverse, DataverseContact, DataverseTheme
+from dv_apps.utils.date_helper import TIMESTAMP_MASK
 
 
 
 class DataverseUtil(object):
     """Serialize a Dataverse object, similar to the Dataverse native API"""
 
-    # Hack URL - NEEDs to be based on installation
-    URL_BASE = 'https://dataverse.harvard.edu/dataverse'
+    # Dataverse base url (e.g. for adding aliases)
+    URL_BASE = '%s/dataverse' % settings.DATAVERSE_INSTALLATION_URL
 
     TIMESTAMP_MASK = '%Y-%m-%d %H:%M:%S'
     KEY_ORDER1 = ['id',  'name', 'alias', 'dv_link',\
@@ -68,7 +70,7 @@ class DataverseUtil(object):
         # createDate
         #
         dv_dict['creationDate'] = self.dvobject.createdate.strftime(
-        self.TIMESTAMP_MASK)
+        TIMESTAMP_MASK)
 
         # Owner
         #
@@ -149,7 +151,7 @@ class DataverseUtil(object):
         if pub_date:
             dv_dict['publicationInfo']['isPublished'] = True
             dv_dict['publicationInfo']['publicationDate'] = pub_date.strftime(
-            self.TIMESTAMP_MASK)
+            TIMESTAMP_MASK)
         else:
             dv_dict['publicationInfo']['isPublished'] = False
 

@@ -61,6 +61,11 @@ if not isdir(LOCAL_SETUP_DIR):
 DATABASE_ROUTERS = ['miniverse.db_routers.db_dataverse_router.DataverseRouter',]
 
 # -----------------------------------
+# URL of the Dataverse db being read
+# -----------------------------------
+DATAVERSE_INSTALLATION_URL = 'https://demo.dataverse.org'
+
+# -----------------------------------
 # Database Setup
 #   - default -> Create a new db for the django/miniverse specific apps
 #       - May be any relational db type: postgres, sqlite, etc

@@ -3,7 +3,10 @@ Convenience methods for date formatting
 """
 from datetime import datetime
 import calendar
+
+
 DATE_DELIM = '-'
+TIMESTAMP_MASK = '%Y-%m-%d %H:%M:%S'
 
 def format_yyyy_mm_dd(date_str, delim=DATE_DELIM):
     """Convert a string in YYYY-MM-DD format to a datetime object"""

@@ -6,32 +6,23 @@ Note: creator may be inaccurate.  These models assume it's an AuthenticatedUser
     - When is it not?  (e.g. group creates a Dataverse)
 """
 from collections import OrderedDict
+from django.conf import settings
 
 from django.forms.models import model_to_dict
 
 from dv_apps.datasets.models import Dataset, DatasetVersion
 from dv_apps.datasetfields.utils import get_dataset_title
 from dv_apps.datasetfields.metadata_formatter import MetadataFormatter
+from dv_apps.utils.date_helper import TIMESTAMP_MASK
 
+from dv_apps.datafiles.util import DatafileUtil
 
 
 class DatasetUtil(object):
     """Serialize a Dataset object, similar to the Dataverse native API"""
 
-    # Hack URL - NEEDs to be based on installation
-    URL_BASE = 'https://dataverse.harvard.edu/dataset.xhtml?persistentId='
-
-    TIMESTAMP_MASK = '%Y-%m-%d %H:%M:%S'
-    KEY_ORDER1 = ['id',  'name', 'alias', 'dv_link',\
-         'affiliation', 'dataversetype', 'description',\
-         'publicationInfo',\
-         'contacts', 'creator',\
-         'ownerInfo', 'isRootDataverse',\
-         'theme',\
-         'metadatablockroot', 'templateroot',  'permissionroot',\
-         'themeroot',  'facetroot', 'guestbookroot',\
-         ]
-
+    # Dataset persident id url
+    URL_BASE = '%s/dataset.xhtml?persistentId=' % settings.DATAVERSE_INSTALLATION_URL
 
     def __init__(self, dataset_version):
         assert isinstance(dataset_version, DatasetVersion), "You must pass a Dataverse object!"
@@ -45,12 +36,14 @@ class DatasetUtil(object):
         # set the DvObject
         self.dvobject = dataset_version.dataset.dvobject
 
+        self.datafile_util = DatafileUtil(self.dsv)
 
     def as_json(self):
-        """Serialize the Dataset Version"""
+        """Serialize the Dataset Version, include files"""
 
+        # -----------------------------------
         # Get the title
-        #
+        # -----------------------------------
         success, dataset_title_or_err = get_dataset_title(self.dsv)
         if not success:
             return False, \
@@ -63,8 +56,9 @@ class DatasetUtil(object):
         dsv_metadata['title'] = dataset_title_or_err
         dsv_metadata['id'] = self.dvobject.id
 
+        # -----------------------------------
         # doi/handle
-        #
+        # -----------------------------------
         persistent_id_info = OrderedDict()
         persistent_id_info['protocol'] = self.ds.protocol
         persistent_id_info['authority'] = self.ds.authority
@@ -73,8 +67,9 @@ class DatasetUtil(object):
 
         dsv_metadata['persistentIdInfo'] = persistent_id_info
 
+        # -----------------------------------
         # semanticVersionInfo
-        #
+        # -----------------------------------
         semantic_version_info = OrderedDict()
         semantic_version_info['semantic_version'] = self.dsv.get_semantic_version()
         semantic_version_info['versionNumber'] = self.dsv.versionnumber
@@ -84,15 +79,20 @@ class DatasetUtil(object):
 
         dsv_metadata['dv_link'] = self.get_dv_link(semantic_version_info['semantic_version'])
 
-
-
         # -----------------------------------
         # Format the metadata blocks -- the heavy lift...
         # -----------------------------------
         mdf = MetadataFormatter(self.dsv)
         dsv_metadata['metadata_blocks'] = mdf.as_dict().get('metadata_blocks',{})
 
+
+        # -----------------------------------
+        # Add the file information
+        # -----------------------------------
+        dsv_metadata['files'] = self.datafile_util.as_json()
+
         return dsv_metadata
+
 
     def get_dv_link(self, semantic_version):
         """

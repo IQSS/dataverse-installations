@@ -8,17 +8,17 @@ admin.site.site_header = 'Dataverse DB'
 urlpatterns = [
     # Examples:
     # url(r'^$', 'miniverse.views.home', name='home'),
-    url(r'^dr2m/', include('dv_apps.dvobjects.urls')),
+    url(r'^miniverse/dr2m/', include('dv_apps.dvobjects.urls')),
 
-    url(r'^dataset/', include('dv_apps.datasets.urls')),
+    url(r'^miniverse/dataset/', include('dv_apps.datasets.urls')),
 
-    url(r'^map/', include('dv_apps.installations.urls')),
+    url(r'^miniverse/map/', include('dv_apps.installations.urls')),
 
-    url(r'^metrics/', include('dv_apps.metrics.urls')),
+    url(r'^miniverse/metrics/', include('dv_apps.metrics.urls')),
 
-    url(r'^dvobjects/', include('dv_apps.dvobject_api.urls')),
+    url(r'^miniverse/dvobjects/', include('dv_apps.dvobject_api.urls')),
 
-    url(r'^miniverse-admin/', include(admin.site.urls)),
+    url(r'^miniverse/miniverse-admin/', include(admin.site.urls)),
 
 
 ]

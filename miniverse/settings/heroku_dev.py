@@ -127,7 +127,7 @@ DATABASES['dataverse']['PORT'] = '5432'
 
 
 # User general urls -- but restrict for prod
-ROOT_URLCONF = 'miniverse.urls_heroku_prod'
+ROOT_URLCONF = 'miniverse.urls_lts_prod'
 
 
 # Static files (CSS, JavaScript, Images)

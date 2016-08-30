@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %}Metrics links{% endblock %}
+
+{% block main_content %}
+<div class="panel panel-default">
+  <div class="panel-heading">Links</div>
+  <div class="panel-body">
+
+    <h4>map</h4>
+    <a href="{% url 'view_map' %}">{% url 'view_map' %}</a>
+    <br /><a href="{% url 'view_map_dataverse_org' %}?iframe=true">{% url 'view_map_dataverse_org' %}?iframe=true</a>
+
+    <h4>visualizations last 12 months</h4>
+    <a href="{% url 'view_public_visualizations_last12' %}">{% url 'view_public_visualizations_last12' %}</a>
+    <br /><a href="{% url 'view_public_visualizations_last12_dataverse_org' %}?iframe=true">{% url 'view_public_visualizations_last12_dataverse_org' %}?iframe=true</a>
+
+    <h4>other visualizations</h4>
+    <a href="{% url 'view_public_visualizations' %}">{% url 'view_public_visualizations' %}</a>
+    <br /><a href="{% url 'view_dataverse_tree' %}">{% url 'view_dataverse_tree' %}</a>
+    <br /><a href="{% url 'view_dataverse_tree2' %}">{% url 'view_dataverse_tree2' %}</a>
+    <br />JSON for trees
+    <br /><a href="{% url 'get_dataverse_tree_json' %}">{% url 'get_dataverse_tree_json' %}</a>
+    <br /><a href="{% url 'get_dataverse_full_tree_json' %}">{% url 'get_dataverse_full_tree_json' %}</a>
+
+    <h4>swagger</h4>
+    <a href="{% url 'view_dynamic_swagger_spec' %}">{% url 'view_dynamic_swagger_spec' %}</a>
+    <br /><a href="/static/swagger-ui/index.html?url={% url 'view_dynamic_swagger_spec' %}">/static/swagger-ui/index.html?url={% url 'view_dynamic_swagger_spec' %}</a>
+
+    <h4>invoke errors</h4>
+    <a href="{% url 'view_test_404' %}">{% url 'view_test_404' %}</a>
+    <br /><a href="{% url 'view_test_500' %}">{% url 'view_test_500' %}</a>
+
+    </div>
+</div>
+{% endblock %}

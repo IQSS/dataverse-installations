@@ -123,7 +123,9 @@ class StatsMakerFiles(StatsMakerBase):
             for k, v in extra_filters.items():
                 filter_params[k] = v
 
-        file_counts_by_month = GuestBookResponse.objects.filter(**filter_params\
+        file_counts_by_month = GuestBookResponse.objects.exclude(\
+            responsetime__isnull=True\
+            ).filter(**filter_params\
             ).annotate(yyyy_mm=TruncYearMonth('responsetime')\
             ).values('yyyy_mm'\
             ).annotate(cnt=models.Count('id')\
@@ -136,7 +138,14 @@ class StatsMakerFiles(StatsMakerBase):
         formatted_records = []  # move from a queryset to a []
         file_running_total = self.get_file_download_start_point(**extra_filters)
 
+        print 'file_counts_by_month', file_counts_by_month
+        print 'file_counts_by_month', len(file_counts_by_month)
+
+        for fc in file_counts_by_month:
+            print fc
+
         for d in file_counts_by_month:
+            print 'd', d
             file_running_total += d['cnt']
             d['running_total'] = file_running_total
 

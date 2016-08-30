@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils.encoding import python_2_unicode_compatible
 
 from dv_apps.dvobjects.models import DvObject
 from dv_apps.datasets.models import DatasetVersion
@@ -33,6 +34,8 @@ class Datafile(models.Model):
         managed = False
         db_table = 'datafile'
 
+
+@python_2_unicode_compatible
 class FileMetadata(models.Model):
     description = models.TextField(blank=True, null=True)
     label = models.CharField(max_length=255)
@@ -51,3 +54,45 @@ class FileMetadata(models.Model):
     class Meta:
         managed = False
         db_table = 'filemetadata'
+
+
+@python_2_unicode_compatible
+class DatafileCategory(models.Model):
+    name = models.CharField(max_length=255)
+    dataset = models.ForeignKey(DvObject)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        managed = False
+        verbose_name_plural = 'Datafile categories'
+        db_table = 'datafilecategory'
+
+@python_2_unicode_compatible
+class DatafileTag(models.Model):
+    dtype = models.IntegerField(db_column='type')
+    datafile = models.ForeignKey(DvObject)
+
+    def __str__(self):
+        return '%s' % self.dtype
+
+    class Meta:
+        managed = False
+        db_table = 'datafiletag'
+
+
+class FilemetadataDatafileCategory(models.Model):
+    filecategories = models.ForeignKey(DatafileCategory, db_column='filecategories_id')
+    filemetadatas = models.ForeignKey(FileMetadata, db_column='filemetadatas_id', primary_key=True)
+
+    def __str__(self):
+        return '%s' % self.filecategories
+
+    class Meta:
+        managed = False
+        verbose_name = 'File metadata datafile category'
+        verbose_name_plural = 'File metadata datafile categories'
+        db_table = 'filemetadata_datafilecategory'
+        #unique_together = (('filecategories_id', 'filemetadatas_id'),)
+        unique_together = (('filecategories', 'filemetadatas'),)

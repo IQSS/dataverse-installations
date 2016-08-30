@@ -26,6 +26,11 @@ from dv_apps.metrics.stats_util_dataverses import StatsMakerDataverses
 from dv_apps.metrics.stats_util_files import StatsMakerFiles
 
 
+def view_metrics_links(request):
+    d = {}
+    return render(request, 'metrics/view_metrics_links.html', d)
+
+
 def view_dataverse_tree(request):
 
     d = {}

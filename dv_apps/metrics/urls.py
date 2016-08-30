@@ -29,13 +29,16 @@ urlpatterns = [
     url(r'^files/extensions$', views_public_metrics.view_file_extensions_within_type, name='view_file_extensions_within_type'),
 
     # views_test
+    url(r'^metrics-links$', views_test.view_metrics_links, name='view_metrics_links'),
+
     url(r'^dv-tree$', views_test.view_dataverse_tree, name='view_dataverse_tree'),
+
+    url(r'^dv-tree2$', views_test.view_dataverse_tree2, name='view_dataverse_tree2'),
 
     url(r'^dv-tree.json$', views_test.get_dataverse_tree_json, name='get_dataverse_tree_json'),
 
     url(r'^dv-tree-full.json$', views_test.get_dataverse_full_tree_json, name='get_dataverse_full_tree_json'),
 
-    url(r'^dv-tree2$', views_test.view_dataverse_tree2, name='view_dataverse_tree2'),
 
 
 ]

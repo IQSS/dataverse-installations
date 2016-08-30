@@ -67,6 +67,19 @@ class DatasetUtil(object):
 
         dsv_metadata['persistentIdInfo'] = persistent_id_info
 
+        timestamps = OrderedDict()
+        timestamps['createdate'] = self.dvobject.createdate.strftime(TIMESTAMP_MASK)
+
+        if self.dvobject.publicationdate:
+            is_dataset_published = True
+            timestamps['publicationdate'] = self.dvobject.publicationdate.strftime(TIMESTAMP_MASK)
+        else:
+            is_dataset_published = False
+            timestamps['publicationdate'] = None
+
+        dsv_metadata['isPublished'] = is_dataset_published
+        dsv_metadata['timestamps'] = timestamps
+
         # -----------------------------------
         # semanticVersionInfo
         # -----------------------------------

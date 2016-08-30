@@ -32,7 +32,7 @@ This describes a set-up with two databases:
 
 ### Step 1: Pip install, y'all
 
-This assumes you have installed [pip](https://pip.pypa.io/en/stable/installing/) and [virtualenv](https://virtualenv.pypa.io/en/stable/installation/).
+This assumes you have installed [pip](https://pip.pypa.io/en/stable/installing/) and [virtualenvwrapper](https://virtualenvwrapper.readthedocs.io/en/latest/install.html).
 
 - Pull down the miniverse repository
 - Install the requirements:

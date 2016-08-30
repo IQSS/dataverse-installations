@@ -24,6 +24,8 @@ cp miniverse/settings/lts_settings_template.py miniverse/settings/lts_settings.p
   - Example: ```ALLOWED_HOSTS = ('services.dataverse.harvard.edu',
       '52.86.18.14',  # static IP
       )```
+1. Mail Settings: ```EMAIL_HOST```, ```EMAIL_PORT```, etc
+  - Set these in appropriately to allow the server to send messages to the administrators
 1. ```STATIC_ROOT```
   - This is the _destination_ directory for static files.
   - Apache will directly serve content from this directory including css, js, images, and several HTML files

@@ -31,6 +31,21 @@ TIME_ZONE = 'America/New_York'
 # -----------------------------------
 SECRET_KEY = 'my-secret-key'
 
+
+# -----------------------------------
+# ADMINS and MANAGERS
+# -----------------------------------
+
+# Receive 500 errors
+#
+ADMINS = [ ('Raman', 'raman_prasad@harvard.edu'),
+    ('Danny Brooke', 'dannybrooke@g.harvard.edu')]
+
+# Receive 404 errors
+#
+MANAGERS = ADMINS
+
+
 # -----------------------------------
 # CACHE settings for visualzations and API
 # -----------------------------------
@@ -108,6 +123,17 @@ MIDDLEWARE_CLASSES += [
     # Email about broken 404s
     'django.middleware.common.BrokenLinkEmailsMiddleware',
 ]
+
+# -----------------------------------
+# Mail settings
+# see: https://docs.djangoproject.com/en/1.10/ref/settings/#email-host
+# -----------------------------------
+EMAIL_HOST = 'ackroyd.harvard.edu'
+EMAIL_PORT = 587
+#EMAIL_HOST_USER = 'fill in'
+#EMAIL_HOST_PASSWORD = 'fill in'
+DEFAULT_FROM_EMAIL = 'raman_prasad@harvard.edu'
+EMAIL_USE_TLS = True
 
 
 # -----------------------------------

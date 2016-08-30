@@ -7,7 +7,7 @@ Within the ```miniverse``` project directory, run the following line:
 cp miniverse/settings/lts_settings_template.py miniverse/settings/lts_settings.py
 ```
 
-### (2) Manually update the settings in lts_settings.py
+### (2) Manually update the settings in ```lts_settings.py```
 
 1. Set a ```SECRET_KEY```
   - Can generate one using this script: https://gist.github.com/mattseymour/9205591
@@ -23,7 +23,7 @@ cp miniverse/settings/lts_settings_template.py miniverse/settings/lts_settings.p
   - List the urls and IP addresses or the server
   - Example: ```ALLOWED_HOSTS = ('services.dataverse.harvard.edu',
       '52.86.18.14',  # static IP
-      ]```
+      )```
 1. ```STATIC_ROOT```
   - This is the _destination_ directory for static files.
   - Apache will directly serve content from this directory including css, js, images, and several HTML files
@@ -40,3 +40,31 @@ cp miniverse/settings/lts_settings_template.py miniverse/settings/lts_settings.p
   - Not sure if this will run in production
   - The db credentials should be allowed to create and destroy a db named ```test_miniverse_default```
     - The naming is automatic: ```test_``` is prepended to ```miniverse_default```
+
+### (3) Command line set-up
+
+ - Invoke the virtualenv
+ - Within the main ```miniverse``` directory:
+    - Try: ```python manage.py check --settings=miniverse.settings.lts_settings```
+ - If the above command works, run the following:
+
+```
+python manage.py migrate --settings=miniverse.settings.lts_settings    # creates miniverse tables
+python manage.py createsuperuser --settings=miniverse.settings.lts_settings   # create a superuser for yourself
+python manage.py collectstatic --settings=miniverse.settings.lts_settings   # collect your static files
+```
+
+### (4) Load the map data
+
+ - Copy the ```miniverse/media/logos``` to the directory you set for ```MEDIA_ROOT```/logos
+   - You should end up with a new ```logos``` directory under your ```MEDIA_ROOT```
+ - Load the logo data to the database:
+```
+python manage.py loaddata dv_apps/installations/fixtures/installations_2016_0826.json --settings=miniverse.settings.lts_settings
+```
+
+
+### (5) WSGI file to use for new settings
+
+- ```miniverse/wsgi_lts.py```
+- Note, with apache, you may need to update this file to invoke the virtualenv

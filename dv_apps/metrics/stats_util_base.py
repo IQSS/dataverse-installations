@@ -49,6 +49,10 @@ class StatsMakerBase(object):
         self.selected_year = None
         self.time_sort = None
 
+        # Next 3 are currently only for file downloads
+        self.selected_dvs = None    # Narrow by dataverse aliases
+        self.include_child_dvs  = None
+        self.as_csv = False
 
         # load dates
         self.load_dates_from_kwargs(**kwargs)

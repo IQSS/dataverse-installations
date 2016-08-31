@@ -41,8 +41,8 @@ def get_dataverse_tree_json(request, skip_flat_dataverses=True):
 
     tree_dict = get_dataverse_tree_dict(skip_flat_dataverses=skip_flat_dataverses)
 
-    as_html = '<pre>%s</pre>' % (json.dumps(tree_dict, indent=4))
-
-    return HttpResponse(as_html)
+    if 'pretty' in request.GET:
+        as_html = '<pre>%s</pre>' % (json.dumps(tree_dict, indent=4))
+        return HttpResponse(as_html)
 
     return JsonResponse(tree_dict)

@@ -55,7 +55,10 @@
     <br /><b>JSON for trees</b>
     <ul>
         <li><a href="{% url 'get_dataverse_tree_json' %}">{% url 'get_dataverse_tree_json' %}</a> (only if more than 2 deep)</li>
+        <li><a href="{% url 'get_dataverse_tree_json' %}?pretty">{% url 'get_dataverse_tree_json' %}?pretty</a> (only if more than 2 deep)</li>
+
         <li><a href="{% url 'get_dataverse_full_tree_json' %}">{% url 'get_dataverse_full_tree_json' %}</a></li>
+        <li><a href="{% url 'get_dataverse_full_tree_json' %}?pretty">{% url 'get_dataverse_full_tree_json' %}?pretty</a></li>
     </ul>
     </div>
 

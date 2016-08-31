@@ -168,6 +168,25 @@ class StatsMakerBase(object):
                 " must be 'a' for ascending or 'd' for descending.")
             return
 
+        # Optional: selected dataverse aliases
+        #   - Only used for file downloads
+        #
+        self.selected_dvs = kwargs.get('selected_dvs', None)
+        if self.selected_dvs is not None:
+            # make dvs into a list, stripping whitespace from each one
+            self.selected_dvs = [x.strip() for x in self.selected_dvs.strip().split()]
+            self.selected_dvs = [x for x in self.selected_dvs if len(x) > 0]
+        self.include_child_dvs = kwargs.get('include_child_dvs', False)
+        if self.include_child_dvs:
+            if self.include_child_dvs in (True, 'True', 'true'):
+                self.include_child_dvs = True
+            else:
+                self.include_child_dvs = False
+
+
+    
+
+
 
     def get_running_total_base_date_filters(self, date_var_name=DVOBJECT_CREATEDATE_ATTR):
         """If we have a running total, get the start point filters"""

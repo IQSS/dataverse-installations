@@ -35,7 +35,7 @@ def view_single_dataset_by_id(request, dataset_version_id):
     return view_single_dataset_version(request, dataset_version)
 
 
-@cache_page(60 * 15)
+#@cache_page(60 * 15)
 def view_single_dataset_version(request, dsv):
     """
     Show JSON for a single DatasetVersion

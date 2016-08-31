@@ -34,3 +34,15 @@ if __name__ == '__main__':
         run_api_call(metrics=True)
     else:
         run_api_call()
+
+
+"""
+# API requests don't result in new GuestBookResponse objects
+import requests
+url = 'http://localhost:8080/api/access/datafile/11'
+url += '?key=ad4db0df-2fea-4bea-b4fa-e75462371d69'
+r = requests.get(url)
+print r.status_code
+
+
+"""

@@ -8,13 +8,14 @@ from django.conf import settings
 from django.db.models import F
 
 from dv_apps.utils.date_helper import TIMESTAMP_MASK
-from dv_apps.datafiles.models import Datafile, FileMetadata
+from dv_apps.datafiles.models import Datafile, FileMetadata,\
+    FilemetadataDatafileCategory, DatafileCategory
 from dv_apps.datasets.models import DatasetVersion
 
 class DatafileUtil(object):
     """Serialize a group of Datafile objects, similar to the Dataverse native API"""
 
-    URL_BASE = '%s/file' % settings.DATAVERSE_INSTALLATION_URL
+    URL_FILE_ACCESS = '%s/api/access/datafile' % settings.DATAVERSE_INSTALLATION_URL
 
     KEY_ORDER1 = ['id',  'name', 'alias', 'dv_link',\
          'affiliation', 'dataversetype', 'description',\
@@ -46,12 +47,21 @@ class DatafileUtil(object):
         #       is an FK to the DvObject table and not to Datafile table
         f_metadata_objects = FileMetadata.objects.select_related('datafile').filter(datasetversion=self.dsv)
 
+        # filemetadata ids
+        fmeta_ids = [x.id for x in f_metadata_objects]
+
         # Also the same as Datafile ids....
         dvobject_ids = [x.datafile.id for x in f_metadata_objects]
 
+        # -----------------------------------------
+        # Get dicts used for pulling data when
+        # iterating through FileMetadata objects
+        # -----------------------------------------
         dfiles = self.get_datafile_dict(dvobject_ids)
+        #dcategories = self.get_datafile_categories(fmeta_ids)
+
         print '-' * 40
-        print 'dfiles', dfiles
+        #print 'dcategories', dcategories
         print '-' * 40
 
         fmeta_attrs = ('label', 'description', 'vers')
@@ -79,7 +89,7 @@ class DatafileUtil(object):
 
             od['restricted'] = related_file['restricted']
             od['ingeststatus'] = related_file['ingeststatus']
-            od['download_url'] = 'oh my my'
+            od['file_access_url'] = '%s/%s' % (self.URL_FILE_ACCESS, related_file['id'])
 
             od['timestamps'] = OrderedDict()
             od['timestamps']['createdate'] = fm.datafile.createdate.strftime(TIMESTAMP_MASK)
@@ -90,6 +100,32 @@ class DatafileUtil(object):
             fmt_list.append(od)
 
         return fmt_list
+
+
+    def get_datafile_categories(self, fmeta_ids):
+        """
+        fmeta_ids: FileMetadata ids
+        """
+
+        cat_ids = FilemetadataDatafileCategory.objects.filter(\
+                    filemetadatas__in=fmeta_ids\
+                    ).values_list('filemetadatas__id', flat=True)
+
+        l = DatafileCategory.objects.select_related('filecategories'\
+                ).filter(filemetadatas__in=fmeta_ids\
+                ).annotate(fmeta_id=F('filemetadatas__id'),\
+                    category=F('filecategories__name')
+                ).values('fmeta_id', 'category')
+
+        print l.query
+        # create dict of { fmeta_id : [category, category, etc], }
+        #
+        d = {}  # { fmeta_id : [category, category, etc], }
+        for info in l:
+            d.setdefault(info.fmeta_id, []).append(info.category)
+
+        return d
+
 
     def get_datafile_dict(self, dvobject_ids):
         """

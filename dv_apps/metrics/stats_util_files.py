@@ -125,6 +125,10 @@ class StatsMakerFiles(StatsMakerBase):
         return {}
         #return dict(downloadtype=RESPONSE_TYPE_DOWNLOAD)
 
+    def get_file_downloads_by_month_return_headers(self):
+        """To use in CSV creation"""
+        return ['yyyy_mm', 'year_num', 'month_num', 'month_name', 'cnt', 'running_total']
+
 
     def get_file_downloads_by_month(self, **extra_filters):
         """

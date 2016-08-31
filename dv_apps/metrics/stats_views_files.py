@@ -101,6 +101,7 @@ class FilesDownloadedByMonthView(StatsViewSwagger):
         # Output this as a CSV file
         if stats_files.as_csv:
             stats_result.as_csv = True
+            stats_result.csv_header_keys = stats_files.get_file_downloads_by_month_return_headers()
 
         return stats_result
 

@@ -17,8 +17,9 @@ class StatsResult(object):
             self.error_found = False
         self.sql_query = kwargs.get('sql_query', None)
 
+        # Used downstream for CSVs
         self.as_csv = False
-
+        self.csv_header_keys = None
 
     def was_succcess(self):
         if not self.error_found:

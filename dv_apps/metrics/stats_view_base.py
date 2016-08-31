@@ -163,7 +163,7 @@ class StatsViewSwagger(View):
 
 
         if stats_result.as_csv:
-            return self.get_data_as_csv_response(request, stats_result.result_data)
+            return self.get_data_as_csv_response(request, stats_result)
 
         # Set the actual stats data
         resp_dict['data'] = stats_result.result_data
@@ -177,9 +177,9 @@ class StatsViewSwagger(View):
         return send_cors_response(JsonResponse(resp_dict))
 
 
-    def get_data_as_csv_response(self, request, result_data):
+    def get_data_as_csv_response(self, request, stats_result):
         """Hasty method, proof of concept for downloads by month"""
-        if result_data is None:
+        if stats_result is None or stats_result.result_data is None:
             return None
 
         # Create the HttpResponse object with the appropriate CSV header.
@@ -189,15 +189,15 @@ class StatsViewSwagger(View):
 
         writer = csv.writer(response)
 
-        print 'result_data', result_data
-        print 'result_data', result_data
+        print 'result_data', stats_result.result_data
+        print 'result_data', stats_result.result_data
 
-        if len(result_data) == 0:
+        if len(stats_result.result_data) == 0:
             return HttpResponse('Sorry!  No Data!')
 
         cnt = 0
-        key_names = ['yyyy_mm', 'year_num', 'month_num', 'month_name', 'cnt', 'running_total']
-        for drow in result_data:
+        key_names = stats_result.csv_header_keys
+        for drow in stats_result.result_data:
             cnt+=1
 
             # 1st row, add headers

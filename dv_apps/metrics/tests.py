@@ -406,13 +406,13 @@ class MetricsCountTests(MetricsTestBase):
         r = stats_maker.get_file_downloads_by_month_published()
 
         # check number of months
-        self.assertEqual(len(r.result_data), 4)
+        self.assertEqual(len(r.result_data), 5)
 
         # check last month
-        last_month = {'cnt': 6,
+        last_month = {'cnt': 7,
              'month_name': 'Sep',
              'month_num': 9,
-             'running_total': 125,
+             'running_total': 309,
              'year_num': 2015,
              'yyyy_mm': '2015-09'}
         self.assertEqual(r.result_data[-1], last_month)
@@ -446,10 +446,10 @@ class MetricsCountTests(MetricsTestBase):
         self.assertEqual(len(r.result_data), 9)
 
         # check last month
-        last_month = {'cnt': 22,
+        last_month = {'cnt': 31,
              'month_name': 'Dec',
              'month_num': 12,
-             'running_total': 237,
+             'running_total': 465,
              'year_num': 2015,
              'yyyy_mm': '2015-12'}
         self.assertEqual(r.result_data[-1], last_month)

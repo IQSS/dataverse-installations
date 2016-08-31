@@ -28,6 +28,22 @@ class StatsMakerFiles(StatsMakerBase):
         """
         super(StatsMakerFiles, self).__init__(**kwargs)
 
+
+    def get_dataverse_params_for_guestbook(self):
+        """Allow narrowing of file download stats to specific Dataverses"""
+
+        success, dataverse_ids_or_msg = self.get_selected_dataverse_ids()
+        if not success:
+            self.add_error(dataverse_ids_or_msg)
+            return {}
+
+        if dataverse_ids_or_msg is None or len(dataverse_ids_or_msg)==0:
+            return {}
+
+        dv_params = {}
+        dv_params['dataset__owner__in'] = dataverse_ids_or_msg
+        return dv_params
+
     # ----------------------------
     #  Datafile counts - single number
     # ----------------------------
@@ -92,6 +108,9 @@ class StatsMakerFiles(StatsMakerBase):
 
         start_point_filters.update(self.get_download_type_filter())
 
+        # Narrow down to specific Dataverses
+        start_point_filters.update(self.get_dataverse_params_for_guestbook())
+
         if extra_filters:
             for k, v in extra_filters.items():
                 start_point_filters[k] = v
@@ -116,7 +135,13 @@ class StatsMakerFiles(StatsMakerBase):
             return self.get_error_msg_return()
 
         filter_params = self.get_date_filter_params(date_var_name='responsetime')
+
         filter_params.update(self.get_download_type_filter())
+
+        # Narrow down to specific Dataverses
+        filter_params.update(self.get_dataverse_params_for_guestbook())
+        if self.was_error_found():
+            return self.get_error_msg_return()
 
         # Add extra filters, if they exist
         if extra_filters:
@@ -138,14 +163,7 @@ class StatsMakerFiles(StatsMakerBase):
         formatted_records = []  # move from a queryset to a []
         file_running_total = self.get_file_download_start_point(**extra_filters)
 
-        print 'file_counts_by_month', file_counts_by_month
-        print 'file_counts_by_month', len(file_counts_by_month)
-
-        for fc in file_counts_by_month:
-            print fc
-
         for d in file_counts_by_month:
-            print 'd', d
             file_running_total += d['cnt']
             d['running_total'] = file_running_total
 

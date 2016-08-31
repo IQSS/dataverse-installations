@@ -175,7 +175,7 @@ class StatsMakerBase(object):
         self.selected_dvs = kwargs.get('selected_dvs', None)
         if self.selected_dvs is not None:
             # make dvs into a list, stripping whitespace from each one
-            self.selected_dvs = [x.strip() for x in self.selected_dvs.strip().split()]
+            self.selected_dvs = [x.strip() for x in self.selected_dvs.strip().split(',')]
             self.selected_dvs = [x for x in self.selected_dvs if len(x) > 0]
             if len(self.selected_dvs) == 0:
                 self.selected_dvs = None
@@ -191,17 +191,23 @@ class StatsMakerBase(object):
     def get_selected_dataverse_ids(self):
         """From a list of aliases, return a list of dataverse ids"""
         if self.selected_dvs is None:
-            return None
+            return True, None
 
         if self.include_child_dvs is True:
             # don't include child dvs
-            return DataverseTreeUtil.get_selected_dataverse_ids(self.selected_dvs,\
+            success, ids_or_msg = DataverseTreeUtil().get_selected_dataverse_ids(self.selected_dvs,\
                                     include_child_dvs=True)
+
         else:
             # include child dvs
-            return DataverseTreeUtil.get_selected_dataverse_ids(self.selected_dvs,\
+            success, ids_or_msg = DataverseTreeUtil().get_selected_dataverse_ids(self.selected_dvs,\
                                     include_child_dvs=False)
 
+        if not success:
+            self.add_error(ids_or_msg)
+            return False, ids_or_msg
+
+        return success, ids_or_msg
 
     def get_running_total_base_date_filters(self, date_var_name=DVOBJECT_CREATEDATE_ATTR):
         """If we have a running total, get the start point filters"""

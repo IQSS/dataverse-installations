@@ -34,6 +34,9 @@ class StatsViewSwagger(View):
     BASIC_DATE_PARAMS = ['startDateParam', 'endDateParam', 'selectedYearParam']
 
     PARAM_DV_API_KEY = ['dataverseAPIKey']
+    PARAM_SELECTED_DV_ALIASES = ['selectedDataverseAliases']
+    PARAM_INCLUDE_CHILD_DVS = ['includeChildDataverses']
+
     PUBLISH_PARAMS = ['publicationStateParam']
     PUB_STATE_PUBLISHED = 'published'
     PUB_STATE_UNPUBLISHED = 'unpublished'

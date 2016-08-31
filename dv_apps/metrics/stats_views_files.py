@@ -76,8 +76,16 @@ class FilesDownloadedByMonthView(StatsViewSwagger):
     description_200 = 'A list of file download counts by month'
     tags = [StatsViewSwagger.TAG_DATAFILES]
 
+    param_names = StatsViewSwagger.PARAM_DV_API_KEY +\
+                StatsViewSwagger.BASIC_DATE_PARAMS +\
+                StatsViewSwagger.PUBLISH_PARAMS +\
+                StatsViewSwagger.PRETTY_JSON_PARAM +\
+                StatsViewSwagger.PARAM_SELECTED_DV_ALIASES +\
+                StatsViewSwagger.PARAM_INCLUDE_CHILD_DVS
+
     def get_stats_result(self, request):
         """Return the StatsResult object for this statistic"""
+
         stats_files = StatsMakerFiles(**request.GET.dict())
 
         pub_state = self.get_pub_state(request)

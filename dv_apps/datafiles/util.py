@@ -60,9 +60,9 @@ class DatafileUtil(object):
         dfiles = self.get_datafile_dict(dvobject_ids)
         #dcategories = self.get_datafile_categories(fmeta_ids)
 
-        print '-' * 40
+        #print '-' * 40
         #print 'dcategories', dcategories
-        print '-' * 40
+        #print '-' * 40
 
         fmeta_attrs = ('label', 'description', 'vers')
         fmt_list = []

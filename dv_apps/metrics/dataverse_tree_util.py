@@ -23,7 +23,7 @@ class DataverseTreeUtil(object):
             - Additional, add sub Dataverses if "include_child_dvs" is True
         """
         if dv_alias_list is None or len(dv_alias_list)==0:
-            return None # Look across all Dataverses
+            return True, None # Look across all Dataverses
 
         # Retrieve ids of the selected Dataverses
         #
@@ -32,28 +32,40 @@ class DataverseTreeUtil(object):
                     ).filter(alias__in=dv_alias_list\
                     ).values('id', 'owner_id')
 
+        if len(first_cut_ids) == 0:
+            if len(dv_alias_list) == 1:
+                emsg = "This Dataverse alias was not found: \"%s\"" % dv_alias_list[0]
+            else:
+                fmt_alias_list = [ '"%s"' % x for x in dv_alias_list]
+                emsg = "These Dataverse aliases were not found: %s" % ', '.join(fmt_alias_list)
+            return False, emsg
+
         first_cut_id_list = [x['id'] for x in first_cut_ids]
 
+        print 'first_cut_id_list', len(first_cut_id_list), first_cut_id_list
         # Include child dvs?
         #
         if not include_child_dvs:
             # No, just return what you have
-            return first_cut_id_list
+            return True, first_cut_id_list
 
         # Yes, include child dvs
 
         # Is the root included?
         if len([x for x in first_cut_ids if x['owner_id'] is None]) > 0:
             # Yes! # Look across all Dataverses
-            return None
+            return True, None
 
         # Nope, need to look at the full Dataversetree
         full_tree = self.get_dataverse_tree_dict()
 
         # Check through tree, looking
         additional_ids = self.get_subtree_child_ids(full_tree, first_cut_id_list)
+        print 'additional_ids', len(additional_ids), additional_ids
 
-        return additional_ids
+        all_ids = first_cut_id_list + additional_ids
+
+        return True, all_ids
 
 
     def get_subtree_child_ids(self, tree_info, selected_ids, id_list=None, gather_all=False):
@@ -124,9 +136,6 @@ class DataverseTreeUtil(object):
         #print 'root_node', root_node
 
         full_tree = self.get_child_nodes(root_node, parent_child_lists)
-        print '-' * 40
-        #print json.dumps(full_tree, indent=4)
-        print '-' * 40
 
         fmt_list = []
         for info in full_tree.get('children'):
@@ -158,7 +167,7 @@ class DataverseTreeUtil(object):
         else:
             child_list = [] # create child list
             for cn in child_nodes:
-                child_tree = get_child_nodes(cn, parent_child_lists, depth=depth+1)
+                child_tree = self.get_child_nodes(cn, parent_child_lists, depth=depth+1)
 
                 # limit to dataverses with sub dataverses
                 if child_tree and len(child_tree) > 0:

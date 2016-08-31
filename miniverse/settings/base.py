@@ -167,6 +167,7 @@ TEMPLATES = [
                 'django.template.context_processors.static',
                 'django.template.context_processors.tz',
                 'django.contrib.messages.context_processors.messages',
+                'miniverse.context_processors.global_settings.settings_for_templates',
             ],
         },
     },

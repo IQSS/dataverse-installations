@@ -11,7 +11,7 @@ host: {{ SWAGGER_HOST }}
 schemes:
   - {{ SWAGGER_SCHEME }}
 # will be prefixed to all paths
-basePath: /metrics/v1
+basePath: /miniverse/metrics/v1
 produces:
   - application/json
 

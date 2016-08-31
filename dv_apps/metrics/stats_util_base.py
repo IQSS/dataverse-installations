@@ -8,6 +8,7 @@ from django.db import models
 from dv_apps.utils.date_helper import format_yyyy_mm_dd
 from dv_apps.dvobjects.models import DVOBJECT_CREATEDATE_ATTR
 from dv_apps.metrics.stats_result import StatsResult
+from dv_apps.metrics.dataverse_tree_util import DataverseTreeUtil
 
 class TruncMonth(models.Func):
     function = 'EXTRACT'
@@ -176,6 +177,9 @@ class StatsMakerBase(object):
             # make dvs into a list, stripping whitespace from each one
             self.selected_dvs = [x.strip() for x in self.selected_dvs.strip().split()]
             self.selected_dvs = [x for x in self.selected_dvs if len(x) > 0]
+            if len(self.selected_dvs) == 0:
+                self.selected_dvs = None
+
         self.include_child_dvs = kwargs.get('include_child_dvs', False)
         if self.include_child_dvs:
             if self.include_child_dvs in (True, 'True', 'true'):
@@ -184,8 +188,19 @@ class StatsMakerBase(object):
                 self.include_child_dvs = False
 
 
-    
+    def get_selected_dataverse_ids(self):
+        """From a list of aliases, return a list of dataverse ids"""
+        if self.selected_dvs is None:
+            return None
 
+        if self.include_child_dvs is True:
+            # don't include child dvs
+            return DataverseTreeUtil.get_selected_dataverse_ids(self.selected_dvs,\
+                                    include_child_dvs=True)
+        else:
+            # include child dvs
+            return DataverseTreeUtil.get_selected_dataverse_ids(self.selected_dvs,\
+                                    include_child_dvs=False)
 
 
     def get_running_total_base_date_filters(self, date_var_name=DVOBJECT_CREATEDATE_ATTR):

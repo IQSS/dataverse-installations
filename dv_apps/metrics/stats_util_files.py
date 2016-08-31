@@ -83,7 +83,6 @@ class StatsMakerFiles(StatsMakerBase):
         return self.get_file_downloads_by_month(**params)
 
 
-
     def get_file_download_start_point(self, **extra_filters):
         """Get the startpoint when keeping a running total of file downloads"""
 

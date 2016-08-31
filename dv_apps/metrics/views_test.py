@@ -10,7 +10,7 @@ from django.http import JsonResponse, HttpResponse
 from django.db.models import F
 
 from dv_apps.dataverses.models import Dataverse
-from dv_apps.metrics.dataverse_tree_util import get_dataverse_tree_dict
+from dv_apps.metrics.dataverse_tree_util import DataverseTreeUtil
 
 
 
@@ -39,7 +39,9 @@ def get_dataverse_full_tree_json(request):
 
 def get_dataverse_tree_json(request, skip_flat_dataverses=True):
 
-    tree_dict = get_dataverse_tree_dict(skip_flat_dataverses=skip_flat_dataverses)
+    dtu = DataverseTreeUtil()
+
+    tree_dict = dtu.get_dataverse_tree_dict(skip_flat_dataverses=skip_flat_dataverses)
 
     if 'pretty' in request.GET:
         as_html = '<pre>%s</pre>' % (json.dumps(tree_dict, indent=4))

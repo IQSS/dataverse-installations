@@ -169,9 +169,10 @@ class StatsMakerBase(object):
                 " must be 'a' for ascending or 'd' for descending.")
             return
 
+        # ----------------------------------------
         # Optional: selected dataverse aliases
-        #   - Only used for file downloads
-        #
+        #   - 8/31: Only used for file downloads
+        # ----------------------------------------
         self.selected_dvs = kwargs.get('selected_dvs', None)
         if self.selected_dvs is not None:
             # make dvs into a list, stripping whitespace from each one
@@ -180,12 +181,25 @@ class StatsMakerBase(object):
             if len(self.selected_dvs) == 0:
                 self.selected_dvs = None
 
+        # ----------------------------------------
+        # Related to above: option to include child Dataverses
+        # ----------------------------------------
         self.include_child_dvs = kwargs.get('include_child_dvs', False)
         if self.include_child_dvs:
             if self.include_child_dvs in (True, 'True', 'true'):
                 self.include_child_dvs = True
             else:
                 self.include_child_dvs = False
+
+        # ----------------------------------------
+        # Output as CSV
+        # ----------------------------------------
+        self.as_csv = kwargs.get('as_csv', False)
+        if self.as_csv:
+            if self.as_csv in (True, 'True', 'true'):
+                self.as_csv = True
+            else:
+                self.as_csv = False
 
 
     def get_selected_dataverse_ids(self):

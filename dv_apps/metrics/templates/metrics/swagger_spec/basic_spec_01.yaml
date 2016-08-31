@@ -83,6 +83,11 @@ parameters:
     in: query
     description: Optional.  When narrowing results by specific Dataverses, include child Dataverses and Datasets.  See "selected_dvs"
     type: boolean
+  asCSV:
+    name: as_csv
+    in: query
+    description: Optional.  Return the output in .csv format (Test)
+    type: boolean
 
 
 # ------------------------------

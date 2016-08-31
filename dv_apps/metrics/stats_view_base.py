@@ -1,4 +1,6 @@
 import json
+import csv
+
 from collections import OrderedDict
 from datetime import datetime
 
@@ -14,6 +16,7 @@ from django.views.decorators.cache import cache_page
 from django.utils.decorators import method_decorator
 from dv_apps.dataverse_auth.decorator import apikey_required
 from dv_apps.utils.metrics_cache_time import get_metrics_api_cache_time
+from dv_apps.utils.date_helper import get_timestamp_for_filename
 
 
 def send_cors_response(response):
@@ -36,6 +39,7 @@ class StatsViewSwagger(View):
     PARAM_DV_API_KEY = ['dataverseAPIKey']
     PARAM_SELECTED_DV_ALIASES = ['selectedDataverseAliases']
     PARAM_INCLUDE_CHILD_DVS = ['includeChildDataverses']
+    PARAM_AS_CSV = ['asCSV']
 
     PUBLISH_PARAMS = ['publicationStateParam']
     PUB_STATE_PUBLISHED = 'published'
@@ -137,6 +141,7 @@ class StatsViewSwagger(View):
                 message=stats_result.error_message)
             return send_cors_response(JsonResponse(err_dict, status=400))
 
+
         # Create the dict for the response
         #
         resp_dict = OrderedDict()
@@ -157,6 +162,9 @@ class StatsViewSwagger(View):
         resp_dict['info']['params'] = request.GET
 
 
+        if stats_result.as_csv:
+            return self.get_data_as_csv_response(request, stats_result.result_data)
+
         # Set the actual stats data
         resp_dict['data'] = stats_result.result_data
 
@@ -167,3 +175,39 @@ class StatsViewSwagger(View):
 
         # Return the actual response
         return send_cors_response(JsonResponse(resp_dict))
+
+
+    def get_data_as_csv_response(self, request, result_data):
+        """Hasty method, proof of concept for downloads by month"""
+        if result_data is None:
+            return None
+
+        # Create the HttpResponse object with the appropriate CSV header.
+        response = HttpResponse(content_type='text/csv')
+        csv_fname = 'metrics_%s.csv' % get_timestamp_for_filename()
+        response['Content-Disposition'] = 'attachment; filename="%s"' % csv_fname
+
+        writer = csv.writer(response)
+
+        print 'result_data', result_data
+        print 'result_data', result_data
+
+        if len(result_data) == 0:
+            return HttpResponse('Sorry!  No Data!')
+
+        cnt = 0
+        key_names = ['yyyy_mm', 'year_num', 'month_num', 'month_name', 'cnt', 'running_total']
+        for drow in result_data:
+            cnt+=1
+
+            # 1st row, add headers
+            if cnt==1:
+                writer.writerow(key_names)
+
+            # Order all val rows same as header order
+            vals = []
+            for k in key_names:
+                vals.append(drow[k])
+            writer.writerow(vals)
+
+        return response

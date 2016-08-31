@@ -81,7 +81,8 @@ class FilesDownloadedByMonthView(StatsViewSwagger):
                 StatsViewSwagger.PUBLISH_PARAMS +\
                 StatsViewSwagger.PRETTY_JSON_PARAM +\
                 StatsViewSwagger.PARAM_SELECTED_DV_ALIASES +\
-                StatsViewSwagger.PARAM_INCLUDE_CHILD_DVS
+                StatsViewSwagger.PARAM_INCLUDE_CHILD_DVS +\
+                StatsViewSwagger.PARAM_AS_CSV
 
     def get_stats_result(self, request):
         """Return the StatsResult object for this statistic"""
@@ -97,7 +98,12 @@ class FilesDownloadedByMonthView(StatsViewSwagger):
         else:
             stats_result = stats_files.get_file_downloads_by_month_published()
 
+        # Output this as a CSV file
+        if stats_files.as_csv:
+            stats_result.as_csv = True
+
         return stats_result
+
 
 
 class FileCountsByContentTypeView(StatsViewSwagger):

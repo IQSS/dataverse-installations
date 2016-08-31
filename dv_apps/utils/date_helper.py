@@ -7,6 +7,12 @@ import calendar
 
 DATE_DELIM = '-'
 TIMESTAMP_MASK = '%Y-%m-%d %H:%M:%S'
+TIMESTAMP_MASK_FOR_FILE = '%Y-%m-%d_%H-%M-%S'
+
+
+def get_timestamp_for_filename():
+
+    return datetime.now().strftime(TIMESTAMP_MASK_FOR_FILE)
 
 def format_yyyy_mm_dd(date_str, delim=DATE_DELIM):
     """Convert a string in YYYY-MM-DD format to a datetime object"""

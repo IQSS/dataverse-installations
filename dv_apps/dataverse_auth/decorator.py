@@ -1,6 +1,8 @@
 """
 Defines a decorator that checks for an unexpired API KEY
 when settings.DEBUG=False
+
+9/6/16 - hasty addition of superuser_apikey_required, need to factor out..
 """
 
 #from functools import wraps
@@ -40,6 +42,8 @@ def apikey_required(view_func):
             # Assume production, check the API key
             # ---------------------------
             api_key = request.GET.get(PARAM_NAME_KEY, None)
+            if api_key is not None:
+                api_key = api_key.strip()
 
             # ---------------------------
             # Has an API key been specified?
@@ -85,6 +89,8 @@ def superuser_apikey_required(view_func):
             # Assume production, check the API key
             # ---------------------------
             api_key = request.GET.get(PARAM_NAME_KEY, None)
+            if api_key is not None:
+                api_key = api_key.strip()
 
             # ---------------------------
             # Has an API key been specified?

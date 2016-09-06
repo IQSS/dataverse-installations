@@ -79,8 +79,9 @@ class FilesDownloadedByMonthView(StatsViewSwagger):
     api_path = '/files/downloads/count/monthly'
     summary = ('Number of downloaded Files by month')
     description = ('Returns a list of counts and'
-            ' cumulative counts of all Files downloaded in a month')
-    description_200 = 'A list of file download counts by month'
+            ' cumulative counts of all Files downloaded in a month.'
+            ' Superuser access required.')
+    description_200 = 'A list of file download counts by month.'
     tags = [StatsViewSwagger.TAG_DATAFILES]
 
     param_names = StatsViewSwagger.PARAM_DV_API_KEY +\

@@ -452,10 +452,12 @@ class StatsMakerFiles(StatsMakerBase):
             ids = Datafile.objects.filter(contenttype=file_type).values_list('dvobject__id', flat=True)
 
             # Retrieve the names of these Datafiles via the FileMetadata object
-            l = FileMetadata.objects.filter(datafile__in=ids).values_list('label', flat=True)
+            l = FileMetadata.objects.filter(datafile__in=ids\
+                    ).distinct('datafile__id', 'label'\
+                    ).values_list('datafile__id', 'label')
 
         # Convert the file names to file extensions
-        ext_list = [splitext(label)[-1] for label in l]
+        ext_list = [splitext(info[1])[-1] for info in l]
 
         # Make a dict counting the extensions
         extension_counts = {}   # {file extension : count, file ext : count, etc}

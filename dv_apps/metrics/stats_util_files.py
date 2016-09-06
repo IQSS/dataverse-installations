@@ -481,3 +481,58 @@ class StatsMakerFiles(StatsMakerBase):
         return StatsResult.build_success_result(d)
 
         #return JsonResponse(d)
+"""
+python manage.py shell
+
+# Find xlsx files badly classified
+from dv_apps.datafiles.models import Datafile, FileMetadata
+
+df_ids = FileMetadata.objects.filter(label__endswith='.xlsx').values_list('datafile__id', flat=True)
+print df_ids.query
+
+dfs =
+
+dfs = Datafile.objects.select_related('dvobject').filter(dvobject__in=df_ids).filter(contenttype='application/octet-stream').order_by('-dvobject__createdate')
+
+# 10460
+
+l = []
+for f in dfs:
+    fm = FileMetadata.objects.get(datafile=f.dvobject.id)
+    l.append(fm.label)
+    #print f.dvobject__createdate
+
+
+# XLS FILES
+SELECT count(distinct("filemetadata"."datafile_id")) FROM "filemetadata" WHERE "filemetadata"."label" LIKE '%.xlsx';
+SELECT distinct("filemetadata"."datafile_id")) FROM "filemetadata" WHERE "filemetadata"."label" LIKE '%.xlsx';
+
+SELECT distinct(dvobject.id) FROM "datafile" INNER JOIN "dvobject" ON ("datafile"."id" = "dvobject"."id") WHERE ("datafile"."id" IN (SELECT U0."datafile_id" FROM "filemetadata" U0 WHERE U0."label" LIKE ''%.xlsx' ESCAPE '\') AND "datafile"."contenttype" = 'application/octet-stream') ORDER BY "dvobject"."createdate" DESC
+
+# Count all .xlsx files labeled as unknown
+SELECT count(distinct(datafile.id)) FROM "datafile" INNER JOIN "dvobject" ON ("datafile"."id" = "dvobject"."id")
+WHERE ("datafile"."id" IN (SELECT fm."datafile_id" FROM "filemetadata" fm WHERE fm."label" LIKE '%.xlsx'))
+
+# Count .xlsx files labeled as unknown
+SELECT count(distinct(datafile.id)) FROM "datafile" INNER JOIN "dvobject" ON ("datafile"."id" = "dvobject"."id")
+WHERE ("datafile"."id" IN (SELECT fm."datafile_id" FROM "filemetadata"fm WHERE fm."label" LIKE '%.xlsx')
+AND "datafile"."contenttype" = 'application/octet-stream')
+
+# Count all files labeled as unknown
+SELECT count(distinct(datafile.id)) FROM "datafile" INNER JOIN "dvobject" ON ("datafile"."id" = "dvobject"."id")
+WHERE "datafile"."contenttype" = 'application/octet-stream'
+
+
+SELECT dvobject.createdate FROM "datafile" INNER JOIN "dvobject" ON ("datafile"."id" = "dvobject"."id")
+WHERE ("datafile"."id" IN (SELECT fm."datafile_id" FROM "filemetadata"fm WHERE fm."label" LIKE '%.xlsx')
+AND "datafile"."contenttype" = 'application/octet-stream') order by dvobject.createdate desc
+
+
+
+# counts
+All unknown:  select count(datafile.id) from datafile where contenttype = 'application/octet-stream';
+    count: 122,778
+
+13,696
+10,460
+"""

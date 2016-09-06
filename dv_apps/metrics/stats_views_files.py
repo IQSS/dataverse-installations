@@ -1,3 +1,8 @@
+from django.utils.decorators import method_decorator
+from django.views.decorators.cache import cache_page
+from dv_apps.dataverse_auth.decorator import superuser_apikey_required
+from dv_apps.utils.metrics_cache_time import get_metrics_api_cache_time
+
 from .stats_view_base import StatsViewSwagger
 from .stats_util_files import StatsMakerFiles
 
@@ -63,6 +68,8 @@ class FileCountByMonthView(StatsViewSwagger):
 
         return stats_result
 
+@method_decorator(superuser_apikey_required, name='get')
+@method_decorator(cache_page(get_metrics_api_cache_time()), name='get')
 class FilesDownloadedByMonthView(StatsViewSwagger):
     """API View - Downloaded Files counts by Month."""
 

@@ -7,9 +7,9 @@ from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse, HttpResponse
 from django.views.decorators.cache import cache_page
 
-
 from dv_apps.dataverses.models import Dataverse
 from dv_apps.dataverses.util import DataverseUtil
+
 
 def get_pretty_val(request):
     """Quick check of url param to pretty print JSON"""
@@ -29,8 +29,8 @@ def view_single_dataverse_by_alias(request, alias):
 
     return view_single_dataverse(request, dv)
 
-@cache_page(60 * 60 * 2)
 @login_required
+@cache_page(60 * 60 * 2)
 def view_single_dataverse_by_id(request, dataverse_id):
 
     try:
@@ -41,8 +41,8 @@ def view_single_dataverse_by_id(request, dataverse_id):
     return view_single_dataverse(request, dv)
 
 
-@cache_page(60 * 15)
 @login_required
+@cache_page(60 * 15)
 def view_single_dataverse(request, dv):
     """
     Show JSON for a single Dataverse

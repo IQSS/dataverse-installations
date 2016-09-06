@@ -11,6 +11,15 @@ class AuthenticatedUser(models.Model):
     position = models.CharField(max_length=255, blank=True, null=True)
     superuser = models.NullBooleanField()
 
+    def is_superuser(self):
+        if not self.superuser:
+            return False
+
+        if self.superuser is True:
+            return True
+
+        return False
+
 
     def __str__(self):
         if self.lastname and self.firstname:

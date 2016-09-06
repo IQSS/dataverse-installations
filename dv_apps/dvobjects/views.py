@@ -1,11 +1,13 @@
 from django.db import connection
-from django.shortcuts import render, render_to_response
+from django.shortcuts import render_to_response
+from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 
 from data_related_to_me import DataRelatedToMe
 from .forms import FilterForm
 
 # Create your views here.
+@login_required
 def view_test_query(request, username=None):
 
     if username is None:

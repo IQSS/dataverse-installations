@@ -57,7 +57,7 @@ WSGISocketPrefix run/wsgi
     # Let's serve the miniverse files
     # ------------------------------------------
     WSGIDaemonProcess miniverse user=miniverse group=users threads=5 python-home=/opt/dvn/app/miniverse/.virtualenvs/miniverse python-path=/opt/dvn/app/miniverse/miniverse
-    WSGIScriptAlias /miniverse /opt/dvn/app/miniverse/miniverse/miniverse/wsgi_lts.py
+    WSGIScriptAlias / /opt/dvn/app/miniverse/miniverse/miniverse/wsgi_lts.py
 
     <Directory /opt/dvn/app/miniverse/miniverse/miniverse>
         <Files wsgi_lts.py>

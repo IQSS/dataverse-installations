@@ -1,18 +1,13 @@
 import json
 from collections import OrderedDict
 
-from django.shortcuts import render
 from django.http import Http404
+from django.contrib.auth.decorators import login_required
 
-from django.conf import settings
 from django.http import JsonResponse, HttpResponse
-from django.template.loader import render_to_string
-from django.forms.models import model_to_dict
 from django.views.decorators.cache import cache_page
 
-from django.core import serializers
 
-from dv_apps.datasets.models import Dataset, DatasetVersion
 from dv_apps.datasets.util import DatasetUtil
 
 def get_pretty_val(request):
@@ -24,6 +19,7 @@ def get_pretty_val(request):
 
 
 #@cache_page(60 * 60 * 2)
+@login_required
 def view_single_dataset_by_id(request, dataset_version_id):
 
     try:
@@ -36,6 +32,7 @@ def view_single_dataset_by_id(request, dataset_version_id):
 
 
 #@cache_page(60 * 15)
+@login_required
 def view_single_dataset_version(request, dsv):
     """
     Show JSON for a single DatasetVersion

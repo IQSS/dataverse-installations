@@ -1,14 +1,17 @@
 from django.shortcuts import render, render_to_response
 from django.http import HttpResponse, Http404
+from django.contrib.auth.decorators import login_required
 
 from dv_apps.datasets.models import Dataset, DatasetVersion
 from dv_apps.datasetfields.utils import get_dataset_title
 from dv_apps.datasetfields.models import DatasetField, DatasetFieldValue, DatasetFieldType
 from dv_apps.datasetfields.metadata_formatter import MetadataFormatter
 
+
+@login_required
 def view_list_datasets(request):
 
-    datasets = Dataset.objects.all().order_by('-dvobject_id')
+    datasets = Dataset.objects.all().order_by('-dvobject_id')[:100]
     #datasets = Dataset.objects.select_related('id').all()
     #datasets = DatasetVersion.objects.select_related('dataset').all()
 
@@ -17,6 +20,7 @@ def view_list_datasets(request):
     return render_to_response('dataset_list.html', lookup)
     #return HttpResponse('view_list_datasets')
 
+@login_required
 def view_dataset_detail(request, dataset_id):
 
     try:

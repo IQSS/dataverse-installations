@@ -1,5 +1,5 @@
 """
-WSGI config for blah project.
+WSGI config for LTS deployment using miniverse virtualenv.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
@@ -12,5 +12,8 @@ import os
 from django.core.wsgi import get_wsgi_application
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "miniverse.settings.lts_settings")
+
+activate_env=os.path.expanduser("~/.virtualenvs/miniverse/bin/activate_this.py")
+execfile(activate_env, dict(__file__=activate_env))
 
 application = get_wsgi_application()

@@ -45,6 +45,15 @@ cp miniverse/settings/lts_settings_template.py miniverse/settings/lts_settings.p
 
 ### (3) Command line set-up
 
+ - Create a virtualenv named ```miniverse```
+    - Edit the ```postactivate``` file (```/opt/dvn/app/miniverse/.virtualenvs/postactivate```) to have the following contents:
+
+```
+#!/bin/bash
+# This hook is sourced after every virtualenv is activated.
+export DJANGO_SETTINGS_MODULE=miniverse.settings.lts_settings.py
+```
+
  - Invoke the virtualenv
  - Within the main ```miniverse``` directory:
     - Try: ```python manage.py check --settings=miniverse.settings.lts_settings```

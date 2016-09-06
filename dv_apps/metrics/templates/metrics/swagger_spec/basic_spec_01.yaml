@@ -76,7 +76,7 @@ parameters:
   selectedDataverseAliases:
     name: selected_dvs
     in: query
-    description: Optional.  Narrow results by specific Dataverses.  Supply Dataverse aliases separated by a comma. e.g. "icraf"  By default, doesn't included children.  See "include_child_dvs" parameter.
+    description: Optional.  Narrow results by specific Dataverses.  Supply Dataverse aliases separated by a comma. e.g. "icraf"  By default, doesn't included children.  See "include_child_dvs" parameter.  The aliases ARE CASE SENSITIVE.
     type: string
   includeChildDataverses:
     name: include_child_dvs

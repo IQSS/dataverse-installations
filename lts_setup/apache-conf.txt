@@ -37,7 +37,7 @@ WSGISocketPrefix run/wsgi
     ServerName services.dataverse.harvard.edu
 
     WSGIDaemonProcess miniverse user=miniverse group=users threads=5 python-home=/opt/dvn/app/miniverse/.virtualenvs/miniverse python-path=/opt/dvn/app/miniverse/miniverse
-    WSGIScriptAlias / /opt/dvn/app/miniverse/miniverse/miniverse/wsgi_lts.py
+    WSGIScriptAlias /miniverse /opt/dvn/app/miniverse/miniverse/miniverse/wsgi_lts.py
 
     #<Directory /opt/dvn/app/miniverse/www/services.dataverse.harvard.edu/>
     <Directory /opt/dvn/app/miniverse/miniverse>
@@ -47,4 +47,5 @@ WSGISocketPrefix run/wsgi
         Allow from all
     </Directory>
 </VirtualHost>
+
                                                                                                                                            983,1         Bot

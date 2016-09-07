@@ -2,6 +2,12 @@ from django.db import models
 from dv_apps.dvobjects.models import DvObject
 
 
+PROTOCOL_DOI = "doi"
+PROTOCOL_DOI_URL_BASE = 'http://dx.doi.org'
+
+PROTOCOL_HDL = 'hdl'
+PROTOCOL_HDL_URL_BASE = 'http://hdl.handle.net'
+
 VERSION_STATE_RELEASED = 'RELEASED'
 VERSION_STATE_DRAFT = 'DRAFT'
 VERSION_STATE_DEACCESSIONED = 'DEACCESSIONED'
@@ -53,6 +59,17 @@ class Dataset(models.Model):
         db_table = 'dataset'
         unique_together = (('authority', 'protocol', 'identifier', 'doiseparator'),)
 
+
+    def get_persistent_url(self):
+
+        if self.protocol == PROTOCOL_DOI:
+            url = '%s/%s/%s' % (PROTOCOL_DOI_URL_BASE, self.authority, self.identifier)
+        elif self.protocol == PROTOCOL_HDL:
+            url = '%s/%s/%s' % (PROTOCOL_HDL_URL_BASE, self.authority, self.identifier)
+        else:
+            raise Exception('unknown protocol: %s for dataset id: %s' % (self.protocol, self.id))
+
+        return url
 
 
 
@@ -145,7 +162,7 @@ class DatasetVersion(models.Model):
         version_text = self.get_semantic_version()
         if version_text is None:
             return self.dataset.__str__()
-            
+
         return '%s %s' % (self.dataset, version_text)
 
 

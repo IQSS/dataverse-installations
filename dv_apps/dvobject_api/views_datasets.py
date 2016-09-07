@@ -1,10 +1,12 @@
 import json
 from collections import OrderedDict
 
+from django.shortcuts import render, render_to_response
 from django.http import Http404
 from django.contrib.auth.decorators import login_required
 
 from django.http import JsonResponse, HttpResponse
+from dv_apps.datasets.models import DatasetVersion
 from django.views.decorators.cache import cache_page
 
 
@@ -29,6 +31,24 @@ def view_single_dataset_by_id(request, dataset_version_id):
         raise Http404
 
     return view_single_dataset_version(request, dataset_version)
+
+@login_required
+def view_single_dataset_test_view(request, dataset_version_id):
+
+    try:
+        dsv = DatasetVersion.objects.select_related('dataset'\
+            ).get(pk=dataset_version_id)
+    except DatasetVersion.DoesNotExist:
+        raise Http404
+
+    dataset_dict = DatasetUtil(dsv).as_json()
+    citation_block=dataset_dict.get('metadata_blocks', {}).get('citation')
+
+    lu = dict(ds=dataset_dict,
+            citation_block=citation_block
+            )
+
+    return render(request, 'dvobject_api/test.html', lu)
 
 
 #@cache_page(60 * 15)

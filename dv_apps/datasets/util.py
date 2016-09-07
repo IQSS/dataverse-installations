@@ -64,6 +64,7 @@ class DatasetUtil(object):
         persistent_id_info['authority'] = self.ds.authority
         persistent_id_info['identifier'] = self.ds.identifier
         persistent_id_info['persistentId'] = self.ds.identifier_string()
+        persistent_id_info['persistentUrl'] = self.ds.get_persistent_url()
 
         dsv_metadata['persistentIdInfo'] = persistent_id_info
 

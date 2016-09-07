@@ -1,0 +1,32 @@
+<!-- Files Table -->
+<div id="datasetForm:tabView:filesTable" class="ui-datatable ui-widget ui-datatable-scrollable" style="margin-right:1px;">
+    <div class="ui-datatable-header ui-widget-header ui-corner-top">
+        <div id="datasetForm:tabView:filesTable:filesHeaderBlock" class="row">
+            <div class="form-horizontal col-sm-7 col-xs-9 text-left">
+                <div class="form-group">
+
+                    <div class="col-xs-8"><input id="" class="ui-inputfield ui-inputtext ui-widget ui-state-default ui-corner-all form-control" type="text" /></div>
+
+                    <div class="col-xs-3"><a href="#" class="ui-commandlink ui-widget btn btn-default">
+                                            <span class="glyphicon glyphicon-search"></span> Find
+                                        </a>
+                    </div>
+                </div>
+            </div>
+            <div id="filesHeaderCount" class="col-xs-6 text-left">
+                <!-- Files Count -->
+                <span class="highlightBold">{{ ds.files|length }} File{{ ds.files|length|pluralize }}</span>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+
+    <b>Files found:</b> {{ ds.files|length }}
+    <br />
+    {% for f in ds.files %}
+        {{ f.id }}, {{ f.name }}<br />
+    {% endfor %}
+    </div>
+</div>

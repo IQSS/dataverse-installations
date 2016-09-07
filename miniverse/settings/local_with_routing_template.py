@@ -34,8 +34,8 @@ SECRET_KEY = 'my-secret-key'
 # CACHE settings for visualzations and API
 # -----------------------------------
 METRICS_CACHE_VIEW = True
-METRICS_CACHE_VIEW_TIME = 60 * 60 * 2   # Cache for visualizations
-METRICS_CACHE_API_TIME = 60 * 15    # Cache for API endpoints
+METRICS_CACHE_VIEW_TIME = 0#60 * 60 * 2   # Cache for visualizations
+METRICS_CACHE_API_TIME = 0#60 * 15    # Cache for API endpoints
 
 # -----------------------------------
 # Swagger Specs.  The following attributes must be set to properly

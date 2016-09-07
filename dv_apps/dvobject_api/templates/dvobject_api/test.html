@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+
+{% block extra_header_info %}
+<link rel="stylesheet" href="https://dataverse.harvard.edu/javax.faces.resource/css/structure.css.xhtml?version=4.5">
+{% endblock %}
+
+{% block main_content %}
+
+<!-- title -->
+<div id="title-block" class="row">
+    <span id="title">{{ ds.title}}</span>
+</div>
+<!-- citation block -->
+<div id="citation-block" class="row">
+    <div class="col-xs-12 alert alert-info bg-citation">
+        <div class="row ">
+            {#{ citation_block }#}
+            <div id="citation" class="col-xs-7 col-md-8">
+            {% for a in citation_block.author %}
+                {{ a.authorName }}{% if not forloop.last %}; {% else %}, {% endif %}
+            {% endfor %}
+            {{ citation_block.dsDescription.0.dsDescriptionDate }},
+            "{{ ds.title}}",
+            <a href="{{ ds.persistentIdInfo.persistentUrl }}">{{ ds.persistentIdInfo.persistentId }}</a>,
+            Harvard Dataverse, {{ ds.semanticVersionInfo.semantic_version }}
+            </div>
+        </div>
+    </div>
+</div>
+<!-- metadata block -->
+<div id="metadata-panel" class="row panel panel-default">
+    <div class="panel-body metadata-panel-body">
+        <div id="description" class="form-group">
+            <label class="col-sm-3 control-label">
+                <span data-toggle="tooltip" data-placement="auto right" class="tooltiplabel text-info" data-original-title="{{ ds.title }}">Description</span>
+            </label>
+            <div class="col-sm-9">{{ citation_block.dsDescription.0.dsDescriptionValue|safe }}
+            </div>
+        </div>
+        <div id="subject" class="form-group">
+            <label class="col-sm-3 control-label">
+                <span data-toggle="tooltip" data-placement="auto right" class="tooltiplabel text-info" data-original-title="Domain-specific Subject Categories that are topically relevant to the Dataset.">Subject</span>
+            </label>
+            <div class="col-sm-9">{{ citation_block.subject|join:", " }}</div>
+        </div>
+        <div id="publication" class="form-group">
+            <label class="col-sm-3 control-label">
+                <span data-toggle="tooltip" data-placement="auto right" class="tooltiplabel text-info" data-original-title="Publications that use the data from this Dataset.">Related Publication</span>
+            </label>
+            <div class="col-sm-9">
+                {% for pub in citation_block.publication %}
+                    {{ pub.publicationCitation|safe }}
+                    {% if not forloop.last %}
+                    <hr />
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end: metadata block -->
+<!-- start: tabs -->
+<div class="ui-tabs ui-widget ui-widget-content ui-corner-all ui-hidden-container ui-tabs-top" data-widget="content">
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all" role="tablist">
+    <!-- files tab nav -->
+    <li role="presentation" class="ui-state-default ui-corner-top active"><a href="#Files" aria-controls="home" role="tab"
+    data-toggle="tab">Files</a></li>
+
+    <li role="presentation" class="ui-state-default ui-corner-top"><a href="#Metadata" aria-controls="profile" role="tab" data-toggle="tab">Metadata</a></li>
+
+    <li role="presentation" class="ui-state-default ui-corner-top"><a href="#Terms" aria-controls="messages" role="tab" data-toggle="tab">Terms</a></li>
+
+    <li role="presentation" class="ui-state-default ui-corner-top"><a href="#Versions" aria-controls="settings" role="tab" data-toggle="tab">Versions</a></li>
+  </ul>
+
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <!-- start: files tab content -->
+    <div role="tabpanel" class="tab-pane active" id="Files">
+        <br />{% include "dvobject_api/tab_content_files.html" %}
+    </div>
+    <!-- start: end files tab content -->
+
+    <div role="tabpanel" class="tab-pane" id="Metadata">.Metadata..</div>
+    <div role="tabpanel" class="tab-pane" id="Terms">.Terms..</div>
+    <div role="tabpanel" class="tab-pane" id="Versions">.Versions..</div>
+  </div>
+
+</div>
+
+<!-- end: tabs -->
+<hr />
+
+{% endblock %}

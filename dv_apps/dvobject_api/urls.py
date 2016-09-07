@@ -13,6 +13,8 @@ urlpatterns = [
     # Datasets
     url(r'^api/v1/datasets/by-id/(?P<dataset_version_id>\d{1,8})$', views_datasets.view_single_dataset_by_id, name='view_single_dataset_by_id'),
 
+    url(r'^api/v1/datasets/by-id/test-view/(?P<dataset_version_id>\d{1,8})$', views_datasets.view_single_dataset_test_view, name='view_single_dataset_test_view'),
+
     # Files
     #url(r'^api/v1/datasets/by-id/(?P<dataset_version_id>\d{1,8})$', #views_datasets.view_single_dataset_by_id, name='view_single_dataset_by_id'),
 

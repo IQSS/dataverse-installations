@@ -699,11 +699,9 @@ class MetricsCountTests(MetricsTestBase):
         ext_counts = r.result_data.get('file_extension_counts', [])
         self.assertEqual(len(ext_counts), 67)
 
+        print ('ext_counts', ext_counts[4])
         # check 5th listing in extension count list
         #
-        listing_5 = OrderedDict([('extension', u'.xlsx'),
-                    ('count', 24),
-                    ('total_count', 667),
-                    ('percent_string', '3.598%')])
+        listing_5 = OrderedDict([('extension', u'.docx'), ('count', 15), ('total_count', 437), ('percent_string', '3.432%')])
 
         self.assertEqual(listing_5, ext_counts[4])

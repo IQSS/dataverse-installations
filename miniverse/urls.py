@@ -2,7 +2,7 @@ from django.conf.urls import include, url, patterns
 from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
-
+from dv_apps.metrics import views_public_metrics
 admin.site.site_header = 'Dataverse DB'
 
 URL_PREFIX = 'miniverse/'
@@ -22,6 +22,11 @@ urlpatterns = [
     url(r'^%sdvobjects/' % URL_PREFIX, include('dv_apps.dvobject_api.urls')),
 
     url(r'^%sminiverse-admin/' % URL_PREFIX, include(admin.site.urls)),
+
+    url(r'^%sminiverse-admin/' % URL_PREFIX, include(admin.site.urls)),
+
+    url(r'^/?$', views_public_metrics.view_homepage_placeholder, name='view_homepage_placeholder'),
+
 
 ]
 

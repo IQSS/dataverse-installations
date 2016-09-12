@@ -161,3 +161,17 @@ class DatafileUtil(object):
       }
     },
 '''
+
+'''
+import requests
+
+fid = 2668709
+URL_FILE_ACCESS = 'https://dataverse.harvard.edu/api/access/datafile/%s' % fid
+
+r = requests.get('https://api.github.com/events', stream=True)
+
+fname = 'some.xlsx'
+with open(filename, 'wb') as fd:
+    for chunk in r.iter_content(chunk_size):
+        fd.write(chunk)
+'''

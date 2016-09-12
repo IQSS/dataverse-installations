@@ -18,7 +18,14 @@ from dv_apps.metrics.stats_util_files import StatsMakerFiles
 
 from dv_apps.utils.metrics_cache_time import get_metrics_cache_time
 
+FIVE_HOURS = 60 * 60 * 5
 
+@cache_page(FIVE_HOURS)
+def view_homepage_placeholder(request):
+
+    resp_dict = {}
+
+    return render(request, 'metrics/index-placeholder.html', resp_dict)
 
 
 @cache_page(get_metrics_cache_time())

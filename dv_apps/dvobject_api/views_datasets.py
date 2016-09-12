@@ -33,6 +33,7 @@ def view_single_dataset_by_id(request, dataset_version_id):
     return view_single_dataset_version(request, dataset_version)
 
 @login_required
+@cache_page(60 * 60 * 2)
 def view_single_dataset_test_view(request, dataset_version_id):
 
     try:

@@ -1,0 +1,40 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Dataverse Metrics</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+        body{padding: 40px;}
+    </style>
+  </head>
+  <body>
+
+	<div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-md-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <img src="{% static 'images/dataverse_project_logo-hp.png' %}" class="img-responsive" alt="Dataverse"/>
+                    </div>
+                    <div class="panel-body"><p>
+                        <p style="font-size: 1.3em; color:inheret;">Metrics related:
+                            <ul>
+                                <li><a href="{% url 'view_public_visualizations_last12' %}">Chart - Last 12 months</a></li>
+                                <li><a href="{% url 'view_map' %}">Map</a></li>
+                                <li><a href="/static/swagger-ui/index.html?url={% url 'view_dynamic_swagger_spec' %}">API doc (swagger) </a></li>
+                            </ul>
+                        </p>
+                        <br />
+                        <p><a href="https://github.com/IQSS/miniverse"><img src="{% static 'images/GitHub-Mark-64px.png' %}" height="32" /></a><p>
+                    </div>
+            </div>
+        </div>
+
+	</div>
+  </body>
+</html>

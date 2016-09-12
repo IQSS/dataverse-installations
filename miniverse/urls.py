@@ -25,7 +25,7 @@ urlpatterns = [
 
     url(r'^%sminiverse-admin/' % URL_PREFIX, include(admin.site.urls)),
 
-    url(r'^/?$', views_public_metrics.view_homepage_placeholder, name='view_homepage_placeholder'),
+    url(r'^$', views_public_metrics.view_homepage_placeholder, name='view_homepage_placeholder'),
 
 
 ]

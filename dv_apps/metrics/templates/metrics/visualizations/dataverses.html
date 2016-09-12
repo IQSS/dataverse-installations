@@ -36,8 +36,9 @@ Example of "dataverse_counts_by_month" that is being iterated through
   // instantiate d3plus
 
   var attributes = [
-    {"name": "Number of Dataverses", "hex": "#CF3636"},
-    {"name": "Monthly Dataverses", "hex": "#ffcc00"},
+    {"name": "Total Dataverses", "hex": "#CF3636"},
+    {"name": "Number of Dataverses", "hex": "#ffcc00"},
+    {"name": "Monthly Dataverses", "hex": "#ffcc00"}
   ]
 
 $( document ).ready(function() {
@@ -49,10 +50,9 @@ $( document ).ready(function() {
         .id("name")         // key for which our data is unique on
         .text("display_name")       // key to use for display text
         .y({ "value":"Number of Dataverses",
-        "name":"Number of Dataverses",
             "range": get_metrics_viz_range(dataverse_counts_by_month, 500)
             })         // key to use for y-axis
-        .x("Month")          // key to use for x-axis
+        .x({ "value":"Month"})          // key to use for x-axis
         .attrs(attributes)
         .color("hex")
         .order({

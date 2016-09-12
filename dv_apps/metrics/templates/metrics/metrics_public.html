@@ -23,10 +23,17 @@
 <script>
 
   function get_metrics_viz_range(metric_array, mod_num){
+
       var fig_y_min = metric_array[0].running_total;
       var fig_y_max = metric_array[metric_array.length-1].running_total;
+
+      if (fig_y_min < mod_num){
+        return [0, fig_y_max + 10];
+      }
+
       var y_range_start = fig_y_min - (fig_y_min % mod_num);
       var y_range_end = fig_y_max - (fig_y_max % mod_num) + mod_num;
+
       return [y_range_start, y_range_end];
   }
 

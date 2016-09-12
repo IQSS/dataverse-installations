@@ -9,6 +9,8 @@ from datetime import datetime, timedelta
 from django.shortcuts import render
 from django.http import JsonResponse, HttpResponse, HttpResponseRedirect
 from django.views.decorators.cache import cache_page
+from django.views.decorators.clickjacking import xframe_options_exempt
+
 from django.http import JsonResponse, HttpResponse, Http404
 
 from dv_apps.datafiles.models import Datafile, FileMetadata
@@ -28,6 +30,7 @@ def view_homepage_placeholder(request):
     return render(request, 'metrics/index-placeholder.html', resp_dict)
 
 
+@xframe_options_exempt
 @cache_page(get_metrics_cache_time())
 def view_public_visualizations_last12(request):
     """

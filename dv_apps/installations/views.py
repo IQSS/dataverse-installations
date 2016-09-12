@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.views.decorators.cache import cache_page
 from django.http import HttpResponseRedirect
+from django.views.decorators.clickjacking import xframe_options_exempt
 
 from dv_apps.installations.models import Installation, Institution
 from dv_apps.utils.metrics_cache_time import get_metrics_cache_time
@@ -31,7 +32,7 @@ def view_map(request):
     return render(request, 'installations/map.html', d)
 
 
-
+@xframe_options_exempt
 @cache_page(get_metrics_cache_time())
 def view_map_dataverse_org(request):
     """

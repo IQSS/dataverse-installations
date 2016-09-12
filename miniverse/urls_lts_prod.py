@@ -3,6 +3,7 @@ LTS (Library Technical Systems) Production URLs
 """
 from django.conf.urls import include, url
 from django.contrib import admin
+from django.views.generic.base import RedirectView
 #from django.conf import settings
 from dv_apps.metrics import views_public_metrics
 
@@ -27,5 +28,7 @@ urlpatterns = [
     url(r'^%sminiverse-admin/' % URL_PREFIX, include(admin.site.urls)),
 
     url(r'^$', views_public_metrics.view_homepage_placeholder, name='view_homepage_placeholder'),
+
+    url(r'^favicon.ico$', RedirectView.as_view(url='/static/favicondataverse.png', permanent=True), name='favicon')
 
 ]

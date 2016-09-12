@@ -7,7 +7,7 @@
   var file_counts_by_month = [
     {% for i in file_counts_by_month %}
 
-    {"Month": "{{ i.month_name }} {{ i.year_num }}", "monthNum": {{i.month_num}}, "name":"Total Files Added", "Number of Files": {{i.running_total}}, "month_sort" : "{{ i.yyyy_mm }}", "display_name":"{{ i.month_name }} {{ i.year_num }}: {{ i.cnt|intcomma }} added / total: {{ i.running_total|intcomma }}"}
+    {"Month": "{{ i.month_name }} {{ i.year_num }}", "monthNum": {{i.month_num}}, "name":"Total Files Added", "Number of Files": {{i.running_total}}, "running_total": {{i.running_total}}, "month_sort" : "{{ i.yyyy_mm }}", "display_name":"{{ i.month_name }} {{ i.year_num }}: {{ i.cnt|intcomma }} added / total: {{ i.running_total|intcomma }}"}
     {#{"Month": "{{ i.month_name }} {{ i.year_num }}", "monthNum": {{i.month_num}}, "name":"Monthly Files Added", "Total Files": {{i.cnt}}, "month_sort" : "{{ i.yyyy_mm }}", "display_name":"{{ i.month_name }} {{ i.year_num }}: {{ i.cnt|intcomma }} added / total: {{ i.running_total|intcomma }}"}#}
     {%if not forloop.last%},{%endif%}
     {%endfor%}
@@ -20,22 +20,27 @@
     {"name": "Monthly Files Added", "hex": "#ffcc00"}
   ]
 
-  var visualization = d3plus.viz()
-    .container("#viz-file_counts_by_month")  // container DIV to hold the visualization
-    .data(file_counts_by_month)  // data to use with the visualization
-    .type("bar")       // visualization type
-    .id("name")         // key for which our data is unique on
-    .text({"value":"display_name"})       // key to use for display text
-    .y("Number of Files")         // key to use for y-axis
-    //.x({"stacked": true, "value": "month"}))          // key to use for x-axis
-    .x({"value":"Month"})
-    .attrs(attributes)
-    .color("hex")
-    .order({
-        "sort": "asc",
-        "value": "month_sort"
-     })
-    .resize(true)
-    .title("Files Added Over Time")
-    .draw()             // finally, draw the visualization!
+  $( document ).ready(function() {
+
+      var visualization = d3plus.viz()
+        .container("#viz-file_counts_by_month")  // container DIV to hold the visualization
+        .data(file_counts_by_month)  // data to use with the visualization
+        .type("bar")       // visualization type
+        .id("name")         // key for which our data is unique on
+        .text({"value":"display_name"})       // key to use for display text
+        .y({"value":"Number of Files",
+            "range": get_metrics_viz_range(file_counts_by_month, 50000) })         // key to use for y-axis
+        //.x({"stacked": true, "value": "month"}))          // key to use for x-axis
+        .x({"value":"Month"})
+        .attrs(attributes)
+        .color("hex")
+        .order({
+            "sort": "asc",
+            "value": "month_sort"
+         })
+        .resize(true)
+        .title("Files Added Over Time")
+        .draw()             // finally, draw the visualization!
+    });
+
 </script>

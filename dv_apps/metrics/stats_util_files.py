@@ -221,7 +221,6 @@ print stats_files.get_total_file_downloads().result_data
         count_pre_dv4_downloads = False
         if extra_filters:
             for k, v in extra_filters.items():
-                print k, v
                 if k == INCLUDE_PRE_DV4_DOWNLOADS:    # skip this param
                     count_pre_dv4_downloads = True
                     del extra_filters[k]

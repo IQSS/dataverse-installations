@@ -84,6 +84,46 @@ class StatsMakerFiles(StatsMakerBase):
     # ----------------------------
     #  Monthly download counts
     # ----------------------------
+    def get_total_file_downloads(self, **extra_filters):
+        """
+        Get the total file download count
+        """
+        if self.was_error_found():
+            return self.get_error_msg_return()
+
+        filter_params = self.get_date_filter_params(date_var_name='responsetime')
+
+        filter_params.update(self.get_download_type_filter())
+
+        # Narrow down to specific Dataverses
+        filter_params.update(self.get_dataverse_params_for_guestbook())
+        if self.was_error_found():
+            return self.get_error_msg_return()
+
+        # Add extra filters, if they exist
+        if extra_filters:
+            for k, v in extra_filters.items():
+                filter_params[k] = v
+
+        q = GuestBookResponse.objects.exclude(responsetime__isnull=True\
+                ).filter(**filter_params)
+
+        sql_query = str(q.query)
+
+
+        return StatsResult.build_success_result(q.count(), sql_query)
+
+
+    """
+exit()
+python manage.py shell
+from dv_apps.metrics.stats_util_files import StatsMakerFiles
+stats_files = StatsMakerFiles()
+print stats_files.get_total_file_downloads().result_data
+    """
+    # ----------------------------
+    #  Monthly download counts
+    # ----------------------------
     def get_file_downloads_by_month_published(self):
         """File downloads by month for published files"""
 

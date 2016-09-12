@@ -108,6 +108,8 @@
 
   </div>
 <!-- END: container -->
-{% include "metrics/google_analytics_dev.html" %}
+{% if not DEBUG %}
+    {% include "metrics/google_analytics.html" %}
+{% endif %}
 </body>
 </html>

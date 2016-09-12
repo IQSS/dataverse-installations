@@ -110,7 +110,7 @@ def view_public_visualizations(request, **kwargs):
     # -------------------------
     # Files downloaded, by month
     # -------------------------
-    stats_monthly_downloads = stats_files.get_file_downloads_by_month_published()
+    stats_monthly_downloads = stats_files.get_file_downloads_by_month_published(include_pre_dv4_downloads=True)
     if not stats_monthly_downloads.has_error():
         resp_dict['file_downloads_by_month'] = list(stats_monthly_downloads.result_data)
         resp_dict['file_downloads_by_month_sql'] = stats_monthly_downloads.sql_query

@@ -16,6 +16,7 @@ from dv_apps.metrics.stats_result import StatsResult
 from dv_apps.dvobjects.models import DVOBJECT_CREATEDATE_ATTR
 
 FILE_TYPE_OCTET_STREAM = 'application/octet-stream'
+INCLUDE_PRE_DV4_DOWNLOADS = 'include_pre_dv4_downloads'
 
 class StatsMakerFiles(StatsMakerBase):
 
@@ -101,11 +102,22 @@ class StatsMakerFiles(StatsMakerBase):
             return self.get_error_msg_return()
 
         # Add extra filters, if they exist
+        count_pre_dv4_downloads = False
         if extra_filters:
             for k, v in extra_filters.items():
-                filter_params[k] = v
+                if k == INCLUDE_PRE_DV4_DOWNLOADS:    # skip this param
+                    count_pre_dv4_downloads = True
+                    del extra_filters[k]
+                else:
+                    filter_params[k] = v
 
-        q = GuestBookResponse.objects.exclude(responsetime__isnull=True\
+
+        if count_pre_dv4_downloads:
+            exclude_params = {}
+        else:
+            exclude_params = dict(responsetime__isnull=True)
+
+        q = GuestBookResponse.objects.exclude(**exclude_params\
                 ).filter(**filter_params)
 
         sql_query = str(q.query)
@@ -124,17 +136,21 @@ print stats_files.get_total_file_downloads().result_data
     # ----------------------------
     #  Monthly download counts
     # ----------------------------
-    def get_file_downloads_by_month_published(self):
+    def get_file_downloads_by_month_published(self, include_pre_dv4_downloads=False):
         """File downloads by month for published files"""
 
         params = self.get_is_published_filter_param(dvobject_var_name='datafile')
+        if include_pre_dv4_downloads:
+            params[INCLUDE_PRE_DV4_DOWNLOADS] = True
 
         return self.get_file_downloads_by_month(**params)
 
-    def get_file_downloads_by_month_unpublished(self):
+    def get_file_downloads_by_month_unpublished(self, include_pre_dv4_downloads=False):
         """File downloads by month for unpublished files"""
 
         params = self.get_is_NOT_published_filter_param(dvobject_var_name='datafile')
+        if include_pre_dv4_downloads:
+            params[INCLUDE_PRE_DV4_DOWNLOADS] = True
 
         return self.get_file_downloads_by_month(**params)
 
@@ -159,6 +175,20 @@ print stats_files.get_total_file_downloads().result_data
         sql_query = str(q.query)
 
         return q.count()
+
+    def get_file_download_start_point_include_undated(self, **extra_filters):
+        """
+        This start point also includes pre-4.0 GuestBookResponse objects
+        which have a null responsetime
+        """
+
+        initial_count = self.get_file_download_start_point(**extra_filters)
+
+        pre_dv4_count = GuestBookResponse.objects.filter(\
+                            responsetime__isnull=True).count()
+
+        print 'pre_dv4_count', pre_dv4_count
+        return initial_count + pre_dv4_count
 
 
     def get_download_type_filter(self):
@@ -188,9 +218,15 @@ print stats_files.get_total_file_downloads().result_data
             return self.get_error_msg_return()
 
         # Add extra filters, if they exist
+        count_pre_dv4_downloads = False
         if extra_filters:
             for k, v in extra_filters.items():
-                filter_params[k] = v
+                print k, v
+                if k == INCLUDE_PRE_DV4_DOWNLOADS:    # skip this param
+                    count_pre_dv4_downloads = True
+                    del extra_filters[k]
+                else:
+                    filter_params[k] = v
 
         file_counts_by_month = GuestBookResponse.objects.exclude(\
             responsetime__isnull=True\
@@ -205,7 +241,12 @@ print stats_files.get_total_file_downloads().result_data
         sql_query = str(file_counts_by_month.query)
 
         formatted_records = []  # move from a queryset to a []
-        file_running_total = self.get_file_download_start_point(**extra_filters)
+
+        if count_pre_dv4_downloads:
+            file_running_total = self.get_file_download_start_point_include_undated(**extra_filters)
+        else:
+            file_running_total = self.get_file_download_start_point(**extra_filters)
+
 
         for d in file_counts_by_month:
             file_running_total += d['cnt']

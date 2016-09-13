@@ -4,7 +4,7 @@ from django.contrib import admin
 from .models import Installation, Institution
 
 class InstallationAdmin(admin.ModelAdmin):
-    list_display = ['name', 'logo', 'view_logo_100', 'marker', 'view_marker', 'version', 'description']
+    list_display = ['name', 'logo', 'view_logo_100',  'url', 'marker', 'view_marker', 'version', 'description']
     readonly_fields = ('view_logo', 'view_logo_100', 'view_marker')
     search_fields = ['name']
 

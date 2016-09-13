@@ -15,7 +15,7 @@
 
 
   // instantiate d3plus
-   var attributes = [
+   var dataset_attributes = [
     {"name": "Total Datasets", "hex": "#E58433"},
     {"name": "Monthly Datasets", "hex": "#ffcc00"}
   ]
@@ -32,7 +32,7 @@
         .y({"value" : "Number of Datasets",
             "range": get_metrics_viz_range(datasets_by_month, 1000) })         // key to use for y-axis
         .x({"value":"Month"})          // key to use for x-axis
-        .attrs(attributes)
+        .attrs(dataset_attributes)
         .color("hex")
         .order({
             "sort": "asc",

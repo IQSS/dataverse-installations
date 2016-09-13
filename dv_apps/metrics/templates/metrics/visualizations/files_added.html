@@ -15,7 +15,7 @@
 
 
   // instantiate d3plus
-  var attributes = [
+  var files_added_attributes = [
     {"name": "Total Files Added", "hex": "#006699"},
     {"name": "Monthly Files Added", "hex": "#ffcc00"}
   ]
@@ -32,7 +32,7 @@
             "range": get_metrics_viz_range(file_counts_by_month, 50000) })         // key to use for y-axis
         //.x({"stacked": true, "value": "month"}))          // key to use for x-axis
         .x({"value":"Month"})
-        .attrs(attributes)
+        .attrs(files_added_attributes)
         .color("hex")
         .order({
             "sort": "asc",

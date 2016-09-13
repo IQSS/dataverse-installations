@@ -12,7 +12,7 @@ class Installation(models.Model):
     logo = models.ImageField(upload_to='logos/', null=True, blank=True)
     marker = models.ImageField(upload_to='logos/', null=True, blank=True)
     description = models.TextField(null=True, blank=True)
-    url = models.TextField(null=True, blank=True)
+    url = models.URLField(null=True, blank=True)
     version = models.CharField(max_length=6, unique=False, null=True, blank=True)
 
     def __str__(self):

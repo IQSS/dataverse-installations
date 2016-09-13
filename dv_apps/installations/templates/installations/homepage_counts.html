@@ -1,0 +1,24 @@
+{% load staticfiles %}
+{% load humanize %}
+<!DOCTYPE html>
+<html>
+  <head id='head'>
+    <title>Dataverse Repositories Map - Dataverse.org</title>
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta charset="utf-8">
+    {% load staticfiles %}
+    <link rel='stylesheet' href='{% static "maps/css/map.css" %}'>
+  </head>
+  <body>
+
+    <!--Metrics-->
+    <div class="metrics-wrapper">
+        <span class="installs">{{ installation_count|intcomma }} Installations</span>
+        <span class="dvs">{{ total_dataverses|intcomma }} Dataverses</span>
+        <span class="datasets">{{ total_datasets|intcomma }} Datasets</span>
+        {#<span class="files">{{ total_files|intcomma }} Files</span>#}
+        <span class="files">{{ total_downloads|intcomma }} Downloads</span>
+        <!-- <span class="downloads">1,700,000+ Downloads</span> -->
+    </div>
+</body>
+</html>

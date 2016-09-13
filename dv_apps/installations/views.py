@@ -31,6 +31,15 @@ def view_map(request):
 
     return render(request, 'installations/map.html', d)
 
+@xframe_options_exempt
+@cache_page(get_metrics_cache_time())
+def view_homepage_counts_dataverse_org(request):
+
+    d = get_total_published_counts()
+    d['installation_count'] = Installation.objects.all().count()
+    
+    return render(request, 'installations/homepage_counts.html', d)
+
 
 @xframe_options_exempt
 @cache_page(get_metrics_cache_time())

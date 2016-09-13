@@ -8,4 +8,6 @@ urlpatterns = [
 
     url(r'^dataverse-org$', views.view_map_dataverse_org, name='view_map_dataverse_org'),
 
+    url(r'^homepage-counts$', views.view_homepage_counts_dataverse_org,
+    name='view_homepage_counts_dataverse_org'),
 ]

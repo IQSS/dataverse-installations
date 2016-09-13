@@ -10,9 +10,8 @@
     <link rel='stylesheet' href='{% static "maps/css/map.css" %}'>
   </head>
   <body>
-
     <!--Metrics-->
-    <div class="metrics-wrapper">
+    <div class="metrics-wrapper" style="margin:0;padding:5px;">
         <span class="installs">{{ installation_count|intcomma }} Installations</span>
         <span class="dvs">{{ total_dataverses|intcomma }} Dataverses</span>
         <span class="datasets">{{ total_datasets|intcomma }} Datasets</span>

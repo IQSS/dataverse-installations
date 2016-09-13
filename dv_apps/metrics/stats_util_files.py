@@ -7,7 +7,8 @@ from collections import OrderedDict
 
 from django.db import models
 
-from dv_apps.utils.date_helper import get_month_name_abbreviation
+from dv_apps.utils.date_helper import get_month_name_abbreviation,\
+    get_month_name
 from dv_apps.dvobjects.models import DvObject, DTYPE_DATAFILE
 from dv_apps.datafiles.models import Datafile, FileMetadata
 from dv_apps.guestbook.models import GuestBookResponse, RESPONSE_TYPE_DOWNLOAD
@@ -247,7 +248,7 @@ print stats_files.get_total_file_downloads().result_data
             file_running_total = self.get_file_download_start_point(**extra_filters)
 
 
-        for d in file_counts_by_month:
+        for d in file_counts_by_month:    
             file_running_total += d['cnt']
             d['running_total'] = file_running_total
 
@@ -258,9 +259,10 @@ print stats_files.get_total_file_downloads().result_data
             d['month_num'] = d['yyyy_mm'].month
 
             # Add month name
-            month_name_found, month_name = get_month_name_abbreviation( d['yyyy_mm'].month)
+            month_name_found, month_name_short = get_month_name_abbreviation( d['yyyy_mm'].month)
             if month_name_found:
-                d['month_name'] = month_name
+                assume_month_name_found, d['month_name'] = get_month_name(d['yyyy_mm'].month)
+                d['month_name_short'] = month_name_short
             else:
                 # Log it!!!!!!
                 pass
@@ -377,9 +379,10 @@ print stats_files.get_total_file_downloads().result_data
             d['month_num'] = d['yyyy_mm'].month
 
             # Add month name
-            month_name_found, month_name = get_month_name_abbreviation(d['yyyy_mm'].month)
+            month_name_found, month_name_short = get_month_name_abbreviation(d['yyyy_mm'].month)
             if month_name_found:
-                d['month_name'] = month_name
+                assume_month_name_found, d['month_name'] = get_month_name(d['yyyy_mm'].month)
+                d['month_name_short'] = month_name_short
             else:
                 # Log it!!!!!!
                 pass

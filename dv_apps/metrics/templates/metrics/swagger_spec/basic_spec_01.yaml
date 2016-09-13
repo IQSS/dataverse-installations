@@ -104,6 +104,8 @@ definitions:
         type: string
       month_name:
         type: string
+      month_name_short:
+        type: string
       year_num:
         type: integer
       month_num:

@@ -11,6 +11,7 @@ from django.db.models import F
 from django.utils.encoding import python_2_unicode_compatible
 
 from dv_apps.utils.date_helper import get_month_name_abbreviation,\
+    get_month_name,\
     month_year_iterator
 from dv_apps.datasets.models import Dataset, DatasetVersion
 from dv_apps.datasetfields.models import DatasetField,\
@@ -201,9 +202,11 @@ class StatsMakerDatasets(StatsMakerBase):
             d['month_num'] = d['yyyy_mm'].month
 
             # Add month name
-            month_name_found, month_name = get_month_name_abbreviation(d['yyyy_mm'].month)
+            month_name_found, month_name_short = get_month_name_abbreviation(d['yyyy_mm'].month)
+
             if month_name_found:
-                d['month_name'] = month_name
+                assume_month_name_found, d['month_name'] = get_month_name(d['yyyy_mm'].month)
+                d['month_name_short'] = month_name_short
             else:
                 # Log it!!!!!!
                 pass

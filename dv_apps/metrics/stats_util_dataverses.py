@@ -4,7 +4,8 @@ This may be used for APIs, views with visualizations, etc.
 """
 from django.db import models
 
-from dv_apps.utils.date_helper import get_month_name_abbreviation
+from dv_apps.utils.date_helper import get_month_name_abbreviation,\
+    get_month_name
 from dv_apps.dataverses.models import Dataverse, DATAVERSE_TYPE_UNCATEGORIZED
 from dv_apps.metrics.stats_util_base import StatsMakerBase, TruncYearMonth
 from dv_apps.metrics.stats_result import StatsResult
@@ -183,9 +184,10 @@ class StatsMakerDataverses(StatsMakerBase):
             d['month_num'] = d['yyyy_mm'].month
 
             # Add month name
-            month_name_found, month_name = get_month_name_abbreviation(d['yyyy_mm'].month)
+            month_name_found, month_name_short = get_month_name_abbreviation(d['yyyy_mm'].month)
             if month_name_found:
-                d['month_name'] = month_name
+                assume_month_name_found, d['month_name'] = get_month_name(d['yyyy_mm'].month)
+                d['month_name_short'] = month_name_short
             else:
                 # Log it!!!!!!
                 pass

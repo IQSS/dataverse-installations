@@ -19,6 +19,7 @@ from dv_apps.metrics.stats_util_dataverses import StatsMakerDataverses
 from dv_apps.metrics.stats_util_files import StatsMakerFiles
 
 from dv_apps.utils.metrics_cache_time import get_metrics_cache_time
+from dv_apps.utils.date_helper import get_one_year_ago
 
 FIVE_HOURS = 60 * 60 * 5
 
@@ -34,17 +35,17 @@ def view_homepage_placeholder(request):
 @cache_page(get_metrics_cache_time())
 def view_public_visualizations_last12(request):
     """
-    Return visualizations covering the last 12 months+.
+    Return visualizations covering the last 11-12 months.
 
-    e.g. If it's July 23, 2016, it will start from July 1, 2015
-    e.g. If it's June 2, 2016, it will start from June 1, 2015
+    e.g. If it's July 23, 2016, it will start from June 1, 2015
+    e.g. If it's June 2, 2016, it will start from May 1, 2015
     """
-    #if not request.GET.get('iframe', None):
-    #    return HttpResponseRedirect('http://dataverse.org')
-
-    one_year_ago = datetime.now() - timedelta(weeks=52)
+    # one year ago
+    #
+    one_year_ago = get_one_year_ago(datetime.now())
 
     # start from the 1st day of last year's month
+    #
     date_filters = dict(start_date=one_year_ago.strftime('%Y-%m-01'))
 
     return view_public_visualizations(request, **date_filters)

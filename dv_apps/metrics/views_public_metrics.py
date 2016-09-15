@@ -23,6 +23,11 @@ from dv_apps.utils.date_helper import get_one_year_ago
 
 FIVE_HOURS = 60 * 60 * 5
 
+"""
+from django.core.cache import cache
+cache.clear()
+"""
+
 @cache_page(FIVE_HOURS)
 def view_homepage_placeholder(request):
 

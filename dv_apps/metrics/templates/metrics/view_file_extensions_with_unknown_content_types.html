@@ -11,7 +11,9 @@
         </p>
         <p>
             <b>Unique extensions:</b> {{ number_unique_extensions|intcomma }}
-            <br /><b>Number of files:</b> {{ total_file_count|intcomma }}
+            <br /><b>All DV files:</b> {{ all_dv_files_count|intcomma }}</b>
+            <br /><b>Unknown files:</b> {{ total_file_count|intcomma }}
+            <br/ >&nbsp; &nbsp; &nbsp; - <b>percent unknown:</b> ({{ percent_unknown }} of all dv files)
         </p>
         <p class="help-block small">
             Stats generated: {% now "jS F Y H:i T" %}

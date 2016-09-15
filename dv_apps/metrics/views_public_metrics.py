@@ -39,11 +39,15 @@ def view_files_extensions_with_unknown_content_types(request):
     if unknown_counts and unknown_counts.result_data:
         d = dict(unknown_counts=unknown_counts.result_data['file_extension_counts'],
                 total_file_count=unknown_counts.result_data['total_file_count'],
-                number_unique_extensions=unknown_counts.result_data['number_unique_extensions'])
+                number_unique_extensions=unknown_counts.result_data['number_unique_extensions'],
+                all_dv_files_count=unknown_counts.result_data['all_dv_files'],
+                percent_unknown=unknown_counts.result_data['percent_unknown'])
     else:
         d = dict(unknown_counts=[],
                 total_file_count=0,
-                number_unique_extensions=0)
+                number_unique_extensions=0,
+                all_dv_files_count=0,
+                percent_unknown=0)
 
     return render(request, 'metrics/view_file_extensions_with_unknown_content_types.html', d)
 

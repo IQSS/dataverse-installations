@@ -563,6 +563,8 @@ print stats_files.get_total_file_downloads().result_data
         d = OrderedDict(number_unique_extensions=len(ext_pairs))
         d['total_file_count'] = int(total_count)
         d['file_extension_counts'] = ext_list
+        d['all_dv_files'] = Datafile.objects.all().count()
+        d['percent_unknown'] = '{0:.3%}'.format(total_count/d['all_dv_files'])
 
         return StatsResult.build_success_result(d)
 

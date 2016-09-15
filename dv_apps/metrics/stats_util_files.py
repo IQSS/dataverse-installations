@@ -248,7 +248,7 @@ print stats_files.get_total_file_downloads().result_data
             file_running_total = self.get_file_download_start_point(**extra_filters)
 
 
-        for d in file_counts_by_month:    
+        for d in file_counts_by_month:
             file_running_total += d['cnt']
             d['running_total'] = file_running_total
 
@@ -561,6 +561,7 @@ print stats_files.get_total_file_downloads().result_data
             ext_list.append(d)
 
         d = OrderedDict(number_unique_extensions=len(ext_pairs))
+        d['total_file_count'] = int(total_count)
         d['file_extension_counts'] = ext_list
 
         return StatsResult.build_success_result(d)

@@ -16,7 +16,7 @@ from django.http import JsonResponse, HttpResponse, Http404
 from dv_apps.datafiles.models import Datafile, FileMetadata
 from dv_apps.metrics.stats_util_datasets import StatsMakerDatasets
 from dv_apps.metrics.stats_util_dataverses import StatsMakerDataverses
-from dv_apps.metrics.stats_util_files import StatsMakerFiles
+from dv_apps.metrics.stats_util_files import StatsMakerFiles, FILE_TYPE_OCTET_STREAM
 
 from dv_apps.utils.metrics_cache_time import get_metrics_cache_time
 from dv_apps.utils.date_helper import get_one_year_ago
@@ -30,6 +30,22 @@ def view_homepage_placeholder(request):
 
     return render(request, 'metrics/index-placeholder.html', resp_dict)
 
+@cache_page(get_metrics_cache_time())
+def view_files_extensions_with_unknown_content_types(request):
+    """Reference table of file extensions with unkown content type`"""
+
+    stats_files = StatsMakerFiles()
+    unknown_counts = stats_files.view_file_extensions_within_type(FILE_TYPE_OCTET_STREAM)
+    if unknown_counts and unknown_counts.result_data:
+        d = dict(unknown_counts=unknown_counts.result_data['file_extension_counts'],
+                total_file_count=unknown_counts.result_data['total_file_count'],
+                number_unique_extensions=unknown_counts.result_data['number_unique_extensions'])
+    else:
+        d = dict(unknown_counts=[],
+                total_file_count=0,
+                number_unique_extensions=0)
+
+    return render(request, 'metrics/view_file_extensions_with_unknown_content_types.html', d)
 
 @xframe_options_exempt
 @cache_page(get_metrics_cache_time())

@@ -28,6 +28,8 @@ urlpatterns = [
 
     url(r'^files/extensions$', views_public_metrics.view_file_extensions_within_type, name='view_file_extensions_within_type'),
 
+    url (r'^unknown-content-types$', views_public_metrics.view_files_extensions_with_unknown_content_types, name="view_files_extensions_with_unknown_content_types"),
+
     # views_test
     url(r'^metrics-links$', views_test.view_metrics_links, name='view_metrics_links'),
 

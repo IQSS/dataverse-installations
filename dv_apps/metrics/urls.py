@@ -30,6 +30,9 @@ urlpatterns = [
 
     url (r'^unknown-content-types$', views_public_metrics.view_files_extensions_with_unknown_content_types, name="view_files_extensions_with_unknown_content_types"),
 
+    url (r'^all-extension-counts$', views_public_metrics.view_all_file_extension_counts, name="view_all_file_extension_counts"),
+
+
     # views_test
     url(r'^metrics-links$', views_test.view_metrics_links, name='view_metrics_links'),
 

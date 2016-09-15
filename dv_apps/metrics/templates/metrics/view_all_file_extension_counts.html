@@ -1,25 +1,23 @@
 {% extends "base.html" %}
 {% load humanize %}
 
-{% block title %}content-type unknow{% endblock %}
+{% block title %}DV Extensions{% endblock %}
 
 {% block main_content %}
 <div class="row">
     <div class="col-xs-12 col-sm-8 col-md-6">
-        <h2>content-type unknown</h2>
-        <p>Below are the DV file extensions for DataFiles with contenttype <i>application/octet-stream</i>.  (See a <a href="{% url 'view_all_file_extension_counts' %}">list of all file extensions</a>, irregardless of content type.)
+        <h2>DV File Extensions</h2>
+        <p>Below are the extensions for all DataFiles.</p>
+        <p>This does not look at content-type which determines how a file is actually presented.
+            For potentially incorrect content types, see the <a href="{% url 'view_files_extensions_with_unknown_content_types' %}">unknown content-type  listing</a>.
         </p>
         <p>
-            <br /><b>All DV files:</b> {{ all_dv_files_count|intcomma }}</b>
-            <br /><b>Unknown files:</b> {{ total_file_count|intcomma }}
-            <ul>
-                <li><b>Percent unknown of all dv files:</b> {{ percent_unknown }} </li>
-                <li><b># Unique extensions of unknown files:</b> {{ number_unique_extensions|intcomma }}</li>
-            </ul>
+            <br /><b>All DV files:</b> {{ total_file_count|intcomma }}</b>
+                <br /><b># Unique extensions of files:</b> {{ number_unique_extensions|intcomma }}
         </p>
         <p class="help-block small">
             Stats generated: {% now "jS F Y H:i T" %}
-            <a href="{% url 'view_files_extensions_with_unknown_content_types' %}?tm={% now "U" %}" class="btn-primary btn-xs">force refresh</a>
+            <a href="{% url 'view_all_file_extension_counts' %}?tm={% now "U" %}" class="btn-primary btn-xs">force refresh</a>
         </p>
         <table class="table table-bordered">
             <thead>
@@ -27,10 +25,10 @@
                     <th>&nbsp;</th>
                     <th>Extension</th>
                     <th>Count</th>
-                    <th>% of Unknown Files</th>
+                    <th>% of Files</th>
                 </tr>
             </thead>
-            {% for info in unknown_counts %}
+            {% for info in all_counts %}
             <tr>
                 <td>{{ forloop.counter }}</td>
                 <td>{% if info.extension == "" %}

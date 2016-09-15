@@ -529,7 +529,8 @@ print stats_files.get_total_file_downloads().result_data
 
         if file_type is None:
             # Retrieve list of **all** file names -- this could be too much!
-            l = FileMetadata.objects.all().values_list('label', flat=True)
+            l = FileMetadata.objects.distinct('datafile__id', 'label'\
+                    ).values_list('datafile__id', 'label')
         else:
             # Retrieve ids of Datafile filtered by "contenttype"
             ids = Datafile.objects.filter(contenttype=file_type).values_list('dvobject__id', flat=True)

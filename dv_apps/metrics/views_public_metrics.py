@@ -36,8 +36,28 @@ def view_homepage_placeholder(request):
     return render(request, 'metrics/index-placeholder.html', resp_dict)
 
 @cache_page(get_metrics_cache_time())
+def view_all_file_extension_counts(request):
+    """Reference table of all file extensions with counts"""
+
+    stats_files = StatsMakerFiles()
+    all_counts = stats_files.view_file_extensions_within_type()
+    if all_counts and all_counts.result_data:
+        d = dict(all_counts=all_counts.result_data['file_extension_counts'],
+                total_file_count=all_counts.result_data['total_file_count'],
+                number_unique_extensions=all_counts.result_data['number_unique_extensions'],
+                )
+    else:
+        d = dict(all_counts=[],
+                total_file_count=0,
+                number_unique_extensions=0,
+                )
+
+    return render(request, 'metrics/view_all_file_extension_counts.html', d)
+
+
+@cache_page(get_metrics_cache_time())
 def view_files_extensions_with_unknown_content_types(request):
-    """Reference table of file extensions with unkown content type`"""
+    """Reference table of file extensions with unkown content type"""
 
     stats_files = StatsMakerFiles()
     unknown_counts = stats_files.view_file_extensions_within_type(FILE_TYPE_OCTET_STREAM)

@@ -21,7 +21,7 @@
             <li><a href="{% url 'view_dynamic_swagger_spec' %}">{% url 'view_dynamic_swagger_spec' %}</a></li>
             <li><a href="/static/swagger-ui/index.html?url={% url 'view_dynamic_swagger_spec' %}">/static/swagger-ui/index.html?url={% url 'view_dynamic_swagger_spec' %}</a></li>
         </ul>
-        
+
     <h4>map</h4>
         <ul>
             <li><a href="{% url 'view_map' %}">{% url 'view_map' %}</a></li>
@@ -32,7 +32,8 @@
 
         <h4>maintenance</h4>
         <ul>
-            <li><a href="{% url 'view_files_extensions_with_unknown_content_types' %}">Extensions of Files classified as unkown</a></li>
+            <li><a href="{% url 'view_all_file_extension_counts' %}">File extension counts</a></li>
+            <li><a href="{% url 'view_files_extensions_with_unknown_content_types' %}">Extensions of Files classified as unkown</a></li>            
         </ul>
 
     <h4>visualizations last 12 months</h4>

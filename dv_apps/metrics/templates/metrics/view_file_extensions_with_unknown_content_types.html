@@ -10,10 +10,12 @@
         <p>Below are the DV file extensions for DataFiles with contenttype <i>application/octet-stream</i>
         </p>
         <p>
-            <b>Unique extensions:</b> {{ number_unique_extensions|intcomma }}
             <br /><b>All DV files:</b> {{ all_dv_files_count|intcomma }}</b>
             <br /><b>Unknown files:</b> {{ total_file_count|intcomma }}
-            <br/ >&nbsp; &nbsp; &nbsp; - <b>percent unknown:</b> ({{ percent_unknown }} of all dv files)
+            <ul>
+                <li><b>Percent unknown of all dv files:</b> {{ percent_unknown }} </li>
+                <li><b># Unique extensions of unknown files:</b> {{ number_unique_extensions|intcomma }}</li>
+            </ul>
         </p>
         <p class="help-block small">
             Stats generated: {% now "jS F Y H:i T" %}

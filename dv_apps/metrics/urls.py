@@ -1,7 +1,8 @@
 from django.conf.urls import url
 
 from dv_apps.metrics import views_test,\
-    views_public_metrics, views_swagger_spec, views_error_test
+    views_public_metrics, views_swagger_spec, views_error_test,\
+    views_maintenance
 from dv_apps.metrics.stats_views_datasets import DatasetCountByMonthView,\
     DatasetTotalCounts,\
     DatasetSubjectCounts
@@ -28,10 +29,11 @@ urlpatterns = [
 
     url(r'^files/extensions$', views_public_metrics.view_file_extensions_within_type, name='view_file_extensions_within_type'),
 
-    url (r'^unknown-content-types$', views_public_metrics.view_files_extensions_with_unknown_content_types, name="view_files_extensions_with_unknown_content_types"),
+    url (r'^unknown-content-types$', views_maintenance.view_files_extensions_with_unknown_content_types, name="view_files_extensions_with_unknown_content_types"),
 
-    url (r'^all-extension-counts$', views_public_metrics.view_all_file_extension_counts, name="view_all_file_extension_counts"),
+    url (r'^all-extension-counts$', views_maintenance.view_all_file_extension_counts, name="view_all_file_extension_counts"),
 
+    url (r'^fix-extension$', views_maintenance.view_fix_extension, name="view_fix_extension"),
 
     # views_test
     url(r'^metrics-links$', views_test.view_metrics_links, name='view_metrics_links'),

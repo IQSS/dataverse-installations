@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% load humanize %}
+
+{% block title %}Fix DV Extension{% endblock %}
+
+
+{% block extra_header_info %}
+<style>
+    body{padding: 40px;}
+
+    table#tbl_form th, table#tbl_form td { border: none;}
+
+    .errorlist {color: #ff0000;}
+</style>
+{% endblock %}
+
+{% block main_content %}
+<p class="small">
+    <a href="{% url 'view_files_extensions_with_unknown_content_types' %}">&lt;&lt; Return to list of unknown content types</a>
+</p>
+
+<h2>Generate Github Ticket to Fix Extension</h2>
+
+<div class="row">
+    <div class="col-xs-12 col-sm-8 col-md-6">
+        <form action="{% url 'view_fix_extension'%}" method="POST">
+            {% csrf_token %}
+            <table class="table table-condensed" id="tbl_form">
+            {{ fix_form }}
+            </table>
+            <input type="submit" value="Generate markdown instructions" class="btn btn-primary" />
+        </form>
+    </div>
+</div>
+
+{% if fix_instructions %}
+<hr />
+<p>Copy the text below into a <a href="https://github.com/IQSS/dataverse/issues/new" target="_blank">new Github issue</a>.</p>
+<p>It contains SQL queries to update the content type.</p>
+    <pre>
+        <code class="language-html" data-lang="html">
+            {{ fix_instructions}}
+        </code>
+    </pre>
+<textarea readonly>
+    {{ fix_instructions}}
+</textarea>
+{% endif %}
+{% endblock %}

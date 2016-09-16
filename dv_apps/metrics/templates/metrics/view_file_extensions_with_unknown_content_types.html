@@ -1,7 +1,21 @@
 {% extends "base.html" %}
 {% load humanize %}
 
-{% block title %}content-type unknow{% endblock %}
+
+{% block title %}content-type unknown{% endblock %}
+
+
+{% block extra_header_info %}
+<style>
+    body{padding: 40px;}
+
+    table#tbl_listing th { text-align:center;}
+
+    table#tbl_listing td.rt { text-align:right;}
+    table#tbl_listing td.mid { text-align:center;}
+
+</style>
+{% endblock %}
 
 {% block main_content %}
 <div class="row">
@@ -21,13 +35,14 @@
             Stats generated: {% now "jS F Y H:i T" %}
             <a href="{% url 'view_files_extensions_with_unknown_content_types' %}?tm={% now "U" %}" class="btn-primary btn-xs">force refresh</a>
         </p>
-        <table class="table table-bordered">
+        <table class="table table-bordered table-condensed table-hover" id="tbl_listing">
             <thead>
                 <tr>
                     <th>&nbsp;</th>
                     <th>Extension</th>
                     <th>Count</th>
                     <th>% of Unknown Files</th>
+                    <th class="text-center">Get Fix<br />instructions</th>
                 </tr>
             </thead>
             {% for info in unknown_counts %}
@@ -38,8 +53,9 @@
                     {% else %}
                     {{ info.extension }}
                     {% endif %}</td>
-                <td>{{ info.count|intcomma }}</td>
-                <td>{{ info.percent_string }}</td>
+                <td class="rt">{{ info.count|intcomma }}</td>
+                <td class="rt">{{ info.percent_string }}</td>
+                <td class="mid"><a href="{% url 'view_fix_extension' %}?ext={{ info.extension }}" class="btn-primary btn-xs">fix</a></td>
             </tr>
             {% empty %}
             <tr>

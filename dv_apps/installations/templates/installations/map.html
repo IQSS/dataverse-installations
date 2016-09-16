@@ -96,7 +96,7 @@ Documentation link: https://developers.google.com/maps/documentation/javascript/
             // Array with the above information
             var locationArray = [
             {%for i in install_list%}
-             {"coords":new google.maps.LatLng({{i.lat}},{{i.lng}}), "msize":52, "name":"{{i.name}}", "logo":{%if i.logo%}"{{i.logo.url}}"{%else%}"{% static 'logos/harvard.png' %}"{%endif%}, "blank":null, "desc":"{{i.description}}", "version":"{{i.version}}", "marker": {%if i.marker%}"{{i.marker.url}}"{%else%}""{%endif%}}{% if not forloop.last %},{%endif%}{%endfor%}]
+             {"coords":new google.maps.LatLng({{i.lat}},{{i.lng}}), "msize":52, "name":"{{i.name}}",  "dv_url" : "{{ i.url }}", "logo":{%if i.logo%}"{{i.logo.url}}"{%else%}"{% static 'logos/harvard.png' %}"{%endif%}, "blank":null, "desc":"{{i.description}}", "version":"{{i.version}}", "marker": {%if i.marker%}"{{i.marker.url}}"{%else%}""{%endif%}}{% if not forloop.last %},{%endif%}{%endfor%}]
 
 //              Institution Location Data Array Oragnization
 // index: 0
@@ -227,11 +227,18 @@ Documentation link: https://developers.google.com/maps/documentation/javascript/
 
             //Installation Mouseover Title - if the map has a non-null description field in the database, it will render below the title
 
-            if(locationArray[i].desc !== 'None')
-                var titleString = '<h2 class="title preview">' + locationArray[i].name + '</h2>'+ '<p>' + locationArray[i].desc + '</p>';
-
-            else var titleString = '<h2 class="title preview">' + locationArray[i].desc + '</h2>'
-
+            var install_name = locationArray[i].name;
+            console.log(install_name + " "  + locationArray[i].dv_url );
+            if (locationArray[i].dv_url.length > 0){
+                install_name = '<a href="' + locationArray[i].dv_url + ' style="font-decoration:underline;">' + install_name + "</a>";
+            }
+            console.log(install_name)
+            var titleString = '';
+            if(locationArray[i].desc.length > 0 ){
+                titleString = '<h2 class="title preview">' + install_name + '</h2>'+ '<p>' + locationArray[i].desc + '</p>';
+            } else {
+                titleString = '<h2 class="title preview">' + install_name + '</h2>';
+            }
 
             //Widget Infowindows -- Uncomment/comment to activate/deactivate ***either or***
             /*
@@ -256,7 +263,7 @@ Documentation link: https://developers.google.com/maps/documentation/javascript/
             <span class="datasets">{{ total_datasets|intcomma }} Datasets</span>
             <span class="files">{{ total_files|intcomma }} Fi
             */
-            var contentString = '<div class="window"><h2 class="title">' + locationArray[i].name +
+            var contentString = '<div class="window"><h2 class="title">' + install_name +
                     '</h2></div>';
 /*                    '<div class="window">' +
 

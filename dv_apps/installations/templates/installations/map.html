@@ -226,19 +226,25 @@ Documentation link: https://developers.google.com/maps/documentation/javascript/
             var threshold2 = 52;
 
             //Installation Mouseover Title - if the map has a non-null description field in the database, it will render below the title
-
-            var install_name = locationArray[i].name;
-            console.log(install_name + " "  + locationArray[i].dv_url );
-            if (locationArray[i].dv_url.length > 0){
-                install_name = '<a href="' + locationArray[i].dv_url + ' style="font-decoration:underline;">' + install_name + "</a>";
-            }
-            console.log(install_name)
             var titleString = '';
-            if(locationArray[i].desc.length > 0 ){
-                titleString = '<h2 class="title preview">' + install_name + '</h2>'+ '<p>' + locationArray[i].desc + '</p>';
-            } else {
+            var contentString = ''      // Click info window title
+            var install_name = locationArray[i].name;
+
+            // Does name have a url?
+            //
+            if (locationArray[i].dv_url.length > 0){
+                var linked_install_name = '<a href="' + locationArray[i].dv_url + '">' + install_name + "</a>";
+                contentString = '<div class="window"><h2 class="title_linked">' + linked_install_name +'</h2></div>';
+                titleString = '<h2 class="title preview">' + linked_install_name + '</h2>';
+            }else{
+                contentString = '<div class="window"><h2 class="title">' + install_name +'</h2></div>';
                 titleString = '<h2 class="title preview">' + install_name + '</h2>';
             }
+            if(locationArray[i].desc.length > 0 ){
+                titleString = titleString + '<p>' + locationArray[i].desc + '</p>';
+            }
+
+            //var contentString = '<div class="window"><h2 class="title">zz ' + install_name +'</h2></div>';
 
             //Widget Infowindows -- Uncomment/comment to activate/deactivate ***either or***
             /*
@@ -263,8 +269,7 @@ Documentation link: https://developers.google.com/maps/documentation/javascript/
             <span class="datasets">{{ total_datasets|intcomma }} Datasets</span>
             <span class="files">{{ total_files|intcomma }} Fi
             */
-            var contentString = '<div class="window"><h2 class="title">' + install_name +
-                    '</h2></div>';
+            //var contentString = '<div class="window"><h2 class="title">zz ' + install_name +'</h2></div>';
 /*                    '<div class="window">' +
 
                     '<h2 class="title">' + '<a href="https://dataverse-internal.iq.harvard.edu/" target="_blank">' + locationArray[i].name + '</a>' + '</h2>' + '<ul class="metrics">' + '<li>' + 'Dataverses: (1,767)' + '</li>' + '<li>' + 'Datasets: (62,026)' + '</li>' + '<li>' + 'Files: (332,593)' + '</li>' + '<li>' + 'Downloads: (1,822,212)' + '</li>'+ '</ul>' + '</div>' + '</div>'

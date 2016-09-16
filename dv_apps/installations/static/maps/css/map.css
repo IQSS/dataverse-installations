@@ -38,12 +38,12 @@ html, body {
     margin: 0px;
     margin-top: 2px;
     margin-bottom: 0px;
-    border: 2px solid orange; 
+    border: 2px solid orange;
     overflow: hidden;
     background-color: white;
     float: left;
 }
-.small {            
+.small {
     width: 46px;
     height: 46px;
     margin: 5px;
@@ -114,6 +114,10 @@ h2.title.preview {
 h2.title a, h2.title a:hover {
     color: #c55b28;
     text-decoration: none;
+}
+h2.title_linked a, h2.title_linked a:hover {
+    color: #c55b28;
+    text-decoration: underline;
 }
 .window ul.metrics, .window ul.metrics li {
     margin: 0;

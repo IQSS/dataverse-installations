@@ -23,21 +23,24 @@ class FixContentTypeForm(forms.Form):
                 _('The file extension must start with a "." value.  Extension was: "%s"' % ext_str)
                 )
 
-        if self.has_quotes(ext_str):
+        if self.has_quotes_or_whitespace(ext_str):
             raise forms.ValidationError(
-                _('The file extension cannot have single or double quotes.  Extension was: ""%s"' % ext_str)
+                _('The file extension cannot have whitepspace, single quotes or double quotes.  Extension was: "%s"' % ext_str)
                 )
 
         if FileMetadata.objects.filter(label__endswith=ext_str).count() == 0:
             raise forms.ValidationError(
-                _('There are no files with extension: "%s"')
+                _('There are no files with extension: "%s"' % ext_str )
                 )
 
         return ext_str
 
-    def has_quotes(self, some_str):
+    def has_quotes_or_whitespace(self, some_str):
 
         if some_str.find('"') > -1 or some_str.find('\'') > -1:
+            return True
+
+        if len(some_str) != len(''.join(some_str.split())):
             return True
 
         return False
@@ -47,9 +50,9 @@ class FixContentTypeForm(forms.Form):
 
         new_content_type = self.cleaned_data.get('new_content_type')
 
-        if self.has_quotes(new_content_type):
+        if self.has_quotes_or_whitespace(new_content_type):
             raise forms.ValidationError(
-                _('The file extension cannot have single or double quotes.  Extension was: ""%s"' % new_content_type)
+                _('The file extension cannot have whitepspace, single quotes or double quotes.  Extension was: "%s"' % new_content_type)
                 )
 
         return new_content_type

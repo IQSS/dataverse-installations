@@ -46,6 +46,8 @@ python manage.py createsuperuser --database miniverse_admin_db
 
 ## readonly user
 
+CREATE ROLE dv_readonly UNENCRYPTED PASSWORD 'secret' LOGIN;
+
 GRANT SELECT ON ALL TABLES IN SCHEMA public TO dv_readonly;
 
 ## tree view 2

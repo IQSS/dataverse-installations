@@ -13,7 +13,7 @@ def view_map(request):
     """Show Dataverse map with affiliated Institutions"""
 
     # Retrieve the installations
-    install_list = Installation.objects.all()
+    install_list = Installation.objects.filter(is_active=True)
     arr = []
 
     # For each Installation, add the affiliated Institutions
@@ -36,8 +36,8 @@ def view_map(request):
 def view_homepage_counts_dataverse_org(request):
 
     d = get_total_published_counts()
-    d['installation_count'] = Installation.objects.all().count()
-    
+    d['installation_count'] = Installation.objects.filter(is_active=True).count()
+
     return render(request, 'installations/homepage_counts.html', d)
 
 

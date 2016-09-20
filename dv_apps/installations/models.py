@@ -10,14 +10,15 @@ from decimal import Decimal
 class Installation(models.Model):
     name = models.CharField(max_length=255, unique=True)
     full_name = models.CharField(max_length=255)
+    is_active = models.BooleanField(default=False, help_text="Needs be active to show on dataverse.org map")
     lat = models.DecimalField(max_digits=9, decimal_places=6, default=Decimal('0.0000'))
     lng = models.DecimalField(max_digits=9, decimal_places=6, default=Decimal('0.0000'))
     logo = models.ImageField(upload_to='logos/', null=True, blank=True)
     marker = models.ImageField(upload_to='logos/', null=True, blank=True)
     description = models.TextField(null=True, blank=True)
     url = models.URLField(null=True, blank=True)
-    slug = models.SlugField(max_length=255, blank=True)
-    version = models.CharField(max_length=6, unique=False, null=True, blank=True)
+    slug = models.SlugField(max_length=255, blank=True, help_text='auto-filled on save')
+    version = models.CharField(max_length=6, blank=True, help_text='Dataversion version.  e.g. "4.3", "3.6.2", etc')
 
     def __str__(self):
         return self.name

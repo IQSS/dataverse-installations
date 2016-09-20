@@ -4,9 +4,10 @@ from django.contrib import admin
 from .models import Installation, Institution
 
 class InstallationAdmin(admin.ModelAdmin):
-    list_display = ['id', 'name', 'full_name', 'logo', 'view_logo_100',  'url', 'marker', 'view_marker', 'version', 'description']
+    list_display = ['name', 'is_active', 'logo', 'view_logo_100',  'url', 'marker', 'version', 'description']
     readonly_fields = ('view_logo', 'view_logo_100', 'view_marker')
-    list_editable = ['name']
+    #list_editable = ['full_name']
+    list_filter = ['is_active']
     search_fields = ['name', 'full_name', 'description']
 
 """

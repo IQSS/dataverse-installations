@@ -29,7 +29,7 @@ def view_map(request):
 
     d.update(get_total_published_counts())
 
-    return render(request, 'installations/map.html', d)
+    return render(request, 'installations/map2.html', d)
 
 @xframe_options_exempt
 @cache_page(get_metrics_cache_time())

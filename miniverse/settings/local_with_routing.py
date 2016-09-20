@@ -10,14 +10,14 @@ import sys
 from os import makedirs
 from os.path import join, isdir
 from miniverse.testrunners.disable_migrations import DisableMigrations
-from .base import *
+from miniverse.settings.base import *
 
 # -----------------------------------
 # DEBUG
 #   - True: Dataverse Key required for API
 #       - Includes SQL for many of the API call results
 # -----------------------------------
-DEBUG = True
+DEBUG = True   #True False
 
 # -----------------------------------
 # TIME_ZONE
@@ -32,9 +32,9 @@ SECRET_KEY = 'DEV-j94xnz*dj5f@_6-gt@ov)yjbcx0uagb7sv9a0j-(jo)j%m$el%'
 # -----------------------------------
 # Metrics cache settings
 # -----------------------------------
-METRICS_CACHE_VIEW = True
-METRICS_CACHE_VIEW_TIME = 0#60 * 60 * 2   # Cache for visualizations
-METRICS_CACHE_API_TIME = 0#60 * 15    # Cache for API endpoints
+METRICS_CACHE_VIEW = False
+METRICS_CACHE_VIEW_TIME = 60 * 60 * 2   # Cache for visualizations
+METRICS_CACHE_API_TIME = 60 * 15    # Cache for API endpoints
 
 # -----------------------------------
 # For local runs, this directory will include:

@@ -1,0 +1,282 @@
+[
+{
+    "model": "installations.installation",
+    "pk": 1740,
+    "fields": {
+        "name": "Abacus (British Columbia Research Libraries' Data Services) Dataverse",
+        "lat": "49.259982",
+        "lng": "-123.250212",
+        "logo": "logos/abacus.jpg",
+        "marker": "logos/abacus_markers.png",
+        "description": "Open for researchers associated with British Columbia universities to deposit data.",
+        "url": "http://dvn.library.ubc.ca/dvn/",
+        "version": ""
+    }
+},
+{
+    "model": "installations.installation",
+    "pk": 1741,
+    "fields": {
+        "name": "CIMMYT Dataverse",
+        "lat": "19.531535",
+        "lng": "-98.846064",
+        "logo": "logos/cimmyt.jpg",
+        "marker": "logos/CIMMTY_markers.png",
+        "description": "Free, open access repository of research data and software produced and developed by CIMMYT scientists.",
+        "url": "http://data.cimmyt.org/",
+        "version": "3.0"
+    }
+},
+{
+    "model": "installations.installation",
+    "pk": 1742,
+    "fields": {
+        "name": "DANS - Dutch Dataverse",
+        "lat": "52.547260",
+        "lng": "5.242346",
+        "logo": "logos/dans.jpg",
+        "marker": "logos/dans_markers.png",
+        "description": "Open for researchers and organizations associated with Dutch universities to deposit data.",
+        "url": "https://dataverse.nl/dvn/",
+        "version": "3.6.2"
+    }
+},
+{
+    "model": "installations.installation",
+    "pk": 1743,
+    "fields": {
+        "name": "DataSpace@HKUST",
+        "lat": "22.336281",
+        "lng": "114.266721",
+        "logo": "logos/dataspace.jpg",
+        "marker": "logos/dataspace_markers.png",
+        "description": "",
+        "url": "https://dataspace.ust.hk/",
+        "version": "4.x"
+    }
+},
+{
+    "model": "installations.installation",
+    "pk": 1744,
+    "fields": {
+        "name": "Fudan University Dataverse",
+        "lat": "31.298531",
+        "lng": "121.501446",
+        "logo": "logos/fudan.png",
+        "marker": "logos/fudan_markers.png",
+        "description": "Open for Fudan University affiliated researchers to deposit data.",
+        "url": "http://www.fdsm.fudan.edu.cn/en/",
+        "version": ""
+    }
+},
+{
+    "model": "installations.installation",
+    "pk": 1745,
+    "fields": {
+        "name": "Harvard University",
+        "lat": "42.380098",
+        "lng": "-71.116629",
+        "logo": "logos/harvard.png",
+        "marker": "logos/harvard_markers.png",
+        "description": "",
+        "url": "https://dataverse.harvard.edu",
+        "version": "4.5"
+    }
+},
+{
+    "model": "installations.installation",
+    "pk": 1746,
+    "fields": {
+        "name": "Heidelberg University HeiDATA Dataverse",
+        "lat": "49.398750",
+        "lng": "8.672434",
+        "logo": "logos/heidelberg.jpg",
+        "marker": "logos/heidelberg_markers.png",
+        "description": "Open for Heidelberg University affiliated researchers to deposit data.",
+        "url": "https://heidata.uni-heidelberg.de/dvn/",
+        "version": "3.6.2"
+    }
+},
+{
+    "model": "installations.installation",
+    "pk": 1747,
+    "fields": {
+        "name": "IBICT (Brazil)",
+        "lat": "-15.805842",
+        "lng": "-47.881369",
+        "logo": "logos/ibict.jpg",
+        "marker": "logos/IBICT_markers.png",
+        "description": "The network Cariniana, <a href=\"http://cariniana.ibict.br\" target=\"_blank\">cariniana.ibict.br</a>  is funded entirely by the Brazilian government and in particular by MCTI (Minist\u00e9rio da Ci\u00eancia, Tecnologia e Inova\u00e7\u00e3o). It is a project for long-term preservation of scientific publications in Brazil. The main focus concerns the open access journals published in Brazil. In a second phase, which is about to begin, it will proceed with the preservation of the doctoral thesis. The third phase will cover the scientific data to be deposited in a research data repository. The experimental phase lasted a year (2013). The network uses the open source LOCKSS and it is made today from 9 nodes: besides IBICT, 8 other institutions. There are 636 eJournals preserved and 84 institutions are served by the network from universities and research centers in Brazil.",
+        "url": "https://repositoriopesquisas.ibict.br/dvn/",
+        "version": "3.6.2"
+    }
+},
+{
+    "model": "installations.installation",
+    "pk": 1748,
+    "fields": {
+        "name": "International Institute of Social History",
+        "lat": "52.369021",
+        "lng": "4.939226",
+        "logo": "logos/international.jpg",
+        "marker": "logos/international_markers.png",
+        "description": "The IISH Dataverse contains micro-, meso-, and macro-level datasets on social and economic history.",
+        "url": "http://iisg.amsterdam/datasets",
+        "version": "4.3"
+    }
+},
+{
+    "model": "installations.installation",
+    "pk": 1749,
+    "fields": {
+        "name": "Johns Hopkins",
+        "lat": "39.329055",
+        "lng": "-76.620335",
+        "logo": "logos/johns.jpg",
+        "marker": "logos/johns_markers.png",
+        "description": "",
+        "url": "https://archive.data.jhu.edu/dvn/",
+        "version": "3.6.2"
+    }
+},
+{
+    "model": "installations.installation",
+    "pk": 1750,
+    "fields": {
+        "name": "Libra Data (University of Virginia)",
+        "lat": "38.034578",
+        "lng": "-78.507394",
+        "logo": "logos/libra.jpg",
+        "marker": "logos/libra_markers.png",
+        "description": "Libra Data is a place for UVA researchers to share data publicly, and is part of the Libra Scholarly Repository suite of services which includes works of UVA scholarship such as articles, books, theses, and data.",
+        "url": "https://dataverse.lib.virginia.edu/",
+        "version": "4.4"
+    }
+},
+{
+    "model": "installations.installation",
+    "pk": 1751,
+    "fields": {
+        "name": "Odum Institute Dataverse",
+        "lat": "35.905022",
+        "lng": "-79.050851",
+        "logo": "logos/odum.png",
+        "marker": "",
+        "description": "Open for all researchers worldwide from all disciplines to deposit data. The Odum Institute also offers multiple data curation service levels, for more information, go  to: <a href=\"http://www.irss.unc.edu/odum/contentSubpage.jsp?nodeid=661\">http://www.irss.unc.edu/odum/contentSubpage.jsp?nodeid=661</a>",
+        "url": "http://arc.irss.unc.edu/dvn/",
+        "version": "3.6.3"
+    }
+},
+{
+    "model": "installations.installation",
+    "pk": 1752,
+    "fields": {
+        "name": "Peking University",
+        "lat": "39.993923",
+        "lng": "116.306539",
+        "logo": "logos/peking.jpg",
+        "marker": "",
+        "description": "",
+        "url": "http://opendata.pku.edu.cn/",
+        "version": "4.0"
+    }
+},
+{
+    "model": "installations.installation",
+    "pk": 1753,
+    "fields": {
+        "name": "UiT (The Arctic University of Norway) Dataverse",
+        "lat": "69.679749",
+        "lng": "18.971270",
+        "logo": "logos/uit.jpg",
+        "marker": "",
+        "description": "Open for UiT affiliated researchers to deposit data.",
+        "url": "https://opendata.uit.no/",
+        "version": "4.3"
+    }
+},
+{
+    "model": "installations.installation",
+    "pk": 1754,
+    "fields": {
+        "name": "UnBraL Fronteiras (Brazil)",
+        "lat": "-23.565774",
+        "lng": "-46.319782",
+        "logo": "logos/unbral.jpg",
+        "marker": "",
+        "description": "For researchers working in Brazilian Border Studies.",
+        "url": "http://unbral.nuvem.ufrgs.br/dvn/",
+        "version": ""
+    }
+},
+{
+    "model": "installations.installation",
+    "pk": 1755,
+    "fields": {
+        "name": "University of Alberta Libraries Dataverse",
+        "lat": "53.494321",
+        "lng": "-113.549027",
+        "logo": "logos/alberta.jpg",
+        "marker": "",
+        "description": "Open for University of Alberta affiliated researchers to deposit data.",
+        "url": "https://dataverse.library.ualberta.ca/dvn/",
+        "version": "3.6.2"
+    }
+},
+{
+    "model": "installations.installation",
+    "pk": 1756,
+    "fields": {
+        "name": "Maine",
+        "lat": "44.901349",
+        "lng": "-68.671815",
+        "logo": "logos/maine.jpg",
+        "marker": "",
+        "description": "",
+        "url": "http://dataverse.acg.maine.edu/dvn/",
+        "version": ""
+    }
+},
+{
+    "model": "installations.installation",
+    "pk": 1757,
+    "fields": {
+        "name": "ICRISAT",
+        "lat": "17.385000",
+        "lng": "78.486700",
+        "logo": "logos/icrisat-logo_aAeO1f1.png",
+        "marker": "",
+        "description": "International Crops Research Institute for the Semi-Arid Tropics.  Free open data repository of ICRISAT research data including Social science, Phenotypic, Genotypic, Spatial and Soil & Weather data which are linked with open publications.",
+        "url": "http://dataverse.icrisat.org/",
+        "version": "4.4"
+    }
+},
+{
+    "model": "installations.installation",
+    "pk": 1758,
+    "fields": {
+        "name": "Scholars Portal Dataverse",
+        "lat": "43.653200",
+        "lng": "-79.383200",
+        "logo": "logos/scholarsportal.jpg",
+        "marker": "",
+        "description": "Open for researchers and organizations associated with Ontario universities to deposit data.",
+        "url": "http://dataverse.scholarsportal.info/dvn/",
+        "version": ""
+    }
+},
+{
+    "model": "installations.installation",
+    "pk": 1759,
+    "fields": {
+        "name": "Catalogues (CDSP)",
+        "lat": "48.854027",
+        "lng": "2.328351",
+        "logo": "logos/science-po_AheiH0Y.png",
+        "marker": "",
+        "description": "Open for researchers and organizations associated with\r\nFrench universities to deposit data. Hosted by the Center for\r\nSocio-Political Data (Sciences Po and CNRS).",
+        "url": "https://catalogues.cdsp.sciences-po.fr/",
+        "version": ""
+    }
+}
+]

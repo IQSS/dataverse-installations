@@ -96,7 +96,7 @@ Documentation link: https://developers.google.com/maps/documentation/javascript/
             // Array with the above information
             var locationArray = [
             {%for i in install_list%}
-             {"coords":new google.maps.LatLng({{i.lat}},{{i.lng}}), "msize":52, "name":"{{i.name}}",  "dv_url" : "{{ i.url }}", "logo":{%if i.logo%}"{{i.logo.url}}"{%else%}"{% static 'logos/harvard.png' %}"{%endif%}, "blank":null, "desc":"{{i.description}}", "version":"{{i.version}}", "marker": {%if i.marker%}"{{i.marker.url}}"{%else%}""{%endif%}}{% if not forloop.last %},{%endif%}{%endfor%}]
+             {"coords":new google.maps.LatLng({{i.lat}},{{i.lng}}), "msize":52, "name":"{{i.name}}",  "dv_url" : "{{ i.url }}", "logo":{%if i.logo%}"{{i.logo.url}}"{%else%}"{% static 'logos/harvard.png' %}"{%endif%}, "blank":null, "desc":"{{i.description|linebreaksbr}}", "version":"{{i.version}}", "marker": {%if i.marker%}"{{i.marker.url}}"{%else%}""{%endif%}}{% if not forloop.last %},{%endif%}{%endfor%}]
 
 //              Institution Location Data Array Oragnization
 // index: 0
@@ -241,7 +241,7 @@ Documentation link: https://developers.google.com/maps/documentation/javascript/
                 titleString = '<h2 class="title preview">' + install_name + '</h2>';
             }
             if(locationArray[i].desc.length > 0 ){
-                titleString = titleString + '<p>' + locationArray[i].desc + '</p>';
+                //titleString = titleString + '<p>' + locationArray[i].desc + '</p>';
             }
 
             //var contentString = '<div class="window"><h2 class="title">zz ' + install_name +'</h2></div>';

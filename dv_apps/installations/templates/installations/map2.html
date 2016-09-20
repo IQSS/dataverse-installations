@@ -492,7 +492,18 @@ Documentation link: https://developers.google.com/maps/documentation/javascript/
                 imgDiv.appendChild(img);
 
 //EVENT LISTENERS
-                // imgDiv.addEventListener('mouseenter', function (imgDiv) {
+                imgDiv.addEventListener('mouseenter', function (imgDiv) {
+                    var index = this.id;
+                    expandLogo(index);
+                })
+
+                imgDiv.addEventListener('mouseleave', function(imgDiv) {
+                    var index = this.id;
+
+                    //if the window is not open shink the logo
+                    //if(!isInfoWindowOpen(infoArray[parseInt(index)]))
+                    shrinkLogo(index);
+                })
 
                 imgDiv.addEventListener('click', function (imgDiv) {
                     var index = this.id;
@@ -542,7 +553,7 @@ Documentation link: https://developers.google.com/maps/documentation/javascript/
                 });
 
 
-                imgDiv.addEventListener('mouseleave', function(imgDiv) {
+                imgDiv.addEventListener('xmouseleave', function(imgDiv) {
                     var index = this.id;
 
                     //if the window is not open shink the logo

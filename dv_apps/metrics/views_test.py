@@ -11,6 +11,7 @@ from django.db.models import F
 
 from dv_apps.dataverses.models import Dataverse
 from dv_apps.metrics.dataverse_tree_util import DataverseTreeUtil
+from dv_apps.metrics.stats_datasets_bins import FilesPerDatasetCounter
 
 
 
@@ -48,3 +49,11 @@ def get_dataverse_tree_json(request, skip_flat_dataverses=True):
         return HttpResponse(as_html)
 
     return JsonResponse(tree_dict)
+
+def view_file_bins_by_datasetversion(request):
+
+    fdc = FilesPerDatasetCounter()
+    print fdc.get_counts()
+    d = dict(bin_info=fdc.get_counts())
+
+    return render(request, 'metrics/visualizations/file_bins_by_datasetversion.html', d)

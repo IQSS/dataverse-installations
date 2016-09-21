@@ -192,7 +192,8 @@ class MetricsCountTests(MetricsTestBase):
 
         # check 1st month
         first_month = {'cnt': 5,
-         'month_name': 'Jan',
+         'month_name': 'January',
+         'month_name_short': 'Jan',
          'month_num': 1,
          'running_total': 131,
          'year_num': 2016,
@@ -201,7 +202,8 @@ class MetricsCountTests(MetricsTestBase):
 
         # check last month
         last_month = {'cnt': 4,
-             'month_name': 'Jul',
+             'month_name': 'July',
+             'month_name_short': 'Jul',
              'month_num': 7,
              'running_total': 187,
              'year_num': 2016,
@@ -223,7 +225,8 @@ class MetricsCountTests(MetricsTestBase):
 
         # check 1st month
         first_month = {'cnt': 13,
-             'month_name': 'Apr',
+             'month_name': 'April',
+             'month_name_short': 'Apr',
              'month_num': 4,
              'running_total': 13,
              'year_num': 2015,
@@ -232,7 +235,8 @@ class MetricsCountTests(MetricsTestBase):
 
         # check last month
         last_month = {'cnt': 6,
-             'month_name': 'Jul',
+             'month_name': 'July',
+             'month_name_short': 'Jul',
              'month_num': 7,
              'running_total': 169,
              'year_num': 2016,
@@ -253,7 +257,8 @@ class MetricsCountTests(MetricsTestBase):
 
         # check 1st month
         first_month = {'cnt': 39,
-             'month_name': 'Apr',
+             'month_name': 'April',
+             'month_name_short': 'Apr',
              'month_num': 4,
              'running_total': 39,
              'year_num': 2015,
@@ -262,7 +267,8 @@ class MetricsCountTests(MetricsTestBase):
 
         # check last month
         last_month = {'cnt': 10,
-             'month_name': 'Jul',
+             'month_name': 'July',
+             'month_name_short': 'Jul',
              'month_num': 7,
              'running_total': 356,
              'year_num': 2016,
@@ -302,7 +308,8 @@ class MetricsCountTests(MetricsTestBase):
 
         # check 1st month
         first_month = {'cnt': 21,
-         'month_name': 'Apr',
+         'month_name': 'April',
+         'month_name_short': 'Apr',
          'month_num': 4,
          'running_total': 21,
          'year_num': 2015,
@@ -311,7 +318,8 @@ class MetricsCountTests(MetricsTestBase):
 
         # check last month
         last_month = {'cnt': 4,
-         'month_name': 'Jul',
+         'month_name': 'July',
+         'month_name_short': 'Jul',
          'month_num': 7,
          'running_total': 227,
          'year_num': 2016,
@@ -331,7 +339,8 @@ class MetricsCountTests(MetricsTestBase):
 
         # check 1st month
         first_month = {'cnt': 15,
-         'month_name': 'Apr',
+         'month_name': 'April',
+         'month_name_short': 'Apr',
          'month_num': 4,
          'running_total': 15,
          'year_num': 2015,
@@ -340,7 +349,8 @@ class MetricsCountTests(MetricsTestBase):
 
         # check last month
         last_month = {'cnt': 94,
-             'month_name': 'Jul',
+             'month_name': 'July',
+             'month_name_short': 'Jul',
              'month_num': 7,
              'running_total': 343,
              'year_num': 2016,
@@ -360,7 +370,8 @@ class MetricsCountTests(MetricsTestBase):
 
         # check 1st month
         first_month = {'cnt': 36,
-             'month_name': 'Apr',
+             'month_name': 'April',
+             'month_name_short': 'Apr',
              'month_num': 4,
              'running_total': 36,
              'year_num': 2015,
@@ -369,7 +380,8 @@ class MetricsCountTests(MetricsTestBase):
 
         # check last month
         last_month = {'cnt': 98,
-             'month_name': 'Jul',
+             'month_name': 'July',
+             'month_name_short': 'Jul',
              'month_num': 7,
              'running_total': 570,
              'year_num': 2016,
@@ -410,7 +422,8 @@ class MetricsCountTests(MetricsTestBase):
 
         # check last month
         last_month = {'cnt': 7,
-             'month_name': 'Sep',
+             'month_name': 'September',
+             'month_name_short': 'Sep',
              'month_num': 9,
              'running_total': 309,
              'year_num': 2015,
@@ -447,7 +460,8 @@ class MetricsCountTests(MetricsTestBase):
 
         # check last month
         last_month = {'cnt': 31,
-             'month_name': 'Dec',
+             'month_name': 'December',
+             'month_name_short': 'Dec',
              'month_num': 12,
              'running_total': 465,
              'year_num': 2015,

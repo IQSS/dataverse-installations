@@ -31,6 +31,8 @@ class TruncYearMonth(models.Func):
 
 class StatsMakerBase(object):
 
+    DEFAULT_BIN_SIZE = 20
+
     def __init__(self, **kwargs):
         """
         Start and end dates are optional.
@@ -53,6 +55,11 @@ class StatsMakerBase(object):
         self.selected_dvs = None    # Narrow by dataverse aliases
         self.include_child_dvs  = None
         self.as_csv = False
+
+        # Used for binning stats
+        self.bin_size = 20      # default setting
+        self.num_bins = None    # optional setting
+        self.skip_empty_bins = False
 
         # load dates
         self.load_dates_from_kwargs(**kwargs)
@@ -188,12 +195,8 @@ class StatsMakerBase(object):
         # ----------------------------------------
         # Related to above: option to include child Dataverses
         # ----------------------------------------
-        self.include_child_dvs = kwargs.get('include_child_dvs', False)
-        if self.include_child_dvs:
-            if self.include_child_dvs in (True, 'True', 'true'):
-                self.include_child_dvs = True
-            else:
-                self.include_child_dvs = False
+        self.include_child_dvs = self.get_param_true_false_value_via_kwargs(kwargs, 'include_child_dvs')
+
 
         # ----------------------------------------
         # Output as CSV
@@ -205,6 +208,66 @@ class StatsMakerBase(object):
             else:
                 self.as_csv = False
 
+        # ----------------------------------------
+        # Bin Size
+        # ----------------------------------------
+        self.bin_size = kwargs.get('bin_size', self.DEFAULT_BIN_SIZE)
+        self.bin_size = self.check_param_that_must_be_integer('bin_size', self.bin_size, none_ok=True)
+
+        # ----------------------------------------
+        # Number of bins
+        # ----------------------------------------
+        self.num_bins = kwargs.get('num_bins', None)
+        self.num_bins = self.check_param_that_must_be_integer('num_bins', self.num_bins, none_ok=True)
+
+        # ----------------------------------------
+        # Skip empty bins?
+        # ----------------------------------------
+        self.skip_empty_bins = self.get_param_true_false_value_via_kwargs(kwargs, 'skip_empty_bins')
+
+    def get_param_true_false_value_via_kwargs(self, kwarg_dict, param_name):
+        assert kwarg_dict is not None, "kwarg_dict cannot be None"
+
+        param_val = kwarg_dict.get(param_name, False)
+
+        return self.get_param_true_false_value(param_val)
+
+    def get_param_true_false_value(self, param_val):
+
+        if param_val in (True, 'True', 'true'):
+            return True
+
+        return False
+
+
+    def check_param_that_must_be_integer(self, param_name, param_value, none_ok=True):
+        """Checking for several params that should be integers but may
+        arrive as string, long, or int
+
+        In this check, None is ok!
+        """
+        if not param_value:
+            if none_ok:
+                return None
+            else:
+                self.add_error("This parameter is required: %s" % param_name)
+                return None
+
+        # May come in as a string. If it's int or long, make it a string to check
+        if isinstance(param_value, (int, long)):
+            param_value = '%s' % param_value
+
+        if not param_value.isdigit():
+            self.add_error('The "%s" must a number.' % param_name)
+            return None
+
+        param_value = int(param_value)
+        if param_value < 1:
+            self.add_error('The "%s" must 1 or greater.' % param_name)
+            return None
+
+        return int(param_value)
+        # OK, keep going
 
     def get_selected_dataverse_ids(self):
         """From a list of aliases, return a list of dataverse ids"""

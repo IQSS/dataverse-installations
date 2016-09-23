@@ -88,7 +88,21 @@ parameters:
     in: query
     description: Optional.  Return the output in .csv format (Test)
     type: boolean
-
+  binSize:
+    name: bin_size
+    in: query
+    description: Optional.  Change the binning size.  Default is 20.
+    type: integer
+  numBins:
+    name: num_bins
+    in: query
+    description: Optional.  Set the max number of bins.  May cut off last bins.
+    type: integer
+  skipEmptyBins:
+    name: skip_empty_bins
+    in: query
+    description: Optional.  Remove bins with a zero count
+    type: boolean
 
 # ------------------------------
 # Define response definitions
@@ -114,6 +128,24 @@ definitions:
     type: array
     items:
       $ref: "#/definitions/MonthCount"
+  BinCount:
+    properties:
+      bin:
+        type: string
+      count:
+        type: integer
+      bin_start_inclusive:
+        type: integer
+      bin_end:
+        type: integer
+      bin_str:
+        type: string
+      sort_key:
+        type: integer
+  BinCounts:
+    type: array
+    items:
+      $ref: "#/definitions/BinCount"
   FileExtensionCount:
     properties:
       extension:

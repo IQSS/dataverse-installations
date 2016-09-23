@@ -1,8 +1,9 @@
 import json
 import csv
-
 from collections import OrderedDict
 from datetime import datetime
+
+#import pandas as pd
 
 from django.conf import settings
 from django.http import JsonResponse, HttpResponse
@@ -34,12 +35,18 @@ def send_cors_response(response):
 class StatsViewSwagger(View):
     """Used to help build the swagger docs"""
 
+    # params getting a bit out of control, need to make this more manageable
+
     BASIC_DATE_PARAMS = ['startDateParam', 'endDateParam', 'selectedYearParam']
 
     PARAM_DV_API_KEY = ['dataverseAPIKey']
     PARAM_SELECTED_DV_ALIASES = ['selectedDataverseAliases']
     PARAM_INCLUDE_CHILD_DVS = ['includeChildDataverses']
     PARAM_AS_CSV = ['asCSV']
+
+    PARAM_BIN_SIZE = ['binSize']  # bin_size
+    PARAM_NUM_BINS = ['numBins']  # num_bins
+    PARAM_SKIP_EMPTY_BINS = ['skipEmptyBins'] # skip_empty_bins
 
     PUBLISH_PARAMS = ['publicationStateParam']
     PUB_STATE_PUBLISHED = 'published'
@@ -58,6 +65,7 @@ class StatsViewSwagger(View):
     RESULT_NAME_AFFILIATION_COUNTS = 'AffiliationCounts'
     RESULT_NAME_DATAVERSE_TYPE_COUNTS = 'DataverseTypeCount'
     RESULT_NAME_DATASET_SUBJECT_COUNTS = 'DatasetSubjectCounts'
+    RESULT_NAME_BIN_COUNTS = 'BinCounts'
 
     TAG_METRICS = 'metrics'
     TAG_DATAVERSES = 'metrics - dataverses'

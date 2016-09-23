@@ -12,7 +12,7 @@
 [{'bin_str': '(0, 10]', 'sort_key': 0, 'value': 69699}, {'bin_str': '(10, 20]', 'sort_key': 10, 'value': 3776},
 <script>
   var data = [{% for info in bin_info %}
-      {"bin": "{{ info.bin_str }}", "name":"file count", "value": {{ info.value }}}{% if not forloop.last %},{% endif %}
+      {"bin": "{{ info.bin_str }}", "name":"file count", "value": {{ info.count }}}{% if not forloop.last %},{% endif %}
   {% endfor %}]
   var xdata = [
     {"year": 1991, "name":"alpha", "value": 15},

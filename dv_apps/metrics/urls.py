@@ -6,6 +6,8 @@ from dv_apps.metrics import views_test,\
 from dv_apps.metrics.stats_views_datasets import DatasetCountByMonthView,\
     DatasetTotalCounts,\
     DatasetSubjectCounts
+from dv_apps.metrics.stats_views_dataset_bins import FilesPerDatasetStats
+
 from dv_apps.metrics.stats_views_dataverses import DataverseCountByMonthView,\
     DataverseTotalCounts,\
     DataverseAffiliationCounts,\
@@ -79,6 +81,8 @@ urlpatterns += [
     url(r'^v1/datasets/count/monthly$', DatasetCountByMonthView.as_view(), name='view_dataset_counts_by_month'),
 
     url(r'^v1/datasets/count/by-subject$', DatasetSubjectCounts.as_view(), name='view_dataset_counts_by_subject'),
+
+    url(r'^v1/datasets/file-stats$', FilesPerDatasetStats.as_view(), name='view_files_per_dataset_stats'),
 
     # Files
     url(r'^v1/files/count$', FileTotalCountsView.as_view(), name='view_files_counts_by_month'),

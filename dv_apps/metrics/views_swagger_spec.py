@@ -8,6 +8,8 @@ from django.conf import settings
 from dv_apps.metrics.stats_views_datasets import DatasetCountByMonthView,\
     DatasetTotalCounts,\
     DatasetSubjectCounts
+from dv_apps.metrics.stats_views_dataset_bins import FilesPerDatasetStats
+
 from dv_apps.metrics.stats_views_dataverses import DataverseTotalCounts,\
     DataverseCountByMonthView,\
     DataverseAffiliationCounts,\
@@ -34,6 +36,8 @@ VIEW_CLASSES_FOR_SPEC = [\
             DatasetTotalCounts,\
             DatasetCountByMonthView,\
             DatasetSubjectCounts,\
+                # bins
+                FilesPerDatasetStats,\
             # file stats
             FileTotalCountsView,\
             FileCountByMonthView,\

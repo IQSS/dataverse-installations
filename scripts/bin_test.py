@@ -191,5 +191,40 @@ def run_test2():
 
     #print Dataset.objects.all().count()
 
+def run_test5():
+    import requests
+    url = 'http://localhost:8080/api/admin/hiya'
+
+    r = requests.get(url)
+
+    print r.status_code
+    print '-' * 10
+    print 'java bcrypt'
+    print '-' * 10
+    print r.json()['data']['message']
+    print '-' * 10
+
+def run_test4():
+    import bcrypt
+    from dv_apps.dataverse_auth.models import BuiltInUser
+
+    user = BuiltInUser.objects.get(username="dataverseAdmin")
+    print 'user: ', user.username
+
+    pw_try = 'admin123'
+    #hashed = bcrypt.hashpw(pw_try, bcrypt.gensalt(prefix='2a', rounds=10))
+
+    print ''
+    print '-' * 40
+    print 'attempt: ', pw_try
+    db_hash = user.encryptedpassword.encode('utf-8')
+    print 'db hash: ', db_hash
+    print '-' * 40
+    if bcrypt.checkpw(pw_try, db_hash):
+        print 'YES!!!'
+    else:
+        print 'Nope.....'
+
 if __name__ == '__main__':
-    run_test3()
+    run_test5()
+    run_test4()

@@ -1,5 +1,6 @@
 from django.db import models
 from datetime import datetime
+from django.utils.encoding import python_2_unicode_compatible
 
 class AuthenticatedUser(models.Model):
     useridentifier = models.CharField(unique=True, max_length=255)
@@ -59,3 +60,22 @@ class ApiToken(models.Model):
         ordering = ('-expiretime', 'authenticateduser')
         managed = False
         db_table = 'apitoken'
+
+
+@python_2_unicode_compatible
+class BuiltInUser(models.Model):
+    affiliation = models.CharField(max_length=255, blank=True, null=True)
+    email = models.CharField(unique=True, max_length=255)
+    encryptedpassword = models.CharField(max_length=255, blank=True, null=True)
+    firstname = models.CharField(max_length=255, blank=True, null=True)
+    lastname = models.CharField(max_length=255, blank=True, null=True)
+    passwordencryptionversion = models.IntegerField(blank=True, null=True)
+    position = models.CharField(max_length=255, blank=True, null=True)
+    username = models.CharField(unique=True, max_length=255)
+
+    def __str__(self):
+        return '%s' % self.username
+
+    class Meta:
+        managed = False
+        db_table = 'builtinuser'

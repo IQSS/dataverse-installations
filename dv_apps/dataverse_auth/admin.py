@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import ApiToken, AuthenticatedUser
+from dv_apps.dataverse_auth.models import ApiToken, AuthenticatedUser, BuiltInUser
 
 
 class ApiTokenAdmin(admin.ModelAdmin):
@@ -16,3 +16,10 @@ class AuthenticatedUserAdmin(admin.ModelAdmin):
     list_display = ('useridentifier', 'superuser', 'email', 'lastname', 'firstname', 'affiliation', 'modificationtime')
     list_filter= ( 'superuser', 'affiliation')
 admin.site.register(AuthenticatedUser, AuthenticatedUserAdmin)
+
+
+class BuiltInUserAdmin(admin.ModelAdmin):
+    save_on_top = True
+    list_display = ('username', 'email', 'firstname', 'lastname', 'passwordencryptionversion')
+    list_filter = ('passwordencryptionversion',)
+admin.site.register(BuiltInUser, BuiltInUserAdmin)

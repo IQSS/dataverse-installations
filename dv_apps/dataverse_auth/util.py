@@ -1,6 +1,32 @@
 """Convenience methods for API tokens, etc"""
 
+import bcrypt
+from dv_apps.dataverse_auth.models import BuiltInUser
 from dv_apps.dataverse_auth.models import ApiToken
+
+
+def is_valid_builtinuser_password(username, attempted_password):
+    """
+    Check if the password of a BuiltInUser is valid
+        - assumes bcrypt but older passwords are sha1
+    """
+    try:
+        user = BuiltInUser.objects.get(username="dataverseAdmin")
+    except BuiltInUser.DoesNotExist:
+        # log this, but don't advertise
+        return False
+
+    # encode the saved password as utf-8
+    #
+    db_hash = user.encryptedpassword.encode('utf-8')
+
+    # try it out!
+    #
+    if bcrypt.checkpw(attempted_password, db_hash):
+        return True
+    else:
+        return False
+
 
 def is_apikey_valid(apikey):
     """Check if an apikey is valid"""

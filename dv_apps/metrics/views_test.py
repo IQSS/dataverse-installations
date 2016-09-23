@@ -11,7 +11,7 @@ from django.db.models import F
 
 from dv_apps.dataverses.models import Dataverse
 from dv_apps.metrics.dataverse_tree_util import DataverseTreeUtil
-from dv_apps.metrics.stats_datasets_bins import FilesPerDatasetCounter
+from dv_apps.metrics.stats_util_datasets_bins import FilesPerDatasetCounter
 
 
 

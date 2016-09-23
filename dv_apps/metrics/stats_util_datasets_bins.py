@@ -1,9 +1,11 @@
 import random
 import numpy as np
 import pandas as pd
-from django.db.models import F
 
-from dv_apps.datasets.models import *
+from django.db.models import F
+from django.db import models
+
+from dv_apps.datasets.models import DatasetVersion
 from dv_apps.datafiles.models import FileMetadata
 
 
@@ -27,11 +29,41 @@ class FilesPerDatasetCounter(object):
             next_num += step
         return l
 
+
+    def get_latest_dataset_version_ids(self):
+        """For the binning, we only want the latest dataset versions"""
+
+        filter_params = dict()
+
+        # -----------------------------
+        # Get latest DatasetVersion ids
+        # -----------------------------
+        id_info_list = DatasetVersion.objects.filter(**filter_params\
+            ).values('id', 'dataset_id', 'versionnumber', 'minorversionnumber'\
+            ).order_by('dataset_id', '-id', '-versionnumber', '-minorversionnumber')
+
+        # -----------------------------
+        # Iterate through and get the DatasetVersion id
+        #        of the latest version
+        # -----------------------------
+        latest_dsv_ids = []
+        last_dataset_id = None
+        for idx, info in enumerate(id_info_list):
+            if idx == 0 or info['dataset_id'] != last_dataset_id:
+                latest_dsv_ids.append(info['id'])
+
+            last_dataset_id = info['dataset_id']
+
+        return latest_dsv_ids
+
     def get_counts(self):
 
+        latest_dsv_ids = self.get_latest_dataset_version_ids()
+
+        filter_params = dict(datasetversion__id__in=latest_dsv_ids)
 
         # Make query
-        ds_version_counts = FileMetadata.objects.all(\
+        ds_version_counts = FileMetadata.objects.filter(**filter_params\
                             ).annotate(dsv_id=F('datasetversion__id'),\
                             ).values('dsv_id',\
                             ).annotate(cnt=models.Count('datafile__id')\

@@ -58,6 +58,41 @@ Issues:
     - heroku run bin/qgsocksify python manage.py dbshell
 
 
+## To fix: Site matching query does not exist.
+
+This happens when the db doesn't have an entry for Site with id of 1.
+
+1. Open the shell: ```heroku run python manage.py shell```
+2. Add a Site object:
+```
+# import the Site object
+#
+from django.contrib.sites.models import Site
+from django.conf import settings
+
+# make sure there isn't a Site--should give an error ending with:
+# "DoesNotExist: Site matching query does not exist."
+#
+my_site = Site.objects.get(pk=1)
+
+# Clear any existing sites.  In case Site exists but with wrong pk
+#
+Site.objects.all().delete()
+
+
+# Now really make a site
+#
+site = Site()
+site.id = settings.SITE_ID
+site.domain = 'services-dataverse.herokuapp.com'
+site.name = 'services-dataverse.herokuapp.com'
+site.save()
+
+# ensure it exists - shouldn't be an error
+my_site = Site.objects.get(pk=1)
+
+```
+
 ### email test
 
 ```

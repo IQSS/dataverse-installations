@@ -268,12 +268,12 @@ MIDDLEWARE_CLASSES += [
 
 ## To fix: Site matching query does not exist.
 
-This happens when the db doesn't have an entry for Site with id of 1.
+This happens when the db doesn't have an entry for a Site object with an id of 1.
 
 1. Open the shell: ```python manage.py shell```
   - On Heroku: ```heroku run python manage.py shell```
 2. Add a Site object:
-```
+```python
 # import the Site object
 #
 from django.contrib.sites.models import Site
@@ -288,7 +288,6 @@ my_site = Site.objects.get(pk=1)
 #
 Site.objects.all().delete()
 
-
 # Now really make a site
 #
 site = Site()
@@ -299,6 +298,7 @@ site.save()
 
 # ensure it exists - shouldn't be an error
 my_site = Site.objects.get(pk=1)
+```
 
 ---
 

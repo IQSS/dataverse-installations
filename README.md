@@ -282,7 +282,7 @@ from django.conf import settings
 # make sure there isn't a Site--should give an error ending with:
 # "DoesNotExist: Site matching query does not exist."
 #
-my_site = Site.objects.get(pk=1)
+my_site = Site.objects.get(pk=settings.SITE_ID)
 
 # Clear any existing sites.  Case: Site exists but with wrong pk
 #
@@ -297,7 +297,7 @@ site.name = 'services-dataverse.herokuapp.com'
 site.save()
 
 # ensure it exists - shouldn't be an error
-my_site = Site.objects.get(pk=1)
+my_site = Site.objects.get(pk=settings.SITE_ID)
 ```
 
 ---

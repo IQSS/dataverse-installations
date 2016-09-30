@@ -19,6 +19,7 @@ from dv_apps.dataverse_auth.decorator import apikey_required
 from dv_apps.utils.metrics_cache_time import get_metrics_api_cache_time
 from dv_apps.utils.date_helper import get_timestamp_for_filename
 
+from dv_apps.metrics.stats_util_base import StatsMakerBase
 
 def send_cors_response(response):
     """Quick hack to allow CORS...."""
@@ -133,6 +134,7 @@ class StatsViewSwagger(View):
         """
         raise Exception("This method must return a stats_result.StatsResult object")
 
+
     def get(self, request):
         """Return a basic get request using the StatsResult object"""
 
@@ -170,10 +172,6 @@ class StatsViewSwagger(View):
             resp_dict['info']['cache_time_seconds'] = get_metrics_api_cache_time()
         resp_dict['info']['params'] = request.GET
 
-
-        if stats_result.as_csv:
-            return self.get_data_as_csv_response(request, stats_result)
-
         # Set the actual stats data
         resp_dict['data'] = stats_result.result_data
 
@@ -181,6 +179,10 @@ class StatsViewSwagger(View):
         # Is there a request to send the JSON formatted within HTML tags?
         if 'pretty' in request.GET:
             return HttpResponse('<pre>%s</pre>' % json.dumps(resp_dict, indent=4))
+
+        if StatsMakerBase.is_param_value_true(request.GET.get('as_csv', None)):
+            return self.get_data_as_csv_response(request, stats_result)
+
 
         # Return the actual response
         return send_cors_response(JsonResponse(resp_dict))
@@ -191,10 +193,16 @@ class StatsViewSwagger(View):
         if stats_result is None or stats_result.result_data is None:
             return None
 
+
+        csv_content = stats_result.get_csv_content()
+
         # Create the HttpResponse object with the appropriate CSV header.
-        response = HttpResponse(content_type='text/csv')
+        response = HttpResponse(csv_content, content_type='text/csv')
+
         csv_fname = 'metrics_%s.csv' % get_timestamp_for_filename()
         response['Content-Disposition'] = 'attachment; filename="%s"' % csv_fname
+
+        return response
 
         writer = csv.writer(response)
 

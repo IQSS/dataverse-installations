@@ -54,7 +54,6 @@ class StatsMakerBase(object):
         # Next 3 are currently only for file downloads
         self.selected_dvs = None    # Narrow by dataverse aliases
         self.include_child_dvs  = None
-        self.as_csv = False
 
         # Used for binning stats
         self.bin_size = 20      # default setting
@@ -199,16 +198,6 @@ class StatsMakerBase(object):
 
 
         # ----------------------------------------
-        # Output as CSV
-        # ----------------------------------------
-        self.as_csv = kwargs.get('as_csv', False)
-        if self.as_csv:
-            if self.as_csv in (True, 'True', 'true'):
-                self.as_csv = True
-            else:
-                self.as_csv = False
-
-        # ----------------------------------------
         # Bin Size
         # ----------------------------------------
         self.bin_size = kwargs.get('bin_size', self.DEFAULT_BIN_SIZE)
@@ -232,12 +221,20 @@ class StatsMakerBase(object):
 
         return self.get_param_true_false_value(param_val)
 
-    def get_param_true_false_value(self, param_val):
+
+    @staticmethod
+    def is_param_value_true(param_val):
+        if param_val is None:
+            return False
 
         if param_val in (True, 'True', 'true'):
             return True
 
         return False
+
+    def get_param_true_false_value(self, param_val):
+
+        return StatsMakerBase.is_param_value_true(param_val)
 
 
     def check_param_that_must_be_integer(self, param_name, param_value, none_ok=True):

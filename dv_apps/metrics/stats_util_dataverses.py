@@ -368,7 +368,7 @@ class StatsMakerDataverses(StatsMakerBase):
         # Get SQL query string
         # -----------------------------------
         sql_query = str(dataverse_counts_by_affil.query)
-        print 'dataverse_counts_by_affil', dataverse_counts_by_affil
+
         # Count all dataverses
         #
         total_count = sum([rec.get('affiliation_count', 0) for rec in dataverse_counts_by_affil])
@@ -395,8 +395,7 @@ class StatsMakerDataverses(StatsMakerBase):
         data_dict = OrderedDict()
         data_dict['record_count'] = len(formatted_records)
         data_dict['records'] = formatted_records
-        print '-' * 50
-        print 'formatted_records', formatted_records
+
         return StatsResult.build_success_result(data_dict, sql_query)
 
     '''

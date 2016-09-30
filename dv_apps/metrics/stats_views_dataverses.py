@@ -15,6 +15,13 @@ class DataverseCountByMonthView(StatsViewSwagger):
     description = ('Returns a list of counts and'
             ' cumulative counts of all Dataverses added in a month')
     description_200 = 'A list of Dataverse counts by month'
+
+    param_names = StatsViewSwagger.PARAM_DV_API_KEY +\
+                StatsViewSwagger.BASIC_DATE_PARAMS +\
+                StatsViewSwagger.PUBLISH_PARAMS +\
+                StatsViewSwagger.PRETTY_JSON_PARAM +\
+                StatsViewSwagger.PARAM_AS_CSV
+
     tags = [StatsViewSwagger.TAG_DATAVERSES]
 
     def get_stats_result(self, request):

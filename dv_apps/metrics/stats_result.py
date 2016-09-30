@@ -1,3 +1,5 @@
+import pandas as pd
+
 """
 Holds the results of metrics queries from:
     StatsMakerDataverses
@@ -17,9 +19,6 @@ class StatsResult(object):
             self.error_found = False
         self.sql_query = kwargs.get('sql_query', None)
 
-        # Used downstream for CSVs
-        self.as_csv = False
-        self.csv_header_keys = None
 
     def was_succcess(self):
         if not self.error_found:
@@ -28,6 +27,15 @@ class StatsResult(object):
 
     def has_error(self):
         return self.error_found
+
+    def get_csv_content(self):
+        assert self.result_data is not None, "result_data cannot be None"
+        assert self.result_data.has_key('records'), "result_data must have a list of 'records'"
+
+        df = pd.DataFrame(self.result_data['records'])
+
+        return df.to_csv(orient='records', index=False)
+
 
     @staticmethod
     def build_error_result(error_message, bad_http_status_code=None):

@@ -507,18 +507,23 @@ print stats_files.get_total_file_downloads().result_data
         for rec in datafile_counts_by_type:
 
             if total_count > 0:
-                float_percent = rec.get('type_count', 0) / total_count
-                rec['percent_string'] = '{0:.1%}'.format(float_percent)
-                rec['total_count'] = int(total_count)
+                fmt_dict = OrderedDict()
+                fmt_dict['contenttype'] = rec['contenttype']
 
+                # short contenttype
                 contenttype_parts = rec['contenttype'].split('/')
                 if len(contenttype_parts) > 1:
-                    rec['short_content_type'] = '/'.join(contenttype_parts[1:])
+                    fmt_dict['short_content_type'] = '/'.join(contenttype_parts[1:])
                 else:
-                    rec['short_content_type'] = rec['contenttype']
-                #num+=1
-                #rec['num'] = num
-            formatted_records.append(rec)
+                    fmt_dict['short_content_type'] = rec['contenttype']
+
+                fmt_dict['type_count'] = rec.get('type_count', 0)
+
+                float_percent = fmt_dict['type_count'] / total_count
+                fmt_dict['total_count'] = int(total_count)
+                fmt_dict['percent_string'] = '{0:.1%}'.format(float_percent)
+
+                formatted_records.append(fmt_dict)
 
 
         data_dict = OrderedDict()

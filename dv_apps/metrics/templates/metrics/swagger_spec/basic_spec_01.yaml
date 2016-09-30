@@ -158,6 +158,10 @@ definitions:
         type: string
       count:
         type: integer
+      total_count:
+        type: integer
+      percent_string:
+        type: string
   FileExtensionCounts:
     type: array
     items:

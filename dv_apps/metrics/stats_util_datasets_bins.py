@@ -164,10 +164,6 @@ class StatsMakerDatasetBins(StatsMakerBase):
             df_bins = df_bins.query('count != 0')
             msg(df_bins)
 
-        if self.as_csv:
-            selected_cols = [ 'bin_start_inclusive', 'bin_end',  'count', 'bin_str', 'sort_key']
-
-            return df_bins.to_csv(orient='records', columns=selected_cols, index_label='index')
 
         # Return as python dict
         #   # bit expensive but want orderedDict

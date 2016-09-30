@@ -107,11 +107,6 @@ class FilesDownloadedByMonthView(StatsViewSwagger):
         else:
             stats_result = stats_files.get_file_downloads_by_month_published()
 
-        # Output this as a CSV file
-        if stats_files.as_csv:
-            stats_result.as_csv = True
-            stats_result.csv_header_keys = stats_files.get_file_downloads_by_month_return_headers()
-
         return stats_result
 
 
@@ -155,7 +150,9 @@ class FileExtensionsWithinContentType(StatsViewSwagger):
     summary = ('File extension counts within a given content type.')
     description = ('File extension counts within a given content type.')
     description_200 = ('File extension counts within a given content type.')
-    param_names = StatsViewSwagger.PARAM_DV_API_KEY + StatsViewSwagger.FILE_CONTENT_TYPE_PARAM
+    param_names = StatsViewSwagger.PARAM_DV_API_KEY +\
+                StatsViewSwagger.FILE_CONTENT_TYPE_PARAM +\
+                StatsViewSwagger.PRETTY_JSON_PARAM
     result_name = StatsViewSwagger.RESULT_NAME_FILE_EXT_COUNTS #+\
     tags = [StatsViewSwagger.TAG_DATAFILES]
 

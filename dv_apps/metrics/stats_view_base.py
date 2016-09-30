@@ -61,6 +61,7 @@ class StatsViewSwagger(View):
     RESULT_NAME_FILE_EXT_COUNTS = 'FileExtensionCounts'
     RESULT_NAME_FILE_TYPE_COUNTS = 'FileTypeCounts'
 
+    RESULT_NAME_TOTAL_COUNT = 'TotalCount'
     RESULT_NAME_NUM_UNIQUE_EXT = 'NumberUniqueExtensions'
     RESULT_NAME_AFFILIATION_COUNTS = 'AffiliationCounts'
     RESULT_NAME_DATAVERSE_TYPE_COUNTS = 'DataverseTypeCount'

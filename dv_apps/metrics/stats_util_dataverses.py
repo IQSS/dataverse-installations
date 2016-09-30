@@ -70,7 +70,11 @@ class StatsMakerDataverses(StatsMakerBase):
 
         sql_query = str(q.query)
 
-        return StatsResult.build_success_result(q.count(), sql_query)
+        data_dict = OrderedDict()
+        data_dict['count'] = q.count()
+        data_dict['count_string'] = "{:,}".format(data_dict['count'])
+
+        return StatsResult.build_success_result(data_dict, sql_query)
 
 
     # ----------------------------
@@ -153,13 +157,13 @@ class StatsMakerDataverses(StatsMakerBase):
                             ).exclude(**exclude_params\
                             ).filter(**filter_params)
 
-        # annotate query adding "month_year" and "cnt"
+        # annotate query adding "month_year" and "count"
         #
         dv_counts_by_month = dv_counts_by_month.annotate(\
             yyyy_mm=TruncYearMonth('%s' % date_param)\
             ).values('yyyy_mm'\
-            ).annotate(cnt=models.Count('dvobject_id')\
-            ).values('yyyy_mm', 'cnt'\
+            ).annotate(count=models.Count('dvobject_id')\
+            ).values('yyyy_mm', 'count'\
             ).order_by('%syyyy_mm' % self.time_sort)
 
 
@@ -177,7 +181,7 @@ class StatsMakerDataverses(StatsMakerBase):
 
         for d in dv_counts_by_month:
             # running total
-            running_total += d['cnt']
+            running_total += d['count']
             d['running_total'] = running_total
             # d['month_year'] = d['yyyy_mm'].strftime('%Y-%m')
 
@@ -202,6 +206,7 @@ class StatsMakerDataverses(StatsMakerBase):
 
         data_dict = OrderedDict()
         data_dict['record_count'] = len(formatted_records)
+        data_dict['total_count'] = running_total
         data_dict['records'] = formatted_records
 
         return StatsResult.build_success_result(data_dict, sql_query)
@@ -231,15 +236,15 @@ class StatsMakerDataverses(StatsMakerBase):
 
         Returns: { "dv_counts_by_type": [
                         {
-                            "total_count": 356,
                             "dataversetype": "RESEARCH_PROJECTS",
                             "type_count": 85,
+                            "total_count": 356,
                             "percent_string": "23.9%"
                         },
                         {
-                            "total_count": 356,
                             "dataversetype": "TEACHING_COURSES",
                             "type_count": 10,
+                            "total_count": 356,
                             "percent_string": "2.8%"
                         }
                             ... etc
@@ -285,15 +290,22 @@ class StatsMakerDataverses(StatsMakerBase):
         #
         formatted_records = []
         for rec in dataverse_counts_by_type:
+            fmt_dict = OrderedDict()
+            fmt_dict['dataversetype'] = rec['dataversetype']
+            fmt_dict['dataversetype_label'] = rec['dataversetype'].replace('_', ' ')
+            fmt_dict['type_count'] = rec.get('type_count', 0)
+
 
             if total_count > 0:
                 float_percent = rec.get('type_count', 0) / total_count
-                rec['percent_string'] = '{0:.1%}'.format(float_percent)
-                rec['total_count'] = int(total_count)
+                fmt_dict['total_count'] = int(total_count)
+                fmt_dict['percent_string'] = '{0:.1%}'.format(float_percent)
+            else:
+                fmt_dict['total_count'] = 0
+                fmt_dict['percent_string'] = '0%'
 
-            rec['dataversetype_label'] = rec['dataversetype'].replace('_', ' ')
 
-            formatted_records.append(rec)
+            formatted_records.append(fmt_dict)
 
         data_dict = OrderedDict()
         data_dict['record_count'] = len(formatted_records)
@@ -321,13 +333,13 @@ class StatsMakerDataverses(StatsMakerBase):
         Returns: dv_counts_by_affiliation": [
             {
                 "affiliation": "University of Oxford",
-                "affil_count": 2,
+                "affiliation_count": 2,
                 "total_count": 191,
                 "percent_string": "1.0%"
             },
             {
                 "affiliation": "University of Illinois",
-                "affil_count": 1,
+                "affiliation_count": 1,
                 "total_count": 191,
                 "percent_string": "0.5%"
             }
@@ -349,35 +361,42 @@ class StatsMakerDataverses(StatsMakerBase):
                     ).filter(**filter_params\
                     ).values('affiliation'\
                     ).order_by('affiliation'\
-                    ).annotate(affil_count=models.Count('affiliation')\
-                    ).order_by('-affil_count')
+                    ).annotate(affiliation_count=models.Count('affiliation')\
+                    ).order_by('-affiliation_count')
 
         # -----------------------------------
         # Get SQL query string
         # -----------------------------------
         sql_query = str(dataverse_counts_by_affil.query)
-
+        print 'dataverse_counts_by_affil', dataverse_counts_by_affil
         # Count all dataverses
         #
-        total_count = sum([rec.get('affil_count', 0) for rec in dataverse_counts_by_affil])
+        total_count = sum([rec.get('affiliation_count', 0) for rec in dataverse_counts_by_affil])
         total_count = total_count + 0.0
 
         # Format the records, adding 'total_count' and 'percent_string' to each one
         #
         formatted_records = []
         for rec in dataverse_counts_by_affil:
+            fmt_dict = OrderedDict()
+            fmt_dict['affiliation'] = rec['affiliation']
+            fmt_dict['affiliation_count'] = rec.get('affiliation_count', 0)
 
             if total_count > 0:
-                float_percent = rec.get('affil_count', 0) / total_count
-                rec['percent_string'] = '{0:.1%}'.format(float_percent)
-                rec['total_count'] = int(total_count)
+                float_percent = rec.get('affiliation_count', 0) / total_count
+                fmt_dict['total_count'] = int(total_count)
+                fmt_dict['percent_string'] = '{0:.1%}'.format(float_percent)
+            else:
+                fmt_dict['total_count'] = 0
+                fmt_dict['percent_string'] = '0%'
 
-            formatted_records.append(rec)
+            formatted_records.append(fmt_dict)
 
         data_dict = OrderedDict()
         data_dict['record_count'] = len(formatted_records)
         data_dict['records'] = formatted_records
-
+        print '-' * 50
+        print 'formatted_records', formatted_records
         return StatsResult.build_success_result(data_dict, sql_query)
 
     '''

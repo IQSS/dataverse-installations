@@ -108,9 +108,15 @@ parameters:
 # Define response definitions
 # ------------------------------
 definitions:
+  TotalCount:
+    properties:
+      count:
+        type: integer
+      count_string:
+        type: string
   MonthCount:
     properties:
-      cnt:
+      count:
         type: integer
       running_total:
         type: integer
@@ -164,7 +170,7 @@ definitions:
     properties:
       affiliation:
         type: string
-      affil_count:
+      affiliation_count:
         type: integer
       total_count:
         type: integer

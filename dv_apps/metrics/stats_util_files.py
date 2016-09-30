@@ -66,7 +66,11 @@ class StatsMakerFiles(StatsMakerBase):
         q = Datafile.objects.filter(**filter_params)
         sql_query = str(q.query)
 
-        return StatsResult.build_success_result(q.count(), sql_query)
+        data_dict = OrderedDict()
+        data_dict['count'] = q.count()
+        data_dict['count_string'] = "{:,}".format(data_dict['count'])
+
+        return StatsResult.build_success_result(data_dict, sql_query)
         #    return True, Datafile.objects.filter(**filter_params).count()
 
     def get_datafile_count_published(self):

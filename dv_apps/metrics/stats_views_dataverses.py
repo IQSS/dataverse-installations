@@ -44,6 +44,8 @@ class DataverseTotalCounts(StatsViewSwagger):
     description_200 = 'Number of published Dataverses'
     param_names = StatsViewSwagger.PARAM_DV_API_KEY + StatsViewSwagger.PUBLISH_PARAMS + StatsViewSwagger.PRETTY_JSON_PARAM
     tags = [StatsViewSwagger.TAG_DATAVERSES]
+    result_name = StatsViewSwagger.RESULT_NAME_TOTAL_COUNT
+
 
     def get_stats_result(self, request):
         """Return the StatsResult object for this statistic"""

@@ -19,6 +19,7 @@ class FileTotalCountsView(StatsViewSwagger):
     param_names = StatsViewSwagger.PARAM_DV_API_KEY + StatsViewSwagger.PUBLISH_PARAMS + StatsViewSwagger.PRETTY_JSON_PARAM
     result_name = StatsViewSwagger.RESULT_NAME_FILE_EXT_COUNTS
     tags = [StatsViewSwagger.TAG_DATAFILES]
+    result_name = StatsViewSwagger.RESULT_NAME_TOTAL_COUNT
 
     def get_stats_result(self, request):
         """Return the StatsResult object for this statistic"""

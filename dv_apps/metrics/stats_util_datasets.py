@@ -53,7 +53,11 @@ class StatsMakerDatasets(StatsMakerBase):
         q = Dataset.objects.filter(**filter_params)
         sql_query = str(q.query)
 
-        return StatsResult.build_success_result(q.count(), sql_query)
+        data_dict = OrderedDict()
+        data_dict['count'] = q.count()
+        data_dict['count_string'] = "{:,}".format(data_dict['count'])
+
+        return StatsResult.build_success_result(data_dict, sql_query)
 
 
     def get_dataset_count_published(self):
@@ -177,8 +181,8 @@ class StatsMakerDatasets(StatsMakerBase):
         ds_counts_by_month = ds_counts_by_month.annotate(\
             yyyy_mm=TruncYearMonth('%s' % date_param)\
             ).values('yyyy_mm'\
-            ).annotate(cnt=models.Count('dvobject_id')\
-            ).values('yyyy_mm', 'cnt'\
+            ).annotate(count=models.Count('dvobject_id')\
+            ).values('yyyy_mm', 'count'\
             ).order_by('%syyyy_mm' % self.time_sort)
 
         # store query string
@@ -193,7 +197,7 @@ class StatsMakerDatasets(StatsMakerBase):
 
         for d in ds_counts_by_month:
             # running total
-            running_total += d['cnt']
+            running_total += d['count']
             d['running_total'] = running_total
             # d['month_year'] = d['yyyy_mm'].strftime('%Y-%m')
 

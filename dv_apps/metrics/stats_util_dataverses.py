@@ -2,6 +2,8 @@
 Create metrics for Dataverses.
 This may be used for APIs, views with visualizations, etc.
 """
+from collections import OrderedDict
+
 from django.db import models
 
 from dv_apps.utils.date_helper import get_month_name_abbreviation,\
@@ -198,7 +200,11 @@ class StatsMakerDataverses(StatsMakerBase):
             # Add formatted record
             formatted_records.append(d)
 
-        return StatsResult.build_success_result(formatted_records, sql_query)
+        data_dict = OrderedDict()
+        data_dict['record_count'] = len(formatted_records)
+        data_dict['records'] = formatted_records
+
+        return StatsResult.build_success_result(data_dict, sql_query)
 
 
     def get_dataverse_counts_by_type_published(self, exclude_uncategorized=True):
@@ -289,7 +295,11 @@ class StatsMakerDataverses(StatsMakerBase):
 
             formatted_records.append(rec)
 
-        return StatsResult.build_success_result(formatted_records, sql_query)
+        data_dict = OrderedDict()
+        data_dict['record_count'] = len(formatted_records)
+        data_dict['records'] = formatted_records
+
+        return StatsResult.build_success_result(data_dict, sql_query)
 
 
     def get_dataverse_affiliation_counts_published(self):
@@ -364,7 +374,11 @@ class StatsMakerDataverses(StatsMakerBase):
 
             formatted_records.append(rec)
 
-        return StatsResult.build_success_result(formatted_records, sql_query)
+        data_dict = OrderedDict()
+        data_dict['record_count'] = len(formatted_records)
+        data_dict['records'] = formatted_records
+
+        return StatsResult.build_success_result(data_dict, sql_query)
 
     '''
     def get_number_of_datafile_types(self):

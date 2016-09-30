@@ -174,10 +174,11 @@ class StatsMakerDatasetBins(StatsMakerBase):
         formatted_records_json = df_bins.to_json(orient='records')
         formatted_records = json.loads(formatted_records_json, object_pairs_hook=OrderedDict)
 
-        d = OrderedDict(number_of_bins=len(formatted_records))
-        d['bin_counts'] = formatted_records
+        data_dict = OrderedDict()
+        data_dict['record_count'] = len(formatted_records)
+        data_dict['records'] = formatted_records
 
-        return StatsResult.build_success_result(d)
+        return StatsResult.build_success_result(data_dict)
 
 """
     # bins changing as more files added

@@ -217,7 +217,11 @@ class StatsMakerDatasets(StatsMakerBase):
             # Add formatted record
             formatted_records.append(d)
 
-        return StatsResult.build_success_result(formatted_records, sql_query)
+        data_dict = OrderedDict()
+        data_dict['record_count'] = len(formatted_records)
+        data_dict['records'] = formatted_records
+
+        return StatsResult.build_success_result(data_dict, sql_query)
 
 
     def get_dataset_subject_counts_published(self):
@@ -342,8 +346,8 @@ class StatsMakerDatasets(StatsMakerBase):
             formatted_records.append(rec)
 
         data_dict = OrderedDict()
-        data_dict['count'] = len(formatted_records)
-        data_dict['ds_values'] = formatted_records
+        data_dict['record_count'] = len(formatted_records)
+        data_dict['records'] = formatted_records
         #data_dict['cnt_dsv_ids'] = len(dsv_ids)
         #data_dict['cnt_ds_field_ids'] = len(ds_field_ids)
         #data_dict['ds_field_ids'] = len(ds_field_ids)

@@ -196,6 +196,7 @@ print stats_files.get_total_file_downloads().result_data
         return {}
         #return dict(downloadtype=RESPONSE_TYPE_DOWNLOAD)
 
+
     def get_file_downloads_by_month_return_headers(self):
         """To use in CSV creation"""
         return ['yyyy_mm', 'year_num', 'month_num', 'month_name', 'cnt', 'running_total']
@@ -272,7 +273,13 @@ print stats_files.get_total_file_downloads().result_data
 
             formatted_records.append(d)
 
-        return StatsResult.build_success_result(formatted_records, sql_query)
+        data_dict = OrderedDict()
+        data_dict['total_downloads'] = file_running_total
+        data_dict['record_count'] = len(formatted_records)
+        data_dict['records'] = formatted_records
+
+        return StatsResult.build_success_result(data_dict, sql_query)
+
 
         #return True, formatted_records
 
@@ -393,7 +400,12 @@ print stats_files.get_total_file_downloads().result_data
             # Add formatted record
             formatted_records.append(d)
 
-        return StatsResult.build_success_result(formatted_records, sql_query)
+        data_dict = OrderedDict()
+        data_dict['record_count'] = len(formatted_records)
+        data_dict['records'] = formatted_records
+
+        return StatsResult.build_success_result(data_dict, sql_query)
+
 
         #return True, formatted_records
 
@@ -504,7 +516,12 @@ print stats_files.get_total_file_downloads().result_data
                 #rec['num'] = num
             formatted_records.append(rec)
 
-        return StatsResult.build_success_result(formatted_records, sql_query)
+
+        data_dict = OrderedDict()
+        data_dict['record_count'] = len(formatted_records)
+        data_dict['records'] = formatted_records
+
+        return StatsResult.build_success_result(data_dict, sql_query)
 
 
     def get_files_per_dataset(self):
@@ -561,13 +578,14 @@ print stats_files.get_total_file_downloads().result_data
             d['percent_string'] = '{0:.3%}'.format(ext_pair[1] / total_count)
             ext_list.append(d)
 
-        d = OrderedDict(number_unique_extensions=len(ext_pairs))
-        d['total_file_count'] = int(total_count)
-        d['file_extension_counts'] = ext_list
-        d['all_dv_files'] = Datafile.objects.all().count()
-        d['percent_unknown'] = '{0:.3%}'.format(total_count/d['all_dv_files'])
+        data_dict = OrderedDict(number_unique_extensions=len(ext_pairs))
+        data_dict['total_file_count'] = int(total_count)
+        data_dict['record_count'] = len(ext_list)
+        data_dict['records'] = ext_list
+        data_dict['all_dv_files'] = Datafile.objects.all().count()
+        data_dict['percent_unknown'] = '{0:.3%}'.format(total_count/data_dict['all_dv_files'])
 
-        return StatsResult.build_success_result(d)
+        return StatsResult.build_success_result(data_dict)
 
         #return JsonResponse(d)
 """

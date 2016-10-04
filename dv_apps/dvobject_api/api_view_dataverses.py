@@ -13,7 +13,7 @@ class DataverseByIdView(StatsViewSwagger):
     # Define the swagger attributes
     # Note: api_path must match the path in urls.py
     #
-    api_path = '/dataverses/by-id/{id}'
+    api_path = '/dataverses/by-id/{dv_id}'
     summary = ('(test) Retrieve published Dataverse object in JSON format.')
     description = ('(test) Retrieve Dataverse object in JSON format.')
     description_200 = '(test) Retrieve Dataverse object in JSON format.'
@@ -29,9 +29,9 @@ class DataverseByIdView(StatsViewSwagger):
         """Return the StatsResult object for this statistic"""
 
         #dv_id = request.GET.get('id', None)
-        dv_id = self.kwargs.get('id', None)
+        dv_id = self.kwargs.get('dv_id', None)
         if dv_id is None:
-            return StatsResult.build_error_result("No dataset id specified", 400)
+            return StatsResult.build_error_result("No Dataverse id specified", 400)
 
         try:
             selected_dv = Dataverse.objects.select_related('dvobject').get(\

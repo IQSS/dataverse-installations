@@ -48,7 +48,7 @@ class StatsViewSwagger(View):
     PARAM_BIN_SIZE = ['binSize']  # bin_size
     PARAM_NUM_BINS = ['numBins']  # num_bins
     PARAM_SKIP_EMPTY_BINS = ['skipEmptyBins'] # skip_empty_bins
-    PARAM_DVOBJECT_ID = ['dvObjectId']
+    PARAM_DVOBJECT_ID = ['dataverseObjectId']
 
     PUBLISH_PARAMS = ['publicationStateParam']
     PUB_STATE_PUBLISHED = 'published'

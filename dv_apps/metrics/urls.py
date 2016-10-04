@@ -103,7 +103,7 @@ urlpatterns += [
     url(r'^v1/files/extensions$', FileExtensionsWithinContentType.as_view(), name='view_file_extensions_within_type'),
 
     # Test: Dvobjects
-    url(r'^v1/dataverses/by-id/(?P<id>\d+)$', DataverseByIdView.as_view(),
+    url(r'^v1/dataverses/by-id/(?P<dv_id>\d+)$', DataverseByIdView.as_view(),
     name='view_dataverse_by_id_api')
 ]
 

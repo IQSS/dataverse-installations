@@ -9,6 +9,7 @@ bcrypt==3.1.1
 
 # metrics related
 pandas==0.16.1
+XlsxWriter==0.9.3
 
 # Database url parser
 dj-database-url==0.4.1

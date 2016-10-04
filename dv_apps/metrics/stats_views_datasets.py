@@ -48,6 +48,11 @@ class DatasetCountByMonthView(StatsViewSwagger):
     description = ('Returns a list of counts and'
             ' cumulative counts of all datasts added in a month')
     description_200 = 'A list of Dataset counts by month'
+    param_names = StatsViewSwagger.PARAM_DV_API_KEY +\
+                StatsViewSwagger.BASIC_DATE_PARAMS +\
+                StatsViewSwagger.PUBLISH_PARAMS +\
+                StatsViewSwagger.PRETTY_JSON_PARAM +\
+                StatsViewSwagger.PARAM_AS_CSV
     tags = [StatsViewSwagger.TAG_DATASETS]
 
 
@@ -78,6 +83,11 @@ class DatasetSubjectCounts(StatsViewSwagger):
     summary = ('Number of Datasets by Subject')
     description = ('Number of Datasets by Subject')
     description_200 = ('Number of Datasets by Subject')
+    param_names = StatsViewSwagger.PARAM_DV_API_KEY +\
+                StatsViewSwagger.BASIC_DATE_PARAMS +\
+                StatsViewSwagger.PUBLISH_PARAMS +\
+                StatsViewSwagger.PRETTY_JSON_PARAM +\
+                StatsViewSwagger.PARAM_AS_CSV
     tags = [StatsViewSwagger.TAG_DATASETS]
     result_name = StatsViewSwagger.RESULT_NAME_DATASET_SUBJECT_COUNTS
 

@@ -5,7 +5,7 @@
 
   var dataset_counts_by_subject = [
     {% for i in dataset_counts_by_subject %}
-        {"value":{{ i.cnt }},  "weight": {{ i.percent_number }}, "type": "{{ i.subject }}", "label":"{{ i.subject}} ({{ i.percent_string }})"}
+        {"value":{{ i.count }},  "weight": {{ i.percent_number }}, "type": "{{ i.subject }}", "label":"{{ i.subject}} ({{ i.percent_string }})"}
         {%if not forloop.last%},{%endif%}
     {%endfor%}
     ]

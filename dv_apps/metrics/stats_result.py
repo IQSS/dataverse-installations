@@ -1,5 +1,5 @@
+import StringIO
 import pandas as pd
-
 """
 Holds the results of metrics queries from:
     StatsMakerDataverses
@@ -28,13 +28,66 @@ class StatsResult(object):
     def has_error(self):
         return self.error_found
 
-    def get_csv_content(self):
+    def add_error(self, err_msg):
+        self.error_found = True
+        self.error_message = err_msg
+
+    def get_excel_workbook(self):
+        """
+        Convert data records to an excel notebook
+        """
+        if self.has_error():
+            raise Exception("Error Found.  Call 'has_error()' before attempting this method.")
+
         assert self.result_data is not None, "result_data cannot be None"
         assert self.result_data.has_key('records'), "result_data must have a list of 'records'"
 
+        records = self.result_data.get('records', None)
+        assert records is not None, "records cannot be None"
+
+        if len(records) == 0:
+            return ''
+
+        col_names = [ k for k, v in records[0].items()]
+
+        excel_string_io = StringIO.StringIO()
+        df = pd.DataFrame(self.result_data['records'])
+        pd_writer = pd.ExcelWriter(excel_string_io, engine='xlsxwriter')
+
+        df.to_excel(pd_writer, index=False, sheet_name='metrics', columns=col_names)
+        pd_writer.save()
+
+        excel_string_io.seek(0)
+        workbook = excel_string_io.getvalue()
+
+        return workbook
+
+
+    def get_csv_content(self, as_excel=False):
+        """
+        Lots of assertions here.  We want to blow up for now--until test cases made
+        or discovered
+        """
+        if self.has_error():
+            raise Exception("Error Found.  Call 'has_error()' before attempting this method.")
+
+        assert self.result_data is not None, "result_data cannot be None"
+        assert self.result_data.has_key('records'), "result_data must have a list of 'records'"
+
+        records = self.result_data.get('records', None)
+        assert records is not None, "records cannot be None"
+
+        if len(records) == 0:
+            return ''
+
+        col_names = [ k for k, v in records[0].items()]
+
         df = pd.DataFrame(self.result_data['records'])
 
-        return df.to_csv(orient='records', index=False)
+        if as_excel:
+            return df.to_excel(orient='records', index=False, columns=col_names)
+        else:
+            return df.to_csv(orient='records', index=False, columns=col_names)
 
 
     @staticmethod

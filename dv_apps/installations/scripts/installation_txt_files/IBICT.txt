@@ -90,7 +90,7 @@ university zurich	47.3588302	8.5595886
 UNIVIE		
 Univ of Utah	33.4249307	-111.8884532
 Univ. Simón Bolívar. Center for Marine Biodiversity		
-Unkown	34.2873457	-86.2517178
+unknown	34.2873457	-86.2517178
 unniversity	28.0735403	-82.4373589
 UN Office for the Coordination of Humanitarian Affairs; University of Konstanz	47.6779496	9.1732384
 UNSW	-33.918488	151.227858

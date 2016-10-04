@@ -127,8 +127,11 @@ class StatsMakerFiles(StatsMakerBase):
 
         sql_query = str(q.query)
 
+        data_dict = OrderedDict()
+        data_dict['count'] = q.count()
+        data_dict['count_string'] = "{:,}".format(data_dict['count'])
 
-        return StatsResult.build_success_result(q.count(), sql_query)
+        return StatsResult.build_success_result(data_dict, sql_query)
 
 
     """
@@ -238,8 +241,8 @@ print stats_files.get_total_file_downloads().result_data
             ).filter(**filter_params\
             ).annotate(yyyy_mm=TruncYearMonth('responsetime')\
             ).values('yyyy_mm'\
-            ).annotate(cnt=models.Count('id')\
-            ).values('yyyy_mm', 'cnt'\
+            ).annotate(count=models.Count('id')\
+            ).values('yyyy_mm', 'count'\
             ).order_by('%syyyy_mm' % self.time_sort)
 
         #print 'file_counts_by_month.query', file_counts_by_month.query
@@ -254,28 +257,29 @@ print stats_files.get_total_file_downloads().result_data
 
 
         for d in file_counts_by_month:
-            file_running_total += d['cnt']
-            d['running_total'] = file_running_total
+            fmt_rec = OrderedDict()
+            fmt_rec['yyyy_mm'] = d['yyyy_mm'].strftime('%Y-%m')
+            fmt_rec['count'] = d['count']
+
+            file_running_total += d['count']
+            fmt_rec['running_total'] = file_running_total
 
             # d['month_year'] = d['yyyy_mm'].strftime('%Y-%m')
 
             # Add year and month numbers
-            d['year_num'] = d['yyyy_mm'].year
-            d['month_num'] = d['yyyy_mm'].month
+            fmt_rec['year_num'] = d['yyyy_mm'].year
+            fmt_rec['month_num'] = d['yyyy_mm'].month
 
             # Add month name
             month_name_found, month_name_short = get_month_name_abbreviation( d['yyyy_mm'].month)
             if month_name_found:
-                assume_month_name_found, d['month_name'] = get_month_name(d['yyyy_mm'].month)
-                d['month_name_short'] = month_name_short
+                assume_month_name_found, fmt_rec['month_name'] = get_month_name(d['yyyy_mm'].month)
+                fmt_rec['month_name_short'] = month_name_short
             else:
                 # Log it!!!!!!
                 pass
 
-            # change the datetime object to a string
-            d['yyyy_mm'] = d['yyyy_mm'].strftime('%Y-%m')
-
-            formatted_records.append(d)
+            formatted_records.append(fmt_rec)
 
         data_dict = OrderedDict()
         data_dict['total_downloads'] = file_running_total
@@ -366,8 +370,8 @@ print stats_files.get_total_file_downloads().result_data
         file_counts_by_month = file_counts_by_month.annotate(\
             yyyy_mm=TruncYearMonth('%s' % date_param)\
             ).values('yyyy_mm'\
-            ).annotate(cnt=models.Count('dvobject_id')\
-            ).values('yyyy_mm', 'cnt'\
+            ).annotate(count=models.Count('dvobject_id')\
+            ).values('yyyy_mm', 'count'\
             ).order_by('%syyyy_mm' % self.time_sort)
 
         sql_query = str(file_counts_by_month.query)
@@ -379,30 +383,32 @@ print stats_files.get_total_file_downloads().result_data
         formatted_records = []  # move from a queryset to a []
 
         for d in file_counts_by_month:
+            fmt_rec = OrderedDict()
+
+            fmt_rec['yyyy_mm'] = d['yyyy_mm'].strftime('%Y-%m')
+            fmt_rec['count'] = d['count']
+
             # running total
-            running_total += d['cnt']
-            d['running_total'] = running_total
+            running_total += d['count']
+            fmt_rec['running_total'] = running_total
 
             # d['month_year'] = d['yyyy_mm'].strftime('%Y-%m')
 
             # Add year and month numbers
-            d['year_num'] = d['yyyy_mm'].year
-            d['month_num'] = d['yyyy_mm'].month
+            fmt_rec['year_num'] = d['yyyy_mm'].year
+            fmt_rec['month_num'] = d['yyyy_mm'].month
 
             # Add month name
             month_name_found, month_name_short = get_month_name_abbreviation(d['yyyy_mm'].month)
             if month_name_found:
-                assume_month_name_found, d['month_name'] = get_month_name(d['yyyy_mm'].month)
-                d['month_name_short'] = month_name_short
+                assume_month_name_found, fmt_rec['month_name'] = get_month_name(d['yyyy_mm'].month)
+                fmt_rec['month_name_short'] = month_name_short
             else:
                 # Log it!!!!!!
                 pass
 
-            # change the datetime object to a string
-            d['yyyy_mm'] = d['yyyy_mm'].strftime('%Y-%m')
-
             # Add formatted record
-            formatted_records.append(d)
+            formatted_records.append(fmt_rec)
 
         data_dict = OrderedDict()
         data_dict['record_count'] = len(formatted_records)

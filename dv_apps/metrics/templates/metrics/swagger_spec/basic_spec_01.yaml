@@ -86,7 +86,12 @@ parameters:
   asCSV:
     name: as_csv
     in: query
-    description: Optional.  Return the output in .csv format (Test)
+    description: Optional.  Return the output in .csv format
+    type: boolean
+  asExcel:
+    name: as_excel
+    in: query
+    description: Optional.  Return the output in .xlsx format (Test)
     type: boolean
   binSize:
     name: bin_size
@@ -121,20 +126,20 @@ definitions:
         type: string
   MonthCount:
     properties:
+      yyyy_mm:
+        type: string
       count:
         type: integer
       running_total:
         type: integer
-      yyyy_mm:
-        type: string
-      month_name:
-        type: string
-      month_name_short:
-        type: string
       year_num:
         type: integer
+      month_name:
+        type: string
       month_num:
         type: integer
+      month_name_short:
+        type: string
   MonthCounts:
     type: array
     items:
@@ -227,12 +232,12 @@ definitions:
         type: string
       count:
         type: integer
+      total_count:
+        type: integer
       percent_string:
         type: string
       percent_number:
         type: number
-      total_count:
-        type: integer
   DatasetSubjectCounts:
     type: array
     items:

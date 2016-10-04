@@ -166,15 +166,15 @@ class MetricsCountTests(MetricsTestBase):
 
         # Count published dataverse
         r = stats_maker.get_dataverse_count_published()
-        self.assertEqual(r.result_data, 187)
+        self.assertEqual(r.result_data['count'], 187)
 
         # Count unpublished dataverse
         r = stats_maker.get_dataverse_count_unpublished()
-        self.assertEqual(r.result_data, 169)
+        self.assertEqual(r.result_data['count'], 169)
 
         # Count all dataverses
         r = stats_maker.get_dataverse_count()
-        self.assertEqual(r.result_data, 356)
+        self.assertEqual(r.result_data['count'], 356)
 
 
 
@@ -188,27 +188,27 @@ class MetricsCountTests(MetricsTestBase):
         r = stats_maker.get_dataverse_counts_by_month_published()
 
         # check number of months
-        self.assertEqual(len(r.result_data), 7)
+        self.assertEqual(len(r.result_data['records']), 7)
 
         # check 1st month
-        first_month = {'cnt': 5,
+        first_month = {'count': 5,
          'month_name': 'January',
          'month_name_short': 'Jan',
          'month_num': 1,
          'running_total': 131,
          'year_num': 2016,
          'yyyy_mm': '2016-01'}
-        self.assertEqual(r.result_data[0], first_month)
+        self.assertEqual(dict(r.result_data['records'][0]), first_month)
 
         # check last month
-        last_month = {'cnt': 4,
+        last_month = {'count': 4,
              'month_name': 'July',
              'month_name_short': 'Jul',
              'month_num': 7,
              'running_total': 187,
              'year_num': 2016,
              'yyyy_mm': '2016-07'}
-        self.assertEqual(r.result_data[-1], last_month)
+        self.assertEqual(dict(r.result_data['records'][-1]), last_month)
 
 
 
@@ -221,27 +221,27 @@ class MetricsCountTests(MetricsTestBase):
         r = stats_maker.get_dataverse_counts_by_month_unpublished()
 
         # check number of months
-        self.assertEqual(len(r.result_data), 16)
+        self.assertEqual(len(r.result_data['records']), 16)
 
         # check 1st month
-        first_month = {'cnt': 13,
+        first_month = {'count': 13,
              'month_name': 'April',
              'month_name_short': 'Apr',
              'month_num': 4,
              'running_total': 13,
              'year_num': 2015,
              'yyyy_mm': '2015-04'}
-        self.assertEqual(r.result_data[0], first_month)
+        self.assertEqual(dict(r.result_data['records'][0]), first_month)
 
         # check last month
-        last_month = {'cnt': 6,
+        last_month = {'count': 6,
              'month_name': 'July',
              'month_name_short': 'Jul',
              'month_num': 7,
              'running_total': 169,
              'year_num': 2016,
              'yyyy_mm': '2016-07'}
-        self.assertEqual(r.result_data[-1], last_month)
+        self.assertEqual(dict(r.result_data['records'][-1]), last_month)
 
 
     def test_04_dataverse_counts_by_month_all(self):
@@ -253,27 +253,27 @@ class MetricsCountTests(MetricsTestBase):
         r = stats_maker.get_dataverse_counts_by_month()
 
         # check number of months
-        self.assertEqual(len(r.result_data), 16)
+        self.assertEqual(len(r.result_data['records']), 16)
 
         # check 1st month
-        first_month = {'cnt': 39,
+        first_month = {'count': 39,
              'month_name': 'April',
              'month_name_short': 'Apr',
              'month_num': 4,
              'running_total': 39,
              'year_num': 2015,
              'yyyy_mm': '2015-04'}
-        self.assertEqual(r.result_data[0], first_month)
+        self.assertEqual(dict(r.result_data['records'][0]), first_month)
 
         # check last month
-        last_month = {'cnt': 10,
+        last_month = {'count': 10,
              'month_name': 'July',
              'month_name_short': 'Jul',
              'month_num': 7,
              'running_total': 356,
              'year_num': 2016,
              'yyyy_mm': '2016-07'}
-        self.assertEqual(r.result_data[-1], last_month)
+        self.assertEqual(dict(r.result_data['records'][-1]), last_month)
 
     def test_05_dataset_total_counts(self):
         """05 - Count total datasets: published, unpublished, all"""
@@ -284,15 +284,15 @@ class MetricsCountTests(MetricsTestBase):
 
         # Count published dataset
         r = stats_maker.get_dataset_count_published()
-        self.assertEqual(r.result_data, 85)
+        self.assertEqual(r.result_data['count'], 85)
 
         # Count unpublished dataset
         r = stats_maker.get_dataset_count_unpublished()
-        self.assertEqual(r.result_data, 198)
+        self.assertEqual(r.result_data['count'], 198)
 
         # Count all datasets
         r = stats_maker.get_dataset_count()
-        self.assertEqual(r.result_data, 283)
+        self.assertEqual(r.result_data['count'], 283)
 
 
     def test_06_dataset_counts_published(self):
@@ -304,27 +304,27 @@ class MetricsCountTests(MetricsTestBase):
         r = stats_maker.get_dataset_counts_by_create_date_published()
 
         # check number of months
-        self.assertEqual(len(r.result_data), 16)
+        self.assertEqual(len(r.result_data['records']), 16)
 
         # check 1st month
-        first_month = {'cnt': 21,
+        first_month = {'count': 21,
          'month_name': 'April',
          'month_name_short': 'Apr',
          'month_num': 4,
          'running_total': 21,
          'year_num': 2015,
          'yyyy_mm': '2015-04'}
-        self.assertEqual(r.result_data[0], first_month)
+        self.assertEqual(dict(r.result_data['records'][0]), first_month)
 
         # check last month
-        last_month = {'cnt': 4,
+        last_month = {'count': 4,
          'month_name': 'July',
          'month_name_short': 'Jul',
          'month_num': 7,
          'running_total': 227,
          'year_num': 2016,
          'yyyy_mm': '2016-07'}
-        self.assertEqual(r.result_data[-1], last_month)
+        self.assertEqual(dict(r.result_data['records'][-1]), last_month)
 
     def test_07_dataset_counts_unpublished(self):
         """07 - Test unpublished dataset counts by month"""
@@ -335,27 +335,27 @@ class MetricsCountTests(MetricsTestBase):
         r = stats_maker.get_dataset_counts_by_create_date_unpublished()
 
         # check number of months
-        self.assertEqual(len(r.result_data), 16)
+        self.assertEqual(len(r.result_data['records']), 16)
 
         # check 1st month
-        first_month = {'cnt': 15,
+        first_month = {'count': 15,
          'month_name': 'April',
          'month_name_short': 'Apr',
          'month_num': 4,
          'running_total': 15,
          'year_num': 2015,
          'yyyy_mm': '2015-04'}
-        self.assertEqual(r.result_data[0], first_month)
+        self.assertEqual(dict(r.result_data['records'][0]), first_month)
 
         # check last month
-        last_month = {'cnt': 94,
+        last_month = {'count': 94,
              'month_name': 'July',
              'month_name_short': 'Jul',
              'month_num': 7,
              'running_total': 343,
              'year_num': 2016,
              'yyyy_mm': '2016-07'}
-        self.assertEqual(r.result_data[-1], last_month)
+        self.assertEqual(dict(r.result_data['records'][-1]), last_month)
 
     def test_08_dataset_counts_all(self):
         """08 - Test all dataset counts by month"""
@@ -366,27 +366,27 @@ class MetricsCountTests(MetricsTestBase):
         r = stats_maker.get_dataset_counts_by_create_date()
 
         # check number of months
-        self.assertEqual(len(r.result_data), 16)
+        self.assertEqual(len(r.result_data['records']), 16)
 
         # check 1st month
-        first_month = {'cnt': 36,
+        first_month = {'count': 36,
              'month_name': 'April',
              'month_name_short': 'Apr',
              'month_num': 4,
              'running_total': 36,
              'year_num': 2015,
              'yyyy_mm': '2015-04'}
-        self.assertEqual(r.result_data[0], first_month)
+        self.assertEqual(dict(r.result_data['records'][0]), first_month)
 
         # check last month
-        last_month = {'cnt': 98,
+        last_month = {'count': 98,
              'month_name': 'July',
              'month_name_short': 'Jul',
              'month_num': 7,
              'running_total': 570,
              'year_num': 2016,
              'yyyy_mm': '2016-07'}
-        self.assertEqual(r.result_data[-1], last_month)
+        self.assertEqual(dict(r.result_data['records'][-1]), last_month)
 
 
     def test_09_file_total_counts(self):
@@ -397,15 +397,15 @@ class MetricsCountTests(MetricsTestBase):
 
         # Count published file
         r = stats_maker.get_datafile_count_published()
-        self.assertEqual(r.result_data, 1014)
+        self.assertEqual(r.result_data['count'], 1014)
 
         # Count unpublished file
         r = stats_maker.get_datafile_count_unpublished()
-        self.assertEqual(r.result_data, 570)
+        self.assertEqual(r.result_data['count'], 570)
 
         # Count all files
         r = stats_maker.get_datafile_count()
-        self.assertEqual(r.result_data, 1584)
+        self.assertEqual(r.result_data['count'], 1584)
 
     def test_10_file_downloads_by_month_published(self):
         """10 - File downloads by month: published,"""
@@ -418,17 +418,17 @@ class MetricsCountTests(MetricsTestBase):
         r = stats_maker.get_file_downloads_by_month_published()
 
         # check number of months
-        self.assertEqual(len(r.result_data), 5)
+        self.assertEqual(len(r.result_data['records']), 5)
 
         # check last month
-        last_month = {'cnt': 7,
+        last_month = {'count': 7,
              'month_name': 'September',
              'month_name_short': 'Sep',
              'month_num': 9,
              'running_total': 309,
              'year_num': 2015,
              'yyyy_mm': '2015-09'}
-        self.assertEqual(r.result_data[-1], last_month)
+        self.assertEqual(dict(r.result_data['records'][-1]), last_month)
 
 
     def test_11_file_downloads_by_month_unpublished(self):
@@ -442,10 +442,10 @@ class MetricsCountTests(MetricsTestBase):
         r = stats_maker.get_file_downloads_by_month_unpublished()
 
         # check number of months
-        self.assertEqual(len(r.result_data), 0)
+        self.assertEqual(len(r.result_data['records']), 0)
 
         # check data -- very rare to have downloaded "unpublished" files
-        self.assertEqual(r.result_data, [])
+        self.assertEqual(r.result_data['records'], [])
 
     def test_12_file_downloads_by_month_all(self):
         """12 - File downloads by month: all"""
@@ -456,17 +456,17 @@ class MetricsCountTests(MetricsTestBase):
         r = stats_maker.get_file_downloads_by_month()
 
         # check number of months
-        self.assertEqual(len(r.result_data), 9)
+        self.assertEqual(len(r.result_data['records']), 9)
 
         # check last month
-        last_month = {'cnt': 31,
+        last_month = {'count': 31,
              'month_name': 'December',
              'month_name_short': 'Dec',
              'month_num': 12,
              'running_total': 465,
              'year_num': 2015,
              'yyyy_mm': '2015-12'}
-        self.assertEqual(r.result_data[-1], last_month)
+        self.assertEqual(dict(r.result_data['records'][-1]), last_month)
 
     def test_13_file_content_types_published(self):
         """13 - Content types of published files"""
@@ -478,7 +478,7 @@ class MetricsCountTests(MetricsTestBase):
         r = stats_maker.get_datafile_content_type_counts_published()
 
         # check number of entries
-        self.assertEqual(len(r.result_data), 18)
+        self.assertEqual(len(r.result_data['records']), 18)
 
         # check first listing
         first_listing = {'contenttype': u'application/octet-stream',
@@ -486,7 +486,7 @@ class MetricsCountTests(MetricsTestBase):
              'short_content_type': u'octet-stream',
              'total_count': 255,
              'type_count': 166}
-        self.assertEqual(r.result_data[0], first_listing)
+        self.assertEqual(dict(r.result_data['records'][0]), first_listing)
 
         # check 3rd listing
         third_listing = {'contenttype': u'text/tab-separated-values',
@@ -494,7 +494,7 @@ class MetricsCountTests(MetricsTestBase):
          'short_content_type': u'tab-separated-values',
          'total_count': 255,
          'type_count': 23}
-        self.assertEqual(r.result_data[2], third_listing)
+        self.assertEqual(r.result_data['records'][2], third_listing)
 
 
     def test_14_file_content_types_unpublished(self):
@@ -507,7 +507,7 @@ class MetricsCountTests(MetricsTestBase):
         r = stats_maker.get_datafile_content_type_counts_unpublished()
 
         # check number of entries
-        self.assertEqual(len(r.result_data), 19)
+        self.assertEqual(len(r.result_data['records']), 19)
 
         # check first listing
         first_listing = {'contenttype': u'image/jpeg',
@@ -515,7 +515,7 @@ class MetricsCountTests(MetricsTestBase):
              'short_content_type': u'jpeg',
              'total_count': 126,
              'type_count': 57}
-        self.assertEqual(r.result_data[0], first_listing)
+        self.assertEqual(dict(r.result_data['records'][0]), first_listing)
 
         # check 3rd listing
         third_listing = {'contenttype': u'text/plain',
@@ -523,7 +523,7 @@ class MetricsCountTests(MetricsTestBase):
              'short_content_type': u'plain',
              'total_count': 126,
              'type_count': 13}
-        self.assertEqual(r.result_data[2], third_listing)
+        self.assertEqual(r.result_data['records'][2], third_listing)
 
     def test_15_file_content_types_all(self):
         """15 - Content types of all files"""
@@ -535,7 +535,7 @@ class MetricsCountTests(MetricsTestBase):
         r = stats_maker.get_datafile_content_type_counts()
 
         # check number of entries
-        self.assertEqual(len(r.result_data), 25)
+        self.assertEqual(len(r.result_data['records']), 25)
 
         # check first listing
         first_listing = {'contenttype': u'application/octet-stream',
@@ -543,7 +543,7 @@ class MetricsCountTests(MetricsTestBase):
              'short_content_type': u'octet-stream',
              'total_count': 381,
              'type_count': 166}
-        self.assertEqual(r.result_data[0], first_listing)
+        self.assertEqual(dict(r.result_data['records'][0]), first_listing)
 
         # check 3rd listing
         third_listing = {'contenttype': u'text/tab-separated-values',
@@ -551,7 +551,8 @@ class MetricsCountTests(MetricsTestBase):
              'short_content_type': u'tab-separated-values',
              'total_count': 381,
              'type_count': 49}
-        self.assertEqual(r.result_data[2], third_listing)
+
+        self.assertEqual(dict(r.result_data['records'][2]), third_listing)
 
 
 
@@ -564,7 +565,7 @@ class MetricsCountTests(MetricsTestBase):
         r = stats_maker.get_dataverse_counts_by_type_published()
 
         # check number of entries
-        self.assertEqual(len(r.result_data), 6)
+        self.assertEqual(len(r.result_data['records']), 6)
 
         # check first listing
         first_listing = {'dataversetype': u'RESEARCHERS',
@@ -572,7 +573,7 @@ class MetricsCountTests(MetricsTestBase):
               'percent_string': '34.0%',
               'total_count': 153,
               'type_count': 52}
-        self.assertEqual(r.result_data[0], first_listing)
+        self.assertEqual(dict(r.result_data['records'][0]), first_listing)
 
         # check last listing
         last_listing = {'dataversetype': u'RESEARCH_GROUP',
@@ -580,7 +581,7 @@ class MetricsCountTests(MetricsTestBase):
              'percent_string': '1.3%',
              'total_count': 153,
              'type_count': 2}
-        self.assertEqual(r.result_data[-1], last_listing)
+        self.assertEqual(dict(r.result_data['records'][-1]), last_listing)
 
         # -------------------------
         # Include UNCATEGORIZED Dataverses
@@ -590,7 +591,7 @@ class MetricsCountTests(MetricsTestBase):
         r = stats_maker.get_dataverse_counts_by_type_published(exclude_uncategorized=False)
 
         # check number of entries
-        self.assertEqual(len(r.result_data), 7)
+        self.assertEqual(len(r.result_data['records']), 7)
 
         # check UNCATEGORIZED listing
         uncat_listing = {'dataversetype': u'UNCATEGORIZED',
@@ -598,7 +599,7 @@ class MetricsCountTests(MetricsTestBase):
              'percent_string': '18.2%',
              'total_count': 187,
              'type_count': 34}
-        self.assertEqual(r.result_data[3], uncat_listing)
+        self.assertEqual(r.result_data['records'][3], uncat_listing)
 
 
 
@@ -611,7 +612,7 @@ class MetricsCountTests(MetricsTestBase):
         r = stats_maker.get_dataverse_counts_by_type_unpublished()
 
         # check number of entries
-        self.assertEqual(len(r.result_data), 6)
+        self.assertEqual(len(r.result_data['records']), 6)
 
         # check first listing
         first_listing = {'dataversetype': u'RESEARCHERS',
@@ -619,7 +620,7 @@ class MetricsCountTests(MetricsTestBase):
              'percent_string': '44.2%',
              'total_count': 138,
              'type_count': 61}
-        self.assertEqual(r.result_data[0], first_listing)
+        self.assertEqual(dict(r.result_data['records'][0]), first_listing)
 
         # check last listing
         last_listing = {'dataversetype': u'LABORATORY',
@@ -628,7 +629,7 @@ class MetricsCountTests(MetricsTestBase):
              'total_count': 138,
              'type_count': 1}
 
-        self.assertEqual(r.result_data[-1], last_listing)
+        self.assertEqual(dict(r.result_data['records'][-1]), last_listing)
 
         # -------------------------
         # Include UNCATEGORIZED Dataverses
@@ -638,7 +639,7 @@ class MetricsCountTests(MetricsTestBase):
         r = stats_maker.get_dataverse_counts_by_type_unpublished(exclude_uncategorized=False)
 
         # check number of entries
-        self.assertEqual(len(r.result_data), 7)
+        self.assertEqual(len(r.result_data['records']), 7)
 
         # check UNCATEGORIZED listing
         uncat_listing =  {'dataversetype': u'UNCATEGORIZED',
@@ -646,7 +647,7 @@ class MetricsCountTests(MetricsTestBase):
               'percent_string': '18.3%',
               'total_count': 169,
               'type_count': 31}
-        self.assertEqual(r.result_data[2], uncat_listing)
+        self.assertEqual(r.result_data['records'][2], uncat_listing)
 
     def test_18_dataverse_types_all(self):
         """18 - Affiliations of all dataverses types"""
@@ -657,7 +658,7 @@ class MetricsCountTests(MetricsTestBase):
         r = stats_maker.get_dataverse_counts_by_type()
 
         # check number of entries
-        self.assertEqual(len(r.result_data), 7)
+        self.assertEqual(len(r.result_data['records']), 7)
 
         # check first listing
         first_listing = {'dataversetype': u'RESEARCHERS',
@@ -665,7 +666,7 @@ class MetricsCountTests(MetricsTestBase):
               'percent_string': '38.8%',
               'total_count': 291,
               'type_count': 113}
-        self.assertEqual(r.result_data[0], first_listing)
+        self.assertEqual(dict(r.result_data['records'][0]), first_listing)
 
         # check last listing
         last_listing =  {'dataversetype': u'LABORATORY',
@@ -674,7 +675,7 @@ class MetricsCountTests(MetricsTestBase):
               'total_count': 291,
               'type_count': 1}
 
-        self.assertEqual(r.result_data[-1], last_listing)
+        self.assertEqual(dict(r.result_data['records'][-1]), last_listing)
 
         # -------------------------
         # Include UNCATEGORIZED Dataverses
@@ -684,7 +685,7 @@ class MetricsCountTests(MetricsTestBase):
         r = stats_maker.get_dataverse_counts_by_type(exclude_uncategorized=False)
 
         # check number of entries
-        self.assertEqual(len(r.result_data), 8)
+        self.assertEqual(len(r.result_data['records']), 8)
 
         # check UNCATEGORIZED listing
         uncat_listing =   {'dataversetype': u'UNCATEGORIZED',
@@ -692,7 +693,7 @@ class MetricsCountTests(MetricsTestBase):
           'percent_string': '18.3%',
           'total_count': 356,
           'type_count': 65}
-        self.assertEqual(r.result_data[2], uncat_listing)
+        self.assertEqual(dict(r.result_data['records'][2]), uncat_listing)
 
 
     def test_19_file_extensions_within_type(self):
@@ -710,7 +711,7 @@ class MetricsCountTests(MetricsTestBase):
 
         # check that list length matches number of extensions
         #
-        ext_counts = r.result_data.get('file_extension_counts', [])
+        ext_counts = r.result_data.get('records', [])
         self.assertEqual(len(ext_counts), 67)
 
         print ('ext_counts', ext_counts[4])

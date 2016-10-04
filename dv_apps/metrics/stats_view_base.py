@@ -2,7 +2,7 @@ import json
 import csv
 from collections import OrderedDict
 from datetime import datetime
-
+from StringIO import StringIO
 #import pandas as pd
 
 from django.conf import settings
@@ -43,7 +43,7 @@ class StatsViewSwagger(View):
     PARAM_DV_API_KEY = ['dataverseAPIKey']
     PARAM_SELECTED_DV_ALIASES = ['selectedDataverseAliases']
     PARAM_INCLUDE_CHILD_DVS = ['includeChildDataverses']
-    PARAM_AS_CSV = ['asCSV']
+    PARAM_AS_CSV = ['asCSV', 'asExcel']
 
     PARAM_BIN_SIZE = ['binSize']  # bin_size
     PARAM_NUM_BINS = ['numBins']  # num_bins
@@ -189,6 +189,9 @@ class StatsViewSwagger(View):
         if StatsMakerBase.is_param_value_true(request.GET.get('as_csv', None)):
             return self.get_data_as_csv_response(request, stats_result)
 
+        if StatsMakerBase.is_param_value_true(request.GET.get('as_excel', None)):
+            return self.get_data_as_excel_response(request, stats_result)
+
 
         # Return the actual response
         return send_cors_response(JsonResponse(resp_dict))
@@ -210,27 +213,24 @@ class StatsViewSwagger(View):
 
         return response
 
-        writer = csv.writer(response)
 
-        print 'result_data', stats_result.result_data
-        print 'result_data', stats_result.result_data
+    def get_data_as_excel_response(self, request, stats_result):
+        """
+        http://stackoverflow.com/questions/35267585/django-pandas-to-http-response-download-file
+        """
+        if stats_result is None or stats_result.result_data is None:
+            return None
 
-        if len(stats_result.result_data) == 0:
-            return HttpResponse('Sorry!  No Data!')
+        excel_workbook = stats_result.get_excel_workbook()
+        if excel_workbook is None:
+            # Ah, make a better error
+            return HttpResponse('Sorry! An error occurred trying to create an Excel spreadsheet.')
 
-        cnt = 0
-        key_names = stats_result.csv_header_keys
-        for drow in stats_result.result_data:
-            cnt+=1
 
-            # 1st row, add headers
-            if cnt==1:
-                writer.writerow(key_names)
+        xlsx_fname = 'metrics_%s.xlsx' % get_timestamp_for_filename()
 
-            # Order all val rows same as header order
-            vals = []
-            for k in key_names:
-                vals.append(drow[k])
-            writer.writerow(vals)
+        response = HttpResponse(excel_workbook,\
+            content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
+        response['Content-Disposition'] = 'attachment; filename=%s' % xlsx_fname
 
         return response

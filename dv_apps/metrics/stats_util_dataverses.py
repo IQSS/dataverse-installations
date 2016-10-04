@@ -180,29 +180,32 @@ class StatsMakerDataverses(StatsMakerBase):
         formatted_records = []  # move from a queryset to a []
 
         for d in dv_counts_by_month:
+            rec_fmt = OrderedDict()
+
+            # change the datetime object to a string
+            rec_fmt['yyyy_mm'] = d['yyyy_mm'].strftime('%Y-%m')
+            rec_fmt['count'] = d['count']
+
             # running total
             running_total += d['count']
-            d['running_total'] = running_total
+            rec_fmt['running_total'] = running_total
             # d['month_year'] = d['yyyy_mm'].strftime('%Y-%m')
 
             # Add year and month numbers
-            d['year_num'] = d['yyyy_mm'].year
-            d['month_num'] = d['yyyy_mm'].month
+            rec_fmt['year_num'] = d['yyyy_mm'].year
+            rec_fmt['month_num'] = d['yyyy_mm'].month
 
             # Add month name
             month_name_found, month_name_short = get_month_name_abbreviation(d['yyyy_mm'].month)
             if month_name_found:
-                assume_month_name_found, d['month_name'] = get_month_name(d['yyyy_mm'].month)
-                d['month_name_short'] = month_name_short
+                assume_month_name_found, rec_fmt['month_name'] = get_month_name(d['yyyy_mm'].month)
+                rec_fmt['month_name_short'] = month_name_short
             else:
                 # Log it!!!!!!
                 pass
 
-            # change the datetime object to a string
-            d['yyyy_mm'] = d['yyyy_mm'].strftime('%Y-%m')
-
             # Add formatted record
-            formatted_records.append(d)
+            formatted_records.append(rec_fmt)
 
         data_dict = OrderedDict()
         data_dict['record_count'] = len(formatted_records)
@@ -374,23 +377,30 @@ class StatsMakerDataverses(StatsMakerBase):
         total_count = sum([rec.get('affiliation_count', 0) for rec in dataverse_counts_by_affil])
         total_count = total_count + 0.0
 
+        print 'dataverse_counts_by_affil', dataverse_counts_by_affil
+
         # Format the records, adding 'total_count' and 'percent_string' to each one
         #
         formatted_records = []
         for rec in dataverse_counts_by_affil:
-            fmt_dict = OrderedDict()
-            fmt_dict['affiliation'] = rec['affiliation']
-            fmt_dict['affiliation_count'] = rec.get('affiliation_count', 0)
+            if rec.get('affiliation_count', 0) > 0:
+                fmt_dict = OrderedDict()
+                affil_str = rec.get('affiliation', None)
+                if affil_str is not None:
+                    affil_str = affil_str.encode('utf-8')
+                fmt_dict['affiliation'] = affil_str
 
-            if total_count > 0:
-                float_percent = rec.get('affiliation_count', 0) / total_count
-                fmt_dict['total_count'] = int(total_count)
-                fmt_dict['percent_string'] = '{0:.1%}'.format(float_percent)
-            else:
-                fmt_dict['total_count'] = 0
-                fmt_dict['percent_string'] = '0%'
+                fmt_dict['affiliation_count'] = rec.get('affiliation_count', 0)
 
-            formatted_records.append(fmt_dict)
+                if total_count > 0:
+                    float_percent = rec.get('affiliation_count', 0) / total_count
+                    fmt_dict['total_count'] = int(total_count)
+                    fmt_dict['percent_string'] = '{0:.1%}'.format(float_percent)
+                else:
+                    fmt_dict['total_count'] = 0
+                    fmt_dict['percent_string'] = '0%'
+
+                formatted_records.append(fmt_dict)
 
         data_dict = OrderedDict()
         data_dict['record_count'] = len(formatted_records)

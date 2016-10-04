@@ -17,10 +17,10 @@ class FilesPerDatasetStats(StatsViewSwagger):
     description_200 = 'Counts of files per Dataset using the latest DatasetVersion'
     param_names = StatsViewSwagger.PARAM_DV_API_KEY\
                 + StatsViewSwagger.PUBLISH_PARAMS\
-                + StatsViewSwagger.PARAM_AS_CSV\
                 + StatsViewSwagger.PRETTY_JSON_PARAM\
                 + StatsViewSwagger.PARAM_BIN_SIZE\
-                + StatsViewSwagger.PARAM_SKIP_EMPTY_BINS
+                + StatsViewSwagger.PARAM_SKIP_EMPTY_BINS\
+                + StatsViewSwagger.PARAM_AS_CSV
                 #+ StatsViewSwagger.PARAM_NUM_BINS\
 
     tags = [StatsViewSwagger.TAG_DATASETS]

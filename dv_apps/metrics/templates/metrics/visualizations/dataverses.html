@@ -14,7 +14,7 @@
 Example of "dataverse_counts_by_month" that is being iterated through
 
     {
-      "cnt": 26,
+      "count": 26,
       "yyyy_mm": "2015-04",
       "year_num": 2015,
       "month_num": 4,
@@ -26,12 +26,12 @@ Example of "dataverse_counts_by_month" that is being iterated through
   var dataverse_counts_by_month = [
     {%for i in dataverse_counts_by_month%}
 
-    {"Month": "{{ i.month_name }} {{ i.year_num }}", "monthNum": {{i.month_num}}, "name":"Total Dataverses", "Number of Dataverses": {{i.running_total}}, "running_total" : {{ i.running_total }}, "month_sort" : "{{ i.yyyy_mm }}", "display_name":"{{ i.month_name }} {{ i.year_num }}: {{ i.cnt }} New Dataverses"}
+    {"Month": "{{ i.month_name }} {{ i.year_num }}", "monthNum": {{i.month_num}}, "name":"Total Dataverses", "Number of Dataverses": {{i.running_total}}, "running_total" : {{ i.running_total }}, "month_sort" : "{{ i.yyyy_mm }}", "display_name":"{{ i.month_name }} {{ i.year_num }}: {{ i.count }} New Dataverses"}
     {%if not forloop.last%},{%endif%}
     {%endfor%}
     ]
 
-// data for dataverses added in one month -- not a cumulative total   {#{"Month": "{{ i.month_name }} {{ i.year_num }}", "monthNum": {{i.month_num}}, "name":"Monthly Dataverses", "Number of Dataverses": {{i.cnt}}, "month_sort" : "{{ i.yyyy_mm }}", "display_name":"{{ i.month_name }} {{ i.year_num }}: {{ i.cnt }} New Dataverses"}#}
+// data for dataverses added in one month -- not a cumulative total   {#{"Month": "{{ i.month_name }} {{ i.year_num }}", "monthNum": {{i.month_num}}, "name":"Monthly Dataverses", "Number of Dataverses": {{i.count}}, "month_sort" : "{{ i.yyyy_mm }}", "display_name":"{{ i.month_name }} {{ i.year_num }}: {{ i.count }} New Dataverses"}#}
 
   // instantiate d3plus
 

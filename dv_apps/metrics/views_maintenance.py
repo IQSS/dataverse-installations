@@ -22,7 +22,7 @@ def view_all_file_extension_counts(request):
     stats_files = StatsMakerFiles()
     all_counts = stats_files.view_file_extensions_within_type()
     if all_counts and all_counts.result_data:
-        d = dict(all_counts=all_counts.result_data['file_extension_counts'],
+        d = dict(all_counts=all_counts.result_data['records'],
                 total_file_count=all_counts.result_data['total_file_count'],
                 number_unique_extensions=all_counts.result_data['number_unique_extensions'],
                 )
@@ -37,12 +37,12 @@ def view_all_file_extension_counts(request):
 
 @cache_page(get_metrics_cache_time())
 def view_files_extensions_with_unknown_content_types(request):
-    """Reference table of file extensions with unkown content type"""
+    """Reference table of file extensions with unknown content type"""
 
     stats_files = StatsMakerFiles()
     unknown_counts = stats_files.view_file_extensions_within_type(FILE_TYPE_OCTET_STREAM)
     if unknown_counts and unknown_counts.result_data:
-        d = dict(unknown_counts=unknown_counts.result_data['file_extension_counts'],
+        d = dict(unknown_counts=unknown_counts.result_data['records'],
                 total_file_count=unknown_counts.result_data['total_file_count'],
                 number_unique_extensions=unknown_counts.result_data['number_unique_extensions'],
                 all_dv_files_count=unknown_counts.result_data['all_dv_files'],

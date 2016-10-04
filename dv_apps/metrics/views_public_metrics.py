@@ -79,7 +79,7 @@ def view_public_visualizations(request, **kwargs):
     stats_result_dv_counts = stats_dvs.get_dataverse_counts_by_month_published()
     #import ipdb; ipdb.set_trace()
     if not stats_result_dv_counts.has_error():
-        resp_dict['dataverse_counts_by_month'] = list(stats_result_dv_counts.result_data)
+        resp_dict['dataverse_counts_by_month'] = list(stats_result_dv_counts.result_data['records'])
         resp_dict['dataverse_counts_by_month_sql'] = stats_result_dv_counts.sql_query
 
     # -------------------------
@@ -88,7 +88,7 @@ def view_public_visualizations(request, **kwargs):
     stats_result_dv_counts_by_type =\
         stats_dvs.get_dataverse_counts_by_type_published(exclude_uncategorized=True)
     if not stats_result_dv_counts_by_type.has_error():
-        resp_dict['dataverse_counts_by_type'] = stats_result_dv_counts_by_type.result_data
+        resp_dict['dataverse_counts_by_type'] = stats_result_dv_counts_by_type.result_data['records']
         resp_dict['dv_counts_by_category_sql'] = stats_result_dv_counts_by_type.sql_query
 
 
@@ -97,13 +97,13 @@ def view_public_visualizations(request, **kwargs):
     # -------------------------
     stats_monthly_ds_counts = stats_datasets.get_dataset_counts_by_create_date_published()
     if not stats_monthly_ds_counts.has_error():
-        resp_dict['dataset_counts_by_month'] = list(stats_monthly_ds_counts.result_data)
+        resp_dict['dataset_counts_by_month'] = list(stats_monthly_ds_counts.result_data['records'])
         resp_dict['dataset_counts_by_month_sql'] = stats_monthly_ds_counts.sql_query
 
 
     stats_ds_count_by_subject = stats_datasets.get_dataset_subject_counts_published()
     if not stats_monthly_ds_counts.has_error():
-        resp_dict['dataset_counts_by_subject'] = stats_ds_count_by_subject.result_data['ds_values']
+        resp_dict['dataset_counts_by_subject'] = stats_ds_count_by_subject.result_data['records']
         #resp_dict['dataset_counts_by_month_sql'] = stats_monthly_ds_counts.sql_query
 
     # -------------------------
@@ -111,7 +111,7 @@ def view_public_visualizations(request, **kwargs):
     # -------------------------
     stats_monthly_file_counts = stats_files.get_file_count_by_month_published()
     if not stats_monthly_file_counts.has_error():
-        resp_dict['file_counts_by_month'] = list(stats_monthly_file_counts.result_data)
+        resp_dict['file_counts_by_month'] = list(stats_monthly_file_counts.result_data['records'])
         resp_dict['file_counts_by_month_sql'] = stats_monthly_file_counts.sql_query
 
     # -------------------------
@@ -119,7 +119,7 @@ def view_public_visualizations(request, **kwargs):
     # -------------------------
     stats_monthly_downloads = stats_files.get_file_downloads_by_month_published(include_pre_dv4_downloads=True)
     if not stats_monthly_downloads.has_error():
-        resp_dict['file_downloads_by_month'] = list(stats_monthly_downloads.result_data)
+        resp_dict['file_downloads_by_month'] = list(stats_monthly_downloads.result_data['records'])
         resp_dict['file_downloads_by_month_sql'] = stats_monthly_downloads.sql_query
 
     # -------------------------

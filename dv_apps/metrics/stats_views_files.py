@@ -52,6 +52,11 @@ class FileCountByMonthView(StatsViewSwagger):
     description = ('Returns a list of counts and'
             ' cumulative counts of all Files added in a month')
     description_200 = 'A list of File counts by month'
+    param_names = StatsViewSwagger.PARAM_DV_API_KEY +\
+                StatsViewSwagger.BASIC_DATE_PARAMS +\
+                StatsViewSwagger.PUBLISH_PARAMS +\
+                StatsViewSwagger.PRETTY_JSON_PARAM +\
+                StatsViewSwagger.PARAM_AS_CSV
     tags = [StatsViewSwagger.TAG_DATAFILES]
 
     def get_stats_result(self, request):
@@ -121,6 +126,12 @@ class FileCountsByContentTypeView(StatsViewSwagger):
     summary = ('Number of files by content type')
     description = ('Returns a list of file counts by content type')
     description_200 = 'A list of file counts by content type'
+    param_names = StatsViewSwagger.PARAM_DV_API_KEY +\
+            StatsViewSwagger.BASIC_DATE_PARAMS +\
+            StatsViewSwagger.PUBLISH_PARAMS +\
+            StatsViewSwagger.PRETTY_JSON_PARAM +\
+            StatsViewSwagger.PARAM_AS_CSV
+
     result_name = StatsViewSwagger.RESULT_NAME_FILE_TYPE_COUNTS
     tags = [StatsViewSwagger.TAG_DATAFILES]
 
@@ -152,7 +163,9 @@ class FileExtensionsWithinContentType(StatsViewSwagger):
     description_200 = ('File extension counts within a given content type.')
     param_names = StatsViewSwagger.PARAM_DV_API_KEY +\
                 StatsViewSwagger.FILE_CONTENT_TYPE_PARAM +\
-                StatsViewSwagger.PRETTY_JSON_PARAM
+                StatsViewSwagger.PRETTY_JSON_PARAM +\
+                StatsViewSwagger.PARAM_AS_CSV
+
     result_name = StatsViewSwagger.RESULT_NAME_FILE_EXT_COUNTS #+\
     tags = [StatsViewSwagger.TAG_DATAFILES]
 

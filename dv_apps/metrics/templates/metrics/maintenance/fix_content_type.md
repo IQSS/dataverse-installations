@@ -1,5 +1,5 @@
 
-# Fix ```{{ file_extension }}``` files with unkown content types
+# Fix ```{{ file_extension }}``` files with unknown content types
   - Change extension ```{{ file_extension }}``` to contenttype ```{{ new_content_type }}```:
 
 ## A - Run subquery count

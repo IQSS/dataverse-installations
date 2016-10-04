@@ -63,7 +63,7 @@ class StatsResult(object):
         return workbook
 
 
-    def get_csv_content(self, as_excel=False):
+    def get_csv_content(self):
         """
         Lots of assertions here.  We want to blow up for now--until test cases made
         or discovered
@@ -84,10 +84,7 @@ class StatsResult(object):
 
         df = pd.DataFrame(self.result_data['records'])
 
-        if as_excel:
-            return df.to_excel(orient='records', index=False, columns=col_names)
-        else:
-            return df.to_csv(orient='records', index=False, columns=col_names)
+        return df.to_csv(orient='records', index=False, columns=col_names)
 
 
     @staticmethod

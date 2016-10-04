@@ -20,6 +20,7 @@ from dv_apps.metrics.stats_views_files import FileCountByMonthView,\
     FileCountsByContentTypeView,\
     FileExtensionsWithinContentType
 
+from dv_apps.dvobject_api.api_view_dataverses import DataverseByIdView
 
 """
 Make a list of class based views
@@ -43,7 +44,9 @@ VIEW_CLASSES_FOR_SPEC = [\
             FileCountByMonthView,\
             FilesDownloadedByMonthView,\
             FileCountsByContentTypeView,\
-            FileExtensionsWithinContentType
+            FileExtensionsWithinContentType,\
+            # tests
+            DataverseByIdView,\
             ]
 
 #@cache_page(60*3)

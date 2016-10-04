@@ -3,20 +3,27 @@ from django.conf.urls import url
 from dv_apps.metrics import views_test,\
     views_public_metrics, views_swagger_spec, views_error_test,\
     views_maintenance
+# Dataset metrics
 from dv_apps.metrics.stats_views_datasets import DatasetCountByMonthView,\
     DatasetTotalCounts,\
     DatasetSubjectCounts
+
 from dv_apps.metrics.stats_views_dataset_bins import FilesPerDatasetStats
 
+# Dataverse metrics
 from dv_apps.metrics.stats_views_dataverses import DataverseCountByMonthView,\
     DataverseTotalCounts,\
     DataverseAffiliationCounts,\
     DataverseTypeCounts
+
+# File metrics
 from dv_apps.metrics.stats_views_files import FileCountByMonthView,\
     FileTotalCountsView,\
     FilesDownloadedByMonthView,\
     FileCountsByContentTypeView,\
     FileExtensionsWithinContentType
+
+from dv_apps.dvobject_api.api_view_dataverses import DataverseByIdView
 
 urlpatterns = [
 
@@ -95,6 +102,9 @@ urlpatterns += [
 
     url(r'^v1/files/extensions$', FileExtensionsWithinContentType.as_view(), name='view_file_extensions_within_type'),
 
+    # Test: Dvobjects
+    url(r'^v1/dataverses/by-id/(?P<id>\d+)$', DataverseByIdView.as_view(),
+    name='view_dataverse_by_id_api')
 ]
 
 urlpatterns += [

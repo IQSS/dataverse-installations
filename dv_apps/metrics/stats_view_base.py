@@ -48,6 +48,7 @@ class StatsViewSwagger(View):
     PARAM_BIN_SIZE = ['binSize']  # bin_size
     PARAM_NUM_BINS = ['numBins']  # num_bins
     PARAM_SKIP_EMPTY_BINS = ['skipEmptyBins'] # skip_empty_bins
+    PARAM_DVOBJECT_ID = ['dvObjectId']
 
     PUBLISH_PARAMS = ['publicationStateParam']
     PUB_STATE_PUBLISHED = 'published'
@@ -73,6 +74,7 @@ class StatsViewSwagger(View):
     TAG_DATAVERSES = 'metrics - dataverses'
     TAG_DATASETS = 'metrics - datasets'
     TAG_DATAFILES = 'metrics - files'
+    TAG_TEST_API = 'test (may go away)'
 
     # ---------------------------------------------
     # For holding errors found at the SwaggerView level
@@ -135,7 +137,7 @@ class StatsViewSwagger(View):
         raise Exception("This method must return a stats_result.StatsResult object")
 
 
-    def get(self, request):
+    def get(self, request, *args, **kwargs):
         """Return a basic get request using the StatsResult object"""
 
         # Get the StatsResult -- different for each subclass
@@ -150,7 +152,11 @@ class StatsViewSwagger(View):
         if stats_result.has_error():
             err_dict = dict(status="ERROR",
                 message=stats_result.error_message)
-            return send_cors_response(JsonResponse(err_dict, status=400))
+            if stats_result.bad_http_status_code:
+                status_code = stats_result.bad_http_status_code
+            else:
+                status_code = 400
+            return send_cors_response(JsonResponse(err_dict, status=status_code))
 
 
         # Create the dict for the response

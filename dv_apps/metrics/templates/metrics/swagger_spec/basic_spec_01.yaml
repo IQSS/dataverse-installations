@@ -103,6 +103,11 @@ parameters:
     in: query
     description: Optional.  Remove bins with a zero count
     type: boolean
+  dvObjectId:
+    name: id
+    in: path
+    description: Dvobject id.  (id of a Dataverse, Dataset, or File)
+    type: integer
 
 # ------------------------------
 # Define response definitions

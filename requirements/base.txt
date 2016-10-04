@@ -2,15 +2,15 @@ sqlparse==0.1.19
 Django==1.9.8
 Pillow==2.7
 django-model-utils>=2.2
-psycopg2==2.6
+psycopg2==2.6.2
 requests>=2.10.0
 # for checking builtinuser passwords
 bcrypt==3.1.1
 
 # metrics related
-pandas==0.16.1
+pandas==0.18.1
 XlsxWriter==0.9.3
-numexpr==2.6.1
+#numexpr==2.6.1
 
 # Database url parser
 dj-database-url==0.4.1

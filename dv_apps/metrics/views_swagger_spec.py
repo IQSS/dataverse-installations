@@ -1,5 +1,4 @@
 from django.views.decorators.cache import cache_page
-from django.shortcuts import render
 from django.template.loader import render_to_string
 
 from django.http import HttpResponse
@@ -23,7 +22,8 @@ from dv_apps.metrics.stats_views_files import FileCountByMonthView,\
 from dv_apps.dvobject_api.api_view_dataverses import DataverseByIdView,\
     DataverseByAliasView
 
-from dv_apps.dvobject_api.api_view_datasets import DatasetByIdView
+from dv_apps.dvobject_api.api_view_datasets import DatasetByIdView,\
+    DatasetByPersistentIdView
 
 
 """
@@ -55,6 +55,7 @@ VIEW_CLASSES_FOR_SPEC = [\
             DataverseByAliasView,\
             # dataset JSON
             DatasetByIdView,\
+            DatasetByPersistentIdView,\
             ]
 
 #@cache_page(60*3)

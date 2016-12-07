@@ -59,6 +59,44 @@ class Dataset(models.Model):
         db_table = 'dataset'
         unique_together = (('authority', 'protocol', 'identifier', 'doiseparator'),)
 
+    @staticmethod
+    def get_dataset_by_persistent_id(persistent_id):
+        """quick/dirty method to parse a persistent_id -- is probably incorrect
+            Based on these examples:
+            doi:10.5072/FK2/BYM3IW => (doi) (10.5072/FK2) (BYM3IW)
+            hdl:1902.1/xxxxx => (hdl) (1902.1) (xxxx)
+        """
+        if persistent_id is None:
+            return None
+
+        doi_sep = '/'
+
+        split1 = persistent_id.split(':', 1)
+        if len(split1) < 2:
+            return None
+
+        protocol = split1[0]
+        remaining_parts = ':'.join(split1[1:])
+        if protocol == PROTOCOL_DOI:
+            # example: doi:10.5072/FK2/BYM3IW => (doi) (10.5072/FK2/BYM3IW)
+            authority = doi_sep.join(remaining_parts.split(doi_sep)[:-1])
+            identifier = remaining_parts.split(doi_sep)[-1]
+
+        elif protocol == PROTOCOL_HDL:
+            # example: hdl:1902.1/111012
+            authority = remaining_parts.split(doi_sep)[0]
+            identifier = remaining_parts.split(doi_sep)[-1]
+        else:
+            return None
+
+        lookup_params = dict(protocol=protocol,
+                            authority=authority,
+                            identifier=identifier)
+
+        return Dataset.objects.filter(**lookup_params).first()  # at most 1
+
+        #//
+        #//  or this one: (hdl) (1902.1/xxxxx)
 
     def get_persistent_url(self):
 

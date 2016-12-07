@@ -111,9 +111,21 @@ parameters:
   dataverseObjectId:
     name: dv_id
     in: path
-    description: Dataverse id
+    description: Dataverse ID
     required: true
     type: integer
+  datasetId:
+    name: ds_id
+    in: path
+    description: Dataset ID
+    required: true
+    type: integer
+  persistentID:
+    name: persistentID
+    in: query
+    description: Dataset Persistent ID
+    required: true
+    type: string
   dataverseAlias:
     name: alias
     in: path

@@ -8,9 +8,7 @@ Note: creator may be inaccurate.  These models assume it's an AuthenticatedUser
 from collections import OrderedDict
 from django.conf import settings
 
-from django.forms.models import model_to_dict
-
-from dv_apps.datasets.models import Dataset, DatasetVersion
+from dv_apps.datasets.models import DatasetVersion
 from dv_apps.datasetfields.utils import get_dataset_title
 from dv_apps.datasetfields.metadata_formatter import MetadataFormatter
 from dv_apps.utils.date_helper import TIMESTAMP_MASK
@@ -97,7 +95,7 @@ class DatasetUtil(object):
         # Format the metadata blocks -- the heavy lift...
         # -----------------------------------
         mdf = MetadataFormatter(self.dsv)
-        dsv_metadata['metadata_blocks'] = mdf.as_dict().get('metadata_blocks',{})
+        dsv_metadata['metadata_blocks'] = mdf.as_dict().get('metadata_blocks', {})
 
 
         # -----------------------------------

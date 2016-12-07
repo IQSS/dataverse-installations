@@ -26,6 +26,8 @@ from dv_apps.metrics.stats_views_files import FileCountByMonthView,\
 from dv_apps.dvobject_api.api_view_dataverses import DataverseByIdView,\
     DataverseByAliasView
 
+from dv_apps.dvobject_api.api_view_datasets import DatasetByIdView
+
 urlpatterns = [
 
     # views_public_metrics
@@ -109,6 +111,10 @@ urlpatterns += [
 
     url(r'^v1/dataverses/by-alias/(?P<alias>[-\w]{1,255})$', DataverseByAliasView.as_view(),
     name='view_dataverse_by_alias_api'),
+
+    # Test: Datasets
+    url(r'^v1/datasets/by-id/(?P<dv_id>\d+)$', DatasetByIdView.as_view(),
+    name='view_dataset_by_id_api'),
 
 ]
 

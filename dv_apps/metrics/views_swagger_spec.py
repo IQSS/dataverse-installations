@@ -23,6 +23,9 @@ from dv_apps.metrics.stats_views_files import FileCountByMonthView,\
 from dv_apps.dvobject_api.api_view_dataverses import DataverseByIdView,\
     DataverseByAliasView
 
+from dv_apps.dvobject_api.api_view_datasets import DatasetByIdView
+
+
 """
 Make a list of class based views
     (each one has a "get_swagger_spec()" method)
@@ -47,8 +50,11 @@ VIEW_CLASSES_FOR_SPEC = [\
             FileCountsByContentTypeView,\
             FileExtensionsWithinContentType,\
             # tests
+            # dataverse JSON
             DataverseByIdView,\
             DataverseByAliasView,\
+            # dataset JSON
+            DatasetByIdView,\
             ]
 
 #@cache_page(60*3)

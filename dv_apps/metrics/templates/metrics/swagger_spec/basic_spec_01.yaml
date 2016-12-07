@@ -249,3 +249,5 @@ definitions:
     type: array
     items:
       $ref: "#/definitions/DatasetSubjectCount"
+{% include "metrics/swagger_spec/dataverse_response.yaml" %}
+{% include "metrics/swagger_spec/dataset_response.yaml" %}

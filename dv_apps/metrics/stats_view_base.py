@@ -67,6 +67,8 @@ class StatsViewSwagger(View):
     RESULT_NAME_TOTAL_COUNT = 'TotalCount'
     RESULT_NAME_NUM_UNIQUE_EXT = 'NumberUniqueExtensions'
     RESULT_NAME_AFFILIATION_COUNTS = 'AffiliationCounts'
+    RESULT_NAME_DATASET = 'Dataset'
+    RESULT_NAME_DATAVERSE = 'Dataverse'
     RESULT_NAME_DATAVERSE_TYPE_COUNTS = 'DataverseTypeCount'
     RESULT_NAME_DATASET_SUBJECT_COUNTS = 'DatasetSubjectCounts'
     RESULT_NAME_BIN_COUNTS = 'BinCounts'
@@ -75,7 +77,7 @@ class StatsViewSwagger(View):
     TAG_DATAVERSES = 'metrics - dataverses'
     TAG_DATASETS = 'metrics - datasets'
     TAG_DATAFILES = 'metrics - files'
-    TAG_TEST_API = 'test (may go away)'
+    TAG_TEST_API = 'dataverse/dataset JSON - (test, may go away)'
 
     # ---------------------------------------------
     # For holding errors found at the SwaggerView level

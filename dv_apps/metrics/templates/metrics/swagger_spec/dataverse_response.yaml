@@ -1,0 +1,116 @@
+  Dataverse:
+    properties:
+      id:
+        type: integer
+      name:
+        type: string
+      alias:
+        type: string
+      dv_link:
+        type: string
+      affiliation:
+        type: 'null'
+      dataversetype:
+        type: string
+      description:
+        type: string
+      publicationInfo:
+        type: object
+        properties:
+          isPublished:
+            type: boolean
+          publicationDate:
+            type: string
+        required:
+        - isPublished
+        - publicationDate
+      contacts:
+        type: array
+        items:
+          type: object
+          properties:
+            email:
+              type: string
+          required:
+          - email
+      creator:
+        type: object
+        properties:
+          useridentifier:
+            type: string
+          email:
+            type: string
+          affiliation:
+            type: string
+          firstname:
+            type: string
+          lastname:
+            type: string
+        required:
+        - useridentifier
+        - email
+        - affiliation
+        - firstname
+        - lastname
+      ownerInfo:
+        type: object
+        properties:
+          ownerId:
+            type: 'null'
+          isRootDataverse:
+            type: boolean
+        required:
+        - ownerId
+        - isRootDataverse
+      isRootDataverse:
+        type: 'null'
+      theme:
+        type: object
+        properties:
+          dataverse:
+            type: integer
+          tagline:
+            type: string
+          logoformat:
+            type: string
+          logoalignment:
+            type: 'null'
+          logobackgroundcolor:
+            type: string
+          linkcolor:
+            type: string
+          backgroundcolor:
+            type: string
+          logo:
+            type: string
+          textcolor:
+            type: string
+          linkurl:
+            type: 'null'
+          id:
+            type: integer
+        required:
+        - dataverse
+        - tagline
+        - logoformat
+        - logoalignment
+        - logobackgroundcolor
+        - linkcolor
+        - backgroundcolor
+        - logo
+        - textcolor
+        - linkurl
+        - id
+      metadatablockroot:
+        type: boolean
+      templateroot:
+        type: boolean
+      permissionroot:
+        type: boolean
+      themeroot:
+        type: boolean
+      facetroot:
+        type: boolean
+      guestbookroot:
+        type: boolean
+    

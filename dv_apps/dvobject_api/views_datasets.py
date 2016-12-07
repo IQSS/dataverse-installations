@@ -6,11 +6,11 @@ from django.http import Http404
 from django.contrib.auth.decorators import login_required
 
 from django.http import JsonResponse, HttpResponse
-from dv_apps.datasets.models import Dataset, DatasetVersion
+from dv_apps.datasets.models import Dataset, DatasetVersion, VERSION_STATE_RELEASED
 from django.views.decorators.cache import cache_page
 
-
 from dv_apps.datasets.util import DatasetUtil
+
 
 def get_pretty_val(request):
     """Quick check of url param to pretty print JSON"""
@@ -20,17 +20,18 @@ def get_pretty_val(request):
     return False
 
 
-def view_single_dataset(request, dataset_id):
-
+def view_dataset_by_id(request, dataset_id):
+    """Display Dataset JSON. """
     try:
         dataset = Dataset.objects.get(pk=dataset_id)
     except Dataset.DoesNotExist:
         return Http404('dataset_id not found')
 
-
+    # Get the latest version
     dataset_version = DatasetVersion.objects\
                     .select_related('dataset'\
-                    ).filter(dataset=dataset)\
+                    ).filter(dataset=dataset,\
+                        versionstate=VERSION_STATE_RELEASED)\
                     .values('id')\
                     .order_by('-id').first()
 
@@ -38,16 +39,18 @@ def view_single_dataset(request, dataset_id):
         return Http404('dataset_version not found')
 
 
-    return view_single_dataset_by_id(request, dataset_version.get('id', None))
+    return view_dataset_by_version_id(request, dataset_version.get('id', None))
 
 
 #@cache_page(60 * 60 * 2)
 @login_required
-def view_single_dataset_by_id(request, dataset_version_id):
+def view_dataset_by_version_id(request, dataset_version_id):
 
     try:
         dataset_version = DatasetVersion.objects.select_related('dataset'\
-            ).get(pk=dataset_version_id)
+            ).get(pk=dataset_version_id,\
+                versionstate=VERSION_STATE_RELEASED\
+            )
     except DatasetVersion.DoesNotExist:
         raise Http404
 
@@ -59,7 +62,9 @@ def view_single_dataset_test_view(request, dataset_version_id):
 
     try:
         dsv = DatasetVersion.objects.select_related('dataset'\
-            ).get(pk=dataset_version_id)
+            ).get(pk=dataset_version_id,\
+                versionstate=VERSION_STATE_RELEASED\
+            )
     except DatasetVersion.DoesNotExist:
         raise Http404
 
@@ -83,6 +88,9 @@ def view_single_dataset_version(request, dsv):
         raise Http404
 
     assert isinstance(dsv, DatasetVersion), "dv must be a DatasetVersion object or None"
+
+    assert dsv.versionstate == VERSION_STATE_RELEASED,\
+        "The DatasetVersion must be published"
 
     is_pretty = request.GET.get('pretty', None)
     if is_pretty is not None:

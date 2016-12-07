@@ -14,16 +14,16 @@ class DataverseByIdView(StatsViewSwagger):
     # Note: api_path must match the path in urls.py
     #
     api_path = '/dataverses/by-id/{dv_id}'
-    summary = ('(test) Retrieve published Dataverse object in JSON format.')
-    description = ('(test) Retrieve Dataverse object in JSON format.')
-    description_200 = '(test) Retrieve Dataverse object in JSON format.'
+    summary = ('Retrieve published Dataverse object in JSON format.')
+    description = ('Retrieve Dataverse object in JSON format.')
+    description_200 = 'Retrieve Dataverse object in JSON format.'
     param_names = StatsViewSwagger.PARAM_DVOBJECT_ID\
                 + StatsViewSwagger.PARAM_DV_API_KEY\
                 + StatsViewSwagger.PRETTY_JSON_PARAM\
                 #+ StatsViewSwagger.PUBLISH_PARAMS
     #tags = [StatsViewSwagger.TAG_TEST_API]
     tags = [StatsViewSwagger.TAG_TEST_API]
-    result_name = StatsViewSwagger.RESULT_NAME_TOTAL_COUNT
+    result_name = StatsViewSwagger.RESULT_NAME_DATAVERSE
 
     def get_stats_result(self, request):
         """Return the StatsResult object for this statistic"""
@@ -52,16 +52,16 @@ class DataverseByAliasView(StatsViewSwagger):
     # Note: api_path must match the path in urls.py
     #
     api_path = '/dataverses/by-alias/{alias}'
-    summary = ('(test) Retrieve published Dataverse object in JSON format.')
-    description = ('(test) Retrieve Dataverse object in JSON format.')
-    description_200 = '(test) Retrieve Dataverse object in JSON format.'
+    summary = ('Retrieve published Dataverse object in JSON format.')
+    description = ('Retrieve Dataverse object in JSON format.')
+    description_200 = 'Retrieve Dataverse object in JSON format.'
     param_names = StatsViewSwagger.PARAM_DATAVERSE_ALIAS\
                 + StatsViewSwagger.PARAM_DV_API_KEY\
                 + StatsViewSwagger.PRETTY_JSON_PARAM\
                 #+ StatsViewSwagger.PUBLISH_PARAMS
     #tags = [StatsViewSwagger.TAG_TEST_API]
     tags = [StatsViewSwagger.TAG_TEST_API]
-    result_name = StatsViewSwagger.RESULT_NAME_TOTAL_COUNT
+    result_name = StatsViewSwagger.RESULT_NAME_DATAVERSE
 
     def get_stats_result(self, request):
         """Return the StatsResult object for this statistic"""

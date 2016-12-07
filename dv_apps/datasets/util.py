@@ -25,7 +25,7 @@ class DatasetUtil(object):
     URL_BASE = '%s/dataset.xhtml?persistentId=' % settings.DATAVERSE_INSTALLATION_URL
 
     def __init__(self, dataset_version):
-        assert isinstance(dataset_version, DatasetVersion), "You must pass a Dataverse object!"
+        assert isinstance(dataset_version, DatasetVersion), "You must pass a DatasetVersion object!"
 
         # set the DatasetVersion
         self.dsv = dataset_version

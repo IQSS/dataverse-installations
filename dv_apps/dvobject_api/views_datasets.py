@@ -6,7 +6,7 @@ from django.http import Http404
 from django.contrib.auth.decorators import login_required
 
 from django.http import JsonResponse, HttpResponse
-from dv_apps.datasets.models import DatasetVersion
+from dv_apps.datasets.models import Dataset, DatasetVersion
 from django.views.decorators.cache import cache_page
 
 
@@ -18,6 +18,27 @@ def get_pretty_val(request):
     if request.GET.get('pretty', None) is not None:
         return True
     return False
+
+
+def view_single_dataset(request, dataset_id):
+
+    try:
+        dataset = Dataset.objects.get(pk=dataset_id)
+    except Dataset.DoesNotExist:
+        return Http404('dataset_id not found')
+
+
+    dataset_version = DatasetVersion.objects\
+                    .select_related('dataset'\
+                    ).filter(dataset=dataset)\
+                    .values('id')\
+                    .order_by('-id').first()
+
+    if not dataset_version:
+        return Http404('dataset_version not found')
+
+
+    return view_single_dataset_by_id(request, dataset_version.get('id', None))
 
 
 #@cache_page(60 * 60 * 2)

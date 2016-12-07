@@ -114,6 +114,12 @@ parameters:
     description: Dataverse id
     required: true
     type: integer
+  dataverseAlias:
+    name: alias
+    in: path
+    description: Dataverse Alias
+    required: true
+    type: integer
 
 # ------------------------------
 # Define response definitions

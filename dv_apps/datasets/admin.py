@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Dataset, DatasetVersion
+from .models import Dataset, DatasetVersion, DatasetLinkingDataverse
 
 class DatasetAdmin(admin.ModelAdmin ):
     save_on_top = True
@@ -28,7 +28,7 @@ class DatasetAdmin(admin.ModelAdmin ):
 admin.site.register(Dataset, DatasetAdmin)
 
 
-class DatasetVersionAdmin(admin.ModelAdmin ):
+class DatasetVersionAdmin(admin.ModelAdmin):
     save_on_top = True
     list_display = ('id', 'dataset', 'versionstate', 'versionnumber',  'minorversionnumber', )
     readonly_fields = ('dataset',)# 'identifier_string' )
@@ -36,3 +36,10 @@ class DatasetVersionAdmin(admin.ModelAdmin ):
     list_display_links = ('id', 'dataset')
 
 admin.site.register(DatasetVersion, DatasetVersionAdmin)
+
+
+class DatasetLinkingDataverseAdmin(admin.ModelAdmin):
+    save_on_top = True
+    list_display = ('linkcreatetime', 'dataset', 'linkingdataverse')
+    readonly_fields = ('dataset', 'linkingdataverse')
+admin.site.register(DatasetLinkingDataverse, DatasetLinkingDataverseAdmin)

@@ -124,6 +124,20 @@ class Template(models.Model):
         managed = False
         db_table = 'template'
 
+
+
+class DataverseLinkingDataverse(models.Model):
+    linkcreatetime = models.DateTimeField(blank=True, null=True)
+    dataverse = models.ForeignKey(DvObject, related_name='the_dataverse')
+    linkingdataverse = models.ForeignKey(DvObject, related_name='the_linkingdataverse')
+
+    def __str__(self):
+        return '%s' % (self.dataverse)
+
+    class Meta:
+        managed = False
+        db_table = 'dataverselinkingdataverse'
+
 """
 class CitationPageCheck(models.Model):
     dataverse = models.ForeignKey(Dataverse)

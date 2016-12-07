@@ -7,20 +7,27 @@ from collections import OrderedDict
 
 from django.db import models
 from django.db.models import F
+from django.db.models import Q
 
 from django.utils.encoding import python_2_unicode_compatible
 
 from dv_apps.utils.date_helper import get_month_name_abbreviation,\
     get_month_name,\
-    month_year_iterator
-from dv_apps.datasets.models import Dataset, DatasetVersion
+    month_year_iterator,\
+    TIMESTAMP_MASK
+
+from dv_apps.datasets.models import Dataset, DatasetVersion, DatasetLinkingDataverse
+from dv_apps.dataverses.models import Dataverse, DataverseLinkingDataverse
+
 from dv_apps.datasetfields.models import DatasetField,\
     DatasetFieldValue, DatasetFieldType,\
     DatasetFieldControlledVocabularyValue,\
     ControlledVocabularyValue
 
 from dv_apps.metrics.stats_util_base import StatsMakerBase, TruncYearMonth
-from dv_apps.dvobjects.models import DVOBJECT_CREATEDATE_ATTR
+from dv_apps.dvobjects.models import DvObject\
+    , DTYPE_DATASET, DTYPE_DATAVERSE\
+    , DVOBJECT_CREATEDATE_ATTR
 from dv_apps.metrics.stats_result import StatsResult
 
 
@@ -240,6 +247,110 @@ class StatsMakerDatasets(StatsMakerBase):
 
         return self.get_dataset_subject_counts(\
                     **self.get_is_NOT_published_filter_param())
+
+
+
+    def get_published_dataverses_without_content(self, **extra_filters):
+        """For curation purposes: a list of all published dataverses that do
+        not contain any datasets/content. A spreadsheet starting with the oldest
+        dataverses is appreciated.  Based on @sekmiller's SQL query"""
+
+        # Was an error found earlier?
+        #
+        if self.was_error_found():
+            return self.get_error_msg_return()
+
+        # -----------------------------------
+        # Retrieve the date parameters - distinguish by create date
+        # -----------------------------------
+        filter_params = self.get_date_filter_params()
+        filter_params.update(self.get_is_published_filter_param())
+
+        # -----------------------------------
+        # Retrieve ids of Dataverses to ~exclude~
+        # -----------------------------------
+
+        # Get DvObject Ids of:
+        #  - Dataverses that contain Datasets
+        #  - Dataverses that have an owner
+        #
+        id_set1 = DvObject.objects.filter(\
+                        Q(dtype=DTYPE_DATASET) |\
+                        Q(dtype=DTYPE_DATAVERSE, owner__isnull=False)
+                        ).distinct('owner__id'\
+                        ).values_list('owner__id', flat=True)
+
+        # Get DvObject Ids of:
+        #  - Dataverses that link to datasets
+        #
+        id_set2 = DatasetLinkingDataverse.objects.distinct('linkingdataverse__id'\
+                    ).values_list('linkingdataverse__id', flat=True)
+
+        # Get DvObject Ids of:
+        #  - Dataverses that link to Dataverses
+        #
+        id_set3 = DataverseLinkingDataverse.objects.distinct('dataverse__id'\
+                    ).values_list('dataverse__id', flat=True)
+
+        #  Combine the ids into a list
+        #
+        dv_ids_to_exclude = set(list(id_set1) + list(id_set2) + list((id_set3)))
+
+        #   Retrieve published Dataverses that aren't in the list above
+        #
+        dv_info_list = Dataverse.objects.select_related('dvobject'\
+                    ).exclude(dvobject__id__in=dv_ids_to_exclude\
+                    ).filter(**filter_params\
+                    ).order_by(DVOBJECT_CREATEDATE_ATTR\
+                    ).annotate(dv_id=F('dvobject__id'),\
+                        create_date=F(DVOBJECT_CREATEDATE_ATTR),\
+                        pub_date=F('dvobject__publicationdate')\
+                    ).values('dv_id', 'name', 'alias'\
+                            , 'create_date', 'pub_date'\
+                            , 'affiliation'\
+                    ).order_by('create_date', 'name')
+
+        sql_query = str(q.query)
+
+        records = []
+        for dv_info in dv_info_list:
+            single_rec = OrderedDict()
+            single_rec['id'] = dv_info['dv_id']
+            single_rec['name'] = dv_info['name']
+            single_rec['alias'] = dv_info['alias']
+            single_rec['url'] = '%s/dataverse/%s' % (settings.DATAVERSE_INSTALLATION_URL, dv_info['alias'])
+            #single_rec['description'] = dv_info['description']
+            single_rec['affiliation'] = dv_info['affiliation']
+            single_rec['publication_date'] = dv_info['pub_date'].strftime(TIMESTAMP_MASK)
+            single_rec['create_date'] = dv_info['create_date'].strftime(TIMESTAMP_MASK)
+            records.append(single_rec)
+
+
+        data_dict = OrderedDict()
+        data_dict['count'] = len(records)
+        data_dict['records'] = records
+
+        return StatsResult.build_success_result(data_dict, sql_query)
+
+
+        print dv_info
+        """
+        python manage shell
+        filter_params = dict(dvobject__publicationdate__isnull=False)
+
+        """
+
+        assert False, "Not done yet.  Don't use"
+        """select dv.id, dvo.publicationdate, dv.name, 'https://dataverse.harvard.edu/dataverse/&#39;&nbsp;%7C%7C [Open URL] dv.alias as url from dvobject dvo, dataverse dv
+where dv.id = dvo.id
+and dvo.publicationdate is not null
+and dvo.id not in
+(select distinct owner_id from dvobject where dtype = 'Dataset'
+Union select distinct owner_id from dvobject where dtype = 'Dataverse'  and owner_id is not null
+UNIon select distinct linkingdataverse_id from datasetlinkingdataverse
+union select distinct linkingdataverse_id from dataverselinkingdataverse)
+        """
+
 
 
     def get_dataset_subject_counts(self,  **extra_filters):

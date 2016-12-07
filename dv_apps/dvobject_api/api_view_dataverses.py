@@ -43,3 +43,41 @@ class DataverseByIdView(StatsViewSwagger):
         dataverse_as_json = DataverseUtil(selected_dv).as_json()
 
         return StatsResult.build_success_result(dataverse_as_json)
+
+
+class DataverseByAliasView(StatsViewSwagger):
+    """View a Dataverse By Alias"""
+
+    # Define the swagger attributes
+    # Note: api_path must match the path in urls.py
+    #
+    api_path = '/dataverses/by-alias/{alias}'
+    summary = ('(test) Retrieve published Dataverse object in JSON format.')
+    description = ('(test) Retrieve Dataverse object in JSON format.')
+    description_200 = '(test) Retrieve Dataverse object in JSON format.'
+    param_names = StatsViewSwagger.PARAM_DATAVERSE_ALIAS\
+                + StatsViewSwagger.PARAM_DV_API_KEY\
+                + StatsViewSwagger.PRETTY_JSON_PARAM\
+                #+ StatsViewSwagger.PUBLISH_PARAMS
+    #tags = [StatsViewSwagger.TAG_TEST_API]
+    tags = [StatsViewSwagger.TAG_TEST_API]
+    result_name = StatsViewSwagger.RESULT_NAME_TOTAL_COUNT
+
+    def get_stats_result(self, request):
+        """Return the StatsResult object for this statistic"""
+
+        #dv_id = request.GET.get('id', None)
+        alias = self.kwargs.get('alias', None)
+        if alias is None:
+            return StatsResult.build_error_result("No Dataverse 'alias' specified", 400)
+
+        try:
+            selected_dv = Dataverse.objects.select_related('dvobject').get(\
+                alias=alias,\
+                dvobject__publicationdate__isnull=False)
+        except Dataverse.DoesNotExist:
+            return StatsResult.build_error_result('No published Dataverse with alias: %s' % alias, 404)
+
+        dataverse_as_json = DataverseUtil(selected_dv).as_json()
+
+        return StatsResult.build_success_result(dataverse_as_json)

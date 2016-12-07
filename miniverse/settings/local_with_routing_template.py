@@ -132,12 +132,50 @@ INSTALLED_APPS += (
     'debug_toolbar',
     'django.contrib.admindocs',
 )
-
 MIDDLEWARE_CLASSES += [
     'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 DEBUG_TOOLBAR_PATCH_SETTINGS = False
+
+# -----------------------------------
+# start: social auth
+# -----------------------------------
+"""
+INSTALLED_APPS += (
+    'social.apps.django_app.default',
+)
+
+TEMPLATES['OPTIONS']['context_processors'].append('social.apps.django_app.context_processors.backends')
+TEMPLATES['OPTIONS']['context_processors'].append('social.apps.django_app.context_processors.login_redirect')
+
+
+AUTHENTICATION_BACKENDS = [
+        'social.backends.google.GoogleOAuth2',
+        'django.contrib.auth.backends.ModelBackend'
+        ]
+
+import oauth_test_creds
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = oauth_test_creds.CLIENT_TEST_ID
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = oauth_test_creds.CLIENT_TEST_SECRET
+
+MAIN_AUTH_URL = 'https://services-dataverse.herokuapp.com'
+CALLBACK_URL = 'https://services-dataverse.herokuapp.com/oauth-callback'
+"""
+# -----------------------------------
+# end: social auth
+# -----------------------------------
+#https://realpython.com/blog/python/adding-social-authentication-to-django/
+#http://artandlogic.com/2014/04/tutorial-adding-facebooktwittergoogle-authentication-to-a-django-application/
+#SOCIAL_AUTH_TWITTER_LOGIN_URL
+#SOCIAL_AUTH_LOGIN_URL
+#LOGIN_URL
+# -----------------------------------
+# end: social auth
+# -----------------------------------
+
+
+
 
 # http://django-debug-toolbar.readthedocs.org/en/latest/installation.html
 

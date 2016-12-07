@@ -79,12 +79,23 @@ class DatafileUtil(object):
             od['name'] = fm.label
             od['description'] = fm.description
 
+            # --------------------------------
+            # File info
+            # --------------------------------
             file_info = OrderedDict()
 
             file_info['filesystemname'] = related_file['filesystemname']
             file_info['contentType'] = related_file['contenttype']
             file_info['filesize_bytes'] = related_file['filesize']
-            file_info['md5'] = related_file['md5']
+
+            # File checksum info
+            checksum_info = OrderedDict()
+            checksum_info['value'] = related_file['checksumvalue']
+            checksum_info['type'] = related_file['checksumtype']
+
+            file_info['checksum'] = checksum_info
+            # --------------------------------
+
             od['specs'] = file_info
 
             od['restricted'] = related_file['restricted']
@@ -132,7 +143,7 @@ class DatafileUtil(object):
         Retrieve Datafile objects and return as a dict with key being the id
         """
         vals = ('id', 'contenttype', 'filesystemname',\
-            'filesize', 'md5', 'restricted',\
+            'filesize', 'checksumtype', 'checksumvalue', 'restricted',\
             'ingeststatus')
         dfiles = Datafile.objects.filter(dvobject__id__in=dvobject_ids\
             ).annotate(id=F('dvobject__id')\

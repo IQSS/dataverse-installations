@@ -16,7 +16,10 @@ class Datafile(models.Model):
     filesystemname = models.CharField(max_length=255)
     filesize = models.BigIntegerField(blank=True, null=True)
     ingeststatus = models.CharField(max_length=1, blank=True, null=True)
-    md5 = models.CharField(max_length=255)
+
+    checksumvalue = models.CharField(max_length=255)
+    checksumtype = models.CharField(max_length=255)
+    #md5 = models.CharField(max_length=255)
     restricted = models.BooleanField()
 
     def __str__(self):

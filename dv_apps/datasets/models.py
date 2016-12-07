@@ -165,9 +165,20 @@ class DatasetVersion(models.Model):
 
         return '%s %s' % (self.dataset, version_text)
 
-
-
     class Meta:
         ordering = ('-id',)
         managed = False
         db_table = 'datasetversion'
+
+
+class DatasetLinkingDataverse(models.Model):
+    linkcreatetime = models.DateTimeField()
+    dataset = models.ForeignKey(DvObject, related_name='dataset_link')
+    linkingdataverse = models.ForeignKey(DvObject, related_name='linkingdataverse')
+
+    def __str__(self):
+        return '%s %s' % (self.dataset, self.linkingdataverse)
+
+    class Meta:
+        managed = False
+        db_table = 'datasetlinkingdataverse'

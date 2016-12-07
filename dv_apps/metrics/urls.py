@@ -23,7 +23,8 @@ from dv_apps.metrics.stats_views_files import FileCountByMonthView,\
     FileCountsByContentTypeView,\
     FileExtensionsWithinContentType
 
-from dv_apps.dvobject_api.api_view_dataverses import DataverseByIdView
+from dv_apps.dvobject_api.api_view_dataverses import DataverseByIdView,\
+    DataverseByAliasView
 
 urlpatterns = [
 
@@ -102,9 +103,13 @@ urlpatterns += [
 
     url(r'^v1/files/extensions$', FileExtensionsWithinContentType.as_view(), name='view_file_extensions_within_type'),
 
-    # Test: Dvobjects
+    # Test: Dataverses
     url(r'^v1/dataverses/by-id/(?P<dv_id>\d+)$', DataverseByIdView.as_view(),
-    name='view_dataverse_by_id_api')
+    name='view_dataverse_by_id_api'),
+
+    url(r'^v1/dataverses/by-alias/(?P<alias>[-\w]{1,255})$', DataverseByAliasView.as_view(),
+    name='view_dataverse_by_alias_api'),
+
 ]
 
 urlpatterns += [

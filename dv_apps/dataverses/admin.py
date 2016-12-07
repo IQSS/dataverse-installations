@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 from .models import Dataverse, DataverseTheme, Template,\
-    DataverseContact    #CitationPageCheck
+    DataverseContact, DataverseLinkingDataverse    #CitationPageCheck
 from dv_apps.datasets.models import Dataset
 
 """
@@ -69,3 +69,11 @@ class TemplateAdmin(admin.ModelAdmin):
     list_filter= ('dataverse', )
     list_display_links = ('name', )
 admin.site.register(Template, TemplateAdmin)
+
+
+
+class DataverseLinkingDataverseAdmin(admin.ModelAdmin):
+    save_on_top = True
+    list_display = ('linkcreatetime', 'dataverse', 'linkingdataverse')
+    readonly_fields = ('dataverse', 'linkingdataverse')
+admin.site.register(DataverseLinkingDataverse, DataverseLinkingDataverseAdmin)

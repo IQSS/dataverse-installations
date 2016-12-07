@@ -125,3 +125,5 @@ test_setup/metrics_auth.db3
 test_setup/miniverse_default.db3
 
 .DS_Store
+
+miniverse/settings/oauth_test_creds.py

@@ -25,8 +25,6 @@ def get_dataset_title(dataset_version):
     except DatasetFieldType.DoesNotExist:
         return False, 'DatasetFieldType for Citation title not found.  (kwargs: %s)' % search_attrs
 
-    print 'ds_field_type', ds_field_type
-
     # -----------------------------
     # Get the DatasetField
     # -----------------------------
@@ -39,8 +37,6 @@ def get_dataset_title(dataset_version):
     if ds_field is None:
         return False, 'No value found for Dataset Field. (kwargs: %s)' % (search_attrs2)
 
-    print 'search_attrs2', search_attrs2
-    #return False, None
 
     # -----------------------------
     # Get the DatasetFieldValue

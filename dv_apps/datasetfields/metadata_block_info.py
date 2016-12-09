@@ -40,7 +40,7 @@ class MetadataBlockInfo(object):
         """
         Return a (key, value) where the value may be a string or list
         """
-        print 'ds_field', ds_field, ds_field.datasetfieldtype.name
+        #print 'ds_field', ds_field, ds_field.datasetfieldtype.name
         #import ipdb; ipdb.set_trace()
 
         if ds_field.flat_val:
@@ -60,7 +60,7 @@ class MetadataBlockInfo(object):
 
 
         elif getattr(ds_field, 'secondary_fields', None) is not None:
-            print 'ds_field.secondary_fields', ds_field.secondary_fields
+            #print 'ds_field.secondary_fields', ds_field.secondary_fields
             if ds_field.allow_multiples():
                 val_list = []
                 last_parent_id = None

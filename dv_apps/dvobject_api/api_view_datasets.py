@@ -3,7 +3,8 @@
 from dv_apps.metrics.stats_view_base import StatsViewSwagger
 from dv_apps.metrics.stats_result import StatsResult
 from dv_apps.datasets.models import Dataset, DatasetVersion, VERSION_STATE_RELEASED
-from dv_apps.datasets.util import DatasetUtil
+from dv_apps.datasets.util import get_latest_dataset_version
+from dv_apps.datasets.serializer import DatasetSerializer
 
 
 #from dv_apps.metrics.stats_util_datasets import StatsMakerDatasets
@@ -41,7 +42,7 @@ class DatasetByIdView(StatsViewSwagger):
         if dataset_version is None:
             return StatsResult.build_error_result('No published Dataset with id: %s' % dv_id, 404)
 
-        dataset_as_json = DatasetUtil(dataset_version).as_json()
+        dataset_as_json = DatasetSerializer(dataset_version).as_json()
 
         return StatsResult.build_success_result(dataset_as_json)
 
@@ -84,25 +85,6 @@ class DatasetByPersistentIdView(StatsViewSwagger):
         if dataset_version is None:
             return StatsResult.build_error_result(err_404, 404)
 
-        dataset_as_json = DatasetUtil(dataset_version).as_json()
+        dataset_as_json = DatasetSerializer(dataset_version).as_json()
 
         return StatsResult.build_success_result(dataset_as_json)
-
-
-def get_latest_dataset_version(dataset_id):
-    """Given a dataset id, retrieve the latest *published* DatasetVersion"""
-    try:
-        dataset = Dataset.objects.select_related('dvobject').get(\
-            dvobject__id=dataset_id,\
-            dvobject__publicationdate__isnull=False)
-    except Dataset.DoesNotExist:
-        return None
-
-    # Get the latest version
-    dataset_version = DatasetVersion.objects\
-            .select_related('dataset')\
-            .filter(dataset=dataset,\
-                versionstate=VERSION_STATE_RELEASED)\
-            .order_by('-id').first()
-
-    return dataset_version

@@ -1,0 +1,33 @@
+
+<!-- metadata block -->
+<div id="metadata-panel" class="row panel panel-default">
+    <div class="panel-body metadata-panel-body">
+        <div id="description" class="form-group">
+            <label class="col-sm-3 control-label">
+                <span data-toggle="tooltip" data-placement="auto right" class="tooltiplabel text-info" data-original-title="{{ ds.title }}">Description</span>
+            </label>
+            <div class="col-sm-9">{{ citation_block.dsDescription.0.dsDescriptionValue|safe }}
+            </div>
+        </div>
+        <div id="subject" class="form-group">
+            <label class="col-sm-3 control-label">
+                <span data-toggle="tooltip" data-placement="auto right" class="tooltiplabel text-info" data-original-title="Domain-specific Subject Categories that are topically relevant to the Dataset.">Subject</span>
+            </label>
+            <div class="col-sm-9">{{ citation_block.subject|join:", " }}</div>
+        </div>
+        <div id="publication" class="form-group">
+            <label class="col-sm-3 control-label">
+                <span data-toggle="tooltip" data-placement="auto right" class="tooltiplabel text-info" data-original-title="Publications that use the data from this Dataset.">Related Publication</span>
+            </label>
+            <div class="col-sm-9">
+                {% for pub in citation_block.publication %}
+                    {{ pub.publicationCitation|safe }}
+                    {% if not forloop.last %}
+                    <hr />
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end: metadata block -->

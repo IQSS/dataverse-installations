@@ -1,7 +1,7 @@
 from dv_apps.metrics.stats_view_base import StatsViewSwagger
 from dv_apps.metrics.stats_result import StatsResult
 from dv_apps.dataverses.models import Dataverse
-from dv_apps.dataverses.util import DataverseUtil
+from dv_apps.dataverses.serializer import DataverseSerializer
 
 #from dv_apps.metrics.stats_util_datasets import StatsMakerDatasets
 # limit the API rates
@@ -40,7 +40,7 @@ class DataverseByIdView(StatsViewSwagger):
         except Dataverse.DoesNotExist:
             return StatsResult.build_error_result('No published Dataverse with id: %s' % dv_id, 404)
 
-        dataverse_as_json = DataverseUtil(selected_dv).as_json()
+        dataverse_as_json = DataverseSerializer(selected_dv).as_json()
 
         return StatsResult.build_success_result(dataverse_as_json)
 
@@ -78,6 +78,6 @@ class DataverseByAliasView(StatsViewSwagger):
         except Dataverse.DoesNotExist:
             return StatsResult.build_error_result('No published Dataverse with alias: %s' % alias, 404)
 
-        dataverse_as_json = DataverseUtil(selected_dv).as_json()
+        dataverse_as_json = DataverseSerializer(selected_dv).as_json()
 
         return StatsResult.build_success_result(dataverse_as_json)

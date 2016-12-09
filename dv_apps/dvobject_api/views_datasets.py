@@ -1,108 +1,51 @@
-import json
-from collections import OrderedDict
-
-from django.shortcuts import render, render_to_response
+from django.shortcuts import render
 from django.http import Http404
-from django.contrib.auth.decorators import login_required
 
-from django.http import JsonResponse, HttpResponse
-from dv_apps.datasets.models import Dataset, DatasetVersion, VERSION_STATE_RELEASED
+from dv_apps.datasets.models import DatasetVersion, VERSION_STATE_RELEASED
+from dv_apps.datasets.util import get_latest_dataset_version
+
+from dv_apps.dataverses.models import Dataverse
+from dv_apps.dataverses.serializer import DataverseSerializer
 from django.views.decorators.cache import cache_page
 
-from dv_apps.datasets.util import DatasetUtil
+from dv_apps.datasets.serializer import DatasetSerializer
 
 
-def get_pretty_val(request):
-    """Quick check of url param to pretty print JSON"""
+def view_single_dataset_test_view(request, dataset_id):
+    """Dataset view test.  Given dataset id, get latest version"""
+    
+    dsv = get_latest_dataset_version(dataset_id)
 
-    if request.GET.get('pretty', None) is not None:
-        return True
-    return False
+    if dsv is None:
+        raise Http404('dataset_id not found')
 
+    return view_single_datasetversion_test_view(request, dsv.id)
 
-def view_dataset_by_id(request, dataset_id):
-    """Display Dataset JSON. """
-    try:
-        dataset = Dataset.objects.get(pk=dataset_id)
-    except Dataset.DoesNotExist:
-        return Http404('dataset_id not found')
-
-    # Get the latest version
-    dataset_version = DatasetVersion.objects\
-                    .select_related('dataset'\
-                    ).filter(dataset=dataset,\
-                        versionstate=VERSION_STATE_RELEASED)\
-                    .values('id')\
-                    .order_by('-id').first()
-
-    if not dataset_version:
-        return Http404('dataset_version not found')
-
-
-    return view_dataset_by_version_id(request, dataset_version.get('id', None))
-
-
-#@cache_page(60 * 60 * 2)
-@login_required
-def view_dataset_by_version_id(request, dataset_version_id):
-
-    try:
-        dataset_version = DatasetVersion.objects.select_related('dataset'\
-            ).get(pk=dataset_version_id,\
-                versionstate=VERSION_STATE_RELEASED\
-            )
-    except DatasetVersion.DoesNotExist:
-        raise Http404
-
-    return view_single_dataset_version(request, dataset_version)
-
-@login_required
 @cache_page(60 * 60 * 2)
-def view_single_dataset_test_view(request, dataset_version_id):
+def view_single_datasetversion_test_view(request, dataset_version_id):
+    """Dataset view test.  Given dataset version id, render HTML"""
 
     try:
-        dsv = DatasetVersion.objects.select_related('dataset'\
-            ).get(pk=dataset_version_id,\
-                versionstate=VERSION_STATE_RELEASED\
-            )
+        dsv = DatasetVersion.objects.select_related('dataset')\
+            .get(pk=dataset_version_id,
+                versionstate=VERSION_STATE_RELEASED)
     except DatasetVersion.DoesNotExist:
         raise Http404
 
-    dataset_dict = DatasetUtil(dsv).as_json()
+    dataset_dict = DatasetSerializer(dsv).as_json()
     citation_block=dataset_dict.get('metadata_blocks', {}).get('citation')
 
+    dataverse_id = dataset_dict['ownerInfo']['id']
+    try:
+        dataverse = Dataverse.objects.select_related('dvobject')\
+                .get(dvobject__id=dataverse_id)
+    except Dataverse.DoesNotExist:
+        raise Http404('No Dataverse with id: %s' % dataverse_id)
+
+    dataverse_dict = DataverseSerializer(dataverse).as_json()
+
     lu = dict(ds=dataset_dict,
-            citation_block=citation_block
-            )
+            dv=dataverse_dict,
+            citation_block=citation_block)
 
-    return render(request, 'dvobject_api/test.html', lu)
-
-
-#@cache_page(60 * 15)
-@login_required
-def view_single_dataset_version(request, dsv):
-    """
-    Show JSON for a single DatasetVersion
-    """
-    if dsv is None:
-        raise Http404
-
-    assert isinstance(dsv, DatasetVersion), "dv must be a DatasetVersion object or None"
-
-    assert dsv.versionstate == VERSION_STATE_RELEASED,\
-        "The DatasetVersion must be published"
-
-    is_pretty = request.GET.get('pretty', None)
-    if is_pretty is not None:
-        is_pretty = True
-
-    resp_dict = OrderedDict()
-    resp_dict['status'] = "OK"
-    resp_dict['data'] = DatasetUtil(dsv).as_json()
-    #model_to_dict(dv)
-
-    if is_pretty:
-        s = '<pre>%s</pre>' % json.dumps(resp_dict, indent=4)
-        return HttpResponse(s)
-    else:
-        return JsonResponse(resp_dict)#, content_type='application/json')
+    return render(request, 'dvobject_api/dataset_view.html', lu)

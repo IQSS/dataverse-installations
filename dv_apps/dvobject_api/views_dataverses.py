@@ -8,7 +8,7 @@ from django.http import JsonResponse, HttpResponse
 from django.views.decorators.cache import cache_page
 
 from dv_apps.dataverses.models import Dataverse
-from dv_apps.dataverses.util import DataverseUtil
+from dv_apps.dataverses.serializer import DataverseSerializer
 
 
 def get_pretty_val(request):
@@ -58,7 +58,7 @@ def view_single_dataverse(request, dv):
 
     resp_dict = OrderedDict()
     resp_dict['status'] = "OK"
-    resp_dict['data'] = DataverseUtil(dv).as_json()
+    resp_dict['data'] = DataverseSerializer(dv).as_json()
     #model_to_dict(dv)
 
     if is_pretty:

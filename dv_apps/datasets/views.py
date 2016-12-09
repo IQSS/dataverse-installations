@@ -26,7 +26,7 @@ def view_dataset_detail(request, dataset_id):
     try:
         dataset = Dataset.objects.get(pk=dataset_id)
     except Dataset.DoesNotExist:
-        return Http404('dataset_id not found')
+        raise Http404('dataset_id not found')
 
 
     dataset_versions = DatasetVersion.objects.select_related('dataset'\

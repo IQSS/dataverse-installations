@@ -1,0 +1,13 @@
+    <div id="breadcrumbNavBlock" class="container">
+    {% if dv.ownerInfo %}
+    <div class="breadcrumbBlock">
+        <a id="breadcrumbLnk0" href="{{ dv.ownerInfo.details.dv_link }}">{{ dv.ownerInfo.details.name }} Dataverse</a>
+    </div><span class="breadcrumbCarrot"> &gt; </span>
+    {% endif %}
+    <div class="breadcrumbBlock">
+        <a id="breadcrumbLnk1" href="{{ dv.dv_link }}">{{ dv.name }} Dataverse</a>
+    </div><span class="breadcrumbCarrot"> &gt; </span>
+    <div class="breadcrumbBlock"><span class="breadcrumbActive">
+    {{ ds.title }}</span>
+    </div>
+</div>

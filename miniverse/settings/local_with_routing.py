@@ -54,7 +54,8 @@ DATABASE_ROUTERS = ['miniverse.db_routers.db_dataverse_router.DataverseRouter',]
 # -----------------------------------
 # URL of the Dataverse db being read
 # -----------------------------------
-DATAVERSE_INSTALLATION_URL = 'https://demo.dataverse.org'
+#DATAVERSE_INSTALLATION_URL = 'https://demo.dataverse.org'
+DATAVERSE_INSTALLATION_URL = 'https://dataverse.harvard.edu'
 
 # -----------------------------------
 # Database Setup

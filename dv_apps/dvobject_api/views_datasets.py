@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import Http404
 
-from dv_apps.datasets.models import DatasetVersion, VERSION_STATE_RELEASED
+from dv_apps.datasets.models import Dataset, DatasetVersion, VERSION_STATE_RELEASED
 from dv_apps.datasets.util import get_latest_dataset_version
 
 from dv_apps.dataverses.models import Dataverse
@@ -11,18 +11,42 @@ from django.views.decorators.cache import cache_page
 from dv_apps.datasets.serializer import DatasetSerializer
 
 
-def view_single_dataset_test_view(request, dataset_id):
+def view_dataset_by_persistent_id(request):
+
+    persistent_id = request.GET.get('persistentID', None)
+    if persistent_id is None:
+        raise Http404('persistentID not found')
+
+    ds = Dataset.get_dataset_by_persistent_id(persistent_id)
+
+    dsv = get_latest_dataset_version(ds.dvobject.id)
+
+    if dsv is None:
+        raise Http404('dataset_id not found')
+
+    return view_dataset_by_version(request, dsv.id)
+
+
+def view_single_dataset(request, dataset_id):
     """Dataset view test.  Given dataset id, get latest version"""
-    
+
     dsv = get_latest_dataset_version(dataset_id)
 
     if dsv is None:
         raise Http404('dataset_id not found')
 
-    return view_single_datasetversion_test_view(request, dsv.id)
+    return view_dataset_by_version(request, dsv.id)
+
+"""
+http://127.0.0.1:8000/miniverse/dvobjects/api/v1/datasets/by-persistent-id?persistentID=doi:10.7910/DVN/26935
+
+http://127.0.0.1:8000/miniverse/dvobjects/api/v1/datasets/by-id/53121
+
+http://127.0.0.1:8000/miniverse/dvobjects/api/v1/datasets/by-version-id/79678
+"""
 
 @cache_page(60 * 60 * 2)
-def view_single_datasetversion_test_view(request, dataset_version_id):
+def view_dataset_by_version(request, dataset_version_id):
     """Dataset view test.  Given dataset version id, render HTML"""
 
     try:

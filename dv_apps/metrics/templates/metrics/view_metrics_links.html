@@ -93,15 +93,15 @@
                           </li>
                     </ul>
 
-                    <br /><b>datasets</b>
+                    <br /><b>datasets</b>: Test Example of HTML from JSON
                     <ul>
+                        <li>persistentId id: <a href="{% url 'view_dataset_by_persistent_id' %}?persistentId=doi:10.7910/DVN/26935">{% url 'view_dataset_by_persistent_id' %}?persistentId=doi:10.7910/DVN/26935</a></li>
 
-                        <li><a href="{% url 'view_dataset_by_version_id' 79678 %}?pretty=true">{% url 'view_dataset_by_version_id' 79678 %}?pretty=true</a>
+                        <li>dataset id: <a href="{% url 'view_single_dataset' 53121 %}">{% url 'view_single_dataset' 53121 %}</a></li>
+
+                        <li>dataset verions id: <a href="{% url 'view_dataset_by_version' 79678 %}">{% url 'view_dataset_by_version' 79678 %}</a></li>
+
                             <br />on public: <a href="https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/26935">https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/26935</a>
-                        <ul>
-                            <li>view: <a href="{% url 'view_single_dataset_test_view' 79678 %}">{% url 'view_single_dataset_test_view' 79678 %}</a></li>
-                        </ul>
-                       </li>
                     </ul>
 
                 </div>

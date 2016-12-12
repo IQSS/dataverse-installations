@@ -13,9 +13,9 @@ from dv_apps.datasets.serializer import DatasetSerializer
 
 def view_dataset_by_persistent_id(request):
 
-    persistent_id = request.GET.get('persistentID', None)
+    persistent_id = request.GET.get('persistentId', None)
     if persistent_id is None:
-        raise Http404('persistentID not found')
+        raise Http404('persistentId not found')
 
     ds = Dataset.get_dataset_by_persistent_id(persistent_id)
 

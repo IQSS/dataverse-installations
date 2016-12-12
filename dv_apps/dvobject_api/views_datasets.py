@@ -15,9 +15,11 @@ def view_dataset_by_persistent_id(request):
 
     persistent_id = request.GET.get('persistentId', None)
     if persistent_id is None:
-        raise Http404('persistentId not found')
+        raise Http404('persistentId not found: %s' % persistent_id)
 
     ds = Dataset.get_dataset_by_persistent_id(persistent_id)
+    if ds is None:
+        raise Http404('persistentId not found: %s' % persistent_id)
 
     dsv = get_latest_dataset_version(ds.dvobject.id)
 

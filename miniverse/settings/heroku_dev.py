@@ -20,7 +20,7 @@ TIME_ZONE = 'America/New_York'
 # -----------------------------------
 METRICS_CACHE_VIEW = True
 METRICS_CACHE_VIEW_TIME = 60 * 60 * 2   # 2 HOURS
-METRICS_CACHE_API_TIME = 0#60 * 15 # 15 minutes
+METRICS_CACHE_API_TIME = 60 * 15 # 15 minutes
 
 # -----------------------------------
 # ADMINS and MANAGERS

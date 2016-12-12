@@ -1,16 +1,17 @@
 from django.shortcuts import render
 from django.http import Http404
 
+from django.conf import settings
+
 from dv_apps.datasets.models import Dataset, DatasetVersion, VERSION_STATE_RELEASED
 from dv_apps.datasets.util import get_latest_dataset_version
-
 from dv_apps.dataverses.models import Dataverse
 from dv_apps.dataverses.serializer import DataverseSerializer
 from django.views.decorators.cache import cache_page
 
 from dv_apps.datasets.serializer import DatasetSerializer
 
-
+@cache_page(settings.METRICS_CACHE_VIEW_TIME)
 def view_dataset_by_persistent_id(request):
 
     persistent_id = request.GET.get('persistentId', None)
@@ -28,7 +29,7 @@ def view_dataset_by_persistent_id(request):
 
     return view_dataset_by_version(request, dsv.id)
 
-
+@cache_page(settings.METRICS_CACHE_VIEW_TIME)
 def view_single_dataset(request, dataset_id):
     """Dataset view test.  Given dataset id, get latest version"""
 
@@ -47,7 +48,7 @@ http://127.0.0.1:8000/miniverse/dvobjects/api/v1/datasets/by-id/53121
 http://127.0.0.1:8000/miniverse/dvobjects/api/v1/datasets/by-version-id/79678
 """
 
-@cache_page(60 * 60 * 2)
+@cache_page(settings.METRICS_CACHE_VIEW_TIME)
 def view_dataset_by_version(request, dataset_version_id):
     """Dataset view test.  Given dataset version id, render HTML"""
 

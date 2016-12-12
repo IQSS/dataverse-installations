@@ -107,7 +107,7 @@ DATABASE_ROUTERS = ['miniverse.db_routers.db_dataverse_router.DataverseRouter', 
 
 # URL of the Dataverse db being read
 #DATAVERSE_INSTALLATION_URL = 'https://demo.dataverse.org'
-DATAVERSE_INSTALLATION_URL = 'https://dvn-build.hmdc.harvard.edu'
+DATAVERSE_INSTALLATION_URL = 'http://dvn-vm5.hmdc.harvard.edu'
 
 # Set the default django database url - a Heroku Database
 HEROKU_DB_CONFIG = dj_database_url.config(conn_max_age=500)

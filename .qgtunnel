@@ -5,4 +5,5 @@
 
 [qgtunnel.postgres]
 accept = "localhost:5432"
+#connect = "demo.dataverse.org:5432"
 connect = "dvndb-qa1.hmdc.harvard.edu:5432"

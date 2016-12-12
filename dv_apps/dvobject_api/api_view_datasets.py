@@ -67,13 +67,13 @@ class DatasetByPersistentIdView(StatsViewSwagger):
 
     def get_stats_result(self, request):
         """Return the StatsResult object for this statistic"""
-        persistent_id = request.GET.get('persistentID', None)
+        persistent_id = request.GET.get('persistentId', None)
         if persistent_id is None:
             return StatsResult.build_error_result("No Dataset persistent id specified", 400)
 
         ds = Dataset.get_dataset_by_persistent_id(persistent_id)
 
-        err_404 = 'No published dataset found for persistentID: %s' % persistent_id
+        err_404 = 'No published dataset found for persistentId: %s' % persistent_id
 
         if ds is None or not ds.dvobject.publicationdate:
             return StatsResult.build_error_result(err_404, 404)

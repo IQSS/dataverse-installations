@@ -50,7 +50,7 @@ class StatsViewSwagger(View):
     PARAM_SKIP_EMPTY_BINS = ['skipEmptyBins'] # skip_empty_bins
     PARAM_DVOBJECT_ID = ['dataverseObjectId']
     PARAM_DATASET_ID = ['datasetId']
-    PARAM_DATASET_PERSISTENT_ID = ['persistentID']
+    PARAM_DATASET_PERSISTENT_ID = ['persistentId']
 
     PARAM_DATAVERSE_ALIAS = ['dataverseAlias']
 

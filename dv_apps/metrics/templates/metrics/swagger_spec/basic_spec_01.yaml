@@ -120,8 +120,8 @@ parameters:
     description: Dataset ID
     required: true
     type: integer
-  persistentID:
-    name: persistentID
+  persistentId:
+    name: persistentId
     in: query
     description: Dataset Persistent ID
     required: true

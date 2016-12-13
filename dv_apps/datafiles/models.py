@@ -25,6 +25,12 @@ class Datafile(models.Model):
     def __str__(self):
         return '%s' % self.dvobject
 
+    @property
+    def id(self):
+        if self.dvobject is None:
+            return None
+        return self.dvobject.id
+
     class Meta:
         ordering = ('dvobject',)
         managed = False

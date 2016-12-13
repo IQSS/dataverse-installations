@@ -1,6 +1,8 @@
 from django.conf.urls import url
 
-from dv_apps.dvobject_api import views_dataverses, views_datasets
+from dv_apps.dvobject_api import views_dataverses,\
+        views_datasets,\
+        views_composable
 
 
 urlpatterns = [
@@ -16,6 +18,16 @@ urlpatterns = [
     url(r'^api/v1/datasets/by-persistent-id$', views_datasets.view_dataset_by_persistent_id, name='view_dataset_by_persistent_id'),
 
     url(r'^api/v1/datasets/by-version-id/(?P<dataset_version_id>\d{1,8})$', views_datasets.view_dataset_by_version, name='view_dataset_by_version'),
+
+    # -----------------------------
+    # Composable dataset
+    # -----------------------------
+    # by id
+    url(r'^api/v1/datasets/composable/by-id/(?P<dataset_id>\d{1,8})$', views_composable.view_side_by_side1, name='view_side_by_side1'),
+
+    # by persidentId
+    url(r'^api/v1/datasets/composable/by-persistent-id$', views_composable.view_side_by_side1_by_persistent_id, name='view_side_by_side1_by_persistent_id'),
+
 
 
 

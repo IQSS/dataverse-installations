@@ -45,6 +45,13 @@ class Dataset(models.Model):
     def identifier_string(self):
         return self.__str__()
 
+    @property
+    def id(self):
+        if self.dvobject is None:
+            return None
+        return self.dvobject.id
+
+
     def __str__(self):
         if self.dvobject:
             return '%s:%s%s%s' % (

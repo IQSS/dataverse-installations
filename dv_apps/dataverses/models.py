@@ -44,6 +44,12 @@ class Dataverse(models.Model):
     #defaultcontributorrole = models.ForeignKey('Dataverserole')
     #defaulttemplate = models.ForeignKey('Template', blank=True, null=True)
 
+    @property
+    def id(self):
+        if self.dvobject is None:
+            return None
+        return self.dvobject.id
+
     class Meta:
         managed = False
         db_table = 'dataverse'

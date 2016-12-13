@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block extra_header_info %}
+<style type="text/css">
+pre {
+    white-space: pre-wrap;       /* Since CSS 2.1 */
+    white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+    white-space: -pre-wrap;      /* Opera 4-6 */
+    white-space: -o-pre-wrap;    /* Opera 7 */
+    word-wrap: break-word;       /* Internet Explorer 5.5+ */
+}
+ {{ pygment_css|safe }}
+</style>
+{% endblock %}
+
+{% block main_content %}
+<div class="row">
+
+    <!-- JSON -->
+    <div class="col-xs-12 col-md-6">
+        <h2>JSON</h2>
+        <p><b>api endpoints:</b>
+            <br />&nbsp; - <b>by id:</b> <a href="{{ swagger_base_url }}{% url 'view_dataset_by_id_api' dataset_id %}?pretty=true">{% url 'view_dataset_by_id_api' dataset_id %}?pretty=true</a>
+            <br />&nbsp; - <b>by persistentId:</b> <a href="{{ swagger_base_url }}{% url 'view_dataset_by_persistent_id_api' %}?persistentId={{ dataset_dict.persistentIdInfo.persistentId }}&pretty=true">{% url 'view_dataset_by_persistent_id_api' %}?persistentId={{ dataset_dict.persistentIdInfo.persistentId }}&pretty=true</a>
+        </p>
+        {{ json_snippet|safe }}
+    </div>
+
+    <!-- Template + HTML -->
+    <div class="col-xs-12 col-md-6">
+        <h2>Template </h2>
+        <p><b>template file name:</b> {{ template_name }}</p>
+        {{ template_snippet|safe }}
+    </div>
+
+</div>
+
+
+{% endblock %}

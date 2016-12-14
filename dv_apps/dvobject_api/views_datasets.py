@@ -1,3 +1,5 @@
+import json
+
 from django.shortcuts import render
 from django.http import Http404
 
@@ -71,8 +73,12 @@ def view_dataset_by_version(request, dataset_version_id):
 
     dataverse_dict = DataverseSerializer(dataverse).as_json()
 
+    metadata_blocks = dataset_dict.get('metadata_blocks', None)
+    metadata_blocks_as_json = json.dumps(metadata_blocks, indent=4)
+
     lu = dict(ds=dataset_dict,
             dv=dataverse_dict,
-            citation_block=citation_block)
+            citation_block=citation_block,
+            metadata_blocks_as_json=metadata_blocks_as_json)
 
     return render(request, 'dvobject_api/dataset_view.html', lu)

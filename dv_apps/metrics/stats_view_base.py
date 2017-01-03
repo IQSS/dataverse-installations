@@ -46,6 +46,8 @@ class StatsViewSwagger(View):
     PARAM_AS_CSV = ['asCSV', 'asExcel']
 
     PARAM_BIN_SIZE = ['binSize']  # bin_size
+    PARAM_BIN_SIZE_BYTES = ['binSizeBytes']  # bin_size
+
     PARAM_NUM_BINS = ['numBins']  # num_bins
     PARAM_SKIP_EMPTY_BINS = ['skipEmptyBins'] # skip_empty_bins
     PARAM_DVOBJECT_ID = ['dataverseObjectId']
@@ -75,6 +77,7 @@ class StatsViewSwagger(View):
     RESULT_NAME_DATAVERSE_TYPE_COUNTS = 'DataverseTypeCount'
     RESULT_NAME_DATASET_SUBJECT_COUNTS = 'DatasetSubjectCounts'
     RESULT_NAME_BIN_COUNTS = 'BinCounts'
+    RESULT_NAME_BIN_COUNTS_SIZES = 'BinCountsSizes'
 
     TAG_METRICS = 'metrics'
     TAG_DATAVERSES = 'metrics - dataverses'

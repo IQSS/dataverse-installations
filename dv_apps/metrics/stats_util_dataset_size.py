@@ -1,38 +1,45 @@
 """
-Counts of files per Dataset using the latest DatasetVersion.
-Answers the question: How many datasets have "x" number of files?
+Counts of file bytes per Dataset including all published files
+Answers the question: How many datasets have "x" number of bytes?
 
-For example, if the "bin_size" is set to 20, results will show
-the number of datasets with 0 to 19 files, the number of datasets
-with 20 to 29 files, etc.
+For example, if the "bin_size" is set to 1,000,000 (without commas), results will show
+the number of datasets with 0bytes up to 1MB of file storage,
+the number of datasets with 1MB up to 2MB of file storage, etc.
 """
 import pandas as pd
 import json
 from collections import OrderedDict
 
-from django.db.models import F
+from django.db.models import F, FloatField, Sum
 from django.db import models
 
 from dv_apps.datasets.models import Dataset, DatasetVersion
-from dv_apps.datafiles.models import FileMetadata
+from dv_apps.datafiles.models import Datafile
 from dv_apps.utils.msg_util import msgt, msg
+from dv_apps.utils.byte_size import sizeof_fmt
 
 from dv_apps.metrics.stats_util_base import StatsMakerBase
 from dv_apps.metrics.stats_result import StatsResult
 
+ONE_MILLION = 2**20 #10**6
+FIFTY_MILLION = ONE_MILLION*50
+ONE_HUNDRED_MILLION = ONE_MILLION*100
+ONE_BILLION = ONE_MILLION**1000
 
-class StatsMakerDatasetBins(StatsMakerBase):
-    """Answers the question: How many datasets have "x" number of files?"""
+class StatsMakerDatasetSizes(StatsMakerBase):
+    """Answers the question: How many datasets have "x" number of bytes?
+    Do we include/exclude harvested files?
+    """
 
 
     def __init__(self, **kwargs):
         """Process kwargs via StatsMakerBase"""
 
-        super(StatsMakerDatasetBins, self).__init__(**kwargs)
+        super(StatsMakerDatasetSizes, self).__init__(**kwargs)
+        self.bin_size = FIFTY_MILLION#ONE_HUNDRED_MILLION
 
 
-
-    def get_bin_list(self, step=10, low_num=0, high_num=100):
+    def get_bin_list(self, step=FIFTY_MILLION, low_num=0, high_num=ONE_BILLION):
         assert high_num > low_num, "high_num must be greater than low_num"
         assert low_num >= 0, "low_num must be at least 0.  Cannot be negative"
         assert step > 0, "step must greater than 0"
@@ -46,8 +53,8 @@ class StatsMakerDatasetBins(StatsMakerBase):
         return l
 
 
-    def get_dataset_version_ids(self, **extra_filters):
-        """For the binning, we only want the latest dataset versions"""
+    def get_dataset_ids(self, **extra_filters):
+        """For the binning, we all the files in the dataset"""
 
         filter_params = dict()
 
@@ -57,8 +64,6 @@ class StatsMakerDatasetBins(StatsMakerBase):
             for k, v in extra_filters.items():
                 filter_params[k] = v
 
-        dataset_id_filter = {}  # no filter unless published/unpublished
-
         if len(filter_params) > 0:
             # -----------------------------
             # Retrieve Dataset ids published/unpublished
@@ -66,77 +71,58 @@ class StatsMakerDatasetBins(StatsMakerBase):
             dataset_ids = Dataset.objects.select_related('dvobject'\
                             ).filter(**filter_params\
                             ).values_list('dvobject__id', flat=True)
+            return dataset_ids
 
-            # ok, reduce by ids...
-            dataset_id_filter = dict(dataset__in=dataset_ids)
-
-
-        # -----------------------------
-        # Get latest DatasetVersion ids
-        # -----------------------------
-        id_info_list = DatasetVersion.objects.filter(**dataset_id_filter\
-            ).values('id', 'dataset_id', 'versionnumber', 'minorversionnumber'\
-            ).order_by('dataset_id', '-id', '-versionnumber', '-minorversionnumber')
-
-        # -----------------------------
-        # Iterate through and get the DatasetVersion id
-        #        of the latest version
-        # -----------------------------
-        latest_dsv_ids = []
-        last_dataset_id = None
-        for idx, info in enumerate(id_info_list):
-            if idx == 0 or info['dataset_id'] != last_dataset_id:
-                latest_dsv_ids.append(info['id'])
-
-            last_dataset_id = info['dataset_id']
-
-        return latest_dsv_ids
+        return []
 
 
-    def get_file_counts_per_dataset_latest_versions_published(self):
 
-        return self.get_file_counts_per_dataset_latest_versions(\
+
+    def get_dataset_size_counts_published(self):
+
+        return self.get_dataset_size_counts(\
                     **self.get_is_published_filter_param())
 
 
-    def get_file_counts_per_dataset_latest_versions_unpublished(self):
+    def get_dataset_size_counts_unpublished(self):
 
-        return self.get_file_counts_per_dataset_latest_versions(\
+        return self.get_dataset_size_counts(\
                     **self.get_is_NOT_published_filter_param())
 
 
-    def get_file_counts_per_dataset_latest_versions(self, **extra_filters):
+    def get_dataset_size_counts(self, **extra_filters):
         """
-        Get binning stats for the number of files in each Dataset.
-        For the counts, only use the LATEST DatasetVersion
+        Get binning stats for the byte size of each Dataset.
         """
 
         # Get the correct DatasetVersion ids as a filter parameter
         #
-        latest_dsv_ids = self.get_dataset_version_ids(**extra_filters)
-        filter_params = dict(datasetversion__id__in=latest_dsv_ids)
+        dataset_ids = self.get_dataset_ids(**extra_filters)
+        filter_params = dict(dvobject__id__in=dataset_ids)
 
         # Make query
         #
-        ds_version_counts = FileMetadata.objects.filter(**filter_params\
-                            ).annotate(dsv_id=F('datasetversion__id'),\
-                            ).values('dsv_id',\
-                            ).annotate(cnt=models.Count('datafile__id')\
-                            ).values('dsv_id', 'cnt'\
-                            ).order_by('-cnt')
+        dataset_file_sizes = Datafile.objects.annotate(ds_id=F('dvobject__owner__id'),\
+                            ).values('ds_id',\
+                            ).annotate(cnt=models.Count('dvobject__id')\
+                                , ds_size=Sum('filesize')
+                            ).values('ds_id', 'cnt', 'ds_size'\
+                            ).order_by('ds_size')
+
 
         # Convert to Dataframe
         #
-        df = pd.DataFrame(list(ds_version_counts), columns = ['dsv_id', 'cnt'])
+        df = pd.DataFrame(list(dataset_file_sizes), columns = ['dsv_id', 'cnt', 'ds_size'])
 
         # Get the list of bins
         #
-        high_num = high_num=df['cnt'].max() + self.bin_size
-        bins = self.get_bin_list(step=self.bin_size, low_num=0, high_num=high_num+self.bin_size)
+        high_num = df['ds_size'].max() + self.bin_size_bytes
+
+        bins = self.get_bin_list(step=self.bin_size_bytes, low_num=0, high_num=high_num+self.bin_size_bytes)
 
         # Add a new column, assigning each file count to a bin
         #
-        df['bin_label'] = pd.cut(df['cnt'], bins)
+        df['bin_label'] = pd.cut(df['ds_size'], bins)
 
         # Count the occurrence of each bin
         #
@@ -153,25 +139,29 @@ class StatsMakerDatasetBins(StatsMakerBase):
         # etc
         df_bins['sort_key'] = df_bins['bin'].apply(lambda x: int(x[1:-1].split(',')[0]))
         df_bins['bin_start_inclusive'] = df_bins['sort_key']
-        df_bins['bin_end'] = df_bins['bin'].apply(lambda x: int(x[1:-1].split(',')[1]))
+        df_bins['bin_start_inclusive_commas'] = df_bins['bin_start_inclusive'].apply(lambda x: "{:,}".format(x))
+        df_bins['bin_start_inclusive_abbrev'] = df_bins['bin_start_inclusive'].apply(lambda x: sizeof_fmt(x))
 
-        # Add a formatted string
-        # (0, 20] -> 0 to 20
-        # (20, 30] -> 20 to 30
-        # etc
-        df_bins['bin_str'] = df_bins['bin'].apply(lambda x: x[1:-1].replace(', ', ' to '))
+        df_bins['bin_end'] = df_bins['bin'].apply(lambda x: int(x[1:-1].split(',')[1]))
+        df_bins['bin_end_commas'] = df_bins['bin_end'].apply(lambda x: "{:,}".format(x))
+        df_bins['bin_end_abbrev'] = df_bins['bin_end'].apply(lambda x: sizeof_fmt(x))
+
+
+        df_bins['bin_str'] = df_bins['bin_start_inclusive_abbrev']\
+                            + ' to '\
+                            + df_bins['bin_end_abbrev']
 
         # Sort the bins
         #
         df_bins = df_bins.sort('sort_key')
 
-        msgt(df_bins)
+        #msgt(df_bins)
 
         # If appropriate, skip empty bins, e.g. remove 0 counts
         #
         if self.skip_empty_bins:
             df_bins = df_bins.query('count != 0')
-            msg(df_bins)
+            #msg(df_bins)
 
 
         # Return as python dict
@@ -181,6 +171,7 @@ class StatsMakerDatasetBins(StatsMakerBase):
 
         data_dict = OrderedDict()
         data_dict['record_count'] = len(formatted_records)
+        data_dict['dataset_count'] = df_bins['count'].sum()
         data_dict['records'] = formatted_records
 
         return StatsResult.build_success_result(data_dict)
@@ -191,4 +182,9 @@ class StatsMakerDatasetBins(StatsMakerBase):
     bins += self.get_bin_list(step=100, low_num=200, high_num=999)
     bins += self.get_bin_list(step=1000, low_num=1000, high_num=df['cnt'].max()+1000)
     #bins = self.get_bin_list(step=step_num, low_num=0, high_num=df['cnt'].max()+step_num)
+
+python manage.py shell
+from dv_apps.metrics.stats_util_dataset_size import StatsMakerDatasetSizes
+s = StatsMakerDatasetSizes()
+print s.get_dataset_size_counts()
 """

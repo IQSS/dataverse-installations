@@ -98,6 +98,11 @@ parameters:
     in: query
     description: Optional.  Change the binning size.  Default is 20.
     type: integer
+  binSizeBytes:
+    name: bin_size_bytes
+    in: query
+    description: Optional.  Change the binning size.  Default is 50,000,000 (without the commas).
+    type: integer
   numBins:
     name: num_bins
     in: query
@@ -181,6 +186,32 @@ definitions:
     type: array
     items:
       $ref: "#/definitions/BinCount"
+  BinCountSize:
+    properties:
+      bin:
+        type: string
+      count:
+        type: integer
+      bin_start_inclusive:
+        type: integer
+      bin_start_inclusive_comma:
+        type: string
+      bin_start_inclusive_abbrev:
+        type: string
+      bin_end:
+        type: integer
+      bin_end_comma:
+        type: string
+      bin_end_abbrev:
+        type: string
+      bin_str:
+        type: string
+      sort_key:
+        type: integer
+  BinCountsSizes:
+    type: array
+    items:
+      $ref: "#/definitions/BinCountSize"
   FileExtensionCount:
     properties:
       extension:

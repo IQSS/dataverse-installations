@@ -12,6 +12,7 @@ from django.db.models import F
 from dv_apps.dataverses.models import Dataverse
 from dv_apps.metrics.dataverse_tree_util import DataverseTreeUtil
 from dv_apps.metrics.stats_util_datasets_bins import StatsMakerDatasetBins
+from dv_apps.metrics.stats_util_dataset_size import StatsMakerDatasetSizes
 
 
 
@@ -58,4 +59,21 @@ def view_file_bins_by_datasetversion(request):
 
     d = dict(bin_info=fdc.get_file_counts_per_dataset_latest_versions())
 
+    if pretty:
+        as_html = '<pre>%s</pre>' % (json.dumps(d, indent=4))
+        return HttpResponse(as_html)
+
     return render(request, 'metrics/visualizations/file_bins_by_datasetversion.html', d)
+
+
+def view_bin_size(request):
+
+    kwargs = dict(skip_empty_bins=True)
+
+    fdc = StatsMakerDatasetSizes(**kwargs)
+
+    d = dict(bin_info=fdc.get_dataset_size_counts().result_data)
+    as_html = '<pre>%s</pre>' % (json.dumps(d, indent=4))
+    return HttpResponse(as_html)
+
+    #return render(request, 'metrics/visualizations/file_bins_by_datasetversion.html', d)

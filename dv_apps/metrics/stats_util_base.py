@@ -32,6 +32,7 @@ class TruncYearMonth(models.Func):
 class StatsMakerBase(object):
 
     DEFAULT_BIN_SIZE = 20
+    DEFAULT_BIN_SIZE_BYTES = 10**6*50
 
     def __init__(self, **kwargs):
         """
@@ -57,6 +58,7 @@ class StatsMakerBase(object):
 
         # Used for binning stats
         self.bin_size = 20      # default setting
+        self.bin_size_bytes = 10**6*50
         self.num_bins = None    # optional setting
         self.skip_empty_bins = False
 
@@ -202,6 +204,9 @@ class StatsMakerBase(object):
         # ----------------------------------------
         self.bin_size = kwargs.get('bin_size', self.DEFAULT_BIN_SIZE)
         self.bin_size = self.check_param_that_must_be_integer('bin_size', self.bin_size, none_ok=True)
+
+        self.bin_size_bytes = kwargs.get('bin_size_bytes', self.DEFAULT_BIN_SIZE_BYTES)
+        self.bin_size_bytes = self.check_param_that_must_be_integer('bin_size_bytes', self.bin_size_bytes, none_ok=True)
 
         # ----------------------------------------
         # Number of bins

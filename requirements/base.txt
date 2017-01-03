@@ -20,3 +20,6 @@ whitenoise==3.2
 
 # Initially for sqlite use and until postgres update for bson (or nosql decision)
 jsonfield==1.0.3
+
+# syntax highlighting
+Pygments==2.1.3

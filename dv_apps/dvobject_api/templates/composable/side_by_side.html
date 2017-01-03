@@ -17,12 +17,36 @@ pre {
 
     <!-- JSON -->
     <div class="col-xs-12 col-md-6">
-        <h2>JSON</h2>
-        <p><b>api endpoints:</b>
-            <br />&nbsp; - <b>by id:</b> <a href="{{ swagger_base_url }}{% url 'view_dataset_by_id_api' dataset_id %}?pretty=true">{% url 'view_dataset_by_id_api' dataset_id %}?pretty=true</a>
-            <br />&nbsp; - <b>by persistentId:</b> <a href="{{ swagger_base_url }}{% url 'view_dataset_by_persistent_id_api' %}?persistentId={{ dataset_dict.persistentIdInfo.persistentId }}&pretty=true">{% url 'view_dataset_by_persistent_id_api' %}?persistentId={{ dataset_dict.persistentIdInfo.persistentId }}&pretty=true</a>
-        </p>
-        {{ json_snippet|safe }}
+        <a class="btn btn-primary" role="button" data-toggle="collapse" href="#idDatasetJSON" aria-expanded="true" aria-controls="idDatasetJSON">Dataset JSON</a>
+
+        <a class="btn btn-primary" role="button" data-toggle="collapse" href="#idDataverseJSON" aria-expanded="false" aria-controls="idDataverseJSON">Dataverse JSON</a>
+
+        <div class="xcollapse" id="idDatasetJSON">
+                <h2>Dataset JSON</h2>
+                <p><b>api endpoints:</b>
+
+                    <br />&nbsp; - <b>by id:</b>
+                        <a href="{{ swagger_base_url }}{% url 'view_dataset_by_id_api' dataset_id %}?pretty=true">{% url 'view_dataset_by_id_api' dataset_id %}?pretty=true</a>
+
+                    <br />&nbsp; - <b>by persistentId:</b>
+                        <a href="{{ swagger_base_url }}{% url 'view_dataset_by_persistent_id_api' %}?persistentId={{ ds.persistentIdInfo.persistentId }}&pretty=true">{% url 'view_dataset_by_persistent_id_api' %}?persistentId={{ ds.persistentIdInfo.persistentId }}&pretty=true</a>
+                </p>
+                {{ dataset_json_snippet|safe }}
+        </div>
+
+        <div class="collapse" id="idDataverseJSON">
+                <h2>Dataverse JSON</h2>
+                {% comment %}
+                <p><b>api endpoints:</b>
+                    <br />&nbsp; - <b>by id:</b>
+                        <a href="{{ swagger_base_url }}{% url 'view_dataset_by_id_api' dataset_id %}?pretty=true">{% url 'view_dataset_by_id_api' dataset_id %}?pretty=true</a>
+
+                    <br />&nbsp; - <b>by persistentId:</b>
+                        <a href="{{ swagger_base_url }}{% url 'view_dataset_by_persistent_id_api' %}?persistentId={{ ds.persistentIdInfo.persistentId }}&pretty=true">{% url 'view_dataset_by_persistent_id_api' %}?persistentId={{ ds.persistentIdInfo.persistentId }}&pretty=true</a>
+                </p>
+                {% endcomment %}
+                {{ dataverse_json_snippet|safe }}
+        </div>
     </div>
 
     <!-- Template + HTML -->
@@ -30,6 +54,14 @@ pre {
         <h2>Template </h2>
         <p><b>template file name:</b> {{ template_name }}</p>
         {{ template_snippet|safe }}
+
+        <hr />
+
+        <h2>Rendered Template </h2>
+        <p><b>JSON + Template = </b></p>
+        <hr />
+
+        {{ rendered_template|safe }}
     </div>
 
 </div>

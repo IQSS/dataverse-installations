@@ -55,7 +55,7 @@ class BytesPerDatasetStats(StatsViewSwagger):
     # Note: api_path must match the path in urls.py
     #
     api_path = '/datasets/bytes-used'
-    summary = ('Counts of datasets based on total bytes of storage used')
+    summary = ('Counts of published datasets based on total bytes of storage used')
     description = ('Counts of datasets based on total bytes of storage used.'
                 ' Answers the question -> How many datasets have "x" number of bytes?'
                 ' For example, if the "bin_size" is set to 50000000, results will show'
@@ -68,7 +68,6 @@ class BytesPerDatasetStats(StatsViewSwagger):
                 + StatsViewSwagger.PARAM_BIN_SIZE_BYTES\
                 + StatsViewSwagger.PARAM_SKIP_EMPTY_BINS\
                 + StatsViewSwagger.PARAM_AS_CSV
-                #+ StatsViewSwagger.PARAM_NUM_BINS\
 
     tags = [StatsViewSwagger.TAG_DATASETS]
     result_name = StatsViewSwagger.RESULT_NAME_BIN_COUNTS_SIZES

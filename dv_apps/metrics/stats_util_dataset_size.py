@@ -53,30 +53,6 @@ class StatsMakerDatasetSizes(StatsMakerBase):
         return l
 
 
-    def get_dataset_ids(self, **extra_filters):
-        """For the binning, we all the files in the dataset"""
-
-        filter_params = dict()
-
-        # Add extra filters from kwargs, e.g. published
-        #
-        if extra_filters:
-            for k, v in extra_filters.items():
-                filter_params[k] = v
-
-        if len(filter_params) > 0:
-            # -----------------------------
-            # Retrieve Dataset ids published/unpublished
-            # -----------------------------
-            dataset_ids = Dataset.objects.select_related('dvobject'\
-                            ).filter(**filter_params\
-                            ).values_list('dvobject__id', flat=True)
-            return dataset_ids
-
-        return []
-
-
-
 
     def get_dataset_size_counts_published(self):
 
@@ -97,12 +73,13 @@ class StatsMakerDatasetSizes(StatsMakerBase):
 
         # Get the correct DatasetVersion ids as a filter parameter
         #
-        dataset_ids = self.get_dataset_ids(**extra_filters)
-        filter_params = dict(dvobject__id__in=dataset_ids)
-
+        filter_params = {}
+        if extra_filters:
+            filter_params.update(extra_filters)
         # Make query
         #
-        dataset_file_sizes = Datafile.objects.annotate(ds_id=F('dvobject__owner__id'),\
+        dataset_file_sizes = Datafile.objects.filter(**filter_params\
+                            ).annotate(ds_id=F('dvobject__owner__id'),\
                             ).values('ds_id',\
                             ).annotate(cnt=models.Count('dvobject__id')\
                                 , ds_size=Sum('filesize')

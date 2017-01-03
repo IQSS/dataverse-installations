@@ -18,14 +18,14 @@ from dv_apps.datafiles.models import Datafile
 from dv_apps.utils.msg_util import msgt, msg
 from dv_apps.utils.byte_size import sizeof_fmt
 
-from dv_apps.metrics.stats_util_base import StatsMakerBase
+from dv_apps.metrics.stats_util_base import StatsMakerBase,\
+        BYTES_ONE_MILLION,\
+        BYTES_FIFTY_MILLION,\
+        BYTES_ONE_HUNDRED_MILLION,\
+        BYTES_ONE_BILLION
+
 from dv_apps.metrics.stats_result import StatsResult
 
-ONE_KB = 1024
-ONE_MILLION = ONE_KB * ONE_KB
-FIFTY_MILLION = ONE_MILLION*50
-ONE_HUNDRED_MILLION = ONE_MILLION*100
-ONE_BILLION = ONE_MILLION**1000
 
 class StatsMakerDatasetSizes(StatsMakerBase):
     """Answers the question: How many datasets have "x" number of bytes?
@@ -35,12 +35,10 @@ class StatsMakerDatasetSizes(StatsMakerBase):
 
     def __init__(self, **kwargs):
         """Process kwargs via StatsMakerBase"""
-        self.bin_size_bytes = FIFTY_MILLION#ONE_HUNDRED_MILLION
-
         super(StatsMakerDatasetSizes, self).__init__(**kwargs)
 
 
-    def get_bin_list(self, step=FIFTY_MILLION, low_num=0, high_num=ONE_BILLION):
+    def get_bin_list(self, step=BYTES_FIFTY_MILLION, low_num=0, high_num=BYTES_ONE_BILLION):
         assert high_num > low_num, "high_num must be greater than low_num"
         assert low_num >= 0, "low_num must be at least 0.  Cannot be negative"
         assert step > 0, "step must greater than 0"
@@ -96,8 +94,8 @@ class StatsMakerDatasetSizes(StatsMakerBase):
         #
         high_num = df['ds_size'].max() + self.bin_size_bytes
 
-        bins = self.get_bin_list(step=self.bin_size_bytes, low_num=0, high_num=high_num+self.bin_size_bytes)
 
+        bins = self.get_bin_list(step=self.bin_size_bytes, low_num=0, high_num=high_num+self.bin_size_bytes)
 
         # Add a new column, assigning each file count to a bin
         #
@@ -134,10 +132,7 @@ class StatsMakerDatasetSizes(StatsMakerBase):
         df_bins['bin_end_commas'] = df_bins['bin_end'].apply(lambda x: "{:,}".format(x))
         df_bins['bin_end_abbrev'] = df_bins['bin_end'].apply(lambda x: sizeof_fmt(x))
 
-
-        df_bins['bin_str'] = df_bins['bin_start_inclusive_abbrev']\
-                            + ' to '\
-                            + df_bins['bin_end_abbrev']
+        df_bins['bin_str'] = df_bins['bin_start_inclusive_abbrev'].str.cat(df_bins['bin_end_abbrev'].values.astype(str), sep=' to ')
 
         # Sort the bins
         #

@@ -28,11 +28,16 @@ class TruncYearMonth(models.Func):
 
 #select date_trunc('month', responsetime) as mth, count(id) from guestbookresponse group by mth;
     #to_char(createdate, 'YYYY-MM')
+BYTES_ONE_KB = 1024
+BYTES_ONE_MILLION = BYTES_ONE_KB * BYTES_ONE_KB
+BYTES_FIFTY_MILLION = BYTES_ONE_MILLION*50
+BYTES_ONE_HUNDRED_MILLION = BYTES_ONE_MILLION*100
+BYTES_ONE_BILLION = BYTES_ONE_MILLION**1000
 
 class StatsMakerBase(object):
 
     DEFAULT_BIN_SIZE = 20
-    DEFAULT_BIN_SIZE_BYTES = 10**6*50
+    DEFAULT_BIN_SIZE_BYTES = BYTES_FIFTY_MILLION
 
     def __init__(self, **kwargs):
         """

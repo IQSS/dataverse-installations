@@ -35,9 +35,9 @@ class StatsMakerDatasetSizes(StatsMakerBase):
 
     def __init__(self, **kwargs):
         """Process kwargs via StatsMakerBase"""
+        self.bin_size_bytes = FIFTY_MILLION#ONE_HUNDRED_MILLION
 
         super(StatsMakerDatasetSizes, self).__init__(**kwargs)
-        self.bin_size_bytes = FIFTY_MILLION#ONE_HUNDRED_MILLION
 
 
     def get_bin_list(self, step=FIFTY_MILLION, low_num=0, high_num=ONE_BILLION):
@@ -98,7 +98,6 @@ class StatsMakerDatasetSizes(StatsMakerBase):
 
         bins = self.get_bin_list(step=self.bin_size_bytes, low_num=0, high_num=high_num+self.bin_size_bytes)
 
-        print bins
 
         # Add a new column, assigning each file count to a bin
         #
@@ -116,13 +115,15 @@ class StatsMakerDatasetSizes(StatsMakerBase):
 
         total_dataset_count = df_bins['count'].sum()
 
+
         # Add a sort key
         # (0, 20] -> 0
         # (20, 30] -> 20
         # etc
         df_bins['sort_key'] = df_bins['bin'].apply(lambda x: int(x[1:-1].split(',')[0]))
 
-        df_bins['percentage_of_datasets'] = df_bins['count'].apply(lambda x: "{0:.4f}%".format(100 * x/float(total_dataset_count)))
+        if total_dataset_count > 0:
+            df_bins['percentage_of_datasets'] = df_bins['count'].apply(lambda x: "{0:.4f}%".format(100 * x/float(total_dataset_count)))
         #100*x/float(x.sum())
 
         df_bins['bin_start_inclusive'] = df_bins['sort_key']

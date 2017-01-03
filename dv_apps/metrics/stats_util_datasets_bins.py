@@ -165,13 +165,13 @@ class StatsMakerDatasetBins(StatsMakerBase):
         #
         df_bins = df_bins.sort('sort_key')
 
-        msgt(df_bins)
+        #msgt(df_bins)
 
         # If appropriate, skip empty bins, e.g. remove 0 counts
         #
         if self.skip_empty_bins:
             df_bins = df_bins.query('count != 0')
-            msg(df_bins)
+            #msg(df_bins)
 
 
         # Return as python dict

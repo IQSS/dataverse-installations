@@ -21,7 +21,8 @@ from dv_apps.utils.byte_size import sizeof_fmt
 from dv_apps.metrics.stats_util_base import StatsMakerBase
 from dv_apps.metrics.stats_result import StatsResult
 
-ONE_MILLION = 2**20 #10**6
+ONE_KB = 1024
+ONE_MILLION = ONE_KB * ONE_KB
 FIFTY_MILLION = ONE_MILLION*50
 ONE_HUNDRED_MILLION = ONE_MILLION*100
 ONE_BILLION = ONE_MILLION**1000
@@ -36,7 +37,7 @@ class StatsMakerDatasetSizes(StatsMakerBase):
         """Process kwargs via StatsMakerBase"""
 
         super(StatsMakerDatasetSizes, self).__init__(**kwargs)
-        self.bin_size = FIFTY_MILLION#ONE_HUNDRED_MILLION
+        self.bin_size_bytes = FIFTY_MILLION#ONE_HUNDRED_MILLION
 
 
     def get_bin_list(self, step=FIFTY_MILLION, low_num=0, high_num=ONE_BILLION):
@@ -96,6 +97,8 @@ class StatsMakerDatasetSizes(StatsMakerBase):
         high_num = df['ds_size'].max() + self.bin_size_bytes
 
         bins = self.get_bin_list(step=self.bin_size_bytes, low_num=0, high_num=high_num+self.bin_size_bytes)
+
+        print bins
 
         # Add a new column, assigning each file count to a bin
         #

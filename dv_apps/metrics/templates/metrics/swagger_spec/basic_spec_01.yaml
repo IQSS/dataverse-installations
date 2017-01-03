@@ -101,7 +101,7 @@ parameters:
   binSizeBytes:
     name: bin_size_bytes
     in: query
-    description: Optional.  Change the binning size.  Default is 50,000,000 (without the commas).
+    description: Optional.  Change the binning size.  Default is 52,428,800 (without the commas).
     type: integer
   numBins:
     name: num_bins

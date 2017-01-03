@@ -58,7 +58,7 @@ class BytesPerDatasetStats(StatsViewSwagger):
     summary = ('Counts of published datasets based on total bytes of storage used')
     description = ('Counts of datasets based on total bytes of storage used.'
                 ' Answers the question -> How many datasets have "x" number of bytes?'
-                ' For example, if the "bin_size" is set to 50000000, results will show'
+                ' For example, if the "bin_size" is set to 52428800, results will show'
                 ' the number of datasets with "0.0 B to 50.0 MB" of data, the number of datasets with'
                 ' "50.0 MB to 100.0 MB", etc.')
     description_200 = 'Counts of files per Dataset using the latest DatasetVersion'

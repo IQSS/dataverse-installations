@@ -110,11 +110,18 @@ class StatsMakerDatasetSizes(StatsMakerBase):
         df_bins = pd.DataFrame(dict(bin=bin_count_series.index,\
                             count=bin_count_series.values))
 
+
+        total_dataset_count = df_bins['count'].sum()
+
         # Add a sort key
         # (0, 20] -> 0
         # (20, 30] -> 20
         # etc
         df_bins['sort_key'] = df_bins['bin'].apply(lambda x: int(x[1:-1].split(',')[0]))
+
+        df_bins['percentage_of_datasets'] = df_bins['count'].apply(lambda x: "{0:.4f}%".format(100 * x/float(total_dataset_count)))
+        #100*x/float(x.sum())
+
         df_bins['bin_start_inclusive'] = df_bins['sort_key']
         df_bins['bin_start_inclusive_commas'] = df_bins['bin_start_inclusive'].apply(lambda x: "{:,}".format(x))
         df_bins['bin_start_inclusive_abbrev'] = df_bins['bin_start_inclusive'].apply(lambda x: sizeof_fmt(x))
@@ -148,7 +155,7 @@ class StatsMakerDatasetSizes(StatsMakerBase):
 
         data_dict = OrderedDict()
         data_dict['record_count'] = len(formatted_records)
-        data_dict['dataset_count'] = df_bins['count'].sum()
+        data_dict['dataset_count'] = total_dataset_count
         data_dict['records'] = formatted_records
 
         return StatsResult.build_success_result(data_dict)

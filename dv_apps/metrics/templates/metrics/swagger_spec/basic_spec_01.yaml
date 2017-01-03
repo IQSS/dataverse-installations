@@ -192,6 +192,8 @@ definitions:
         type: string
       count:
         type: integer
+      percentage_of_datasets:
+        type: string
       bin_start_inclusive:
         type: integer
       bin_start_inclusive_comma:

@@ -16,7 +16,7 @@ from django.db import models
 from dv_apps.datasets.models import Dataset, DatasetVersion
 from dv_apps.datafiles.models import Datafile
 from dv_apps.utils.msg_util import msgt, msg
-from dv_apps.utils.byte_size import sizeof_fmt
+from dv_apps.utils.byte_size import sizeof_fmt, comma_sep_number
 
 from dv_apps.metrics.stats_util_base import StatsMakerBase,\
         BYTES_ONE_MILLION,\
@@ -85,10 +85,17 @@ class StatsMakerDatasetSizes(StatsMakerBase):
                             ).values('ds_id', 'cnt', 'ds_size'\
                             ).order_by('ds_size')
 
+        #total_bytes_used_result = Datafile.objects.filter(**filter_params\
+        #                    ).aggregate(ds_size=Sum('filesize'))
+
+
 
         # Convert to Dataframe
         #
-        df = pd.DataFrame(list(dataset_file_sizes), columns = ['dsv_id', 'cnt', 'ds_size'])
+        df = pd.DataFrame(list(dataset_file_sizes), columns = ['ds_id', 'cnt', 'ds_size'])
+
+        #total_dataset_count = len(df.index) # * includes rows with missing values
+        total_bytes_used = df['ds_size'].sum()
 
         # Get the list of bins
         #
@@ -125,11 +132,11 @@ class StatsMakerDatasetSizes(StatsMakerBase):
         #100*x/float(x.sum())
 
         df_bins['bin_start_inclusive'] = df_bins['sort_key']
-        df_bins['bin_start_inclusive_commas'] = df_bins['bin_start_inclusive'].apply(lambda x: "{:,}".format(x))
+        df_bins['bin_start_inclusive_commas'] = df_bins['bin_start_inclusive'].apply(lambda x: comma_sep_number(x))
         df_bins['bin_start_inclusive_abbrev'] = df_bins['bin_start_inclusive'].apply(lambda x: sizeof_fmt(x))
 
         df_bins['bin_end'] = df_bins['bin'].apply(lambda x: int(x[1:-1].split(',')[1]))
-        df_bins['bin_end_commas'] = df_bins['bin_end'].apply(lambda x: "{:,}".format(x))
+        df_bins['bin_end_commas'] = df_bins['bin_end'].apply(lambda x: comma_sep_number(x))
         df_bins['bin_end_abbrev'] = df_bins['bin_end'].apply(lambda x: sizeof_fmt(x))
 
         df_bins['bin_str'] = df_bins['bin_start_inclusive_abbrev'].str.cat(df_bins['bin_end_abbrev'].values.astype(str), sep=' to ')
@@ -155,6 +162,9 @@ class StatsMakerDatasetSizes(StatsMakerBase):
         data_dict = OrderedDict()
         data_dict['record_count'] = len(formatted_records)
         data_dict['dataset_count'] = total_dataset_count
+        data_dict['total_bytes_used'] = total_bytes_used
+        data_dict['total_bytes_used_comma'] = comma_sep_number(int(total_bytes_used))
+        data_dict['total_bytes_used_abbrev'] = sizeof_fmt(total_bytes_used)
         data_dict['records'] = formatted_records
 
         return StatsResult.build_success_result(data_dict)

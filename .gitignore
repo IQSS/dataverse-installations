@@ -131,3 +131,5 @@ miniverse/settings/oauth_test_creds.py
 miniverse/settings/test_url.txt
 
 miniverse/settings/test_url.py
+
+scripts/mongo/json_output

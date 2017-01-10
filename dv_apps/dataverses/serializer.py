@@ -130,7 +130,7 @@ class DataverseSerializer(object):
         fmt_dict['dv_link'] = DataverseUtil.get_dataverse_link(fmt_dict['alias'])
         fmt_dict['dv_link_json'] = DataverseUtil.get_dataverse_serialization_link(fmt_dict['alias'])
         fmt_dict['description'] = owner.description
-
+        fmt_dict['dataversetype'] = owner.dataversetype
         return fmt_dict
 
 

@@ -16,11 +16,16 @@
             <li><a href="{% url 'admin:index' %}">{% url 'admin:index' %}</a></li>
         </ul>
 
-        <h4>swagger</h4>
-        <ul>
-            <li><a href="{% url 'view_dynamic_swagger_spec' %}">{% url 'view_dynamic_swagger_spec' %}</a></li>
-            <li><a href="/static/swagger-ui/index.html?url={% url 'view_dynamic_swagger_spec' %}">/static/swagger-ui/index.html?url={% url 'view_dynamic_swagger_spec' %}</a></li>
-        </ul>
+    <h4>swagger</h4>
+    <ul>
+        <li><a href="{% url 'view_dynamic_swagger_spec' %}">{% url 'view_dynamic_swagger_spec' %}</a></li>
+        <li><a href="/static/swagger-ui/index.html?url={% url 'view_dynamic_swagger_spec' %}">/static/swagger-ui/index.html?url={% url 'view_dynamic_swagger_spec' %}</a></li>
+    </ul>
+
+    <h4>lists</h4>
+    <ul>
+        <li><a href="{% url 'view_dataverse_list' %}">dataverse list in Excel (published dataverses)</a></li>
+    </ul>
 
     <h4>map</h4>
         <ul>

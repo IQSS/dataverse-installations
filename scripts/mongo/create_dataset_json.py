@@ -201,18 +201,18 @@ class DatasetJSONCreator(object):
         #field_name = 'metadata_blocks.citation.dsDescription.dsDescriptionValue'
         #docs = collection.find({field_name:{'$regex':'(^Law|\sLaw\s|\sLaw$)', '$options':'i'}})
         #docs = collection.find({'title':{'$regex':'(^Law|\sLaw\s|\sLaw$)', '$options':'i'}})
-        from dotmap import DotMap
+        from dict_map_util import DictMapUtil
 
         cnt = 0
         for doc in docs:
             cnt += 1
             msgt('(%d) %s' % (cnt, doc['title']))
 
-            dmap = DotMap(doc)
             dmap_str = 'dmap.' + field_names[0]
             print 'dmap_str', dmap_str
+            m = DictMapUtil(doc)
             import ipdb; ipdb.set_trace()
-            print eval(dmap_str)
+            #print eval(dmap_str)
             break
             """
             keys = field_names[0].split('.')

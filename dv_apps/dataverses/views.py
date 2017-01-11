@@ -9,7 +9,7 @@ from dv_apps.dataverses.models import Dataverse
 from dv_apps.utils.date_helper import get_timestamp_for_filename
 
 # Create your views here.
-def view_dataverse_list(request, **kwargs):
+def view_dataverse_list(request, output_format='xlsx', **kwargs):
 
     filter_params = {}
 
@@ -34,27 +34,30 @@ def view_dataverse_list(request, **kwargs):
     df['dataverse_url'] = df['alias'].apply(lambda x: 'https://dataverse.harvard.edu/dataverse/%s' %  x)
     vals.append('dataverse_url')
 
-    excel_string_io = StringIO.StringIO()
+    if output_format == 'xlsx':
+        excel_string_io = StringIO.StringIO()
 
-    pd_writer = pd.ExcelWriter(excel_string_io, engine='xlsxwriter')
+        pd_writer = pd.ExcelWriter(excel_string_io, engine='xlsxwriter')
 
-    df.to_excel(pd_writer, index=False, sheet_name='metrics', columns=vals)
+        df.to_excel(pd_writer, index=False, sheet_name='metrics', columns=vals)
 
-    pd_writer.save()
+        pd_writer.save()
 
-    excel_string_io.seek(0)
-    workbook = excel_string_io.getvalue()
+        excel_string_io.seek(0)
+        workbook = excel_string_io.getvalue()
 
-    if workbook is None:
-        # Ah, make a better error
-        return HttpResponse('Sorry! An error occurred trying to create an Excel spreadsheet.')
+        if workbook is None:
+            # Ah, make a better error
+            return HttpResponse('Sorry! An error occurred trying to create an Excel spreadsheet.')
 
 
-    xlsx_fname = 'dataverses_%s.xlsx' % get_timestamp_for_filename()
+        xlsx_fname = 'dataverses_%s.xlsx' % get_timestamp_for_filename()
 
-    response = HttpResponse(workbook,\
-            content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
+        response = HttpResponse(workbook,\
+                content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
 
-    response['Content-Disposition'] = 'attachment; filename=%s' % xlsx_fname
+        response['Content-Disposition'] = 'attachment; filename=%s' % xlsx_fname
 
-    return response
+        return response
+
+    return HttpResponse('Sorry.  This format is not recognized: %s' % output_format)

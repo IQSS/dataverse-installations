@@ -24,7 +24,8 @@
 
     <h4>lists</h4>
     <ul>
-        <li><a href="{% url 'view_dataverse_list' %}">dataverse list in Excel (published dataverses)</a></li>
+        <li><a href="{% url 'view_dataverse_list_default' %}">List of published Dataverses (.xlsx)</a></li>
+        <li><a href="{% url 'view_dataverse_list_default' 'csv' %}">List of published Dataverses (.csv)</a></li>
     </ul>
 
     <h4>map</h4>

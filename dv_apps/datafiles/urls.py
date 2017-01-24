@@ -5,4 +5,5 @@ urlpatterns = (
 
     url(r'^table-preview-json/(?P<datafile_id>\d{1,8})?', views.view_table_preview_json, name='view_table_preview_json'),
 
+    url(r'^table-preview-html/(?P<datafile_id>\d{1,8})?', views.view_table_preview_html, name='view_table_preview_html'),
 )

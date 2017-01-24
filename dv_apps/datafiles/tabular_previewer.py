@@ -3,6 +3,10 @@ from collections import OrderedDict
 import json
 import pandas as pd
 
+from dv_apps.datafiles import temp_file_helper
+
+DEFAULT_PREVIEW_ROW_LIMIT = 50
+
 class TabularPreviewer(object):
     """Preview first x rows of a Tabular File
     Used to produce JSON for widgets"""
@@ -10,7 +14,7 @@ class TabularPreviewer(object):
     def __init__(self, filepath, **kwargs):
 
         # set params from kwargs or default
-        self.num_preview_rows = kwargs.get('num_preview_rows', 50)
+        self.num_preview_rows = kwargs.get('num_preview_rows', DEFAULT_PREVIEW_ROW_LIMIT)
         self.tab_delimiter = kwargs.get('tab_delimiter', '\t')
 
         # filepath
@@ -27,14 +31,14 @@ class TabularPreviewer(object):
         self.error_found = True
         self.error_message = err_msg
 
-    def was_error_found(self):
+    def has_error(self):
         """Did an error occur?"""
         return self.error_found
 
     def preliminary_file_check(self):
         """Make sure the file exists and isn't empty"""
 
-        if self.error_found:
+        if self.has_error():
             return False
 
         if not self.filepath:
@@ -51,7 +55,10 @@ class TabularPreviewer(object):
 
         return True
 
-    def get_json_rows(self):
+    def get_json_rows(self, pretty_print=False):
+        return self.get_data_rows(as_json=True, pretty_print=pretty_print)
+
+    def get_data_rows(self, as_json=False, pretty_print=False):
         """
         Return information as JSON
             {
@@ -73,9 +80,16 @@ class TabularPreviewer(object):
                     ]
             }
         """
+        if self.has_error():
+            return None
 
         # Read the table
-        df = pd.read_table(dta_file)
+        try:
+            df = pd.read_table(self.filepath)
+        except:
+            msgt('Failed to open file via pandas!')
+            temp_file_helper.make_sure_file_deleted(self.filepath)
+            return None
 
         # Retrieve the columns
         column_names = df.columns.tolist()
@@ -83,14 +97,19 @@ class TabularPreviewer(object):
         # Retrieve the rows
         rows = df[:self.num_preview_rows].values.tolist()
 
+        #print 'rows', json.dumps(rows)
+
         # Format the response
         info_dict = OrderedDict()
 
-        info_dict['total_row_count'] = df.index
+        info_dict['total_row_count'] = len(df.index)
         info_dict['preview_row_count'] = len(rows)
         info_dict['column_names'] = column_names
         info_dict['rows'] = rows
 
-        return json.dumps(info_dict, indent=4)
+        if as_json:
+            if pretty_print:
+                return json.dumps(info_dict, indent=4)
+            return json.dumps(info_dict)
 
-        
+        return info_dict

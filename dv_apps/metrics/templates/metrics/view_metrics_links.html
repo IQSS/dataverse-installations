@@ -82,43 +82,51 @@
         </ul>
     {% endif %}
 
-            </div><!-- end col -->
-            {% if DEBUG %}
-            <!-- start 2nd col -->
-            <div class="col-xs-12 col-sm-6">
+</div><!-- end col -->
 
-                <h4>experimental</h4>
-                <div style="padding:0 20px;">
+        {% if DEBUG %}
+        <!-- start 2nd col -->
+        <div class="col-xs-12 col-sm-6">
 
-                    <b>dataverses</b>
-                    <ul>
-                        <li><a href="{% url 'view_single_dataverse_by_id' 1 %}?pretty=true">{% url 'view_single_dataverse_by_id' 1 %}?pretty=true</a>
-                            <ul>
-                                <li><a href="{% url 'view_single_dataverse_by_alias' 'root' %}?pretty=true">{% url 'view_single_dataverse_by_alias' 'root' %}?pretty=true</a></li>
-                            </ul>
-                          </li>
-                    </ul>
+            <h4>experimental</h4>
+            <div style="padding:0 20px;">
 
-                    <br /><b>datasets</b>: Test Example of HTML from JSON
-                    <ul>
-                        <li>persistentId id: <a href="{% url 'view_dataset_by_persistent_id' %}?persistentId=doi:10.7910/DVN/26935">{% url 'view_dataset_by_persistent_id' %}?persistentId=doi:10.7910/DVN/26935</a></li>
+                <b>dataverses</b>
+                <ul>
+                    <li><a href="{% url 'view_single_dataverse_by_id' 1 %}?pretty=true">{% url 'view_single_dataverse_by_id' 1 %}?pretty=true</a>
+                        <ul>
+                            <li><a href="{% url 'view_single_dataverse_by_alias' 'root' %}?pretty=true">{% url 'view_single_dataverse_by_alias' 'root' %}?pretty=true</a></li>
+                        </ul>
+                      </li>
+                </ul>
 
-                        <li>dataset id: <a href="{% url 'view_single_dataset' 53121 %}">{% url 'view_single_dataset' 53121 %}</a></li>
+                <br /><b>datasets</b>: Test Example of HTML from JSON
+                <ul>
+                    <li>persistentId id: <a href="{% url 'view_dataset_by_persistent_id' %}?persistentId=doi:10.7910/DVN/26935">{% url 'view_dataset_by_persistent_id' %}?persistentId=doi:10.7910/DVN/26935</a></li>
 
-
-                        <li>dataset verions id: <a href="{% url 'view_dataset_by_version' 79678 %}">{% url 'view_dataset_by_version' 79678 %}</a></li>
-
-                            <br />on public: <a href="https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/26935">https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/26935</a>
-
-                        <li>composable: <a href="{% url 'view_side_by_side1' 53121 %}">{% url 'view_side_by_side1' 53121 %}</a></li>
+                    <li>dataset id: <a href="{% url 'view_single_dataset' 53121 %}">{% url 'view_single_dataset' 53121 %}</a></li>
 
 
+                    <li>dataset verions id: <a href="{% url 'view_dataset_by_version' 79678 %}">{% url 'view_dataset_by_version' 79678 %}</a></li>
 
-                    </ul>
+                        <br />on public: <a href="https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/26935">https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/26935</a>
 
-                </div>
-            </div><!-- end 2nd col -->
-            {% endif %}
+                    <li>composable: <a href="{% url 'view_side_by_side1' 53121 %}">{% url 'view_side_by_side1' 53121 %}</a></li>
+
+
+
+                </ul>
+
+                <h4>datafile</h4>
+                <ul>
+                    <li><a href="{% url 'view_table_preview_json' 1480151 %}">Tabular Rows JSON for file id 1480151: {% url 'view_table_preview_json' 1480151 %}</a></li>
+
+                    <li><a href="{% url 'view_table_preview_html' 1480151 %}">Tabular Preview for file id 1480151: {% url 'view_table_preview_html' 1480151 %}</a></li>
+
+                </ul>
+            </div>
+        </div><!-- end 2nd col -->
+        {% endif %}
         </div><!-- end row -->
     </div>
 </div>

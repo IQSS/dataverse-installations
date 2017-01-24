@@ -333,26 +333,6 @@ class StatsMakerDatasets(StatsMakerBase):
         return StatsResult.build_success_result(data_dict, sql_query)
 
 
-        print dv_info
-        """
-        python manage shell
-        filter_params = dict(dvobject__publicationdate__isnull=False)
-
-        """
-
-        assert False, "Not done yet.  Don't use"
-        """select dv.id, dvo.publicationdate, dv.name, 'https://dataverse.harvard.edu/dataverse/&#39;&nbsp;%7C%7C [Open URL] dv.alias as url from dvobject dvo, dataverse dv
-where dv.id = dvo.id
-and dvo.publicationdate is not null
-and dvo.id not in
-(select distinct owner_id from dvobject where dtype = 'Dataset'
-Union select distinct owner_id from dvobject where dtype = 'Dataverse'  and owner_id is not null
-UNIon select distinct linkingdataverse_id from datasetlinkingdataverse
-union select distinct linkingdataverse_id from dataverselinkingdataverse)
-        """
-
-
-
     def get_dataset_subject_counts(self,  **extra_filters):
         """Dataset counts by subjet"""
 

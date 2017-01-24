@@ -6,6 +6,8 @@ This may be used for APIs, views with visualizations, etc.
 from django.db import models
 
 from dv_apps.utils.date_helper import format_yyyy_mm_dd
+from dv_apps.utils import query_helper
+
 from dv_apps.dvobjects.models import DVOBJECT_CREATEDATE_ATTR
 from dv_apps.metrics.stats_result import StatsResult
 from dv_apps.metrics.dataverse_tree_util import DataverseTreeUtil
@@ -336,8 +338,7 @@ class StatsMakerBase(object):
         Check if the dvobject has a publication date--which indicates
         that it has been published
         """
-        date_var = '%s__publicationdate__isnull' % dvobject_var_name
-        return {date_var : False}
+        return query_helper.get_is_published_filter_param(dvobject_var_name)
 
 
     def get_is_NOT_published_filter_param(self, dvobject_var_name='dvobject'):
@@ -345,5 +346,4 @@ class StatsMakerBase(object):
         Check if the dvobject has a null publication date--which indicates
         that it has NOT been published
         """
-        date_var = '%s__publicationdate__isnull' % dvobject_var_name
-        return {date_var : True}
+        return query_helper.get_is_NOT_published_filter_param(dvobject_var_name)

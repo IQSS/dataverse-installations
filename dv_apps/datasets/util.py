@@ -1,14 +1,15 @@
 from dv_apps.datasets.models import Dataset, DatasetVersion, VERSION_STATE_RELEASED
-
+from dv_apps.utils import query_helper
 
 def get_latest_dataset_version(dataset_id):
     """Given a dataset id, retrieve the latest *published* DatasetVersion"""
 
-    try:
-        dataset = Dataset.objects.select_related('dvobject').get(\
-            dvobject__id=dataset_id,\
-            dvobject__publicationdate__isnull=False)
-    except Dataset.DoesNotExist:
+    dataset = Dataset.objects.select_related('dvobject'\
+            ).filter(dvobject__id=dataset_id\
+            ).filter(**query_helper.get_is_published_filter_param()\
+            ).first()
+
+    if dataset is None:
         return None
 
     # Get the latest version

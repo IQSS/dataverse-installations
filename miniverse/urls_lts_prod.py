@@ -19,6 +19,8 @@ urlpatterns = [
 
     url(r'^%sdataset/' % URL_PREFIX, include('dv_apps.datasets.urls')),
 
+    url(r'^%sdatafile/' % URL_PREFIX, include('dv_apps.datafiles.urls')),
+
     url(r'^%sdataverse/' % URL_PREFIX, include('dv_apps.dataverses.urls')),
 
     url(r'^%smap/' % URL_PREFIX, include('dv_apps.installations.urls')),

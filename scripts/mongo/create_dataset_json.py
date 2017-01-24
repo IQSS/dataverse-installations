@@ -30,6 +30,7 @@ from dv_apps.datasets.serializer import DatasetSerializer
 from dv_apps.datasets.util import get_latest_dataset_version
 from dv_apps.utils.msg_util import msg, msgt, msgx
 from mongo_rename_list import update_json_text
+from dv_apps.utils import query_helper
 
 OUTPUT_DIR = join(SCRIPT_DIR, 'json_output')
 if not isdir(OUTPUT_DIR):
@@ -52,7 +53,7 @@ class DatasetJSONCreator(object):
         #
         filters = {}
         if self.published_only:
-            filters.update(dict(dvobject__publicationdate__isnull=False))
+            filters.update(query_helper.get_is_published_filter_param())
 
         # Query for dataset ids
         #

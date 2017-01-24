@@ -8,6 +8,9 @@ from django.db.models import F
 from dv_apps.dataverses.models import Dataverse
 from dv_apps.utils.date_helper import get_timestamp_for_filename
 
+from dv_apps.utils import query_helper
+
+
 # Create your views here.
 def view_dataverse_list(request, output_format='xlsx', **kwargs):
 
@@ -16,7 +19,7 @@ def view_dataverse_list(request, output_format='xlsx', **kwargs):
     published_only = kwargs.get('published_only', True)
 
     if published_only:
-        filter_params.update(dict(dvobject__publicationdate__isnull=False))
+        filter_params.update(query_helper.get_is_published_filter_param())
 
     vals = ['id', 'name', 'alias', 'dataversetype', 'createdate', 'publicationdate' ]
 

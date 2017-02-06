@@ -3,6 +3,7 @@ from collections import OrderedDict
 
 from django.http import Http404
 from django.contrib.auth.decorators import login_required
+from django.core.urlresolvers import reverse
 
 from django.http import JsonResponse, HttpResponse
 from django.views.decorators.cache import cache_page
@@ -10,6 +11,7 @@ from django.views.decorators.cache import cache_page
 from dv_apps.dataverses.models import Dataverse
 from dv_apps.dataverses.serializer import DataverseSerializer
 
+from django.conf import settings
 
 def get_pretty_val(request):
     """Quick check of url param to pretty print JSON"""
@@ -34,11 +36,29 @@ def view_single_dataverse_by_alias(request, alias):
 def view_single_dataverse_by_id(request, dataverse_id):
 
     try:
-        dv = Dataverse.objects.select_related('dvobject').get(dvobject__id =dataverse_id)
+        dv = Dataverse.objects.select_related('dvobject').get(dvobject__id=dataverse_id)
     except Dataverse.DoesNotExist:
         raise Http404
 
     return view_single_dataverse(request, dv)
+
+
+def view_get_slack_dataverse_info(dataverse_id):
+
+    try:
+        dv = Dataverse.objects.select_related('dvobject'\
+                        ).get(dvobject__id=dataverse_id)
+    except Dataverse.DoesNotExist:
+        return "Sorry, no Dataverse found for id: %s" % dataverse_id
+
+    dv_dict = DataverseSerializer(dv).as_json()
+
+    #ref_url = reverse('view_single_dataverse_by_id', kwargs=dict(dataverse_id=dataverse_id))
+
+    ref_url = '%s/dataverse.xhtml?Id=%s' % (settings.DATAVERSE_INSTALLATION_URL, dataverse_id)
+
+    return """```%s```\nreference: %s""" %\
+        (json.dumps(dv_dict, indent=4), ref_url)
 
 
 @login_required

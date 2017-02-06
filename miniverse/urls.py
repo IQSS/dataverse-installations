@@ -27,6 +27,8 @@ urlpatterns = [
 
     url(r'^%sdvobjects/' % URL_PREFIX, include('dv_apps.dvobject_api.urls')),
 
+    url(r'^%sslackbot/' % URL_PREFIX, include('dv_apps.slackbot.urls')),
+
     url(r'^%sminiverse-admin/' % URL_PREFIX, include(admin.site.urls)),
 
     url(r'^%sminiverse-admin/' % URL_PREFIX, include(admin.site.urls)),

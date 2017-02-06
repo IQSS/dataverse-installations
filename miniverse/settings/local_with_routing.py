@@ -7,7 +7,7 @@ Please read through and change the settings where noted
 """
 from __future__ import absolute_import
 import sys
-from os import makedirs
+from os import makedirs, environ
 from os.path import join, isdir
 from miniverse.testrunners.disable_migrations import DisableMigrations
 from miniverse.settings.base import *
@@ -91,6 +91,14 @@ ALLOWED_HOSTS = ('127.0.0.1', )
 # -----------------------------------
 INTERNAL_IPS = ('127.0.0.1',)
 
+
+# -----------------------------------
+# Slackbot
+# -----------------------------------
+SLACK_USERNAME = 'dvbot'
+SLACK_BOT_TOKEN = environ.get('SLACK_BOT_TOKEN')
+BOT_ID =  environ.get('BOT_ID')
+SLACK_WEBHOOK_SECRET = environ.get('SLACK_WEBHOOK_SECRET')
 
 # -----------------------------------
 # Optional MIDDLEWARE_CLASSES

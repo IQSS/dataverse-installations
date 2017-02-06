@@ -23,3 +23,6 @@ jsonfield==1.0.3
 
 # syntax highlighting
 Pygments==2.1.3
+
+# slackbot
+slackclient==1.0.5

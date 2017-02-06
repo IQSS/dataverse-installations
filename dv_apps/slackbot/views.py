@@ -5,6 +5,7 @@ from django.conf import settings
 from django.views.decorators.http import require_POST
 from django.views.decorators.csrf import csrf_exempt
 from dv_apps.dvobject_api.views_dataverses import view_get_slack_dataverse_info
+from dv_apps.dvobject_api.views_datasets import view_get_slack_dataset_info
 from dv_apps.dvobjects.models import DvObject
 
 @require_POST
@@ -34,7 +35,7 @@ def parse_message(slack_text):
 
     slack_items = slack_text.split()
 
-    if slack_items > 1 and not slack_items[1].isdigit():
+    if len(slack_items) > 1 and not slack_items[1].isdigit():
         return get_help_text()
 
     dvobject_id = slack_items[1]
@@ -43,10 +44,18 @@ def parse_message(slack_text):
     except:
         return "No DvObject with id: %s" % dvobject_id
 
+
+    if len(slack_items) >= 3:
+        extra_args = { slack_items[2] : True }
+    else:
+        extra_args = {}
+
     if dvobject.dtype == 'Dataverse':
         return view_get_slack_dataverse_info(dvobject.id) +\
                 "\nIt's a Dataverse!"
 
+    elif dvobject.dtype == 'Dataset':
+        return view_get_slack_dataset_info(dvobject.id, **extra_args)
     else:
         return "It's a %s" % dvobject.dtype
 

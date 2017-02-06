@@ -43,6 +43,32 @@ def view_single_dataset(request, dataset_id):
     return view_dataset_by_version(request, dsv.id)
 
 
+def view_get_slack_dataset_info(dataset_id, **kwargs):
+
+    citation_only = kwargs.get('citation', False)
+
+    dsv = get_latest_dataset_version(dataset_id)
+    if dsv is None:
+        return "Sorry, no Dataset found for id: %s" % dataset_id
+
+    dataset_dict = DatasetSerializer(dsv).as_json()
+
+    ref_url = '%s/dataset.xhtml?id=%s' % (\
+                    settings.DATAVERSE_INSTALLATION_URL,
+                    dataset_id)
+
+    if citation_only:
+        citation_block = dataset_dict.get('metadata_blocks', {}).get('citation')
+
+        return """%s\n\nreference: %s""" %\
+            (json.dumps(citation_block, indent=4), ref_url)
+
+
+
+    return """%s\n\nreference: %s""" %\
+        (json.dumps(dataset_dict, indent=4), ref_url)
+
+
 
 """
 http://127.0.0.1:8000/miniverse/dvobjects/api/v1/datasets/by-persistent-id?persistentID=doi:10.7910/DVN/26935

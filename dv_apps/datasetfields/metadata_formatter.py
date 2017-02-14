@@ -39,8 +39,10 @@ class MetadataFormatter(object):
         """
         # (1) Gather the DatasetField objects
         #
-        primary_ds_fields = DatasetField.objects.select_related('datasetfieldtype'\
-            ,'datasetfieldtype__metadatablock').filter(datasetversion=self.dataset_version)
+        primary_ds_fields = DatasetField.objects.select_related(\
+                            'datasetfieldtype',
+                            'datasetfieldtype__metadatablock'\
+                            ).filter(datasetversion=self.dataset_version)
 
         ds_field_ids = []  # For looking up compound vals
         for ds_field in primary_ds_fields:
@@ -54,8 +56,10 @@ class MetadataFormatter(object):
         # -------------------------------------------
         kwargs = dict(parentdatasetfield__id__in=ds_field_ids)
         compound_id_pairs = DatasetFieldCompoundValue.objects.values_list(\
-            'id', 'parentdatasetfield').filter(**kwargs\
-            ).order_by('displayorder')
+                            'id',
+                            'parentdatasetfield'\
+                            ).filter(**kwargs\
+                            ).order_by('displayorder')
 
 
         # -------------------------------------------
@@ -76,10 +80,12 @@ class MetadataFormatter(object):
         # -------------------------------------------
         kwargs2 = dict(parentdatasetfieldcompoundvalue__id__in=ds_compound_ids)
         secondary_ds_fields = DatasetField.objects.select_related(\
-            'datasetfieldtype', 'parentdatasetfieldcompoundvalue'
-            ).filter(**kwargs2\
-            ).order_by('parentdatasetfieldcompoundvalue_id',\
-                'datasetfieldtype__displayorder')
+                            'datasetfieldtype',
+                            'parentdatasetfieldcompoundvalue'\
+                        ).filter(**kwargs2\
+                        ).order_by(\
+                            'parentdatasetfieldcompoundvalue_id',
+                            'datasetfieldtype__displayorder')
 
         # -------------------------------------------
         # (3c) Map the Primary DatasetField objects to
@@ -123,7 +129,7 @@ class MetadataFormatter(object):
             ds_field.metadata_block = ds_field.datasetfieldtype.metadatablock
 
             cnt+=1
-            #print '\n(%s) check ds_field: %s' % (cnt, ds_field)
+            print '\n(%s) check ds_field: %s' % (cnt, ds_field)
 
             secondary_fields = primary_secondary_lookup.get(ds_field.id, None)
 
@@ -140,8 +146,8 @@ class MetadataFormatter(object):
                 for sec_field in secondary_fields:
                     self.add_value_to_dataset_field(sec_field, value_lookup, controlled_vocab_lookup)
                     ds_field.secondary_fields.append(sec_field)
-                #for sf in ds_field.secondary_fields:
-                #    print '(2nd) %s -> [%s]' % (sf.datasetfieldtype.title, sf.flat_val)
+                for sf in ds_field.secondary_fields:
+                    print '(2nd) %s -> [%s][%s]' % (sf.datasetfieldtype.title, sf.flat_val, sf.datasetfieldtype.displayorder)
             else:
                 msgt('AINT got nuthin: %s: %s' % (ds_field, ds_field.datasetfieldtype.title))
 
@@ -186,8 +192,13 @@ class MetadataFormatter(object):
         # Flat values
         # ----------------------
         ds_values = DatasetFieldValue.objects.values_list(\
-            'id', 'displayorder', 'value', 'datasetfield__id'\
-            ).filter(datasetfield__id__in=dataset_field_ids)
+                    'id',
+                    'displayorder',
+                    'value',
+                    'datasetfield__id'\
+                    ).filter(\
+                        datasetfield__id__in=dataset_field_ids\
+                    ).order_by('displayorder')
 
         for ds_val in ds_values:
             datasetValue = DatasetValue(ds_val)

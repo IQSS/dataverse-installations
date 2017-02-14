@@ -73,34 +73,39 @@ class DatasetDifferences(object):
 
         new_files_list = self.new_ds.pop('files', [])
         old_files_list = self.old_ds.pop('files', [])
-
-        #self.compare_lists(\
-        #                'Files',
-        #                new_files_list,
-        #                old_files_list)
-
+        #print 'new_files_list', new_files_list
 
         self.compare_dicts(\
-                    'rest of it',
+                    '',
                     self.new_ds,
                     self.old_ds)
 
+        self.compare_file_lists(\
+                    new_files_list,
+                    old_files_list)
 
-    def compare_items(self, section, key_name, new_item, old_item):
+
+
+    def compare_items(self, section, key_name, new_item, old_item, **kwargs):
         """Compare two items.  If they are dicts or lists, then
         compare each item in the dict or list"""
+
+
+        # subsection used for dicts/lists
+        if section:
+            subsection = '%s : %s' % (section, key_name)
+        else:
+            subsection = key_name
 
         if isinstance(new_item, dict)\
             and isinstance(old_item, dict):
             # Yes, compare these dicts...
             #
-            subsection = '%s : %s' % (section, key_name)
-            self.compare_dicts(subsection, new_item, old_item)
+            self.compare_dicts(subsection, new_item, old_item, **kwargs)
 
         elif isinstance(new_item, list) and isinstance(old_item, list):
             # Yes, compare these lists
             #
-            subsection = '%s : %s' % (section, key_name)
             self.compare_lists(subsection, new_item, old_item)
 
         else:
@@ -116,6 +121,60 @@ class DatasetDifferences(object):
         """Used for labeling an item in a list
         e.g. "Item 1", "Item 2", etc"""
         return 'Item %s' % cnt
+
+
+    def compare_file_lists(self, new_list, old_list):
+        """Compare two lists of files
+
+        TODO: Make sure comparing one file id to its equivalent
+        """
+        assert isinstance(new_list, list), 'new_list must be a list'
+        assert isinstance(old_list, list), 'old_list must be a list'
+
+        old_file_dict = dict([(file_info['id'], file_info)\
+                             for file_info in old_list])
+
+        section = 'Files'
+
+        new_ids_used = []
+        for new_item in new_list:
+            print type(new_item)
+            file_id = new_item.get('id')
+            file_label = 'File %s' % file_id
+
+            new_ids_used.append(file_id)
+
+            # Does an older item exist with this file id?
+            old_item = old_file_dict.get(file_id, None)
+
+            if old_item:
+                # Record items that have been CHANGED
+                #
+                if new_item != old_item:
+                    self.compare_items(\
+                                section,
+                                file_label,
+                                new_item,
+                                old_item,
+                                **dict(skip_list=['datasetVersionId']))
+                del old_file_dict[file_id]  # remove from dict
+            else:
+                # Record items that have been ADDED
+                #
+                self.record_diff_desc_added(\
+                            section,
+                            file_label,
+                            new_item)
+
+        for file_id, old_item in old_file_dict.items():
+            # Record items that have been REMOVED
+            #
+            file_label = 'File %s' % file_id
+
+            self.record_diff_desc_removed(\
+                            section,
+                            file_label,
+                            old_item)
 
     def compare_lists(self, section, new_list, old_list):
         """Compare two lists.  If an item in the list is another list
@@ -159,6 +218,7 @@ class DatasetDifferences(object):
         #removed = [old_item for old_item in set(old_list) if old_item not in new_list]
 
 
+
     def record_diff_desc_removed(self, section, key, val):
         """This item was REMOVED from the newer version"""
         self.record_diff_desc(section, key, None, val)
@@ -177,29 +237,51 @@ class DatasetDifferences(object):
                                 section,
                                 "Removed",
                                 key,
-                                None,
-                                old_val)
+                                self.format_for_display(None),
+                                self.format_for_display(old_val))
         elif new_val and old_val is None:
             ds_diff = DiffDescription(\
                                 section,
                                 "Added",
                                 key,
-                                new_val,
-                                None)
+                                self.format_for_display(new_val),
+                                self.format_for_display(None))
         else:
             ds_diff = DiffDescription(\
                                 section,
                                 "Modified",
                                 key,
-                                new_val,
-                                old_val)
+                                self.format_for_display(new_val),
+                                self.format_for_display(old_val))
         self.add_diff(ds_diff)
 
-    def compare_dicts(self, section, new_dict, old_dict):
+
+
+    def format_for_display(self, item):
+
+        if item is None:
+            return '(blank)'
+
+        elif isinstance(item, dict):
+            fmt_lines = []
+            for key, val in item.items():
+                fmt_lines.append('<b>%s</b>: %s' % (key, self.format_for_display(val)))
+            return '<br />'.join(fmt_lines)
+
+        elif isinstance(item, list):
+            #for val in item:
+            return ','.join(item)
+
+        return item
+
+
+    def compare_dicts(self, section, new_dict, old_dict, **kwargs):
         """Compare two dicts, noting whether
         a key/value was Removed, Added, or Modified
         Note: Attempts to preserve key order--dict is usually an OrderedDict
         """
+        # optional: get keys to skip
+        skip_list = kwargs.get('skip_list', [])
 
         old_dict_keys = [key for key, val in old_dict.items()]
         new_dict_keys = [key for key, val in new_dict.items()]
@@ -212,7 +294,8 @@ class DatasetDifferences(object):
         added = [key for key in new_dict_keys if key not in old_dict_keys]
         #new_dict_keys - old_dict_keys
         for added_key in added:
-            self.record_diff_desc_added(\
+            if added_key not in skip_list:
+                self.record_diff_desc_added(\
                                 section,
                                 added_key,
                                 new_dict[added_key])
@@ -222,7 +305,8 @@ class DatasetDifferences(object):
         # ------------------------------
         removed = [key for key in old_dict_keys if key not in new_dict_keys]
         for removed_key in removed:
-            self.record_diff_desc_removed(\
+            if removed_key not in skip_list:
+                self.record_diff_desc_removed(\
                                 section,
                                 removed_key,
                                 old_dict[removed_key])
@@ -239,8 +323,8 @@ class DatasetDifferences(object):
             msg('...> %s %s' % (mod_key, type(old_dict[mod_key])))
             # Is the value another dict?
             #
-
-            self.compare_items(\
+            if mod_key not in skip_list:
+                self.compare_items(\
                             section,
                             mod_key,
                             new_dict[mod_key],

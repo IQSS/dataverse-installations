@@ -2,10 +2,11 @@
 
 
 {% block main_content %}
-<h2>
+<h2>(test)
     {% if dataset_title %}{{ dataset_title }}<br />{% endif %}
     {{ dataset }}
 </h2>
+{#% comment %#}
 <div class="row">
     <div class="col-md-6">
         <div class="panel panel-default">
@@ -18,7 +19,7 @@
     </div>
     <div class="col-md-6">
         <div class="panel panel-default">
-          <div class="panel-heading">Previous Version</div>
+          <div class="panel-heading">Older Version</div>
           <div class="panel-body">
               <pre>{{ previous_json }}</pre>
 
@@ -26,18 +27,29 @@
         </div>
     </div>
 </div>
+{#% endcomment %#}
 <table class="table table-bordered">
 {% for ditem in diff_list %}
-    <tr>
-        <td>{{ ditem.section}}</td>
-        <td>{{ ditem.note}}</td>
-        <td>{{ ditem.attr_name}}</td>
-        <td>{{ ditem.old_val}}</td>
-        <td>{{ ditem.new_val}}</td>
-    </tr>
+    {% ifchanged ditem.section %}
+        <tr>
+            <td colspan="4"><br /><b>{{ ditem.section }}</b></td>
+        </tr>
+    {% endifchanged %}
+        <tr>
+            <td>{{ ditem.attr_name }}</td>
+            <td>{% if ditem.note == 'Removed' %}
+                    <span class="label label-danger">Removed</span>
+                {% elif ditem.note == 'Added' %}
+                    <span class="label label-success">Added</span>
+                {% else %}
+                    <span class="label label-info">Modified</span>
+                {% endif %}
+                </td>
+            <td>{{ ditem.old_val|safe }}</td>
+            <td>{{ ditem.new_val|safe }}</td>
+        </tr>
 {% endfor %}
 </table>
 
-diff_list
 
 {% endblock %}

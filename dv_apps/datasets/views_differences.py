@@ -34,13 +34,14 @@ def view_differences(request, dataset_id):
     # Retrieve two dataset versions and create JSON docs
     # -----------------------------
     latest_version = dataset_versions[0]
-    previous_version = dataset_versions[1]
+    previous_version = dataset_versions[4]
 
     latest_json = DatasetSerializer(latest_version).as_json()
     latest_json_string = json.dumps(latest_json, indent=4)
 
     previous_json = DatasetSerializer(previous_version).as_json()
     previous_json_string = json.dumps(previous_json, indent=4)
+    #return HttpResponse('ok')
 
     # -----------------------------
     # compare JSON docs

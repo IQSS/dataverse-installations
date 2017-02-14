@@ -45,7 +45,9 @@ class DatafileUtil(object):
         # Retrieve the file metadata objects and related dvobjects
         #   Note: This is one of those weird (#@%~!) places where 'datafile'
         #       is an FK to the DvObject table and not to Datafile table
-        f_metadata_objects = FileMetadata.objects.select_related('datafile').filter(datasetversion=self.dsv)
+        f_metadata_objects = FileMetadata.objects.select_related('datafile'\
+                                    ).filter(datasetversion=self.dsv\
+                                    ).order_by('datafile__id')
 
         # filemetadata ids
         fmeta_ids = [x.id for x in f_metadata_objects]

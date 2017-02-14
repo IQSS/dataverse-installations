@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+
+{% block main_content %}
+<h2>
+    {% if dataset_title %}{{ dataset_title }}<br />{% endif %}
+    {{ dataset }}
+</h2>
+<div class="row">
+    <div class="col-md-6">
+        <div class="panel panel-default">
+          <div class="panel-heading">Latest Version</div>
+          <div class="panel-body">
+              <pre>{{ latest_json }}</pre>
+
+          </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="panel panel-default">
+          <div class="panel-heading">Previous Version</div>
+          <div class="panel-body">
+              <pre>{{ previous_json }}</pre>
+
+          </div>
+        </div>
+    </div>
+</div>
+<table class="table table-bordered">
+{% for ditem in diff_list %}
+    <tr>
+        <td>{{ ditem.section}}</td>
+        <td>{{ ditem.note}}</td>
+        <td>{{ ditem.attr_name}}</td>
+        <td>{{ ditem.old_val}}</td>
+        <td>{{ ditem.new_val}}</td>
+    </tr>
+{% endfor %}
+</table>
+
+diff_list
+
+{% endblock %}

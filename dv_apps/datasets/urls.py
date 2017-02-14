@@ -1,10 +1,13 @@
 from django.conf.urls import url
 from .views import view_list_datasets, view_dataset_detail
+from .views_differences import view_differences
 
 urlpatterns = (
     url(r'^list/?', view_list_datasets, name='view_list_datasets'),
     url(r'^view/(?P<dataset_id>\d{1,8})?', view_dataset_detail, name='view_dataset_detail'),
     #url(r'^t/(?P<username>\w{1,50})', 'view_test_query', name='view_test_query_with_username'),
+
+    url(r'^test-diff/(?P<dataset_id>\d{1,8})?', view_differences, name='view_differences'),
 
     #url(r'^test-query', 'view_test_query', name='view_test_query'),
 

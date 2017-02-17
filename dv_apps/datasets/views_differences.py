@@ -13,6 +13,10 @@ from dv_apps.datasets.serializer import DatasetSerializer
 
 from dv_apps.datasets.dataset_differences import DatasetDifferences
 
+"""
+https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/KCAQ3I
+"""
+
 def view_differences(request, dataset_id):
     """View differences between two datasets"""
     try:
@@ -34,7 +38,7 @@ def view_differences(request, dataset_id):
     # Retrieve two dataset versions and create JSON docs
     # -----------------------------
     latest_version = dataset_versions[0]
-    previous_version = dataset_versions[4]
+    previous_version = dataset_versions[1]
 
     latest_json = DatasetSerializer(latest_version).as_json()
     latest_json_string = json.dumps(latest_json, indent=4)

@@ -36,6 +36,7 @@
                     {% endcomment %}
                     <th>filesystemname</th>
                     <th>filesize_bytes</th>
+                    <th>checksum type</th>
                     <th>checksum</th>
                     <th>restricted</th>
                     <th>download</th>
@@ -46,7 +47,7 @@
         {% for f in dfiles %}
             {% ifchanged f.dvobject.owner_id %}
             <tr>
-                <td colspan="9" class="text-info" ><h4>Dataset: <a href="{{ installation_url }}/dataset.xhtml?id={{ f.dvobject.owner_id }}" target="_blank">{{ f.dvobject.owner_id }}</a></h4></td>
+                <td colspan="10" class="text-info" ><h4>Dataset: <a href="{{ installation_url }}/dataset.xhtml?id={{ f.dvobject.owner_id }}" target="_blank">{{ f.dvobject.owner_id }}</a></h4></td>
             </tr>
             {% endifchanged %}
 
@@ -70,7 +71,8 @@
                         {{ f.filesize|intcomma }}
                     {% endif %}
                 </td>
-                <td>{{ f.checksumvalue }} ({{ f.checksumtype }})</td>
+                <td>{{ f.checksumtype }}</td>
+                <td>{{ f.checksumvalue }}</td>
                 <td>{{ f.restricted }}</td>
                 <td><a href="{{ installation_url }}/api/access/datafile/{{ f.dvobject.id }}">download</a></td>
                 <td>{{ f.dvobject.createdate|date:"M d, Y" }}</td>
@@ -83,7 +85,7 @@
             </tr>
         {% empty %}
             <tr>
-                <td colspan="9">(no files)</td>
+                <td colspan="10">(no files)</td>
             </tr>
         {% endfor %}
             </tbody>

@@ -44,10 +44,16 @@
                 </tr>
             <tbody>
         {% for f in dfiles %}
+            {% ifchanged f.dvobject.owner_id %}
+            <tr>
+                <td colspan="10" class="text-info" ><h4>Dataset: <a href="{{ installation_url }}/dataset.xhtml?id={{ f.dvobject.owner_id }}" target="_blank">{{ f.dvobject.owner_id }}</a></h4></td>
+            </tr>
+            {% endifchanged %}
+
             <tr>
                 <td>{{ forloop.counter }}</td>
                 <td><a href="{{ installation_url }}/file.xhtml?fileId={{ f.dvobject.id }}" target="_blank">{{ f.dvobject.id }}</a></td>
-                <td><a href="{{ installation_url }}/dataset.xhtml?Id={{ f.dvobject.owner_id }}" target="_blank">{{ f.dvobject.owner_id }}</a></td>
+                <td><a href="{{ installation_url }}/dataset.xhtml?id={{ f.dvobject.owner_id }}" target="_blank">{{ f.dvobject.owner_id }}</a></td>
                 {% comment %}
                 <td><b>{{ f.label }}</b>
                     {% if f.description %}
@@ -67,7 +73,8 @@
             </tr>
         {% empty %}
             <tr>
-                <td colspan="8">(no files)</td>
+                <td colspan="10">(no files)</td>
+            </tr>
         {% endfor %}
             </tbody>
         </table>

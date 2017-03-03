@@ -22,7 +22,7 @@ def view_filesize_zero_local_list(request):
     """
     info_dict = dict(dfiles=ZeroFilesizeStats.get_local_files_bad_size(),
                      subtitle='Local files with size zero or null',
-                     installation_url=DATAVERSE_INSTALLATION_URL)
+                     installation_url=settings.DATAVERSE_INSTALLATION_URL)
 
     return render(request,
                   'filesize_zero_local_list.html',

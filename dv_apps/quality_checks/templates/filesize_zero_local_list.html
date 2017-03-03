@@ -43,7 +43,7 @@
         {% for f in dfiles %}
             <tr>
                 <td>{{ forloop.counter }}</td>
-                <td><a href="{{ installation_url }}/file.xhtml?fileId=3004425={{ f.dvobject.id }}" target="_blank">{{ f.dvobject.id }}</a></td>
+                <td><a href="{{ installation_url }}/file.xhtml?fileId={{ f.dvobject.id }}" target="_blank">{{ f.dvobject.id }}</a></td>
                 <td><a href="{{ installation_url }}/dataset.xhtml?Id={{ f.dvobject.owner_id }}" target="_blank">{{ f.dvobject.owner_id }}</a></td>
                 {% comment %}
                 <td><b>{{ f.label }}</b>
@@ -55,7 +55,7 @@
                 <td>{{ f.timestamps.publicationdate }}</td>
                 {% endcomment %}
 
-                <td><a href="{{ installation_url }}/file.xhtml?fileId=3004425={{ f.dvobject.id }}" target="_blank">{{ f.filesystemname }}</a></td>
+                <td><a href="{{ installation_url }}/file.xhtml?fileId={{ f.dvobject.id }}" target="_blank">{{ f.filesystemname }}</a></td>
                 <td>{{ f.filesize|intcomma }}</td>
                 <td>{{ f.checksumvalue }} ({{ f.checksumtype }})</td>
                 <td>{{ f.restricted }}</td>

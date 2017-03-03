@@ -21,7 +21,7 @@ def view_filesize_zero_local_list(request):
     List local files with size zero or null
     """
     dfiles = ZeroFilesizeStats.get_local_files_bad_size()
-    dataset_ids = [df.dvobject.owner_id for df in dfiles]
+    dataset_ids = list(set([df.dvobject.owner_id for df in dfiles]))
     num_datasets = len(dataset_ids)
 
     info_dict = dict(dfiles=dfiles,

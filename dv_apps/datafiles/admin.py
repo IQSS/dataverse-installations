@@ -1,7 +1,7 @@
 from django.contrib import admin
 
-from .models import Datafile, FileMetadata, DatafileTag, DatafileCategory,\
-    FilemetadataDatafileCategory
+from dv_apps.datafiles.models import Datafile, FileMetadata, DatafileTag,\
+    DatafileCategory, FilemetadataDatafileCategory
 
 
 class DatafileAdmin(admin.ModelAdmin):

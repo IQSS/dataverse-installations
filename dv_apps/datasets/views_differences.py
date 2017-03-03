@@ -38,7 +38,7 @@ def view_differences(request, dataset_id):
     # Retrieve two dataset versions and create JSON docs
     # -----------------------------
     latest_version = dataset_versions[0]
-    previous_version = dataset_versions[1]
+    previous_version = dataset_versions[6]
 
     latest_json = DatasetSerializer(latest_version).as_json()
     latest_json_string = json.dumps(latest_json, indent=4)

@@ -1,6 +1,6 @@
 from django.db import models
 from dv_apps.dvobjects.models import DvObject
-
+from dv_apps.harvesting.models import HarvestingClient
 
 PROTOCOL_DOI = "doi"
 PROTOCOL_DOI_URL_BASE = 'http://dx.doi.org'
@@ -39,6 +39,11 @@ class Dataset(models.Model):
     #guestbook = models.ForeignKey('Guestbook', blank=True, null=True)
 
     thumbnailfile = models.ForeignKey(DvObject, blank=True, null=True, related_name="thumbfile")
+
+    harvestingclient = models.ForeignKey(HarvestingClient,
+                                         models.DO_NOTHING,
+                                         blank=True,
+                                         null=True)
 
     objects = DatasetManager()
 

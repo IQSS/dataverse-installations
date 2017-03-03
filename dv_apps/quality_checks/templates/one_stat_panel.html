@@ -1,0 +1,15 @@
+    <!-- start: stat box -->
+    <div class="col-sm-6 col-md-4">
+        <div class="panel panel-default">
+          <div class="panel-body text-center">
+                <h1 style="font-size: 350%;">
+                    <span <span class="label label-{% if zstat == 0 %}success{% else %}warning{% endif%}">
+                    {{ zstat }}
+                    </span>
+                </h1>
+                <!--br /><p style="font-size: 110%;">{{ zname }}</p-->
+          </div>
+          <div class="panel-footer text-center">{{ zname }}</div>
+      </div>
+    </div>
+    <!-- end: stat box -->

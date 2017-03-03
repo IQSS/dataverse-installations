@@ -35,3 +35,37 @@ class HarvestingDataverseConfig(models.Model):
 
         return str(actual_dataverse)
     dataverse_name = property(get_dataverse_name)
+
+
+
+class HarvestingClient(models.Model):
+    """From inspectdb"""    
+    name = models.CharField(unique=True, max_length=255)
+
+    archivedescription = models.TextField(blank=True, null=True)
+    archiveurl = models.CharField(max_length=255, blank=True, null=True)
+
+    deleted = models.NullBooleanField()
+
+    harveststyle = models.CharField(max_length=255, blank=True, null=True)
+    harvesttype = models.CharField(max_length=255, blank=True, null=True)
+
+    harvestingnow = models.NullBooleanField()
+    harvestingset = models.CharField(max_length=255, blank=True, null=True)
+    harvestingurl = models.CharField(max_length=255, blank=True, null=True)
+
+    metadataprefix = models.CharField(max_length=255, blank=True, null=True)
+
+    scheduledayofweek = models.IntegerField(blank=True, null=True)
+    schedulehourofday = models.IntegerField(blank=True, null=True)
+    scheduleperiod = models.CharField(max_length=255, blank=True, null=True)
+    scheduled = models.NullBooleanField()
+
+    dataverse = models.ForeignKey(DvObject, models.DO_NOTHING, blank=True, null=True)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        managed = False
+        db_table = 'harvestingclient'

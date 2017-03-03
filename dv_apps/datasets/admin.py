@@ -24,6 +24,10 @@ class DatasetAdmin(admin.ModelAdmin ):
         ('Thumbnail File', {
             'fields': ('thumbnailfile',)
         }),
+        ('Harvesting', {
+            'fields': ('harvestingclient',)
+        }),
+
     )
 admin.site.register(Dataset, DatasetAdmin)
 

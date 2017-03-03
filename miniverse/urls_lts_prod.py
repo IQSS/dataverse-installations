@@ -29,6 +29,8 @@ urlpatterns = [
 
     url(r'^%sdvobjects/' % URL_PREFIX, include('dv_apps.dvobject_api.urls')),
 
+    url(r'^%sqc/' % URL_PREFIX, include('dv_apps.quality_checks.urls')),
+
     url(r'^%sminiverse-admin/' % URL_PREFIX, include(admin.site.urls)),
 
     url(r'^$', views_public_metrics.view_homepage_placeholder, name='view_homepage_placeholder'),

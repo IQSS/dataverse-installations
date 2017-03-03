@@ -70,7 +70,7 @@ DATABASES = {
     },
     'dataverse': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'dvn_thedata',  # dvndb_demo, dvn_thedata, dvndb
+        'NAME': 'dvndb',  # dvndb_demo, dvn_thedata, dvndb
         'USER': 'postgres',     # Set to a read-only user
         'PASSWORD': '123',
         'HOST': 'localhost',
@@ -84,7 +84,7 @@ DATABASES = {
 # -----------------------------------
 # Need when running DEBUG = False
 # -----------------------------------
-ALLOWED_HOSTS = ('127.0.0.1', )
+ALLOWED_HOSTS = ('127.0.0.1', 'dd7be506.ngrok.io')
 
 # -----------------------------------
 # Need to set when RestrictAdminMiddleware is active

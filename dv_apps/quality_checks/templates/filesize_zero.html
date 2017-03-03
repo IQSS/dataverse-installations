@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block extra_header_info %}
+<style type="text/css">
+
+</style>
+{% endblock %}
+
+{% block main_content %}
+<h1 style="color:#006699;">Health Checks</h1>
+
+<div class="row">
+{% with zstat=zstats.cnt_local_zero_null.stat zname=zstats.cnt_local_zero_null.name %}
+    {% include "one_stat_panel.html" %}
+{% endwith %}
+{% with zstat=zstats.cnt_harvested_zero.stat zname=zstats.cnt_harvested_zero.name %}
+    {% include "one_stat_panel.html" %}
+{% endwith %}
+</div>
+
+{% endblock %}

@@ -56,16 +56,19 @@ INSTALLED_APPS = [
     'dv_apps.dataverse_auth',
     'dv_apps.dvobjects',
     'dv_apps.dataverses',
+    'dv_apps.harvesting',   # placed after dataverses/before datasets (needs lazy load instead)
     'dv_apps.datasets',
     'dv_apps.datafiles',
     'dv_apps.datasetfields',
-    'dv_apps.harvesting',
     'dv_apps.guestbook',
 
     # Maps
     'dv_apps.installations',
     # Metrics
     'dv_apps.metrics',
+    # Quality checks
+    'dv_apps.quality_checks',
+
 
     # Experiments
     #'dv_apps.data_previewer',

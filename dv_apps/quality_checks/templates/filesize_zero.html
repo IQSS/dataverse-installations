@@ -9,12 +9,19 @@
 <h1 style="color:#006699;">Health Checks</h1>
 
 <div class="row">
-{% with zstat=zstats.cnt_local_zero_null.stat zname=zstats.cnt_local_zero_null.name %}
+{% with stat=zstats.cnt_local_zero_null.stat name=zstats.cnt_local_zero_null.name desc=zstats.cnt_local_zero_null.desc %}
     {% include "one_stat_panel.html" %}
 {% endwith %}
-{% with zstat=zstats.cnt_harvested_zero.stat zname=zstats.cnt_harvested_zero.name %}
+{% with stat=zstats.cnt_harvested_zero.stat name=zstats.cnt_harvested_zero.name desc=zstats.cnt_harvested_zero.desc %}
     {% include "one_stat_panel.html" %}
 {% endwith %}
+</div>
+
+<div class="row">
+    <div class="col-xs-12">
+        <hr />
+        <p class="text-muted">Updated {% now "F jS Y H:i P" %}</p>
+    </div>
 </div>
 
 {% endblock %}

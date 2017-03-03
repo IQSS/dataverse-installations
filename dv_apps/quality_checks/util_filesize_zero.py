@@ -17,9 +17,10 @@ from django.db.models import Q
 
 class NamedStat(object):
 
-    def __init__(self, name, stat):
+    def __init__(self, name, stat, desc=None):
         self.name = name
         self.stat = stat
+        self.desc = desc
 
 class ZeroFilesizeStats(object):
 
@@ -55,23 +56,21 @@ class ZeroFilesizeStats(object):
         # Harvested file counts
         # ---------------------
 
-        cnt_harvested_null = Datafile.objects.filter(\
-                            filesize__isnull=True,
-                            dvobject__owner_id__in=ds_ids_harvested).count()
+        #cnt_harvested_null = Datafile.objects.filter(\
+        #                    filesize__isnull=True,
+        #                    dvobject__owner_id__in=ds_ids_harvested).count()
 
         cnt_harvested_zero = Datafile.objects.filter(\
                             filesize=0,
                             dvobject__owner_id__in=ds_ids_harvested).count()
 
-        cnt_harvested_zero_null = cnt_harvested_null + cnt_harvested_zero
+        #cnt_harvested_zero_null = cnt_harvested_null + cnt_harvested_zero
 
         # ---------------------
         # Local file counts
         # ---------------------
-        #Datafile.objects.filter(Q(filesize=0) | Q(filesize__isnull=True),
-        #                ).filter(dvobject__owner_id__in=ds_ids_harvested).count()
 
-
+        """
         cnt_local_null = Datafile.objects.filter(\
                             filesize__isnull=True,
                             dvobject__owner_id__in=ds_ids_local).count()
@@ -79,18 +78,28 @@ class ZeroFilesizeStats(object):
         cnt_local_zero = Datafile.objects.filter(\
                             filesize=0,
                             dvobject__owner_id__in=ds_ids_local).count()
-
-        cnt_local_zero_null = cnt_local_null + cnt_local_zero
+        """
+        cnt_local_zero_null = Datafile.objects.filter(\
+                            Q(filesize=0) | Q(filesize__isnull=True),
+                            dvobject__owner_id__in=ds_ids_local).count()
 
         file_stats = dict(\
-            cnt_local_zero_null=NamedStat('Local file size is zero or null',
-                                          cnt_local_zero_null),
-            cnt_local_null=NamedStat('Local file size is null', cnt_local_null),
-            cnt_local_zero=NamedStat('Local file size is zero', cnt_harvested_zero),
-            cnt_harvested_zero_null=NamedStat('Harvested file size is zero or null',
-                                              cnt_harvested_zero_null),
-            cnt_harvested_null=NamedStat('Harvested file size is null', cnt_harvested_null),
-            cnt_harvested_zero=NamedStat('Harvested file size is zero', cnt_harvested_zero),
+            cnt_local_zero_null=NamedStat(\
+                                'Filesize 0 or null (Local)',
+                                cnt_local_zero_null,
+                                ('Count of local Datafiles with a'
+                                 ' recorded size of 0 bytes or null')),
+
+            cnt_harvested_zero=NamedStat(\
+                                'Filesize 0 or null (Harvested)',
+                                cnt_harvested_zero,
+                                ('Count of harvested Datafiles with a'
+                                 ' recorded size of 0 bytes or null')),
+            #cnt_local_null=NamedStat('Local file size is null', cnt_local_null),
+            #cnt_local_zero=NamedStat('Local file size is zero', cnt_harvested_zero),
+            #cnt_harvested_zero_null=NamedStat('Harvested file size is zero or null',
+            #                                  cnt_harvested_zero_null),
+            #cnt_harvested_null=NamedStat('Harvested file size is null', cnt_harvested_null),
             )
 
         return file_stats

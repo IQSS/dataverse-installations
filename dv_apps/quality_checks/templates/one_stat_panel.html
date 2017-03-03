@@ -2,15 +2,18 @@
     <!-- start: stat box -->
     <div class="col-sm-6 col-md-4">
         <div class="panel panel-default">
+         <!--div class="panel-heading text-center"><b>{{ name }}</b></div-->
           <div class="panel-body text-center">
                 <h1 style="font-size: 350%;">
                     <span <span class="label label-{% if zstat == 0 %}success{% else %}warning{% endif%}">
-                    {{ zstat|intcomma }}
+                    {{ stat|intcomma }}
                     </span>
                 </h1>
-                <!--br /><p style="font-size: 110%;">{{ zname }}</p-->
+                <br /><p style="font-size: 110%;">{{ name }}</p>
           </div>
-          <div class="panel-footer text-center">{{ zname }}</div>
+          <div class="panel-footer text-info">
+              {{ desc }}
+          </div>
       </div>
     </div>
     <!-- end: stat box -->

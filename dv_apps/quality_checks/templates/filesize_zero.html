@@ -6,13 +6,13 @@
 {% endblock %}
 
 {% block main_content %}
-<h1 style="color:#006699;">Health Checks</h1>
+<h1 style="color:#006699;">Health Checks{% if subtitle %}: {{ subtitle }}{% endif %}</h1>
 
 <div class="row">
-{% with stat=zstats.cnt_local_zero_null.stat name=zstats.cnt_local_zero_null.name desc=zstats.cnt_local_zero_null.desc %}
+{% with stat_info=zstats.cnt_local_zero_null %}
     {% include "one_stat_panel.html" %}
 {% endwith %}
-{% with stat=zstats.cnt_harvested_zero.stat name=zstats.cnt_harvested_zero.name desc=zstats.cnt_harvested_zero.desc %}
+{% with stat_info=zstats.cnt_harvested_zero %}
     {% include "one_stat_panel.html" %}
 {% endwith %}
 </div>

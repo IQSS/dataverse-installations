@@ -17,10 +17,11 @@ from django.db.models import Q
 
 class NamedStat(object):
 
-    def __init__(self, name, stat, desc=None):
+    def __init__(self, name, stat, desc=None, url_name=None):
         self.name = name
         self.stat = stat
         self.desc = desc
+        self.url_name = url_name
 
 class ZeroFilesizeStats(object):
 
@@ -29,15 +30,18 @@ class ZeroFilesizeStats(object):
 
 
     @staticmethod
-    def get_local_files_no_size():
+    def get_local_files_bad_size():
 
         # Dataset ids - non-Harvested
         ds_ids_local = Dataset.objects.filter(harvestingclient__isnull=True\
                                         ).values_list('dvobject__id', flat=True)
 
-        Datafile.objects.select_related('dvobject'\
+        dfiles = Datafile.objects.select_related('dvobject'\
                 ).filter(Q(filesize=0) | Q(filesize__isnull=True),
-                ).filter(dvobject__owner_id__in=ds_ids_local)
+                ).filter(dvobject__owner_id__in=ds_ids_local\
+                ).order_by('dvobject__owner_id', 'dvobject__id')
+
+        return dfiles
 
 
 
@@ -88,7 +92,8 @@ class ZeroFilesizeStats(object):
                                 'Filesize 0 or null (Local)',
                                 cnt_local_zero_null,
                                 ('Count of local Datafiles displaying a'
-                                 ' size of 0 bytes or null')),
+                                 ' size of 0 bytes or null'),
+                                'view_filesize_zero_local_list'),
 
             cnt_harvested_zero=NamedStat(\
                                 'Filesize 0 (Harvested)',

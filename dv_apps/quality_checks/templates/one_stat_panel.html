@@ -5,14 +5,21 @@
          <!--div class="panel-heading text-center"><b>{{ name }}</b></div-->
           <div class="panel-body text-center">
                 <h1 style="font-size: 350%;">
-                    <span <span class="label label-{% if zstat == 0 %}success{% else %}warning{% endif%}">
-                    {{ stat|intcomma }}
+                    <span <span class="label label-{% if stat_info.stat == 0 %}success{% else %}warning{% endif%}">
+                        {{ stat_info.stat|intcomma }}
                     </span>
                 </h1>
-                <br /><p style="font-size: 110%;">{{ name }}</p>
+
+                <br /><p style="font-size: 110%;">
+                {% if stat_info.url_name %}
+                    <a href="{% url  stat_info.url_name %}" style="text-decoration:underline;">{{ stat_info.name }}</a>
+                {% else %}
+                    {{ stat_info.name }}
+                {% endif %}
+                </p>
           </div>
           <div class="panel-footer text-info">
-              {{ desc }}
+              {{ stat_info.desc }}
           </div>
       </div>
     </div>

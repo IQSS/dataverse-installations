@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+{% load humanize %}
+{% block extra_header_info %}
+<style type="text/css">
+
+</style>
+{% endblock %}
+
+{% block main_content %}
+<h1 style="color:#006699;">Health Checks{% if subtitle %}: {{ subtitle }}{% endif %}</h1>
+
+
+<div class="row">
+    <div class="col-xs-12">
+        <p class="text-muted"><a href="{% url 'view_filesize_zero' %}">&lt;&lt; return to dashboard</p>
+        <hr />
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12" style="color:#333;">
+        <b>Files found:</b> {{ dfiles|length }}
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>DataFile Id</th>
+                    <th>Dataset Id</th>
+                    {% comment %}
+
+                    {#<th>name / description</th>#}
+                    {#<th>description</th>#}
+                    <th>contentType</th>
+                    <th>created</th>
+                    <th>published</th>
+                    {% endcomment %}
+                    <th>filesystemname</th>
+                    <th>filesize_bytes</th>
+                    <th>checksum</th>
+                    <th>restricted</th>
+                    <th>download</th>
+                </tr>
+            <tbody>
+        {% for f in dfiles %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td><a href="{{ installation_url }}/file.xhtml?fileId=3004425={{ f.dvobject.id }}" target="_blank">{{ f.dvobject.id }}</a></td>
+                <td><a href="{{ installation_url }}/dataset.xhtml?Id={{ f.dvobject.owner_id }}" target="_blank">{{ f.dvobject.owner_id }}</a></td>
+                {% comment %}
+                <td><b>{{ f.label }}</b>
+                    {% if f.description %}
+                        <br /><small>{{ f.description }}</small>
+                    {% endif %}</td>
+                <td>{{ f.contentType }}</td>
+                <td>{{ f.timestamps.createdate }}</td>
+                <td>{{ f.timestamps.publicationdate }}</td>
+                {% endcomment %}
+
+                <td><a href="{{ installation_url }}/file.xhtml?fileId=3004425={{ f.dvobject.id }}" target="_blank">{{ f.filesystemname }}</a></td>
+                <td>{{ f.filesize|intcomma }}</td>
+                <td>{{ f.checksumvalue }} ({{ f.checksumtype }})</td>
+                <td>{{ f.restricted }}</td>
+                <td><a href="{{ f.file_access_url }}">download</a></td>
+            </tr>
+        {% empty %}
+            <tr>
+                <td colspan="8">(no files)</td>
+        {% endfor %}
+            </tbody>
+        </table>
+
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xs-12">
+        <hr />
+        <p class="text-muted">Updated {% now "F jS Y H:i P" %}</p>
+    </div>
+</div>
+
+{% endblock %}

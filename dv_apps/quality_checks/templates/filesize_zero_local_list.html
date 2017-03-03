@@ -69,7 +69,12 @@
                 <td>{{ f.restricted }}</td>
                 <td><a href="{{ f.file_access_url }}">download</a></td>
                 <td>{{ f.dvobject.createdate|date:"M d, Y" }}</td>
-                <td>{{ f.dvobject.publicationdate|date:"M d, Y" }}</td>
+                <td>{% if f.dvobject.publicationdate %}
+                    {{ f.dvobject.publicationdate|date:"M d, Y" }}
+                    {% else %}
+                    (unpublished)
+                    {% endif %}
+                </td>
             </tr>
         {% empty %}
             <tr>

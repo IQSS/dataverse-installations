@@ -67,7 +67,7 @@
                 <td>{{ f.filesize|intcomma }}</td>
                 <td>{{ f.checksumvalue }} ({{ f.checksumtype }})</td>
                 <td>{{ f.restricted }}</td>
-                <td><a href="{{ f.file_access_url }}">download</a></td>
+                <td><a href="{{ installation_url }}/api/access/datafile/{{ f.dvobject.id }}">download</a></td>
                 <td>{{ f.dvobject.createdate|date:"M d, Y" }}</td>
                 <td>{% if f.dvobject.publicationdate %}
                     {{ f.dvobject.publicationdate|date:"M d, Y" }}

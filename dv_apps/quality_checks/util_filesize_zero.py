@@ -91,7 +91,7 @@ class ZeroFilesizeStats(object):
                                  ' size of 0 bytes or null')),
 
             cnt_harvested_zero=NamedStat(\
-                                'Filesize 0 or null (Harvested)',
+                                'Filesize 0 (Harvested)',
                                 cnt_harvested_zero,
                                 ('Count of harvested Datafiles displaying a'
                                  ' size of 0 bytes')),

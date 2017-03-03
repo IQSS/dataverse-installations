@@ -64,7 +64,12 @@
                 {% endcomment %}
 
                 <td><a href="{{ installation_url }}/file.xhtml?fileId={{ f.dvobject.id }}" target="_blank">{{ f.filesystemname }}</a></td>
-                <td>{{ f.filesize|intcomma }}</td>
+                <td>{% if not f.filesize %}
+                        (null)
+                    {% else %}
+                        {{ f.filesize|intcomma }}
+                    {% endif %}
+                </td>
                 <td>{{ f.checksumvalue }} ({{ f.checksumtype }})</td>
                 <td>{{ f.restricted }}</td>
                 <td><a href="{{ installation_url }}/api/access/datafile/{{ f.dvobject.id }}">download</a></td>

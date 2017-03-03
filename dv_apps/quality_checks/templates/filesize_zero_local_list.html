@@ -18,7 +18,10 @@
 </div>
 <div class="row">
     <div class="col-xs-12" style="color:#333;">
-        <b>Files found:</b> {{ dfiles|length }}
+        <p style="font-size:150%">
+            Found: <b>{{ dfiles|length }}</b> File{{ dfiles|length|pluralize }}
+            within <b>{{ num_datasets|intcomma }}</b> dataset{{ num_datasets|pluralize }}
+        </p>
         <table class="table table-bordered">
             <thead>
                 <tr>
@@ -30,14 +33,14 @@
                     {#<th>name / description</th>#}
                     {#<th>description</th>#}
                     <th>contentType</th>
-                    <th>created</th>
-                    <th>published</th>
                     {% endcomment %}
                     <th>filesystemname</th>
                     <th>filesize_bytes</th>
                     <th>checksum</th>
                     <th>restricted</th>
                     <th>download</th>
+                    <th>created</th>
+                    <th>published</th>
                 </tr>
             <tbody>
         {% for f in dfiles %}
@@ -51,8 +54,7 @@
                         <br /><small>{{ f.description }}</small>
                     {% endif %}</td>
                 <td>{{ f.contentType }}</td>
-                <td>{{ f.timestamps.createdate }}</td>
-                <td>{{ f.timestamps.publicationdate }}</td>
+
                 {% endcomment %}
 
                 <td><a href="{{ installation_url }}/file.xhtml?fileId={{ f.dvobject.id }}" target="_blank">{{ f.filesystemname }}</a></td>
@@ -60,6 +62,8 @@
                 <td>{{ f.checksumvalue }} ({{ f.checksumtype }})</td>
                 <td>{{ f.restricted }}</td>
                 <td><a href="{{ f.file_access_url }}">download</a></td>
+                <td>{{ f.dvobject.createdate|date:"M d, Y" }}</td>
+                <td>{{ f.dvobject.publicationdate|date:"M d, Y" }}</td>
             </tr>
         {% empty %}
             <tr>

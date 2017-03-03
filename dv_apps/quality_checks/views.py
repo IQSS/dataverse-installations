@@ -20,7 +20,12 @@ def view_filesize_zero_local_list(request):
     """
     List local files with size zero or null
     """
-    info_dict = dict(dfiles=ZeroFilesizeStats.get_local_files_bad_size(),
+    dfiles = ZeroFilesizeStats.get_local_files_bad_size()
+    dataset_ids = [df.dvobject.owner_id for df in dfiles]
+    num_datasets = len(dataset_ids)
+
+    info_dict = dict(dfiles=dfiles,
+                     num_datasets=num_datasets,
                      subtitle='Local files with size zero or null',
                      installation_url=settings.DATAVERSE_INSTALLATION_URL)
 

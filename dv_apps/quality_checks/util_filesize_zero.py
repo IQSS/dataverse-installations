@@ -87,14 +87,14 @@ class ZeroFilesizeStats(object):
             cnt_local_zero_null=NamedStat(\
                                 'Filesize 0 or null (Local)',
                                 cnt_local_zero_null,
-                                ('Count of local Datafiles with a'
-                                 ' recorded size of 0 bytes or null')),
+                                ('Count of local Datafiles displaying a'
+                                 ' size of 0 bytes or null')),
 
             cnt_harvested_zero=NamedStat(\
                                 'Filesize 0 or null (Harvested)',
                                 cnt_harvested_zero,
-                                ('Count of harvested Datafiles with a'
-                                 ' recorded size of 0 bytes or null')),
+                                ('Count of harvested Datafiles displaying a'
+                                 ' size of 0 bytes')),
             #cnt_local_null=NamedStat('Local file size is null', cnt_local_null),
             #cnt_local_zero=NamedStat('Local file size is zero', cnt_harvested_zero),
             #cnt_harvested_zero_null=NamedStat('Harvested file size is zero or null',

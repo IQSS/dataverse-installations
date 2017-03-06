@@ -6,12 +6,16 @@ from dv_apps.quality_checks import views
 
 urlpatterns = (
 
-    url(r'^filesize-zero$',
-        views.view_filesize_zero,
-        name='view_filesize_zero'),
+    url(r'^dashboard$',
+        views.view_qc_dashboard,
+        name='view_qc_dashboard'),
 
     url(r'^filesize-zero-local-list$',
         views.view_filesize_zero_local_list,
         name='view_filesize_zero_local_list'),
+
+    url(r'^no-checksum-list$',
+        views.view_no_checksum_list,
+        name='view_no_checksum_list'),
 
 )

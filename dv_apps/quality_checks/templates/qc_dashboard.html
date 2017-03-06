@@ -6,13 +6,16 @@
 {% endblock %}
 
 {% block main_content %}
-<h1 style="color:#006699;">Health Checks{% if subtitle %}: {{ subtitle }}{% endif %}</h1>
+<h1 style="color:#006699;">data checks{% if subtitle %}: {{ subtitle }}{% endif %}</h1>
 
 <div class="row">
-{% with stat_info=zstats.cnt_local_zero_null %}
+{% with stat_info=checksum_stats.cnt_no_checksum err_class="danger" %}
     {% include "one_stat_panel.html" %}
 {% endwith %}
-{% with stat_info=zstats.cnt_harvested_zero %}
+{% with stat_info=size_zero_stats.cnt_local_zero_null %}
+    {% include "one_stat_panel.html" %}
+{% endwith %}
+{% with stat_info=size_zero_stats.cnt_harvested_zero %}
     {% include "one_stat_panel.html" %}
 {% endwith %}
 </div>

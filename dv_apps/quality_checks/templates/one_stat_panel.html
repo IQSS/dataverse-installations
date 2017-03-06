@@ -5,7 +5,7 @@
          <!--div class="panel-heading text-center"><b>{{ name }}</b></div-->
           <div class="panel-body text-center">
                 <h1 style="font-size: 350%;">
-                    <span <span class="label label-{% if stat_info.stat == 0 %}success{% else %}warning{% endif%}">
+                    <span <span class="label label-{% if stat_info.stat == 0 %}success{% elif err_class %}{{ err_class }}{% else %}warning{% endif%}">
                         {{ stat_info.stat|intcomma }}
                     </span>
                 </h1>

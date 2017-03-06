@@ -41,7 +41,17 @@ class ZeroFilesizeStats(object):
                 ).filter(dvobject__owner_id__in=ds_ids_local\
                 ).order_by('dvobject__owner_id', 'dvobject__id')
 
-        return dfiles
+        df_first_created = Datafile.objects.select_related('dvobject'\
+                ).filter(Q(filesize=0) | Q(filesize__isnull=True),
+                ).filter(dvobject__owner_id__in=ds_ids_local\
+                ).order_by('dvobject__createdate', 'dvobject__id').first()
+
+        df_last_created = Datafile.objects.select_related('dvobject'\
+                ).filter(Q(filesize=0) | Q(filesize__isnull=True),
+                ).filter(dvobject__owner_id__in=ds_ids_local\
+                ).order_by('-dvobject__createdate', 'dvobject__id').first()
+
+        return (dfiles, df_first_created, df_last_created)
 
 
 

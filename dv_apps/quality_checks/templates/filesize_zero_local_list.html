@@ -22,6 +22,14 @@
             Found: <b>{{ dfiles|length }}</b> File{{ dfiles|length|pluralize }}
             within <b>{{ num_datasets|intcomma }}</b> dataset{{ num_datasets|pluralize }}
         </p>
+        {% if df_first_created and df_last_created %}
+        <p style="line-height:180%; padding-left:20px;">Earliest create date: <b>{{ df_first_created.dvobject.createdate|date:"M d, Y" }}</b>
+            (id: <a href="{{ installation_url }}/file.xhtml?fileId={{ df_first_created.dvobject.id }}" target="_blank">{{ df_first_created.dvobject.id }}</a>)
+            <br />
+            Last create date: <b>{{ df_last_created.dvobject.createdate|date:"M d, Y" }}</b>
+                (id: <a href="{{ installation_url }}/file.xhtml?fileId={{ df_last_created.dvobject.id }}" target="_blank">{{ df_last_created.dvobject.id }}</a>)
+        </p>
+        {% endif %}
         <table class="table table-bordered">
             <thead>
                 <tr>

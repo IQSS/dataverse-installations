@@ -21,13 +21,22 @@ class NoChecksumStats(object):
                         harvestingclient__isnull=not harvested_only\
                         ).values_list('dvobject__id', flat=True)
 
-
         dfiles = Datafile.objects.select_related('dvobject'\
                 ).filter(Q(checksumvalue='') | Q(checksumvalue__isnull=True),
                 ).filter(dvobject__owner_id__in=dataset_ids\
-                ).order_by('-dvobject__owner_id', 'dvobject__id')[0:1000]
+                ).order_by('dvobject__owner_id', 'dvobject__id')[0:1000]
 
-        return dfiles
+        df_first_created = Datafile.objects.select_related('dvobject'\
+                ).filter(Q(checksumvalue='') | Q(checksumvalue__isnull=True),
+                ).filter(dvobject__owner_id__in=dataset_ids\
+                ).order_by('dvobject__createdate', 'dvobject__id').first()
+
+        df_last_created = Datafile.objects.select_related('dvobject'\
+                ).filter(Q(checksumvalue='') | Q(checksumvalue__isnull=True),
+                ).filter(dvobject__owner_id__in=dataset_ids\
+                ).order_by('-dvobject__createdate', 'dvobject__id').first()
+
+        return (dfiles, df_first_created, df_last_created)
 
 
 

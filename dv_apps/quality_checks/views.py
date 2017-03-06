@@ -21,12 +21,14 @@ def view_filesize_zero_local_list(request):
     """
     List local files with size zero or null
     """
-    dfiles = ZeroFilesizeStats.get_local_files_bad_size()
+    dfiles, df_first_created, df_last_created = ZeroFilesizeStats.get_local_files_bad_size()
     dataset_ids = list(set([df.dvobject.owner_id for df in dfiles]))
     num_datasets = len(dataset_ids)
 
     info_dict = dict(dfiles=dfiles,
-                     num_datasets=num_datasets,
+                     df_first_created=df_first_created,
+                     df_last_created=df_last_created,
+                    num_datasets=num_datasets,
                      subtitle='Local files with size zero or null',
                      installation_url=settings.DATAVERSE_INSTALLATION_URL)
 
@@ -52,12 +54,15 @@ def view_no_checksum_list(request, harvested_only=False):
     else:
         subtitle = 'Local Files without Checksum values'
 
-    dfiles = NoChecksumStats.get_files_no_checksum(harvested_only)
+    dfiles, df_first_created, df_last_created = NoChecksumStats.get_files_no_checksum(harvested_only)
+
 
     dataset_ids = list(set([df.dvobject.owner_id for df in dfiles]))
     num_datasets = len(dataset_ids)
 
     info_dict = dict(dfiles=dfiles,
+                     df_first_created=df_first_created,
+                     df_last_created=df_last_created,
                      num_datasets=num_datasets,
                      subtitle='Files without Checksum values (limited to 1,000)',
                      installation_url=settings.DATAVERSE_INSTALLATION_URL)

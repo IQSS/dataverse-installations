@@ -54,13 +54,15 @@ def view_no_checksum_list(request, harvested_only=False):
     else:
         subtitle = 'Local Files without Checksum values'
 
-    dfiles, df_first_created, df_last_created = NoChecksumStats.get_files_no_checksum(harvested_only)
+    total_cnt, view_limit, dfiles, df_first_created, df_last_created = NoChecksumStats.get_files_no_checksum(harvested_only)
 
 
     dataset_ids = list(set([df.dvobject.owner_id for df in dfiles]))
     num_datasets = len(dataset_ids)
 
     info_dict = dict(dfiles=dfiles,
+                     total_cnt=total_cnt,
+                     view_limit=view_limit,
                      df_first_created=df_first_created,
                      df_last_created=df_last_created,
                      num_datasets=num_datasets,

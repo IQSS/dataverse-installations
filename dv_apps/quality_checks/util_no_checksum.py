@@ -21,10 +21,17 @@ class NoChecksumStats(object):
                         harvestingclient__isnull=not harvested_only\
                         ).values_list('dvobject__id', flat=True)
 
+        total_cnt = Datafile.objects.select_related('dvobject'\
+                ).filter(Q(checksumvalue='') | Q(checksumvalue__isnull=True),
+                ).filter(dvobject__owner_id__in=dataset_ids\
+                ).count()
+
+        view_limit = 4
+
         dfiles = Datafile.objects.select_related('dvobject'\
                 ).filter(Q(checksumvalue='') | Q(checksumvalue__isnull=True),
                 ).filter(dvobject__owner_id__in=dataset_ids\
-                ).order_by('dvobject__owner_id', 'dvobject__id')[0:1000]
+                ).order_by('dvobject__owner_id', 'dvobject__id')[0:view_limit]
 
         df_first_created = Datafile.objects.select_related('dvobject'\
                 ).filter(Q(checksumvalue='') | Q(checksumvalue__isnull=True),
@@ -36,7 +43,7 @@ class NoChecksumStats(object):
                 ).filter(dvobject__owner_id__in=dataset_ids\
                 ).order_by('-dvobject__createdate', 'dvobject__id').first()
 
-        return (dfiles, df_first_created, df_last_created)
+        return (total_cnt, view_limit, dfiles, df_first_created, df_last_created)
 
 
 

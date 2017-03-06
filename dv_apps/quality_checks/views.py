@@ -3,7 +3,9 @@ from django.http import HttpResponse, Http404
 from django.conf import settings
 from dv_apps.quality_checks.util_filesize_zero import ZeroFilesizeStats
 from dv_apps.quality_checks.util_no_checksum import NoChecksumStats
+from django.contrib.auth.decorators import login_required
 
+@login_required
 def view_qc_dashboard(request):
     """
     Display QC dashboard (beginning, only 3 simple measures right now)
@@ -17,6 +19,7 @@ def view_qc_dashboard(request):
                   info_dict)
 
 
+@login_required
 def view_filesize_zero_local_list(request):
     """
     List local files with size zero or null
@@ -37,12 +40,12 @@ def view_filesize_zero_local_list(request):
                   info_dict)
 
 
-
+@login_required
 def view_no_checksum_list_harvested(request):
     """Return list of Harvested files w/o a checksum"""
     return view_no_checksum_list(request, harvested_only=True)
 
-
+@login_required
 def view_no_checksum_list(request, harvested_only=False):
     """
     List of all files with no checksum

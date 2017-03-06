@@ -26,7 +26,7 @@ class NoChecksumStats(object):
                 ).filter(dvobject__owner_id__in=dataset_ids\
                 ).count()
 
-        view_limit = 4
+        view_limit = 1000
 
         dfiles = Datafile.objects.select_related('dvobject'\
                 ).filter(Q(checksumvalue='') | Q(checksumvalue__isnull=True),

@@ -60,13 +60,15 @@ def view_no_checksum_list(request, harvested_only=False):
     dataset_ids = list(set([df.dvobject.owner_id for df in dfiles]))
     num_datasets = len(dataset_ids)
 
+    subtitle = 'Files without Checksum values (limited to 1,%s)' % view_limit
+
     info_dict = dict(dfiles=dfiles,
                      total_cnt=total_cnt,
                      view_limit=view_limit,
                      df_first_created=df_first_created,
                      df_last_created=df_last_created,
                      num_datasets=num_datasets,
-                     subtitle='Files without Checksum values (limited to 1,000)',
+                     subtitle=subtitle,
                      installation_url=settings.DATAVERSE_INSTALLATION_URL)
 
     return render(request,

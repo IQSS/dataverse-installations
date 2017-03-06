@@ -38,7 +38,7 @@ def view_filesize_zero_local_list(request):
 
 def view_no_checksum_list_harvested(request):
     """Return list of Harvested files w/o a checksum"""
-    return view_no_checksum_list(harvested_only=True)
+    return view_no_checksum_list(request, harvested_only=True)
 
 
 def view_no_checksum_list(request, harvested_only=False):

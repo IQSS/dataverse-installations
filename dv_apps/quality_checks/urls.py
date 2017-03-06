@@ -14,8 +14,12 @@ urlpatterns = (
         views.view_filesize_zero_local_list,
         name='view_filesize_zero_local_list'),
 
-    url(r'^no-checksum-list$',
+    url(r'^no-checksum-local-list$',
         views.view_no_checksum_list,
-        name='view_no_checksum_list'),
+        name='view_no_checksum_list_local'),
+
+    url(r'^no-checksum-harvested-list$',
+        views.view_no_checksum_list_harvested,
+        name='view_no_checksum_list_harvested'),
 
 )

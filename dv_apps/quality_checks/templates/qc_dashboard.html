@@ -6,13 +6,24 @@
 {% endblock %}
 
 {% block main_content %}
-<h1 style="color:#006699;">data checks{% if subtitle %}: {{ subtitle }}{% endif %}</h1>
-
+<h1 style="color:#006699; font-size:150%;">dv data checks{% if subtitle %}: {{ subtitle }}{% endif %}</h1>
+<hr />
 <div class="row">
-{% with stat_info=checksum_stats.cnt_no_checksum err_class="danger" %}
+    <div class="col-xs-12"><h2 class="text-muted">No checksum</h2></div>
+</div>
+<div class="row">
+{% with stat_info=checksum_stats.cnt_no_checksum_local err_class="danger" %}
     {% include "one_stat_panel.html" %}
 {% endwith %}
-{% with stat_info=size_zero_stats.cnt_local_zero_null %}
+{% with stat_info=checksum_stats.cnt_no_checksum_harvested err_class="warning" %}
+    {% include "one_stat_panel.html" %}
+{% endwith %}
+</div>
+<div class="row">
+    <div class="col-xs-12"><h2 class="text-muted">File size 0 or null</h2></div>
+</div>
+<div class="row">
+{% with stat_info=size_zero_stats.cnt_local_zero_null err_class="danger" %}
     {% include "one_stat_panel.html" %}
 {% endwith %}
 {% with stat_info=size_zero_stats.cnt_harvested_zero %}

@@ -35,17 +35,31 @@ def view_filesize_zero_local_list(request):
                   info_dict)
 
 
-def view_no_checksum_list(request):
+
+def view_no_checksum_list_harvested(request):
+    """Return list of Harvested files w/o a checksum"""
+    return view_no_checksum_list(harvested_only=True)
+
+
+def view_no_checksum_list(request, harvested_only=False):
     """
     List of all files with no checksum
+     - Defaults to Local files only
+     - harvested_only flag will give a list of harveted files
     """
-    dfiles = NoChecksumStats.get_files_no_checksum()
+    if harvested_only:
+        subtitle = 'Harvested Files without Checksum values'
+    else:
+        subtitle = 'Local Files without Checksum values'
+
+    dfiles = NoChecksumStats.get_files_no_checksum(harvested_only)
+
     dataset_ids = list(set([df.dvobject.owner_id for df in dfiles]))
     num_datasets = len(dataset_ids)
 
     info_dict = dict(dfiles=dfiles,
                      num_datasets=num_datasets,
-                     subtitle='Files without Checksum values',
+                     subtitle='Files without Checksum values (limited to 1,000)',
                      installation_url=settings.DATAVERSE_INSTALLATION_URL)
 
     return render(request,

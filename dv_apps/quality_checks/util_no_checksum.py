@@ -25,7 +25,7 @@ class NoChecksumStats(object):
         dfiles = Datafile.objects.select_related('dvobject'\
                 ).filter(Q(checksumvalue='') | Q(checksumvalue__isnull=True),
                 ).filter(dvobject__owner_id__in=dataset_ids\
-                ).order_by('dvobject__owner_id', 'dvobject__id')[0:1000]
+                ).order_by('-dvobject__owner_id', 'dvobject__id')[0:1000]
 
         return dfiles
 

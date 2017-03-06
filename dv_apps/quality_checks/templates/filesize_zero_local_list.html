@@ -8,7 +8,9 @@
 
 {% block main_content %}
 <h1 style="color:#006699;">data checks{% if subtitle %}: {{ subtitle }}{% endif %}</h1>
-
+{% if view_limit %}
+    <h4 class="text-muted">Limited to first {{ view_limit }} file{{ view_limit|pluralize }}</h4>
+{% endif %}
 
 <div class="row">
     <div class="col-xs-12">

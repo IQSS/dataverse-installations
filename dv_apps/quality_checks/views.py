@@ -60,7 +60,7 @@ def view_no_checksum_list(request, harvested_only=False):
     dataset_ids = list(set([df.dvobject.owner_id for df in dfiles]))
     num_datasets = len(dataset_ids)
 
-    subtitle = 'Files without Checksum values (limited to 1,%s)' % view_limit
+    subtitle = 'Files without Checksum values'
 
     info_dict = dict(dfiles=dfiles,
                      total_cnt=total_cnt,

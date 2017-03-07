@@ -24,7 +24,7 @@
             Found: <b>{{ dfiles|length }}</b> File{{ dfiles|length|pluralize }}
             within <b>{{ num_datasets|intcomma }}</b> dataset{{ num_datasets|pluralize }}
         </p>
-        {% if df_first_created and df_last_created %}
+        {% if dfiles.length > 1 and df_first_created and df_last_created %}
 
         <p style="line-height:180%; padding-left:20px;">
             {% if total_cnt > view_limit %}The dates below apply to all <b>{{ total_cnt|intcomma }}  file{{ total_cnt|pluralize }}</b> found--not only the <b>{{ view_limit }} file{{ view_limit|pluralize }}</b> listed below.<br />{% endif %}
@@ -54,6 +54,7 @@
                     <th>checksum type</th>
                     <th>checksum</th>
                     <th>restricted</th>
+                    <th>ingest status</th>
                     <th>download</th>
                     <th>created</th>
                     <th>published</th>
@@ -62,7 +63,7 @@
         {% for f in dfiles %}
             {% ifchanged f.dvobject.owner_id %}
             <tr>
-                <td colspan="10" class="text-info" ><h4>Dataset: <a href="{{ installation_url }}/dataset.xhtml?id={{ f.dvobject.owner_id }}" target="_blank">{{ f.dvobject.owner_id }}</a></h4></td>
+                <td colspan="11" class="text-info" ><h4>Dataset: <a href="{{ installation_url }}/dataset.xhtml?id={{ f.dvobject.owner_id }}" target="_blank">{{ f.dvobject.owner_id }}</a></h4></td>
             </tr>
             {% endifchanged %}
 
@@ -96,6 +97,18 @@
                     {% endif %}
                 </td>
                 <td>{{ f.restricted }}</td>
+                <td>{% if f.ingeststatus == INGEST_STATUS_ERROR %}
+                        <span class="label label-danger">error</span>
+                    {% elif f.ingeststatus == INGEST_STATUS_NONE %}
+                        <span class="label label-success">ok</span>
+                    {% elif f.ingeststatus == INGEST_STATUS_SCHEDULED %}
+                        <span class="label label-warning">scheduled</span>
+                    {% elif f.ingeststatus == INGEST_STATUS_INPROGRESS %}
+                        <span class="label label-warning">in progress</span>
+                    {% else %}
+                        <span class="label label-danger">unknown status: {{ f.ingeststatus }}</span>
+                    {% endif %}
+                </td>
                 <td><a href="{{ installation_url }}/api/access/datafile/{{ f.dvobject.id }}">download</a></td>
                 <td>{{ f.dvobject.createdate|date:"M d, Y" }}</td>
                 <td>{% if f.dvobject.publicationdate %}
@@ -107,7 +120,9 @@
             </tr>
         {% empty %}
             <tr>
-                <td colspan="10">(no files)</td>
+                <td colspan="11">
+                    <span class="label label-success">(no files)</span>
+                </td>
             </tr>
         {% endfor %}
             </tbody>

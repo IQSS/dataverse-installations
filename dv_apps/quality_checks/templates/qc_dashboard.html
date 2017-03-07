@@ -23,7 +23,6 @@
 </div>
 
 <!-- File size 0 or null -->
-
 <div class="row">
     <div class="col-xs-12"><h2 class="text-muted">File size 0 or null</h2></div>
 </div>
@@ -35,6 +34,20 @@
     {% include "one_stat_panel.html" %}
 {% endwith %}
 </div>
+
+<!-- Files with Ingest Status of "Error" -->
+<div class="row">
+    <div class="col-xs-12"><h2 class="text-muted">Ingest Status: "Error" or "In Progress"</h2></div>
+</div>
+<div class="row">
+{% with stat_info=ingest_stats.cnt_ingest_error err_class="danger" %}
+    {% include "one_stat_panel.html" %}
+{% endwith %}
+{% with stat_info=ingest_stats.cnt_ingest_in_progress %}
+    {% include "one_stat_panel.html" %}
+{% endwith %}
+</div>
+
 
 <!-- Files with Unknown Content Types -->
 <div class="row">

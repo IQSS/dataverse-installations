@@ -22,4 +22,12 @@ urlpatterns = (
         views.view_no_checksum_list_harvested,
         name='view_no_checksum_list_harvested'),
 
+    url(r'^bad-ingest-list$',
+        views.view_bad_ingest_list,
+        name='view_bad_ingest_list'),
+
+    url(r'^in-progress-ingest-list$',
+        views.view_in_progress_ingest_list,
+        name='view_in_progress_ingest_list'),
+
 )

@@ -21,7 +21,7 @@
 <div class="row">
     <div class="col-xs-12" style="color:#333;">
         <p style="font-size:150%">
-            Found: <b>{{ dfiles|length }}</b> File{{ dfiles|length|pluralize }}
+            Found: <b>{{ dfiles|length|intcomma }}</b> File{{ dfiles|length|pluralize }}
             within <b>{{ num_datasets|intcomma }}</b> dataset{{ num_datasets|pluralize }}
         </p>
         {% if dfiles.length > 1 and df_first_created and df_last_created %}

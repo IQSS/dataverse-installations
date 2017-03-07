@@ -41,7 +41,6 @@ class MetadataBlockInfo(object):
         Return a (key, value) where the value may be a string or list
         """
         #print 'ds_field', ds_field, ds_field.datasetfieldtype.name
-        #import ipdb; ipdb.set_trace()
 
         if ds_field.flat_val:
             if ds_field.allow_multiples():

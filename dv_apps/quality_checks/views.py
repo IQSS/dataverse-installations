@@ -3,7 +3,9 @@ from django.http import HttpResponse, Http404
 from django.conf import settings
 from dv_apps.quality_checks.util_filesize_zero import ZeroFilesizeStats
 from dv_apps.quality_checks.util_no_checksum import NoChecksumStats
-from django.contrib.auth.decorators import login_required
+from dv_apps.quality_checks.util_content_types import ContentTypeStats
+
+#from django.contrib.auth.decorators import login_required
 
 #@login_required
 def view_qc_dashboard(request):
@@ -11,8 +13,10 @@ def view_qc_dashboard(request):
     Display QC dashboard (beginning, only 3 simple measures right now)
     """
 
-    info_dict = dict(size_zero_stats=ZeroFilesizeStats.get_basic_stats(),
-                     checksum_stats=NoChecksumStats.get_basic_stats())
+    info_dict = dict(\
+            size_zero_stats=ZeroFilesizeStats.get_basic_stats(),
+            checksum_stats=NoChecksumStats.get_basic_stats(),
+            unknown_ctype_stats=ContentTypeStats.get_basic_stats())
 
     return render(request,
                   'qc_dashboard.html',

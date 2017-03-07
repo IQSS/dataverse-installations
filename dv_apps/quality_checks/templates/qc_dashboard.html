@@ -8,6 +8,8 @@
 {% block main_content %}
 <h1 style="color:#006699; font-size:150%;">dv data checks{% if subtitle %}: {{ subtitle }}{% endif %}</h1>
 <hr />
+
+<!-- No checksum -->
 <div class="row">
     <div class="col-xs-12"><h2 class="text-muted">No checksum</h2></div>
 </div>
@@ -19,6 +21,9 @@
     {% include "one_stat_panel.html" %}
 {% endwith %}
 </div>
+
+<!-- File size 0 or null -->
+
 <div class="row">
     <div class="col-xs-12"><h2 class="text-muted">File size 0 or null</h2></div>
 </div>
@@ -30,6 +35,20 @@
     {% include "one_stat_panel.html" %}
 {% endwith %}
 </div>
+
+<!-- Files with Unknown Content Types -->
+<div class="row">
+    <div class="col-xs-12"><h2 class="text-muted">Files with Unknown Content Types</h2></div>
+</div>
+<div class="row">
+{% with stat_info=unknown_ctype_stats.cnt_no_content_type %}
+    {% include "one_stat_panel.html" %}
+{% endwith %}
+{% with stat_info=unknown_ctype_stats.percent_no_content_type %}
+    {% include "one_stat_panel.html" %}
+{% endwith %}
+</div>
+
 
 <div class="row">
     <div class="col-xs-12">

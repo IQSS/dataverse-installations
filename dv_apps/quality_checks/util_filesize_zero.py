@@ -9,19 +9,13 @@ Expected:
 
 
 """
+from django.db.models import Q
+
 from collections import OrderedDict
 
 from dv_apps.datasets.models import Dataset, DatasetVersion
 from dv_apps.datafiles.models import Datafile, FileMetadata
-from django.db.models import Q
-
-class NamedStat(object):
-
-    def __init__(self, name, stat, desc=None, url_name=None):
-        self.name = name
-        self.stat = stat
-        self.desc = desc
-        self.url_name = url_name
+from dv_apps.quality_checks.named_stat import NamedStat
 
 class ZeroFilesizeStats(object):
 

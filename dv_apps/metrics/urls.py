@@ -37,28 +37,47 @@ urlpatterns = [
 
     url(r'^basic-viz/last12$', views_public_metrics.view_public_visualizations_last12, name='view_public_visualizations_last12'),
 
-    url(r'^basic-viz/last12-dataverse-org$', views_public_metrics.view_public_visualizations_last12_dataverse_org, name='view_public_visualizations_last12_dataverse_org'),
+    url(r'^basic-viz/last12-dataverse-org$',
+        views_public_metrics.view_public_visualizations_last12_dataverse_org, name='view_public_visualizations_last12_dataverse_org'),
 
-    url(r'^files/types$', views_public_metrics.view_files_by_type, name='view_files_by_type'),
+    url(r'^files/types$',
+        views_public_metrics.view_files_by_type,
+        name='view_files_by_type'),
 
-    url(r'^files/extensions$', views_public_metrics.view_file_extensions_within_type, name='view_file_extensions_within_type'),
+    url(r'^files/extensions$',
+        views_public_metrics.view_file_extensions_within_type,
+        name='view_file_extensions_within_type'),
 
-    url (r'^unknown-content-types$', views_maintenance.view_files_extensions_with_unknown_content_types, name="view_files_extensions_with_unknown_content_types"),
+    url (r'^unknown-content-types$',
+         views_maintenance.view_files_extensions_with_unknown_content_types, name="view_files_extensions_with_unknown_content_types"),
 
-    url (r'^all-extension-counts$', views_maintenance.view_all_file_extension_counts, name="view_all_file_extension_counts"),
+    url (r'^all-extension-counts$',
+         views_maintenance.view_all_file_extension_counts,
+         name="view_all_file_extension_counts"),
 
-    url (r'^fix-extension$', views_maintenance.view_fix_extension, name="view_fix_extension"),
+    url (r'^fix-extension$',
+         views_maintenance.view_fix_extension,
+         name="view_fix_extension"),
 
     # views_test
-    url(r'^metrics-links$', views_test.view_metrics_links, name='view_metrics_links'),
+    url(r'^metrics-links$',
+        views_test.view_metrics_links,
+        name='view_metrics_links'),
 
-    url(r'^dv-tree$', views_test.view_dataverse_tree, name='view_dataverse_tree'),
+    url(r'^dv-tree$',
+        views_test.view_dataverse_tree,
+        name='view_dataverse_tree'),
 
-    url(r'^dv-tree2$', views_test.view_dataverse_tree2, name='view_dataverse_tree2'),
+    url(r'^dv-tree2$',
+        views_test.view_dataverse_tree2,
+        name='view_dataverse_tree2'),
 
-    url(r'^dv-tree.json$', views_test.get_dataverse_tree_json, name='get_dataverse_tree_json'),
+    url(r'^dv-tree.json$',
+        views_test.get_dataverse_tree_json,
+        name='get_dataverse_tree_json'),
 
-    url(r'^dv-tree-full.json$', views_test.get_dataverse_full_tree_json, name='get_dataverse_full_tree_json'),
+    url(r'^dv-tree-full.json$',
+        views_test.get_dataverse_full_tree_json, name='get_dataverse_full_tree_json'),
 
     url(r'^view-bins$', views_test.view_file_bins_by_datasetversion, name='view_file_bins_by_datasetversion'),
 

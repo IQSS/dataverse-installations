@@ -4,10 +4,11 @@ from django.conf import settings
 from dv_apps.quality_checks.util_filesize_zero import ZeroFilesizeStats
 from dv_apps.quality_checks.util_no_checksum import NoChecksumStats
 from dv_apps.quality_checks.util_content_types import ContentTypeStats
+from django.views.decorators.cache import cache_page
 
 #from django.contrib.auth.decorators import login_required
 
-#@login_required
+@cache_page(settings.METRICS_CACHE_VIEW_TIME)
 def view_qc_dashboard(request):
     """
     Display QC dashboard (beginning, only 3 simple measures right now)

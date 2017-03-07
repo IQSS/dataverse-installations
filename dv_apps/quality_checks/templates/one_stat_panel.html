@@ -12,7 +12,7 @@
 
                 <br /><p style="font-size: 110%;">
                 {% if stat_info.url_name %}
-                    <a href="{% url  stat_info.url_name %}" style="text-decoration:underline;">{{ stat_info.name }}</a>
+                    <a href="{% url  stat_info.url_name %}" style="text-decoration:underline;"{% if new_win %} target="_blank"{% endif %}>{{ stat_info.name }}</a>
                 {% else %}
                     {{ stat_info.name }}
                 {% endif %}

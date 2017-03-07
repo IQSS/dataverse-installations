@@ -41,10 +41,10 @@
     <div class="col-xs-12"><h2 class="text-muted">Files with Unknown Content Types</h2></div>
 </div>
 <div class="row">
-{% with stat_info=unknown_ctype_stats.cnt_no_content_type %}
+{% with stat_info=unknown_ctype_stats.cnt_no_content_type new_win=1 %}
     {% include "one_stat_panel.html" %}
 {% endwith %}
-{% with stat_info=unknown_ctype_stats.percent_no_content_type %}
+{% with stat_info=unknown_ctype_stats.percent_no_content_type new_win=1 %}
     {% include "one_stat_panel.html" %}
 {% endwith %}
 </div>

@@ -80,14 +80,21 @@
                 {% endcomment %}
 
                 <td><a href="{{ installation_url }}/file.xhtml?fileId={{ f.dvobject.id }}" target="_blank">{{ f.filesystemname }}</a></td>
-                <td>{% if not f.filesize %}
-                        (null)
+                <td>{% if f.filesize == 0 %}
+                        <span class="label label-warning">zero</span>
+                    {% elif not f.filesize %}
+                        <span class="label label-danger">null</span>
                     {% else %}
                         {{ f.filesize|intcomma }}
                     {% endif %}
                 </td>
                 <td>{{ f.checksumtype }}</td>
-                <td>{{ f.checksumvalue }}</td>
+                <td>{% if not f.checksumvalue %}
+                        <span class="label label-danger">missing</span>
+                    {% else %}
+                        {{ f.checksumvalue }}
+                    {% endif %}
+                </td>
                 <td>{{ f.restricted }}</td>
                 <td><a href="{{ installation_url }}/api/access/datafile/{{ f.dvobject.id }}">download</a></td>
                 <td>{{ f.dvobject.createdate|date:"M d, Y" }}</td>

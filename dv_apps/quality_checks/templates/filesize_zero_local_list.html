@@ -24,7 +24,7 @@
             Found: <b>{{ dfiles|length|intcomma }}</b> File{{ dfiles|length|pluralize }}
             within <b>{{ num_datasets|intcomma }}</b> dataset{{ num_datasets|pluralize }}
         </p>
-        {% if dfiles.length > 1 and df_first_created and df_last_created %}
+        {% if df_first_created and df_last_created %}
 
         <p style="line-height:180%; padding-left:20px;">
             {% if total_cnt > view_limit %}The dates below apply to all <b>{{ total_cnt|intcomma }}  file{{ total_cnt|pluralize }}</b> found--not only the <b>{{ view_limit }} file{{ view_limit|pluralize }}</b> listed below.<br />{% endif %}

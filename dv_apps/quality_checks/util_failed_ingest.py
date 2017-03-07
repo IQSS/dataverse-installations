@@ -79,13 +79,16 @@ class FailedIngestStats(object):
                                 'Ingest Errors',
                                 cnt_ingest_error,
                                 ('Count of Datafiles with'
-                                 ' an ingest status of "Error"'),
+                                 ' an ingest status of "Error."'
+                                 ' (These files should have'
+                                 ' been converted to tabular files.)'),
                                 'view_bad_ingest_list'),
             cnt_ingest_in_progress=NamedStat(\
                                 'Ingest In Progress',
                                 cnt_ingest_in_progress,
                                 ('Count of Datafiles with'
-                                 ' an ingest status of "In Progress"'),
+                                 ' an ingest status of "In Progress."'
+                                 '(These files may be "stuck" at ingest)'),
                                 'view_in_progress_ingest_list'),
             #cnt_harvested_zero=NamedStat(\
             #                    'Filesize 0 (Harvested)',

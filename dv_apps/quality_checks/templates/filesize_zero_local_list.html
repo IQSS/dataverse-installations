@@ -53,6 +53,7 @@
                     <th>filesize_bytes</th>
                     <th>checksum type</th>
                     <th>checksum</th>
+                    <th>content type</th>
                     <th>restricted</th>
                     <th>ingest status</th>
                     <th>download</th>
@@ -63,7 +64,7 @@
         {% for f in dfiles %}
             {% ifchanged f.dvobject.owner_id %}
             <tr>
-                <td colspan="11" class="text-info" ><h4>Dataset: <a href="{{ installation_url }}/dataset.xhtml?id={{ f.dvobject.owner_id }}" target="_blank">{{ f.dvobject.owner_id }}</a></h4></td>
+                <td colspan="12" class="text-info" ><h4>Dataset: <a href="{{ installation_url }}/dataset.xhtml?id={{ f.dvobject.owner_id }}" target="_blank">{{ f.dvobject.owner_id }}</a></h4></td>
             </tr>
             {% endifchanged %}
 
@@ -96,6 +97,7 @@
                         {{ f.checksumvalue }}
                     {% endif %}
                 </td>
+                <td>{{ f.contenttype }}</td>
                 <td>{{ f.restricted }}</td>
                 <td>{% if f.ingeststatus == INGEST_STATUS_ERROR %}
                         <span class="label label-danger">error</span>
@@ -120,7 +122,7 @@
             </tr>
         {% empty %}
             <tr>
-                <td colspan="11">
+                <td colspan="12">
                     <span class="label label-success">(no files)</span>
                 </td>
             </tr>

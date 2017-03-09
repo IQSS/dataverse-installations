@@ -13,6 +13,7 @@ from django.db.models import Q
 
 from collections import OrderedDict
 
+from dv_apps.dataverses.models import Dataverse
 from dv_apps.datasets.models import Dataset, DatasetVersion
 from dv_apps.datafiles.models import Datafile, FileMetadata,\
         INGEST_STATUS_INPROGRESS, INGEST_STATUS_ERROR,\
@@ -92,29 +93,59 @@ class FailedIngestStats(object):
 
         exclude_params = FailedIngestStats.get_exclude_params(**kwargs)
 
+        # ---------------------------
+        # Add Dataverse info to files
+        #   for now, much cheaper to retrieve than dataset titles
+        # ---------------------------
+        # file -> dataset
+        # dataset -> dataverse
+        #
+        dfile_ids = Datafile.objects.select_related('dvobject'\
+                ).filter(ingeststatus=INGEST_STATUS_ERROR\
+                ).exclude(**exclude_params\
+                ).values_list('dvobject__id', 'dvobject__owner__id'\
+                ).distinct().order_by()
+
+        file2dataset_dict = dict()
+        for id_info in dfile_ids:
+            print 'id_info', id_info
+            file2dataset_dict[id_info[0]] = id_info[1]
+
+        dv_ids = Dataset.objects.select_related('dvobject'\
+                    ).filter(dvobject__id__in=file2dataset_dict.values()\
+                    ).values_list('dvobject__id', 'dvobject__owner__id'\
+                    ).distinct().order_by()
+
+        dataset2dataverse_dict = dict()
+        for id_pair in dv_ids:
+            dataset2dataverse_dict[id_pair[0]] = id_pair[1]
+
+        # Retrieve the dataverse objects
+        dataverses = Dataverse.objects.select_related('dvobject'\
+                        ).filter(dvobject__id__in=dataset2dataverse_dict.values())
+
+        dv_lookup = dict()
+        for dv in dataverses:
+            dv_lookup[dv.dvobject.id] = dv
+
+        dataset2dataverse_dict_temp = dict()
+        for k, v in dataset2dataverse_dict.items():
+            dataset2dataverse_dict_temp[k] = dv_lookup.get(v, None)
+
+        dataset2dataverse_dict = dataset2dataverse_dict_temp
+        dataset2dataverse_dict_temp = None
+
+        # Lookups complete, retreive datafiles
         dfiles = Datafile.objects.select_related('dvobject'\
                 ).filter(ingeststatus=INGEST_STATUS_ERROR\
                 ).exclude(**exclude_params\
-                ).order_by('dvobject__owner_id', 'dvobject__id')
-
-
-        ## add Dataverse names
-        """
-        ds_ids_ingest_error = [df.dvobject.owner_id for df in dfiles]
-        dv_ids = Dataset.objects.select_related('dvobject'\
-                    ).filter(dvobject__id__in=ds_ids_ingest_error\
-                    ).values_list('dvobject__owner_id', flat=True\
-                    ).distinct().order_by()
-        dvs = Dataverse.objects.select_related('dvobject'
-                    ).filter(dvobject__id__in=dv_ids)
-        dv_lookup = dict()
-        for dv in dvs:
-            dv_lookup[dv.dvobject.id] = dv
+                ).order_by('dvobject__owner__id', 'dvobject__id')
 
         dfiles_fmt = []
         for df in dfiles:
-            pass#df.dataverse =
-        """
+            df.dataverse = dataset2dataverse_dict.get(df.dvobject.owner.id, None)
+            dfiles_fmt.append(df)
+
 
         df_first_created = Datafile.objects.select_related('dvobject'\
                 ).filter(ingeststatus=INGEST_STATUS_ERROR\
@@ -126,7 +157,7 @@ class FailedIngestStats(object):
                 ).exclude(**exclude_params\
                 ).order_by('-dvobject__createdate', 'dvobject__id').first()
 
-        return (dfiles, df_first_created, df_last_created)
+        return (dfiles_fmt, df_first_created, df_last_created)
 
 
     @staticmethod

@@ -20,6 +20,8 @@ from dv_apps.datafiles.models import Datafile, FileMetadata,\
 from dv_apps.quality_checks.named_stat import NamedStat
 from dv_apps.datafiles.models import FileMetadata
 
+EXCLUDE_FILESIZE_PARAM = 'exclude_filesize'
+
 class FailedIngestStats(object):
 
     def __init__(self):
@@ -68,27 +70,60 @@ class FailedIngestStats(object):
         return (dfiles, df_first_created, df_last_created)
 
     @staticmethod
-    def get_filesize_exclude_param():
+    def get_exclude_params(**kwargs):
 
-        return dict(filesize=1226912)
+        exclude_params = {}
+
+        # filesize
+        #
+        filesize = kwargs.get(EXCLUDE_FILESIZE_PARAM, None)
+        if filesize:
+            try:
+                filesize = int(filesize)
+                exclude_params['filesize'] = filesize
+            except ValueError:
+                pass
+
+        return exclude_params
 
     @staticmethod
-    def get_files_bad_ingest():
+    def get_files_bad_ingest(**kwargs):
         """List of fails with ingest status ERROR"""
+
+        exclude_params = FailedIngestStats.get_exclude_params(**kwargs)
 
         dfiles = Datafile.objects.select_related('dvobject'\
                 ).filter(ingeststatus=INGEST_STATUS_ERROR\
-                ).exclude(**FailedIngestStats.get_filesize_exclude_param()\
+                ).exclude(**exclude_params\
                 ).order_by('dvobject__owner_id', 'dvobject__id')
+
+
+        ## add Dataverse names
+        """
+        ds_ids_ingest_error = [df.dvobject.owner_id for df in dfiles]
+        dv_ids = Dataset.objects.select_related('dvobject'\
+                    ).filter(dvobject__id__in=ds_ids_ingest_error\
+                    ).values_list('dvobject__owner_id', flat=True\
+                    ).distinct().order_by()
+        dvs = Dataverse.objects.select_related('dvobject'
+                    ).filter(dvobject__id__in=dv_ids)
+        dv_lookup = dict()
+        for dv in dvs:
+            dv_lookup[dv.dvobject.id] = dv
+
+        dfiles_fmt = []
+        for df in dfiles:
+            pass#df.dataverse =
+        """
 
         df_first_created = Datafile.objects.select_related('dvobject'\
                 ).filter(ingeststatus=INGEST_STATUS_ERROR\
-                ).exclude(**FailedIngestStats.get_filesize_exclude_param()\
+                ).exclude(**exclude_params\
                 ).order_by('dvobject__createdate', 'dvobject__id').first()
 
         df_last_created = Datafile.objects.select_related('dvobject'\
                 ).filter(ingeststatus=INGEST_STATUS_ERROR\
-                ).exclude(**FailedIngestStats.get_filesize_exclude_param()\
+                ).exclude(**exclude_params\
                 ).order_by('-dvobject__createdate', 'dvobject__id').first()
 
         return (dfiles, df_first_created, df_last_created)
@@ -100,7 +135,7 @@ class FailedIngestStats(object):
         # unique dataset ids
         ds_ids_ingest_error = Datafile.objects.select_related('dvobject'\
                             ).filter(ingeststatus=INGEST_STATUS_ERROR\
-                            ).exclude(**FailedIngestStats.get_filesize_exclude_param()\
+                            ).exclude(**FailedIngestStats.get_exclude_params()\
                             ).values_list('dvobject__owner_id', flat=True\
                             ).distinct().order_by()
 
@@ -141,7 +176,6 @@ for dv in dvs:
 
         cnt_ingest_error = Datafile.objects.filter(\
                             ingeststatus=INGEST_STATUS_ERROR
-                            ).exclude(filesize=1226912\
                             ).count()
 
         cnt_ingest_in_progress = Datafile.objects.filter(\

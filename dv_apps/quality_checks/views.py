@@ -4,7 +4,8 @@ from django.conf import settings
 from dv_apps.quality_checks.util_filesize_zero import ZeroFilesizeStats
 from dv_apps.quality_checks.util_no_checksum import NoChecksumStats
 from dv_apps.quality_checks.util_content_types import ContentTypeStats
-from dv_apps.quality_checks.util_failed_ingest import FailedIngestStats
+from dv_apps.quality_checks.util_failed_ingest import FailedIngestStats,\
+    EXCLUDE_FILESIZE_PARAM
 from django.views.decorators.cache import cache_page
 from dv_apps.datafiles.models import\
         INGEST_STATUS_INPROGRESS, INGEST_STATUS_ERROR,\
@@ -81,7 +82,14 @@ def view_in_progress_ingest_list(request):
 
 def view_bad_ingest_list(request):
     """List of files with ingest error status"""
-    dfiles, df_first_created, df_last_created = FailedIngestStats.get_files_bad_ingest()
+
+    kwargs = {}
+    if request.GET.has_key(EXCLUDE_FILESIZE_PARAM):
+        kwargs[EXCLUDE_FILESIZE_PARAM] = request.GET[EXCLUDE_FILESIZE_PARAM]
+
+    dfiles, df_first_created, df_last_created =\
+        FailedIngestStats.get_files_bad_ingest(**kwargs)
+
     dataset_ids = list(set([df.dvobject.owner_id for df in dfiles]))
     num_datasets = len(dataset_ids)
 

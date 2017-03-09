@@ -74,14 +74,17 @@ class FailedIngestStats(object):
 
         dfiles = Datafile.objects.select_related('dvobject'\
                 ).filter(ingeststatus=INGEST_STATUS_ERROR\
+                ).exclude(filesize=1226912\
                 ).order_by('dvobject__owner_id', 'dvobject__id')
 
         df_first_created = Datafile.objects.select_related('dvobject'\
                 ).filter(ingeststatus=INGEST_STATUS_ERROR\
+                ).exclude(filesize=1226912\
                 ).order_by('dvobject__createdate', 'dvobject__id').first()
 
         df_last_created = Datafile.objects.select_related('dvobject'\
                 ).filter(ingeststatus=INGEST_STATUS_ERROR\
+                ).exclude(filesize=1226912\
                 ).order_by('-dvobject__createdate', 'dvobject__id').first()
 
         return (dfiles, df_first_created, df_last_created)

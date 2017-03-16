@@ -158,7 +158,7 @@ class NotificationStats(object):
             cnt_unread_old_notifications=NamedStat(\
                                 'Unread: Older than %s Days' % day_cnt_1,
                                 cnt_old_unread_notifications,
-                                ('Count of cnt_old_unread_notifications notifications and'
+                                ('Count of'
                                  ' notifications <b>older'
                                  ' than %d days</b>') % day_cnt_1,
                                 None),
@@ -166,7 +166,7 @@ class NotificationStats(object):
             cnt_old_unread_notifications2=NamedStat(\
                                 'Unread: Older than %s Days' % day_cnt_2,
                                 cnt_old_unread_notifications2,
-                                ('Count of cnt_old_unread_notifications notifications and'
+                                ('Count of'
                                  ' notifications <b>older'
                                  ' than %d days</b>') % day_cnt_2,
                                 None),

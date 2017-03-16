@@ -79,10 +79,18 @@
 {% endwith %}
 </div>
 <div class="row">
-{% with stat_info=notification_stats.cnt_old_unread_notifications %}
+{% with stat_info=notification_stats.cnt_unread_old_notifications err_class="danger" %}
     {% include "one_stat_panel.html" %}
 {% endwith %}
+{% with stat_info=notification_stats.cnt_old_unread_notifications2 err_class="danger" %}
+    {% include "one_stat_panel.html" %}
+{% endwith %}
+</div>
+<div class="row">
 {% with stat_info=notification_stats.cnt_unread_notifications %}
+    {% include "one_stat_panel.html" %}
+{% endwith %}
+{% with stat_info=notification_stats.cnt_read_notifications err_class="success" %}
     {% include "one_stat_panel.html" %}
 {% endwith %}
 </div>

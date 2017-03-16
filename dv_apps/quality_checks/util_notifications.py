@@ -94,10 +94,10 @@ class NotificationStats(object):
     def get_basic_stats():
 
 
-        """cnt_read_notifications = UserNotification.objects.filter(\
+        cnt_read_notifications = UserNotification.objects.filter(\
                                     readnotification=True,
                                     ).count()
-        """
+
         cnt_unread_notifications = UserNotification.objects.filter(\
                                     readnotification=False,
                                     ).count()
@@ -107,19 +107,27 @@ class NotificationStats(object):
                                     ).count()
 
 
+        day_cnt_1 = 365
+        day_cnt_1_date = datetime.now() - timedelta(days=day_cnt_1)
 
-
-        day_cnt = 365
-        one_year_old = datetime.now() - timedelta(days=day_cnt)
-
+        day_cnt_2 = 180
+        day_cnt_2_date = datetime.now() - timedelta(days=day_cnt_2)
 
         cnt_old_unread_notifications = UserNotification.objects.filter(\
                                     readnotification=False,
-                                    senddate__lt=one_year_old
+                                    senddate__lt=day_cnt_1_date
+                                    ).count()
+
+        cnt_old_unread_notifications2 = UserNotification.objects.filter(\
+                                    readnotification=False,
+                                    senddate__lt=day_cnt_2_date
                                     ).count()
 
 
         broken_cnt, impacted_users = NotificationStats.get_count_broken_notifications()
+        msg('broken_cnt: %s' % broken_cnt)
+        msg('impacted_users: %s' % impacted_users)
+
 
         file_stats = dict(\
 
@@ -135,17 +143,32 @@ class NotificationStats(object):
                                 None,
                                 **dict(stat2=impacted_users)),
 
-            cnt_unread_notifications=NamedStat(\
-                                'Unread Notifications',
-                                cnt_unread_notifications,
-                                ('Count of unread notifications'),
+            cnt_read_notifications=NamedStat(\
+                                'Read Notifications',
+                                cnt_read_notifications,
+                                ('Count of read notifications'),
                                 None),
 
-            cnt_old_unread_notifications=NamedStat(\
-                                'Old Unread Notifications',
+            cnt_unread_notifications=NamedStat(\
+                                'All Unread Notifications',
+                                cnt_unread_notifications,
+                                ('Count of unread notifications.'),
+                                None),
+
+            cnt_unread_old_notifications=NamedStat(\
+                                'Unread: Older than %s Days' % day_cnt_1,
                                 cnt_old_unread_notifications,
-                                ('Count of unread notifications older'
-                                 ' than %d days') % day_cnt,
+                                ('Count of cnt_old_unread_notifications notifications and'
+                                 ' notifications <b>older'
+                                 ' than %d days</b>') % day_cnt_1,
+                                None),
+
+            cnt_old_unread_notifications2=NamedStat(\
+                                'Unread: Older than %s Days' % day_cnt_2,
+                                cnt_old_unread_notifications2,
+                                ('Count of cnt_old_unread_notifications notifications and'
+                                 ' notifications <b>older'
+                                 ' than %d days</b>') % day_cnt_2,
                                 None),
 
             cnt_undated_notifications=NamedStat(\

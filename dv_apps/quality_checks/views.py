@@ -22,7 +22,7 @@ def add_ingest_status_lookup(template_dict):
     template_dict['INGEST_STATUS_ERROR'] = INGEST_STATUS_ERROR
 
 
-@cache_page(settings.METRICS_CACHE_VIEW_TIME)
+#@cache_page(settings.METRICS_CACHE_VIEW_TIME)
 def view_qc_dashboard(request):
     """
     Display QC dashboard (beginning, only 3 simple measures right now)

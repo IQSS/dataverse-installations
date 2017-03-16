@@ -85,7 +85,7 @@ class NotificationStats(object):
 
         unique_user_ids = len(set(user_ids))
 
-        return '%d (%d)' % (broken_cnt, unique_user_ids)
+        return (broken_cnt, unique_user_ids)
 
 
         # Get notifications with
@@ -119,18 +119,21 @@ class NotificationStats(object):
                                     ).count()
 
 
+        broken_cnt, impacted_users = NotificationStats.get_count_broken_notifications()
+
         file_stats = dict(\
 
             cnt_broken_notifications=NamedStat(\
-                                'Broken Notifications (Impacted Users)',
-                                NotificationStats.get_count_broken_notifications(),
+                                'Broken Notifications / Impacted Users',
+                                broken_cnt,
                                 ('The notification refers to an object that'
                                  ' longer exists.  These notifications should'
                                  ' be deleted from the database. (May be'
                                  ' responsible for some users who receive an'
                                  ' error when clicking on the notifications'
                                  ' tab.'),
-                                None),
+                                None,
+                                **dict(stat2=impacted_users)),
 
             cnt_unread_notifications=NamedStat(\
                                 'Unread Notifications',

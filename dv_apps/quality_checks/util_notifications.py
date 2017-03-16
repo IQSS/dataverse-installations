@@ -33,6 +33,7 @@ class NotificationStats(object):
 
         """
         broken_cnt = 0
+        user_ids = []
         for model_name, type_id_list in get_dv_object_to_object_id_map().items():
 
             #   Get a list of object ids for this model type
@@ -40,10 +41,14 @@ class NotificationStats(object):
             #   on the notifications pages
             #
             msgt('check: %s %s' % (model_name, type_id_list))
-            model_id_list = UserNotification.objects.filter(\
-                                        #emailed=False,
+            model_user_id_list = UserNotification.objects.select_related('user'\
+                                        ).filter(\
                                         object_type__in=type_id_list,
-                                        ).values_list('objectid', flat=True)
+                                        ).values_list('objectid', 'user__id')
+
+            model_id_list = [x[0] for x in model_user_id_list]
+
+            user_ids += [x[1] for x in model_user_id_list]
 
             msg('model_id_list len: %s' % len(model_id_list))
             if len(model_id_list) == 0:
@@ -78,7 +83,9 @@ class NotificationStats(object):
             for missing_id in missing_ids:
                 broken_cnt += notice_counter.get(missing_id, 0)
 
-        return broken_cnt
+        unique_user_ids = len(set(user_ids))
+
+        return '%d (%d)' % (broken_cnt, unique_user_ids)
 
 
         # Get notifications with
@@ -115,10 +122,14 @@ class NotificationStats(object):
         file_stats = dict(\
 
             cnt_broken_notifications=NamedStat(\
-                                'Broken Notifications',
+                                'Broken Notifications (Impacted Users)',
                                 NotificationStats.get_count_broken_notifications(),
                                 ('The notification refers to an object that'
-                                 ' longer exists--should be deleted from db'),
+                                 ' longer exists.  These notifications should'
+                                 ' be deleted from the database. (May be'
+                                 ' responsible for some users who receive an'
+                                 ' error when clicking on the notifications'
+                                 ' tab.'),
                                 None),
 
             cnt_unread_notifications=NamedStat(\

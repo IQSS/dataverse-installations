@@ -131,7 +131,7 @@ class NotificationStats(object):
                                  ' be deleted from the database. (May be'
                                  ' responsible for some users who receive an'
                                  ' error when clicking on the notifications'
-                                 ' tab.'),
+                                 ' tab.)'),
                                 None,
                                 **dict(stat2=impacted_users)),
 

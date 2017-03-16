@@ -61,6 +61,7 @@ INSTALLED_APPS = [
     'dv_apps.datafiles',
     'dv_apps.datasetfields',
     'dv_apps.guestbook',
+    'dv_apps.notifications',
 
     # Maps
     'dv_apps.installations',

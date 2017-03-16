@@ -94,7 +94,7 @@ class FailedIngestStats(object):
         exclude_params = FailedIngestStats.get_exclude_params(**kwargs)
 
         # ---------------------------
-        # Add Dataverse info to files
+        # Start: Add Dataverse info to files
         #   for now, much cheaper to retrieve than dataset titles
         # ---------------------------
         # file -> dataset
@@ -110,6 +110,8 @@ class FailedIngestStats(object):
         for id_info in dfile_ids:
             print 'id_info', id_info
             file2dataset_dict[id_info[0]] = id_info[1]
+
+        num_datasets = len(set(file2dataset_dict.values()))
 
         dv_ids = Dataset.objects.select_related('dvobject'\
                     ).filter(dvobject__id__in=file2dataset_dict.values()\
@@ -132,6 +134,7 @@ class FailedIngestStats(object):
         for k, v in dataset2dataverse_dict.items():
             dataset2dataverse_dict_temp[k] = dv_lookup.get(v, None)
 
+        num_dataverses = len(set(dataset2dataverse_dict.values()))
         dataset2dataverse_dict = dataset2dataverse_dict_temp
         dataset2dataverse_dict_temp = None
 
@@ -146,6 +149,9 @@ class FailedIngestStats(object):
             df.dataverse = dataset2dataverse_dict.get(df.dvobject.owner.id, None)
             dfiles_fmt.append(df)
 
+        # ---------------------------
+        # End: Add Dataverse info to files
+        # ---------------------------
 
         df_first_created = Datafile.objects.select_related('dvobject'\
                 ).filter(ingeststatus=INGEST_STATUS_ERROR\
@@ -157,7 +163,12 @@ class FailedIngestStats(object):
                 ).exclude(**exclude_params\
                 ).order_by('-dvobject__createdate', 'dvobject__id').first()
 
-        return (dfiles_fmt, df_first_created, df_last_created)
+        # make this an object...was initially returning 2-3 params
+        return (dfiles_fmt,
+                df_first_created,
+                df_last_created,
+                num_datasets,
+                num_dataverses)
 
 
     @staticmethod

@@ -3,6 +3,7 @@ from django.http import HttpResponse, Http404
 from django.conf import settings
 from dv_apps.quality_checks.util_filesize_zero import ZeroFilesizeStats
 from dv_apps.quality_checks.util_no_checksum import NoChecksumStats
+from dv_apps.quality_checks.util_notifications import NotificationStats
 from dv_apps.quality_checks.util_content_types import ContentTypeStats
 from dv_apps.quality_checks.util_failed_ingest import FailedIngestStats,\
     EXCLUDE_FILESIZE_PARAM
@@ -21,7 +22,7 @@ def add_ingest_status_lookup(template_dict):
     template_dict['INGEST_STATUS_ERROR'] = INGEST_STATUS_ERROR
 
 
-@cache_page(settings.METRICS_CACHE_VIEW_TIME)
+#@cache_page(settings.METRICS_CACHE_VIEW_TIME)
 def view_qc_dashboard(request):
     """
     Display QC dashboard (beginning, only 3 simple measures right now)
@@ -30,6 +31,7 @@ def view_qc_dashboard(request):
     info_dict = dict(\
             size_zero_stats=ZeroFilesizeStats.get_basic_stats(),
             checksum_stats=NoChecksumStats.get_basic_stats(),
+            notification_stats=NotificationStats.get_basic_stats(),
             unknown_ctype_stats=ContentTypeStats.get_basic_stats(),
             ingest_stats=FailedIngestStats.get_basic_stats())
 
@@ -87,16 +89,17 @@ def view_bad_ingest_list(request):
     if request.GET.has_key(EXCLUDE_FILESIZE_PARAM):
         kwargs[EXCLUDE_FILESIZE_PARAM] = request.GET[EXCLUDE_FILESIZE_PARAM]
 
-    dfiles, df_first_created, df_last_created =\
+    dfiles, df_first_created, df_last_created, num_datasets, num_dataverses =\
         FailedIngestStats.get_files_bad_ingest(**kwargs)
 
-    dataset_ids = list(set([df.dvobject.owner_id for df in dfiles]))
-    num_datasets = len(dataset_ids)
+    #dataset_ids = list(set([df.dvobject.owner_id for df in dfiles]))
+    #num_datasets = len(dataset_ids)
 
     info_dict = dict(dfiles=dfiles,
                      df_first_created=df_first_created,
                      df_last_created=df_last_created,
                      num_datasets=num_datasets,
+                     num_dataverses=num_dataverses,
                      subtitle='Files with an ingest status of "ERROR"',
                      installation_url=settings.DATAVERSE_INSTALLATION_URL,
                      )

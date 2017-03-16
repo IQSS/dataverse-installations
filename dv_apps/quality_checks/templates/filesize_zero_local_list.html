@@ -23,6 +23,9 @@
         <p style="font-size:150%">
             Found: <b>{{ dfiles|length|intcomma }}</b> File{{ dfiles|length|pluralize }}
             within <b>{{ num_datasets|intcomma }}</b> dataset{{ num_datasets|pluralize }}
+            {% if num_dataverses %}
+            and <b>{{ num_dataverses|intcomma }}</b> dataverse{{ num_dataverses|pluralize }}
+            {% endif %}
         </p>
         {% if df_first_created and df_last_created %}
 

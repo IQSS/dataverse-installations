@@ -10,18 +10,6 @@
 <hr />
 <p class="text-muted">Generated {% now "F jS Y H:i P" %} (may be cached)</p>
 
-<!-- No checksum -->
-<div class="row">
-    <div class="col-xs-12"><h2 class="text-muted">No checksum</h2></div>
-</div>
-<div class="row">
-{% with stat_info=checksum_stats.cnt_no_checksum_local err_class="danger" %}
-    {% include "one_stat_panel.html" %}
-{% endwith %}
-{% with stat_info=checksum_stats.cnt_no_checksum_harvested err_class="warning" %}
-    {% include "one_stat_panel.html" %}
-{% endwith %}
-</div>
 
 <!-- File size 0 or null -->
 <div class="row">
@@ -50,6 +38,19 @@
 </div>
 
 
+<!-- No checksum -->
+<div class="row">
+    <div class="col-xs-12"><h2 class="text-muted">No checksum</h2></div>
+</div>
+<div class="row">
+{% with stat_info=checksum_stats.cnt_no_checksum_local err_class="danger" %}
+    {% include "one_stat_panel.html" %}
+{% endwith %}
+{% with stat_info=checksum_stats.cnt_no_checksum_harvested err_class="warning" %}
+    {% include "one_stat_panel.html" %}
+{% endwith %}
+</div>
+
 <!-- Files with Unknown Content Types -->
 <div class="row">
     <div class="col-xs-12"><h2 class="text-muted">Files with Unknown Content Types</h2></div>
@@ -62,6 +63,31 @@
     {% include "one_stat_panel.html" %}
 {% endwith %}
 </div>
+
+<!-- Notification Stats -->
+<div class="row">
+    <div class="col-xs-12"><h2 class="text-muted">Notification Stats</h2>
+        <h4 class="text-danger">experimental - untested</h4>
+    </div>
+</div>
+<div class="row">
+{% with stat_info=notification_stats.cnt_broken_notifications err_class="danger" %}
+    {% include "one_stat_panel.html" %}
+{% endwith %}
+{% with stat_info=notification_stats.cnt_undated_notifications err_class="danger" %}
+    {% include "one_stat_panel.html" %}
+{% endwith %}
+</div>
+<div class="row">
+{% with stat_info=notification_stats.cnt_old_unread_notifications %}
+    {% include "one_stat_panel.html" %}
+{% endwith %}
+{% with stat_info=notification_stats.cnt_unread_notifications %}
+    {% include "one_stat_panel.html" %}
+{% endwith %}
+</div>
+
+
 
 
 <div class="row">

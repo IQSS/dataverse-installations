@@ -135,7 +135,7 @@ class NotificationStats(object):
                                 'Broken Notifications / Impacted Users',
                                 broken_cnt,
                                 ('The notification refers to an object that'
-                                 ' longer exists.  These notifications should'
+                                 ' no longer exists.  These notifications should'
                                  ' be deleted from the database. (May be'
                                  ' responsible for some users who receive an'
                                  ' error when clicking on the notifications'

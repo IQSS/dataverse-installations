@@ -2,7 +2,9 @@
 Examine notifications, expecially those connected to objects
 that no longer exist
 """
-from dv_apps.notifications.models import UserNotification, get_dv_object_to_object_id_map
+from dv_apps.notifications.models import UserNotification,\
+        get_dv_object_to_object_id_map,\
+        OBJECT_ID2TYPE_MAP
 from dv_apps.quality_checks.named_stat import NamedStat
 from dv_apps.dvobjects.models import DvObject
 from dv_apps.dataverses.models import Dataverse
@@ -13,10 +15,142 @@ from dv_apps.utils.msg_util import msg, msgt
 from collections import Counter
 from datetime import datetime, timedelta
 
+
+class BrokenNotificationInfo(object):
+
+    def __init__(self, model_name, model_user_id_list, missing_ids, **kwargs):
+        """Calculate broken notificatin info"""
+
+        assert model_name is not None, "model_name cannot be None"
+        assert isinstance(model_user_id_list, list),\
+            "model_user_id_list must be a list"
+        assert isinstance(missing_ids, list),\
+            "missing_ids must be a list"
+
+        self.model_name = model_name
+        self.missing_ids = missing_ids
+        self.start_date = kwargs.get('start_date', None)
+
+        # ------------------------------------------
+        # Calculated attributes for *Broken* notifications
+        # ------------------------------------------
+        self.cnt_all_notifications = 0
+        self.cnt_broken_notifications = 0
+        self.percent_broken_string = None
+
+        self.object_id_list = None
+        self.cnt_unique_objects = 0
+
+        self.user_id_list = None
+        self.cnt_unique_users = 0
+
+        self.notice_types = None
+        # ------------------------------------------
+        # Calculate attributes for *Broken* notifications
+        # ------------------------------------------
+        self.calculate_info(model_user_id_list)
+        self.set_notice_types()
+
+    def set_notice_types(self):
+
+        self.notice_types = []
+        objects_ids = get_dv_object_to_object_id_map().get(self.model_name)
+        assert objects_ids is not None,\
+            "object_ids cannot be None for model name: %s" % self.model_name
+
+        for obj_id in objects_ids:
+            notice_type_name = OBJECT_ID2TYPE_MAP.get(obj_id, None)
+            assert notice_type_name is not None,\
+                ("notice_type_name cannot be for"
+                 " id: %s\nSee 'OBJECT_ID2TYPE_MAP'") % obj_id
+
+            self.notice_types.append(notice_type_name)
+
+        self.notice_types.sort()
+
+    def calculate_info(self, model_user_id_list):
+        """Calculate counts/attributes
+        model_id_list = [(object_id, user_id), (object_id, user_id), etc]
+        """
+        assert isinstance(model_user_id_list, list),\
+            "model_user_id_list must be a list"
+
+        self.cnt_all_notifications = len(model_user_id_list)
+
+        broken_notices = [n for n in model_user_id_list if n[0] in self.missing_ids]
+        self.cnt_broken_notifications = len(broken_notices)
+
+        self.object_id_list = [n[0] for n in broken_notices]
+        self.cnt_unique_objects = len(set(self.object_id_list))
+
+        self.user_id_list = [n[1] for n in broken_notices]
+        self.cnt_unique_users = len(set(self.user_id_list))
+
+        float_percent = (self.cnt_broken_notifications + 0.0) / self.cnt_all_notifications
+        self.percent_broken_string = '{0:.1%}'.format(float_percent)
+
+
 class NotificationStats(object):
     """Check for files without content types--or "unknown" content type"""
     def __init__(self):
-        pass
+        self.broken_info_list = []
+        self.load_broken_notifications()
+
+    def load_broken_notifications(self):
+        """Load broken notifications by type"""
+
+        broken_notice_info = None
+        for model_name, type_id_list in get_dv_object_to_object_id_map().items():
+
+            #   Get a list of object ids for this model type
+            #   that were not emailed--e.g. should show up
+            #   on the notifications pages
+            #
+            msgt('check: %s %s' % (model_name, type_id_list))
+
+            model_user_id_list = UserNotification.objects.select_related('user'\
+                                        ).filter(\
+                                        object_type__in=type_id_list,
+                                        ).values_list('objectid', 'user__id')
+
+            if len(model_user_id_list) == 0:
+                continue
+
+            # retrieve the object ids only
+            model_id_list = [x[0] for x in model_user_id_list]
+            unique_id_list = list(set(model_id_list))
+
+            # Next line is a hack - Need to upgrade Django apps
+            #   to not use this method
+            model_class = eval(model_name)
+            if model_name in ['DvObject', 'DatasetVersion', 'FileMetadata']:
+                existing_ids = model_class.objects.filter(id__in=unique_id_list\
+                                            ).values_list('id', flat=True\
+                                            ).distinct()
+            else:
+                existing_ids = model_class.objects.select_related('dvobject'\
+                                    ).filter(dvobject__id__in=unique_id_list\
+                                    ).values_list('dvobject__id', flat=True\
+                                    ).distinct()
+
+            if len(unique_id_list) == len(existing_ids):
+                # Looks good!
+                # No notifications where object no longer exists
+                continue
+
+            # Create a list of the missing ids
+            #
+            missing_ids = list(set(unique_id_list) - set(existing_ids))
+
+            # Record broken notification info
+            #
+            broken_notice_info = BrokenNotificationInfo(\
+                                    model_name,
+                                    list(model_user_id_list),
+                                    missing_ids)
+            self.broken_info_list.append(broken_notice_info)
+
+
 
 
     @staticmethod
@@ -140,7 +274,7 @@ class NotificationStats(object):
                                  ' responsible for some users who receive an'
                                  ' error when clicking on the notifications'
                                  ' tab.)'),
-                                None,
+                                'view_broken_notifications',
                                 **dict(stat2=impacted_users)),
 
             cnt_read_notifications=NamedStat(\

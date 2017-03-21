@@ -2,7 +2,7 @@
 Hanlde Slack channel requests
 """
 from django.conf.urls import url
-from dv_apps.quality_checks import views
+from dv_apps.quality_checks import views, views_notifications
 
 urlpatterns = (
 
@@ -29,5 +29,9 @@ urlpatterns = (
     url(r'^in-progress-ingest-list$',
         views.view_in_progress_ingest_list,
         name='view_in_progress_ingest_list'),
+
+    url(r'^broken-notifications$',
+        views_notifications.view_broken_notifications,
+        name='view_broken_notifications'),
 
 )

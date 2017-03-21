@@ -10,6 +10,8 @@ from dv_apps.dvobjects.models import DvObject
 from dv_apps.dataverses.models import Dataverse
 from dv_apps.datasets.models import Dataset, DatasetVersion
 from dv_apps.datafiles.models import Datafile, FileMetadata
+from dv_apps.dataverse_auth.models import AuthenticatedUser
+
 from dv_apps.utils.msg_util import msg, msgt
 
 from collections import Counter
@@ -52,7 +54,7 @@ class BrokenNotificationInfo(object):
         self.set_notice_types()
 
     def set_notice_types(self):
-
+        """Return the types of notices associated with this model"""
         self.notice_types = []
         objects_ids = get_dv_object_to_object_id_map().get(self.model_name)
         assert objects_ids is not None,\
@@ -69,7 +71,8 @@ class BrokenNotificationInfo(object):
         self.notice_types.sort()
 
     def calculate_info(self, model_user_id_list):
-        """Calculate counts/attributes
+        """
+        Calculate counts/attributes
         model_id_list = [(object_id, user_id), (object_id, user_id), etc]
         """
         assert isinstance(model_user_id_list, list),\
@@ -89,11 +92,22 @@ class BrokenNotificationInfo(object):
         float_percent = (self.cnt_broken_notifications + 0.0) / self.cnt_all_notifications
         self.percent_broken_string = '{0:.1%}'.format(float_percent)
 
+    def get_user_list(self):
+        """Return the AuthenticatedUser objects with notices
+        that contain missing_ids"""
+        assert self.user_id_list is not None,\
+            "self.user_id_list cannot be None"
+
+        return AuthenticatedUser.objects.filter(\
+                        id__in=self.user_id_list\
+                        ).distinct()
+
 
 class NotificationStats(object):
     """Check for files without content types--or "unknown" content type"""
-    def __init__(self):
+    def __init__(self, **kwargs):
         self.broken_info_list = []
+        self.selected_model_name = kwargs.get('selected_model_name', None)
         self.load_broken_notifications()
 
     def load_broken_notifications(self):
@@ -101,12 +115,19 @@ class NotificationStats(object):
 
         broken_notice_info = None
         for model_name, type_id_list in get_dv_object_to_object_id_map().items():
-
             #   Get a list of object ids for this model type
             #   that were not emailed--e.g. should show up
             #   on the notifications pages
             #
             msgt('check: %s %s' % (model_name, type_id_list))
+
+            # If there's a selected_model_name, then only process that model
+            #
+            if self.selected_model_name is None:
+                pass    # check all models
+            elif model_name != self.selected_model_name:
+                # We have a selected_model_name and this isn't it!
+                continue
 
             model_user_id_list = UserNotification.objects.select_related('user'\
                                         ).filter(\

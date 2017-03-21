@@ -18,6 +18,7 @@
 <div class="row">
     <div class="col-xs-12">
         <p class="text-muted"><a href="{% url 'view_qc_dashboard' %}">&lt;&lt; return to dashboard</a></p>
+        <p class="text-muted"><a href="{% url 'view_broken_notifications' %}">&lt;&lt; return to broken notifications</a></p>
         <hr />
     </div>
 </div>
@@ -32,7 +33,7 @@
 <div class="row">
     {# bit of ugly row making here--all 1 row but bootstrap does 2/row or 1/row #}
     {% for bi in broken_info_list %}
-    <div class="col-xs-12 col-sm-6">
+    <div class="col-xs-12">
         <div class="panel panel-default">
           <div class="panel-heading text-center"><b>{{ bi.model_name}}</b></div>
           <div class="panel-body">
@@ -75,7 +76,10 @@
                         </td>
                     </tr>
                 </table>
-                <p><a href="{% url 'view_broken_notification_details' bi.model_name %}">&gt; See more details</a></p>
+
+                {% if bi.cnt_unique_users > 0 %}
+                    {% include "notification_user_table.html" %}
+                {% endif %}
             </div>
         </div>
     </div>

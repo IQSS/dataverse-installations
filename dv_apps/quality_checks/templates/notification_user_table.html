@@ -1,0 +1,63 @@
+
+<hr />
+<h2>Impacted users</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Cnt</th>
+            <th>User Identifier</th>
+            <th>User id</th>
+            <th>Email</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Affiliation</th>
+            <th>Position</th>
+            <th>Is superuser?</th
+        </tr>
+    </thead>
+    <tbody>
+        {% for user in bi.get_user_list %}
+        <tr>
+            <td>({{ forloop.counter }})</td>
+            <td>{{ user.useridentifier }}</td>
+            <td>{{ user.id }}</td>
+            <td>{{ user.email }}</td>
+
+            <td>{% if user.firstname %}
+                    {{ user.firstname }}
+                 {% else %}
+                    &nbsp;
+                {% endif %}
+            </td>
+            <td>{% if user.lastname %}
+                    {{ user.lastname }}
+                 {% else %}
+                    &nbsp;
+                {% endif %}
+            </td>
+            <td>{% if user.affiliation %}
+                    {{ user.affiliation }}
+                 {% else %}
+                    &nbsp;
+                {% endif %}
+            </td>
+            <td>{% if user.position %}
+                    {{ user.position }}
+                 {% else %}
+                    &nbsp;
+                {% endif %}
+            </td>
+            <td>{% if user.superuser %}
+                    <span class="label label-success">Yes</span>
+                {% else %}
+                    <span class="label label-default">No</span>
+                {% endif %}
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="8">(No users)</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>

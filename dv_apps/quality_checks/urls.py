@@ -34,4 +34,8 @@ urlpatterns = (
         views_notifications.view_broken_notifications,
         name='view_broken_notifications'),
 
+    url(r'^broken-notifications/details/(?P<model_name>\w{4,40})$',
+        views_notifications.view_broken_notification_details,
+        name='view_broken_notification_details'),
+
 )

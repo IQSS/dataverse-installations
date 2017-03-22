@@ -146,8 +146,8 @@ class MetadataFormatter(object):
                 for sec_field in secondary_fields:
                     self.add_value_to_dataset_field(sec_field, value_lookup, controlled_vocab_lookup)
                     ds_field.secondary_fields.append(sec_field)
-                for sf in ds_field.secondary_fields:
-                    print '(2nd) %s -> [%s][%s]' % (sf.datasetfieldtype.title, sf.flat_val, sf.datasetfieldtype.displayorder)
+                #for sf in ds_field.secondary_fields:
+                #    print '(2nd) %s -> [%s][%s]' % (sf.datasetfieldtype.title, sf.flat_val, sf.datasetfieldtype.displayorder)
             else:
                 msgt('AINT got nuthin: %s: %s' % (ds_field, ds_field.datasetfieldtype.title))
 

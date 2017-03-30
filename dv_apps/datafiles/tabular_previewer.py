@@ -115,7 +115,7 @@ class TabularPreviewer(object):
             if self.is_excel:
                 self.add_error('Failed to open Excel file via pandas. [%s]' % ex_obj)
             else:
-                self.add_error('Probably not a tabular file! Failed to open file via pandas. [%s]' % ex_obj)
+                self.add_error('<b>Probably not a tabular file!</b> Failed to open file via pandas. [%s]' % ex_obj)
             return None
 
         self.describe_as_html = df.describe().to_html()

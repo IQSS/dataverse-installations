@@ -119,7 +119,8 @@ class TabularPreviewer(object):
             return None
 
         self.describe_as_html = df.describe().to_html()
-        self.describe_as_dict = df.describe().to_dict()
+        json_string = df.describe().to_json()
+        self.describe_as_dict =json.loads(json_string, object_pairs_hook=OrderedDict)
 
         # Retrieve the columns
         self.column_names = df.columns.tolist()

@@ -152,7 +152,7 @@ class DataverseTreeUtil(object):
 
     def get_child_nodes(self, root_node, parent_child_lists, depth=0):
         """
-        Used to recursively organizing the Dataverse parent/child tree
+        Used to recursively organize the Dataverse parent/child tree
         into a python OrderedDict
         """
         child_nodes = parent_child_lists.get(root_node['id'], None)

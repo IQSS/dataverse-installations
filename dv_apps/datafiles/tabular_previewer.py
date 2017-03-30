@@ -3,6 +3,7 @@ from collections import OrderedDict
 import json
 import pandas as pd
 
+from dv_apps.utils.msg_util import msgt, msg
 from dv_apps.datafiles import temp_file_helper
 
 DEFAULT_PREVIEW_ROW_LIMIT = 50
@@ -17,19 +18,32 @@ class TabularPreviewer(object):
         self.num_preview_rows = kwargs.get('num_preview_rows', DEFAULT_PREVIEW_ROW_LIMIT)
         self.tab_delimiter = kwargs.get('tab_delimiter', '\t')
 
+        self.is_excel = False#kwargs.get('is_excel', False)
+
+        # summary info
+        self.describe_as_dict = None
+        self.describe_as_html = None
+        self.column_names = None
+        self.data_rows = None
+
         # filepath
         self.filepath = filepath
+        self.file_ext = kwargs.get('file_ext', None)
 
         # internal error check
         self.error_found = False
         self.error_message = None
 
+
         self.preliminary_file_check()
+
 
     def add_error(self, err_msg):
         """Add an error message"""
+        assert err_msg is not None, 'err_msg cannot be None'
+
         self.error_found = True
-        self.error_message = err_msg
+        self.error_message = err_msg.strip()
 
     def has_error(self):
         """Did an error occur?"""
@@ -52,6 +66,9 @@ class TabularPreviewer(object):
         if getsize(self.filepath) < 1:
             self.add_error("The file is empty (no bytes): %s" % basename(self.filepath))
             return False
+
+        if self.file_ext in ['xls', 'xlsx']:
+            self.is_excel = True
 
         return True
 
@@ -85,17 +102,30 @@ class TabularPreviewer(object):
 
         # Read the table
         try:
-            df = pd.read_table(self.filepath)
-        except:
+            if self.is_excel:
+                msgt('Excel!')
+                df = pd.read_table(self.filepath,
+                                   error_bad_lines=False)
+            else:
+                df = pd.read_table(self.filepath)
+        except Exception as ex_obj:
+            msg(ex_obj)
             msgt('Failed to open file via pandas!')
             temp_file_helper.make_sure_file_deleted(self.filepath)
+            if self.is_excel:
+                self.add_error('Failed to open Excel file via pandas. [%s]' % ex_obj)
+            else:
+                self.add_error('Failed to open file via pandas. [%s]' % ex_obj)
             return None
 
+        self.describe_as_html = df.describe().to_html()
+        self.describe_as_dict = df.describe().to_dict()
+
         # Retrieve the columns
-        column_names = df.columns.tolist()
+        self.column_names = df.columns.tolist()
 
         # Retrieve the rows
-        rows = df[:self.num_preview_rows].values.tolist()
+        self.data_rows = df[:self.num_preview_rows].values.tolist()
 
         #print 'rows', json.dumps(rows)
 
@@ -103,9 +133,11 @@ class TabularPreviewer(object):
         info_dict = OrderedDict()
 
         info_dict['total_row_count'] = len(df.index)
-        info_dict['preview_row_count'] = len(rows)
-        info_dict['column_names'] = column_names
-        info_dict['rows'] = rows
+        info_dict['preview_row_count'] = len(self.data_rows)
+        info_dict['column_names'] = self.column_names
+        info_dict['rows'] = self.data_rows
+        info_dict['describe_as_html'] = self.describe_as_html
+        info_dict['describe_as_dict'] = self.describe_as_dict
 
         if as_json:
             if pretty_print:

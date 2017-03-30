@@ -177,6 +177,9 @@ TEMPLATES = [
     },
 ]
 
+# Test local solr url
+SOLR_URL = 'http://localhost:8983/solr/'
+
 
 MEDIA_ROOT = join(PROJECT_ROOT,"media")
 MEDIA_URL = '/media/'

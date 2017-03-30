@@ -133,3 +133,7 @@ miniverse/settings/test_url.txt
 miniverse/settings/test_url.py
 
 scripts/mongo/json_output
+scripts/tab-samp
+
+# put it in later...
+dv_apps/solr_docs

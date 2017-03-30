@@ -1,5 +1,6 @@
 import os
 from os.path import isfile
+import re
 import tempfile
 import requests
 from dv_apps.utils.msg_util import msg, msgt
@@ -17,6 +18,12 @@ with TemporaryFile() as f:
 def download_file(url_to_file):
     """Download a Dataverse file and return the filename"""
 
+
+    """
+    import re
+    d = r.headers['content-disposition']
+    fname = re.findall("filename=(.+)", d)
+    """
     file_handle, filepath = tempfile.mkstemp()
 
     msgt('download file: %s' % url_to_file)
@@ -27,7 +34,16 @@ def download_file(url_to_file):
         msg('bad status: %s' % r.status_code)
         if isfile(filepath):
             make_sure_file_deleted(filepath)
-        return None
+        return None, None
+
+    file_ext = None
+    content_dict = r.headers['content-disposition']
+    #print 'content_dict', content_dict
+    #fname = re.findall("filename=(.+)", content_dict)
+    fname = format_file_name(content_dict)
+    if fname:
+        file_ext = fname.split('.')[-1].lower()
+    print 'file_ext', file_ext
 
     with os.fdopen(file_handle, 'wb') as tmp:
         for chunk in r.iter_content(chunk_size=1024):
@@ -35,8 +51,29 @@ def download_file(url_to_file):
                 tmp.write(chunk)
 
     msg('File downloaded: %s' % filepath)
-    return filepath
+    return filepath, file_ext
 
+
+def format_file_name(content_disposition):
+    if content_disposition is None:
+        return None
+
+    fnames = re.findall("filename=(.+)", content_disposition)
+    if not fnames:
+        return None
+
+    if len(fnames) < 1:
+        return None
+
+    fname = fnames[0]
+
+    if fname.startswith('"') and len(fname) > 1:
+        fname = fname[1:]
+
+    if fname.endswith('"') and len(fname) > 1:
+        fname = fname[:-1]
+
+    return fname
 
 def make_sure_file_deleted(filepath):
     assert filepath is not None, 'filepath cannot be None'

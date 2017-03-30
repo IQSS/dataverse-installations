@@ -3,6 +3,26 @@
 
 {% block main_content %}
 <div class="panel panel-default">
+  <div class="panel-heading"><h2>Quick* Dataverse Stats Summary</h2></div>
+  <div class="panel-body">
+      <div class="row">
+          <div class="col-xs-12">
+              <h4>See the example</h4>
+              <a href="https://services.dataverse.harvard.edu/miniverse/datafile/table-preview-html/2510052&version=1.3" target="_blank">https://services.dataverse.harvard.edu/miniverse/datafile/table-preview-html/2510052&version=1.3</a>
+              <h4>Try it</h4>
+              <ol>
+
+              <li>Drag this link to your tool bar:  <a href="javascript:var myParam = location.search.split('fileId=')[1];window.location = 'https://services.dataverse.harvard.edu/miniverse/datafile/table-preview-html/' + myParam;">scriptlet preview tabular rows</a></li>
+              <li>Go to the published file page of a tabular file. example: <a href="https://dataverse.harvard.edu/file.xhtml?fileId=2510052&version=1.3">https://dataverse.harvard.edu/file.xhtml?fileId=2510052&version=1.3</a> </li>
+              <li>Click the link in the toolbar</li>
+              </ol>
+              * (no promises)
+          </div>
+      </div>
+  </div>
+</div>
+
+<div class="panel panel-default">
   <div class="panel-heading">Links</div>
   <div class="panel-body">
 
@@ -10,6 +30,7 @@
       <div class="row">
 
           <div class="col-xs-12 col-sm-6">
+
 
    {% if DEBUG %}
     <h4>admin</h4>

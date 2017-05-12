@@ -6,6 +6,7 @@ from os.path import splitext
 from collections import OrderedDict
 
 from django.db import models
+from django.db.models import Sum
 
 from dv_apps.utils.date_helper import get_month_name_abbreviation,\
     get_month_name
@@ -15,6 +16,8 @@ from dv_apps.guestbook.models import GuestBookResponse, RESPONSE_TYPE_DOWNLOAD
 from dv_apps.metrics.stats_util_base import StatsMakerBase, TruncYearMonth
 from dv_apps.metrics.stats_result import StatsResult
 from dv_apps.dvobjects.models import DVOBJECT_CREATEDATE_ATTR
+
+from dv_apps.utils.byte_size import sizeof_fmt, comma_sep_number
 
 FILE_TYPE_OCTET_STREAM = 'application/octet-stream'
 INCLUDE_PRE_DV4_DOWNLOADS = 'include_pre_dv4_downloads'
@@ -371,7 +374,8 @@ print stats_files.get_total_file_downloads().result_data
             yyyy_mm=TruncYearMonth('%s' % date_param)\
             ).values('yyyy_mm'\
             ).annotate(count=models.Count('dvobject_id')\
-            ).values('yyyy_mm', 'count'\
+            ).annotate(bytes=models.Sum('filesize')\
+            ).values('yyyy_mm', 'count', 'bytes'\
             ).order_by('%syyyy_mm' % self.time_sort)
 
         sql_query = str(file_counts_by_month.query)
@@ -380,6 +384,7 @@ print stats_files.get_total_file_downloads().result_data
         # (3) Format results
         # -----------------------------------
         running_total = self.get_file_count_start_point(**extra_filters)   # hold the running total count
+        total_bytes = 0
         formatted_records = []  # move from a queryset to a []
 
         for d in file_counts_by_month:
@@ -387,7 +392,11 @@ print stats_files.get_total_file_downloads().result_data
 
             fmt_rec['yyyy_mm'] = d['yyyy_mm'].strftime('%Y-%m')
             fmt_rec['count'] = d['count']
+            fmt_rec['bytes'] = d['bytes']
+            fmt_rec['bytes_str'] = comma_sep_number(d['bytes'])
+            fmt_rec['bytes_approx'] = sizeof_fmt(d['bytes'])
 
+            total_bytes += d['bytes']
             # running total
             running_total += d['count']
             fmt_rec['running_total'] = running_total
@@ -413,6 +422,9 @@ print stats_files.get_total_file_downloads().result_data
         data_dict = OrderedDict()
         data_dict['record_count'] = len(formatted_records)
         data_dict['records'] = formatted_records
+        data_dict['total_bytes'] = total_bytes
+        data_dict['total_bytes_str'] = comma_sep_number(total_bytes)
+        data_dict['total_bytes_approx'] = sizeof_fmt(total_bytes)
 
         return StatsResult.build_success_result(data_dict, sql_query)
 

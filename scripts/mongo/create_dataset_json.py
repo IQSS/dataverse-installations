@@ -212,7 +212,6 @@ class DatasetJSONCreator(object):
             dmap_str = 'dmap.' + field_names[0]
             print 'dmap_str', dmap_str
             m = DictMapUtil(doc)
-            import ipdb; ipdb.set_trace()
             #print eval(dmap_str)
             break
             """

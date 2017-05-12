@@ -104,8 +104,9 @@ class TabularPreviewer(object):
         try:
             if self.is_excel:
                 msgt('Excel!')
-                df = pd.read_table(self.filepath,
-                                   error_bad_lines=False)
+
+                df = pd.read_excel(self.filepath)
+                #error_bad_lines=False)
             else:
                 df = pd.read_table(self.filepath)
         except Exception as ex_obj:

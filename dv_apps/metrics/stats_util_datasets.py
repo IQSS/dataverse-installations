@@ -462,7 +462,6 @@ class StatsMakerDatasets(StatsMakerBase):
         """
         Get the range of create and pub dates
         """
-        #import ipdb; ipdb.set_trace()
         if len(pub_date_info) == 0:
             # No pub date, return create date ranges
             if len(create_date_info) == 1:
@@ -513,7 +512,6 @@ class StatsMakerDatasets(StatsMakerBase):
         # (4) Get list of months in YYYY-MMDD format to iterate through
         #
         month_iterator = self.create_month_year_iterator(create_date_info, pub_date_info)
-        #import ipdb; ipdb.set_trace()
         #for yyyy, mm in
         #print 'pub_date_info', len(pub_date_info)
 

@@ -84,7 +84,7 @@ def view_table_preview_json(request, datafile_id):
 
 
 
-@cache_page(settings.METRICS_CACHE_VIEW_TIME)
+#@cache_page(settings.METRICS_CACHE_VIEW_TIME)
 def view_table_preview_html(request, datafile_id):
 
     success, data_rows_or_err, http_status_code = get_table_rows(datafile_id)

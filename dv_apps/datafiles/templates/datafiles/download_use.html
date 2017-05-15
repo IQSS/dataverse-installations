@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+b{% load humanize %}
+{% block title %}Dataverse Downloads{% endblock %}
+
+{% block main_content %}
+<h2>Bytes Downloaded</h2>
+<div class="panel panel-default">
+  <div class="panel-heading"><h3>Report Year</h3></div>
+  <div class="panel-body">
+      {% for yr in report_years %}
+        {% if selected_year == yr %}
+            <a href="{% url 'view_monthly_downloads_by_year' yr %}" style="font-size:120%;"><b>{{ yr }}</b></a>
+        {% else %}
+            <a href="{% url 'view_monthly_downloads_by_year' yr %}">{{ yr }}</a>
+        {% endif %}
+        {% if not forloop.last %}
+            &nbsp; | &nbsp;
+        {% endif %}
+      {% endfor %}
+
+  </div>
+</div>
+
+
+<div class="panel panel-default">
+  <div class="panel-heading"><h3>Download Stats for {{ selected_year }}</h3></div>
+  <div class="panel-body">
+      <table class="table table-striped table-condensed table-bordered">
+          <tr>
+              <th class="text-center">Month</th>
+              <th class="text-center">Number Downloads</th>
+              <th class="text-center">Bytes Downloaded</th>
+              <th class="text-center">Approx Cost*</th>
+          </tr>
+      {% for info in monthly_info %}
+          <tr class="text-right">
+              <td class="text-left">{{ info.0|date:"F Y" }}</td>
+              <td>{{ info.1|intcomma }}</td>
+              <td>{{ info.2|intcomma }}</td>
+              <td>${{ info.5 }}</td>
+          </tr>
+        {% if forloop.last %}
+        <tr class="text-right" style="border-top:2px solid #000;">
+            <td class="text-left">Year {{ info.0|date:"Y" }}</td>
+            <td>{{ total_download_count }}</td>
+            <td>{{ total_bytes|intcomma }}</td>
+            <td>${{ total_price_str }}</td>
+        </tr>
+        {% endif %}
+      {% empty %}
+        <tr>
+            <td colspan="4">No data avaiable for {{ selected_year}}</td>
+        </tr>
+      {% endfor %}
+        </table>
+        <p>* Approx cost: $0.09 per GB, 1st GB free</p>
+  </div>
+</div>
+{% endblock %}

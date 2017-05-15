@@ -394,7 +394,6 @@ print stats_files.get_total_file_downloads().result_data
             fmt_rec['count'] = d['count']
             fmt_rec['bytes'] = d['bytes']
             fmt_rec['bytes_str'] = comma_sep_number(d['bytes'])
-            fmt_rec['bytes_approx'] = sizeof_fmt(d['bytes'])
 
             total_bytes += d['bytes']
             # running total
@@ -424,7 +423,6 @@ print stats_files.get_total_file_downloads().result_data
         data_dict['records'] = formatted_records
         data_dict['total_bytes'] = total_bytes
         data_dict['total_bytes_str'] = comma_sep_number(total_bytes)
-        data_dict['total_bytes_approx'] = sizeof_fmt(total_bytes)
 
         return StatsResult.build_success_result(data_dict, sql_query)
 
@@ -669,4 +667,24 @@ All unknown:  select count(datafile.id) from datafile where contenttype = 'appli
 
 13,696
 10,460
+
+
+# One month downloads
+select count(id) from guestbookresponse where responsetime >= '2017-04-01' and responsetime < '2017-05-01' ;
+
+select count(gb.id), sum(df.filesize)
+ from guestbookresponse gb, datafile df
+ where gb.responsetime >= '2017-05-01' and gb.responsetime < '2017-06-01'
+ and gb.datafile_id = df.id;
+
+select count(gb.id), sum(df.filesize)
+ from guestbookresponse gb, datafile df
+ where gb.responsetime >= '2016-01-01' and gb.responsetime < '2017-01-01'
+ and gb.datafile_id = df.id;
+
+5,153,592,037,492
+5,153 gb * .09 = $500/
+5T
+
+8,659 = 779
 """

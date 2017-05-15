@@ -25,7 +25,7 @@ def view_monthly_downloads(request, selected_year=None):
     if selected_year is None:
         selected_year = current_year
 
-    if not selected_year.isdigit():
+    if not str(selected_year).isdigit():
         raise Http404('Not a valid year: %s (not digits)' % selected_year)
 
     selected_year = int(selected_year)

@@ -4,18 +4,21 @@ from collections import namedtuple
 from decimal import Decimal
 
 from django.db import connections
+from django.conf import settings
+
 from dv_apps.utils.byte_size import sizeof_fmt, comma_sep_number
 
 from django.shortcuts import render
-from dv_apps.utils.message_helper_json import MessageHelperJSON
+#from dv_apps.utils.message_helper_json import MessageHelperJSON
 from django.http import JsonResponse, HttpResponse, Http404
 
-from dv_apps.datafiles.models import Datafile
+#from dv_apps.datafiles.models import Datafile
 
-from django.conf import settings
 from dv_apps.datafiles.s3_tier_utility import get_naive_price, bytes_to_gb
+from django.views.decorators.cache import cache_page
 
 
+@cache_page(settings.METRICS_CACHE_VIEW_TIME)
 def view_monthly_downloads(request, selected_year=None):
     """List of download counts/bytes per mointh"""
     current_year = dt.datetime.now().year
@@ -41,7 +44,8 @@ def view_monthly_downloads(request, selected_year=None):
                  " FROM guestbookresponse gb, datafile df"
                  " WHERE gb.datafile_id = df.id"
                  " AND extract(YEAR from gb.responsetime) = '%s'"
-                 " GROUP BY date_trunc('month', gb.responsetime);") %\
+                 " GROUP BY date_trunc('month', gb.responsetime)"
+                 " ORDER BY month;") %\
                  (selected_year)
                  # where extract(YEAR from TIMESTAMP
     cursor.execute(sql_query)

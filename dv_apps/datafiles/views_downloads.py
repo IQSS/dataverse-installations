@@ -58,7 +58,7 @@ def view_monthly_downloads(request, selected_year=None):
         # Add comma separated # bytes
         info_list.append(comma_sep_number(info[2]))
         dec_price = get_naive_price(info[2])
-        dec_price_str = "{:.2f}".format(dec_price)
+        dec_price_str = "{:,.2f}".format(dec_price)
 
         # Add price as decimal
         info_list.append(dec_price)
@@ -79,7 +79,7 @@ def view_monthly_downloads(request, selected_year=None):
     info_dict = dict(monthly_info=fmt_rows,
                      total_bytes=total_bytes,
                      total_price=total_price,
-                     total_price_str="{:.2f}".format(total_price),
+                     total_price_str="{:,.2f}".format(total_price),
                      total_download_count=total_download_count,
                      report_years=report_years,
                      selected_year=selected_year)

@@ -33,7 +33,7 @@ def get_naive_price(num_bytes, price_str='.090'):
     if num_bytes < 0:
         return 0
 
-    return (num_bytes / ONE_GB) * Decimal('.090')
+    return (num_bytes / ONE_GB) * Decimal(price_str)
 
 
 def get_pricing(byte_size):

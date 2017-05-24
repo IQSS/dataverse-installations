@@ -25,7 +25,7 @@ def bytes_to_gb(num_bytes):
 
     return num_bytes / ONE_GB
 
-def get_naive_price(num_bytes):
+def get_naive_price(num_bytes, price_str='.090'):
     """Naive price, up to 10GB"""
     #import ipdb; ipdb.set_trace()
     num_bytes = num_bytes - ONE_GB  #1st gb free

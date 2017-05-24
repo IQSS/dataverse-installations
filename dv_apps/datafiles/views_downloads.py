@@ -77,7 +77,7 @@ def view_monthly_storage_info(selected_year=None):
         new_bytes_added += info[2]
 
         # Add price as decimal
-        monthly_price = get_naive_price(sum_bytes)
+        monthly_price = get_naive_price(sum_bytes, '0.023')
         storage_total_price += monthly_price
 
         # Add price as string

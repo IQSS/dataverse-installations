@@ -83,7 +83,7 @@ class StatsViewSwagger(View):
     TAG_DATAVERSES = 'metrics - dataverses'
     TAG_DATASETS = 'metrics - datasets'
     TAG_DATAFILES = 'metrics - files'
-    TAG_TEST_API = 'dataverse/dataset JSON - (unofficial)'
+    TAG_TEST_API = 'dataverse/dataset JSON - (unofficial, only published data)'
 
     # ---------------------------------------------
     # For holding errors found at the SwaggerView level

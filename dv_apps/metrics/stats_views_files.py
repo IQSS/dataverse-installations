@@ -3,10 +3,10 @@ from django.views.decorators.cache import cache_page
 from dv_apps.dataverse_auth.decorator import superuser_apikey_required
 from dv_apps.utils.metrics_cache_time import get_metrics_api_cache_time
 
-from .stats_view_base import StatsViewSwagger
+from .stats_view_base import StatsViewSwagger, StatsViewSwaggerKeyRequired
 from .stats_util_files import StatsMakerFiles
 
-class FileTotalCountsView(StatsViewSwagger):
+class FileTotalCountsView(StatsViewSwaggerKeyRequired):
     """API View - Total count of all Files"""
 
     # Define the swagger attributes
@@ -37,7 +37,7 @@ class FileTotalCountsView(StatsViewSwagger):
         return stats_result
 
 
-class FileCountByMonthView(StatsViewSwagger):
+class FileCountByMonthView(StatsViewSwaggerKeyRequired):
     """API View - Published Files counts by Month.
     To do: Enforce permissions
     """
@@ -76,7 +76,7 @@ class FileCountByMonthView(StatsViewSwagger):
 
 @method_decorator(superuser_apikey_required, name='get')
 @method_decorator(cache_page(get_metrics_api_cache_time()), name='get')
-class FilesDownloadedByMonthView(StatsViewSwagger):
+class FilesDownloadedByMonthView(StatsViewSwaggerKeyRequired):
     """API View - Downloaded Files counts by Month."""
 
     # Define the swagger attributes
@@ -116,7 +116,7 @@ class FilesDownloadedByMonthView(StatsViewSwagger):
 
 
 
-class FileCountsByContentTypeView(StatsViewSwagger):
+class FileCountsByContentTypeView(StatsViewSwaggerKeyRequired):
     """API View - Files counts by content type."""
 
     # Define the swagger attributes
@@ -151,7 +151,7 @@ class FileCountsByContentTypeView(StatsViewSwagger):
         return stats_result
 
 
-class FileExtensionsWithinContentType(StatsViewSwagger):
+class FileExtensionsWithinContentType(StatsViewSwaggerKeyRequired):
     """API View - Files counts by content type."""
 
     # Define the swagger attributes

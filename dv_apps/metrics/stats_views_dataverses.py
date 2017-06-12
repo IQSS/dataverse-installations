@@ -1,8 +1,8 @@
-from .stats_view_base import StatsViewSwagger
+from .stats_view_base import StatsViewSwagger, StatsViewSwaggerKeyRequired
 from .stats_util_dataverses import StatsMakerDataverses
 
 
-class DataverseCountByMonthView(StatsViewSwagger):
+class DataverseCountByMonthView(StatsViewSwaggerKeyRequired):
     """API View - Dataverse counts by Month."""
 
     # Define the swagger attributes
@@ -39,7 +39,7 @@ class DataverseCountByMonthView(StatsViewSwagger):
 
         return stats_result
 
-class DataverseTotalCounts(StatsViewSwagger):
+class DataverseTotalCounts(StatsViewSwaggerKeyRequired):
     """API View - Total count of all Dataverses"""
 
     # Define the swagger attributes
@@ -70,7 +70,7 @@ class DataverseTotalCounts(StatsViewSwagger):
         return stats_result
 
 
-class DataverseAffiliationCounts(StatsViewSwagger):
+class DataverseAffiliationCounts(StatsViewSwaggerKeyRequired):
     """API View - Number of Dataverses by Affiliation"""
 
     # Define the swagger attributes
@@ -103,7 +103,7 @@ class DataverseAffiliationCounts(StatsViewSwagger):
         return stats_result
 
 
-class DataverseTypeCounts(StatsViewSwagger):
+class DataverseTypeCounts(StatsViewSwaggerKeyRequired):
 
     # Define the swagger attributes
     # Note: api_path must match the path in urls.py

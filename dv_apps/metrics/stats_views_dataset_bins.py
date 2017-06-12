@@ -1,4 +1,4 @@
-from dv_apps.metrics.stats_view_base import StatsViewSwagger
+from dv_apps.metrics.stats_view_base import StatsViewSwagger, StatsViewSwaggerKeyRequired
 from dv_apps.metrics.stats_util_datasets_bins import StatsMakerDatasetBins
 from dv_apps.metrics.stats_util_dataset_size import StatsMakerDatasetSizes
 # limit the API rates
@@ -6,7 +6,7 @@ from dv_apps.metrics.stats_util_dataset_size import StatsMakerDatasetSizes
 
 
 
-class FilesPerDatasetStats(StatsViewSwagger):
+class FilesPerDatasetStats(StatsViewSwaggerKeyRequired):
     """API View - Counts of Files Per Dataset Using the Latest DatasetVersion"""
 
     # Define the swagger attributes
@@ -48,7 +48,7 @@ class FilesPerDatasetStats(StatsViewSwagger):
 
 
 
-class BytesPerDatasetStats(StatsViewSwagger):
+class BytesPerDatasetStats(StatsViewSwaggerKeyRequired):
     """API View - Answers the question: How many datasets have "x" number of bytes?"""
 
     # Define the swagger attributes

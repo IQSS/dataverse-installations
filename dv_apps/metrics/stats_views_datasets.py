@@ -1,11 +1,11 @@
-from dv_apps.metrics.stats_view_base import StatsViewSwagger
+from dv_apps.metrics.stats_view_base import StatsViewSwagger, StatsViewSwaggerKeyRequired
 from dv_apps.metrics.stats_util_datasets import StatsMakerDatasets
 # limit the API rates
 #from ratelimit.decorators import ratelimit
 
 
 
-class DatasetTotalCounts(StatsViewSwagger):
+class DatasetTotalCounts(StatsViewSwaggerKeyRequired):
     """API View - Total count of all Dataverses"""
 
     # Define the swagger attributes
@@ -35,7 +35,7 @@ class DatasetTotalCounts(StatsViewSwagger):
         return stats_result
 
 
-class DatasetCountByMonthView(StatsViewSwagger):
+class DatasetCountByMonthView(StatsViewSwaggerKeyRequired):
     """API View - Published Dataset counts by Month"""
 
     # Define the swagger attributes
@@ -73,7 +73,7 @@ class DatasetCountByMonthView(StatsViewSwagger):
 
 
 
-class DatasetSubjectCounts(StatsViewSwagger):
+class DatasetSubjectCounts(StatsViewSwaggerKeyRequired):
     """API View - Number of Datasets by Subject"""
 
     # Define the swagger attributes

@@ -31,7 +31,7 @@ def send_cors_response(response):
 
     return response
 
-@method_decorator(apikey_required, name='get')
+#@method_decorator(apikey_required, name='get')
 @method_decorator(cache_page(get_metrics_api_cache_time()), name='get')
 class StatsViewSwagger(View):
     """Used to help build the swagger docs"""
@@ -243,3 +243,7 @@ class StatsViewSwagger(View):
         response['Content-Disposition'] = 'attachment; filename=%s' % xlsx_fname
 
         return response
+
+@method_decorator(apikey_required, name='get')
+class StatsViewSwaggerKeyRequired(StatsViewSwagger):
+    pass

@@ -13,7 +13,7 @@ admin.site.register(ApiToken, ApiTokenAdmin)
 class AuthenticatedUserAdmin(admin.ModelAdmin):
     save_on_top = True
     search_fields = ('useridentifier', 'email', 'lastname', 'firstname', 'affiliation')
-    list_display = ('useridentifier', 'superuser', 'email', 'lastname', 'firstname', 'affiliation', 'modificationtime')
+    list_display = ('useridentifier', 'superuser', 'email', 'lastname', 'firstname', 'affiliation',)
     list_filter= ( 'superuser', 'affiliation')
 admin.site.register(AuthenticatedUser, AuthenticatedUserAdmin)
 

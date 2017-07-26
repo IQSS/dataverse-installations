@@ -17,6 +17,9 @@ class Datafile(models.Model):
     filesize = models.BigIntegerField(blank=True, null=True)
     ingeststatus = models.CharField(max_length=1, blank=True, null=True)
 
+    rootdatafileid = models.BigIntegerField(default=-1)
+    previousdatafileid = models.BigIntegerField(blank=True, null=True)
+
     checksumvalue = models.CharField(max_length=255)
     checksumtype = models.CharField(max_length=255)
     #md5 = models.CharField(max_length=255)

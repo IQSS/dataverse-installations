@@ -8,7 +8,11 @@ class AuthenticatedUser(models.Model):
     email = models.CharField(unique=True, max_length=255)
     firstname = models.CharField(max_length=255, blank=True, null=True)
     lastname = models.CharField(max_length=255, blank=True, null=True)
+
+    createdtime = models.DateTimeField(default=datetime.now)
+    lastlogintime = models.DateTimeField(blank=True, null=True)
     modificationtime = models.DateTimeField(blank=True, null=True)
+    
     position = models.CharField(max_length=255, blank=True, null=True)
     superuser = models.NullBooleanField()
 

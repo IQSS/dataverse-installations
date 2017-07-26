@@ -3,9 +3,35 @@ Convenience class for counting the number of users who recently logged in
 """
 from dv_apps.dataverse_auth.models import AuthenticatedUser
 #from dv_apps.utils.msg_util import msg, msgt
-#from collections import Counter
+import calendar
 from datetime import datetime, timedelta
 
+class MonthlyNewUserStats(object):
+
+    def __init__(self, **kwargs):
+        """
+        num_days = how many days back from today to count users who logged in
+        """
+        self.selected_year = kwargs.get('selected_year', datetime.now().year)
+        assert str(self.selected_year).isdigit(), "selected_year must be an integer"
+
+        self.monthly_new_users = []
+        self.total_new_users = 0
+        self.calculate_new_users()
+
+    def calculate_new_users(self):
+
+        for month_num in range(1, 13):
+            label = '%s %s' % (calendar.month_name[month_num], self.selected_year)
+
+            query_params = dict(createdtime__year=self.selected_year,
+                                createdtime__month=month_num)
+
+            cnt = AuthenticatedUser.objects.filter(**query_params).count()
+
+            self.monthly_new_users.append((label, cnt))
+
+        self.total_new_users = sum([x[1] for x in self.monthly_new_users])
 
 class UserLoginInfo(object):
     """Count the number of users who
@@ -25,7 +51,7 @@ class UserLoginInfo(object):
         self.total_count = 0
 
         self.calculate_login_info()
-    
+
 
     def calculate_login_info(self):
 

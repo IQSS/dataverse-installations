@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load humanize %}
+{% block title %}
+    {{ page_title }}
+{% endblock %}
+{% block extra_header_info %}
+<style type="text/css">
+
+</style>
+{% endblock %}
+
+{% block main_content %}
+<h1 style="color:#006699;">data checks{% if subtitle %}: {{ subtitle }}{% endif %}</h1>
+{% if view_limit %}
+    <h4 class="text-muted">Limited to first {{ view_limit }} file{{ view_limit|pluralize }}</h4>
+{% endif %}
+
+<div class="row">
+    <div class="col-xs-12">
+        <p class="text-muted"><a href="{% url 'view_qc_dashboard' %}">&lt;&lt; return to dashboard</a></p>
+        <hr />
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+
+        <h2>New Users for {{selected_year}}</h2>
+        <p>Count the number of users added each month.</p>
+        <p><i>Note: These numbers were not tracked until July 18th, with the release of Dataverse 4.7.1</i>.</p>
+
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Month</th>
+                    <th># New Users</th>
+                </tr>
+                {% for label, user_cnt in monthly_new_users %}
+                <tr>
+                    <td>{{ label }}</td>
+                    <td class="text-right">{{ user_cnt|intcomma }}</td>
+                </tr>
+                {% endfor %}
+                <tr>
+                    <td><b>Total</b></td>
+                    <td class="text-right"><b>{{ total_new_users }}</b></td>
+                </tr>
+
+            </thead>
+        </table>
+    </div>
+</div>
+{% endblock %}

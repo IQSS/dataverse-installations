@@ -44,4 +44,13 @@ urlpatterns = (
         views_logins.view_recent_logins,
         name='view_recent_logins'),
 
+    url(r'^new-users/(?P<selected_year>\d{4})$',
+        views_logins.view_new_user_counts,
+        name='view_new_user_counts_by_year'),
+
+    url(r'^new-users$',
+        views_logins.view_new_user_counts,
+        name='view_new_user_counts'),
+
+
 )

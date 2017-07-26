@@ -1,0 +1,36 @@
+{% load humanize %}
+    <!-- start: stat box -->
+    <div class="col-sm-12 col-md-8">
+        <div class="panel panel-default">
+         <!--div class="panel-heading text-center"><b>{{ name }}</b></div-->
+          <div class="panel-body text-center">
+              <table class="table table-bordered table-condensed table-striped">
+                  <thead>
+                      <tr>
+                          <th class="text-center">Time Period</th>
+                          <th class="text-center"># Users Who Logged In</th>
+                          <th class="text-center"># Users Who Used an API Key</th>
+                          <th class="text-center">Total</th>
+                      </tr>
+                      {% for user_info in user_login_stats %}
+                      <tr>
+                          <td>Last <b>{{ user_info.num_days }}</b> Days</td>
+                          <td class="text-center">{{ user_info.cnt_logins|intcomma }}</td>
+                          <td class="text-center">{{ user_info.cnt_apikey_use|intcomma }}</td>
+                          <td class="text-center"><span class="label label-success" style="font-size:130%;">{{ user_info.total_count|intcomma }}</span></td>
+                      </tr>
+                      {% endfor %}
+                  </thead>
+              </table>
+
+          </div>
+          <div class="panel-footer text-info">
+              Number of users either logging in or using an API key within the given time period.
+              <ul>
+                  <li>A user who logs <i>and</i> uses an API key is counted twice</li>
+                  <li>These numbers were not tracked until July 18th, with the release of Dataverse 4.7.1</li>
+              </ul>
+          </div>
+      </div>
+    </div>
+    <!-- end: stat box -->

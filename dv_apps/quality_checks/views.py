@@ -7,6 +7,8 @@ from dv_apps.quality_checks.util_notifications import NotificationStats
 from dv_apps.quality_checks.util_content_types import ContentTypeStats
 from dv_apps.quality_checks.util_failed_ingest import FailedIngestStats,\
     EXCLUDE_FILESIZE_PARAM
+from dv_apps.dataverse_auth.util_logins import UserLoginInfo
+
 from django.views.decorators.cache import cache_page
 from dv_apps.datafiles.models import\
         INGEST_STATUS_INPROGRESS, INGEST_STATUS_ERROR,\
@@ -22,18 +24,23 @@ def add_ingest_status_lookup(template_dict):
     template_dict['INGEST_STATUS_ERROR'] = INGEST_STATUS_ERROR
 
 
-@cache_page(settings.METRICS_CACHE_VIEW_TIME)
+#@cache_page(settings.METRICS_CACHE_VIEW_TIME)
 def view_qc_dashboard(request):
     """
     Display QC dashboard (beginning, only 3 simple measures right now)
     """
-
+    user_login_stats = [UserLoginInfo(num_days=7),
+                        UserLoginInfo(num_days=30),
+                        UserLoginInfo(num_days=100),
+                        ]
     info_dict = dict(\
             size_zero_stats=ZeroFilesizeStats.get_basic_stats(),
             checksum_stats=NoChecksumStats.get_basic_stats(),
             notification_stats=NotificationStats.get_basic_stats(),
             unknown_ctype_stats=ContentTypeStats.get_basic_stats(),
-            ingest_stats=FailedIngestStats.get_basic_stats())
+            ingest_stats=FailedIngestStats.get_basic_stats(),
+            user_login_stats=user_login_stats,
+            user_logins=UserLoginInfo(num_days=30))
 
     return render(request,
                   'qc_dashboard.html',

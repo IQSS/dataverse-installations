@@ -11,7 +11,7 @@ class AuthenticatedUser(models.Model):
 
     createdtime = models.DateTimeField(default=datetime.now)
     lastlogintime = models.DateTimeField(blank=True, null=True)
-    lastapiusetime = = models.DateTimeField(blank=True, null=True)
+    lastapiusetime = models.DateTimeField(blank=True, null=True)
 
     position = models.CharField(max_length=255, blank=True, null=True)
     superuser = models.NullBooleanField()

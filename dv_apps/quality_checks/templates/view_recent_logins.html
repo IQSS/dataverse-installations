@@ -37,7 +37,7 @@
                 {% for user_info in user_login_stats %}
                 <tr>
                     <td>Last <b>{{ user_info.num_days }}</b> Days</td>
-                    <td class="text-right"><span class="label label-success">{{ user_info.cnt_logins|intcomma }}</span></td>
+                    <td class="text-right">{{ user_info.cnt_logins|intcomma }}</td>
                     <td class="text-right">{{ user_info.cnt_apikey_use|intcomma }}</td>
                     <td class="text-right"><b>{{ user_info.total_count|intcomma }}</b></td>
                 </tr>

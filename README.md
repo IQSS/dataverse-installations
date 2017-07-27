@@ -24,10 +24,10 @@ However, the repository was initially created as a way to explore/debug/prototyp
 
 This describes a set-up with two databases:
   1. An existing Dataverse db in Postgres and credentials to at least read the db tables
-    - This Database is unmanaged.  e.g. Django does not update or attempt to update the tables.
-    - With proper user credentials, you can edit records via the Django Admin--but **DON'T** do this against a production Dataverse
+      - This Database is unmanaged.  e.g. Django does not update or attempt to update the tables.
+      - With proper user credentials, you can edit records via the Django Admin--but **DON'T** do this against a production Dataverse
   2. A database for Django to create tables needed for the map and administration.  
-    - This can be any relational db.  (Have used Postgres and sqlite)
+    - This can be any relational db.  (Tested with Postgres and sqlite)
 
 
 ### Step 1: Pip install, y'all

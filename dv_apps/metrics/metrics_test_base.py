@@ -12,7 +12,7 @@ class MetricsTestBase(TestCase):
     @classmethod
     def setUpClass(cls):
         print ('load fixtures')
-        management.call_command('loaddata', 'test_2016_0820.json', verbosity=3)
+        management.call_command('loaddata', 'test_2017_0727.json', verbosity=3)
 
     @classmethod
     def tearDownClass(cls):

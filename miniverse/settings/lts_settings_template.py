@@ -38,12 +38,11 @@ SECRET_KEY = 'my-secret-key'
 
 # Receive 500 errors
 #
-ADMINS = [ ('Raman', 'raman_prasad@harvard.edu'),
-    ('Danny Brooke', 'dannybrooke@g.harvard.edu')]
+ADMINS = [ ('Dataverse Admin', 'support@dataverse.org'),]
 
 # Receive 404 errors
 #
-MANAGERS = ADMINS
+MANAGERS = []#ADMINS
 
 
 # -----------------------------------

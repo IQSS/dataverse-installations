@@ -1,3 +1,8 @@
+"""
+Quick/Primitive dataset load to mongo
+  - Output a JSON file for each Dataset
+  - Load the files to Mongo
+"""
 import os, sys
 from os.path import dirname, isdir, isfile, join, realpath
 

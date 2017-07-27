@@ -4,13 +4,14 @@
 This repository may be configured to directly read an existing Dataverse 4.4+ database.
 This read access includes the ability to pull metrics from a Dataverse installation.  
 
-However, the repository was initially created as a way to explore/debug/prototype.
+The repository was initially created as a way to explore/debug/prototype.
 
 ## Functions
 
-- In use:
+- In use:  
   - Retrieve basic metrics via API or as visualizations
   - Map visualization of Dataverse affiliations
+  - Data checks including files sizes of "0", missing checksums, unknown content types, etc.
   - Contributions by [@jcabanas17](https://github.com/jcabanas17), [@emunn](https://github.com/emunn),
 - Explore/Prototype
   - Using the Django ORM to explore the Dataverse database, create queries that are later translated to Java code

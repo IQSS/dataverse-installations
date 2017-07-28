@@ -6,8 +6,8 @@ from dv_apps.datafiles.models import Datafile, FileMetadata, DatafileTag,\
 
 class DatafileAdmin(admin.ModelAdmin):
     save_on_top = True
-    search_fields = ('label', 'filesystemname')
-    list_display = ('dvobject',  'filesystemname', 'filesize', 'contenttype', 'ingeststatus', 'restricted')
+    search_fields = ('label',)
+    list_display = ('dvobject', 'filesize', 'contenttype', 'ingeststatus', 'restricted')
     list_filter= ( 'ingeststatus', 'restricted', 'contenttype', )
 admin.site.register(Datafile, DatafileAdmin)
 

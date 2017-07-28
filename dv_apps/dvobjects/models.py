@@ -17,7 +17,7 @@ class DvObject(models.Model):
 
     createdate = models.DateTimeField(auto_now_add=True)
     modificationtime = models.DateTimeField(auto_now=True)
-
+    storageidentifier = models.CharField(max_length=255, blank=True, null=True)
     indextime = models.DateTimeField(blank=True, null=True)
     permissionindextime = models.DateTimeField(blank=True, null=True)
     permissionmodificationtime = models.DateTimeField(blank=True, null=True)

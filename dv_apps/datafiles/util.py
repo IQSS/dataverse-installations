@@ -152,7 +152,7 @@ class DatafileUtil(object):
         """
         Retrieve Datafile objects and return as a dict with key being the id
         """
-        vals = ('id', 'contenttype', #'filesystemname',\
+        vals = ('id', 'contenttype',\
             'filesize', 'checksumtype', 'checksumvalue', 'restricted',\
             'ingeststatus', 'dvobject__storageidentifier')
         dfiles = Datafile.objects.select_related('dvobject'\

@@ -15,103 +15,121 @@
 
 
    {% if DEBUG %}
-    <h4>admin</h4>
-        <ul>
-            <li><a href="{% url 'admin:index' %}">{% url 'admin:index' %}</a></li>
-        </ul>
+   <div class="panel panel-default">
+     <div class="panel-heading">
+       <h3 class="panel-title">admin</h3>
+     </div>
+     <div class="panel-body">
+       <ul>
+           <li><a href="{% url 'admin:index' %}">{% url 'admin:index' %}</a></li>
+       </ul>
+       </div>
+   </div>
     {% endif %}
-
-    <h4>swagger</h4>
-    <ul>
-        <li><a href="{% url 'view_dynamic_swagger_spec' %}">{% url 'view_dynamic_swagger_spec' %}</a></li>
-        <li><a href="/static/swagger-ui/index.html?url={% url 'view_dynamic_swagger_spec' %}">/static/swagger-ui/index.html?url={% url 'view_dynamic_swagger_spec' %}</a></li>
-    </ul>
-
-    <h4>lists</h4>
-    <ul>
-        <li><a href="{% url 'view_dataverse_list_default' %}">List of published Dataverses (.xlsx)</a></li>
-        {#<li><a href="{% url 'view_dataverse_list_default' 'csv' %}">List of published Dataverses (.csv)</a></li>#}
-    </ul>
 
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">Panel title</h3>
+        <h3 class="panel-title">Metrics API/Swagger</h3>
       </div>
       <div class="panel-body">
-        Panel content
+          <p>Dataverse Metrics API description via swagger</p>
+          <ul>
+              <li><a href="/static/swagger-ui/index.html?url={% url 'view_dynamic_swagger_spec' %}">swagger UI</a></li>
+              <li><a href="{% url 'view_dynamic_swagger_spec' %}">API Specs via swagger YML</a></li>
+          </ul>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Dataverses</h3>
+      </div>
+      <div class="panel-body">
+          <p>Misc Dataverse link</p>
+          <ul>
+              <li><a href="{% url 'view_dataverse_list_default' %}">List of published Dataverses (.xlsx)</a></li>
+          </ul>
+          <p>Dataverse hierarchies</p>
+          <ul>
+              <li><a href="{% url 'get_dataverse_tree_json' %}">JSON Dataverses of depth 2 or greater</a></li>
+              <li><a href="{% url 'get_dataverse_tree_json' %}?pretty">JSON Dataverses of depth 2 or greater (pretty)</li>
+
+              <li><a href="{% url 'get_dataverse_full_tree_json' %}">Full Dataverse hierarchy</a></li>
+              <li><a href="{% url 'get_dataverse_full_tree_json' %}?pretty">Full Dataverse hierarchy (pretty)</a></li>
+          </ul>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Installations/Map</h3>
+      </div>
+      <div class="panel-body">
+          <p>Views of dataverse installations.</p>
+
+          <ul>
+
+              <li><a href="{% url 'view_installations_json' %}">Installations as JSON</a></li>
+              <li><a href="{% url 'view_installations_json_pretty' %}">Installations as JSON (pretty)</a><br />&nbsp;</li>
+
+              <li><a href="{% url 'view_map' %}">Map</a></li>
+              <li><b style="color:#b94617;">dataverse.org</b>: <a href="{% url 'view_map_dataverse_org' %}?iframe=true">Map in iframe</a></li>
+              <li><b style="color:#b94617;">dataverse.org</b>: <a href="{% url 'view_homepage_counts_dataverse_org' %}">Counts of installations, dataverses, datasets, downloads</a>
+
+          </ul>
       </div>
     </div>
-    <h4>Installations/Map</h4>
-        <p>Views of dataverse installations.</p>
+
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Visualizations last 12 months</h3>
+      </div>
+      <div class="panel-body">
+          <p>Charts used for metrics on dataverse.org</p>
 
         <ul>
-
-            <li><a href="{% url 'view_installations_json' %}">Installations as JSON</a></li>
-            <li><a href="{% url 'view_installations_json_pretty' %}">Installations as JSON (pretty)</a><br /></li>
-
-            <li><a href="{% url 'view_map' %}">{% url 'view_map' %}</a></li>
-            <li><b style="color:#b94617;">dataverse.org</b>: <a href="{% url 'view_map_dataverse_org' %}?iframe=true">{% url 'view_map_dataverse_org' %}?iframe=true</a></li>
-            <li><b style="color:#b94617;">dataverse.org</b>: <a href="{% url 'view_homepage_counts_dataverse_org' %}">{% url 'view_homepage_counts_dataverse_org' %}</a>
-
+            <li><a href="{% url 'view_public_visualizations_last12' %}">Last 12 months</a></li>
+            <li><b style="color:#b94617;">dataverse.org</b>: <a href="{% url 'view_public_visualizations_last12_dataverse_org' %}?iframe=true">Last 12 months - iframe</a></li>
         </ul>
-
-
-    <h4>visualizations last 12 months</h4>
-
-    <ul>
-        <li><a href="{% url 'view_public_visualizations_last12' %}">{% url 'view_public_visualizations_last12' %}</a></li>
-        <li><b style="color:#b94617;">dataverse.org</b>: <a href="{% url 'view_public_visualizations_last12_dataverse_org' %}?iframe=true">{% url 'view_public_visualizations_last12_dataverse_org' %}?iframe=true</a></li>
-    </ul>
-
-    <h4>other visualizations</h4>
-    <ul>
-        <li><a href="{% url 'view_public_visualizations' %}">{% url 'view_public_visualizations' %}</a></li>
-        <li><a href="{% url 'view_dataverse_tree' %}">{% url 'view_dataverse_tree' %}</a></li>
-        <li><a href="{% url 'view_dataverse_tree2' %}">{% url 'view_dataverse_tree2' %}</a></li>
-        <hr />
-        <li><a href="{% url 'view_file_bins_by_datasetversion' %}">{% url 'view_file_bins_by_datasetversion' %}</a></li>
-
-    </ul>
-
-
-
-    <div style="padding:0 20px;">
-    <br /><b>JSON for trees</b>
-    <ul>
-        <li><a href="{% url 'get_dataverse_tree_json' %}">{% url 'get_dataverse_tree_json' %}</a> (only if more than 2 deep)</li>
-        <li><a href="{% url 'get_dataverse_tree_json' %}?pretty">{% url 'get_dataverse_tree_json' %}?pretty</a> (only if more than 2 deep)</li>
-
-        <li><a href="{% url 'get_dataverse_full_tree_json' %}">{% url 'get_dataverse_full_tree_json' %}</a></li>
-        <li><a href="{% url 'get_dataverse_full_tree_json' %}?pretty">{% url 'get_dataverse_full_tree_json' %}?pretty</a></li>
-    </ul>
+        </div>
     </div>
 
-
-
-    {% if DEBUG %}
-    <h4>invoke errors</h4>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Invoke 404 and 500 errors</h3>
+      </div>
+      <div class="panel-body">
+          <p>Test links for viewing error pages</p>
         <ul>
-            <li><a href="{% url 'view_test_404' %}">{% url 'view_test_404' %}</a></li>
-            <li><a href="{% url 'view_test_500' %}">{% url 'view_test_500' %}</a></li>
+            <li><a href="{% url 'view_test_404' %}">Show 404 error</a></li>
+            <li><a href="{% url 'view_test_500' %}">Show 500 error</a></li>
         </ul>
-    {% endif %}
+        </div>
+    </div>
 
 </div><!-- end col -->
 
-        {#% if DEBUG %#}
         <!-- start 2nd col -->
         <div class="col-xs-12 col-sm-6">
-            <h4>Quality Control</h4>
-                <ul>
-                    <li><a href="{% url 'view_qc_dashboard' %}">QC dash (start)</a></li>
-                </ul>
 
-            <h4>maintenance</h4>
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h3 class="panel-title">Quality Control/Maintenance</h3>
+              </div>
+              <div class="panel-body">
                 <ul>
-                    <li><a href="{% url 'view_all_file_extension_counts' %}">File extension counts</a></li>
-                    <li><a href="{% url 'view_files_extensions_with_unknown_content_types' %}">Extensions of Files classified as unknown</a></li>
-                    <li><a href="{% url 'view_monthly_downloads' %}">Bytes Downloaded</a></li>
+                    <li><a href="{% url 'view_qc_dashboard' %}">Dashboard (takes a minute then caches)</a><br />&nbsp;</li>
+                    <li><a href="{% url 'view_all_file_extension_counts' %}">Files counts based on file extensions</a><br /> (e.g. How many .tab files?)</li>
+                    <li><a href="{% url 'view_files_extensions_with_unknown_content_types' %}">Extensions of Files classified as unknown</a><br />&nbsp;</li>
+
+                    <li><b style="color:#b94617;">for rough AWS estimates</b>: <a href="{% url 'view_monthly_downloads' %}">Bytes Downloaded</a></li>
                 </ul>
+                </div>
+            </div>
+
+
+
 
             <h4>experimental</h4>
             <div style="padding:0 20px;">

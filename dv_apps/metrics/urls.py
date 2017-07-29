@@ -79,7 +79,7 @@ urlpatterns = [
     url(r'^dv-tree-full.json$',
         views_test.get_dataverse_full_tree_json, name='get_dataverse_full_tree_json'),
 
-    url(r'^view-bins$', views_test.view_file_bins_by_datasetversion, name='view_file_bins_by_datasetversion'),
+    #url(r'^view-bins$', views_test.view_file_bins_by_datasetversion, name='view_file_bins_by_datasetversion'),
 
 
 ]

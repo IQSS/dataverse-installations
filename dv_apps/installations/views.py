@@ -35,11 +35,12 @@ def view_map(request):
     return render(request, 'installations/map2.html', d)
 
 
+@cache_page(get_metrics_cache_time())
 def view_installations_json_pretty(request):
 
     return view_installations_json(request, True)
 
-#@cache_page(get_metrics_cache_time())
+@cache_page(get_metrics_cache_time())
 def view_installations_json(request, pretty=False):
 
     l = Installation.objects.all()

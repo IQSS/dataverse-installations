@@ -51,7 +51,8 @@ def get_dataverse_tree_json(request, skip_flat_dataverses=True):
 
     return JsonResponse(tree_dict)
 
-def view_file_bins_by_datasetversion(request):
+"""
+def view_file_bins_by_datasetversion(request, pretty=False):
 
     kwargs = dict(skip_empty_bins=True)
 
@@ -64,7 +65,7 @@ def view_file_bins_by_datasetversion(request):
         return HttpResponse(as_html)
 
     return render(request, 'metrics/visualizations/file_bins_by_datasetversion.html', d)
-
+"""
 
 def view_bin_size(request):
 

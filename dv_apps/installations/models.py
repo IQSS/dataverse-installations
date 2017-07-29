@@ -74,8 +74,10 @@ class Installation(models.Model):
         od['description'] = self.description
         od['lat'] = self.lat
         od['lng'] = self.lng
-        od['logo'] = '%s%s' % (settings.DATAVERSE_INSTALLATION_URL,
-                               self.logo.url)
+
+        od['logo'] = '%s://%s%s' % (settings.SWAGGER_SCHEME,
+                                    settings.SWAGGER_HOST,
+                                    self.logo.url)
         #marker = self.marker
         od['url'] = self.url
         od['slug'] = self.slug

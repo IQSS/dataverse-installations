@@ -30,4 +30,4 @@ slackclient==1.0.5
 # solr for experiments
 pysolr==3.6.0
 
-simplejson=3.11
+simplejson>=3.11

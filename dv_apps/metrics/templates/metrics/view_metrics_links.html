@@ -129,38 +129,63 @@
             </div>
 
 
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h3 class="panel-title">Dataverse/Dataset JSON</h3>
+              </div>
+              <div class="panel-body">
+                  <p>Experiments for faster retrieval/caching of Dataverse/Dataset JSON.
+                  Only available for published Dataverses, Datasets.</p>
+                  <p><b>dataverse json</b></p>
+                  <ul>
+                      <li><a href="{% url 'view_single_dataverse_by_id' 1 %}?">Dataverse by id. Example: id=1 </a></li>
+                      <li><a href="{% url 'view_single_dataverse_by_id' 1 %}?pretty=true">Dataverse by id. Example: id=1 (pretty) </a><br />&nbsp;</li>
+
+                      <li><a href="{% url 'view_single_dataverse_by_alias' 'root' %}">Dataverse by Alias. Example: alias=root</a></li>
+                      <li><a href="{% url 'view_single_dataverse_by_alias' 'root' %}?pretty=true">Dataverse by Alias. Example: alias=root (pretty)</a></li>
+                  </ul>
+
+                  <p><b>dataset json</b></p>
+                  <ul>
+                    <li><a href="{% url 'view_dataset_by_id_api' 53121 %}">Dataset by id. Example: id=53121 </a></li>
+                    <li><a href="{% url 'view_dataset_by_id_api' 53121 %}?pretty">Dataset by id. Example: id=53121 (pretty) </a><br />&nbsp;</li>
+
+                    <li><a href="{% url 'view_dataset_by_persistent_id_api' %}?persistentId=doi:10.7910/DVN/26935">Dataset by persistentId using "doi:10.7910/DVN/26935" </a></li>
+
+                    <li><a href="{% url 'view_dataset_by_persistent_id_api' %}?persistentId=doi:10.7910/DVN/26935&pretty">Dataset by persistentId using "doi:10.7910/DVN/26935" (pretty) </a></li>
 
 
-            <h4>experimental</h4>
-            <div style="padding:0 20px;">
-
-                <b>dataverses</b>
-                <ul>
-                    <li><a href="{% url 'view_single_dataverse_by_id' 1 %}?pretty=true">{% url 'view_single_dataverse_by_id' 1 %}?pretty=true</a>
-                        <ul>
-                            <li><a href="{% url 'view_single_dataverse_by_alias' 'root' %}?pretty=true">{% url 'view_single_dataverse_by_alias' 'root' %}?pretty=true</a></li>
-                        </ul>
-                      </li>
                 </ul>
 
-                <br /><b>datasets</b>: Test Example of HTML from JSON
-                <ul>
-                    <li>persistentId id: <a href="{% url 'view_dataset_by_persistent_id' %}?persistentId=doi:10.7910/DVN/26935">{% url 'view_dataset_by_persistent_id' %}?persistentId=doi:10.7910/DVN/26935</a></li>
+                  <p><b>datasets</b> </p>
+                  <p>Proof of concept for metadata retrieval with fewer queries. to add: Terms, Versions.  Versions would be a single query each--a single JSON doc each
+                  <ul>
+                      <li>by id using "53121":<br />
+                           <a href="{% url 'view_single_dataset' 53121 %}">{% url 'view_single_dataset' 53121 %}</a></li>
+                      <li>by persistentId using "doi:10.7910/DVN/26935":<br />
+                           <a href="{% url 'view_dataset_by_persistent_id' %}?persistentId=doi:10.7910/DVN/26935">{% url 'view_dataset_by_persistent_id' %}?persistentId=doi:10.7910/DVN/26935</a></li>
+                      <li>by dataset version id using "79678": <br />
+                          <a href="{% url 'view_dataset_by_version' 79678 %}">{% url 'view_dataset_by_version' 79678 %}</a></li>
+                      <br />comparable on public: <a href="https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/26935">https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/26935</a>
+                  </ul>
+                  <p><b>dataset differences</b></p>
+                  <p>Beginning of proof of concept for comparing two datasets (2 JSON docs).  avoiding current 100s of queries in prod.</p>
+                    <ul>
+                        <li>diff using dataset id 53121 : <a href="{% url 'view_differences' 53121 %}">{% url 'view_differences' 53121 %}</a></li>
+                    </ul>
+                  <p>beginning of page to try to explain using JSON + simple templating</p>
+                  <ul>
+                      <li>composable: <a href="{% url 'view_side_by_side1' 53121 %}">{% url 'view_side_by_side1' 53121 %}</a></li>
+                  </ul>
+                </div>
+            </div>
 
-                    <li>dataset id: <a href="{% url 'view_single_dataset' 53121 %}">{% url 'view_single_dataset' 53121 %}</a></li>
 
-
-                    <li>dataset verions id: <a href="{% url 'view_dataset_by_version' 79678 %}">{% url 'view_dataset_by_version' 79678 %}</a></li>
-
-                        <br />on public: <a href="https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/26935">https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/26935</a>
-
-                    <li>composable: <a href="{% url 'view_side_by_side1' 53121 %}">{% url 'view_side_by_side1' 53121 %}</a></li>
-
-
-                    <li>diff: <a href="{% url 'view_differences' 53121 %}">{% url 'view_differences' 53121 %}</a></li>
-                </ul>
-
-                <h4>datafile</h4>
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h3 class="panel-title">Datafile quick looks</h3>
+              </div>
+              <div class="panel-body">
                 <ul>
                     <li><a href="{% url 'view_table_preview_json' 1480151 %}">Tabular Rows JSON for file id 1480151: {% url 'view_table_preview_json' 1480151 %}</a></li>
 
@@ -173,7 +198,6 @@
                 </ul>
             </div>
         </div><!-- end 2nd col -->
-        {#% endif %#}
         </div><!-- end row -->
     </div>
 </div>
@@ -183,6 +207,7 @@
   <div class="panel-body">
       <div class="row">
           <div class="col-xs-12">
+
               <h4>See the example</h4>
               <a href="https://services.dataverse.harvard.edu/miniverse/datafile/table-preview-html/2510050&version=1.3" target="_blank">https://services.dataverse.harvard.edu/miniverse/datafile/table-preview-html/2510050&version=1.3</a>
               <h4>Try it</h4>

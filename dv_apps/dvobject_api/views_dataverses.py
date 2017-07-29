@@ -1,6 +1,8 @@
 import json
 from collections import OrderedDict
 
+from dv_apps.utils import query_helper
+
 from django.http import Http404
 from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse
@@ -21,26 +23,32 @@ def get_pretty_val(request):
     return False
 
 @cache_page(60 * 60 * 2)
-@login_required
 def view_single_dataverse_by_alias(request, alias):
+    """JSON repr. of Dataverse. Published Dataverses only"""
+    query_params = dict(alias=alias)
+    query_params.update(query_helper.get_is_published_filter_param())
 
     try:
-        dv = Dataverse.objects.select_related('dvobject').get(alias=alias)
+        dv = Dataverse.objects.select_related('dvobject').get(**query_params)
     except Dataverse.DoesNotExist:
         raise Http404
 
-    return view_single_dataverse(request, dv)
+    return _view_single_dataverse(request, dv)
 
-@login_required
+#@login_required
 @cache_page(60 * 60 * 2)
 def view_single_dataverse_by_id(request, dataverse_id):
+    """JSON repr. of Dataverse. Published Dataverses only"""
+
+    query_params = dict(dvobject__id=dataverse_id)
+    query_params.update(query_helper.get_is_published_filter_param())
 
     try:
-        dv = Dataverse.objects.select_related('dvobject').get(dvobject__id=dataverse_id)
+        dv = Dataverse.objects.select_related('dvobject').get(**query_params)
     except Dataverse.DoesNotExist:
         raise Http404
 
-    return view_single_dataverse(request, dv)
+    return _view_single_dataverse(request, dv)
 
 
 def view_get_slack_dataverse_info(dataverse_id):
@@ -61,9 +69,9 @@ def view_get_slack_dataverse_info(dataverse_id):
         (json.dumps(dv_dict, indent=4), ref_url)
 
 
-@login_required
+#@login_required
 @cache_page(60 * 15)
-def view_single_dataverse(request, dv):
+def _view_single_dataverse(request, dv):
     """
     Show JSON for a single Dataverse
     """

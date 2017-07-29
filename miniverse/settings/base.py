@@ -114,7 +114,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'miniverse.wsgi.application'
 
-# URL of the Dataverse db being read
+# URL of the Dataverse db being read.  NO TRAILING "/"
 DATAVERSE_INSTALLATION_URL = 'https://dataverse.harvard.edu'
 
 

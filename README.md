@@ -18,7 +18,7 @@ The repository was initially created as a way to explore/debug/prototype.
   - Store cached metadata in JSON documents.   
 
 
-## Metrics set-up
+## Miniverse set-up
 
 
 ### Set-up
@@ -35,7 +35,7 @@ This describes a set-up with two databases:
 
 This assumes you have installed [pip](https://pip.pypa.io/en/stable/installing/) and [virtualenvwrapper](https://virtualenvwrapper.readthedocs.io/en/latest/install.html).
   - Remember to setup a shell startup script: https://virtualenvwrapper.readthedocs.io/en/latest/install.html#shell-startup-file
-  
+
 - Pull down the miniverse repository
 - Install the requirements:
 

@@ -1,6 +1,9 @@
+import simplejson as json
+from collections import OrderedDict
+
 from django.shortcuts import render
 from django.views.decorators.cache import cache_page
-from django.http import HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect
 from django.views.decorators.clickjacking import xframe_options_exempt
 
 from dv_apps.installations.models import Installation, Institution
@@ -30,6 +33,34 @@ def view_map(request):
     d.update(get_total_published_counts())
 
     return render(request, 'installations/map2.html', d)
+
+
+def view_installations_json_pretty(request):
+
+    return view_installations_json(request, True)
+
+#@cache_page(get_metrics_cache_time())
+def view_installations_json(request, pretty=False):
+
+    l = Installation.objects.all()
+
+    dv_list = [dv.to_json() for dv in l]
+
+    installations_dict =  object_pairs_hook=OrderedDict(installations=dv_list)
+
+    print 'pretty', pretty
+    if pretty:
+        content = '<html><pre>%s</pre></html>' %\
+                  json.dumps(installations_dict,
+                             indent=4)
+        return HttpResponse(content)
+    else:
+        content = json.dumps(installations_dict)
+        return HttpResponse(content,
+                            content_type="application/json")
+
+
+
 
 @xframe_options_exempt
 @cache_page(get_metrics_cache_time())

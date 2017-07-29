@@ -10,4 +10,11 @@ urlpatterns = [
 
     url(r'^homepage-counts$', views.view_homepage_counts_dataverse_org,
     name='view_homepage_counts_dataverse_org'),
+
+    url(r'^installations-json/pretty$', views.view_installations_json_pretty,
+    name='view_installations_json_pretty'),
+
+    url(r'^installations-json$', views.view_installations_json,
+    name='view_installations_json'),
+
 ]

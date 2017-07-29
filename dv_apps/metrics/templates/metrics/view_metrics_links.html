@@ -33,8 +33,22 @@
         {#<li><a href="{% url 'view_dataverse_list_default' 'csv' %}">List of published Dataverses (.csv)</a></li>#}
     </ul>
 
-    <h4>map</h4>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Panel title</h3>
+      </div>
+      <div class="panel-body">
+        Panel content
+      </div>
+    </div>
+    <h4>Installations/Map</h4>
+        <p>Views of dataverse installations.</p>
+
         <ul>
+
+            <li><a href="{% url 'view_installations_json' %}">Installations as JSON</a></li>
+            <li><a href="{% url 'view_installations_json_pretty' %}">Installations as JSON (pretty)</a><br /></li>
+
             <li><a href="{% url 'view_map' %}">{% url 'view_map' %}</a></li>
             <li><b style="color:#b94617;">dataverse.org</b>: <a href="{% url 'view_map_dataverse_org' %}?iframe=true">{% url 'view_map_dataverse_org' %}?iframe=true</a></li>
             <li><b style="color:#b94617;">dataverse.org</b>: <a href="{% url 'view_homepage_counts_dataverse_org' %}">{% url 'view_homepage_counts_dataverse_org' %}</a>

@@ -6,9 +6,15 @@ This read access includes the ability to pull metrics from a Dataverse installat
 
 The repository was initially created as a way to explore/debug/prototype.
 
+Live version: https://services.dataverse.harvard.edu/
+
+![database setup](readme_imgs/db_setup_01.png?raw=true "Geoconnect")]
+
+
 ## Functions
 
 - In use:  
+  - See https://services.dataverse.harvard.edu/miniverse/metrics/metrics-links
   - Retrieve basic metrics via API or as visualizations
   - Map visualization of Dataverse affiliations
   - Data checks including files sizes of "0", missing checksums, unknown content types, etc.

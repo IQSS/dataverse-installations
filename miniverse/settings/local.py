@@ -24,16 +24,8 @@ DATABASES = {
         'NAME': 'dvndb',
         'USER': 'postgres',
         'PASSWORD': '123',
-        'HOST': 'localhost'
-    },
-    'xdataverse': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'dvndb_demo',
-        'USER': 'postgres',
-        'PASSWORD': '123',
-        'HOST': 'localhost'
+        'HOST': 'localhost',
     }
-
 }
 
 SESSION_COOKIE_NAME = 'dv_metrics'

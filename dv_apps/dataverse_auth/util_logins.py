@@ -2,9 +2,61 @@
 Convenience class for counting the number of users who recently logged in
 """
 from dv_apps.dataverse_auth.models import AuthenticatedUser
-#from dv_apps.utils.msg_util import msg, msgt
+from django.db.models import Q
 import calendar
 from datetime import datetime, timedelta
+
+NEW_USER_START_YEAR = 2017 # year when user created time became available
+
+class MonthlyNewUserInfo(object):
+    """Place holder for new user stats"""
+    def __init__(self, selected_year, month_num):
+
+        assert str(selected_year).isdigit(), "selected_year must be an integer"
+        assert str(month_num).isdigit(), "month_num must be an integer"
+        assert month_num >= 1 and month_num <= 12, "month_num must be an integer between 1 and 12"
+
+        self.selected_year = selected_year
+        self.month_num = month_num
+        self.label = calendar.month_name[month_num]
+
+        self.total_users = 0
+        self.total_hu_users = 0
+        self.total_non_hu_users = 0
+
+        self.monthly_new_users = 0
+        self.monthly_hu_new_users = 0
+        self.monthly_non_hu_new_users = 0
+
+        self.gather_info()
+
+    def gather_info(self):
+
+        hu_params = Q(email__icontains='harvard.') | Q(affiliation__icontains='harvard')
+
+        # the given month and prior
+        time_params = dict(createdtime__year__lte=self.selected_year,
+                           createdtime__month__lte=self.month_num)
+
+        self.total_users = AuthenticatedUser.objects.filter(**time_params).count()
+        self.total_hu_users = AuthenticatedUser.objects.filter(hu_params\
+                                ).filter(**time_params).count()
+
+        # calculate non hu users
+        self.total_non_hu_users = self.total_users - self.total_hu_users
+
+        # only the given month
+        time_params2 = dict(createdtime__year=self.selected_year,
+                            createdtime__month=self.month_num)
+
+        self.monthly_new_users = AuthenticatedUser.objects.filter(**time_params2).count()
+
+        self.monthly_hu_new_users = AuthenticatedUser.objects.filter(hu_params\
+                                ).filter(**time_params2\
+                                ).count()
+
+        self.monthly_non_hu_new_users = self.monthly_new_users - self.monthly_hu_new_users
+
 
 class MonthlyNewUserStats(object):
 
@@ -15,23 +67,30 @@ class MonthlyNewUserStats(object):
         self.selected_year = kwargs.get('selected_year', datetime.now().year)
         assert str(self.selected_year).isdigit(), "selected_year must be an integer"
 
-        self.monthly_new_users = []
-        self.total_new_users = 0
+        self.time_now = datetime.now()
+        self.monthly_user_counts = []
+        #self.annual_new_users = 0
+
         self.calculate_new_users()
 
     def calculate_new_users(self):
+        """Calculate new user info for the given year"""
 
         for month_num in range(1, 13):
-            label = '%s %s' % (calendar.month_name[month_num], self.selected_year)
 
-            query_params = dict(createdtime__year=self.selected_year,
-                                createdtime__month=month_num)
+            # has the month happened yet?
+            if self.selected_year == self.time_now.year\
+                and month_num > self.time_now.month:
+                continue    # skip it, this month is in the future
 
-            cnt = AuthenticatedUser.objects.filter(**query_params).count()
+            mth_user_info = MonthlyNewUserInfo(self.selected_year, month_num)
 
-            self.monthly_new_users.append((label, cnt))
+            self.monthly_user_counts.append(mth_user_info)
 
-        self.total_new_users = sum([x[1] for x in self.monthly_new_users])
+        #self.annual_new_users = sum([x.monthly_new_users\
+        #                             for x in self.monthly_user_counts])
+
+
 
 class UserLoginInfo(object):
     """Count the number of users who

@@ -26,26 +26,39 @@
 
         <h2>New Users for {{selected_year}}</h2>
         <p>Count the number of users added each month.</p>
-        <p><i>Note: These numbers were not tracked until July 18th, with the release of Dataverse 4.7.1</i>.</p>
+        <p><i>Note: The create time of a new user was added in July 18th, 2017 with the release of Dataverse 4.7.1.  Prior to this date, the numbers are the same.</i></p>
 
         <table class="table table-bordered table-striped table-condensed">
             <thead>
                 <tr>
                     <th>Month</th>
-                    <th># New Users</th>
+                    <th>Total HU Users</th>
+                    <th>Total non-HU Users</th>
+                    <th>Total Users</th>
+                    <th>&nbsp;</th>
+                    <th>New Monthly HU Users</th>
+                    <th>New Monthly non-HU Users</th>
+                    <th>New Monthly Users</th>
                 </tr>
-                {% for label, user_cnt in monthly_new_users %}
+            </thead>
+            <tbody>
+                {% for info in new_user_stats.monthly_user_counts %}
                 <tr>
-                    <td>{{ label }}</td>
-                    <td class="text-right">{{ user_cnt|intcomma }}</td>
+                    <td>{{ info.label }} {{ new_user_stats.selected_year }}</td>
+                    <td class="text-right">{{ info.total_hu_users|intcomma }}</td>
+                    <td class="text-right">{{ info.total_non_hu_users|intcomma }}</td>
+                    <td class="text-right"><b>{{ info.total_users|intcomma }}</b></td>
+                    <td>&nbsp;</td>
+                    <td class="text-right">{{ info.monthly_hu_new_users|intcomma }}</td>
+                    <td class="text-right">{{ info.monthly_non_hu_new_users|intcomma }}</td>
+                    <td class="text-right"><b>{{ info.monthly_new_users|intcomma }}</b></td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="8">(no user data)</td>
                 </tr>
                 {% endfor %}
-                <tr>
-                    <td><b>Total</b></td>
-                    <td class="text-right"><b>{{ total_new_users }}</b></td>
-                </tr>
-
-            </thead>
+            <tbody>
         </table>
     </div>
 </div>

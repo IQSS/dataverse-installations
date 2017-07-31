@@ -120,8 +120,9 @@
               <div class="panel-body">
                 <ul>
                     <li><a href="{% url 'view_qc_dashboard' %}">Dashboard (takes a minute then caches)</a><br />&nbsp;</li>
-                    <li><a href="{% url 'view_all_file_extension_counts' %}">Files counts based on file extensions</a><br /> (e.g. How many .tab files?)</li>
-                    <li><a href="{% url 'view_files_extensions_with_unknown_content_types' %}">Extensions of Files classified as unknown</a><br />&nbsp;</li>
+                    <li><a href="{% url 'view_files_extensions_with_unknown_content_types' %}">Extensions of Files classified as unknown</a><br /> (e.g. How many .tab files?)<br />&nbsp;</li>
+
+                    <li><a href="{% url 'view_new_user_counts' %}">New user counts</a><br />&nbsp;</li>
 
                     <li><b style="color:#b94617;">for rough AWS estimates</b>: <a href="{% url 'view_monthly_downloads' %}">Bytes Downloaded</a></li>
                 </ul>

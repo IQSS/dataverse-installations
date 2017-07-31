@@ -43,8 +43,9 @@ def view_file_content_types(request):
                             content_type="application/json")
 
 
+@cache_page(settings.METRICS_CACHE_VIEW_TIME)
 def view_file_list_by_type(request):
-    """Give a list of files based on the content type.
+    """Give a list of published files based on the content type.
     e.g.  ?contenttype=text/tab-separated-values
     """
     if request.GET.get('pretty') is not None:

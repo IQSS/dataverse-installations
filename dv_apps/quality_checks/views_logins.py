@@ -24,7 +24,7 @@ def view_recent_logins(request):
                   'view_recent_logins.html',
                   info_dict)
 
-@cache_page(settings.METRICS_CACHE_VIEW_TIME)
+#@cache_page(settings.METRICS_CACHE_VIEW_TIME)
 def view_new_user_counts(request, selected_year=None):
     """View new users for a given year"""
     time_now = dt.now()
@@ -44,6 +44,7 @@ def view_new_user_counts(request, selected_year=None):
 
     info_dict = dict(page_title="New Users By Month",
                      new_user_stats=new_user_stats,
+                     year_menu=range(NEW_USER_START_YEAR, time_now.year+1),
                      selected_year=new_user_stats.selected_year)
 
     return render(request,

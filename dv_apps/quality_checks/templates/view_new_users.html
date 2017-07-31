@@ -24,7 +24,19 @@
 <div class="row">
     <div class="col-xs-8">
 
-        <h2>New Users for {{selected_year}}</h2>
+        <p>
+            Choose year:
+            {% for yr in year_menu %}
+                {% if yr == selected_year %}
+                    <a href="{% url 'view_new_user_counts_by_year' yr %}"><b>{{ yr }}</b></a>
+                {% else %}
+                    <a href="{% url 'view_new_user_counts_by_year' yr %}">{{ yr }}</a>
+                {% endif %}
+                {% if not forloop.last %} &nbsp;|&nbsp;{% endif %}
+            {% endfor %}
+        </p>
+
+        <h2>New Users for {{ selected_year }}</h2>
         <p>Count the number of users added each month.</p>
         <p><i>Note: The create time of a new user was added in July 18th, 2017 with the release of Dataverse 4.7.1.  Prior to this date, the actual new user numbers are not available.</i></p>
 

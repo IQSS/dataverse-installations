@@ -24,7 +24,7 @@ def view_recent_logins(request):
                   'view_recent_logins.html',
                   info_dict)
 
-#@cache_page(settings.METRICS_CACHE_VIEW_TIME)
+@cache_page(settings.METRICS_CACHE_VIEW_TIME)
 def view_new_user_counts(request, selected_year=None):
     """View new users for a given year"""
     time_now = dt.now()

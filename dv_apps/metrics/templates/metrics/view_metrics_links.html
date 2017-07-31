@@ -180,6 +180,22 @@
                 </div>
             </div>
 
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h3 class="panel-title">Datafile misc (published files only)</h3>
+              </div>
+              <div class="panel-body">
+                <ul>
+                    <li><a href="{% url 'view_file_content_types' %}">Content type list in JSON</a></li>
+                    <li><a href="{% url 'view_file_content_types' %}?pretty">Content type list in JSON (pretty)</a><br />&nbsp; </li>
+
+                    <li><a href="{% url 'view_file_list_by_type' %}">Files filtered by content type JSON</a>
+                    <br />Use parameter "?contenttype=" as in "?contenttype=text/tab-separated-values"</li>
+                    <li><a href="{% url 'view_file_list_by_type' %}?pretty">Files filtered by content type JSON (pretty)</a></li>
+
+                </ul>
+              </div>
+            </div>
 
             <div class="panel panel-default">
               <div class="panel-heading">

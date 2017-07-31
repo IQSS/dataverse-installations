@@ -1,3 +1,5 @@
+from collections import OrderedDict
+
 from django.db import models
 from django.utils.encoding import python_2_unicode_compatible
 
@@ -27,6 +29,36 @@ class Datafile(models.Model):
 
     def __str__(self):
         return '%s' % self.dvobject
+
+    @staticmethod
+    def to_json(df):
+        if df is None:
+            return None
+
+        ol = OrderedDict()
+        ol['id'] = df.dvobject.id
+        ol['dataset_id'] = df.dvobject.owner.id
+        ol['contenttype'] = df.contenttype
+        ol['filesize'] = df.filesize
+
+        if hasattr(df, 'filesystemname'):
+            ol['filesystemname'] = df.filesystemname
+        elif df.dvobject and hasattr(df.dvobject, 'storageidentifier'):
+            ol['storageidentifier'] = df.dvobject.storageidentifier
+
+        ol['ingeststatus'] = df.ingeststatus
+        ol['rootdatafileid'] = df.rootdatafileid
+        ol['previousdatafileid'] = df.previousdatafileid
+        ol['checksumvalue'] = df.checksumvalue
+        ol['checksumtype'] = df.checksumtype
+        ol['restricted'] = df.restricted
+        ol['createdate'] = str(df.dvobject.createdate)
+        if df.dvobject.publicationdate:
+            ol['publicationdate'] = str(df.dvobject.publicationdate)
+        else:
+            ol['publicationdate'] = None
+
+        return ol
 
     @property
     def id(self):

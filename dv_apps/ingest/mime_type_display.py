@@ -12,6 +12,8 @@ Documentation, Data, Archive files
 # ( content-type, name, DV File class, [ file extensions])
 TYPE_TABULAR = "tabular"
 
+CONTENT_TYPE_TABULAR = 'text/tab-separated-values'
+
 file_type_info = [
 ("application/pdf", "Adobe PDF"),
 ("application/msword", "MS Word"),
@@ -21,7 +23,7 @@ file_type_info = [
 ("application/zip", "ZIP Archive"),
 ("text/plain", "Plain Text"),
 ("text/xml", "XML"),
-("text/tab-separated-values", "Tab-Delimited"),
+(CONTENT_TYPE_TABULAR, "Tab-Delimited"),
 ("text/csv", "Comma Separated Values"),
 ("text/x-fixed-field", "Fixed Field Text Data"),
 ("application/x-rlang-transport", "R Data"),

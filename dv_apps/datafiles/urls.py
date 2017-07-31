@@ -1,5 +1,5 @@
 from django.conf.urls import url
-from dv_apps.datafiles import views, views_downloads
+from dv_apps.datafiles import views, views_downloads, views_types
 
 urlpatterns = (
 
@@ -18,5 +18,17 @@ urlpatterns = (
     url(r'^download-bytes/$',
         views_downloads.view_monthly_downloads,
         name='view_monthly_downloads'),
+
+    url(r'^content-type/$',
+        views_types.view_file_content_types,
+        name='view_file_content_types'),
+
+    url(r'^files-by-type/$',
+        views_types.view_file_list_by_type,
+        name='view_file_list_by_type'),
+
+    #url(r'^file-list-by-type/$',
+    #    views.view_file_list_by_type,
+    #    name='view_file_list_by_type'),
 
 )

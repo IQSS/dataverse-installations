@@ -32,7 +32,7 @@
                 <th>id</th>
                 <th>name / description</th>
                 {#<th>description</th>#}
-                <th>filesystemname</th>
+                <th>storageidentifier</th>
                 <th>contentType</th>
                 <th>filesize_bytes</th>
                 <th>checksum</th>
@@ -50,7 +50,7 @@
                 {% if f.description %}
                     <br /><small>{{ f.description }}</small>
                 {% endif %}</td>
-            <td>{{ f.specs.filesystemname }}</td>
+            <td>{{ f.specs.storageidentifier }}</td>
             <td>{{ f.specs.contentType }}</td>
             <td>{{ f.specs.filesize_bytes|intcomma }}</td>
             <td>{{ f.specs.checksum.value }} ({{ f.specs.checksum.type }})</td>

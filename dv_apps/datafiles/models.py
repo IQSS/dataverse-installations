@@ -31,6 +31,14 @@ class Datafile(models.Model):
         return '%s' % self.dvobject
 
     @staticmethod
+    def get_json_keys():
+
+        return ('id dataset_id contenttype filesize '
+                'storageidentifier ingeststatus rootdatafileid '
+                'previousdatafileid checksumvalue checksumtype '
+                'restricted createdate publicationdate').split()
+
+    @staticmethod
     def to_json(df):
         if df is None:
             return None
@@ -42,7 +50,7 @@ class Datafile(models.Model):
         ol['filesize'] = df.filesize
 
         if hasattr(df, 'filesystemname'):
-            ol['filesystemname'] = df.filesystemname
+            ol['storageidentifier'] = df.filesystemname
         elif df.dvobject and hasattr(df.dvobject, 'storageidentifier'):
             ol['storageidentifier'] = df.dvobject.storageidentifier
 

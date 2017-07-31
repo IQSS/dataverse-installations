@@ -187,11 +187,13 @@
               <div class="panel-body">
                 <ul>
                     <li><a href="{% url 'view_file_content_types' %}">Content type list in JSON</a></li>
-                    <li><a href="{% url 'view_file_content_types' %}?pretty">Content type list in JSON (pretty)</a><br />&nbsp; </li>
+                    <li><a href="{% url 'view_file_content_types' %}?pretty">Content type list in JSON (pretty)</a></li>
+                    <li><a href="{% url 'view_file_content_types' %}?as_excel">Content type list in Excel (.xlsx)</a><br />&nbsp; </li>
 
                     <li><a href="{% url 'view_file_list_by_type' %}">Files filtered by content type JSON</a>
-                    <br />Use parameter "?contenttype=" as in "?contenttype=text/tab-separated-values"</li>
+                    <br />e.g. "?contenttype=text/tab-separated-values"</li>
                     <li><a href="{% url 'view_file_list_by_type' %}?pretty">Files filtered by content type JSON (pretty)</a></li>
+                    <li><a href="{% url 'view_file_list_by_type' %}?as_excel">Files filtered by content type in Excel (.xlsx)</a></li>
 
                 </ul>
               </div>

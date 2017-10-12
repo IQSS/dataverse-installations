@@ -15,7 +15,7 @@ class ManagedModelTestRunner(DiscoverRunner):
     to execute the SQL manually to create them.
     """
     def setup_test_environment(self, *args, **kwargs):
-
+        
         self.unmanaged_models = [m for m in apps.get_models() if not m._meta.managed]
 
         for m in self.unmanaged_models:

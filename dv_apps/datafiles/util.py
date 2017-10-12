@@ -86,7 +86,7 @@ class DatafileUtil(object):
             # --------------------------------
             file_info = OrderedDict()
 
-            file_info['filesystemname'] = related_file['filesystemname']
+            file_info['storageidentifier'] = related_file['dvobject__storageidentifier']
             file_info['contentType'] = related_file['contenttype']
             file_info['filesize_bytes'] = related_file['filesize']
 
@@ -152,10 +152,11 @@ class DatafileUtil(object):
         """
         Retrieve Datafile objects and return as a dict with key being the id
         """
-        vals = ('id', 'contenttype', 'filesystemname',\
+        vals = ('id', 'contenttype',\
             'filesize', 'checksumtype', 'checksumvalue', 'restricted',\
-            'ingeststatus')
-        dfiles = Datafile.objects.filter(dvobject__id__in=dvobject_ids\
+            'ingeststatus', 'dvobject__storageidentifier')
+        dfiles = Datafile.objects.select_related('dvobject'\
+            ).filter(dvobject__id__in=dvobject_ids\
             ).annotate(id=F('dvobject__id')\
             ).values(*vals)
 

@@ -15,7 +15,6 @@ class Datafile(models.Model):
     dvobject = models.OneToOneField(DvObject, db_column='id', primary_key=True)
     name = models.CharField(max_length=255, blank=True, null=True)
     contenttype = models.CharField(max_length=255)
-    filesystemname = models.CharField(max_length=255)
     filesize = models.BigIntegerField(blank=True, null=True)
     ingeststatus = models.CharField(max_length=1, blank=True, null=True)
 

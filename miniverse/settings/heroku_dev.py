@@ -28,8 +28,7 @@ METRICS_CACHE_API_TIME = 60 * 15 # 15 minutes
 
 # Receive 500 errors
 #
-ADMINS = [ ('Raman', 'raman_prasad@harvard.edu'),
-    ('Raman (g.harvard)', 'prasad@g.harvard.edu')]
+ADMINS = []
 
 # Receive 404 errors
 #

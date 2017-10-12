@@ -52,7 +52,7 @@
                     {#<th>description</th>#}
                     <th>contentType</th>
                     {% endcomment %}
-                    <th>filesystemname</th>
+                    <th>storageidentifier</th>
                     <th>filesize_bytes</th>
                     <th>checksum type</th>
                     <th>checksum</th>
@@ -96,7 +96,7 @@
 
                 {% endcomment %}
 
-                <td><a href="{{ installation_url }}/file.xhtml?fileId={{ f.dvobject.id }}" target="_blank">{{ f.filesystemname }}</a></td>
+                <td><a href="{{ installation_url }}/file.xhtml?fileId={{ f.dvobject.id }}" target="_blank">{{ f.dvobject.storageidentifier }}</a></td>
                 <td>{% if f.filesize == 0 %}
                         <span class="label label-warning">zero</span>
                     {% elif not f.filesize %}

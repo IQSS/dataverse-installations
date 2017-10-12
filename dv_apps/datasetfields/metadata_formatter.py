@@ -129,7 +129,7 @@ class MetadataFormatter(object):
             ds_field.metadata_block = ds_field.datasetfieldtype.metadatablock
 
             cnt+=1
-            print '\n(%s) check ds_field: %s' % (cnt, ds_field)
+            #print '\n(%s) check ds_field: %s' % (cnt, ds_field)
 
             secondary_fields = primary_secondary_lookup.get(ds_field.id, None)
 

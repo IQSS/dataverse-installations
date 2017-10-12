@@ -152,10 +152,10 @@ DEBUG_TOOLBAR_PATCH_SETTINGS = False
 #   - Disable timezone awareness for fixture loading
 # -----------------------------------
 if 'test' in sys.argv or 'test_coverage' in sys.argv:  # Covers regular testing and django-coverage
-
+    
     DATABASES['default']['ENGINE'] = 'django.db.backends.postgresql_psycopg2'
     DATABASES['default']['HOST'] = 'localhost'
-    DATABASES['default']['USER'] = 'rp'
+    DATABASES['default']['USER'] = 'postgres'
     DATABASES['default']['PASSWORD'] = '123'
 
     # The custom routers we're using to route certain ORM queries

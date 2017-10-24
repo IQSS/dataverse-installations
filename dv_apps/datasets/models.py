@@ -169,7 +169,7 @@ class DatasetVersion(models.Model):
 
     #fileaccessrequest = models.NullBooleanField()
 
-    inreview = models.NullBooleanField()
+    #inreview = models.NullBooleanField()
 
 
     #license = models.CharField(max_length=255, blank=True, null=True)

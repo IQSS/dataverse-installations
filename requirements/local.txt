@@ -1,6 +1,0 @@
--r base.txt
-
-
-# Debugging:
-ipdb==0.10.1
-django-debug-toolbar==1.4

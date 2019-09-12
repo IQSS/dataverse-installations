@@ -1,9 +1,0 @@
-#[qgtunnel.psql]
-#accept = "localhost:5432"
-#connect = "ec2-10-10-10-1.compute-1.amazonaws.com:5432"
-#transparent = true
-
-[qgtunnel.postgres]
-accept = "localhost:5432"
-#connect = "demo.dataverse.org:5432"
-connect = "dvndb-qa1.hmdc.harvard.edu:5432"

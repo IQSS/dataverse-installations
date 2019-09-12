@@ -1,18 +1,25 @@
-from __future__ import unicode_literals
+from django.db import models
+from django.utils.text import slugify
+from django.conf import settings
+from decimal import Decimal
 from collections import OrderedDict
 
-from django.conf import settings
-from django.utils.encoding import python_2_unicode_compatible
-from django.utils.text import slugify
-from django.db import models
-from decimal import Decimal
+# Create your models here.
+#from __future__ import unicode_literals
+#from collections import OrderedDict
+#
+#from django.conf import settings
+#from django.utils.encoding import python_2_unicode_compatible
+#from django.utils.text import slugify
+#from django.db import models
+#from decimal import Decimal
 
 # Create your models here.
-@python_2_unicode_compatible
+#@python_2_unicode_compatible
 class Installation(models.Model):
     name = models.CharField(max_length=255, unique=True)
     full_name = models.CharField(max_length=255)
-    is_active = models.BooleanField(default=False, help_text="Needs be active to show on dataverse.org map")
+    is_active = models.BooleanField(default=False, help_text="Needs be active to show on map.")
     lat = models.DecimalField(max_digits=9, decimal_places=6, default=Decimal('0.0000'))
     lng = models.DecimalField(max_digits=9, decimal_places=6, default=Decimal('0.0000'))
     logo = models.ImageField(upload_to='logos/', null=True, blank=True)
@@ -20,7 +27,7 @@ class Installation(models.Model):
     description = models.TextField(null=True, blank=True)
     url = models.URLField(null=True, blank=True)
     slug = models.SlugField(max_length=255, blank=True, help_text='auto-filled on save')
-    version = models.CharField(max_length=6, blank=True, help_text='Dataversion version.  e.g. "4.3", "3.6.2", etc')
+    version = models.CharField(max_length=6, blank=True, help_text='Software version.')
 
     def __str__(self):
         return self.name
@@ -75,18 +82,26 @@ class Installation(models.Model):
         od['lat'] = self.lat
         od['lng'] = self.lng
 
-        od['logo'] = '%s://%s%s' % (settings.SWAGGER_SCHEME,
-                                    settings.SWAGGER_HOST,
+        #od['logo'] = '%s://%s%s' % (settings.SWAGGER_SCHEME,
+        #                            settings.SWAGGER_HOST,
+        #                            self.logo.url)
+        # FIXME: this needs more work
+        print(self.logo.url)
+        print(self.logo.url)
+        print(self.logo.url)
+        od['logo'] = '%s://%s%s' % (settings.PROTOCOL,
+                                    settings.ALLOWED_HOSTS[0],
                                     self.logo.url)
         #marker = self.marker
         od['url'] = self.url
         od['slug'] = self.slug
         od['version'] = self.version if self.version else None
+        print(od)
         return od
 
 
 
-@python_2_unicode_compatible
+#@python_2_unicode_compatible
 class Institution(models.Model):
     name = models.CharField(max_length=255)
     lat = models.DecimalField(max_digits=9, decimal_places=6, blank=False, default=Decimal('0.0000'))

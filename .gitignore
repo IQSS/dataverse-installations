@@ -137,3 +137,6 @@ scripts/tab-samp
 
 # put it in later...
 dv_apps/solr_docs
+db.sqlite3
+.ackrc
+logos

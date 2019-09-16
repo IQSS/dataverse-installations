@@ -50,3 +50,9 @@ Some ideas for how to improve this code have already been captured in the "miniv
 - remove Institutions?
 - remove marker from model?
 - settings.PROTOCOL
+
+## Contributing
+
+We love contributors! Please see our [Contributing Guide][] for ways you can help.
+
+[Contributing Guide]: CONTRIBUTING.md

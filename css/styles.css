@@ -1,0 +1,36 @@
+table {
+  vertical-align: top;
+}
+
+th.installation-name-header {
+  width: 20%;
+}
+
+th.installation-country-header {
+  width: 10%;
+}
+
+th.installation-description-header {
+  width: 70%;
+}
+
+.installation-name-suggest-add {
+  font-style: italic;
+}
+
+.installation-country-suggest-add {
+  font-style: italic;
+}
+
+.installation-description-suggest-add {
+  font-style: italic;
+}
+
+.installation-name-row {
+}
+
+.installation-country-row {
+}
+
+.installation-description-row {
+}

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Dataverse Installations Around the World</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" type="image/x-icon" href="docs/images/favicon.ico" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
+      integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+      crossorigin=""
+    />
+    <script
+      src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
+      integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
+      crossorigin=""
+    ></script>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <div id="mapid" style="width: 600px; height: 400px;"></div>
+    <table id="installation-descriptions">
+      <thead>
+        <tr>
+          <th class="installation-name-header">Name</th>
+          <th class="installation-country-header">Country</th>
+          <th class="installation-description-header">Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="installation-name-suggest-add">[Your installation! 🎉🎉🎉]</td>
+          <td class="installation-country-suggest-add">[Country]</td>
+          <td class="installation-description-suggest-add">
+            [A description of your installation of Dataverse.] To add your installation to the map,
+            please follow the
+            <a
+              href="http://guides.dataverse.org/en/latest/installation/config.html#putting-your-dataverse-installation-on-the-map-at-dataverse-org"
+              >instructions in the Dataverse documentation</a
+            >.
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <template id="installation-row">
+      <tr>
+        <td class="installation-name-row"></td>
+        <td class="installation-country-row"></td>
+        <td class="installation-description-row"></td>
+      </tr>
+    </template>
+    <script src="js/map.js"></script>
+    <script src="js/table.js"></script>
+  </body>
+</html>

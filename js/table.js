@@ -4,7 +4,7 @@ if ('content' in document.createElement('template')) {
   var template = document.querySelector('#installation-row');
   // Clone the new row and insert it into the table
   var tbody = document.querySelector('tbody');
-  url = '../data/data.json';
+  url = 'data/data.json';
   fetch(url).then(function(response) {
     response.text().then(function(text) {
       obj = JSON.parse(text);

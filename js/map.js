@@ -50,7 +50,7 @@ L.control
   })
   .addTo(mymap);
 
-fetch('../data/data.json')
+fetch('data/data.json')
   .then(function(response) {
     return response.json();
   })

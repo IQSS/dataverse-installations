@@ -56,6 +56,7 @@ fetch('data/data.json')
   })
   .then(function(myJson) {
     items = myJson.installations;
+    document.getElementById("num-installations").innerHTML = items.length + " Installations";
     for (var i = 0; i < items.length; ++i) {
       name = items[i].name;
       hostname = items[i].hostname;

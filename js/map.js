@@ -74,6 +74,14 @@ fetch('data/data.json')
       if (launch_year) {
         launch_year_note = '<br><br>Launched in ' + launch_year;
       }
+      board = items[i].board;
+      board_note = '';
+      if (board) {
+        board_note =
+          '<br><br><a target="_blank" rel="noopener noreferrer" href="' +
+          board +
+          '">Project board</a>';
+      }
       harvesting_sets = items[i].harvesting_sets;
       harvesting_note = '';
       if (harvesting_sets) {
@@ -112,6 +120,7 @@ fetch('data/data.json')
             description +
             harvesting_note +
             launch_year_note +
+            board_note +
             gdcc_member_note +
             metrics_note,
         );

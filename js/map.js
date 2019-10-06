@@ -69,6 +69,11 @@ fetch('data/data.json')
       description = items[i].description;
       lat = items[i].lat;
       lng = items[i].lng;
+      launch_year = items[i].launch_year;
+      launch_year_note = '';
+      if (launch_year) {
+        launch_year_note = '<br><br>Launched in ' + launch_year;
+      }
       gdcc_member = items[i].gdcc_member;
       gdcc_member_note = '';
       if (gdcc_member) {
@@ -84,7 +89,13 @@ fetch('data/data.json')
       L.marker([lat, lng], { icon: icon })
         .addTo(mymap)
         .bindPopup(
-          '<b>' + linked_name + '</b><br><br>' + description + gdcc_member_note + metrics_note,
+          '<b>' +
+            linked_name +
+            '</b><br><br>' +
+            description +
+            launch_year_note +
+            gdcc_member_note +
+            metrics_note,
         );
     }
   });

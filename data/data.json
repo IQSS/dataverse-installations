@@ -50,7 +50,7 @@
     },
     {
       "name": "Catalogues (CDSP)",
-      "description": "Open for researchers and organizations associated with\r\nFrench universities to deposit data. Hosted by the Center for\r\nSocio-Political Data (Sciences Po and CNRS).",
+      "description": "Open for researchers and organizations associated with French universities to deposit data. Hosted by the Center for Socio-Political Data (Sciences Po and CNRS).",
       "lat": 48.854027,
       "lng": 2.328351,
       "hostname": "catalogues.cdsp.sciences-po.fr",
@@ -88,7 +88,7 @@
     },
     {
       "name": "CIRAD",
-      "description": "Organisme fran\u00e7ais de recherche agronomique et de coop\u00e9ration internationale pour le d\u00e9veloppement durable des r\u00e9gions tropicales et m\u00e9diterran\u00e9ennes, les activit\u00e9s du CIRAD rel\u00e8vent des sciences du vivant, des sciences sociales et des sciences de l\u2019ing\u00e9nieur appliqu\u00e9es \u00e0 l\u2019agriculture, \u00e0 l\u2019alimentation, \u00e0 l\u2019environnement et \u00e0 la gestion des territoires.\r\n\r\nFrench agricultural research and international cooperation organization working for the sustainable development of tropical and Mediterranean regions, CIRAD's activities concern the life sciences, social sciences and engineering sciences, applied to agriculture, the environment and territorial management.",
+      "description": "Organisme fran\u00e7ais de recherche agronomique et de coop\u00e9ration internationale pour le d\u00e9veloppement durable des r\u00e9gions tropicales et m\u00e9diterran\u00e9ennes, les activit\u00e9s du CIRAD rel\u00e8vent des sciences du vivant, des sciences sociales et des sciences de l\u2019ing\u00e9nieur appliqu\u00e9es \u00e0 l\u2019agriculture, \u00e0 l\u2019alimentFrench agricultural research and international cooperation organization working for the sustainable development of tropical and Mediterranean regions, CIRAD's activities concern the life sciences, social sciences and engineering sciences, applied to agriculture, the environment and territorial management.",
       "lat": 43.650089,
       "lng": 3.869122,
       "hostname": "dataverse.cirad.fr",
@@ -111,7 +111,7 @@
     },
     {
       "name": "Data Inra",
-      "description": "INRA is Europe\u2019s top agricultural research institute and the world\u2019s number two centre for the agricultural sciences. Data Inra is offered by INRA as part of its mission to open the results of its research.\r\n\r\nData Inra will share research data in relation with food, nutrition, agriculture and environment. It includes experimental, simulation and observation data, omic data, survey and text data.\r\n\r\nOnly data produced by or in collaboration with INRA will be hosted in the repository, but anyone can access the metadata and the open data.",
+      "description": "INRA is Europe\u2019s top agricultural research institute and the world\u2019s number two centre for the agricultural sciences. Data Inra is offered by INRA asData Inra will share research data in relation with food, nutrition, agriculture and environment. It includes experimental, simulation and observationOnly data produced by or in collaboration with INRA will be hosted in the repository, but anyone can access the metadata and the open data.",
       "lat": 48.801407,
       "lng": 2.130122,
       "hostname": "data.inra.fr",
@@ -514,7 +514,7 @@
     },
     {
       "name": "UNB Libraries Dataverse",
-      "description": "",
+      "description": "UNB Dataverse is repository for research data collected by researchers and organizations primarily affiliated with the University of New Brunswick.",
       "lat": 45.964993,
       "lng": -66.646332,
       "hostname": "dataverse.lib.unb.ca",
@@ -527,7 +527,7 @@
     },
     {
       "name": "UNC Dataverse",
-      "description": "Open for all researchers worldwide from all disciplines to deposit data. The Odum Institute also offers multiple data curation service levels. For more information, go to http://www.irss.unc.edu/odum/contentPrimary.jsp?nodeid=5.",
+      "description": "Open for all researchers worldwide from all disciplines to deposit data. The Odum Institute also offers multiple data curation service levels. For more information, visit https://odum.unc.edu/archive",
       "lat": 35.905022,
       "lng": -79.050851,
       "hostname": "dataverse.unc.edu",

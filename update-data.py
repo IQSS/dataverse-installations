@@ -60,6 +60,11 @@ for row in rows:
     contact_email = row['Contact email']
     if contact_email:
         mydict[hostname]['contact_email'] = contact_email
+    sets = row['Sets']
+    if sets:
+        mydict[hostname]['harvesting'] = sets
+    else:
+        mydict[hostname]['harvesting'] = None
 
 # Data from dataverse.org/metrics (in version of Dataverse is new enough).
 metrics_url = 'https://dataversemetrics.odum.unc.edu/dataverse-metrics/config.json'
@@ -89,6 +94,12 @@ for i in map_json['installations']:
             i['description'] = mydict[i['hostname']]['description']
         i['country'] = mydict[i['hostname']]['country']
         i['continent'] = mydict[i['hostname']]['continent']
+        sets = mydict[i['hostname']].get('harvesting')
+        if sets:
+            all_sets = []
+            for harvesting_set in sets.split(','):
+                all_sets.append(harvesting_set.strip())
+            i['harvesting_sets'] = all_sets
         is_gddc_member = False
         if mydict[i['hostname']]['gdcc_member'] == 'yes':
             is_gddc_member = True

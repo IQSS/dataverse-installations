@@ -74,6 +74,23 @@ fetch('data/data.json')
       if (launch_year) {
         launch_year_note = '<br><br>Launched in ' + launch_year;
       }
+      harvesting_sets = items[i].harvesting_sets;
+      harvesting_note = '';
+      if (harvesting_sets) {
+        set_names = [];
+        for (var j = 0; j < harvesting_sets.length; ++j) {
+          set_name = harvesting_sets[j];
+          set_names.push(set_name);
+        }
+        //harvesting_note = '<br><br>Harvesting sets: ' + harvesting_sets.length;
+        list_sets_url = 'http://' + hostname + '/oai?verb=ListSets';
+        harvesting_note =
+          '<br><br>Advertised ' +
+          '<a target="_blank" rel="noopener noreferrer" href="' +
+          list_sets_url +
+          '">harvesting sets</a>: ' +
+          set_names.join(', ');
+      }
       gdcc_member = items[i].gdcc_member;
       gdcc_member_note = '';
       if (gdcc_member) {
@@ -93,6 +110,7 @@ fetch('data/data.json')
             linked_name +
             '</b><br><br>' +
             description +
+            harvesting_note +
             launch_year_note +
             gdcc_member_note +
             metrics_note,

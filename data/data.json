@@ -8,6 +8,9 @@
       "hostname": "dvn.library.ubc.ca",
       "country": "Canada",
       "continent": "North America",
+      "harvesting_sets": [
+        "abacus_open"
+      ],
       "gdcc_member": false,
       "doi_authority": "\u2415"
     },
@@ -32,6 +35,9 @@
       "hostname": "data.aussda.at",
       "country": "Austria",
       "continent": "Europe",
+      "harvesting_sets": [
+        "all_published"
+      ],
       "gdcc_member": false,
       "doi_authority": "10.11587",
       "contact_email": "info@aussda.at"
@@ -70,6 +76,9 @@
       "metrics": true,
       "country": "Indonesia",
       "continent": "Asia",
+      "harvesting_sets": [
+        "cifor_general"
+      ],
       "gdcc_member": false,
       "doi_authority": "10.17528",
       "contact_email": "cifor-rdm-support@cgiar.org"
@@ -82,6 +91,11 @@
       "hostname": "data.cimmyt.org",
       "country": "Mexico",
       "continent": "North America",
+      "harvesting_sets": [
+        "cimmytdatadvn",
+        "cimmytswdvn",
+        "iwypdvn"
+      ],
       "gdcc_member": false,
       "doi_authority": "\u2415",
       "contact_email": "J.HERRERA@cgiar.org"
@@ -118,6 +132,9 @@
       "metrics": true,
       "country": "France",
       "continent": "Europe",
+      "harvesting_sets": [
+        "ALL"
+      ],
       "gdcc_member": false,
       "doi_authority": "10.15454",
       "board": "https://github.com/orgs/IQSS/projects/15",
@@ -156,6 +173,9 @@
       "launch_year": "2017",
       "country": "Spain",
       "continent": "Europe",
+      "harvesting_sets": [
+        "openaire_data"
+      ],
       "gdcc_member": true,
       "doi_authority": "10.2195",
       "contact_email": "eciencia@consorciomadrono.es"
@@ -169,6 +189,9 @@
       "metrics": true,
       "country": "Netherlands",
       "continent": "Europe",
+      "harvesting_sets": [
+        "tilburg_oai"
+      ],
       "gdcc_member": true,
       "doi_authority": "\u2415",
       "contact_email": "info@dataverse.nl"
@@ -182,6 +205,9 @@
       "metrics": true,
       "country": "Norway",
       "continent": "Europe",
+      "harvesting_sets": [
+        "dataverseno"
+      ],
       "gdcc_member": true,
       "doi_authority": "10.1871",
       "board": "https://github.com/orgs/IQSS/projects/14",
@@ -231,6 +257,9 @@
       "metrics": true,
       "country": "USA",
       "continent": "North America",
+      "harvesting_sets": [
+        "IQSS"
+      ],
       "gdcc_member": true,
       "doi_authority": "10.791",
       "board": "https://github.com/orgs/IQSS/projects/2",
@@ -245,6 +274,9 @@
       "metrics": true,
       "country": "Germany",
       "continent": "Europe",
+      "harvesting_sets": [
+        "heidata"
+      ],
       "gdcc_member": false,
       "doi_authority": "10.11588",
       "contact_email": "Maylein@ub.uni-heidelberg.de"
@@ -268,6 +300,9 @@
       "hostname": "dataverse.icrisat.org",
       "country": "India",
       "continent": "Asia",
+      "harvesting_sets": [
+        "icrisat"
+      ],
       "gdcc_member": false,
       "doi_authority": "10.21421",
       "contact_email": "dataverse.biu@gmail.com"
@@ -325,6 +360,9 @@
       "hostname": "archive.data.jhu.edu",
       "country": "USA",
       "continent": "North America",
+      "harvesting_sets": [
+        "jhuda_all"
+      ],
       "gdcc_member": true,
       "doi_authority": "10.7281",
       "contact_email": "datamanagement@jhu.edu"
@@ -338,6 +376,9 @@
       "metrics": true,
       "country": "USA",
       "continent": "North America",
+      "harvesting_sets": [
+        "UVA-Libra-Data"
+      ],
       "gdcc_member": true,
       "doi_authority": "10.1813",
       "board": "https://github.com/orgs/IQSS/projects/10",
@@ -422,6 +463,9 @@
       "metrics": true,
       "country": "USA",
       "continent": "North America",
+      "harvesting_sets": [
+        "qdr_whole"
+      ],
       "gdcc_member": true,
       "doi_authority": "10.5064",
       "board": "https://github.com/orgs/IQSS/projects/6"
@@ -469,6 +513,9 @@
       "metrics": true,
       "country": "Canada",
       "continent": "North America",
+      "harvesting_sets": [
+        "sp_dataverse"
+      ],
       "gdcc_member": false,
       "doi_authority": "10.5683",
       "board": "https://github.com/orgs/IQSS/projects/8",
@@ -483,6 +530,9 @@
       "metrics": true,
       "country": "USA",
       "continent": "North America",
+      "harvesting_sets": [
+        "TDR"
+      ],
       "gdcc_member": true,
       "doi_authority": "10.18738",
       "contact_email": "support@tdl.org"
@@ -496,6 +546,9 @@
       "metrics": true,
       "country": "Canada",
       "continent": "North America",
+      "harvesting_sets": [
+        "all"
+      ],
       "gdcc_member": false,
       "doi_authority": "10.7939",
       "contact_email": "data@ualberta.ca"
@@ -535,6 +588,9 @@
       "launch_year": "2005",
       "country": "USA",
       "continent": "North America",
+      "harvesting_sets": [
+        "odum_all"
+      ],
       "gdcc_member": true,
       "doi_authority": "10.15139",
       "board": "https://github.com/orgs/IQSS/projects/5",

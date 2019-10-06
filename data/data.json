@@ -230,6 +230,7 @@
       "continent": "North America",
       "gdcc_member": true,
       "doi_authority": "10.791",
+      "board": "https://github.com/orgs/IQSS/projects/2",
       "contact_email": "support@dataverse.harvard.edu"
     },
     {

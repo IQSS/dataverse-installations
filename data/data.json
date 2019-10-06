@@ -346,7 +346,11 @@
       "lat": -6.228771,
       "lng": 106.818082,
       "hostname": "data.lipi.go.id",
-      "metrics": true
+      "metrics": true,
+      "country": "Indonesia",
+      "continent": "Asia",
+      "gdcc_member": false,
+      "doi_authority": "10.5072"
     },
     {
       "name": "Maine Dataverse Network",

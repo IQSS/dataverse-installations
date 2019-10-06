@@ -23,6 +23,7 @@
       "launch_year": "2017",
       "country": "Australia",
       "continent": "Australia",
+      "about_url": "https://ada.edu.au",
       "gdcc_member": true,
       "doi_authority": "10.26193",
       "board": "https://github.com/orgs/IQSS/projects/17"
@@ -35,6 +36,7 @@
       "hostname": "data.aussda.at",
       "country": "Austria",
       "continent": "Europe",
+      "about_url": "http://aussda.at",
       "harvesting_sets": [
         "all_published"
       ],
@@ -189,6 +191,7 @@
       "metrics": true,
       "country": "Netherlands",
       "continent": "Europe",
+      "about_url": "https://dans.knaw.nl/en/about/services/archiving-and-reusing-data/DataverseNL/about?set_language=en",
       "harvesting_sets": [
         "tilburg_oai"
       ],
@@ -205,6 +208,7 @@
       "metrics": true,
       "country": "Norway",
       "continent": "Europe",
+      "about_url": "http://site.uit.no/dataverseno/deposit/",
       "harvesting_sets": [
         "dataverseno"
       ],
@@ -222,6 +226,7 @@
       "metrics": true,
       "country": "Singapore",
       "continent": "Asia",
+      "about_url": "https://blogs.ntu.edu.sg/lib-datamanagement/about-dr-ntu-data/",
       "gdcc_member": true,
       "doi_authority": "10.21979"
     },
@@ -315,6 +320,7 @@
       "hostname": "dataverse.mpi-sws.org",
       "country": "NA",
       "continent": "\u2205",
+      "about_url": "http://guides.dataverse.org/en/4.8.5/user",
       "gdcc_member": false,
       "doi_authority": "10.5072"
     },
@@ -376,6 +382,7 @@
       "metrics": true,
       "country": "USA",
       "continent": "North America",
+      "about_url": "http://www.library.virginia.edu/libra/datasets/",
       "harvesting_sets": [
         "UVA-Libra-Data"
       ],
@@ -439,6 +446,7 @@
       "hostname": "opendata.pku.edu.cn",
       "country": "China",
       "continent": "Asia",
+      "about_url": "http://opendata.pku.edu.cn/about.xhtml",
       "gdcc_member": false,
       "doi_authority": "10.1817"
     },
@@ -463,6 +471,7 @@
       "metrics": true,
       "country": "USA",
       "continent": "North America",
+      "about_url": "https://qdr.syr.edu/about",
       "harvesting_sets": [
         "qdr_whole"
       ],
@@ -513,6 +522,7 @@
       "metrics": true,
       "country": "Canada",
       "continent": "North America",
+      "about_url": "http://guides.scholarsportal.info/dataverse",
       "harvesting_sets": [
         "sp_dataverse"
       ],
@@ -530,6 +540,7 @@
       "metrics": true,
       "country": "USA",
       "continent": "North America",
+      "about_url": "http://data.tdl.org/about",
       "harvesting_sets": [
         "TDR"
       ],

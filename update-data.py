@@ -39,11 +39,13 @@ for row in rows:
     continent = row['Continent']
     gdcc_member = row['GDCC member']
     board = row['Project board under IQSS']
+    about_url = row['About URL']
     doi_authority = row['DOI authority']
     mydict[hostname]['country'] = country
     mydict[hostname]['continent'] = continent
     mydict[hostname]['gdcc_member'] = gdcc_member
     mydict[hostname]['board'] = board
+    mydict[hostname]['about_url'] = about_url
     mydict[hostname]['doi_authority'] = doi_authority
     mydict[hostname]['contact_email'] = "UNKNOWN"
 
@@ -94,6 +96,8 @@ for i in map_json['installations']:
             i['description'] = mydict[i['hostname']]['description']
         i['country'] = mydict[i['hostname']]['country']
         i['continent'] = mydict[i['hostname']]['continent']
+        if mydict[i['hostname']]['about_url']:
+            i['about_url'] = mydict[i['hostname']]['about_url']
         sets = mydict[i['hostname']].get('harvesting')
         if sets:
             all_sets = []

@@ -67,6 +67,12 @@ fetch('data/data.json')
         name +
         '</a>';
       description = items[i].description;
+      about_url = items[i].about_url;
+      about_url_note = '';
+      if (about_url) {
+        about_url_note =
+          ' <a target="_blank" rel="noopener noreferrer" href="' + about_url + '">More...</a>';
+      }
       lat = items[i].lat;
       lng = items[i].lng;
       launch_year = items[i].launch_year;
@@ -118,6 +124,7 @@ fetch('data/data.json')
             linked_name +
             '</b><br><br>' +
             description +
+            about_url_note +
             harvesting_note +
             launch_year_note +
             board_note +

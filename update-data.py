@@ -40,12 +40,14 @@ for row in rows:
     gdcc_member = row['GDCC member']
     board = row['Project board under IQSS']
     about_url = row['About URL']
+    core_trust_seals = row['CoreTrustSeals']
     doi_authority = row['DOI authority']
     mydict[hostname]['country'] = country
     mydict[hostname]['continent'] = continent
     mydict[hostname]['gdcc_member'] = gdcc_member
     mydict[hostname]['board'] = board
     mydict[hostname]['about_url'] = about_url
+    mydict[hostname]['core_trust_seals'] = core_trust_seals
     mydict[hostname]['doi_authority'] = doi_authority
     mydict[hostname]['contact_email'] = "UNKNOWN"
 
@@ -108,6 +110,12 @@ for i in map_json['installations']:
         if mydict[i['hostname']]['gdcc_member'] == 'yes':
             is_gddc_member = True
         i['gdcc_member'] = is_gddc_member
+        core_trust_seals = mydict[i['hostname']].get('core_trust_seals')
+        if core_trust_seals:
+            all_seals = []
+            for core_trust_seal in core_trust_seals.split(','):
+                all_seals.append(core_trust_seal)
+            i['core_trust_seals'] = all_seals
         if mydict[i['hostname']]['doi_authority']:
             i['doi_authority'] = mydict[i['hostname']]['doi_authority']
         if mydict[i['hostname']]['board']:

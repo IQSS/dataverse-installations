@@ -80,6 +80,20 @@ fetch('data/data.json')
       if (launch_year) {
         launch_year_note = '<br><br>Launched in ' + launch_year;
       }
+      core_trust_seals = items[i].core_trust_seals;
+      core_trust_seal_note = '';
+      if (core_trust_seals) {
+        seal_urls = [];
+        for (var j = 0; j < core_trust_seals.length; ++j) {
+          seal_url = core_trust_seals[j];
+          link =
+            '<a target="_blank" rel="noopener noreferrer" href="' +
+            seal_url +
+            '"><img src="images/coretrustseal.jpg" width="20px"></a>';
+          seal_urls.push(link);
+        }
+        core_trust_seal_note = '<br><br>CoreTrustSeal certifications: ' + seal_urls.join(' ');
+      }
       board = items[i].board;
       board_note = '';
       if (board) {
@@ -125,6 +139,7 @@ fetch('data/data.json')
             '</b><br><br>' +
             description +
             about_url_note +
+            core_trust_seal_note +
             harvesting_note +
             launch_year_note +
             board_note +

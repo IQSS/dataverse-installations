@@ -196,6 +196,9 @@
         "tilburg_oai"
       ],
       "gdcc_member": true,
+      "core_trust_seals": [
+        "https://www.coretrustseal.org/wp-content/uploads/2018/04/Tilburg-University-Dataverse.pdf"
+      ],
       "doi_authority": "\u2415",
       "contact_email": "info@dataverse.nl"
     },
@@ -476,6 +479,9 @@
         "qdr_whole"
       ],
       "gdcc_member": true,
+      "core_trust_seals": [
+        "https://www.coretrustseal.org/wp-content/uploads/2018/11/Qualitative-Data-Repository.pdf"
+      ],
       "doi_authority": "10.5064",
       "board": "https://github.com/orgs/IQSS/projects/6"
     },

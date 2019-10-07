@@ -189,6 +189,7 @@
       "lng": 5.242346,
       "hostname": "dataverse.nl",
       "metrics": true,
+      "launch_year": "2013",
       "country": "Netherlands",
       "continent": "Europe",
       "about_url": "https://dans.knaw.nl/en/about/services/archiving-and-reusing-data/DataverseNL/about?set_language=en",

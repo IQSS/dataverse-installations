@@ -662,7 +662,8 @@
       "country": "USA",
       "continent": "North America",
       "gdcc_member": false,
-      "doi_authority": "10.15787"
+      "doi_authority": "10.15787",
+      "board": "https://github.com/orgs/IQSS/projects/18"
     }
   ]
 }

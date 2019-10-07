@@ -598,7 +598,7 @@
     },
     {
       "name": "UNC Dataverse",
-      "description": "Open for all researchers worldwide from all disciplines to deposit data. The Odum Institute also offers multiple data curation service levels. For more information, visit https://odum.unc.edu/archive",
+      "description": "Open for all researchers worldwide from all disciplines to deposit data. The Odum Institute also offers multiple data curation service levels.",
       "lat": 35.905022,
       "lng": -79.050851,
       "hostname": "dataverse.unc.edu",
@@ -606,6 +606,7 @@
       "launch_year": "2005",
       "country": "USA",
       "continent": "North America",
+      "about_url": "https://odum.unc.edu/archive/",
       "harvesting_sets": [
         "odum_all"
       ],

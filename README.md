@@ -11,6 +11,7 @@ The map is populated by information about Dataverse installations in `data/data.
 | `name` | [spreadsheet maintained by IQSS][] |
 | `description` | [crowdsourced spreadsheet][] |
 | `launch_year` | [crowdsourced spreadsheet][] |
+| `...` | ... |
 
 The goal is to move as much information as possible to the [crowdsourced spreadsheet][].
 

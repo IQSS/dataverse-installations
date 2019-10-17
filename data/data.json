@@ -205,14 +205,15 @@
     },
     {
       "name": "DataverseNO",
-      "description": "Research data archive open for Norwegian research institutions. Operated by UiT The Arctic University of Norway.",
+      "description": "DataverseNO (https://dataverse.no/) is a national, generic repository for open research data from researchers from Norwegian research institutions. Some collections within DataverseNO also accept data from researchers from other institutions.",
       "lat": 69.649208,
       "lng": 18.955324,
       "hostname": "dataverse.no",
       "metrics": true,
+      "launch_year": "2017",
       "country": "Norway",
       "continent": "Europe",
-      "about_url": "http://site.uit.no/dataverseno/deposit/",
+      "about_url": "https://info.dataverse.no/",
       "harvesting_sets": [
         "dataverseno"
       ],

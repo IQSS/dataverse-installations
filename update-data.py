@@ -4,6 +4,7 @@ from urllib.parse import urlparse
 import csv
 import json
 import io
+import os
 
 mydict = {}
 
@@ -134,6 +135,6 @@ for i in map_json['installations']:
 final = {}
 final['installations'] = mylist
 #print(json.dumps(final, indent=2))
-json_out = 'data/data.json'
+json_out = os.path.join('data', 'data.json')
 with open(json_out, 'w') as json_out:
     json.dump(final, json_out, indent=2)

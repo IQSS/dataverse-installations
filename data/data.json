@@ -15,6 +15,13 @@
       "doi_authority": "\u2415"
     },
     {
+      "name": "ACSS Dataverse",
+      "description": "The ACSS Dataverse is an initiative of the Arab Council for the Social Sciences, in collaboration with the Odum Institute for Research in Social Science at the University of North Carolina at Chapel Hill. The ACSS Dataverse contains social science datasets produced in Arab countries, with the goal of making data available for research in the region and preserving data for future generations of researchers. There is no charge for access to datasets in the ACSS Dataverse, although users are requested to register in order to download data. The ACSS Dataverse encourages social scientists who study the Arab region to participate in this initiative by depositing data.",
+      "lat": 33.899798,
+      "lng": 35.485184,
+      "hostname": "dataverse.theacss.org"
+    },
+    {
       "name": "ADA Dataverse",
       "description": "The Australian Data Archive provides a national service for collecting, preserving, publishing and accessing digital research data.",
       "lat": -35.343784,
@@ -126,6 +133,13 @@
       "doi_authority": "10.23685"
     },
     {
+      "name": "DaRUS",
+      "description": "DaRUS, the data repository of the University of Stuttgart, offers a secure location for research data and codes of members or partners of the University of Stuttgart. DaRUS is used not only for publishing finished data, but also for managing and exchanging data at all stages of the lifecycle.",
+      "lat": 48.781647,
+      "lng": 9.172552,
+      "hostname": "darus.uni-stuttgart.de"
+    },
+    {
       "name": "Data Inra",
       "description": "INRA is Europe\u2019s top agricultural research institute and the world\u2019s number two centre for the agricultural sciences. Data Inra is offered by INRA asData Inra will share research data in relation with food, nutrition, agriculture and environment. It includes experimental, simulation and observationOnly data produced by or in collaboration with INRA will be hosted in the repository, but anyone can access the metadata and the open data.",
       "lat": 48.801407,
@@ -213,7 +227,7 @@
       "launch_year": "2017",
       "country": "Norway",
       "continent": "Europe",
-      "about_url": "https://info.dataverse.no/",
+      "about_url": "http://site.uit.no/dataverseno/deposit/",
       "harvesting_sets": [
         "dataverseno"
       ],
@@ -385,6 +399,7 @@
       "lng": -78.507394,
       "hostname": "dataverse.lib.virginia.edu",
       "metrics": true,
+      "launch_year": "2016",
       "country": "USA",
       "continent": "North America",
       "about_url": "http://www.library.virginia.edu/libra/datasets/",

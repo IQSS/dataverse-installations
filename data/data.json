@@ -19,7 +19,11 @@
       "description": "The ACSS Dataverse is an initiative of the Arab Council for the Social Sciences, in collaboration with the Odum Institute for Research in Social Science at the University of North Carolina at Chapel Hill. The ACSS Dataverse contains social science datasets produced in Arab countries, with the goal of making data available for research in the region and preserving data for future generations of researchers. There is no charge for access to datasets in the ACSS Dataverse, although users are requested to register in order to download data. The ACSS Dataverse encourages social scientists who study the Arab region to participate in this initiative by depositing data.",
       "lat": 33.899798,
       "lng": 35.485184,
-      "hostname": "dataverse.theacss.org"
+      "hostname": "dataverse.theacss.org",
+      "launch_year": "2019",
+      "country": "Lebanon",
+      "continent": "Asia",
+      "gdcc_member": false
     },
     {
       "name": "ADA Dataverse",
@@ -137,7 +141,11 @@
       "description": "DaRUS, the data repository of the University of Stuttgart, offers a secure location for research data and codes of members or partners of the University of Stuttgart. DaRUS is used not only for publishing finished data, but also for managing and exchanging data at all stages of the lifecycle.",
       "lat": 48.781647,
       "lng": 9.172552,
-      "hostname": "darus.uni-stuttgart.de"
+      "hostname": "darus.uni-stuttgart.de",
+      "launch_year": "2019",
+      "country": "Germany",
+      "continent": "Europe",
+      "gdcc_member": false
     },
     {
       "name": "Data Inra",

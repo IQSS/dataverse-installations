@@ -51,7 +51,9 @@ L.control
   })
   .addTo(mymap);
 
-var markers = L.markerClusterGroup();
+var markers = L.markerClusterGroup({
+                  "maxClusterRadius": "70"
+                });
 markers.on('clusterclick', function (a) {
   a.layer.zoomToBounds({padding: [20, 20]});
 });

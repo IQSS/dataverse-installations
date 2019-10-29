@@ -42,7 +42,6 @@ L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/watercolor/{z}/{x}/{y}.{e
   ext: 'jpg',
   attribution:
     '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-  crossOrigin: true,
 }).addTo(mymap);
 
 L.control
@@ -50,14 +49,6 @@ L.control
     position: 'bottomleft',
   })
   .addTo(mymap);
-
-var markers = L.markerClusterGroup({
-                  "maxClusterRadius": "70"
-                });
-markers.on('clusterclick', function (a) {
-  a.layer.zoomToBounds({padding: [20, 20]});
-});
-mymap.addLayer(markers);
 
 fetch('data/data.json')
   .then(function(response) {
@@ -140,21 +131,20 @@ fetch('data/data.json')
         metrics_note =
           '<br><br>Included in <a target="_blank" rel="noopener noreferrer" href="https://dataverse.org/metrics">dataverse.org/metrics</a>';
       }
-      markers.addLayer(
-         L.marker([lat, lng], { icon: icon })
-          .bindPopup(
-            '<b>' +
-              linked_name +
-              '</b><br><br>' +
-              description +
-              about_url_note +
-              core_trust_seal_note +
-              harvesting_note +
-              launch_year_note +
-              board_note +
-              gdcc_member_note +
-              metrics_note,
-          )
-      );
+      L.marker([lat, lng], { icon: icon })
+        .addTo(mymap)
+        .bindPopup(
+          '<b>' +
+            linked_name +
+            '</b><br><br>' +
+            description +
+            about_url_note +
+            core_trust_seal_note +
+            harvesting_note +
+            launch_year_note +
+            board_note +
+            gdcc_member_note +
+            metrics_note,
+        );
     }
   });

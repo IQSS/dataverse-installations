@@ -1,0 +1,14 @@
+version: "2"
+services:
+  httpd:
+    image: httpd:alpine
+    volumes:
+      - .:/usr/local/apache2/htdocs:ro
+    ports:
+      - "80:80"
+  cmd:
+    image: python:alpine
+    volumes:
+      - .:/work
+    working_dir: /work
+    command: sleep 36000

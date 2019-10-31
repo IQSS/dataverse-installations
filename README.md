@@ -21,3 +21,9 @@ We love contributors! Please see our [Contributing Guide][] for ways you can hel
 [Contributing Guide]: CONTRIBUTING.md
 [spreadsheet maintained by IQSS]:https://docs.google.com/spreadsheets/d/1l2R9D1FQy88qVzg2bI6L1LgplmM2l7pnMI80jdiz4fk/edit?usp=sharing
 [crowdsourced spreadsheet]: https://docs.google.com/spreadsheets/d/1bfsw7gnHlHerLXuk7YprUT68liHfcaMxs1rFciA-mEo/edit#gid=0
+
+## with docker
+
+`docker-compose up -d ` and go to [http://127.0.0.1/](http://127.0.0.1/).
+
+To run python command : `docker-compose exec cmd python update-data.py`

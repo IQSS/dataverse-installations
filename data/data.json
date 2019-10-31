@@ -184,6 +184,7 @@
       "metrics": true,
       "country": "France",
       "continent": "Europe",
+      "about_url": "https://data.ird.fr",
       "gdcc_member": false,
       "doi_authority": "10.23708"
     },
@@ -402,7 +403,7 @@
     },
     {
       "name": "Libra Data",
-      "description": "Libra Data is a place for UVA researchers to share data publicly, and is part of the Libra Scholarly Repository suite of services which includes works of UVA scholarship such as articles, books, theses, and data.",
+      "description": "LibraData is a place for UVA researchers to share data publicly, and is part of the Libra Scholarly Repository suite of services which includes works of UVA scholarship such as articles, books, theses, and data.",
       "lat": 38.034578,
       "lng": -78.507394,
       "hostname": "dataverse.lib.virginia.edu",

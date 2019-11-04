@@ -22,8 +22,28 @@ We love contributors! Please see our [Contributing Guide][] for ways you can hel
 [spreadsheet maintained by IQSS]:https://docs.google.com/spreadsheets/d/1l2R9D1FQy88qVzg2bI6L1LgplmM2l7pnMI80jdiz4fk/edit?usp=sharing
 [crowdsourced spreadsheet]: https://docs.google.com/spreadsheets/d/1bfsw7gnHlHerLXuk7YprUT68liHfcaMxs1rFciA-mEo/edit#gid=0
 
-## with docker
+## Hacking on the map
 
-`docker-compose up -d ` and go to [http://127.0.0.1/](http://127.0.0.1/).
+**Requirements: *Python 3* OR *docker***
 
-To run python command : `docker-compose exec cmd python update-data.py`
+
+### To look at the map locally
+
+`python3 -m http.server`
+
+OR
+
+`docker run --name dataverse-installations --rm -p 8000:8000 -v $PWD:/web -w /web -it python:3.7-alpine python3 -m http.server`
+
+
+Then open [http://127.0.0.1:8000/](http://127.0.0.1:8000/) in your web browser.
+
+### To update the data shown on the map:
+
+`python3 update-data.py`
+
+OR
+
+`docker run --rm -v $PWD:/web -w /web -it python:3.7-alpine python3 update-data.py`
+
+This should update files in the "data" directory.

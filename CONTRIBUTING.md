@@ -12,9 +12,9 @@ The map of dataverse installations around the world is created from two files th
 You can contribute in one or more of the following ways:
 
 - Update your installation's information on the [crowdsourced spreadsheet][]
-- Request that your installation info on the [spreadsheet maintained by IQSS][] be updated (include what's new or what's changed) by adding a new issue to our [github issue][] and apply the 'update info' label.
+- Request that your installation info on the [spreadsheet maintained by IQSS][] be updated (include what's new or what's changed) by adding a new issue to our [github issue][]j or by leaving a comment on the [spreadsheet maintained by IQSS][].
 - If you have made (requested) changes to either of the info files, you can update the map by running the map update script (see **Requirements** below).
-   - If you don't want to run the update script, create another [github issue][] and apply the 'help wanted' label asking for others to update the map.
+   - If you don't want to run the update script, create another [github issue][] to ask someoneelse to update the map.
 
 
 ## Updating the Map

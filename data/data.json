@@ -165,6 +165,18 @@
       "contact_email": "datainra@inra.fr"
     },
     {
+      "name": "DataRepositoriUM",
+      "description": "Institutional Data Repository of the University of Minho. Share, publish and manage research data from UMinho research units.",
+      "lat": 41.561246,
+      "lng": -8.39628,
+      "hostname": "datarepositorium.sdum.uminho.pt",
+      "metrics": true,
+      "launch_year": "2019",
+      "country": "Portugal",
+      "continent": "Europe",
+      "gdcc_member": false
+    },
+    {
       "name": "DataSpace@HKUST",
       "description": "",
       "lat": 22.336281,
@@ -186,7 +198,8 @@
       "continent": "Europe",
       "about_url": "https://data.ird.fr",
       "gdcc_member": false,
-      "doi_authority": "10.23708"
+      "doi_authority": "10.23708",
+      "board": "https://github.com/orgs/IQSS/projects/20"
     },
     {
       "name": "Dataverse e-cienciaDatos",

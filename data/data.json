@@ -382,11 +382,12 @@
       "description": "The IISH Dataverse contains micro-, meso-, and macro-level datasets on social and economic history.",
       "lat": 52.369021,
       "lng": 4.939226,
-      "hostname": "datasets.socialhistory.org",
+      "hostname": "datasets.iisg.amsterdam",
+      "launch_year": "2015",
       "country": "Netherlands",
       "continent": "Europe",
       "gdcc_member": false,
-      "doi_authority": "\u2415"
+      "doi_authority": "10622"
     },
     {
       "name": "International Potato Center",
@@ -525,6 +526,17 @@
       "board": "https://github.com/orgs/IQSS/projects/6"
     },
     {
+      "name": "Reposit\u00f3rio de Dados de Pesquisa",
+      "description": "Reposit\u00f3rio de dados de pesquisa Unifesp",
+      "lat": -23.53763,
+      "lng": -46.788869,
+      "hostname": "repositoriodedados.unifesp.br",
+      "launch_year": "2019",
+      "country": "Brazil",
+      "continent": "South America",
+      "gdcc_member": false
+    },
+    {
       "name": "Reposit\u00f3rio de Dados de Pesquisa da UFABC",
       "description": "",
       "lat": -23.643807,
@@ -575,6 +587,13 @@
       "doi_authority": "10.5683",
       "board": "https://github.com/orgs/IQSS/projects/8",
       "contact_email": "dataverse@scholarsportal.info"
+    },
+    {
+      "name": "SODAtaverse",
+      "description": "",
+      "lat": 50.842521,
+      "lng": 4.356647,
+      "hostname": "dataverse.arch.be"
     },
     {
       "name": "Texas Data Repository Dataverse",

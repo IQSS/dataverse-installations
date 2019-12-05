@@ -220,9 +220,9 @@
     },
     {
       "name": "DataverseNL",
-      "description": "Open for researchers and organizations associated with Dutch universities to deposit data.",
-      "lat": 52.54726,
-      "lng": 5.242346,
+      "description": "DataverseNL is a data repository hosted by DANS. Researchers associated with the DataverseNL partners (Several universities, higher education and research institutes) are able to deposit data. ",
+      "lat": 52.08083,
+      "lng": 4.345672,
       "hostname": "dataverse.nl",
       "metrics": true,
       "launch_year": "2013",
@@ -230,7 +230,7 @@
       "continent": "Europe",
       "about_url": "https://dans.knaw.nl/en/about/services/archiving-and-reusing-data/DataverseNL/about?set_language=en",
       "harvesting_sets": [
-        "tilburg_oai"
+        "uvt_datasets"
       ],
       "gdcc_member": true,
       "core_trust_seals": [

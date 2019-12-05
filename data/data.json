@@ -589,13 +589,6 @@
       "contact_email": "dataverse@scholarsportal.info"
     },
     {
-      "name": "SODAtaverse",
-      "description": "",
-      "lat": 50.842521,
-      "lng": 4.356647,
-      "hostname": "dataverse.arch.be"
-    },
-    {
       "name": "Texas Data Repository Dataverse",
       "description": "A statewide archive of research data from Texas Digital Library (TDL) member institutions.",
       "lat": 30.307182,

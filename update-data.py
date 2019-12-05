@@ -88,6 +88,8 @@ map_json = json.loads(response.read().decode(response.info().get_param('charset'
 mylist = []
 for i in map_json['installations']:
     foo = i
+    if not i['is_active']:
+        continue
     o = urlparse(i['url'])
     i['hostname'] = o.hostname
     if i['hostname'] in metrics_list:

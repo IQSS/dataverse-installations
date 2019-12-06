@@ -24,8 +24,12 @@ th.installation-country-header {
   width: 10%;
 }
 
+th.installation-year-header {
+  width: 10%;
+}
+
 th.installation-description-header {
-  width: 70%;
+  width: 60%;
 }
 
 .installation-name-suggest-add {
@@ -33,6 +37,10 @@ th.installation-description-header {
 }
 
 .installation-country-suggest-add {
+  font-style: italic;
+}
+
+.installation-year-suggest-add {
   font-style: italic;
 }
 
@@ -44,6 +52,9 @@ th.installation-description-header {
 }
 
 .installation-country-row {
+}
+
+.installation-year-row {
 }
 
 .installation-description-row {

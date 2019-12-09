@@ -13,6 +13,7 @@ if ('content' in document.createElement('template')) {
         name = installations[i].name;
         hostname = installations[i].hostname;
         country = installations[i].country;
+        year = installations[i].launch_year;
         description = installations[i].description;
         // Clone the new row and insert it into the table
         var clone = document.importNode(template.content, true);
@@ -24,7 +25,8 @@ if ('content' in document.createElement('template')) {
           name +
           '</a>';
         td[1].textContent = country;
-        td[2].textContent = description;
+        td[2].textContent = year;
+        td[3].textContent = description;
         tbody.appendChild(clone);
       }
     });

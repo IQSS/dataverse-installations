@@ -1,8 +1,14 @@
+body {
+  font-family: 'Muli',Helvetica,sans-serif !important;
+  font-size:14px;
+  line-height:23px;
+  color: #1e1e1e;
+}
+
 #num-installations {
   text-align: center;
   color: #c55b28;
-  font-size: 24px;
-  font-weight: bold;
+  font-size: 18px;
   padding: 0.2em;
 }
 

@@ -1,21 +1,21 @@
-const markerFillColor = '#f09e39';
-const markerBorderColor = '#000000';
+const markerFillColor = '#C55B28';
+const markerBorderColor = '#FFFFFF';
 
 const markerStyle = `
   background-color: ${markerFillColor};
   border-radius: 50%;
-  width: 1.5rem;
-  height: 1.5rem;
+  width: 0.6rem;
+  height: 0.6rem;
   display: block;
   transform: rotate(45deg);
-  border: 2px solid ${markerBorderColor}
+  border: 1px solid ${markerBorderColor}
 `;
 
 const icon = L.divIcon({
   className: 'my-custom-pin',
-  iconAnchor: [20, 20],
+  iconAnchor: [5, 5],
   labelAnchor: [0, 0],
-  popupAnchor: [-5, -30],
+  popupAnchor: [1, -10],
   html: `<span style="${markerStyle}" />
 `,
 });
@@ -37,11 +37,10 @@ var mymap = L.map('mapid', {
  * - https://wiki.openstreetmap.org/wiki/Tile_servers
  * - https://wiki.openstreetmap.org/wiki/Standard_tile_layer
  */
-L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/watercolor/{z}/{x}/{y}.{ext}', {
-  maxZoom: 18,
-  ext: 'jpg',
-  attribution:
-    '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+  attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+  subdomains: 'abcd',
+  maxZoom: 19
 }).addTo(mymap);
 
 L.control

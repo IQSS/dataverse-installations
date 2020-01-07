@@ -24,7 +24,7 @@ var mymap = L.map('mapid', {
   attributionControl: false,
   zoomControl: false,
   zoomSnap: 0.25,
-}).setView([20, 10], 1.5);
+}).setView([20, 10], 1.87);
 
 /* There are many, many map styles to choose from and
  * https://leaflet-extras.github.io/leaflet-providers/preview/

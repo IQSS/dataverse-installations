@@ -1,7 +1,10 @@
-body {
-  font-family: 'Muli',Helvetica,sans-serif !important;
-  font-size:14px;
-  line-height:23px;
+html, body {
+  height: 100%;
+  margin: 0;
+  background-color: #fff;
+  font-size: 13px;
+  line-height: 1.5;
+  font-family: "Muli",Helvetica,sans-serif !important;
   color: #1e1e1e;
 }
 
@@ -13,8 +16,12 @@ body {
 }
 
 #mapid {
-  width: 600px;
-  height: 400px;
+  height: 90%;
+  width: 90%;
+  max-height: 480px;
+  min-height: 280px;
+  max-width: 980px;
+  min-width: 350px;
   margin: 0 auto;
 }
 

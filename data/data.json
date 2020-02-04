@@ -237,6 +237,7 @@
         "https://www.coretrustseal.org/wp-content/uploads/2018/04/Tilburg-University-Dataverse.pdf"
       ],
       "doi_authority": "\u2415",
+      "board": "https://github.com/orgs/IQSS/projects/22",
       "contact_email": "info@dataverse.nl"
     },
     {
@@ -297,8 +298,8 @@
     {
       "name": "Harvard Dataverse",
       "description": "Share, archive, and get credit for your data. Find and cite data across all research fields.",
-      "lat": 42.380098,
-      "lng": -71.116629,
+      "lat": 42.375646,
+      "lng": -71.113212,
       "hostname": "dataverse.harvard.edu",
       "metrics": true,
       "country": "USA",
@@ -308,7 +309,7 @@
       ],
       "gdcc_member": true,
       "doi_authority": "10.791",
-      "board": "https://github.com/orgs/IQSS/projects/2",
+      "board": "https://github.com/orgs/IQSS/projects/19",
       "contact_email": "support@dataverse.harvard.edu"
     },
     {
@@ -482,6 +483,18 @@
       "doi_authority": "10.2534"
     },
     {
+      "name": "Open Data @ UCLouvain",
+      "description": "Universit\u00e9 catholique de Louvain - Belgium",
+      "lat": 50.669868,
+      "lng": 4.615608,
+      "hostname": "dataverse.uclouvain.be",
+      "launch_year": "2019",
+      "country": "Belgium",
+      "continent": "Europe",
+      "gdcc_member": false,
+      "doi_authority": "10.14428"
+    },
+    {
       "name": "Peking University",
       "description": "Peking University Open Research Data Platform",
       "lat": 39.993923,
@@ -569,6 +582,13 @@
       "continent": "South America",
       "gdcc_member": false,
       "doi_authority": "\u2205"
+    },
+    {
+      "name": "Reposit\u00f3rios Piloto da Rede Nacional de Ensino e Pesquisa",
+      "description": "O dadosabertos.rnp.br  \u00e9 o reposit\u00f3rio instituicional da RNP, e faz parte do conjunto de servi\u00e7os da RNP para possibilitar acesso a dados instituicionais para pesquisadores.\r\n\r\nDataabertos.rnp.br is RNP's institutional repository, and is part of RNP's suite of services to allow access to institutional data for researchers.",
+      "lat": -22.957167,
+      "lng": -43.176211,
+      "hostname": "dadosabertos.rnp.br"
     },
     {
       "name": "Scholars Portal",
@@ -695,7 +715,6 @@
       "lat": 18.006372,
       "lng": -76.747148,
       "hostname": "dataverse.sta.uwi.edu",
-      "metrics": true,
       "country": "Jamaica",
       "continent": "North America",
       "gdcc_member": false,

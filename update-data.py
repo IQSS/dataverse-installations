@@ -125,6 +125,8 @@ for i in map_json['installations']:
             i['board'] = mydict[i['hostname']]['board']
         if mydict[i['hostname']]['contact_email'] != 'UNKNOWN':
             i['contact_email'] = mydict[i['hostname']]['contact_email']
+    else:
+        print('On the old map only (should be added): ' + i['hostname'])
     del i['id']
     del i['is_active']
     del i['slug']

@@ -588,7 +588,11 @@
       "description": "O dadosabertos.rnp.br  \u00e9 o reposit\u00f3rio instituicional da RNP, e faz parte do conjunto de servi\u00e7os da RNP para possibilitar acesso a dados instituicionais para pesquisadores.\r\n\r\nDataabertos.rnp.br is RNP's institutional repository, and is part of RNP's suite of services to allow access to institutional data for researchers.",
       "lat": -22.957167,
       "lng": -43.176211,
-      "hostname": "dadosabertos.rnp.br"
+      "hostname": "dadosabertos.rnp.br",
+      "launch_year": "2019",
+      "country": "Brazil",
+      "continent": "South America",
+      "gdcc_member": false
     },
     {
       "name": "Scholars Portal",

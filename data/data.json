@@ -176,7 +176,9 @@
       "launch_year": "2019",
       "country": "Portugal",
       "continent": "Europe",
-      "gdcc_member": false
+      "about_url": "https://datarepositorium.uminho.pt/",
+      "gdcc_member": true,
+      "doi_authority": "10.34622"
     },
     {
       "name": "DataSpace@HKUST",
@@ -417,6 +419,20 @@
       "gdcc_member": true,
       "doi_authority": "10.7281",
       "contact_email": "datamanagement@jhu.edu"
+    },
+    {
+      "name": "J\u00fclich DATA",
+      "description": "J\u00fclich DATA is the institutional research data repositorium made at Forschungszentrum J\u00fclich. Featuring metadata focus and running on Kubernetes.",
+      "lat": 50.90683,
+      "lng": 6.41026,
+      "hostname": "data.fz-juelich.de",
+      "launch_year": "2020",
+      "country": "Germany",
+      "continent": "Europe",
+      "about_url": "https://www.fz-juelich.de/zb/rdm",
+      "gdcc_member": false,
+      "doi_authority": "10.26165",
+      "board": "https://github.com/orgs/IQSS/projects/4"
     },
     {
       "name": "Libra Data",

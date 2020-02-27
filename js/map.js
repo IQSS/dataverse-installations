@@ -21,7 +21,7 @@ const icon = L.divIcon({
 });
 
 var mymap = L.map('mapid', {
-  attributionControl: false,
+  attributionControl: true,
   zoomControl: false,
   zoomSnap: 0.25,
 }).setView([20, 10], 1.87);

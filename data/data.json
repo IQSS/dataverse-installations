@@ -614,14 +614,15 @@
     },
     {
       "name": "Scholars Portal",
-      "description": "Open for researchers and organizations associated with Ontario universities to deposit data.",
+      "description": "Open for researchers and organizations associated with subscribing Canadian universities to deposit data.",
       "lat": 43.6532,
       "lng": -79.3832,
       "hostname": "dataverse.scholarsportal.info",
       "metrics": true,
+      "launch_year": "2012",
       "country": "Canada",
       "continent": "North America",
-      "about_url": "http://guides.scholarsportal.info/dataverse",
+      "about_url": "https://dataverse.scholarsportal.info",
       "harvesting_sets": [
         "sp_dataverse"
       ],

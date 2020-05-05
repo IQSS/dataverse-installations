@@ -166,11 +166,33 @@
     },
     {
       "name": "Data INRAe",
-      "description": "INRAE is Europe\u2019s top agricultural research institute and the world\u2019s number two centre for the agricultural sciences.\r\n\r\nData INRAe is offered by INRAE as Data INRAe will share research data in relation with food, nutrition, agriculture and environment. It includes experimental, simulation and observation. Only data produced by or in collaboration with INRAE will be hosted in the repository, but anyone can access the metadata and the open data.",
+      "description": "INRAE is Europe\u2019s top agricultural research institute and the world\u2019s number two centre for the agricultural sciences. Data INRAe is offered by INRAE as Data INRAe will share research data in relation with food, nutrition, agriculture and environment. It includes experimental, simulation and observation. Only data produced by or in collaboration with INRAE will be hosted in the repository, but anyone can access the metadata and the open data.",
       "lat": 48.801407,
       "lng": 2.130122,
       "hostname": "data.inrae.fr",
-      "metrics": true
+      "metrics": true,
+      "country": "France",
+      "continent": "Europe",
+      "harvesting_sets": [
+        "ALL"
+      ],
+      "gdcc_member": false,
+      "board": "https://github.com/orgs/IQSS/projects/15",
+      "contact_email": "datainra@inra.fr"
+    },
+    {
+      "name": "Data Suds",
+      "description": "Hosted by IRD, a french public research institution, who defends an original model of equitable scientific partnership with the countries of the South and an interdisciplinary and citizen science, committed to the achievement of the Sustainable Development Goals.",
+      "lat": 43.309873,
+      "lng": 5.368818,
+      "hostname": "dataverse.ird.fr",
+      "metrics": true,
+      "country": "France",
+      "continent": "Europe",
+      "about_url": "https://data.ird.fr",
+      "gdcc_member": false,
+      "doi_authority": "10.23708",
+      "board": "https://github.com/orgs/IQSS/projects/20"
     },
     {
       "name": "DataRepositoriUM",
@@ -195,20 +217,6 @@
       "continent": "Asia",
       "gdcc_member": false,
       "doi_authority": "10.14711"
-    },
-    {
-      "name": "Data Suds",
-      "description": "Hosted by IRD, a french public research institution, who defends an original model of equitable scientific partnership with the countries of the South and an interdisciplinary and citizen science, committed to the achievement of the Sustainable Development Goals.",
-      "lat": 43.309873,
-      "lng": 5.368818,
-      "hostname": "dataverse.ird.fr",
-      "metrics": true,
-      "country": "France",
-      "continent": "Europe",
-      "about_url": "https://data.ird.fr",
-      "gdcc_member": false,
-      "doi_authority": "10.23708",
-      "board": "https://github.com/orgs/IQSS/projects/20"
     },
     {
       "name": "Dataverse e-cienciaDatos",
@@ -568,6 +576,18 @@
       "board": "https://github.com/orgs/IQSS/projects/6"
     },
     {
+      "name": "Repositorio de Datos de Investigaci\u00f3n Universidad del Rosario",
+      "description": "Explore research data from Universidad del Rosario affiliated researchers.",
+      "lat": 4.600598,
+      "lng": -74.073352,
+      "hostname": "research-data.urosario.edu.co",
+      "metrics": true,
+      "country": "Columbia",
+      "continent": "South America",
+      "gdcc_member": false,
+      "doi_authority": "\u2205"
+    },
+    {
       "name": "Reposit\u00f3rio de Dados de Pesquisa",
       "description": "Reposit\u00f3rio de dados de pesquisa Unifesp",
       "lat": -23.53763,
@@ -601,20 +621,8 @@
       "doi_authority": "\u2205"
     },
     {
-      "name": "Repositorio de Datos de Investigaci\u00f3n Universidad del Rosario",
-      "description": "Explore research data from Universidad del Rosario affiliated researchers.",
-      "lat": 4.600598,
-      "lng": -74.073352,
-      "hostname": "research-data.urosario.edu.co",
-      "metrics": true,
-      "country": "Columbia",
-      "continent": "South America",
-      "gdcc_member": false,
-      "doi_authority": "\u2205"
-    },
-    {
       "name": "Reposit\u00f3rios Piloto da Rede Nacional de Ensino e Pesquisa",
-      "description": "O dadosabertos.rnp.br  \u00e9 o reposit\u00f3rio instituicional da RNP, e faz parte do conjunto de servi\u00e7os da RNP para possibilitar acesso a dados instituicionais para pesquisadores.\r\n\r\nDataabertos.rnp.br is RNP's institutional repository, and is part of RNP's suite of services to allow access to institutional data for researchers.",
+      "description": "",
       "lat": -22.957167,
       "lng": -43.176211,
       "hostname": "dadosabertos.rnp.br",
@@ -721,18 +729,6 @@
       "contact_email": "odumarchive@unc.edu"
     },
     {
-      "name": "Universit\u00e0 degli Studi di Milano",
-      "description": "The University of Milan is home to important research teams operating in the university's extremely rich variety of scientific-disciplinary sectors. Besides taking part in the most relevant national and international research programs, the University is also very active in the field of technology transfer and developing applications for scientific research results. dataverse.unimi.it is the repository for research data offered to all researchers in disciplines from health sciences to laws, from economics to hard sciences, from humanities to mathematics.",
-      "lat": 45.4601,
-      "lng": 9.1946,
-      "hostname": "dataverse.unimi.it",
-      "metrics": true,
-      "country": "Italy",
-      "continent": "Europe",
-      "gdcc_member": false,
-      "doi_authority": "10.1313"
-    },
-    {
       "name": "University of Manitoba Dataverse",
       "description": "",
       "lat": 49.895077,
@@ -743,6 +739,18 @@
       "continent": "North America",
       "gdcc_member": false,
       "doi_authority": "10.5203"
+    },
+    {
+      "name": "Universit\u00e0 degli Studi di Milano",
+      "description": "The University of Milan is home to important research teams operating in the university's extremely rich variety of scientific-disciplinary sectors. Besides taking part in the most relevant national and international research programs, the University is also very active in the field of technology transfer and developing applications for scientific research results. dataverse.unimi.it is the repository for research data offered to all researchers in disciplines from health sciences to laws, from economics to hard sciences, from humanities to mathematics.",
+      "lat": 45.4601,
+      "lng": 9.1946,
+      "hostname": "dataverse.unimi.it",
+      "metrics": true,
+      "country": "Italy",
+      "continent": "Europe",
+      "gdcc_member": false,
+      "doi_authority": "10.1313"
     },
     {
       "name": "UWI",

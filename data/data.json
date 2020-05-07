@@ -37,6 +37,9 @@
       "continent": "Australia",
       "about_url": "https://ada.edu.au",
       "gdcc_member": true,
+      "core_trust_seals": [
+        "https://www.coretrustseal.org/wp-content/uploads/2018/02/Australian-Data-Archive.pdf"
+      ],
       "doi_authority": "10.26193",
       "board": "https://github.com/orgs/IQSS/projects/17"
     },

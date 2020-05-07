@@ -74,19 +74,6 @@
       "doi_authority": "\u2205"
     },
     {
-      "name": "Catalogues (CDSP)",
-      "description": "Open for researchers and organizations associated with French universities to deposit data. Hosted by the Center for Socio-Political Data (Sciences Po and CNRS).",
-      "lat": 48.854027,
-      "lng": 2.328351,
-      "hostname": "catalogues.cdsp.sciences-po.fr",
-      "launch_year": "2016",
-      "country": "France",
-      "continent": "Europe",
-      "gdcc_member": false,
-      "doi_authority": "10.2141",
-      "board": "https://github.com/orgs/IQSS/projects/12"
-    },
-    {
       "name": "CIFOR",
       "description": "Center for International Forestry Research (CIFOR) Dataverse",
       "lat": -6.594293,
@@ -196,6 +183,19 @@
       "gdcc_member": false,
       "doi_authority": "10.23708",
       "board": "https://github.com/orgs/IQSS/projects/20"
+    },
+    {
+      "name": "data.sciencespo",
+      "description": "Open for researchers and organizations associated with French universities to deposit data. Hosted by the Center for Socio-Political Data (Sciences Po and CNRS).",
+      "lat": 48.854027,
+      "lng": 2.328351,
+      "hostname": "data.sciencespo.fr",
+      "launch_year": "2016",
+      "country": "France",
+      "continent": "Europe",
+      "gdcc_member": false,
+      "doi_authority": "10.2141",
+      "board": "https://github.com/orgs/IQSS/projects/12"
     },
     {
       "name": "DataRepositoriUM",

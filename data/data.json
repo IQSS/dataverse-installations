@@ -414,6 +414,18 @@
       "doi_authority": "10622"
     },
     {
+      "name": "Institute of Russian Literature Dataverse",
+      "description": "An institutional repository hosted by the Institute of Russian Literature (Pushkinskij Dom) of the Russian Academy of Sciences at Saint Petersburg. It is meant to serve as a public platform to publish and host open data on Russian Literature and folklore. The repository will host data created in the Institute and by the wider research community.",
+      "lat": 59.944883,
+      "lng": 30.301463,
+      "hostname": "dataverse.pushdom.ru",
+      "launch_year": "2020",
+      "country": "Russia",
+      "continent": "Europe",
+      "gdcc_member": false,
+      "doi_authority": "10.3186"
+    },
+    {
       "name": "International Potato Center",
       "description": "Centro Internacional De La Papa (International Potato Center) is a member of the CGIAR Consortium, an international organization made up of 15 centers engaged in research for a food secure future.",
       "lat": -12.077791,

@@ -536,8 +536,8 @@
     {
       "name": "NIOZ Dataverse",
       "description": "Open access repository for marine research data collected, processed and published by the Royal Netherlands Institute for Sea Research",
-      "lat": 51.488981,
-      "lng": 4.056802,
+      "lat": 53.002423,
+      "lng": 4.786061,
       "hostname": "dataverse.nioz.nl",
       "launch_year": "2020",
       "country": "Netherlands",

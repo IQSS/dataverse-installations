@@ -17,15 +17,16 @@ assignees: ''
 **A few sentences about the repository:**
 
 
-**Location of the repository (street address if possible):**
+**Location of the repository (city or street address if possible):**
 
 
 
 *The following isn't required but is nice to have:*
+
 Email address of repository contact:
 
 
-Year when repository opened:
+Year when repository started operating:
 
 
 DOI authority (if applicable)

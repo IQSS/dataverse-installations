@@ -805,6 +805,19 @@
       "board": "https://github.com/orgs/IQSS/projects/18"
     },
     {
+      "name": "World Agroforestry - Research Data Repository",
+      "description": "",
+      "lat": -1.229425,
+      "lng": 36.8135,
+      "hostname": "data.worldagroforestry.org",
+      "launch_year": "2019",
+      "country": "Kenya",
+      "continent": "Africa",
+      "gdcc_member": false,
+      "doi_authority": "10.34725",
+      "contact_email": "a.tenorio@cgiar.org"
+    },
+    {
       "name": "Yale-NUS Dataverse",
       "description": "Yale-NUS Dataverse is the institutional research data repository of Yale-NUS College. The goals of Yale-NUS Dataverse are to collect, preserve and showcase the research output of Yale-NUS researchers and through this, increase the research visibility of Yale-NUS researchers and demonstrate the research excellence of Yale-NUS College to the world.",
       "lat": 1.307397,

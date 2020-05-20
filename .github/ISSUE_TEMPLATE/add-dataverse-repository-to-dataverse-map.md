@@ -14,22 +14,22 @@ assignees: ''
 **Homepage URL of repository:**
 
 
-**A few sentences about the repository:**
-
-
 **Location of the repository (city or street address if possible):**
 
 
 
 *The following isn't required but is nice to have:*
 
-Email address of repository contact:
+**A short description (few sentences) about the repository:**
 
 
-Year when repository started operating:
+**Email address of repository contact:**
 
 
-DOI authority (if applicable)
+**Year when repository started operating:**
 
 
-Link to successful [Core Trust Seal](https://www.coretrustseal.org) application:
+**DOI authority (if applicable):**
+
+
+**Link to successful [Core Trust Seal](https://www.coretrustseal.org) application:**

@@ -501,7 +501,7 @@
       "description": "A service brought to you by the ACG@UMaine. The way Supercomputing should be!",
       "lat": 44.901349,
       "lng": -68.671815,
-      "hostname": "http://dataverse.acg.maine.edu/dvn",
+      "hostname": "dataverse.acg.maine.edu/dvn",
       "country": "USA",
       "continent": "North America",
       "gdcc_member": false,

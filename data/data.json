@@ -119,18 +119,6 @@
       "doi_authority": "10.18167"
     },
     {
-      "name": "Dalhousie University Dataverse",
-      "description": "Share, publish and get credit for your data. Find and cite research data from across all research fields.",
-      "lat": 44.637484,
-      "lng": -63.59122,
-      "hostname": "dataverse.library.dal.ca",
-      "metrics": true,
-      "country": "Canada",
-      "continent": "North America",
-      "gdcc_member": false,
-      "doi_authority": "10.23685"
-    },
-    {
       "name": "Dartmouth Dataverse",
       "description": "Data repository for Dartmouth-affiliated research. Currently our dataverse consists mainly of health care research, future datasets will include those from other disciplines across the Dartmouth community. Dartmouth scholars can submit datasets and anyone can download (see each dataset's terms of access for more details). Share, archive, and get credit for your data.",
       "lat": 43.704448,
@@ -270,7 +258,7 @@
       "launch_year": "2017",
       "country": "Norway",
       "continent": "Europe",
-      "about_url": "http://site.uit.no/dataverseno/deposit/",
+      "about_url": "https://site.uit.no/dataverseno/about/",
       "harvesting_sets": [
         "dataverseno"
       ],
@@ -280,7 +268,7 @@
       ],
       "doi_authority": "10.1871",
       "board": "https://github.com/orgs/IQSS/projects/14",
-      "contact_email": "research-data@support.uit.no"
+      "contact_email": "researchdata@hjelp.uit.no"
     },
     {
       "name": "DR-NTU (Data)",

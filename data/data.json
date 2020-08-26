@@ -74,6 +74,18 @@
       "doi_authority": "\u2205"
     },
     {
+      "name": "CIDACS",
+      "description": "Fiocruz-BA data repository publishes epidemiological data and research from all over Brazil",
+      "lat": -12.922964,
+      "lng": -38.387918,
+      "hostname": "dataverse.intracidacs.org",
+      "launch_year": "2020",
+      "country": "Brazil",
+      "continent": "South America",
+      "gdcc_member": false,
+      "contact_email": "curadoriadata@gmail.com"
+    },
+    {
       "name": "CIFOR",
       "description": "Center for International Forestry Research (CIFOR) Dataverse",
       "lat": -6.594293,

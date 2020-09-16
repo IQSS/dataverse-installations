@@ -646,6 +646,18 @@
       "doi_authority": "\u2205"
     },
     {
+      "name": "Reposit\u00f3rio Institucional de Dados para Pesquisa da Fiocruz",
+      "description": "",
+      "lat": -22.874936,
+      "lng": -43.245379,
+      "hostname": "dadosdepesquisa.fiocruz.br",
+      "launch_year": "2020",
+      "country": "Brazil",
+      "continent": "South America",
+      "gdcc_member": false,
+      "contact_email": "dadosabertos@fiocruz.br"
+    },
+    {
       "name": "Reposit\u00f3rios Piloto da Rede Nacional de Ensino e Pesquisa",
       "description": "",
       "lat": -22.957167,

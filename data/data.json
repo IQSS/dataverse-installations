@@ -647,7 +647,7 @@
     },
     {
       "name": "Reposit\u00f3rio Institucional de Dados para Pesquisa da Fiocruz",
-      "description": "",
+      "description": "The institutional research data repository for Oswaldo Cruz Foundation (Fiocruz). Fiocruz researchers are encouraged to use the data repository to deposit, publish and archive their research data in order to make their research data findable, accessible and reusable.",
       "lat": -22.874936,
       "lng": -43.245379,
       "hostname": "dadosdepesquisa.fiocruz.br",
@@ -655,6 +655,7 @@
       "country": "Brazil",
       "continent": "South America",
       "gdcc_member": false,
+      "doi_authority": "10.35078",
       "contact_email": "dadosabertos@fiocruz.br"
     },
     {

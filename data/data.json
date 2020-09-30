@@ -52,7 +52,7 @@
       "launch_year": "2020",
       "country": "USA",
       "continent": "North America",
-      "gdcc_member": false,
+      "gdcc_member": true,
       "contact_email": "researchsupport@asu.edu"
     },
     {

@@ -44,6 +44,18 @@
       "board": "https://github.com/orgs/IQSS/projects/17"
     },
     {
+      "name": "ASU Library Research Data Repository",
+      "description": "ASU Library's research data repository (powered by Harvard\u2019s Dataverse software) helps ASU affiliated researchers share, store, preserve, cite, explore, and make research data accessible and discoverable. Dataverse is a dedicated research data management service platform that serves in the publication and reuse phase of the research data lifecycle and works in concert with the ASU Digital Repository ecosystem to present a more complete picture of ASU\u2019s scholarly activities.",
+      "lat": 33.425437,
+      "lng": -111.928163,
+      "hostname": "dataverse.asu.edu",
+      "launch_year": "2020",
+      "country": "USA",
+      "continent": "North America",
+      "gdcc_member": false,
+      "contact_email": "researchsupport@asu.edu"
+    },
+    {
       "name": "AUSSDA Dataverse",
       "description": "AUSSDA - The Austrian Social Science Data Archive makes social science data accessible, creating opportunities for research and data reuse, benefitting science and society. AUSSDA serves as the Austrian representative in the Consortium of European Social Science Data Archives (CESSDA ERIC).",
       "lat": 48.210033,

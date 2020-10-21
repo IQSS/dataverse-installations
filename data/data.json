@@ -49,10 +49,12 @@
       "lat": 33.425437,
       "lng": -111.928163,
       "hostname": "dataverse.asu.edu",
+      "metrics": true,
       "launch_year": "2020",
       "country": "USA",
       "continent": "North America",
       "gdcc_member": true,
+      "doi_authority": "10.48349",
       "contact_email": "researchsupport@asu.edu"
     },
     {
@@ -611,6 +613,18 @@
       ],
       "doi_authority": "10.5064",
       "board": "https://github.com/orgs/IQSS/projects/6"
+    },
+    {
+      "name": "Repositorio de datos de investigaci\u00f3n de la Universidad de Chile",
+      "description": "El Repositorio de datos de investigaci\u00f3n de la Universidad de Chile conserva, difunde y proporciona acceso a los datos de investigaci\u00f3n generadas por sus acad\u00e9micos e investigadores, con el fin de dar visibilidad a dichos datos, garantizar su preservaci\u00f3n y facilitar su acceso y reutilizaci\u00f3n.",
+      "lat": -33.45,
+      "lng": -70.666667,
+      "hostname": "datos.uchile.cl",
+      "launch_year": "2019",
+      "country": "Chile",
+      "continent": "South America",
+      "gdcc_member": false,
+      "contact_email": "sisib@uchile.cl"
     },
     {
       "name": "Repositorio de Datos de Investigaci\u00f3n Universidad del Rosario",

@@ -788,6 +788,9 @@
         "odum_all"
       ],
       "gdcc_member": true,
+      "core_trust_seals": [
+        "https://www.coretrustseal.org/wp-content/uploads/2020/10/Odum-Institute-Data-Archive.pdf"
+      ],
       "doi_authority": "10.15139",
       "board": "https://github.com/orgs/IQSS/projects/5",
       "contact_email": "odumarchive@unc.edu"

@@ -715,6 +715,18 @@
       "contact_email": "dataverse@scholarsportal.info"
     },
     {
+      "name": "SODHA",
+      "description": "The federal Belgian data archive for social sciences and the (digital) humanities! SODHA is the Belgian service provider in the Consortium of European Social Science Data Archives (CESSDA ERIC) and is hosted by the State Archives of Belgium. SODHA was built with the help of DEMO (UCLouvain) and Interface Demography (VUB).",
+      "lat": 50.84241,
+      "lng": 4.356423,
+      "hostname": "sodha.be/",
+      "launch_year": "2019",
+      "country": "Belgium",
+      "continent": "Europe",
+      "gdcc_member": false,
+      "board": "https://github.com/orgs/IQSS/projects/21"
+    },
+    {
       "name": "Texas Data Repository Dataverse",
       "description": "A statewide archive of research data from Texas Digital Library (TDL) member institutions.",
       "lat": 30.307182,

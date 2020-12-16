@@ -327,7 +327,7 @@
       "description": "The FIU Research Data Portal serves as an inter-disciplinary data archive to support access and reuse of research data produced at FIU.",
       "lat": 25.75389,
       "lng": -80.3945539,
-      "hostname": "https://dataverse.fiu.edu/",
+      "hostname": "dataverse.fiu.edu",
       "launch_year": "2020",
       "country": "USA",
       "continent": "North America",

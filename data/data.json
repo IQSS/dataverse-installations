@@ -323,6 +323,18 @@
       "doi_authority": "10.21979"
     },
     {
+      "name": "Florida International University Research Data Portal",
+      "description": "The FIU Research Data Portal serves as an inter-disciplinary data archive to support access and reuse of research data produced at FIU.",
+      "lat": 25.75389,
+      "lng": -80.3945539,
+      "hostname": "https://dataverse.fiu.edu/",
+      "launch_year": "2020",
+      "country": "USA",
+      "continent": "North America",
+      "gdcc_member": false,
+      "contact_email": "rdm@fiu.edu"
+    },
+    {
       "name": "Fudan University",
       "description": "Open for Fudan University affiliated researchers to deposit data.",
       "lat": 31.298531,

@@ -55,7 +55,7 @@
       "continent": "North America",
       "gdcc_member": true,
       "doi_authority": "10.48349",
-      "contact_email": "researchsupport@asu.edu"
+      "contact_email": "dataverse@asu.edu"
     },
     {
       "name": "AUSSDA Dataverse",
@@ -593,6 +593,20 @@
       "continent": "Europe",
       "gdcc_member": false,
       "doi_authority": "10.14428"
+    },
+    {
+      "name": "Open Forest Data",
+      "description": "Podlasie digital repository of natural science data",
+      "lat": 52.70329227,
+      "lng": 23.86781611,
+      "hostname": "dataverse.openforestdata.pl",
+      "launch_year": "2020",
+      "country": "Poland",
+      "continent": "Europe",
+      "about_url": "https://openforestdata.pl/",
+      "gdcc_member": false,
+      "doi_authority": "10.4837",
+      "contact_email": "jlapinska@ibs.bialowieza.pl"
     },
     {
       "name": "Peking University",

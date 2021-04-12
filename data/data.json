@@ -145,8 +145,22 @@
       "doi_authority": "10.18167"
     },
     {
+      "name": "CROSSDA",
+      "description": "The Croatian Social Science Data Archive (CROSSDA) is a national infrastructure public service whose role is to ensure the long-term preservation and dissemination of social science research data.",
+      "lat": 45.79641,
+      "lng": 15.97162,
+      "hostname": "data.crossda.hr",
+      "launch_year": "2020",
+      "country": "Croatia",
+      "continent": "Europe",
+      "about_url": "https://www.crossda.hr/",
+      "gdcc_member": false,
+      "doi_authority": "10.23669",
+      "contact_email": "mglavica@ffzg.hr"
+    },
+    {
       "name": "Dartmouth Dataverse",
-      "description": "Data repository for Dartmouth-affiliated research. Currently our dataverse consists mainly of health care research, future datasets will include those from other disciplines across the Dartmouth community. Dartmouth scholars can submit datasets and anyone can download (see each dataset's terms of access for more details). Share, archive, and get credit for your data.",
+      "description": "",
       "lat": 43.704448,
       "lng": -72.288715,
       "hostname": "dataverse.dartmouth.edu",

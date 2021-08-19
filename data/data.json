@@ -187,6 +187,7 @@
       "lat": 48.801407,
       "lng": 2.130122,
       "hostname": "data.inrae.fr",
+      "metrics": true,
       "country": "France",
       "continent": "Europe",
       "harvesting_sets": [
@@ -356,6 +357,20 @@
       "continent": "Asia",
       "gdcc_member": true,
       "doi_authority": "\u2205"
+    },
+    {
+      "name": "George Mason University Dataverse",
+      "description": "George Mason University Libraries Dataverse publishes, shares, and preserves data of enduring value produced by George Mason faculty, staff, and students.",
+      "lat": 38.8306,
+      "lng": -77.3078,
+      "hostname": "dataverse.orc.gmu.edu",
+      "launch_year": "2021",
+      "country": "USA",
+      "continent": "North America",
+      "about_url": "https://library.gmu.edu/dataverse",
+      "gdcc_member": false,
+      "doi_authority": "10.13021",
+      "contact_email": "datahelp@gmu.edu"
     },
     {
       "name": "G\u00f6ttingen Research Online",
@@ -577,7 +592,6 @@
       "lat": 1.349115,
       "lng": 103.678829,
       "hostname": "researchdata.nie.edu.sg",
-      "metrics": true,
       "country": "Singapore",
       "continent": "Asia",
       "gdcc_member": false,

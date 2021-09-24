@@ -502,6 +502,18 @@
       "doi_authority": "10.21223"
     },
     {
+      "name": "Italian Institute of Technology (IIT)",
+      "description": "IIT Dataverse is the research data repository of Istituto Italiano di Tecnologia and has been launched in May 2021. IIT\u2019s research activity is focused on cutting-edge science in four Research Domains (Computational Sciences, LifeTech, Nanomaterials, and Robotics) and promotes excellence in basic and applied research. IIT Dataverse offers long-term storage and preservation to research data of IIT-affiliated researchers. IIT is also member of the Global Dataverse Community Consortium",
+      "lat": 44.475,
+      "lng": 8.9062,
+      "hostname": "dataverse.iit.it",
+      "launch_year": "2021",
+      "country": "Italy",
+      "continent": "Europe",
+      "gdcc_member": false,
+      "contact_email": "Valentina.Pasquale@iit.it"
+    },
+    {
       "name": "Johns Hopkins University",
       "description": "Johns Hopkins University Data Archive",
       "lat": 39.329055,

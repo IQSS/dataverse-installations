@@ -141,6 +141,17 @@
       "doi_authority": "10.18167"
     },
     {
+      "name": "CORA. Research Data Repository (RDR)",
+      "description": "CORA. Research Data Repository (RDR) is a federated and multidisciplinary data repository that allows Catalan universities, CERCA research centers and other entities that carry out research to publish research datasets in FAIR mode and following the EOSC guidelines. The objectives of the RDR are to increase the efficiency and transparency of research through the rapid dissemination of datasets and to facilitate their reuse.",
+      "lat": 41.38745982,
+      "lng": 2.112077304,
+      "hostname": "dataverse.csuc.cat",
+      "launch_year": "2021",
+      "country": "Spain",
+      "continent": "Europe",
+      "gdcc_member": true
+    },
+    {
       "name": "CROSSDA",
       "description": "The Croatian Social Science Data Archive (CROSSDA) is a national infrastructure public service whose role is to ensure the long-term preservation and dissemination of social science research data.",
       "lat": 45.79641,

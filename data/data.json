@@ -149,7 +149,9 @@
       "launch_year": "2021",
       "country": "Spain",
       "continent": "Europe",
-      "gdcc_member": true
+      "gdcc_member": true,
+      "doi_authority": "10.25504",
+      "contact_email": "rdr-contacte@csuc.cat"
     },
     {
       "name": "CROSSDA",

@@ -341,6 +341,18 @@
       "contact_email": "neg@cedia.org.ec"
     },
     {
+      "name": "DOREL",
+      "description": "The institutional data repository DOREL - DOnn\u00e9es de REcherche Lorraines - is a tool for referencing the scientific production of the University of Lorraine as well as a space for publishing data sets produced within its research units. The repository is managed by a transversal team composed of coworkers from the University Libraries, the Research services, the IT services and the MSH Lorraine (Maison des Sciences de l'Homme). It is a multidisciplinary repository, developed with the Dataverse software.",
+      "lat": 48.69637516,
+      "lng": 6.176537898,
+      "hostname": "dorel.univ-lorraine.fr/",
+      "launch_year": "2021",
+      "country": "France",
+      "continent": "Europe",
+      "gdcc_member": false,
+      "contact_email": "donnees-recherche@univ-lorraine.fr"
+    },
+    {
       "name": "DR-NTU (Data)",
       "description": "The institutional open access research data repository for Nanyang Technological University (NTU). NTU researchers are encouraged to use DR-NTU (Data) to deposit, publish and archive their final research data in order to make their research data discoverable, accessible and reusable.",
       "lat": 1.348668,

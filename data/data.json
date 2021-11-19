@@ -861,21 +861,6 @@
       "contact_email": "support@tdl.org"
     },
     {
-      "name": "UAL Dataverse",
-      "description": "Open for University of Alberta affiliated researchers to deposit data.",
-      "lat": 53.494321,
-      "lng": -113.549027,
-      "hostname": "dataverse.library.ualberta.ca",
-      "country": "Canada",
-      "continent": "North America",
-      "harvesting_sets": [
-        "all"
-      ],
-      "gdcc_member": false,
-      "doi_authority": "10.7939",
-      "contact_email": "data@ualberta.ca"
-    },
-    {
       "name": "UCLA Dataverse",
       "description": "",
       "lat": 34.0689,

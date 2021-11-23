@@ -482,6 +482,18 @@
       "doi_authority": "10.5072"
     },
     {
+      "name": "IFDC Dataverse",
+      "description": "Over the years, IFDC has conducted numerous research and demonstration trials across its global programs and projects. Looking to avoid poor documentation, loss of data, and to boost the efficiency of data usage and decision-making abilities, IFDC has implemented a center-wide initiative to collect all research and development data in standard accessible formats, collate all data and analyses, and to make it available through IFDC solutions. The Dataverse came to corroborate with the IFDC idea to implement the FAIR principles and make the data easily findable, accessible, interoperable, and reusable.",
+      "lat": 34.76992466,
+      "lng": 87.6541439,
+      "hostname": "dataverse.ifdc.org",
+      "launch_year": "2021",
+      "country": "USA",
+      "continent": "North America",
+      "gdcc_member": false,
+      "contact_email": "wpavan@ifdc.org"
+    },
+    {
       "name": "Ifsttar Dataverse",
       "description": "Ifsttar Dataverse is an institutional repository for research data of the French Institute of Science and Technology for Transport, Development and Networks. It catalogues research data in the field of transports, spatial planning and civil engineering.",
       "lat": 48.8528,

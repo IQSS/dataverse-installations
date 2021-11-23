@@ -8,13 +8,15 @@ assignees: ''
 
 ---
 
+*All information shared will be displayed on the map unless otherwise indicated*
+
 **Name of repository:**
 
 
 **Homepage URL of repository:**
 
 
-**Location of the repository (city or street address if possible):**
+**Location of the repository (lat/long preferably or city or street address):**
 
 
 
@@ -23,13 +25,13 @@ assignees: ''
 **A short description (few sentences) about the repository:**
 
 
-**Email address of repository contact:**
+**Email address of repository contact (won't be displayed on the map):**
 
 
 **Year when repository started operating:**
 
 
-**DOI authority (if applicable):**
+**DOI authority (if applicable; won't be displayed on the map):**
 
 
 **Link to successful [Core Trust Seal](https://www.coretrustseal.org) application:**

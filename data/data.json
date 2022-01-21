@@ -202,7 +202,8 @@
       "continent": "Europe",
       "about_url": "https://www.izus.uni-stuttgart.de/en/fokus/darus/",
       "gdcc_member": true,
-      "doi_authority": "10.18419"
+      "doi_authority": "10.18419",
+      "contact_email": "fokus@izus.uni-stuttgart.de"
     },
     {
       "name": "Data INRAe",
@@ -549,7 +550,7 @@
       "country": "Italy",
       "continent": "Europe",
       "gdcc_member": false,
-      "contact_email": "Valentina.Pasquale@iit.it"
+      "contact_email": "rdm@iit.it"
     },
     {
       "name": "Johns Hopkins University",
@@ -579,6 +580,18 @@
       "gdcc_member": false,
       "doi_authority": "10.26165",
       "board": "https://github.com/orgs/IQSS/projects/4"
+    },
+    {
+      "name": "KU Leuven RDR",
+      "description": "RDR is the institutional research data repository created by KU Leuven in collaboration with LIBIS and Dataverse to help its researchers publish and share their research data.",
+      "lat": 50.87905722,
+      "lng": 4.701788999,
+      "hostname": "rdr.kuleuven.be",
+      "launch_year": "2022",
+      "country": "Belgium",
+      "continent": "Europe",
+      "gdcc_member": false,
+      "contact_email": "rdr@kuleuven.be"
     },
     {
       "name": "Libra Data",
@@ -676,7 +689,8 @@
       "country": "Belgium",
       "continent": "Europe",
       "gdcc_member": false,
-      "doi_authority": "10.14428"
+      "doi_authority": "10.14428",
+      "contact_email": "patrick.vranckx@uclouvain.be"
     },
     {
       "name": "Open Forest Data",
@@ -985,7 +999,8 @@
       "launch_year": "2020",
       "country": "Singapore",
       "continent": "Asia",
-      "gdcc_member": false
+      "gdcc_member": false,
+      "contact_email": "vanessa.bernabe@yale-nus.edu.sg"
     }
   ]
 }

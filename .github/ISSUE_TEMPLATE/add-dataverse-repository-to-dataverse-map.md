@@ -31,7 +31,7 @@ assignees: ''
 **Year when repository started operating:**
 
 
-**DOI authority (if applicable; won't be displayed on the map):**
+**DOI authority (such as 10.26193; if applicable; won't be displayed on the map):**
 
 
 **Link to successful [Core Trust Seal](https://www.coretrustseal.org) application:**

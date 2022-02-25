@@ -366,6 +366,18 @@
       "doi_authority": "10.21979"
     },
     {
+      "name": "Edmond",
+      "description": "Edmond is a research data repository for Max Planck researchers. It is the place to store completed datasets of research data with open access. Edmond serves the publication of research data from all disciplines and offers scientists the ability to create citable research objects.",
+      "lat": 48.137222,
+      "lng": 11.575556,
+      "hostname": "edmond.mpdl.mpg.de/",
+      "launch_year": "2022",
+      "country": "Germany",
+      "continent": "Europe",
+      "gdcc_member": false,
+      "contact_email": "edmond@mpdl.mpg.de"
+    },
+    {
       "name": "Florida International University Research Data Portal",
       "description": "The FIU Research Data Portal serves as an inter-disciplinary data archive to support access and reuse of research data produced at FIU.",
       "lat": 25.75389,

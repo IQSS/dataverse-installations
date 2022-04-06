@@ -135,12 +135,13 @@
       "contact_email": "J.HERRERA@cgiar.org"
     },
     {
-      "name": "CIRAD",
+      "name": "CIRAD Dataverse",
       "description": "Organisme fran\u00e7ais de recherche agronomique et de coop\u00e9ration internationale pour le d\u00e9veloppement durable des r\u00e9gions tropicales et m\u00e9diterran\u00e9ennes, les activit\u00e9s du CIRAD rel\u00e8vent des sciences du vivant, des sciences sociales et des sciences de l\u2019ing\u00e9nieur appliqu\u00e9es \u00e0 l\u2019agriculture, \u00e0 l\u2019alimentFrench agricultural research and international cooperation organization working for the sustainable development of tropical and Mediterranean regions, CIRAD's activities concern the life sciences, social sciences and engineering sciences, applied to agriculture, the environment and territorial management.",
       "lat": 43.650089,
       "lng": 3.869122,
       "hostname": "dataverse.cirad.fr",
       "metrics": true,
+      "launch_year": "2018",
       "country": "France",
       "continent": "Europe",
       "gdcc_member": false,

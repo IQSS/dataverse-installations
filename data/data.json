@@ -145,7 +145,8 @@
       "country": "France",
       "continent": "Europe",
       "gdcc_member": false,
-      "doi_authority": "10.18167"
+      "doi_authority": "10.18167",
+      "contact_email": "dataverse@cirad.fr"
     },
     {
       "name": "CORA. Research Data Repository (RDR)",

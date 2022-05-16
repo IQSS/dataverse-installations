@@ -5,7 +5,8 @@
       "description": "Open for researchers associated with British Columbia universities to deposit data.",
       "lat": 49.259982,
       "lng": -123.250212,
-      "hostname": "dvn.library.ubc.ca",
+      "hostname": "abacus.library.ubc.ca",
+      "metrics": true,
       "launch_year": "2014",
       "country": "Canada",
       "continent": "North America",
@@ -13,7 +14,8 @@
         "abacus_open"
       ],
       "gdcc_member": false,
-      "doi_authority": "\u2415"
+      "doi_authority": "\u2415",
+      "contact_email": "abacus.support@ubc.ca"
     },
     {
       "name": "ACSS Dataverse",
@@ -25,7 +27,8 @@
       "launch_year": "2019",
       "country": "Lebanon",
       "continent": "Asia",
-      "gdcc_member": false
+      "gdcc_member": false,
+      "contact_email": "dataverse@theacss.org"
     },
     {
       "name": "ADA Dataverse",
@@ -42,7 +45,8 @@
         "https://www.coretrustseal.org/wp-content/uploads/2018/02/Australian-Data-Archive.pdf"
       ],
       "doi_authority": "10.26193",
-      "board": "https://github.com/orgs/IQSS/projects/17"
+      "board": "https://github.com/orgs/IQSS/projects/17",
+      "contact_email": "ada@anu.edu.au"
     },
     {
       "name": "ASU Library Research Data Repository",
@@ -200,7 +204,8 @@
       "launch_year": "2022",
       "country": "Portugal",
       "continent": "Europe",
-      "gdcc_member": false
+      "gdcc_member": false,
+      "contact_email": "dados@ipb.pt"
     },
     {
       "name": "Dartmouth Dataverse",
@@ -257,7 +262,8 @@
       "about_url": "https://data.ird.fr",
       "gdcc_member": false,
       "doi_authority": "10.23708",
-      "board": "https://github.com/orgs/IQSS/projects/20"
+      "board": "https://github.com/orgs/IQSS/projects/20",
+      "contact_email": "data@ird.fr"
     },
     {
       "name": "data.sciencespo",
@@ -271,7 +277,8 @@
       "continent": "Europe",
       "gdcc_member": false,
       "doi_authority": "10.2141",
-      "board": "https://github.com/orgs/IQSS/projects/12"
+      "board": "https://github.com/orgs/IQSS/projects/12",
+      "contact_email": "data.bib@sciencespo.fr"
     },
     {
       "name": "DataRepositoriUM",
@@ -284,7 +291,8 @@
       "continent": "Europe",
       "about_url": "https://datarepositorium.uminho.pt/",
       "gdcc_member": true,
-      "doi_authority": "10.34622"
+      "doi_authority": "10.34622",
+      "contact_email": "datarepositorium@usdb.uminho.pt"
     },
     {
       "name": "DataSpace@HKUST",
@@ -381,7 +389,8 @@
       "continent": "Asia",
       "about_url": "https://blogs.ntu.edu.sg/lib-datamanagement/about-dr-ntu-data/",
       "gdcc_member": true,
-      "doi_authority": "10.21979"
+      "doi_authority": "10.21979",
+      "contact_email": "library@ntu.edu.sg"
     },
     {
       "name": "Edmond",
@@ -417,7 +426,8 @@
       "country": "China",
       "continent": "Asia",
       "gdcc_member": true,
-      "doi_authority": "\u2205"
+      "doi_authority": "\u2205",
+      "contact_email": "dvn@fudan.edu.cn"
     },
     {
       "name": "George Mason University Dataverse",
@@ -444,7 +454,8 @@
       "country": "Germany",
       "continent": "Europe",
       "gdcc_member": true,
-      "doi_authority": "10.25625"
+      "doi_authority": "10.25625",
+      "contact_email": "info@eresearch.uni-goettingen.de"
     },
     {
       "name": "Harvard Dataverse",
@@ -477,7 +488,7 @@
       ],
       "gdcc_member": false,
       "doi_authority": "10.11588",
-      "contact_email": "heidata@listserv.uni-heidelberg.de"
+      "contact_email": "data@uni-heidelberg.de"
     },
     {
       "name": "IBICT",
@@ -505,7 +516,7 @@
       ],
       "gdcc_member": false,
       "doi_authority": "10.21421",
-      "contact_email": "dataverse.biu@gmail.com"
+      "contact_email": "dataverse.biu@gmail.com; a.rathore@cgiar.org"
     },
     {
       "name": "ICWSM",
@@ -555,7 +566,8 @@
       "country": "Netherlands",
       "continent": "Europe",
       "gdcc_member": false,
-      "doi_authority": "10622"
+      "doi_authority": "10622",
+      "contact_email": "info@iisg.nl"
     },
     {
       "name": "Indata",
@@ -593,7 +605,8 @@
       "country": "Peru",
       "continent": "South America",
       "gdcc_member": false,
-      "doi_authority": "10.21223"
+      "doi_authority": "10.21223",
+      "contact_email": "CIP-RIU@cgiar.org"
     },
     {
       "name": "Italian Institute of Technology (IIT)",
@@ -637,7 +650,8 @@
       "about_url": "https://www.fz-juelich.de/zb/rdm",
       "gdcc_member": false,
       "doi_authority": "10.26165",
-      "board": "https://github.com/orgs/IQSS/projects/4"
+      "board": "https://github.com/orgs/IQSS/projects/4",
+      "contact_email": "forschungsdaten@fz-juelich.de"
     },
     {
       "name": "KU Leuven RDR",
@@ -680,7 +694,8 @@
       "country": "Indonesia",
       "continent": "Asia",
       "gdcc_member": false,
-      "doi_authority": "10.5072"
+      "doi_authority": "10.5072",
+      "contact_email": "rin@mail.lipi.go.id"
     },
     {
       "name": "Lithuanian Data Archive for Social Sciences and Humanities (LiDA)",
@@ -704,7 +719,8 @@
       "country": "USA",
       "continent": "North America",
       "gdcc_member": false,
-      "doi_authority": "\u2415"
+      "doi_authority": "\u2415",
+      "contact_email": "chris.wilson@maine.edu"
     },
     {
       "name": "MELDATA",
@@ -729,7 +745,8 @@
       "country": "Singapore",
       "continent": "Asia",
       "gdcc_member": false,
-      "doi_authority": "10.2534"
+      "doi_authority": "10.2534",
+      "contact_email": "libscomm@nie.edu.sg"
     },
     {
       "name": "NIOZ Dataverse",
@@ -741,7 +758,8 @@
       "launch_year": "2020",
       "country": "Netherlands",
       "continent": "Europe",
-      "gdcc_member": false
+      "gdcc_member": false,
+      "contact_email": "taco.de.bruin@nioz.nl"
     },
     {
       "name": "Open Data @ UCLouvain",
@@ -783,7 +801,8 @@
       "continent": "Asia",
       "about_url": "http://opendata.pku.edu.cn/about.xhtml",
       "gdcc_member": false,
-      "doi_authority": "10.1817"
+      "doi_authority": "10.1817",
+      "contact_email": "luopc@lib.pku.edu.cn; opendata@lib.pku.edu.cn"
     },
     {
       "name": "Pontificia Universidad Cat\u00f3lica del Per\u00fa",
@@ -795,7 +814,8 @@
       "country": "Peru",
       "continent": "South America",
       "gdcc_member": false,
-      "doi_authority": "\u2415"
+      "doi_authority": "\u2415",
+      "contact_email": "raul.sifuentes@pucp.pe"
     },
     {
       "name": "QDR Main Collection",
@@ -815,7 +835,8 @@
         "https://www.coretrustseal.org/wp-content/uploads/2018/11/Qualitative-Data-Repository.pdf"
       ],
       "doi_authority": "10.5064",
-      "board": "https://github.com/orgs/IQSS/projects/6"
+      "board": "https://github.com/orgs/IQSS/projects/6",
+      "contact_email": "qdr@syr.edu"
     },
     {
       "name": "Repositorio de datos de investigaci\u00f3n de la Universidad de Chile",
@@ -840,7 +861,8 @@
       "country": "Columbia",
       "continent": "South America",
       "gdcc_member": false,
-      "doi_authority": "\u2205"
+      "doi_authority": "\u2205",
+      "contact_email": "researchdata@urosario.edu.co"
     },
     {
       "name": "Reposit\u00f3rio de Dados de Pesquisa",
@@ -851,7 +873,8 @@
       "launch_year": "2019",
       "country": "Brazil",
       "continent": "South America",
-      "gdcc_member": false
+      "gdcc_member": false,
+      "contact_email": "repositoriodedados@unifesp.br"
     },
     {
       "name": "Reposit\u00f3rio de Dados de Pesquisa da UFABC",
@@ -862,7 +885,8 @@
       "country": "Brazil",
       "continent": "South America",
       "gdcc_member": false,
-      "doi_authority": "10.5072"
+      "doi_authority": "10.5072",
+      "contact_email": "biblioteca@ufabc.edu.br"
     },
     {
       "name": "Reposit\u00f3rio de Dados de Pesquisa do ILEEL",
@@ -942,7 +966,8 @@
       "country": "Belgium",
       "continent": "Europe",
       "gdcc_member": false,
-      "board": "https://github.com/orgs/IQSS/projects/21"
+      "board": "https://github.com/orgs/IQSS/projects/21",
+      "contact_email": "sodha@arch.be"
     },
     {
       "name": "Texas Data Repository Dataverse",
@@ -972,7 +997,8 @@
       "country": "USA",
       "continent": "North America",
       "gdcc_member": true,
-      "doi_authority": "10.25346"
+      "doi_authority": "10.25346",
+      "contact_email": "datascience@ucla.edu"
     },
     {
       "name": "UNB Libraries Dataverse",
@@ -985,7 +1011,8 @@
       "country": "Canada",
       "continent": "North America",
       "gdcc_member": false,
-      "doi_authority": "10.25545"
+      "doi_authority": "10.25545",
+      "contact_email": "rdm.services@unb.ca"
     },
     {
       "name": "UNC Dataverse",
@@ -1019,7 +1046,8 @@
       "country": "Canada",
       "continent": "North America",
       "gdcc_member": false,
-      "doi_authority": "10.5203"
+      "doi_authority": "10.5203",
+      "contact_email": "Dataverse@umanitoba.ca"
     },
     {
       "name": "Universit\u00e0 degli Studi di Milano",
@@ -1031,7 +1059,8 @@
       "country": "Italy",
       "continent": "Europe",
       "gdcc_member": false,
-      "doi_authority": "10.1313"
+      "doi_authority": "10.1313",
+      "contact_email": "rdm@unimi.it"
     },
     {
       "name": "UWI",

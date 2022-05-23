@@ -405,6 +405,18 @@
       "contact_email": "edmond@mpdl.mpg.de"
     },
     {
+      "name": "FGV Dataverse",
+      "description": "",
+      "lat": -22.94095725,
+      "lng": -43.18013239,
+      "hostname": "dataverse.fgv.br",
+      "launch_year": "2021",
+      "country": "Brazil",
+      "continent": "South America",
+      "gdcc_member": false,
+      "contact_email": "infra.acad@fgv.br, biblioteca.digital@fgv.br"
+    },
+    {
       "name": "Florida International University Research Data Portal",
       "description": "The FIU Research Data Portal serves as an inter-disciplinary data archive to support access and reuse of research data produced at FIU.",
       "lat": 25.75389,

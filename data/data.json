@@ -812,6 +812,7 @@
       "lng": 116.306539,
       "hostname": "opendata.pku.edu.cn",
       "metrics": true,
+      "launch_year": "2014",
       "country": "China",
       "continent": "Asia",
       "about_url": "http://opendata.pku.edu.cn/about.xhtml",

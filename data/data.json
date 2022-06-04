@@ -1060,6 +1060,7 @@
       "lng": -97.138451,
       "hostname": "dataverse.lib.umanitoba.ca",
       "metrics": true,
+      "launch_year": "2017",
       "country": "Canada",
       "continent": "North America",
       "gdcc_member": false,

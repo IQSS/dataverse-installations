@@ -258,6 +258,7 @@
       "lng": 5.368818,
       "hostname": "dataverse.ird.fr",
       "metrics": true,
+      "launch_year": "2019",
       "country": "France",
       "continent": "Europe",
       "about_url": "https://data.ird.fr",

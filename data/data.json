@@ -744,6 +744,7 @@
       "lng": 35.49548,
       "hostname": "data.mel.cgiar.org",
       "metrics": true,
+      "launch_year": "2019",
       "country": "Lebanon",
       "continent": "Asia",
       "gdcc_member": false,

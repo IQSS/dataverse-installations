@@ -1070,6 +1070,7 @@
       "lng": 9.1946,
       "hostname": "dataverse.unimi.it",
       "metrics": true,
+      "launch_year": "2019",
       "country": "Italy",
       "continent": "Europe",
       "gdcc_member": false,

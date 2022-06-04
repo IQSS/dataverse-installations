@@ -476,6 +476,7 @@
       "lng": -71.113212,
       "hostname": "dataverse.harvard.edu",
       "metrics": true,
+      "launch_year": "2008",
       "country": "USA",
       "continent": "North America",
       "harvesting_sets": [

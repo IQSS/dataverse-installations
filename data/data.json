@@ -827,6 +827,7 @@
       "lng": -77.079338,
       "hostname": "datos.pucp.edu.pe",
       "metrics": true,
+      "launch_year": "2019",
       "country": "Peru",
       "continent": "South America",
       "gdcc_member": false,

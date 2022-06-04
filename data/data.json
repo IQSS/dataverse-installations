@@ -1011,6 +1011,7 @@
       "lng": -118.4452,
       "hostname": "dataverse.ucla.edu",
       "metrics": true,
+      "launch_year": "2019",
       "country": "USA",
       "continent": "North America",
       "gdcc_member": true,

@@ -241,6 +241,7 @@
       "lng": 2.130122,
       "hostname": "data.inrae.fr",
       "metrics": true,
+      "launch_year": "2018",
       "country": "France",
       "continent": "Europe",
       "harvesting_sets": [

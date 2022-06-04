@@ -875,6 +875,7 @@
       "lng": -74.073352,
       "hostname": "research-data.urosario.edu.co",
       "metrics": true,
+      "launch_year": "2019",
       "country": "Columbia",
       "continent": "South America",
       "gdcc_member": false,

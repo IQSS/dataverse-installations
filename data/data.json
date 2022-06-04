@@ -565,6 +565,7 @@
       "lng": 2.6027,
       "hostname": "research-data.ifsttar.fr",
       "metrics": true,
+      "launch_year": "2019",
       "country": "France",
       "continent": "Europe",
       "gdcc_member": false,

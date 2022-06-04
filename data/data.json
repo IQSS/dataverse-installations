@@ -386,6 +386,7 @@
       "lng": 103.683104,
       "hostname": "researchdata.ntu.edu.sg",
       "metrics": true,
+      "launch_year": "2017",
       "country": "Singapore",
       "continent": "Asia",
       "about_url": "https://blogs.ntu.edu.sg/lib-datamanagement/about-dr-ntu-data/",

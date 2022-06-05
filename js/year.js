@@ -24,9 +24,11 @@ fetch(url).then(function(response) {
       }
       div.innerHTML += `${key} ` + stars + ` ${value.length}` + '\n';
     }
-    div.innerHTML += '\nInstallations with Unknown Launch Year\n';
-    for (const unknown of byYear['????']) {
-      div.innerHTML += unknown + '\n';
+    if (byYear['????'].length > 0) {
+      div.innerHTML += '\nInstallations with Unknown Launch Year\n';
+      for (const unknown of byYear['????']) {
+        div.innerHTML += unknown + '\n';
+      }
     }
   });
 });

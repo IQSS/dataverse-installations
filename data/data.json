@@ -655,6 +655,7 @@
       "lng": -76.620335,
       "hostname": "archive.data.jhu.edu",
       "metrics": true,
+      "launch_year": "2013",
       "country": "USA",
       "continent": "North America",
       "harvesting_sets": [

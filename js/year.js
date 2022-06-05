@@ -25,7 +25,7 @@ fetch(url).then(function(response) {
       div.innerHTML += `${key} ` + stars + ` ${value.length}` + '\n';
     }
     div.innerHTML += '\n';
-    div.innerHTML += 'Dataverse Installations by Over Time\n';
+    div.innerHTML += 'Dataverse Installations Over Time\n';
     let runningTotal = 0;
     for (const [year, installations] of Object.entries(byYear)) {
       runningTotal += installations.length;

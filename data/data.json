@@ -532,6 +532,7 @@
       "lng": 78.4867,
       "hostname": "dataverse.icrisat.org",
       "metrics": true,
+      "launch_year": "2012",
       "country": "India",
       "continent": "Asia",
       "harvesting_sets": [

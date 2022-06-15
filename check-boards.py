@@ -16,18 +16,18 @@ for project in projects_out:
     api_url = project['url']
     api_url_by_html_url[html_url] = api_url
 
-# Data maintained by IQSS.
-iqss_url = 'https://docs.google.com/spreadsheets/d/1l2R9D1FQy88qVzg2bI6L1LgplmM2l7pnMI80jdiz4fk/export?gid=639378778&format=tsv'
-response = urlopen(iqss_url)
-iqss_string = response.read().decode(response.info().get_param('charset') or 'utf-8')
-reader = csv.DictReader(io.StringIO(iqss_string), delimiter="\t")
+# Crowdsourced information about Dataverse installations
+crowd_url = 'https://docs.google.com/spreadsheets/d/1bfsw7gnHlHerLXuk7YprUT68liHfcaMxs1rFciA-mEo/export?gid=0&format=tsv'
+response = urlopen(crowd_url)
+crowd_string = response.read().decode(response.info().get_param('charset') or 'utf-8')
+reader = csv.DictReader(io.StringIO(crowd_string), delimiter="\t")
 rows = [row for row in reader]
 for row in rows:
-    hostname = row['Installation hostname']
-    board_html_url = row['Project board under IQSS']
+    hostname = row['hostname']
+    board_html_url = row['board']
     if not board_html_url:
         continue
-    board_api_url = row['Project board API URL']
+    board_api_url = row['board_api']
     if not board_api_url:
         board_api_url = api_url_by_html_url[board_html_url]
         print(hostname + " created " + board_html_url + ' and "Project board API URL" should be updated to ' + board_api_url)

@@ -81,6 +81,24 @@
       "contact_email": "info@aussda.at"
     },
     {
+      "name": "Borealis",
+      "description": "Open for researchers and organizations associated with subscribing Canadian universities to deposit data.",
+      "lat": 43.6532,
+      "lng": -79.3832,
+      "hostname": "borealisdata.ca",
+      "launch_year": "2012",
+      "country": "Canada",
+      "continent": "North America",
+      "about_url": "https://borealisdata.ca/about/",
+      "harvesting_sets": [
+        "sp_dataverse"
+      ],
+      "gdcc_member": true,
+      "doi_authority": "10.5683",
+      "board": "https://github.com/orgs/IQSS/projects/8",
+      "contact_email": "dataverse@scholarsportal.info"
+    },
+    {
       "name": "Botswana Harvard Data",
       "description": "The Botswana Harvard AIDS Institute Partneship is a world-renowned educational institution of excellence in research and education pertinent to HIV/AIDS and other emerging public health challenges. Established in 1996, the Botswana Harvard AIDS Institute Partnership (BHP) is a collaborative research and training initiative between Botswana\u2019s Ministry of Health and Wellness and the Harvard T.H. Chan School of Public Health AIDS Initiative. The BHP Dataverse is a data repository for all the research done at BHP. Raw data, anonymised data and final analysis data for every research. This repository will achieve and also easy data sharing within the organisation and outside.",
       "lat": -24.653257,
@@ -988,25 +1006,6 @@
       "country": "Latvia",
       "continent": "Europe",
       "gdcc_member": false
-    },
-    {
-      "name": "Scholars Portal",
-      "description": "Open for researchers and organizations associated with subscribing Canadian universities to deposit data.",
-      "lat": 43.6532,
-      "lng": -79.3832,
-      "hostname": "dataverse.scholarsportal.info",
-      "metrics": true,
-      "launch_year": "2012",
-      "country": "Canada",
-      "continent": "North America",
-      "about_url": "http://guides.scholarsportal.info/dataverse",
-      "harvesting_sets": [
-        "sp_dataverse"
-      ],
-      "gdcc_member": false,
-      "doi_authority": "10.5683",
-      "board": "https://github.com/orgs/IQSS/projects/8",
-      "contact_email": "dataverse@scholarsportal.info"
     },
     {
       "name": "SODHA",

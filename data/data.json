@@ -184,8 +184,9 @@
       "launch_year": "2021",
       "country": "Spain",
       "continent": "Europe",
+      "about_url": "https://dataverse.csuc.cat/about.xhtml",
       "gdcc_member": true,
-      "doi_authority": "10.25504",
+      "doi_authority": "10.3481",
       "contact_email": "rdr-contacte@csuc.cat"
     },
     {
@@ -302,7 +303,7 @@
       "gdcc_member": false,
       "doi_authority": "10.2141",
       "board": "https://github.com/orgs/IQSS/projects/12",
-      "contact_email": "data.bib@sciencespo.fr"
+      "contact_email": "data@sciencespo.fr"
     },
     {
       "name": "DataRepositoriUM",

@@ -112,6 +112,19 @@
       "doi_authority": "\u2205"
     },
     {
+      "name": "Centro Brasileiro de Pesquisas F\u00edsicas - CBPF",
+      "description": "Brazilian Center for Research in Physics",
+      "lat": -22.954204,
+      "lng": -43.1734987,
+      "hostname": "dataverse.cbpf.br",
+      "launch_year": "2021",
+      "country": "Brazil",
+      "continent": "South America",
+      "gdcc_member": false,
+      "doi_authority": "10.8037",
+      "contact_email": "lab3i@cbpf.br"
+    },
+    {
       "name": "CIDACS",
       "description": "Fiocruz-BA data repository publishes epidemiological data and research from all over Brazil",
       "lat": -12.922964,

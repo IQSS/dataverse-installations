@@ -16,7 +16,7 @@ assignees: ''
 **Homepage URL of repository:**
 
 
-**Location of the repository (lat/long preferably or city or street address):**
+**Location of the repository (lat/long preferably; or street address; or city, country):**
 
 
 **Year when repository started operating:**

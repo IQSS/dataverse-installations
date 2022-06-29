@@ -1,7 +1,7 @@
 ---
 name: Request project board for your Dataverse installation
 about: Board are used to collect issues that are important to you
-title: 'Project board request for {installation name}'
+title: Project board request for {installation name}
 labels: ''
 assignees: ''
 
@@ -11,4 +11,3 @@ assignees: ''
 
 
 **URL of installation:**
-

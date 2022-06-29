@@ -19,6 +19,8 @@ assignees: ''
 **Location of the repository (lat/long preferably or city or street address):**
 
 
+**Year when repository started operating:**
+
 
 *The following isn't required but is nice to have:*
 
@@ -26,9 +28,6 @@ assignees: ''
 
 
 **Email address of repository contact (won't be displayed on the map):**
-
-
-**Year when repository started operating:**
 
 
 **DOI authority (such as 10.26193; if applicable; won't be displayed on the map):**

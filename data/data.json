@@ -925,7 +925,7 @@
       "description": "Redape - Embrapa Research Data Repository is an institutional data repository that aims to preserve and facilitate the retrieval of scientific data produced by the Brazilian Agricultural Research Corporation. It allows the organization, management and publication of data according to the principles that guide scientific data management around the world, including accessibility, interoperability, reproducibility and reuse.",
       "lat": -22.888889,
       "lng": -47.077778,
-      "hostname": "redape.dados.embrapa.br",
+      "hostname": "embrapa.br/redape",
       "launch_year": "2022",
       "country": "Brazil",
       "continent": "South America",

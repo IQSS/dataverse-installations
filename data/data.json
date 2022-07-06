@@ -921,6 +921,19 @@
       "contact_email": "qdr@syr.edu"
     },
     {
+      "name": "Redape - Reposit\u00f3rio de Dados de Pesquisa da Embrapa",
+      "description": "Redape - Embrapa Research Data Repository is an institutional data repository that aims to preserve and facilitate the retrieval of scientific data produced by the Brazilian Agricultural Research Corporation. It allows the organization, management and publication of data according to the principles that guide scientific data management around the world, including accessibility, interoperability, reproducibility and reuse.",
+      "lat": 22.888889,
+      "lng": 47.077778,
+      "hostname": "redape.dados.embrapa.br",
+      "launch_year": "2022",
+      "country": "Brazil",
+      "continent": "South America",
+      "gdcc_member": false,
+      "doi_authority": "10.48432",
+      "contact_email": "redape@embrapa.br"
+    },
+    {
       "name": "Repositorio de datos de investigaci\u00f3n de la Universidad de Chile",
       "description": "El Repositorio de datos de investigaci\u00f3n de la Universidad de Chile conserva, difunde y proporciona acceso a los datos de investigaci\u00f3n generadas por sus acad\u00e9micos e investigadores, con el fin de dar visibilidad a dichos datos, garantizar su preservaci\u00f3n y facilitar su acceso y reutilizaci\u00f3n.",
       "lat": -33.45,

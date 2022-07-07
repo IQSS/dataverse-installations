@@ -49,6 +49,20 @@
       "contact_email": "ada@anu.edu.au"
     },
     {
+      "name": "Arca Dados",
+      "description": "Arca Dados is Fiocruz's official repository to archive, publish, disseminate, preserve and share digital research data produced by the Fiocruz community or in partnership with other research institutes or bodies, with the objective of promoting new research, ensuring the reproducibility or replicability of existing research, and promoting Open and Citizen Science. Its objective is to stimulate the wide circulation of scientific knowledge, strengthening the institutional commitment to Open Science and the free access of information in health, in addition to providing transparency and fostering collaboration between researchers, educators, academics, managers, graduate students, for the advancement of knowledge and the creation of solutions that meet society's demands. For more information, email dataabertos@fiocruz.br",
+      "lat": -22.874936,
+      "lng": -43.245379,
+      "hostname": "dadosdepesquisa.fiocruz.br",
+      "metrics": true,
+      "launch_year": "2020",
+      "country": "Brazil",
+      "continent": "South America",
+      "gdcc_member": false,
+      "doi_authority": "10.35078",
+      "contact_email": "dadosabertos@fiocruz.br"
+    },
+    {
       "name": "ASU Library Research Data Repository",
       "description": "ASU Library's research data repository (powered by Harvard\u2019s Dataverse software) helps ASU affiliated researchers share, store, preserve, cite, explore, and make research data accessible and discoverable. Dataverse is a dedicated research data management service platform that serves in the publication and reuse phase of the research data lifecycle and works in concert with the ASU Digital Repository ecosystem to present a more complete picture of ASU\u2019s scholarly activities.",
       "lat": 33.425437,
@@ -996,20 +1010,6 @@
       "continent": "South America",
       "gdcc_member": false,
       "doi_authority": "\u2205"
-    },
-    {
-      "name": "Reposit\u00f3rio Institucional de Dados para Pesquisa da Fiocruz",
-      "description": "The institutional research data repository for Oswaldo Cruz Foundation (Fiocruz). Fiocruz researchers are encouraged to use the data repository to deposit, publish and archive their research data in order to make their research data findable, accessible and reusable.",
-      "lat": -22.874936,
-      "lng": -43.245379,
-      "hostname": "dadosdepesquisa.fiocruz.br",
-      "metrics": true,
-      "launch_year": "2020",
-      "country": "Brazil",
-      "continent": "South America",
-      "gdcc_member": false,
-      "doi_authority": "10.35078",
-      "contact_email": "dadosabertos@fiocruz.br"
     },
     {
       "name": "Reposit\u00f3rios Piloto da Rede Nacional de Ensino e Pesquisa",

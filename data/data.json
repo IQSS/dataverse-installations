@@ -447,6 +447,19 @@
       "contact_email": "library@ntu.edu.sg"
     },
     {
+      "name": "DUnAs",
+      "description": "DUnAs is the institutional research data repository of the University of Aveiro. This repository is intended to share, archive, preserve, cite, access, and explore research data produced in the university scientific research activities",
+      "lat": 40.63078158,
+      "lng": -8.657462548,
+      "hostname": "dunas.ua.pt",
+      "launch_year": "2022",
+      "country": "Portugal",
+      "continent": "Europe",
+      "gdcc_member": false,
+      "doi_authority": "10.48527",
+      "contact_email": "sbidm-dunas@ua.pt"
+    },
+    {
       "name": "Edmond",
       "description": "Edmond is a research data repository for Max Planck researchers. It is the place to store completed datasets of research data with open access. Edmond serves the publication of research data from all disciplines and offers scientists the ability to create citable research objects.",
       "lat": 48.137222,

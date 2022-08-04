@@ -28,6 +28,7 @@
       "country": "Lebanon",
       "continent": "Asia",
       "gdcc_member": false,
+      "doi_authority": "10.25825",
       "contact_email": "dataverse@theacss.org"
     },
     {
@@ -985,7 +986,7 @@
       "country": "Columbia",
       "continent": "South America",
       "gdcc_member": false,
-      "doi_authority": "\u2205",
+      "doi_authority": "10.34848",
       "contact_email": "researchdata@urosario.edu.co"
     },
     {
@@ -1047,7 +1048,8 @@
       "launch_year": "2020",
       "country": "Latvia",
       "continent": "Europe",
-      "gdcc_member": false
+      "gdcc_member": false,
+      "doi_authority": "10.4851"
     },
     {
       "name": "SODHA",
@@ -1059,6 +1061,7 @@
       "country": "Belgium",
       "continent": "Europe",
       "gdcc_member": false,
+      "doi_authority": "10.34934",
       "board": "https://github.com/orgs/IQSS/projects/21",
       "contact_email": "sodha@arch.be"
     },

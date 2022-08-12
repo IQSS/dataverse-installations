@@ -963,6 +963,19 @@
       "contact_email": "redape@embrapa.br"
     },
     {
+      "name": "Repositorio de Datos Acad\u00e9micos RDA-UNR",
+      "description": "El Repositorio de Datos Acad\u00e9micos UNR (RDA-UNR) permite compartir, archivar, acceder, explorar y citar los datos de investigaci\u00f3n gestionados por los docentes, investigadores y alumnos de la UNR, con el fin de dar visibilidad a los datos, potenciando su acceso, su reutilizaci\u00f3n y garantizando su preservaci\u00f3n a largo plazo. Es un repositorio de auto publicaci\u00f3n, en el cual los usuarios cargan, organizan, describen y publican sus datos. Cuentan para hacerlo con la ayuda de un equipo de curadores, gu\u00edas y sesiones de entrenamiento. The Academic Data Repository of the National University of Rosario (RDA- UNR) allows for sharing, storing, accessing, exploring, and citing research data managed by UNR professors, researchers and students so as to make these data visible and promote its use and reutilization, ensuring its long-term preservation. It is a self-publishing repository, i.e. users upload, organize, describe and publish their own data with the assistance of a team of curators, user guides and training sessions.",
+      "lat": -32.95019324,
+      "lng": -60.63599687,
+      "hostname": "dataverse.unr.edu.ar",
+      "launch_year": "2022",
+      "country": "Argentina",
+      "continent": "South America",
+      "gdcc_member": false,
+      "doi_authority": "10.57715",
+      "contact_email": "repositoriodatos@unr.edu.ar"
+    },
+    {
       "name": "Repositorio de datos de investigaci\u00f3n de la Universidad de Chile",
       "description": "El Repositorio de datos de investigaci\u00f3n de la Universidad de Chile conserva, difunde y proporciona acceso a los datos de investigaci\u00f3n generadas por sus acad\u00e9micos e investigadores, con el fin de dar visibilidad a dichos datos, garantizar su preservaci\u00f3n y facilitar su acceso y reutilizaci\u00f3n.",
       "lat": -33.45,

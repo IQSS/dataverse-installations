@@ -1097,6 +1097,18 @@
       "contact_email": "support@tdl.org"
     },
     {
+      "name": "TRR170-DB",
+      "description": "The TRR170-DB was set up to manage data products of the collaborative research center TRR 170 'Late Accretion onto Terrestrial Planets' (https://www.trr170-lateaccretion.de/). The repository also stores data by other institutions and researchers. Data include laboratory and other instrumental data on planetary samples, remote sensing data, geological maps and model simulations.",
+      "lat": 52.42691139,
+      "lng": 13.35657449,
+      "hostname": "planetary-data-portal.org",
+      "launch_year": "2020",
+      "country": "Germany",
+      "continent": "Europe",
+      "gdcc_member": false,
+      "doi_authority": "10.35003"
+    },
+    {
       "name": "UCLA Dataverse",
       "description": "",
       "lat": 34.0689,

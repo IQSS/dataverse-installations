@@ -219,6 +219,17 @@
       "contact_email": "rdr-contacte@csuc.cat"
     },
     {
+      "name": "CoronaWhy Dataverse",
+      "description": "Research data repository of the Coronawhy, globally distributed, volunteer-powered research organisation, trying to assist the medical community\u2019s ability to answer key questions related to COVID-19 and Monkeypox.  ",
+      "lat": 52.0705,
+      "lng": 4.3007,
+      "hostname": "http://datasets.coronawhy.org",
+      "launch_year": "2020",
+      "country": "Netherlands",
+      "continent": "Europe",
+      "gdcc_member": false
+    },
+    {
       "name": "CROSSDA",
       "description": "The Croatian Social Science Data Archive (CROSSDA) is a national infrastructure public service whose role is to ensure the long-term preservation and dissemination of social science research data.",
       "lat": 45.79641,
@@ -258,6 +269,17 @@
       "continent": "Europe",
       "gdcc_member": false,
       "contact_email": "dados@ipb.pt"
+    },
+    {
+      "name": "DANS Data Station Archaeology",
+      "description": "DANS has launched the Data Station Archeology for the Dutch archaeological research community interested in storing, finding, sharing and publishing their data online. iggest advantages: the large amount of easily searchable data, support for all Creative Commons licenses, the possibility of version control, working with living data and sharing with others.",
+      "lat": 52.0705,
+      "lng": 4.3007,
+      "hostname": "https://archaeology.datastations.nl",
+      "launch_year": "2022",
+      "country": "Netherlands",
+      "continent": "Europe",
+      "gdcc_member": false
     },
     {
       "name": "Dartmouth Dataverse",
@@ -868,6 +890,17 @@
       "continent": "Europe",
       "gdcc_member": false,
       "contact_email": "taco.de.bruin@nioz.nl"
+    },
+    {
+      "name": "ODISSEI Portal",
+      "description": "ODISSEI (Open Data Infrastructure for Social Science and Economic Innovations) is the Dutch national research infrastructure for the social sciences in the Netherlands. ODISSEI brings together researchers with the necessary data, expertise and resources to conduct ground-breaking research and embrace the computational turn in social enquiry.",
+      "lat": 52.369021,
+      "lng": 4.939226,
+      "hostname": "https://portal.odissei.nl",
+      "launch_year": "2022",
+      "country": "Netherlands",
+      "continent": "Europe",
+      "gdcc_member": false
     },
     {
       "name": "Open Data @ UCLouvain",

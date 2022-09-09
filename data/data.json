@@ -309,23 +309,6 @@
       "contact_email": "fokus@izus.uni-stuttgart.de"
     },
     {
-      "name": "Data INRAe",
-      "description": "INRAE is Europe\u2019s top agricultural research institute and the world\u2019s number two centre for the agricultural sciences. Data INRAe is offered by INRAE as Data INRAe will share research data in relation with food, nutrition, agriculture and environment. It includes experimental, simulation and observation. Only data produced by or in collaboration with INRAE will be hosted in the repository, but anyone can access the metadata and the open data.",
-      "lat": 48.801407,
-      "lng": 2.130122,
-      "hostname": "data.inrae.fr",
-      "metrics": true,
-      "launch_year": "2018",
-      "country": "France",
-      "continent": "Europe",
-      "harvesting_sets": [
-        "ALL"
-      ],
-      "gdcc_member": false,
-      "board": "https://github.com/orgs/IQSS/projects/15",
-      "contact_email": "datainra@inra.fr"
-    },
-    {
       "name": "Data Suds",
       "description": "Hosted by IRD, a french public research institution, who defends an original model of equitable scientific partnership with the countries of the South and an interdisciplinary and citizen science, committed to the achievement of the Sustainable Development Goals.",
       "lat": 43.309873,
@@ -981,6 +964,24 @@
       "doi_authority": "10.5064",
       "board": "https://github.com/orgs/IQSS/projects/6",
       "contact_email": "qdr@syr.edu"
+    },
+    {
+      "name": "Recherche Data Gouv",
+      "description": "The Research Data Gouv platform is the national federated platform for open and shared research data serving the national scientific community. This platform was an integral part of the Second National Plan for Open Science (PNSO) and offers a multidisciplinary data repository, a registry which reports data hosted in other repositories and a web portal. The multidisciplinary repository is a sovereign publishing solution for sharing and opening up data for communities which are yet to set up their own recognised thematic repository.",
+      "lat": 48.801407,
+      "lng": 2.130122,
+      "hostname": "entrepot.recherche.data.gouv.fr",
+      "about_url": "recherche.data.gouv.fr",
+      "metrics": true,
+      "launch_year": "2022",
+      "country": "France",
+      "continent": "Europe",
+      "harvesting_sets": [
+        "ALL"
+      ],
+      "gdcc_member": false,
+      "board": "https://github.com/orgs/IQSS/projects/15",
+      "contact_email": "admin-recherchedatagouv@inrae.fr"
     },
     {
       "name": "Redape - Reposit\u00f3rio de Dados de Pesquisa da Embrapa",

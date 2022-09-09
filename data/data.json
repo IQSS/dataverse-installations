@@ -220,14 +220,15 @@
     },
     {
       "name": "CoronaWhy Dataverse",
-      "description": "Research data repository of the Coronawhy, globally distributed, volunteer-powered research organisation, trying to assist the medical community\u2019s ability to answer key questions related to COVID-19 and Monkeypox.  ",
+      "description": "Research data repository of the CoronaWhy, globally distributed, volunteer-powered research organisation, trying to assist the medical community\u2019s ability to answer key questions related to COVID-19 and Monkeypox.",
       "lat": 52.0705,
       "lng": 4.3007,
       "hostname": "http://datasets.coronawhy.org",
       "launch_year": "2020",
       "country": "Netherlands",
       "continent": "Europe",
-      "gdcc_member": false
+      "gdcc_member": false,
+      "contact_email": "team@coronawhy.org"
     },
     {
       "name": "CROSSDA",
@@ -279,7 +280,8 @@
       "launch_year": "2022",
       "country": "Netherlands",
       "continent": "Europe",
-      "gdcc_member": false
+      "gdcc_member": false,
+      "contact_email": "info@dataverse.nl"
     },
     {
       "name": "Dartmouth Dataverse",
@@ -883,7 +885,8 @@
       "launch_year": "2022",
       "country": "Netherlands",
       "continent": "Europe",
-      "gdcc_member": false
+      "gdcc_member": false,
+      "contact_email": "info@odissei-data.nl"
     },
     {
       "name": "Open Data @ UCLouvain",
@@ -971,11 +974,10 @@
       "lat": 48.801407,
       "lng": 2.130122,
       "hostname": "entrepot.recherche.data.gouv.fr",
-      "about_url": "recherche.data.gouv.fr",
-      "metrics": true,
       "launch_year": "2022",
       "country": "France",
       "continent": "Europe",
+      "about_url": "recherche.data.gouv.fr",
       "harvesting_sets": [
         "ALL"
       ],

@@ -429,6 +429,19 @@
       "contact_email": "researchdata@hjelp.uit.no"
     },
     {
+      "name": "DATICE",
+      "description": "DATICE is a data service and archive for Icelandic social science research data",
+      "lat": 64.14042,
+      "lng": -21.9493,
+      "hostname": "dataverse.rhi.hi.is",
+      "launch_year": "2020",
+      "country": "Iceland",
+      "continent": "Europe",
+      "gdcc_member": false,
+      "doi_authority": "10.34881",
+      "contact_email": "felagsvisindastofnun@hi.is"
+    },
+    {
       "name": "DOREL",
       "description": "The institutional data repository DOREL - DOnn\u00e9es de REcherche Lorraines - is a tool for referencing the scientific production of the University of Lorraine as well as a space for publishing data sets produced within its research units. The repository is managed by a transversal team composed of coworkers from the University Libraries, the Research services, the IT services and the MSH Lorraine (Maison des Sciences de l'Homme). It is a multidisciplinary repository, developed with the Dataverse software.",
       "lat": 48.69637516,

@@ -377,6 +377,7 @@
       "launch_year": "2017",
       "country": "Spain",
       "continent": "Europe",
+      "about_url": "http://www.consorciomadrono.es/docs/eCienciaDatosTechnicalDescription.pdf",
       "harvesting_sets": [
         "openaire_data"
       ],

@@ -1238,19 +1238,6 @@
       "contact_email": "rdm@unimi.it"
     },
     {
-      "name": "UWI",
-      "description": "The University of the West Indies Research Datasets Repository.",
-      "lat": 18.006372,
-      "lng": -76.747148,
-      "hostname": "dataverse.sta.uwi.edu",
-      "metrics": true,
-      "launch_year": "2017",
-      "country": "Jamaica",
-      "continent": "North America",
-      "gdcc_member": false,
-      "doi_authority": "\u2205"
-    },
-    {
       "name": "VTTI",
       "description": "Transportation data repository maintained by the Virginia Tech Transportation Institute.",
       "lat": 37.190102,

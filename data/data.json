@@ -992,7 +992,7 @@
       "launch_year": "2022",
       "country": "France",
       "continent": "Europe",
-      "about_url": "recherche.data.gouv.fr",
+      "about_url": "https://recherche.data.gouv.fr",
       "harvesting_sets": [
         "ALL"
       ],

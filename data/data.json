@@ -1054,6 +1054,17 @@
       "contact_email": "researchdata@urosario.edu.co"
     },
     {
+      "name": "Reposit\u00f3rio Brasileiro Livre para Dados Abertos do Solo \u2013 FEBR",
+      "description": "O FEBR \u00e9 o maior reposit\u00f3rio de dados abertos do solo do Brasil! Aqui voc\u00ea encontra dados de diversas propriedades do solo de in\u00fameros locais do pa\u00eds. Voc\u00ea tamb\u00e9m pode publicar dados do solo que voc\u00ea tenha produzido.",
+      "lat": -24.85870956,
+      "lng": -54.33449022,
+      "hostname": "dataverse.mapbiomas.org",
+      "launch_year": "2022",
+      "country": "Brazil",
+      "continent": "South America",
+      "gdcc_member": false
+    },
+    {
       "name": "Reposit\u00f3rio de Dados de Pesquisa",
       "description": "Reposit\u00f3rio de dados de pesquisa Unifesp",
       "lat": -23.53763,

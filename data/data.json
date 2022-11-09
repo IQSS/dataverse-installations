@@ -721,6 +721,19 @@
       "contact_email": "CIP-RIU@cgiar.org"
     },
     {
+      "name": "IPGP Research Collection",
+      "description": "A repository for sharing and preserving research data and documents produced, collected and curated at the Institut de physique du globe de Paris (IPGP).",
+      "lat": 48.844925,
+      "lng": 2.356274,
+      "hostname": "dataverse.ipgp.fr",
+      "launch_year": "2022",
+      "country": "France",
+      "continent": "Europe",
+      "gdcc_member": false,
+      "doi_authority": "10.18715",
+      "contact_email": "rc-support@ipgp.fr"
+    },
+    {
       "name": "Italian Institute of Technology (IIT)",
       "description": "IIT Dataverse is the research data repository of Istituto Italiano di Tecnologia and has been launched in May 2021. IIT\u2019s research activity is focused on cutting-edge science in four Research Domains (Computational Sciences, LifeTech, Nanomaterials, and Robotics) and promotes excellence in basic and applied research. IIT Dataverse offers long-term storage and preservation to research data of IIT-affiliated researchers. IIT is also member of the Global Dataverse Community Consortium",
       "lat": 44.475,

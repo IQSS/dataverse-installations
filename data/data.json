@@ -946,6 +946,19 @@
       "contact_email": "jlapinska@ibs.bialowieza.pl"
     },
     {
+      "name": "osnaData",
+      "description": "osnaData, the institutional research data repository of the Osnabr\u00fcck University. osnaData offers all members of the university the possibility to publish their scientific research data according to the FAIR principles (Findable, Accessible, Interoperable, Reusable), thus making them visible, validatable and reusable worldwide. The research data repository osnaData is committed to the idea of Open Access as well as Open Science. Research data of all types and formats are published.",
+      "lat": 52.27329055,
+      "lng": 8.045669207,
+      "hostname": "osnadata.ub.uni-osnabrueck.de",
+      "launch_year": "2021",
+      "country": "Germany",
+      "continent": "Europe",
+      "gdcc_member": false,
+      "doi_authority": "10.26249",
+      "contact_email": "osnadata@ub.uni-osnabrueck.de"
+    },
+    {
       "name": "Peking University",
       "description": "Peking University Open Research Data Platform",
       "lat": 39.993923,

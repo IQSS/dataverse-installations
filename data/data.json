@@ -1080,6 +1080,19 @@
       "contact_email": "researchdata@urosario.edu.co"
     },
     {
+      "name": "Repositorio de datos de la Universidad de Concepci\u00f3n",
+      "description": "El repositorio de Datos de la Universidad de Concepci\u00f3n, tiene como objetivo conservar, visibilizar y poner a disposici\u00f3n los datos y/o complementos de informaci\u00f3n utilizada en los proyectos de investigaci\u00f3n por nuestros acad\u00e9micos y/o investigadores.",
+      "lat": -36.83226768,
+      "lng": -73.03503217,
+      "hostname": "datav.udec.cl",
+      "launch_year": "2022",
+      "country": "Chile",
+      "continent": "South America",
+      "gdcc_member": false,
+      "doi_authority": "10.48665",
+      "contact_email": "bibliotecas@udec.cl"
+    },
+    {
       "name": "Reposit\u00f3rio Brasileiro Livre para Dados Abertos do Solo \u2013 FEBR",
       "description": "O FEBR \u00e9 o maior reposit\u00f3rio de dados abertos do solo do Brasil! Aqui voc\u00ea encontra dados de diversas propriedades do solo de in\u00fameros locais do pa\u00eds. Voc\u00ea tamb\u00e9m pode publicar dados do solo que voc\u00ea tenha produzido.",
       "lat": -24.85870956,

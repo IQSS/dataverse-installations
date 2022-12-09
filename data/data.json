@@ -1141,6 +1141,19 @@
       "doi_authority": "\u2205"
     },
     {
+      "name": "Reposit\u00f3rio Polen",
+      "description": "Reposit\u00f3rio Polen, is maintained by the FCT through its Scientific Computation Unit (FCCN). It aims to serve the Portuguese Scientific Community, providing it with a repository to hold their research data.",
+      "lat": 38.7592697,
+      "lng": -9.142404541,
+      "hostname": "repositorio.polen.fccn.pt",
+      "launch_year": "2022",
+      "country": "Portugal",
+      "continent": "Europe",
+      "gdcc_member": false,
+      "doi_authority": "10.57979",
+      "contact_email": "polen@fccn.pt"
+    },
+    {
       "name": "Reposit\u00f3rios Piloto da Rede Nacional de Ensino e Pesquisa",
       "description": "",
       "lat": -22.957167,

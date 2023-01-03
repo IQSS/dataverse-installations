@@ -8,7 +8,7 @@ assignees: ''
 
 ---
 
-*All information shared will be displayed on the map unless otherwise indicated*
+*All information shared will be publicly available. It will also be displayed on the map unless otherwise indicated*
 
 **Name of repository:**
 

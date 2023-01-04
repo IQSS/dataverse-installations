@@ -906,6 +906,19 @@
       "contact_email": "taco.de.bruin@nioz.nl"
     },
     {
+      "name": "NYCU Dataverse",
+      "description": "NYCU Dataverse is the institutional research data repository of the National Yang Ming Chiao Tung University. This repository is aimed to share, archive, preserve, cite, access, and explore research data produced in the university. Datasets deposited to the NYCU Dataverse and published are automatically given a citation and a persistent link, increasing the researcher's impact, and visibility of research.",
+      "lat": 24.7867714,
+      "lng": 120.9984256,
+      "hostname": "dataverse.lib.nycu.edu.tw",
+      "launch_year": "2022",
+      "country": "Taiwan (ROC)",
+      "continent": "Asia",
+      "gdcc_member": false,
+      "doi_authority": "10.5777",
+      "contact_email": "RDM@lib.nycu.edu.tw"
+    },
+    {
       "name": "ODISSEI Portal",
       "description": "ODISSEI (Open Data Infrastructure for Social Science and Economic Innovations) is the Dutch national research infrastructure for the social sciences in the Netherlands. ODISSEI brings together researchers with the necessary data, expertise and resources to conduct ground-breaking research and embrace the computational turn in social enquiry.",
       "lat": 52.369021,

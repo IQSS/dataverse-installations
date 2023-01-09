@@ -93,6 +93,9 @@
         "all_published"
       ],
       "gdcc_member": false,
+      "core_trust_seals": [
+        "https://www.coretrustseal.org/wp-content/uploads/2020/07/AUSSDA-The-Austrian-Social-Science-Data-Archive.pdf"
+      ],
       "doi_authority": "10.11587",
       "contact_email": "info@aussda.at"
     },

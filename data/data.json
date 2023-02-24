@@ -637,7 +637,7 @@
       "lng": -122.175297,
       "hostname": "dataverse.mpi-sws.org",
       "launch_year": "2018",
-      "country": "NA",
+      "country": "Not applicable",
       "continent": "\u2205",
       "about_url": "http://guides.dataverse.org/en/4.8.5/user",
       "gdcc_member": false,
@@ -1209,6 +1209,19 @@
       "continent": "Europe",
       "gdcc_member": false,
       "doi_authority": "10.4851"
+    },
+    {
+      "name": "SciELO Data",
+      "description": "SciELO Data is a multidisciplinary repository for deposition, preservation and dissemination of research data from articles submitted and approved for publication, already published in SciELO Network journals or deposited in SciELO Preprints.",
+      "lat": -23.59367609,
+      "lng": -46.64377008,
+      "hostname": "data.scielo.org",
+      "launch_year": "2020",
+      "country": "Brazil",
+      "continent": "South America",
+      "gdcc_member": false,
+      "doi_authority": "10.48331",
+      "contact_email": "data@scielo.org"
     },
     {
       "name": "SODHA",

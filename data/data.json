@@ -1213,8 +1213,8 @@
     {
       "name": "SciELO Data",
       "description": "SciELO Data is a multidisciplinary repository for deposition, preservation and dissemination of research data from articles submitted and approved for publication, already published in SciELO Network journals or deposited in SciELO Preprints.",
-      "lat": -23.59367609,
-      "lng": -46.64377008,
+      "lat": -23.595747,
+      "lng": -46.647352,
       "hostname": "data.scielo.org",
       "launch_year": "2020",
       "country": "Brazil",

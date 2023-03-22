@@ -100,6 +100,18 @@
       "contact_email": "info@aussda.at"
     },
     {
+      "name": "bonndata",
+      "description": "bonndata is a state-of-the-art, cross-disciplinary research data repository designed for scientists at the University of Bonn. The repository is an integral part of the University of Bonn's research infrastructure and it is maintained by the Research Data Service Center, which offers a range of services to help researchers manage their data throughout the research lifecycle.",
+      "lat": 50.72894416,
+      "lng": 7.088606727,
+      "hostname": "bonndata.uni-bonn.de/",
+      "launch_year": "2023",
+      "country": "Germany",
+      "continent": "Europe",
+      "gdcc_member": false,
+      "contact_email": "szerr@uni-bonn.de"
+    },
+    {
       "name": "Borealis",
       "description": "Open for researchers and organizations associated with subscribing Canadian universities to deposit data.",
       "lat": 43.6532,

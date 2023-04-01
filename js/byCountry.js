@@ -41,9 +41,6 @@ class ByCountry extends HTMLElement {
       for (var i = 0; i < installations.length; i++) {
         var installation = installations[i];
         var country = installation.country;
-        if (country == 'NA') {
-          continue;
-        }
         if (byCountryUnsorted[country] == undefined) {
           byCountryUnsorted[country] = [];
         }

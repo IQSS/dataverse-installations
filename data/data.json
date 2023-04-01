@@ -649,8 +649,8 @@
       "lng": -122.175297,
       "hostname": "dataverse.mpi-sws.org",
       "launch_year": "2018",
-      "country": "Not applicable",
-      "continent": "\u2205",
+      "country": "Germany",
+      "continent": "Europe",
       "about_url": "http://guides.dataverse.org/en/4.8.5/user",
       "gdcc_member": false,
       "doi_authority": "10.5072"

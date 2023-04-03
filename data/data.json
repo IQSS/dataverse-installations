@@ -156,6 +156,19 @@
       "contact_email": "lab3i@cbpf.br"
     },
     {
+      "name": "CESA | Repositorio de datos acad\u00e9micos",
+      "description": "Discover the data on entrepreneurship projects, innovation plans, digital transformation proposals, consumers, and financial markets. Also, explore research on business, management, and entrepreneurship research development at our Business school.",
+      "lat": 4.621920153,
+      "lng": -74.06522592,
+      "hostname": "opendata.cesa.edu.co",
+      "launch_year": "2023",
+      "country": "Columbia",
+      "continent": "South America",
+      "gdcc_member": false,
+      "doi_authority": "10.5713",
+      "contact_email": "biblioteca@cesa.edu.co"
+    },
+    {
       "name": "CIDACS",
       "description": "Fiocruz-BA data repository publishes epidemiological data and research from all over Brazil",
       "lat": -12.922964,

@@ -143,6 +143,18 @@
       "doi_authority": "\u2205"
     },
     {
+      "name": "BRIN Dataverse",
+      "description": "The Repositori Ilmiah Nasional (RIN) is a means to share, preserve, cite, explore, and analyze research data. RIN increases data availability and allows others to reproduce research more easily. Researchers, data authors, publishers, data distributors, and affiliate institutions all receive academic credit and web visibility. Researchers, agencies, and funders have full control over research data.",
+      "lat": -6.228771,
+      "lng": 106.818082,
+      "hostname": "data.brin.go.id",
+      "launch_year": "2018",
+      "country": "Indonesia",
+      "continent": "Asia",
+      "gdcc_member": false,
+      "contact_email": "rin@brin.go.id"
+    },
+    {
       "name": "Centro Brasileiro de Pesquisas F\u00edsicas - CBPF",
       "description": "Brazilian Center for Research in Physics",
       "lat": -22.954204,
@@ -865,19 +877,6 @@
       "doi_authority": "10.1813",
       "board": "https://github.com/orgs/IQSS/projects/10",
       "contact_email": "libra@virginia.edu"
-    },
-    {
-      "name": "BRIN Dataverse",
-      "description": "The Repositori Ilmiah Nasional (RIN) is a means to share, preserve, cite, explore, and analyze research data. RIN increases data availability and allows others to reproduce research more easily. Researchers, data authors, publishers, data distributors, and affiliate institutions all receive academic credit and web visibility. Researchers, agencies, and funders have full control over research data.",
-      "lat": -6.228771,
-      "lng": 106.818082,
-      "hostname": "data.brin.go.id",
-      "metrics": true,
-      "launch_year": "2018",
-      "country": "Indonesia",
-      "continent": "Asia",
-      "gdcc_member": false,
-      "contact_email": "rin@brin.go.id"
     },
     {
       "name": "Lithuanian Data Archive for Social Sciences and Humanities (LiDA)",

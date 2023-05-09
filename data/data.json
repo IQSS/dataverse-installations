@@ -798,8 +798,8 @@
       "contact_email": "rdm@iit.it"
     },
     {
-      "name": "Johns Hopkins University",
-      "description": "Johns Hopkins University Data Archive",
+      "name": "Johns Hopkins Research Data Repository",
+      "description": "Johns Hopkins Research Data Repository",
       "lat": 39.329055,
       "lng": -76.620335,
       "hostname": "archive.data.jhu.edu",

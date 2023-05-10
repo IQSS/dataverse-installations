@@ -799,7 +799,7 @@
     },
     {
       "name": "Johns Hopkins Research Data Repository",
-      "description": "Johns Hopkins Research Data Repository",
+      "description": "The Johns Hopkins Research Data Repository is an open access repository for Johns Hopkins researchers to share their research data. It is administered by professional curators at JHU Data Services, who will work with depositors to enable future discovery and reuse of your data.",
       "lat": 39.329055,
       "lng": -76.620335,
       "hostname": "archive.data.jhu.edu",

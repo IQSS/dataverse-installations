@@ -330,6 +330,19 @@
       "contact_email": "info@dataverse.nl"
     },
     {
+      "name": "dare",
+      "description": "",
+      "lat": 53.1468491,
+      "lng": 8.183134727,
+      "hostname": "dare.uol.de",
+      "launch_year": "2022",
+      "country": "Germany",
+      "continent": "Europe",
+      "gdcc_member": false,
+      "doi_authority": "10.57782",
+      "contact_email": "fdm-support@uol.de"
+    },
+    {
       "name": "Dartmouth Dataverse",
       "description": "",
       "lat": 43.704448,

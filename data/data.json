@@ -331,7 +331,7 @@
     },
     {
       "name": "dare",
-      "description": "",
+      "description": "/dare/ (short for data repository) is the central institutional repository for research data at the Carl von Ossietzky University of Oldenburg. It serves as a platform for research data generated at the University or created in its context. All users affiliated with the University are welcome to upload their research data here.",
       "lat": 53.1468491,
       "lng": 8.183134727,
       "hostname": "dare.uol.de",

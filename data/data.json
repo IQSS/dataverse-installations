@@ -728,18 +728,6 @@
       "contact_email": "wpavan@ifdc.org"
     },
     {
-      "name": "Ifsttar Dataverse",
-      "description": "Ifsttar Dataverse is an institutional repository for research data of the French Institute of Science and Technology for Transport, Development and Networks. It catalogues research data in the field of transports, spatial planning and civil engineering.",
-      "lat": 48.8528,
-      "lng": 2.6027,
-      "hostname": "research-data.ifsttar.fr",
-      "launch_year": "2019",
-      "country": "France",
-      "continent": "Europe",
-      "gdcc_member": false,
-      "doi_authority": "10.25578"
-    },
-    {
       "name": "IISH Dataverse",
       "description": "The IISH Dataverse contains micro-, meso-, and macro-level datasets on social and economic history.",
       "lat": 52.369021,

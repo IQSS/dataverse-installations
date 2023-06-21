@@ -612,6 +612,17 @@
       "contact_email": "datahelp@gmu.edu"
     },
     {
+      "name": "Gustave Eiffel University Dataverse",
+      "description": "Les donn\u00e9es de recherche de l'Universit\u00e9 Gustave Eiffel",
+      "lat": 48.84300627,
+      "lng": 2.587602512,
+      "hostname": "data.univ-gustave-eiffel.fr",
+      "launch_year": "2017",
+      "country": "France",
+      "continent": "Europe",
+      "gdcc_member": false
+    },
+    {
       "name": "G\u00f6ttingen Research Online",
       "description": "G\u00f6ttingen Research Online is an institutional repository for the publication of research data at the G\u00f6ttingen Campus. It is managed by the G\u00f6ttingen eResearch Alliance, a joint group of the G\u00f6ttingen State and University Library and Gesellschaft f\u00fcr wissenschaftliche Datenverarbeitung mbH G\u00f6ttingen.",
       "lat": 51.533713,

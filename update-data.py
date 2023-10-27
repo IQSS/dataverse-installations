@@ -10,7 +10,7 @@ mydict = {}
 mylist = []
 
 # Data from dataverse.org/metrics (if version of Dataverse is new enough).
-metrics_url = 'https://metrics.dataverse.org/dataverse-metrics/config.json'
+metrics_url = 'https://metrics.dataverse.org/global/config.json'
 response = urlrequest.urlopen(metrics_url)
 metrics_json = json.loads(response.read().decode(response.info().get_param('charset') or 'utf-8'))
 metrics_list = []

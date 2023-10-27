@@ -249,6 +249,18 @@
       "contact_email": "dataverse@cirad.fr"
     },
     {
+      "name": "Concorda",
+      "description": "The Concorda repository was originally created as an ad-hoc initiative for data exchange during the Covid-19 pandemic by SZTAKI and WIGNER research institutes. Since then, the repository was significantly expanded with additional disk space and other resources donated by SZTAKI and WIGNER, and accepts data from all Hungarian researchers (with some storage constraints). In 2021, the ARP project started to build research data infrastructure for the Hungarian Research Network, and chose Concorda as the main repository component to be integrated, while also significantly expanding its storage capacity. See also https://science-research-data.hu, https://fairsharing.org/4585, https://www.re3data.org/repository/r3d100014109, https://v2.sherpa.ac.uk/id/repository/10638",
+      "lat": 47.47834443,
+      "lng": 19.05210423,
+      "hostname": "science-data.hu",
+      "launch_year": "2020",
+      "country": "Hungary",
+      "continent": "Europe",
+      "gdcc_member": false,
+      "contact_email": "concorda-admin@dsd.sztaki.hu"
+    },
+    {
       "name": "CORA. Research Data Repository (RDR)",
       "description": "CORA. Research Data Repository (RDR) is a federated and multidisciplinary data repository that allows Catalan universities, CERCA research centers and other entities that carry out research to publish research datasets in FAIR mode and following the EOSC guidelines. The objectives of the RDR are to increase the efficiency and transparency of research through the rapid dissemination of datasets and to facilitate their reuse.",
       "lat": 41.38745982,

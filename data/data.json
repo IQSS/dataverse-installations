@@ -484,10 +484,7 @@
       "launch_year": "2013",
       "country": "Netherlands",
       "continent": "Europe",
-      "about_url": "https://dans.knaw.nl/en/about/services/archiving-and-reusing-data/DataverseNL/about?set_language=en",
-      "harvesting_sets": [
-        "uvt_datasets"
-      ],
+      "about_url": "https://dans.knaw.nl/en/data-services/dataversenl/",
       "gdcc_member": true,
       "core_trust_seals": [
         "https://www.coretrustseal.org/wp-content/uploads/2018/04/Tilburg-University-Dataverse.pdf"

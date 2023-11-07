@@ -343,6 +343,19 @@
       "contact_email": "info@dataverse.nl"
     },
     {
+      "name": "DANS Data Station Social Sciences and Humanities",
+      "description": "The Data Station Social Sciences and Humanities is a service of DANS. It allows you to deposit and search for data within the social sciences and humanities.",
+      "lat": 52.0705,
+      "lng": 4.3007,
+      "hostname": "ssh.datastations.nl",
+      "launch_year": "2023",
+      "country": "Netherlands",
+      "continent": "Europe",
+      "gdcc_member": false,
+      "doi_authority": "10.17026",
+      "contact_email": "info@dans.knaw.nl"
+    },
+    {
       "name": "dare",
       "description": "/dare/ (short for data repository) is the central institutional repository for research data at the Carl von Ossietzky University of Oldenburg. It serves as a platform for research data generated at the University or created in its context. All users affiliated with the University are welcome to upload their research data here.",
       "lat": 53.1468491,

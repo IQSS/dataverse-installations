@@ -1196,7 +1196,7 @@
       "description": "El Repositorio de Datos de Investigaci\u00f3n de la Universidad Nacional de La Plata es una plataforma en l\u00ednea dedicada a la organizaci\u00f3n y difusi\u00f3n de datos de investigaci\u00f3n para toda la comunidad acad\u00e9mica de la UNLP. El objetivo de esta plataforma es reunir y dar acceso a los datos generados desde todos los \u00e1mbitos de la UNLP para garantizar su preservaci\u00f3n, fomentar el reuso y maximizar el impacto de los mismos. El proyecto surge como respuesta de la UNLP a las obligaciones planteadas en la ley 26.899 y a numerosos requerimientos institucionales de resguardo y difusi\u00f3n de conjuntos de datos de gran valor acad\u00e9mico. El Repositorio de Datos de Investigaci\u00f3n se integra al conjunto de servicios brindados desde la UNLP orientados a optimizar la gesti\u00f3n, maximizar la difusi\u00f3n y preservar toda la producci\u00f3n intelectual de la Universidad.",
       "lat": -34.90724904,
       "lng": -57.94223174,
-      "hostname": "https://datos.unlp.edu.ar",
+      "hostname": "datos.unlp.edu.ar",
       "launch_year": "2023",
       "country": "Argentina",
       "continent": "South America",

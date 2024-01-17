@@ -742,6 +742,20 @@
       "doi_authority": "10.5072"
     },
     {
+      "name": "IDSC Dataverse",
+      "description": "The IDSC Dataverse is the Data Repository of the IDSC - International Data Service Center of IZA - Institute of Labor Economics. It was created as part of a project sponsored by the German Federal Ministry of Education and Research whose aim was to produce building blocks for research data trustees. The purpose of the IDSC Dataverse is to serve the needs of researchers and entities associated with IZA and make datasets available for replication, secondary research and teaching purposes. It adheres to the FAIR data principles.",
+      "lat": 50.7300529,
+      "lng": 7.109468,
+      "hostname": "dataverse.iza.org",
+      "launch_year": "2024",
+      "country": "Germany",
+      "continent": "Europe",
+      "about_url": "https://idsc.iza.org",
+      "gdcc_member": false,
+      "doi_authority": "10.15185",
+      "contact_email": "idsc@iza.org"
+    },
+    {
       "name": "IFDC Dataverse",
       "description": "Over the years, IFDC has conducted numerous research and demonstration trials across its global programs and projects. Looking to avoid poor documentation, loss of data, and to boost the efficiency of data usage and decision-making abilities, IFDC has implemented a center-wide initiative to collect all research and development data in standard accessible formats, collate all data and analyses, and to make it available through IFDC solutions. The Dataverse came to corroborate with the IFDC idea to implement the FAIR principles and make the data easily findable, accessible, interoperable, and reusable.",
       "lat": 34.76992466,

@@ -343,6 +343,18 @@
       "contact_email": "info@dataverse.nl"
     },
     {
+      "name": "DANS Data Station Physical and Technical Sciences",
+      "description": "Domain-specific data repository for research data from the Physical and Technical sciences. This repository focuses on the Dutch research community, offering repository services to organisations and individuals that have no (direct) acces to an institutional repository, or have a preference for the multi-disciplinary data services provided by DANS.",
+      "lat": 52.0705,
+      "lng": 4.3007,
+      "hostname": "phys-techsciences.datastations.nl",
+      "launch_year": "2023",
+      "country": "Netherlands",
+      "continent": "Europe",
+      "gdcc_member": false,
+      "contact_email": " info@dans.knaw.nl"
+    },
+    {
       "name": "DANS Data Station Social Sciences and Humanities",
       "description": "The Data Station Social Sciences and Humanities is a service of DANS. It allows you to deposit and search for data within the social sciences and humanities.",
       "lat": 52.0705,

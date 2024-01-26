@@ -343,6 +343,19 @@
       "contact_email": "info@dataverse.nl"
     },
     {
+      "name": "DANS Data Station Life Sciences",
+      "description": "Domain-specific data repository for the Life Sciences, covering all disciplines from the health, medical as well as the green life sciences. This repository primarily serves research communities in The Netherlands, but is open to international researchers and projects that carry a connection to The Netherlands or Dutch research institutes and programmes.",
+      "lat": 52.08083,
+      "lng": 4.345672,
+      "hostname": "lifesciences.datastations.nl",
+      "launch_year": "2023",
+      "country": "Netherlands",
+      "continent": "Europe",
+      "gdcc_member": false,
+      "doi_authority": "10.17026",
+      "contact_email": "info@dans.knaw.nl"
+    },
+    {
       "name": "DANS Data Station Physical and Technical Sciences",
       "description": "Domain-specific data repository for research data from the Physical and Technical sciences. This repository focuses on the Dutch research community, offering repository services to organisations and individuals that have no (direct) acces to an institutional repository, or have a preference for the multi-disciplinary data services provided by DANS.",
       "lat": 52.0705,
@@ -352,6 +365,7 @@
       "country": "Netherlands",
       "continent": "Europe",
       "gdcc_member": false,
+      "doi_authority": "10.17026",
       "contact_email": " info@dans.knaw.nl"
     },
     {

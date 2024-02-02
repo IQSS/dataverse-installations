@@ -100,6 +100,18 @@
       "contact_email": "info@aussda.at"
     },
     {
+      "name": "BioData.pt Data Management Portal (DMPortal)",
+      "description": "DMPortal is offered by BioData.pt, the Portuguese biological data infrastructure and national node of ELIXIR. The portal aims to support the national life sciences research community by enabling FAIR research practices. DMPortal is open to all life sciences fields, but has traditionally been more focused in supporting research in COVID-19, human health, and plant sciences.",
+      "lat": 38.736667,
+      "lng": -9.138889,
+      "hostname": "dmportal.biodata.pt",
+      "launch_year": "2020",
+      "country": "Portugal",
+      "continent": "Europe",
+      "gdcc_member": false,
+      "doi_authority": "10.34636"
+    },
+    {
       "name": "bonndata",
       "description": "bonndata is a state-of-the-art, cross-disciplinary research data repository designed for scientists at the University of Bonn. The repository is an integral part of the University of Bonn's research infrastructure and it is maintained by the Research Data Service Center, which offers a range of services to help researchers manage their data throughout the research lifecycle.",
       "lat": 50.72894416,

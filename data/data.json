@@ -100,6 +100,17 @@
       "contact_email": "info@aussda.at"
     },
     {
+      "name": "awf.rodbuk.pl",
+      "description": "",
+      "lat": 50.07272998,
+      "lng": 20.00123847,
+      "hostname": "awf.rodbuk.pl",
+      "launch_year": "2023",
+      "country": "Poland",
+      "continent": "Europe",
+      "gdcc_member": false
+    },
+    {
       "name": "BioData.pt Data Management Portal (DMPortal)",
       "description": "DMPortal is offered by BioData.pt, the Portuguese biological data infrastructure and national node of ELIXIR. The portal aims to support the national life sciences research community by enabling FAIR research practices. DMPortal is open to all life sciences fields, but has traditionally been more focused in supporting research in COVID-19, human health, and plant sciences.",
       "lat": 38.736667,
@@ -1514,6 +1525,18 @@
       "gdcc_member": true,
       "doi_authority": "10.25346",
       "contact_email": "datascience@ucla.edu"
+    },
+    {
+      "name": "uken.rodbuk.pl",
+      "description": "RODBUK Cracow Open Research Data Repository enables University of the National Education Commission researchers and doctoral students pursuing research projects to deposit, archive and make publicly available data from various disciplines and in various formats. Each dataset that is deposited in the repository will be automatically assigned a DOI identifier. Use of RODBUK for users is fully free of charge.",
+      "lat": 50.07383503,
+      "lng": 19.90838435,
+      "hostname": "uken.rodbuk.pl",
+      "launch_year": "2023",
+      "country": "Poland",
+      "continent": "Europe",
+      "gdcc_member": false,
+      "doi_authority": "10.24917"
     },
     {
       "name": "UNB Libraries Dataverse",

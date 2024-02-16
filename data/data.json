@@ -477,6 +477,18 @@
       "contact_email": "data@sciencespo.fr"
     },
     {
+      "name": "dataportal.ing.pan.pl",
+      "description": "IGS PAS Data Portal is an open data repository of Institute of Geological Sciences Polish Academy of Sciences. This portal is used to collect and share data, taking into account access to the data from external repositories. IGS PAS data are open and provided for free use for non-commercial purposes under applicable laws on data sharing public and publicly funded. In the case of using data by external entities, the data source must be cited following the guidelines (information on how to cite data is included in the Cite Dataset field).",
+      "lat": 52.22835613,
+      "lng": 20.99329514,
+      "hostname": "dataportal.ing.pan.pl",
+      "launch_year": "2024",
+      "country": "Poland",
+      "continent": "Europe",
+      "gdcc_member": false,
+      "doi_authority": "10.60871"
+    },
+    {
       "name": "DataRepositoriUM",
       "description": "Institutional Data Repository of the University of Minho. Share, publish and manage research data from UMinho research units.",
       "lat": 41.561246,

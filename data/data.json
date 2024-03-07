@@ -1640,6 +1640,7 @@
       "continent": "Africa",
       "gdcc_member": false,
       "doi_authority": "10.34725",
+      "board": "https://github.com/orgs/IQSS/projects/37",
       "contact_email": "a.tenorio@cgiar.org"
     }
   ]

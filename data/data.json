@@ -1376,7 +1376,7 @@
       "description": "SoilData is the largest Brazilian soil data repository! Here you will find data on various soil properties from numerous locations in the country. You can also publish soil data that you have produced.",
       "lat": -24.85870956,
       "lng": -54.33449022,
-      "hostname": "solo.mapbiomas.org",
+      "hostname": "soildata.mapbiomas.org/",
       "launch_year": "2023",
       "country": "Brazil",
       "continent": "South America",

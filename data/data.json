@@ -1240,6 +1240,19 @@
       "contact_email": "redape@embrapa.br"
     },
     {
+      "name": "Repositorio de Datos Abiertos de Investigaci\u00f3n (Redata)",
+      "description": "El Repositorio de Datos Abiertos de Investigaci\u00f3n de Uruguay (Redata) busca incentivar la publicaci\u00f3n y reutilizaci\u00f3n de los resultados de datos de investigaciones nacionales de cualquier \u00e1rea o disciplina. Es un proyecto de la Agencia Nacional de Investigaci\u00f3n e Innovaci\u00f3n (ANII) de Uruguay y forma parte del Sistema Nacional de Repositorios Digitales Abiertos de ciencia y tecnolog\u00eda (SILO), una red de repositorios de acceso abierto interoperables, conformada por instituciones del sistema cient\u00edfico y tecnol\u00f3gico uruguayo, que promueve el acceso, la preservaci\u00f3n y visibilidad de la producci\u00f3n nacional en ciencia y tecnolog\u00eda",
+      "lat": -34.8781547,
+      "lng": -56.07650597,
+      "hostname": "redata.anii.org.uy",
+      "launch_year": "2024",
+      "country": "Uruguay",
+      "continent": "South America",
+      "gdcc_member": true,
+      "doi_authority": "10.60895",
+      "contact_email": "redata@anii.org.uy"
+    },
+    {
       "name": "Repositorio de Datos Acad\u00e9micos RDA-UNR",
       "description": "El Repositorio de Datos Acad\u00e9micos UNR (RDA-UNR) permite compartir, archivar, acceder, explorar y citar los datos de investigaci\u00f3n gestionados por los docentes, investigadores y alumnos de la UNR, con el fin de dar visibilidad a los datos, potenciando su acceso, su reutilizaci\u00f3n y garantizando su preservaci\u00f3n a largo plazo. Es un repositorio de auto publicaci\u00f3n, en el cual los usuarios cargan, organizan, describen y publican sus datos. Cuentan para hacerlo con la ayuda de un equipo de curadores, gu\u00edas y sesiones de entrenamiento. The Academic Data Repository of the National University of Rosario (RDA- UNR) allows for sharing, storing, accessing, exploring, and citing research data managed by UNR professors, researchers and students so as to make these data visible and promote its use and reutilization, ensuring its long-term preservation. It is a self-publishing repository, i.e. users upload, organize, describe and publish their own data with the assistance of a team of curators, user guides and training sessions.",
       "lat": -32.95019324,

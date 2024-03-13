@@ -16,7 +16,7 @@ assignees: ''
 **Homepage URL of repository:**
 
 
-**Location of the repository (lat/long preferably; or street address; or city, country):**
+**Latitude and Longitude of the repository:**
 
 
 **Year when repository started operating:**
@@ -30,7 +30,7 @@ assignees: ''
 **Email address of repository contact:**
 
 
-**DOI authority (such as 10.26193; if applicable; won't be displayed on the map):**
+**DOI authority (such as 10.26193; if applicable; won't be displayed on the map), if applicable:**
 
 
-**Link to successful [Core Trust Seal](https://www.coretrustseal.org) application:**
+**Link to successful [Core Trust Seal](https://www.coretrustseal.org) application, if applicable:**

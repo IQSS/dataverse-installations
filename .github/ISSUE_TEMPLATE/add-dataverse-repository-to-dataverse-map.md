@@ -16,7 +16,7 @@ assignees: ''
 **Homepage URL of repository:**
 
 
-**Latitude and Longitude of the repository:**
+**Latitude and longitude of the repository:**
 
 
 **Year when repository started operating:**

@@ -1350,6 +1350,19 @@
       "contact_email": "durangouf@javeriana.edu.co"
     },
     {
+      "name": "Repositorio TECdatos",
+      "description": "El Repositorio de Datos de Investigaci\u00f3n del Tecnol\u00f3gico de Costa Rica, se ha implementado con el prop\u00f3sito de preservar, difundir y proporcionar acceso a los datos de investigaci\u00f3n generados por los acad\u00e9micos, investigadores y estudiantes de la Universidad. La iniciativa se enfoca en aumentar la visibilidad de los datos de investigaci\u00f3n, asegurando su preservaci\u00f3n a largo plazo y facilitando su acceso y reutilizaci\u00f3n por parte de la comunidad cient\u00edfica y el p\u00fablico en general. El repositorio tambi\u00e9n fomenta la transparencia y la integridad de la investigaci\u00f3n al ofrecer un acceso libre y abierto a los datos, lo que permite una mayor colaboraci\u00f3n y un avance mas r\u00e1pido en el conocimiento cient\u00edfico.",
+      "lat": 9.854961731,
+      "lng": -83.91238269,
+      "hostname": "dataverse.tec.ac.cr",
+      "launch_year": "2024",
+      "country": "Costa Rica",
+      "continent": "North America",
+      "gdcc_member": false,
+      "doi_authority": "10.18845",
+      "contact_email": "datatec@itcr.ac.cr"
+    },
+    {
       "name": "Reposit\u00f3rio de Dados de Pesquisa",
       "description": "Reposit\u00f3rio de dados de pesquisa Unifesp",
       "lat": -23.53763,

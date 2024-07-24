@@ -1706,6 +1706,19 @@
       "doi_authority": "10.34725",
       "board": "https://github.com/orgs/IQSS/projects/37",
       "contact_email": "a.tenorio@cgiar.org"
+    },
+    {
+      "name": "Yale Dataverse",
+      "description": "Yale Dataverse is a data repository service for Yale University faculty, staff, students, and affiliates to share, preserve, and cite research data. Yale Library hosts and manages Yale Dataverse to ensure research produced at Yale is accessible and discoverable to the global community.",
+      "lat": 41.316614,
+      "lng": -72.922209,
+      "hostname": "dataverse.yale.edu",
+      "launch_year": "2023",
+      "country": "USA",
+      "continent": "North America",
+      "gdcc_member": true,
+      "doi_authority": "10.606",
+      "contact_email": "dataverseadmin@yale.edu"
     }
   ]
 }

@@ -1716,6 +1716,7 @@
       "launch_year": "2023",
       "country": "USA",
       "continent": "North America",
+      "about_url": "https://researchdata.yale.edu/yale-dataverse",
       "gdcc_member": true,
       "doi_authority": "10.606",
       "contact_email": "dataverseadmin@yale.edu"

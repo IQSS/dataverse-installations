@@ -1588,6 +1588,19 @@
       "doi_authority": "10.35003"
     },
     {
+      "name": "TUDOdata",
+      "description": "TUDOdata is the central research data repository of TU Dortmund University. It is intended to archive and publish high-quality research data and metadata from all TU Dortmund Universities disciplines. TUDOdata ensures data- and metadata quality by careful curation performed by the central research data service or faculty and joint collaboration representatives.",
+      "lat": 51.48999,
+      "lng": 7.40749,
+      "hostname": "data.tu-dortmund.de",
+      "launch_year": "2024",
+      "country": "Germany",
+      "continent": "Europe",
+      "gdcc_member": false,
+      "doi_authority": "10.17877",
+      "contact_email": "fdm@tu-dortmund.de"
+    },
+    {
       "name": "UCLA Dataverse",
       "description": "",
       "lat": 34.0689,
@@ -1713,6 +1726,7 @@
       "lat": 41.316614,
       "lng": -72.922209,
       "hostname": "dataverse.yale.edu",
+      "metrics": true,
       "launch_year": "2023",
       "country": "USA",
       "continent": "North America",

@@ -1330,6 +1330,19 @@
       "contact_email": "datos@sedici.unlp.edu.ar"
     },
     {
+      "name": "Repositorio de datos de Investigaci\u00f3n UdeA",
+      "description": "The Research Data Management System (GDI) is a service provided by the Library System and the Vice-Rectorate for Research of the University of Antioquia, designed specifically for researchers and operated online through the Dataverse platform. Its main function is to manage the collection of open data produced by the University in the course of teaching, research and extension activities.",
+      "lat": 6.230833,
+      "lng": -75.590553,
+      "hostname": "datosdeinvestigacion.udea.edu.co",
+      "launch_year": "2024",
+      "country": "Colombia",
+      "continent": "South America",
+      "gdcc_member": false,
+      "doi_authority": "10.60905",
+      "contact_email": "repositoriodedatos@udea.edu.co"
+    },
+    {
       "name": "Repositorio de Datos de Investigaci\u00f3n Universidad del Rosario",
       "description": "Explore research data from Universidad del Rosario affiliated researchers.",
       "lat": 4.600598,

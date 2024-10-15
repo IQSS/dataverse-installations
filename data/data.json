@@ -613,6 +613,18 @@
       "contact_email": "felagsvisindastofnun@hi.is"
     },
     {
+      "name": "DeiC Dataverse",
+      "description": "DeiC Dataverse is the Danish National Repository for Research Data and is available to all universities in Denmark. It is operated by the Danish e-infrastructure Consortium, DeiC, in collaboration with the University of Copenhagen.",
+      "lat": 55.68061837,
+      "lng": 12.57224588,
+      "hostname": "sekretariat@deic.dk",
+      "launch_year": "2024",
+      "country": "Denmark",
+      "continent": "Europe",
+      "gdcc_member": false,
+      "doi_authority": "10.60612"
+    },
+    {
       "name": "DOREL",
       "description": "The institutional data repository DOREL - DOnn\u00e9es de REcherche Lorraines - is a tool for referencing the scientific production of the University of Lorraine as well as a space for publishing data sets produced within its research units. The repository is managed by a transversal team composed of coworkers from the University Libraries, the Research services, the IT services and the MSH Lorraine (Maison des Sciences de l'Homme). It is a multidisciplinary repository, developed with the Dataverse software.",
       "lat": 48.69637516,

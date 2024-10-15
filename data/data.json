@@ -617,12 +617,13 @@
       "description": "DeiC Dataverse is the Danish National Repository for Research Data and is available to all universities in Denmark. It is operated by the Danish e-infrastructure Consortium, DeiC, in collaboration with the University of Copenhagen.",
       "lat": 55.68061837,
       "lng": 12.57224588,
-      "hostname": "sekretariat@deic.dk",
+      "hostname": "dataverse.deic.dk",
       "launch_year": "2024",
       "country": "Denmark",
       "continent": "Europe",
       "gdcc_member": false,
-      "doi_authority": "10.60612"
+      "doi_authority": "10.60612",
+      "contact_email": "sekretariat@deic.dk"
     },
     {
       "name": "DOREL",

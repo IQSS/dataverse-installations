@@ -1648,6 +1648,19 @@
       "contact_email": "fdm@tu-dortmund.de"
     },
     {
+      "name": "UC Berkeley Library Dataverse",
+      "description": "All data in the UC Berkeley Library Dataverse has been acquired and licensed by the library for use by UC Berkeley and Lawrence Berkeley National Lab students, faculty, and staff. Data records and terms are viewable by any user, regardless of affiliation. Please login to the repository using a Calnet ID and passphrase to view and download data files. Note that accessing some data files requires agreeing to the terms of use as listed in the guestbook functionality. Research data (i.e. data, code, and other outputs generated during the research process) are not stored on UC Berkeley Library\u2019s Dataverse.",
+      "lat": 37.8721922,
+      "lng": -122.2594984,
+      "hostname": "datasets.lib.berkeley.edu",
+      "launch_year": "2024",
+      "country": "USA",
+      "continent": "North America",
+      "gdcc_member": false,
+      "doi_authority": "10.60503",
+      "contact_email": "librarydataservices@berkeley.edu"
+    },
+    {
       "name": "UCLA Dataverse",
       "description": "",
       "lat": 34.0689,

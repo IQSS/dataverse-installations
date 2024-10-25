@@ -1688,6 +1688,19 @@
       "doi_authority": "10.24917"
     },
     {
+      "name": "ULi\u00e8ge Open Data Repository",
+      "description": "The ULi\u00e8ge Dataverse is the ULi\u00e8ge institutional open data sharing repository, used by ULi\u00e8ge researchers to share datasets with the global scientific community, according to the FAIR data principles.",
+      "lat": 50.64127729,
+      "lng": 5.575774769,
+      "hostname": "dataverse.uliege.be",
+      "launch_year": "2023",
+      "country": "Belgium",
+      "continent": "Europe",
+      "gdcc_member": false,
+      "doi_authority": "10.58119",
+      "contact_email": "dataverse.admin@uliege.be"
+    },
+    {
       "name": "UNB Libraries Dataverse",
       "description": "UNB Dataverse is repository for research data collected by researchers and organizations primarily affiliated with the University of New Brunswick.",
       "lat": 45.964993,

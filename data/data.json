@@ -166,6 +166,9 @@
         "sp_dataverse"
       ],
       "gdcc_member": true,
+      "core_trust_seals": [
+        "https://doi.org/10.34894/PUHYXX"
+      ],
       "doi_authority": "10.5683",
       "board": "https://github.com/orgs/IQSS/projects/8",
       "contact_email": "dataverse@scholarsportal.info"

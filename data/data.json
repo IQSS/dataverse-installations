@@ -542,7 +542,7 @@
       ],
       "gdcc_member": true,
       "core_trust_seals": [
-        "https://ctscertificationbucket.s3.amazonaws.com/2023/4/2023-04-18-Consorcio-Madro\u00f1o-e-cienciaDatos_final.pdf?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA4ZTNLHN3BLBCAFWX%2F20230926%2Feu-central-1%2Fs3%2Faws4_request&X-Amz-Date=20230926T171521Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=0e5e9439dc59b8f87b7ac839fd4093325996669ef6ff66236eaa0dd10ab65ca8"
+        "https://doi.org/10.34894/CUGYWW"
       ],
       "doi_authority": "10.2195",
       "contact_email": "eciencia@consorciomadrono.es"

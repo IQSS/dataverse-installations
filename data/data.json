@@ -1665,7 +1665,7 @@
     },
     {
       "name": "UCLA Dataverse",
-      "description": "",
+      "description": "UCLA Dataverse allows for the sharing and storage of data from UCLA research. This makes it accessible, discoverable and reusable by the public. The platform also hosts sub-dataverses for different campus groups like schools or departments.",
       "lat": 34.0689,
       "lng": -118.4452,
       "hostname": "dataverse.ucla.edu",

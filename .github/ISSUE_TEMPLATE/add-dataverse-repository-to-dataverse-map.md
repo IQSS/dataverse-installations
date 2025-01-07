@@ -10,19 +10,17 @@ assignees: ''
 
 *All information shared will be publicly available. It will also be displayed on the map unless otherwise indicated*
 
-**Name of repository:**
+# The following is required:
 
+**Name of repository:**
 
 **Homepage URL of repository:**
 
-
 **Latitude and longitude of the repository:**
-
 
 **Year when repository started operating:**
 
-
-*The following isn't required but is nice to have:*
+# The following isn't required but is nice to have:
 
 **A few sentences describing the repository:**
 

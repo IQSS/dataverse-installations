@@ -24,13 +24,10 @@ assignees: ''
 
 *The following isn't required but is nice to have:*
 
-**A short description (few sentences) about the repository:**
-
+**A few sentences describing the repository:**
 
 **Email address of repository contact:**
 
-
 **DOI authority (such as 10.26193; if applicable; won't be displayed on the map), if applicable:**
-
 
 **Link to successful [Core Trust Seal](https://www.coretrustseal.org) application, if applicable:**

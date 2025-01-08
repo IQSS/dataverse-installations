@@ -557,7 +557,7 @@
       "country": "Colombia",
       "continent": "South America",
       "gdcc_member": false,
-      "contact_email": "biblio@udistrital.edu.co, repositorio@udistrital.edu.co"
+      "contact_email": "biblio@udistrital.edu.co; repositorio@udistrital.edu.co"
     },
     {
       "name": "DataverseNL",
@@ -706,7 +706,7 @@
       "country": "Brazil",
       "continent": "South America",
       "gdcc_member": false,
-      "contact_email": "infra.acad@fgv.br, biblioteca.digital@fgv.br"
+      "contact_email": "infra.acad@fgv.br; biblioteca.digital@fgv.br"
     },
     {
       "name": "Florida International University Research Data Portal",

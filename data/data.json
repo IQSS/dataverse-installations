@@ -1478,18 +1478,6 @@
       "contact_email": "polen@fccn.pt"
     },
     {
-      "name": "Reposit\u00f3rios Piloto da Rede Nacional de Ensino e Pesquisa",
-      "description": "",
-      "lat": -22.957167,
-      "lng": -43.176211,
-      "hostname": "dadosabertos.rnp.br",
-      "metrics": true,
-      "launch_year": "2019",
-      "country": "Brazil",
-      "continent": "South America",
-      "gdcc_member": false
-    },
-    {
       "name": "Repos\u00edtorio SoilData",
       "description": "SoilData is the largest Brazilian soil data repository! Here you will find data on various soil properties from numerous locations in the country. You can also publish soil data that you have produced.",
       "lat": -24.85870956,

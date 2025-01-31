@@ -114,18 +114,6 @@
       "contact_email": "info@aussda.at"
     },
     {
-      "name": "awf.rodbuk.pl",
-      "description": "",
-      "lat": 50.07272998,
-      "lng": 20.00123847,
-      "hostname": "awf.rodbuk.pl",
-      "metrics": true,
-      "launch_year": "2023",
-      "country": "Poland",
-      "continent": "Europe",
-      "gdcc_member": false
-    },
-    {
       "name": "BioData.pt Data Management Portal (DMPortal)",
       "description": "DMPortal is offered by BioData.pt, the Portuguese biological data infrastructure and national node of ELIXIR. The portal aims to support the national life sciences research community by enabling FAIR research practices. DMPortal is open to all life sciences fields, but has traditionally been more focused in supporting research in COVID-19, human health, and plant sciences.",
       "lat": 38.736667,

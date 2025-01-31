@@ -1503,6 +1503,19 @@
       "contact_email": "ciencia@mapbiomas.org"
     },
     {
+      "name": "RODBUCK UKEN",
+      "description": "RODBUK Cracow Open Research Data Repository enables University of the National Education Commission researchers and doctoral students pursuing research projects to deposit, archive and make publicly available data from various disciplines and in various formats. Each dataset that is deposited in the repository will be automatically assigned a DOI identifier. Use of RODBUK for users is fully free of charge.",
+      "lat": 50.07383503,
+      "lng": 19.90838435,
+      "hostname": "uken.rodbuk.pl",
+      "metrics": true,
+      "launch_year": "2023",
+      "country": "Poland",
+      "continent": "Europe",
+      "gdcc_member": false,
+      "doi_authority": "10.24917"
+    },
+    {
       "name": "RODBUK",
       "description": "RODBUK Cracow Open Research Data Repository was founded on the initiative of Board of Directors of the Cracow Library Group. The purpose of RODBUK is to collect, develop, archive and make available in open access all types of research data created by researchers, PhD candidates and students in the course of scientific activity. RODBUK is co-created by six Cracow universities:AGH University of Science and Technology, University of Physical Education in Krakow, Cracow University of Technology, Krakow University of Economics, Jagiellonian University in Krak\u00f3w, Pedagogical University of Krakow.",
       "lat": 50.06909616,
@@ -1688,19 +1701,6 @@
       "gdcc_member": true,
       "doi_authority": "10.25346",
       "contact_email": "datascience@ucla.edu"
-    },
-    {
-      "name": "uken.rodbuk.pl",
-      "description": "RODBUK Cracow Open Research Data Repository enables University of the National Education Commission researchers and doctoral students pursuing research projects to deposit, archive and make publicly available data from various disciplines and in various formats. Each dataset that is deposited in the repository will be automatically assigned a DOI identifier. Use of RODBUK for users is fully free of charge.",
-      "lat": 50.07383503,
-      "lng": 19.90838435,
-      "hostname": "uken.rodbuk.pl",
-      "metrics": true,
-      "launch_year": "2023",
-      "country": "Poland",
-      "continent": "Europe",
-      "gdcc_member": false,
-      "doi_authority": "10.24917"
     },
     {
       "name": "ULi\u00e8ge Open Data Repository",

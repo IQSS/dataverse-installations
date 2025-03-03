@@ -966,7 +966,7 @@
       ],
       "gdcc_member": true,
       "doi_authority": "10.7281",
-      "contact_email": "datamanagement@jhu.edu"
+      "contact_email": "dataservices@jhu.edu"
     },
     {
       "name": "JPL Open Repository",
@@ -1483,7 +1483,6 @@
       "lat": -22.957167,
       "lng": -43.176211,
       "hostname": "dadosabertos.rnp.br",
-      "metrics": true,
       "launch_year": "2019",
       "country": "Brazil",
       "continent": "South America",

@@ -1575,6 +1575,19 @@
       "doi_authority": "10.4851"
     },
     {
+      "name": "Sano",
+      "description": "The Dataverse instance of Sano Centre for Computational Medicine",
+      "lat": 50.06741043,
+      "lng": 19.92246206,
+      "hostname": "sano.rodbuk.pl",
+      "launch_year": "2025",
+      "country": "Poland",
+      "continent": "Europe",
+      "gdcc_member": false,
+      "doi_authority": "10.7158",
+      "contact_email": "rodbuk@sanoscience.org"
+    },
+    {
       "name": "SciELO Data",
       "description": "SciELO Data is a multidisciplinary repository for deposition, preservation and dissemination of research data from articles submitted and approved for publication, already published in SciELO Network journals or deposited in SciELO Preprints.",
       "lat": -23.595747,
@@ -1735,7 +1748,7 @@
       ],
       "doi_authority": "10.15139",
       "board": "https://github.com/orgs/IQSS/projects/5",
-      "contact_email": "odumarchive@unc.edu"
+      "contact_email": "rdmc_systems@unc.edu"
     },
     {
       "name": "Universit\u00e0 degli Studi di Milano",

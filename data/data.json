@@ -641,7 +641,7 @@
       "about_url": "https://blogs.ntu.edu.sg/lib-datamanagement/about-dr-ntu-data/",
       "gdcc_member": true,
       "doi_authority": "10.21979",
-      "contact_email": "library@ntu.edu.sg"
+      "contact_email": "library@ntu.edu.sg; yuyun.ishak@ntu.edu.sg"
     },
     {
       "name": "DUnAs",
@@ -1011,6 +1011,9 @@
       "country": "Belgium",
       "continent": "Europe",
       "gdcc_member": false,
+      "core_trust_seals": [
+        "https://doi.org/10.34894/X9G8HU"
+      ],
       "board": "https://github.com/orgs/IQSS/projects/39",
       "contact_email": "rdr@kuleuven.be"
     },
@@ -1751,6 +1754,19 @@
       "contact_email": "rdmc_systems@unc.edu"
     },
     {
+      "name": "University of Wroclaw",
+      "description": "RODBUK Cracow Open Research Data Repository of University of Wroclaw is used to collect, store and publicly share research data created during scientific works and research projects carried out by the scientific staff, doctoral students and students of UWr. RODBUK is open to all scientific units interested in depositing and sharing their research data. Each dataset placed in the Repository will be automatically assigned a DOI identifier. All published metadata will meet the guidelines provided by OpenAIRE. FAIR principles are applied in the Repository. The use of the Repository is free of charge.",
+      "lat": 51.11403897,
+      "lng": 17.03458906,
+      "hostname": "uwr.rodbuk.pl",
+      "launch_year": "2025",
+      "country": "Poland",
+      "continent": "Europe",
+      "gdcc_member": false,
+      "doi_authority": "10.34616",
+      "contact_email": "repozytorium.rodbuk@uwr.edu.pl"
+    },
+    {
       "name": "Universit\u00e0 degli Studi di Milano",
       "description": "The University of Milan is home to important research teams operating in the university's extremely rich variety of scientific-disciplinary sectors. Besides taking part in the most relevant national and international research programs, the University is also very active in the field of technology transfer and developing applications for scientific research results. dataverse.unimi.it is the repository for research data offered to all researchers in disciplines from health sciences to laws, from economics to hard sciences, from humanities to mathematics.",
       "lat": 45.4601,
@@ -1792,6 +1808,19 @@
       "doi_authority": "10.34725",
       "board": "https://github.com/orgs/IQSS/projects/37",
       "contact_email": "a.tenorio@cgiar.org"
+    },
+    {
+      "name": "Wyoming Data Repository",
+      "description": "The Wyoming Data Repository (WDR) is a service and platform offered by the University of Wyoming Libraries in collaboration with UW\u2019s Advanced Research Computing Center (ARCC). It serves as Wyoming\u2019s statewide research data repository, helping researchers from the University of Wyoming and Wyoming community colleges openly manage, share, discover, analyze, and preserve their research data.",
+      "lat": 41.31166,
+      "lng": -105.57928,
+      "hostname": "dataverse.arcc.uwyo.edu",
+      "launch_year": "2024",
+      "country": "USA",
+      "continent": "North America",
+      "gdcc_member": false,
+      "doi_authority": "10.15786",
+      "contact_email": "wyodata@uwyo.edu"
     },
     {
       "name": "Yale Dataverse",

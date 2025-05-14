@@ -1514,7 +1514,10 @@
       "launch_year": "2023",
       "country": "Poland",
       "continent": "Europe",
-      "gdcc_member": false
+      "gdcc_member": false,
+      "core_trust_seals": [
+        "https://doi.org/10.34894/BI2NDV"
+      ]
     },
     {
       "name": "RODBUK AGH",

@@ -616,6 +616,19 @@
       "contact_email": "felagsvisindastofnun@hi.is"
     },
     {
+      "name": "Datos para Resiliencia",
+      "description": "Datos para resiliencia is a platform developed by the Chilean Institute for Disaster Resilience (Itrend) that is designed to facilitate the use of data associated with disaster risk management (DRM) for researchers and developers of resilience solutions. It is an open-access tool used for finding, obtaining, sharing and preserving research-quality datasets.",
+      "lat": -33.42381139,
+      "lng": -70.6163207,
+      "hostname": "datospararesiliencia.cl",
+      "launch_year": "2024",
+      "country": "Chile",
+      "continent": "South America",
+      "gdcc_member": false,
+      "doi_authority": "10.71578",
+      "contact_email": "victor.codocedo+dpr@itrend.cl"
+    },
+    {
       "name": "DeiC Dataverse",
       "description": "DeiC Dataverse is the Danish National Repository for Research Data and is available to all universities in Denmark. It is operated by the Danish e-infrastructure Consortium, DeiC, in collaboration with the University of Copenhagen.",
       "lat": 55.68061837,

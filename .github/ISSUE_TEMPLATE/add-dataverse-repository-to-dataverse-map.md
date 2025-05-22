@@ -22,7 +22,7 @@ assignees: ''
 
 # The following isn't required but is nice to have:
 
-**A few sentences describing the repository:**
+**One or two sentences describing the repository:**
 
 **Email address of repository contact:**
 

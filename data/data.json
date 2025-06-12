@@ -1707,6 +1707,19 @@
       "contact_email": "support@tdl.org"
     },
     {
+      "name": "The Henryk Niewodnicza\u0144ski Institute of Nuclear Physics Polish Academy of Sciences",
+      "description": "The RODBUK Cracow Open Research Data Repository at the Henryk Niewodnicza\u0144ski Institute of Nuclear Physics Polish Academy of Sciences is intended for collecting, storing and public sharing of research data resulting from scientific work and research projects conducted by the employees and doctoral students of IFJ PAN. Each dataset uploaded to the repository will be automatically assigned a DOI (Digital Object Identifier). The use of the Repository is free of charge.",
+      "lat": 50.08810396,
+      "lng": 19.89059177,
+      "hostname": "ifj.rodbuk.pl",
+      "launch_year": "2025",
+      "country": "Poland",
+      "continent": "Europe",
+      "gdcc_member": false,
+      "doi_authority": "10.48733",
+      "contact_email": "beata.rozewicz@ifj.edu.pl"
+    },
+    {
       "name": "TRR170-DB",
       "description": "The TRR170-DB was set up to manage data products of the collaborative research center TRR 170 'Late Accretion onto Terrestrial Planets' (https://www.trr170-lateaccretion.de/). The repository also stores data by other institutions and researchers. Data include laboratory and other instrumental data on planetary samples, remote sensing data, geological maps and model simulations.",
       "lat": 52.42691139,

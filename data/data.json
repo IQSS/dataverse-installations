@@ -561,6 +561,19 @@
       "contact_email": "eciencia@consorciomadrono.es"
     },
     {
+      "name": "DataverseLV",
+      "description": "DataverseLV is a secure and sustainable repository for Latvian researchers to deposit, preserve, and share research data in line with Open Science and FAIR principles. The repository is developed, maintained, and curated by the Latvian Data Stewards Network - a collaborative group of specialists from Latvian research institutions who support researchers, advance research data management, and promote open science practices.",
+      "lat": 56.950876,
+      "lng": 24.110668,
+      "hostname": "dv.dataverse.lv",
+      "launch_year": "2025",
+      "country": "Latvia",
+      "continent": "Europe",
+      "gdcc_member": false,
+      "doi_authority": "10.71782",
+      "contact_email": "kristaps.oskalns@vpc.lv"
+    },
+    {
       "name": "DataverseNL",
       "description": "DataverseNL is a data repository hosted by DANS. Researchers associated with the DataverseNL partners (Several universities, higher education and research institutes) are able to deposit data. ",
       "lat": 52.08083,

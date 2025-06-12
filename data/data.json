@@ -1103,6 +1103,19 @@
       "contact_email": "chris.wilson@maine.edu"
     },
     {
+      "name": "MBLWHOI Library Dataverse",
+      "description": "MBLWHOI Library Dataverse is operated by Woods Hole Oceanographic Institution Data Library and Archive. Its purpose is to store, share, and preserve scientific datasets, particularly those related to oceanographic and marine science research. It enables researchers to make their data publicly accessible, ensures long-term data stewardship, and supports reproducibility and transparency in scientific research.",
+      "lat": 41.53275028,
+      "lng": -70.6503445,
+      "hostname": "dataverse.whoi.edu",
+      "launch_year": "2025",
+      "country": "USA",
+      "continent": "North America",
+      "gdcc_member": false,
+      "doi_authority": "10.26027",
+      "contact_email": "kbatyuk@whoi.edu"
+    },
+    {
       "name": "MELDATA",
       "description": "The Dataverse portal of the International Center for Agricultural Research in Dry Ares.",
       "lat": 33.88863,

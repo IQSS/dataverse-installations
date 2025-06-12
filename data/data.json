@@ -51,6 +51,19 @@
       "contact_email": "ada@anu.edu.au"
     },
     {
+      "name": "ADP - Slovenian Social Science Data Archives",
+      "description": "Slovenian Social Science Data Archives (ADP) was established in 1997 as an organizational unit of the Social Sciences Research Institute at the Faculty of Social Sciences, University of Ljubljana. It is a national research infrastructure for social sciences, whose main mission is to manage data and data services in order to support research, education, and general well-being.",
+      "lat": 46.056946,
+      "lng": 14.505751,
+      "hostname": "dataverse.adp.fdv.uni-lj.si",
+      "launch_year": "2020",
+      "country": "Slovenia",
+      "continent": "Europe",
+      "gdcc_member": false,
+      "doi_authority": "10.17898",
+      "contact_email": "gregor.zibert@fdv.uni-lj.si"
+    },
+    {
       "name": "Arca Dados",
       "description": "Arca Dados is Fiocruz's official repository to archive, publish, disseminate, preserve and share digital research data produced by the Fiocruz community or in partnership with other research institutes or bodies, with the objective of promoting new research, ensuring the reproducibility or replicability of existing research, and promoting Open and Citizen Science. Its objective is to stimulate the wide circulation of scientific knowledge, strengthening the institutional commitment to Open Science and the free access of information in health, in addition to providing transparency and fostering collaboration between researchers, educators, academics, managers, graduate students, for the advancement of knowledge and the creation of solutions that meet society's demands. For more information, email dataabertos@fiocruz.br",
       "lat": -22.874936,

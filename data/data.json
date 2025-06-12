@@ -621,6 +621,7 @@
       "lat": -33.42381139,
       "lng": -70.6163207,
       "hostname": "datospararesiliencia.cl",
+      "metrics": true,
       "launch_year": "2024",
       "country": "Chile",
       "continent": "South America",

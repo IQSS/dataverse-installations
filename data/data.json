@@ -1334,6 +1334,19 @@
       "contact_email": "redape@embrapa.br"
     },
     {
+      "name": "RepOD",
+      "description": "RepOD is a general-purpose repository for open research data, available to all members of the academic community in Poland. It is designed to accommodate scholarly data from all disciplines and in any format. RepOD aims to provide a secure space where research data can be safely stored and openly shared with others.",
+      "lat": 52.1923,
+      "lng": 21.0219,
+      "hostname": "repod.icm.edu.pl",
+      "launch_year": "2015",
+      "country": "Poland",
+      "continent": "Europe",
+      "gdcc_member": false,
+      "doi_authority": "10.1815",
+      "contact_email": "repod@icm.edu.pl"
+    },
+    {
       "name": "Repositorio de Datos Abiertos de Investigaci\u00f3n (Redata)",
       "description": "El Repositorio de Datos Abiertos de Investigaci\u00f3n de Uruguay (Redata) busca incentivar la publicaci\u00f3n y reutilizaci\u00f3n de los resultados de datos de investigaciones nacionales de cualquier \u00e1rea o disciplina. Es un proyecto de la Agencia Nacional de Investigaci\u00f3n e Innovaci\u00f3n (ANII) de Uruguay y forma parte del Sistema Nacional de Repositorios Digitales Abiertos de ciencia y tecnolog\u00eda (SILO), una red de repositorios de acceso abierto interoperables, conformada por instituciones del sistema cient\u00edfico y tecnol\u00f3gico uruguayo, que promueve el acceso, la preservaci\u00f3n y visibilidad de la producci\u00f3n nacional en ciencia y tecnolog\u00eda",
       "lat": -34.8781547,

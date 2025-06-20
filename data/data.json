@@ -374,6 +374,19 @@
       "contact_email": "dados@ipb.pt"
     },
     {
+      "name": "Dane Badawcze UW",
+      "description": "Dane Badawcze UW - University of Warsaw Research Data Repository allows free and long-term archiving and open sharing of research data from all scientific disciplines, including data produced as part of research conducted at the University of Warsaw or in collaboration with the university.",
+      "lat": 52.19247091,
+      "lng": 21.02191503,
+      "hostname": "danebadawcze.uw.edu.pl",
+      "launch_year": "2023",
+      "country": "Poland",
+      "continent": "Europe",
+      "gdcc_member": false,
+      "doi_authority": "10.58132",
+      "contact_email": "danebadawczeuw@icm.edu.pl"
+    },
+    {
       "name": "DANS Data Station Archaeology",
       "description": "DANS has launched the Data Station Archeology for the Dutch archaeological research community interested in storing, finding, sharing and publishing their data online. iggest advantages: the large amount of easily searchable data, support for all Creative Commons licenses, the possibility of version control, working with living data and sharing with others.",
       "lat": 52.0705,

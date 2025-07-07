@@ -24,7 +24,7 @@ assignees: ''
 
 **One or two sentences describing the repository:**
 
-**Email address of repository contact:**
+**Email address of repository contact; won't be displayed on the map:**
 
 **DOI authority, such as 10.26193; if applicable; won't be displayed on the map:**
 

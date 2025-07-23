@@ -15,7 +15,8 @@
       ],
       "gdcc_member": false,
       "doi_authority": "\u2415",
-      "contact_email": "abacus.support@ubc.ca"
+      "contact_email": "abacus.support@ubc.ca",
+      "dv_hub_id": "01893C8A-2503-4E23-A873-59CE9C40D568"
     },
     {
       "name": "ACSS Dataverse",
@@ -29,7 +30,8 @@
       "continent": "Asia",
       "gdcc_member": false,
       "doi_authority": "10.25825",
-      "contact_email": "dataverse@theacss.org"
+      "contact_email": "dataverse@theacss.org",
+      "dv_hub_id": "0365C02D-D6BB-4B64-9ED4-7D32F4CDC047"
     },
     {
       "name": "ADA Dataverse",
@@ -48,7 +50,8 @@
       ],
       "doi_authority": "10.26193",
       "board": "https://github.com/orgs/IQSS/projects/17",
-      "contact_email": "ada@anu.edu.au"
+      "contact_email": "ada@anu.edu.au",
+      "dv_hub_id": "04A71002-4002-46E8-8BF6-6D5ABF260D81"
     },
     {
       "name": "ADP - Slovenian Social Science Data Archives",
@@ -61,7 +64,8 @@
       "continent": "Europe",
       "gdcc_member": false,
       "doi_authority": "10.17898",
-      "contact_email": "gregor.zibert@fdv.uni-lj.si"
+      "contact_email": "gregor.zibert@fdv.uni-lj.si",
+      "dv_hub_id": "0532DC5E-4A95-4F39-8FA1-879CFF4BF702"
     },
     {
       "name": "Arca Dados",
@@ -75,7 +79,8 @@
       "continent": "South America",
       "gdcc_member": false,
       "doi_authority": "10.35078",
-      "contact_email": "dadosabertos@fiocruz.br"
+      "contact_email": "dadosabertos@fiocruz.br",
+      "dv_hub_id": "099DB632-D3D8-4AFA-9DC1-17BBEA2FEC23"
     },
     {
       "name": "ARP",
@@ -88,7 +93,8 @@
       "country": "Hungary",
       "continent": "Europe",
       "gdcc_member": false,
-      "contact_email": "support@researchdata.hu"
+      "contact_email": "support@researchdata.hu",
+      "dv_hub_id": "0C135F45-4761-4DA4-8A82-6DFA123516B2"
     },
     {
       "name": "ASU Library Research Data Repository",
@@ -103,7 +109,8 @@
       "gdcc_member": true,
       "doi_authority": "10.48349",
       "board": "https://github.com/orgs/IQSS/projects/30",
-      "contact_email": "dataverse@asu.edu"
+      "contact_email": "dataverse@asu.edu",
+      "dv_hub_id": "0C38969F-3860-4C47-AADE-5F5BD5783AFC"
     },
     {
       "name": "AUSSDA Dataverse",
@@ -124,7 +131,8 @@
         "https://www.coretrustseal.org/wp-content/uploads/2020/07/AUSSDA-The-Austrian-Social-Science-Data-Archive.pdf"
       ],
       "doi_authority": "10.11587",
-      "contact_email": "info@aussda.at"
+      "contact_email": "info@aussda.at",
+      "dv_hub_id": "0C6FE28C-C948-4E28-B8A6-6C5F44E91F75"
     },
     {
       "name": "awf.rodbuk.pl",
@@ -136,7 +144,8 @@
       "launch_year": "2023",
       "country": "Poland",
       "continent": "Europe",
-      "gdcc_member": false
+      "gdcc_member": false,
+      "dv_hub_id": "0F1E7DA7-DF2B-45A8-8612-CEBE2E145439"
     },
     {
       "name": "BioData.pt Data Management Portal (DMPortal)",
@@ -149,7 +158,8 @@
       "country": "Portugal",
       "continent": "Europe",
       "gdcc_member": false,
-      "doi_authority": "10.34636"
+      "doi_authority": "10.34636",
+      "dv_hub_id": "10A83043-FD21-4159-AD0B-CF8A708BFF83"
     },
     {
       "name": "bonndata",
@@ -162,7 +172,8 @@
       "country": "Germany",
       "continent": "Europe",
       "gdcc_member": false,
-      "contact_email": "szerr@uni-bonn.de"
+      "contact_email": "szerr@uni-bonn.de",
+      "dv_hub_id": "12036F68-18DB-4E2D-8B78-4A0DC196F39C"
     },
     {
       "name": "Borealis",
@@ -184,7 +195,8 @@
       ],
       "doi_authority": "10.5683",
       "board": "https://github.com/orgs/IQSS/projects/8",
-      "contact_email": "dataverse@scholarsportal.info"
+      "contact_email": "dataverse@scholarsportal.info",
+      "dv_hub_id": "162792C0-6C7B-415A-B70C-B0A02773DF20"
     },
     {
       "name": "Botswana Harvard Data",
@@ -197,7 +209,8 @@
       "country": "Botswana",
       "continent": "Africa",
       "gdcc_member": false,
-      "doi_authority": "\u2205"
+      "doi_authority": "\u2205",
+      "dv_hub_id": "1709ECC8-0AB5-4831-BF75-FC600EBF492D"
     },
     {
       "name": "BRIN Dataverse",
@@ -210,7 +223,8 @@
       "country": "Indonesia",
       "continent": "Asia",
       "gdcc_member": false,
-      "contact_email": "rin@brin.go.id"
+      "contact_email": "rin@brin.go.id",
+      "dv_hub_id": "180DF962-02CC-4B79-85EB-888BEE8F4A63"
     },
     {
       "name": "Centro Brasileiro de Pesquisas F\u00edsicas - CBPF",
@@ -224,7 +238,8 @@
       "continent": "South America",
       "gdcc_member": false,
       "doi_authority": "10.8037",
-      "contact_email": "lab3i@cbpf.br"
+      "contact_email": "lab3i@cbpf.br",
+      "dv_hub_id": "1BCBABA5-9525-41C8-B97E-93F3DD64BC1F"
     },
     {
       "name": "CESA | Repositorio de datos acad\u00e9micos",
@@ -238,7 +253,8 @@
       "continent": "South America",
       "gdcc_member": false,
       "doi_authority": "10.5713",
-      "contact_email": "biblioteca@cesa.edu.co"
+      "contact_email": "biblioteca@cesa.edu.co",
+      "dv_hub_id": "1D7C0988-23AF-4601-8BF0-CB756CEC2E21"
     },
     {
       "name": "CIDACS",
@@ -251,7 +267,8 @@
       "country": "Brazil",
       "continent": "South America",
       "gdcc_member": false,
-      "contact_email": "curadoriadata@gmail.com"
+      "contact_email": "curadoriadata@gmail.com",
+      "dv_hub_id": "2244D814-5DA6-4B3F-9C03-6518187928BA"
     },
     {
       "name": "CIFOR",
@@ -268,7 +285,8 @@
       ],
       "gdcc_member": false,
       "doi_authority": "10.17528",
-      "contact_email": "cifor-rdm-support@cgiar.org"
+      "contact_email": "cifor-rdm-support@cgiar.org",
+      "dv_hub_id": "22E84818-90ED-4663-B002-6EDAF27F71CE"
     },
     {
       "name": "CIMMYT Research Data",
@@ -287,7 +305,8 @@
       ],
       "gdcc_member": false,
       "doi_authority": "\u2415",
-      "contact_email": "J.HERRERA@cgiar.org"
+      "contact_email": "J.HERRERA@cgiar.org",
+      "dv_hub_id": "232FF393-29CB-4CB6-B2F8-344206F4EA15"
     },
     {
       "name": "CIRAD Dataverse",
@@ -302,7 +321,8 @@
       "gdcc_member": false,
       "doi_authority": "10.18167",
       "board": "https://github.com/orgs/IQSS/projects/29",
-      "contact_email": "dataverse@cirad.fr"
+      "contact_email": "dataverse@cirad.fr",
+      "dv_hub_id": "24E58B30-4AB4-48DD-A860-FF92AAF4CC94"
     },
     {
       "name": "CORA. Research Data Repository (RDR)",
@@ -317,7 +337,8 @@
       "about_url": "https://dataverse.csuc.cat/about.xhtml",
       "gdcc_member": true,
       "doi_authority": "10.3481",
-      "contact_email": "rdr-contacte@csuc.cat"
+      "contact_email": "rdr-contacte@csuc.cat",
+      "dv_hub_id": "26523886-D0AB-4B0A-977B-1425FCC7E8DF"
     },
     {
       "name": "CoronaWhy Dataverse",
@@ -329,7 +350,8 @@
       "country": "Netherlands",
       "continent": "Europe",
       "gdcc_member": false,
-      "contact_email": "team@coronawhy.org"
+      "contact_email": "team@coronawhy.org",
+      "dv_hub_id": "276F55BD-C3F4-4985-8B80-50B368200292"
     },
     {
       "name": "CROSSDA",
@@ -344,7 +366,8 @@
       "about_url": "https://www.crossda.hr/",
       "gdcc_member": false,
       "doi_authority": "10.23669",
-      "contact_email": "mglavica@ffzg.hr"
+      "contact_email": "mglavica@ffzg.hr",
+      "dv_hub_id": "2AADDB90-FD26-4C8B-A799-B647A95BB527"
     },
     {
       "name": "CUHK Research Data Repository",
@@ -358,7 +381,8 @@
       "continent": "Asia",
       "gdcc_member": false,
       "doi_authority": "10.48668",
-      "contact_email": "data@cuhk.edu.hk"
+      "contact_email": "data@cuhk.edu.hk",
+      "dv_hub_id": "2B2A340B-CE4A-4B14-8E99-3CB7867D3E70"
     },
     {
       "name": "DADOS IPB",
@@ -371,7 +395,8 @@
       "country": "Portugal",
       "continent": "Europe",
       "gdcc_member": false,
-      "contact_email": "dados@ipb.pt"
+      "contact_email": "dados@ipb.pt",
+      "dv_hub_id": "2C53FDB4-303D-4F7A-B236-247D92E69B6F"
     },
     {
       "name": "Dane Badawcze UW",
@@ -384,7 +409,8 @@
       "continent": "Europe",
       "gdcc_member": false,
       "doi_authority": "10.58132",
-      "contact_email": "danebadawczeuw@icm.edu.pl"
+      "contact_email": "danebadawczeuw@icm.edu.pl",
+      "dv_hub_id": "2D4CEFE4-9179-4349-920C-04D6F97C316A"
     },
     {
       "name": "DANS Data Station Archaeology",
@@ -397,7 +423,8 @@
       "country": "Netherlands",
       "continent": "Europe",
       "gdcc_member": false,
-      "contact_email": "info@dataverse.nl"
+      "contact_email": "info@dataverse.nl",
+      "dv_hub_id": "2E499092-F6A2-4C5F-8F28-6ECCC9CCCD37"
     },
     {
       "name": "DANS Data Station Life Sciences",
@@ -411,7 +438,8 @@
       "continent": "Europe",
       "gdcc_member": false,
       "doi_authority": "10.17026",
-      "contact_email": "info@dans.knaw.nl"
+      "contact_email": "info@dans.knaw.nl",
+      "dv_hub_id": "305298B4-F80D-4417-BDDF-2B5E1840B60E"
     },
     {
       "name": "DANS Data Station Physical and Technical Sciences",
@@ -425,7 +453,8 @@
       "continent": "Europe",
       "gdcc_member": false,
       "doi_authority": "10.17026",
-      "contact_email": " info@dans.knaw.nl"
+      "contact_email": " info@dans.knaw.nl",
+      "dv_hub_id": "3077971C-1522-4D7C-AF5C-DD1120EA2E24"
     },
     {
       "name": "DANS Data Station Social Sciences and Humanities",
@@ -439,7 +468,8 @@
       "continent": "Europe",
       "gdcc_member": false,
       "doi_authority": "10.17026",
-      "contact_email": "info@dans.knaw.nl"
+      "contact_email": "info@dans.knaw.nl",
+      "dv_hub_id": "309FE101-B4BD-4814-A7D1-92A5DF83FAEA"
     },
     {
       "name": "dare",
@@ -453,7 +483,8 @@
       "continent": "Europe",
       "gdcc_member": false,
       "doi_authority": "10.57782",
-      "contact_email": "fdm-support@uol.de"
+      "contact_email": "fdm-support@uol.de",
+      "dv_hub_id": "341CC470-986F-422A-A3AF-647D6ECE18D4"
     },
     {
       "name": "Dartmouth Dataverse",
@@ -465,7 +496,8 @@
       "launch_year": "2020",
       "country": "USA",
       "continent": "North America",
-      "gdcc_member": false
+      "gdcc_member": false,
+      "dv_hub_id": "34E23D94-1B94-4C6D-ACD0-BDA11DF38772"
     },
     {
       "name": "DaRUS",
@@ -480,7 +512,8 @@
       "about_url": "https://www.izus.uni-stuttgart.de/en/fokus/darus/",
       "gdcc_member": true,
       "doi_authority": "10.18419",
-      "contact_email": "fokus@izus.uni-stuttgart.de"
+      "contact_email": "fokus@izus.uni-stuttgart.de",
+      "dv_hub_id": "35AE7E88-7108-485B-8541-2135D22E499D"
     },
     {
       "name": "Data Suds",
@@ -496,7 +529,8 @@
       "gdcc_member": false,
       "doi_authority": "10.23708",
       "board": "https://github.com/orgs/IQSS/projects/20",
-      "contact_email": "data@ird.fr"
+      "contact_email": "data@ird.fr",
+      "dv_hub_id": "35EE8D5A-742D-4E8C-8475-61ED17CAD563"
     },
     {
       "name": "data.sciencespo",
@@ -511,7 +545,8 @@
       "gdcc_member": false,
       "doi_authority": "10.2141",
       "board": "https://github.com/orgs/IQSS/projects/12",
-      "contact_email": "data@sciencespo.fr"
+      "contact_email": "data@sciencespo.fr",
+      "dv_hub_id": "36A4243C-C8B5-42BD-8F8E-AABB875FFFCF"
     },
     {
       "name": "dataportal.ing.pan.pl",
@@ -524,7 +559,8 @@
       "country": "Poland",
       "continent": "Europe",
       "gdcc_member": false,
-      "doi_authority": "10.60871"
+      "doi_authority": "10.60871",
+      "dv_hub_id": "3957580D-632B-4A20-84FE-7BBEA379AD2D"
     },
     {
       "name": "DataRepositoriUM",
@@ -538,7 +574,8 @@
       "about_url": "https://datarepositorium.uminho.pt/",
       "gdcc_member": true,
       "doi_authority": "10.34622",
-      "contact_email": "datarepositorium@usdb.uminho.pt"
+      "contact_email": "datarepositorium@usdb.uminho.pt",
+      "dv_hub_id": "3A00D0AB-4A8E-4006-98CA-175C40DC096B"
     },
     {
       "name": "DataSpace@HKUST",
@@ -550,7 +587,8 @@
       "country": "Hong Kong",
       "continent": "Asia",
       "gdcc_member": false,
-      "doi_authority": "10.14711"
+      "doi_authority": "10.14711",
+      "dv_hub_id": "3C69DB8E-9BC8-4645-A708-549E1281B2F8"
     },
     {
       "name": "Dataverse e-cienciaDatos",
@@ -571,7 +609,8 @@
         "https://doi.org/10.34894/CUGYWW"
       ],
       "doi_authority": "10.2195",
-      "contact_email": "eciencia@consorciomadrono.es"
+      "contact_email": "eciencia@consorciomadrono.es",
+      "dv_hub_id": "3CBFCE5B-C76C-4232-A6AF-1623C2A91A00"
     },
     {
       "name": "DataverseLV",
@@ -584,7 +623,8 @@
       "continent": "Europe",
       "gdcc_member": false,
       "doi_authority": "10.71782",
-      "contact_email": "kristaps.oskalns@vpc.lv"
+      "contact_email": "kristaps.oskalns@vpc.lv",
+      "dv_hub_id": "3F236CF2-8614-44FB-B60C-7A9DAC5AF14C"
     },
     {
       "name": "DataverseNL",
@@ -603,7 +643,8 @@
       ],
       "doi_authority": "\u2415",
       "board": "https://github.com/orgs/IQSS/projects/22",
-      "contact_email": "info@dataverse.nl"
+      "contact_email": "info@dataverse.nl",
+      "dv_hub_id": "4104EE50-C9CE-44CE-802D-0FD325F9EC99"
     },
     {
       "name": "DataverseNO",
@@ -625,7 +666,8 @@
       ],
       "doi_authority": "10.1871",
       "board": "https://github.com/orgs/IQSS/projects/14",
-      "contact_email": "support@dataverse.no"
+      "contact_email": "support@dataverse.no",
+      "dv_hub_id": "424854C4-0339-4A04-808E-F3AE39B840BD"
     },
     {
       "name": "DataverseUA",
@@ -638,7 +680,8 @@
       "country": "Ukraine",
       "continent": "Europe",
       "gdcc_member": false,
-      "contact_email": "adminDataverseUA@bitp.kyiv.ua"
+      "contact_email": "adminDataverseUA@bitp.kyiv.ua",
+      "dv_hub_id": "443B2A49-F1C6-4FB2-9EB6-E074A0C4CEA0"
     },
     {
       "name": "DATICE",
@@ -652,7 +695,8 @@
       "continent": "Europe",
       "gdcc_member": false,
       "doi_authority": "10.34881",
-      "contact_email": "felagsvisindastofnun@hi.is"
+      "contact_email": "felagsvisindastofnun@hi.is",
+      "dv_hub_id": "48057197-5148-4D0E-A75A-99CD2CF2420C"
     },
     {
       "name": "Datos para Resiliencia",
@@ -666,7 +710,8 @@
       "continent": "South America",
       "gdcc_member": false,
       "doi_authority": "10.71578",
-      "contact_email": "victor.codocedo+dpr@itrend.cl"
+      "contact_email": "victor.codocedo+dpr@itrend.cl",
+      "dv_hub_id": "48D1173C-DA95-42BA-8CB8-36EC9EC130CD"
     },
     {
       "name": "DeiC Dataverse",
@@ -679,7 +724,8 @@
       "continent": "Europe",
       "gdcc_member": false,
       "doi_authority": "10.60612",
-      "contact_email": "sekretariat@deic.dk"
+      "contact_email": "sekretariat@deic.dk",
+      "dv_hub_id": "49A45ED8-A81C-4C21-A6D5-A889930B63D4"
     },
     {
       "name": "DR-NTU (Data)",
@@ -694,7 +740,8 @@
       "about_url": "https://blogs.ntu.edu.sg/lib-datamanagement/about-dr-ntu-data/",
       "gdcc_member": true,
       "doi_authority": "10.21979",
-      "contact_email": "library@ntu.edu.sg; yuyun.ishak@ntu.edu.sg"
+      "contact_email": "library@ntu.edu.sg; yuyun.ishak@ntu.edu.sg; ONGHL@ntu.edu.sg",
+      "dv_hub_id": "4AA22DDE-BD6B-4B13-854C-ED90F893C6AA"
     },
     {
       "name": "DUnAs",
@@ -708,7 +755,8 @@
       "continent": "Europe",
       "gdcc_member": false,
       "doi_authority": "10.48527",
-      "contact_email": "sbidm-dunas@ua.pt"
+      "contact_email": "sbidm-dunas@ua.pt",
+      "dv_hub_id": "4ADA8625-6C3B-4667-BDC7-12F2572BA1DA"
     },
     {
       "name": "Edmond",
@@ -721,7 +769,8 @@
       "country": "Germany",
       "continent": "Europe",
       "gdcc_member": false,
-      "contact_email": "edmond@mpdl.mpg.de"
+      "contact_email": "edmond@mpdl.mpg.de",
+      "dv_hub_id": "4C65AC6E-981D-4D0B-AB8D-99630CD1AC77"
     },
     {
       "name": "FGV Dataverse",
@@ -734,7 +783,8 @@
       "country": "Brazil",
       "continent": "South America",
       "gdcc_member": false,
-      "contact_email": "infra.acad@fgv.br; biblioteca.digital@fgv.br"
+      "contact_email": "infra.acad@fgv.br; biblioteca.digital@fgv.br",
+      "dv_hub_id": "4C94BEAE-6654-4AAD-A745-854074065181"
     },
     {
       "name": "Florida International University Research Data Portal",
@@ -747,7 +797,8 @@
       "country": "USA",
       "continent": "North America",
       "gdcc_member": false,
-      "contact_email": "rdm@fiu.edu"
+      "contact_email": "rdm@fiu.edu",
+      "dv_hub_id": "4DAD8610-848A-4A0F-8879-59FC200C2119"
     },
     {
       "name": "Fudan University",
@@ -760,7 +811,8 @@
       "continent": "Asia",
       "gdcc_member": true,
       "doi_authority": "\u2205",
-      "contact_email": "dvn@fudan.edu.cn"
+      "contact_email": "dvn@fudan.edu.cn",
+      "dv_hub_id": "534C7561-91B5-4337-BB32-12E0E3CE5691"
     },
     {
       "name": "George Mason University Dataverse",
@@ -775,7 +827,8 @@
       "about_url": "https://library.gmu.edu/dataverse",
       "gdcc_member": false,
       "doi_authority": "10.13021",
-      "contact_email": "datahelp@gmu.edu; rmadridr@gmu.edu; btemelso@gmu.edu"
+      "contact_email": "datahelp@gmu.edu; rmadridr@gmu.edu; btemelso@gmu.edu",
+      "dv_hub_id": "5379B5BF-E80D-452C-B751-06DAF048F220"
     },
     {
       "name": "Gustave Eiffel University Dataverse",
@@ -787,7 +840,8 @@
       "launch_year": "2017",
       "country": "France",
       "continent": "Europe",
-      "gdcc_member": false
+      "gdcc_member": false,
+      "dv_hub_id": "579774AC-BFBF-4A76-8A95-1DE68C9B10E0"
     },
     {
       "name": "G\u00f6ttingen Research Online",
@@ -801,7 +855,8 @@
       "continent": "Europe",
       "gdcc_member": true,
       "doi_authority": "10.25625",
-      "contact_email": "info@eresearch.uni-goettingen.de"
+      "contact_email": "info@eresearch.uni-goettingen.de",
+      "dv_hub_id": "53A9B64D-322E-46EC-BD3C-E2B687C60992"
     },
     {
       "name": "Harvard Dataverse",
@@ -819,7 +874,8 @@
       "gdcc_member": true,
       "doi_authority": "10.791",
       "board": "https://github.com/orgs/IQSS/projects/19",
-      "contact_email": "support@dataverse.harvard.edu"
+      "contact_email": "support@dataverse.harvard.edu",
+      "dv_hub_id": "57B6E0DD-B371-4AFE-A0C0-FB22621DDD73"
     },
     {
       "name": "HeiDATA",
@@ -836,7 +892,8 @@
       ],
       "gdcc_member": false,
       "doi_authority": "10.11588",
-      "contact_email": "data@uni-heidelberg.de"
+      "contact_email": "data@uni-heidelberg.de",
+      "dv_hub_id": "580AF7A2-462E-473F-B9D8-3AAA7244898D"
     },
     {
       "name": "IBICT",
@@ -849,7 +906,8 @@
       "country": "Brazil",
       "continent": "South America",
       "gdcc_member": false,
-      "doi_authority": "10.5072"
+      "doi_authority": "10.5072",
+      "dv_hub_id": "5A6D25EE-6DAD-4AB9-89C3-6E3E552D5635"
     },
     {
       "name": "ICRISAT",
@@ -866,7 +924,8 @@
       ],
       "gdcc_member": false,
       "doi_authority": "10.21421",
-      "contact_email": "dataverse.biu@gmail.com; a.rathore@cgiar.org"
+      "contact_email": "dataverse.biu@gmail.com; a.rathore@cgiar.org",
+      "dv_hub_id": "5F0C29CA-F98D-4610-9296-E2581C89EBE6"
     },
     {
       "name": "ICWSM",
@@ -879,7 +938,8 @@
       "continent": "Europe",
       "about_url": "http://guides.dataverse.org/en/4.8.5/user",
       "gdcc_member": false,
-      "doi_authority": "10.5072"
+      "doi_authority": "10.5072",
+      "dv_hub_id": "5FF08B33-B993-4F9C-9F10-AB41C33DC54E"
     },
     {
       "name": "IDSC Dataverse",
@@ -894,7 +954,8 @@
       "about_url": "https://idsc.iza.org",
       "gdcc_member": false,
       "doi_authority": "10.15185",
-      "contact_email": "idsc@iza.org"
+      "contact_email": "idsc@iza.org",
+      "dv_hub_id": "61F7254C-4D67-4A49-880C-3A0A385B41D9"
     },
     {
       "name": "IFDC Dataverse",
@@ -907,7 +968,8 @@
       "country": "USA",
       "continent": "North America",
       "gdcc_member": false,
-      "contact_email": "wpavan@ifdc.org"
+      "contact_email": "wpavan@ifdc.org",
+      "dv_hub_id": "62569804-0F4B-4F0A-8EA1-205AEAC9D286"
     },
     {
       "name": "IISH Dataverse",
@@ -921,7 +983,8 @@
       "continent": "Europe",
       "gdcc_member": false,
       "doi_authority": "10622",
-      "contact_email": "info@iisg.nl"
+      "contact_email": "info@iisg.nl",
+      "dv_hub_id": "630C67C2-7D9F-4161-A0C7-4E0E69B83FF2"
     },
     {
       "name": "Indata",
@@ -935,7 +998,8 @@
       "continent": "South America",
       "gdcc_member": false,
       "doi_authority": "10.23667",
-      "contact_email": "neg@cedia.org.ec"
+      "contact_email": "neg@cedia.org.ec",
+      "dv_hub_id": "64AAA99D-F229-495F-8344-9067ED46C9E5"
     },
     {
       "name": "Institute of Russian Literature Dataverse",
@@ -948,7 +1012,8 @@
       "country": "Russia",
       "continent": "Europe",
       "gdcc_member": false,
-      "doi_authority": "10.3186"
+      "doi_authority": "10.3186",
+      "dv_hub_id": "660FC90F-AF10-44A0-8E93-5C8CB4D4E4D6"
     },
     {
       "name": "International Potato Center",
@@ -962,7 +1027,8 @@
       "continent": "South America",
       "gdcc_member": false,
       "doi_authority": "10.21223",
-      "contact_email": "CIP-RIU@cgiar.org"
+      "contact_email": "CIP-RIU@cgiar.org",
+      "dv_hub_id": "676B5D6C-5983-44AE-8E87-D986832DE38B"
     },
     {
       "name": "IPGP Research Collection",
@@ -976,7 +1042,8 @@
       "continent": "Europe",
       "gdcc_member": false,
       "doi_authority": "10.18715",
-      "contact_email": "rc-support@ipgp.fr"
+      "contact_email": "rc-support@ipgp.fr",
+      "dv_hub_id": "6897A9F2-24CB-47A5-8209-9B0E5AEFBFEB"
     },
     {
       "name": "Italian Institute of Technology (IIT)",
@@ -989,7 +1056,8 @@
       "country": "Italy",
       "continent": "Europe",
       "gdcc_member": false,
-      "contact_email": "rdm@iit.it"
+      "contact_email": "rdm@iit.it",
+      "dv_hub_id": "68EF9EBE-4806-46BF-B554-380CA5CC8DCD"
     },
     {
       "name": "Johns Hopkins Research Data Repository",
@@ -1006,7 +1074,8 @@
       ],
       "gdcc_member": true,
       "doi_authority": "10.7281",
-      "contact_email": "dataservices@jhu.edu"
+      "contact_email": "dataservices@jhu.edu",
+      "dv_hub_id": "69B0AEEF-B263-48CC-A065-801FAACBE762"
     },
     {
       "name": "JPL Open Repository",
@@ -1021,7 +1090,8 @@
       "gdcc_member": false,
       "doi_authority": "10.48577",
       "board": "https://github.com/orgs/IQSS/projects/42",
-      "contact_email": "library@jpl.nasa.gov"
+      "contact_email": "library@jpl.nasa.gov",
+      "dv_hub_id": "6C0D689A-FF69-4481-BE39-102EC840ADC0"
     },
     {
       "name": "J\u00fclich DATA",
@@ -1037,7 +1107,8 @@
       "gdcc_member": false,
       "doi_authority": "10.26165",
       "board": "https://github.com/orgs/IQSS/projects/4",
-      "contact_email": "forschungsdaten@fz-juelich.de"
+      "contact_email": "forschungsdaten@fz-juelich.de",
+      "dv_hub_id": "6F12EF97-09ED-4ADC-AE13-D759126BDE4F"
     },
     {
       "name": "KEEN Data Management Platform",
@@ -1051,7 +1122,8 @@
       "continent": "Europe",
       "gdcc_member": false,
       "doi_authority": "10.57826",
-      "contact_email": "lincoln.sherpa@tu-dresden.de"
+      "contact_email": "lincoln.sherpa@tu-dresden.de",
+      "dv_hub_id": "75221A66-1ADF-49C1-BB12-90B42B1C3E11"
     },
     {
       "name": "KU Leuven RDR",
@@ -1068,7 +1140,8 @@
         "https://doi.org/10.34894/X9G8HU"
       ],
       "board": "https://github.com/orgs/IQSS/projects/39",
-      "contact_email": "rdr@kuleuven.be"
+      "contact_email": "rdr@kuleuven.be",
+      "dv_hub_id": "76124BD4-6AF8-4251-9F34-E1A18AFC31F5"
     },
     {
       "name": "Libra Data",
@@ -1087,7 +1160,8 @@
       "gdcc_member": true,
       "doi_authority": "10.1813",
       "board": "https://github.com/orgs/IQSS/projects/10",
-      "contact_email": "libra@virginia.edu"
+      "contact_email": "libra@virginia.edu",
+      "dv_hub_id": "77266292-3FDE-49ED-9101-4982C5BDC513"
     },
     {
       "name": "Lithuanian Data Archive for Social Sciences and Humanities (LiDA)",
@@ -1100,7 +1174,8 @@
       "country": "Lithuania",
       "continent": "Europe",
       "gdcc_member": false,
-      "contact_email": "data@ktu.lt"
+      "contact_email": "data@ktu.lt",
+      "dv_hub_id": "7A672783-549E-4B01-ACA2-CAA7F61A229B"
     },
     {
       "name": "Maine Dataverse Network",
@@ -1113,7 +1188,8 @@
       "continent": "North America",
       "gdcc_member": false,
       "doi_authority": "\u2415",
-      "contact_email": "chris.wilson@maine.edu"
+      "contact_email": "chris.wilson@maine.edu",
+      "dv_hub_id": "7C8C4241-9FDC-44A8-8E48-BBDD1B3C330A"
     },
     {
       "name": "MBLWHOI Library Dataverse",
@@ -1126,7 +1202,8 @@
       "continent": "North America",
       "gdcc_member": false,
       "doi_authority": "10.26027",
-      "contact_email": "kbatyuk@whoi.edu"
+      "contact_email": "kbatyuk@whoi.edu",
+      "dv_hub_id": "8290337E-7AF5-4E68-BC68-8F85E282FC1B"
     },
     {
       "name": "MELDATA",
@@ -1140,7 +1217,8 @@
       "continent": "Asia",
       "gdcc_member": false,
       "doi_authority": "\u2415",
-      "contact_email": "mel-support@cgiar.org"
+      "contact_email": "mel-support@cgiar.org",
+      "dv_hub_id": "86AABF7D-2D5D-4FC3-AE24-9C958AD32BE2"
     },
     {
       "name": "NIE Data Repository",
@@ -1154,7 +1232,8 @@
       "continent": "Asia",
       "gdcc_member": false,
       "doi_authority": "10.2534",
-      "contact_email": "libscomm@nie.edu.sg"
+      "contact_email": "libscomm@nie.edu.sg",
+      "dv_hub_id": "8B9EBAB3-727E-42FD-9B49-68478A46AE96"
     },
     {
       "name": "NIOZ Dataverse",
@@ -1167,7 +1246,8 @@
       "country": "Netherlands",
       "continent": "Europe",
       "gdcc_member": false,
-      "contact_email": "taco.de.bruin@nioz.nl"
+      "contact_email": "taco.de.bruin@nioz.nl",
+      "dv_hub_id": "8C41757B-9C69-4561-B8C8-69ACA632F288"
     },
     {
       "name": "NYCU Dataverse",
@@ -1181,7 +1261,8 @@
       "continent": "Asia",
       "gdcc_member": false,
       "doi_authority": "10.5777",
-      "contact_email": "RDM@lib.nycu.edu.tw"
+      "contact_email": "RDM@lib.nycu.edu.tw",
+      "dv_hub_id": "94288AA2-9DC7-4F48-9F8A-7695069732F0"
     },
     {
       "name": "ODISSEI Portal",
@@ -1194,7 +1275,8 @@
       "country": "Netherlands",
       "continent": "Europe",
       "gdcc_member": false,
-      "contact_email": "info@odissei-data.nl"
+      "contact_email": "info@odissei-data.nl",
+      "dv_hub_id": "95D2548A-00A0-4751-A804-B4BDEFC9C99B"
     },
     {
       "name": "Open Data @ UCLouvain",
@@ -1208,7 +1290,8 @@
       "continent": "Europe",
       "gdcc_member": false,
       "doi_authority": "10.14428",
-      "contact_email": "patrick.vranckx@uclouvain.be"
+      "contact_email": "patrick.vranckx@uclouvain.be",
+      "dv_hub_id": "98C4070F-8488-43B7-A3C4-F2B2CE28693F"
     },
     {
       "name": "Open Forest Data",
@@ -1223,7 +1306,8 @@
       "about_url": "https://openforestdata.pl/",
       "gdcc_member": false,
       "doi_authority": "10.4837",
-      "contact_email": "jlapinska@ibs.bialowieza.pl"
+      "contact_email": "jlapinska@ibs.bialowieza.pl",
+      "dv_hub_id": "9CA6095C-5151-4C39-9F28-CC8DF388FE84"
     },
     {
       "name": "osnaData",
@@ -1237,7 +1321,8 @@
       "continent": "Europe",
       "gdcc_member": false,
       "doi_authority": "10.26249",
-      "contact_email": "osnadata@ub.uni-osnabrueck.de"
+      "contact_email": "osnadata@ub.uni-osnabrueck.de",
+      "dv_hub_id": "9FE74206-8146-4EBB-8292-8C0A45838819"
     },
     {
       "name": "PAPYRUS",
@@ -1251,7 +1336,8 @@
       "continent": "South America",
       "gdcc_member": false,
       "doi_authority": "10.57924",
-      "contact_email": "consortia@papyrus-datos.com"
+      "contact_email": "consortia@papyrus-datos.com",
+      "dv_hub_id": "A0044A4B-25F9-46B3-9425-99B378EE0062"
     },
     {
       "name": "Peking University",
@@ -1266,7 +1352,8 @@
       "about_url": "http://opendata.pku.edu.cn/about.xhtml",
       "gdcc_member": false,
       "doi_authority": "10.1817",
-      "contact_email": "luopc@lib.pku.edu.cn; opendata@lib.pku.edu.cn"
+      "contact_email": "luopc@lib.pku.edu.cn; opendata@lib.pku.edu.cn",
+      "dv_hub_id": "A0A99C75-233B-4DFC-BEA3-1F9E17BC2643"
     },
     {
       "name": "PolyU Research Data Repository",
@@ -1277,7 +1364,8 @@
       "launch_year": "2024",
       "country": "Hong Kong",
       "continent": "Asia",
-      "gdcc_member": false
+      "gdcc_member": false,
+      "dv_hub_id": "A22B2347-2279-497F-BBB6-52B74A3C3A89"
     },
     {
       "name": "Pontificia Universidad Cat\u00f3lica del Per\u00fa",
@@ -1291,7 +1379,8 @@
       "continent": "South America",
       "gdcc_member": false,
       "doi_authority": "\u2415",
-      "contact_email": "raul.sifuentes@pucp.pe"
+      "contact_email": "raul.sifuentes@pucp.pe",
+      "dv_hub_id": "A3763EFE-4F24-4B96-8552-9E23E2FEE838"
     },
     {
       "name": "QDR Main Collection",
@@ -1313,7 +1402,8 @@
       ],
       "doi_authority": "10.5064",
       "board": "https://github.com/orgs/IQSS/projects/6",
-      "contact_email": "qdr@syr.edu"
+      "contact_email": "qdr@syr.edu",
+      "dv_hub_id": "A3806EB2-9CEB-4462-8038-E83FBF0AC39C"
     },
     {
       "name": "Recherche Data Gouv",
@@ -1331,7 +1421,8 @@
       ],
       "gdcc_member": false,
       "board": "https://github.com/orgs/IQSS/projects/67",
-      "contact_email": "admin-recherchedatagouv@inrae.fr"
+      "contact_email": "admin-recherchedatagouv@inrae.fr",
+      "dv_hub_id": "A9733740-F25F-476F-8EE0-D0DE97FDCB56"
     },
     {
       "name": "Redape - Reposit\u00f3rio de Dados de Pesquisa da Embrapa",
@@ -1344,7 +1435,8 @@
       "continent": "South America",
       "gdcc_member": false,
       "doi_authority": "10.48432",
-      "contact_email": "redape@embrapa.br"
+      "contact_email": "redape@embrapa.br",
+      "dv_hub_id": "AB01354D-2E35-4218-AB55-28C08C03CE62"
     },
     {
       "name": "RepOD",
@@ -1357,7 +1449,8 @@
       "continent": "Europe",
       "gdcc_member": false,
       "doi_authority": "10.1815",
-      "contact_email": "repod@icm.edu.pl"
+      "contact_email": "repod@icm.edu.pl",
+      "dv_hub_id": "AB605A35-F8EB-4528-AA69-6D70D6CF46A7"
     },
     {
       "name": "Repositorio de Datos Abiertos de Investigaci\u00f3n (Redata)",
@@ -1371,7 +1464,8 @@
       "continent": "South America",
       "gdcc_member": true,
       "doi_authority": "10.60895",
-      "contact_email": "redata@anii.org.uy"
+      "contact_email": "redata@anii.org.uy",
+      "dv_hub_id": "B244FC4F-C881-454E-9B92-B3036BB7F86F"
     },
     {
       "name": "Repositorio de Datos Acad\u00e9micos RDA-UNR",
@@ -1385,7 +1479,8 @@
       "continent": "South America",
       "gdcc_member": false,
       "doi_authority": "10.57715",
-      "contact_email": "repositoriodatos@unr.edu.ar"
+      "contact_email": "repositoriodatos@unr.edu.ar",
+      "dv_hub_id": "B52D02C7-8229-4FF6-B021-822C9F61E2CC"
     },
     {
       "name": "Repositorio de datos de investigaci\u00f3n de la Universidad de Chile",
@@ -1398,7 +1493,8 @@
       "country": "Chile",
       "continent": "South America",
       "gdcc_member": false,
-      "contact_email": "sisib@uchile.cl"
+      "contact_email": "sisib@uchile.cl",
+      "dv_hub_id": "B6E9C3E8-C656-42F5-8A71-2A52F14573CC"
     },
     {
       "name": "Repositorio de Datos de Investigaci\u00f3n de la Universidad Nacional de La Plata",
@@ -1412,7 +1508,8 @@
       "continent": "South America",
       "gdcc_member": false,
       "doi_authority": "10.35537",
-      "contact_email": "datos@sedici.unlp.edu.ar"
+      "contact_email": "datos@sedici.unlp.edu.ar",
+      "dv_hub_id": "B727164E-AC28-44A0-B7D2-445A8B50BDE1"
     },
     {
       "name": "Repositorio de datos de Investigaci\u00f3n UdeA",
@@ -1425,7 +1522,8 @@
       "continent": "South America",
       "gdcc_member": false,
       "doi_authority": "10.60905",
-      "contact_email": "repositoriodedatos@udea.edu.co"
+      "contact_email": "repositoriodedatos@udea.edu.co",
+      "dv_hub_id": "B80557F6-DEB9-48FE-97CF-4A4981F870C5"
     },
     {
       "name": "Repositorio de Datos de Investigaci\u00f3n Universidad del Rosario",
@@ -1439,7 +1537,8 @@
       "continent": "South America",
       "gdcc_member": false,
       "doi_authority": "10.34848",
-      "contact_email": "researchdata@urosario.edu.co"
+      "contact_email": "researchdata@urosario.edu.co",
+      "dv_hub_id": "B8C59071-7A52-4BA5-96C6-715AA488118D"
     },
     {
       "name": "Repositorio de Datos de Investigaci\u00f3n USACH",
@@ -1452,7 +1551,8 @@
       "continent": "South America",
       "gdcc_member": false,
       "doi_authority": "10.60547",
-      "contact_email": "admin.dataverse@usach.cl"
+      "contact_email": "admin.dataverse@usach.cl",
+      "dv_hub_id": "B99E0536-76FC-444D-ABE3-34290727BAB9"
     },
     {
       "name": "Repositorio de datos de la Universidad de Concepci\u00f3n",
@@ -1466,7 +1566,8 @@
       "continent": "South America",
       "gdcc_member": false,
       "doi_authority": "10.48665",
-      "contact_email": "bibliotecas@udec.cl"
+      "contact_email": "bibliotecas@udec.cl",
+      "dv_hub_id": "BB34848C-FE7B-4FBD-BFCF-A26FA197B96C"
     },
     {
       "name": "Repositorio de Datos de la Universidad del Pac\u00edfico (DatasetsUP)",
@@ -1478,7 +1579,8 @@
       "country": "Peru",
       "continent": "South America",
       "gdcc_member": false,
-      "contact_email": "repositorio@up.edu.pe"
+      "contact_email": "repositorio@up.edu.pe",
+      "dv_hub_id": "BD4B0F02-0FC1-453C-B61E-B42459D12BE3"
     },
     {
       "name": "Repositorio de Datos Pontificia Universidad Javeriana",
@@ -1491,7 +1593,8 @@
       "country": "Colombia",
       "continent": "South America",
       "gdcc_member": false,
-      "contact_email": "durangouf@javeriana.edu.co"
+      "contact_email": "durangouf@javeriana.edu.co",
+      "dv_hub_id": "BFCF7C87-CC8B-420A-B738-CA831E053A68"
     },
     {
       "name": "Repositorio de Datos Universidad Distrital Francisco Jos\u00e9 de Caldas",
@@ -1503,7 +1606,8 @@
       "country": "Colombia",
       "continent": "South America",
       "gdcc_member": false,
-      "contact_email": "biblio@udistrital.edu.co; repositorio@udistrital.edu.co"
+      "contact_email": "biblio@udistrital.edu.co; repositorio@udistrital.edu.co",
+      "dv_hub_id": "C094CD5A-FB8F-4BC7-8510-492F56EF2055"
     },
     {
       "name": "Repositorio TECdatos",
@@ -1517,7 +1621,8 @@
       "continent": "North America",
       "gdcc_member": false,
       "doi_authority": "10.18845",
-      "contact_email": "datatec@itcr.ac.cr"
+      "contact_email": "datatec@itcr.ac.cr",
+      "dv_hub_id": "C39D7ADA-D063-4979-9C42-E1B71722BC19"
     },
     {
       "name": "Reposit\u00f3rio de Dados de Pesquisa",
@@ -1529,7 +1634,8 @@
       "country": "Brazil",
       "continent": "South America",
       "gdcc_member": false,
-      "contact_email": "repositoriodedados@unifesp.br"
+      "contact_email": "repositoriodedados@unifesp.br",
+      "dv_hub_id": "ADB4D6A9-EB74-4D2D-937A-B12668C0EB65"
     },
     {
       "name": "Reposit\u00f3rio de Dados de Pesquisa da UFABC",
@@ -1542,7 +1648,8 @@
       "continent": "South America",
       "gdcc_member": false,
       "doi_authority": "10.5072",
-      "contact_email": "biblioteca@ufabc.edu.br"
+      "contact_email": "biblioteca@ufabc.edu.br",
+      "dv_hub_id": "B0B102C5-D634-40D4-BE8C-9A4244552F39"
     },
     {
       "name": "Reposit\u00f3rio de Dados de Pesquisa do ILEEL",
@@ -1554,7 +1661,8 @@
       "country": "Brazil",
       "continent": "South America",
       "gdcc_member": false,
-      "doi_authority": "\u2205"
+      "doi_authority": "\u2205",
+      "dv_hub_id": "B1F1ACF5-4781-4055-BF02-B7A3F29FA434"
     },
     {
       "name": "Reposit\u00f3rio Polen",
@@ -1569,7 +1677,8 @@
       "gdcc_member": false,
       "doi_authority": "10.57979",
       "board": "https://github.com/orgs/IQSS/projects/38",
-      "contact_email": "polen@fccn.pt"
+      "contact_email": "polen@fccn.pt",
+      "dv_hub_id": "C0CDC2A8-8E2A-4DA4-8BEC-484577F3C508"
     },
     {
       "name": "Reposit\u00f3rios Piloto da Rede Nacional de Ensino e Pesquisa",
@@ -1580,7 +1689,8 @@
       "launch_year": "2019",
       "country": "Brazil",
       "continent": "South America",
-      "gdcc_member": false
+      "gdcc_member": false,
+      "dv_hub_id": "C4D7F793-83CE-4242-995A-91D248BE60FE"
     },
     {
       "name": "Repos\u00edtorio SoilData",
@@ -1593,7 +1703,8 @@
       "continent": "South America",
       "gdcc_member": false,
       "doi_authority": "10.60502",
-      "contact_email": "ciencia@mapbiomas.org"
+      "contact_email": "ciencia@mapbiomas.org",
+      "dv_hub_id": "C1E1B0F7-9BB4-445C-B592-C862658AC1C7"
     },
     {
       "name": "RODBUCK UKEN",
@@ -1606,7 +1717,8 @@
       "country": "Poland",
       "continent": "Europe",
       "gdcc_member": false,
-      "doi_authority": "10.24917"
+      "doi_authority": "10.24917",
+      "dv_hub_id": "C4E5FFBD-576D-49E5-9CBB-E9D5AB9AC3EE"
     },
     {
       "name": "RODBUK",
@@ -1621,7 +1733,8 @@
       "gdcc_member": false,
       "core_trust_seals": [
         "https://doi.org/10.34894/BI2NDV"
-      ]
+      ],
+      "dv_hub_id": "C5EA3364-2C35-4576-B09E-C229FF8EAE65"
     },
     {
       "name": "RODBUK AGH",
@@ -1633,7 +1746,8 @@
       "launch_year": "2023",
       "country": "Poland",
       "continent": "Europe",
-      "gdcc_member": false
+      "gdcc_member": false,
+      "dv_hub_id": "C5FA5717-B6EA-48AD-960B-7D6F06AF0C3C"
     },
     {
       "name": "RODBUK PK",
@@ -1645,7 +1759,8 @@
       "launch_year": "2023",
       "country": "Poland",
       "continent": "Europe",
-      "gdcc_member": false
+      "gdcc_member": false,
+      "dv_hub_id": "C62308F9-C29C-4041-A560-2A45FD61FA62"
     },
     {
       "name": "RODBUK UEK",
@@ -1657,7 +1772,8 @@
       "launch_year": "2023",
       "country": "Poland",
       "continent": "Europe",
-      "gdcc_member": false
+      "gdcc_member": false,
+      "dv_hub_id": "CA3FBC41-7395-494F-B86C-313841A91234"
     },
     {
       "name": "RODBUK UJ",
@@ -1669,7 +1785,8 @@
       "launch_year": "2023",
       "country": "Poland",
       "continent": "Europe",
-      "gdcc_member": false
+      "gdcc_member": false,
+      "dv_hub_id": "CB3638A9-4812-45F2-B1CA-D46F52640DCB"
     },
     {
       "name": "RSU Dataverse",
@@ -1682,7 +1799,8 @@
       "country": "Latvia",
       "continent": "Europe",
       "gdcc_member": false,
-      "doi_authority": "10.4851"
+      "doi_authority": "10.4851",
+      "dv_hub_id": "CDEA25D1-AB2F-43C4-B266-6663D15AF811"
     },
     {
       "name": "Sano",
@@ -1695,7 +1813,8 @@
       "continent": "Europe",
       "gdcc_member": false,
       "doi_authority": "10.7158",
-      "contact_email": "rodbuk@sanoscience.org"
+      "contact_email": "rodbuk@sanoscience.org",
+      "dv_hub_id": "CE4CCA77-3D56-41D1-83B1-3A80FC57EE54"
     },
     {
       "name": "SciELO Data",
@@ -1709,7 +1828,8 @@
       "continent": "South America",
       "gdcc_member": false,
       "doi_authority": "10.48331",
-      "contact_email": "data@scielo.org"
+      "contact_email": "data@scielo.org",
+      "dv_hub_id": "CF83E3B6-8444-4C50-858B-BFE96B680490"
     },
     {
       "name": "SODHA",
@@ -1723,7 +1843,8 @@
       "gdcc_member": false,
       "doi_authority": "10.34934",
       "board": "https://github.com/orgs/IQSS/projects/21",
-      "contact_email": "sodha@arch.be"
+      "contact_email": "sodha@arch.be",
+      "dv_hub_id": "CF8B8E41-0138-4CF6-A1FB-11B1F4DFB8EE"
     },
     {
       "name": "Tecnol\u00f3gico de Monterrey Data Hub",
@@ -1737,7 +1858,8 @@
       "continent": "North America",
       "gdcc_member": false,
       "doi_authority": "10.57687",
-      "contact_email": "research.datahub@servicios.tec.mx"
+      "contact_email": "research.datahub@servicios.tec.mx",
+      "dv_hub_id": "D0E76B45-CFEB-40CB-A240-444C1AFF5046"
     },
     {
       "name": "Texas Data Repository Dataverse",
@@ -1755,7 +1877,8 @@
       ],
       "gdcc_member": true,
       "doi_authority": "10.18738",
-      "contact_email": "support@tdl.org"
+      "contact_email": "support@tdl.org",
+      "dv_hub_id": "DAD9F3CC-9866-4EFC-9E64-944094E89851"
     },
     {
       "name": "The Henryk Niewodnicza\u0144ski Institute of Nuclear Physics Polish Academy of Sciences",
@@ -1768,7 +1891,8 @@
       "continent": "Europe",
       "gdcc_member": false,
       "doi_authority": "10.48733",
-      "contact_email": "beata.rozewicz@ifj.edu.pl"
+      "contact_email": "beata.rozewicz@ifj.edu.pl",
+      "dv_hub_id": "DB87E9B4-4726-4E01-843E-60012983002E"
     },
     {
       "name": "TRR170-DB",
@@ -1781,7 +1905,8 @@
       "country": "Germany",
       "continent": "Europe",
       "gdcc_member": false,
-      "doi_authority": "10.35003"
+      "doi_authority": "10.35003",
+      "dv_hub_id": "DBF3A4BE-81EF-4E0D-B93B-8BC653CD7A43"
     },
     {
       "name": "TUDOdata",
@@ -1795,7 +1920,8 @@
       "continent": "Europe",
       "gdcc_member": false,
       "doi_authority": "10.17877",
-      "contact_email": "fdm@tu-dortmund.de"
+      "contact_email": "fdm@tu-dortmund.de",
+      "dv_hub_id": "E16A3FEA-5895-45C6-8D0C-144FD1926863"
     },
     {
       "name": "UC Berkeley Library Dataverse",
@@ -1808,7 +1934,8 @@
       "continent": "North America",
       "gdcc_member": false,
       "doi_authority": "10.60503",
-      "contact_email": "librarydataservices@berkeley.edu"
+      "contact_email": "librarydataservices@berkeley.edu",
+      "dv_hub_id": "E2FE7220-D4EE-4BCC-9D7C-B29B53EB3A68"
     },
     {
       "name": "UCLA Dataverse",
@@ -1822,7 +1949,8 @@
       "continent": "North America",
       "gdcc_member": true,
       "doi_authority": "10.25346",
-      "contact_email": "datascience@ucla.edu"
+      "contact_email": "datascience@ucla.edu",
+      "dv_hub_id": "E57F902D-D890-44FA-B74C-A3A6441EF963"
     },
     {
       "name": "ULi\u00e8ge Open Data Repository",
@@ -1835,7 +1963,8 @@
       "continent": "Europe",
       "gdcc_member": false,
       "doi_authority": "10.58119",
-      "contact_email": "dataverse.admin@uliege.be"
+      "contact_email": "dataverse.admin@uliege.be",
+      "dv_hub_id": "EB844DCF-6723-4E88-B499-3149873C6957"
     },
     {
       "name": "UNB Libraries Dataverse",
@@ -1849,7 +1978,8 @@
       "continent": "North America",
       "gdcc_member": false,
       "doi_authority": "10.25545",
-      "contact_email": "rdm.services@unb.ca"
+      "contact_email": "rdm.services@unb.ca",
+      "dv_hub_id": "EF0E1781-88B4-416C-9257-2389264D66D9"
     },
     {
       "name": "UNC Dataverse",
@@ -1871,7 +2001,8 @@
       ],
       "doi_authority": "10.15139",
       "board": "https://github.com/orgs/IQSS/projects/5",
-      "contact_email": "rdmc_systems@unc.edu"
+      "contact_email": "rdmc_systems@unc.edu",
+      "dv_hub_id": "F03093A2-8CD0-4702-95C8-DAC11339BC8F"
     },
     {
       "name": "University of Wroclaw",
@@ -1884,7 +2015,8 @@
       "continent": "Europe",
       "gdcc_member": false,
       "doi_authority": "10.34616",
-      "contact_email": "repozytorium.rodbuk@uwr.edu.pl"
+      "contact_email": "repozytorium.rodbuk@uwr.edu.pl",
+      "dv_hub_id": "F6E845D8-F9C1-48D1-8C8F-EA560DDB88D5"
     },
     {
       "name": "Universit\u00e0 degli Studi di Milano",
@@ -1898,7 +2030,8 @@
       "continent": "Europe",
       "gdcc_member": false,
       "doi_authority": "10.1313",
-      "contact_email": "rdm@unimi.it"
+      "contact_email": "rdm@unimi.it",
+      "dv_hub_id": "F20D2DED-EC0C-4ED2-B424-A67F733B5C0B"
     },
     {
       "name": "VTTI",
@@ -1912,7 +2045,8 @@
       "continent": "North America",
       "gdcc_member": false,
       "doi_authority": "10.15787",
-      "board": "https://github.com/orgs/IQSS/projects/18"
+      "board": "https://github.com/orgs/IQSS/projects/18",
+      "dv_hub_id": "F870DA03-76E5-42CE-936F-F9729380DAA8"
     },
     {
       "name": "World Agroforestry - Research Data Repository",
@@ -1927,7 +2061,8 @@
       "gdcc_member": false,
       "doi_authority": "10.34725",
       "board": "https://github.com/orgs/IQSS/projects/37",
-      "contact_email": "a.tenorio@cgiar.org"
+      "contact_email": "a.tenorio@cgiar.org",
+      "dv_hub_id": "FAB103CF-C116-4D4A-AFBD-7DEB617A1742"
     },
     {
       "name": "Wyoming Data Repository",
@@ -1940,7 +2075,8 @@
       "continent": "North America",
       "gdcc_member": false,
       "doi_authority": "10.15786",
-      "contact_email": "wyodata@uwyo.edu"
+      "contact_email": "wyodata@uwyo.edu",
+      "dv_hub_id": "FB25F6FF-32CD-4ED3-95AB-344AEF1A5325"
     },
     {
       "name": "Yale Dataverse",
@@ -1955,7 +2091,8 @@
       "about_url": "https://researchdata.yale.edu/yale-dataverse",
       "gdcc_member": true,
       "doi_authority": "10.606",
-      "contact_email": "dataverseadmin@yale.edu"
+      "contact_email": "dataverseadmin@yale.edu",
+      "dv_hub_id": "84534893-F7B6-45B0-A454-B7E98F8AB589"
     }
   ]
 }

@@ -22,6 +22,10 @@ If you'd like to learn how to run the update script or work on the code, please 
 
 ## Editing the crowdsourced spreadsheet
 
-If you are editing the [crowdsourced spreadsheet][] please keep in mind that we are moving the management of this file on the Dataverse Hub, in the meantime we have added a new field named "dv_hub_id" this ID will help us keep track of all the changes that happen in an installation.
+If you are editing the [crowdsourced spreadsheet][], please note that we are transitioning the management of this file to the Dataverse Hub. In the meantime, we have added a new field called dv_hub_id. This ID will help us track all changes made to an installation.
 
-Please never update an ID that has already been used. If you are adding a new installation please use the command uuidgen on LINUX (Windows users please use WSL) and generate a new ID for the installation.
+Important Guidelines:
+
+- Do not update an existing dv_hub_id. Once an ID has been used, it must remain unchanged.
+
+- When adding a new installation, generate a new unique ID using the `uuidgen` command on Linux. On Windows, please use WSL (Windows Subsystem for Linux) to run the same command.

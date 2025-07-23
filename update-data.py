@@ -74,9 +74,9 @@ for row in rows:
     contact_email = row['contact_email']
     if contact_email:
         mydict[hostname]['contact_email'] = contact_email
-    dv_hub_id = row["dv_hub_id"]
+    dv_hub_id = row['dv_hub_id']
     if dv_hub_id:
-        mydict[hostname]["dv_hub_id"] = dv_hub_id
+        mydict[hostname]['dv_hub_id'] = dv_hub_id
     mylist.append(mydict[hostname])
 
 final = {}

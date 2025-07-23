@@ -28,4 +28,4 @@ Important Guidelines:
 
 - Do not update an existing dv_hub_id. Once an ID has been used, it must remain unchanged.
 
-- When adding a new installation, generate a new unique ID using the `uuidgen` command on Linux. On Windows, please use WSL (Windows Subsystem for Linux) to run the same command.
+- When adding a new installation, generate a new unique ID using the `uuidgen` command on Mac or Linux. On Windows, please use WSL (Windows Subsystem for Linux) to run the same command.

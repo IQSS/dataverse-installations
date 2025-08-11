@@ -1546,6 +1546,7 @@
       "lat": -33.44753446,
       "lng": -70.68391782,
       "hostname": "datos.usach.cl",
+      "metrics": true,
       "launch_year": "2023",
       "country": "Chile",
       "continent": "South America",

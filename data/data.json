@@ -140,6 +140,7 @@
       "lat": 50.07272998,
       "lng": 20.00123847,
       "hostname": "akf.rodbuk.pl",
+      "metrics": true,
       "launch_year": "2023",
       "country": "Poland",
       "continent": "Europe",

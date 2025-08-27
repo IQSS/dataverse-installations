@@ -728,6 +728,19 @@
       "dv_hub_id": "49A45ED8-A81C-4C21-A6D5-A889930B63D4"
     },
     {
+      "name": "Domus Dados",
+      "description": "Reposit\u00f3rio de dados de pesquisa Unifesp",
+      "lat": -23.53763,
+      "lng": -46.788869,
+      "hostname": "domusdados.unifesp.br",
+      "launch_year": "2019",
+      "country": "Brazil",
+      "continent": "South America",
+      "gdcc_member": false,
+      "contact_email": "repositoriodedados@unifesp.br",
+      "dv_hub_id": "ADB4D6A9-EB74-4D2D-937A-B12668C0EB65"
+    },
+    {
       "name": "DR-NTU (Data)",
       "description": "The institutional open access research data repository for Nanyang Technological University (NTU). NTU researchers are encouraged to use DR-NTU (Data) to deposit, publish and archive their final research data in order to make their research data discoverable, accessible and reusable.",
       "lat": 1.348668,
@@ -1624,19 +1637,6 @@
       "doi_authority": "10.18845",
       "contact_email": "datatec@itcr.ac.cr",
       "dv_hub_id": "C39D7ADA-D063-4979-9C42-E1B71722BC19"
-    },
-    {
-      "name": "Reposit\u00f3rio de Dados de Pesquisa",
-      "description": "Reposit\u00f3rio de dados de pesquisa Unifesp",
-      "lat": -23.53763,
-      "lng": -46.788869,
-      "hostname": "repositoriodedados.unifesp.br",
-      "launch_year": "2019",
-      "country": "Brazil",
-      "continent": "South America",
-      "gdcc_member": false,
-      "contact_email": "repositoriodedados@unifesp.br",
-      "dv_hub_id": "ADB4D6A9-EB74-4D2D-937A-B12668C0EB65"
     },
     {
       "name": "Reposit\u00f3rio de Dados de Pesquisa da UFABC",

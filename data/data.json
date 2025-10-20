@@ -227,6 +227,19 @@
       "dv_hub_id": "180DF962-02CC-4B79-85EB-888BEE8F4A63"
     },
     {
+      "name": "BSC Dataverse",
+      "description": "The BSC Dataverse is the institutional research data and metadata repository of the Barcelona Supercomputing Center - Centro Nacional de Supercomputaci\u00f3n (BSC-CNS). It seeks to enable the storage, sharing, and search of research data coming from the BSC researchers, collaborators, and affiliated projects.",
+      "lat": 41.3901012,
+      "lng": 2.114820641,
+      "hostname": "dataverse.bsc.es",
+      "launch_year": "2025",
+      "country": "Spain",
+      "continent": "Europe",
+      "gdcc_member": false,
+      "contact_email": "datamanagement@bsc.es",
+      "dv_hub_id": "D16109AC-CC5A-4040-B18C-D815FD5D67B8"
+    },
+    {
       "name": "Centro Brasileiro de Pesquisas F\u00edsicas - CBPF",
       "description": "Brazilian Center for Research in Physics",
       "lat": -22.954204,

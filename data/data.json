@@ -2034,6 +2034,20 @@
       "dv_hub_id": "F6E845D8-F9C1-48D1-8C8F-EA560DDB88D5"
     },
     {
+      "name": "Universit\u00e0 Ca\u2019 Foscari Venezia Datarepository",
+      "description": "Ca\u2019 Foscari University has welcomed a dynamic academic community for over 150 years in the heart of Venice. Innovation, investing in talent, support to researchers and the development of international collaborations: these are just some of the activities that make Ca\u2019 Foscari\u2019s more competitive in the global arena and influential in information sharing. Datarepository Unive is the institutional data repository that collects, stores, and preserves research data produced by Ca' Foscari researchers.",
+      "lat": 45.434496,
+      "lng": 12.326448,
+      "hostname": "datarepository.unive.it",
+      "launch_year": "2024",
+      "country": "Italy",
+      "continent": "Europe",
+      "gdcc_member": false,
+      "doi_authority": "10.71731",
+      "contact_email": "openscience@unive.it",
+      "dv_hub_id": "A778079E-90D2-4C3C-ABFD-D049F8B30A31"
+    },
+    {
       "name": "Universit\u00e0 degli Studi di Milano",
       "description": "The University of Milan is home to important research teams operating in the university's extremely rich variety of scientific-disciplinary sectors. Besides taking part in the most relevant national and international research programs, the University is also very active in the field of technology transfer and developing applications for scientific research results. dataverse.unimi.it is the repository for research data offered to all researchers in disciplines from health sciences to laws, from economics to hard sciences, from humanities to mathematics.",
       "lat": 45.4601,

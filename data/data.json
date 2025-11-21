@@ -1057,6 +1057,20 @@
       "dv_hub_id": "676B5D6C-5983-44AE-8E87-D986832DE38B"
     },
     {
+      "name": "ioerDATA",
+      "description": "ioerDATA is the institutional research data publication repository of the Leibniz Institute of Ecological Urban and Regional Development (IOER). It is managed and curated by the institute's Research Data Centre (IOER FDZ).",
+      "lat": 51.03139516,
+      "lng": 13.74817927,
+      "hostname": "data.fdz.ioer.de",
+      "launch_year": "2025",
+      "country": "Germany",
+      "continent": "Europe",
+      "gdcc_member": false,
+      "doi_authority": "10.7183",
+      "contact_email": "fdz@ioer.de",
+      "dv_hub_id": "6E4B5F34-1FAB-4C84-8659-8939A2B48B5F"
+    },
+    {
       "name": "IPGP Research Collection",
       "description": "A repository for sharing and preserving research data and documents produced, collected and curated at the Institut de physique du globe de Paris (IPGP).",
       "lat": 48.844925,

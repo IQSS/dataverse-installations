@@ -2039,6 +2039,7 @@
       "lat": 45.434496,
       "lng": 12.326448,
       "hostname": "datarepository.unive.it",
+      "metrics": true,
       "launch_year": "2024",
       "country": "Italy",
       "continent": "Europe",

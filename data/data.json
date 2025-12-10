@@ -383,6 +383,19 @@
       "dv_hub_id": "2AADDB90-FD26-4C8B-A799-B647A95BB527"
     },
     {
+      "name": "CSDA Dataverse",
+      "description": "The Czech Social Science Data Archive (CSDA) is a national data services center for the social sciences, which acquires, processes, documents, and stores digital data files from scientific projects and makes them available for further analytical use in scientific research and teaching at universities. CSDA is the Czech national node of the pan-European research infrastructure CESSDA ERIC (the Consortium of European Social Science Data Archives) and its service provider in the Czech Republic.",
+      "lat": 50.084288,
+      "lng": 14.418596,
+      "hostname": "archivdv.soc.cas.cz",
+      "launch_year": "2024",
+      "country": "Czechia",
+      "continent": "Europe",
+      "gdcc_member": false,
+      "contact_email": "tomas.cizek@soc.cas.cz, archiv@soc.cas.cz",
+      "dv_hub_id": "16238D07-7D88-4ECC-96E7-84E7F24C84CA"
+    },
+    {
       "name": "CUHK Research Data Repository",
       "description": "The CUHK Research Data Repository serves as an institutional research data repository for The Chinese University of Hong Kong (CUHK). It facilitates CUHK researchers to deposit their research data and for the worldwide to explore the research data outputs at CUHK.",
       "lat": 22.41984318,

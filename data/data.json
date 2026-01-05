@@ -748,7 +748,8 @@
       "launch_year": "2024",
       "country": "Denmark",
       "continent": "Europe",
-      "gdcc_member": false,
+      "about_url": "https://deic.dk/en/data-management/data-management-services/DeiC-Dataverse",
+      "gdcc_member": true,
       "doi_authority": "10.60612",
       "contact_email": "secdataverse@adm.ku.dk",
       "dv_hub_id": "49A45ED8-A81C-4C21-A6D5-A889930B63D4"

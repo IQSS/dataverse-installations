@@ -750,7 +750,7 @@
       "continent": "Europe",
       "gdcc_member": false,
       "doi_authority": "10.60612",
-      "contact_email": "sekretariat@deic.dk",
+      "contact_email": "secdataverse@adm.ku.dk",
       "dv_hub_id": "49A45ED8-A81C-4C21-A6D5-A889930B63D4"
     },
     {
@@ -1414,6 +1414,7 @@
       "lat": 38.7592697,
       "lng": -9.142404541,
       "hostname": "datahub.polen.fccn.pt",
+      "metrics": true,
       "launch_year": "2022",
       "country": "Portugal",
       "continent": "Europe",

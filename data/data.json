@@ -674,7 +674,7 @@
     },
     {
       "name": "DataverseNO",
-      "description": "DataverseNO (https://dataverse.no/) is a national, generic repository for open research data from researchers from Norwegian research institutions. Some collections within DataverseNO also accept data from researchers from other institutions.",
+      "description": "DataverseNO is a national, generalist repository for open research data from researchers from Norwegian research institutions. DataverseNO enables the FAIR Guiding Principles for scientific data management and stewardship and is CoreTrustSeal certified.",
       "lat": 69.649208,
       "lng": 18.955324,
       "hostname": "dataverse.no",

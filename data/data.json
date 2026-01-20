@@ -1100,6 +1100,19 @@
       "dv_hub_id": "6897A9F2-24CB-47A5-8209-9B0E5AEFBFEB"
     },
     {
+      "name": "ISSDA Dataverse",
+      "description": "The Irish Social Science Data Archive (ISSDA) is Ireland\u2019s leading centre for quantitative data acquisition, preservation, and dissemination. Based at UCD Library, its mission is to ensure access to quantitative datasets in the social sciences, and to advance the promotion of international comparative studies of the Irish economy and Irish society.",
+      "lat": 53.3072175,
+      "lng": -6.221619845,
+      "hostname": "issda.ucd.ie",
+      "launch_year": "2025",
+      "country": "Ireland",
+      "continent": "Europe",
+      "gdcc_member": false,
+      "contact_email": "issda@ucd.ie",
+      "dv_hub_id": "E2D62712-2C03-4A72-AD5F-2E9360592FAB"
+    },
+    {
       "name": "Italian Institute of Technology (IIT)",
       "description": "IIT Dataverse is the research data repository of Istituto Italiano di Tecnologia and has been launched in May 2021. IIT\u2019s research activity is focused on cutting-edge science in four Research Domains (Computational Sciences, LifeTech, Nanomaterials, and Robotics) and promotes excellence in basic and applied research. IIT Dataverse offers long-term storage and preservation to research data of IIT-affiliated researchers. IIT is also member of the Global Dataverse Community Consortium",
       "lat": 44.475,

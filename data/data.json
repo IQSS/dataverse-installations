@@ -1288,6 +1288,20 @@
       "dv_hub_id": "86AABF7D-2D5D-4FC3-AE24-9C958AD32BE2"
     },
     {
+      "name": "Ministerio de las Culturas, las Artes y los Saberes",
+      "description": "The dataverse repository was set up to manage data products of the collaborative research of the Ministerio de las Culturas, las Artes y los saberes (https://www.mincultura.gov.co/). The first research project in the repository is about strengthening artistic and cultural education by supporting teachers through classroom observation, collaborative reflection, and targeted professional development, aiming to expand their pedagogical tools, improve instructional quality, and foster innovations that respond to the real needs of their educational communities.",
+      "lat": 4.597419877,
+      "lng": -74.07751754,
+      "hostname": "investigacionartes.mincultura.gov.co",
+      "launch_year": "2026",
+      "country": "Colombia",
+      "continent": "South America",
+      "gdcc_member": false,
+      "doi_authority": "10.82294",
+      "contact_email": "investig.artes.dv@mincultura.gov.co",
+      "dv_hub_id": "B0BE352C-626A-4A12-802B-511F20ECC1FF"
+    },
+    {
       "name": "NIE Data Repository",
       "description": "NIE Data Repository is the institutional open access research data repository for National Institute of Education, Singapore. NIE researchers are encouraged to use NIE Data Repository to deposit, publish and archive their final research data in order to make their research data discoverable, accessible and reusable.",
       "lat": 1.349115,

@@ -240,6 +240,19 @@
       "dv_hub_id": "D16109AC-CC5A-4040-B18C-D815FD5D67B8"
     },
     {
+      "name": "CedapDados",
+      "description": "CEDAP Dados is a research data repository at the Universidade Federal do Rio Grande do Sul, linked to research groups of the PPGCIN, supporting the production, preservation, and sharing of data in Information Science.",
+      "lat": -30.1084697,
+      "lng": -51.3422972,
+      "hostname": "cedapdados.ufrgs.br",
+      "launch_year": "2025",
+      "country": "Brazil",
+      "continent": "South America",
+      "gdcc_member": false,
+      "contact_email": "guilhermeataide@gmail.com, renefgj@gmail.com",
+      "dv_hub_id": "011C7405-F6D0-41FF-B51B-313EA8AB9449"
+    },
+    {
       "name": "Centro Brasileiro de Pesquisas F\u00edsicas - CBPF",
       "description": "Brazilian Center for Research in Physics",
       "lat": -22.954204,
@@ -573,6 +586,19 @@
       "board": "https://github.com/orgs/IQSS/projects/12",
       "contact_email": "data@sciencespo.fr",
       "dv_hub_id": "36A4243C-C8B5-42BD-8F8E-AABB875FFFCF"
+    },
+    {
+      "name": "DataPB",
+      "description": "DATAPB is an open research data repository aligned with the CARE and FAIR principles, co-funded by public and international institutions, community-governed, and open to data deposits from any discipline, format, or geographic and temporal scope.",
+      "lat": -7.115,
+      "lng": -34.863,
+      "hostname": "dataverse.ideal.ufpb.br",
+      "launch_year": "2025",
+      "country": "Brazil",
+      "continent": "South America",
+      "gdcc_member": false,
+      "contact_email": "guilhermeataide@gmail.com, renefgj@gmail.com",
+      "dv_hub_id": "0DD57938-2F0D-4E4C-9EF1-898496DD164E"
     },
     {
       "name": "dataportal.ing.pan.pl",

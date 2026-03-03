@@ -1271,6 +1271,20 @@
       "dv_hub_id": "7A672783-549E-4B01-ACA2-CAA7F61A229B"
     },
     {
+      "name": "LORE - LIST Open Repository",
+      "description": "LORE (LIST Open Repository) is the institutional research repository of the Luxembourg Institute of Science and Technology. It provides long-term curation, preservation, and open dissemination of research outputs including peer-reviewed publications, datasets, technical reports, and associated research materials",
+      "lat": 49.582,
+      "lng": 6.104,
+      "hostname": "lore.list.lu",
+      "launch_year": "2025",
+      "country": "Luxembourg",
+      "continent": "Europe",
+      "gdcc_member": false,
+      "doi_authority": "10.57828",
+      "contact_email": "rds@list.lu",
+      "dv_hub_id": "B1679C1A-D29B-41BF-9576-2143C255C552"
+    },
+    {
       "name": "Maine Dataverse Network",
       "description": "A service brought to you by the ACG@UMaine. The way Supercomputing should be!",
       "lat": 44.901349,

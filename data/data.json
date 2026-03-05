@@ -2159,6 +2159,19 @@
       "dv_hub_id": "F20D2DED-EC0C-4ED2-B424-A67F733B5C0B"
     },
     {
+      "name": "USC Dataverse",
+      "description": "The USC Dataverse is a partnership between the USC Libraries and the USC Center for Advanced Research Computing that allows for the sharing and storage of USC research data created by faculty, students, and staff. This allows for data to be accessible, discoverable and reusable by the public. The platform also hosts dataverse collections for various campus groups, such as schools, departments, centers and institutes. More information can be found in the USC Dataverse Research Guide.",
+      "lat": 34.01944971,
+      "lng": -118.2759388,
+      "hostname": "dataverse.carc.usc.edu",
+      "launch_year": "2025",
+      "country": "USA",
+      "continent": "North America",
+      "gdcc_member": false,
+      "contact_email": "dataverse.support@usc.edu",
+      "dv_hub_id": "661207C6-0050-4F93-AAFC-6D940A217E4B"
+    },
+    {
       "name": "VTTI",
       "description": "Transportation data repository maintained by the Virginia Tech Transportation Institute.",
       "lat": 37.190102,

@@ -15,4 +15,4 @@ jobs:
         with:
           project-url: https://github.com/orgs/IQSS/projects/34
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          labeled: Type: Bug
+          labeled: "Type: Bug"

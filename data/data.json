@@ -135,19 +135,6 @@
       "dv_hub_id": "0C6FE28C-C948-4E28-B8A6-6C5F44E91F75"
     },
     {
-      "name": "awf.rodbuk.pl",
-      "description": "",
-      "lat": 50.07272998,
-      "lng": 20.00123847,
-      "hostname": "akf.rodbuk.pl",
-      "metrics": true,
-      "launch_year": "2023",
-      "country": "Poland",
-      "continent": "Europe",
-      "gdcc_member": false,
-      "dv_hub_id": "0F1E7DA7-DF2B-45A8-8612-CEBE2E145439"
-    },
-    {
       "name": "BioData.pt Data Management Portal (DMPortal)",
       "description": "DMPortal is offered by BioData.pt, the Portuguese biological data infrastructure and national node of ELIXIR. The portal aims to support the national life sciences research community by enabling FAIR research practices. DMPortal is open to all life sciences fields, but has traditionally been more focused in supporting research in COVID-19, human health, and plant sciences.",
       "lat": 38.736667,
@@ -806,7 +793,7 @@
       "about_url": "https://blogs.ntu.edu.sg/lib-datamanagement/about-dr-ntu-data/",
       "gdcc_member": true,
       "doi_authority": "10.21979",
-      "contact_email": "library@ntu.edu.sg; yuyun.ishak@ntu.edu.sg; ONGHL@ntu.edu.sg",
+      "contact_email": "library@ntu.edu.sg; yuyun.ishak@ntu.edu.sg; ONGHL@ntu.edu.sg; jeyalakshmi@ntu.edu.sg",
       "dv_hub_id": "4AA22DDE-BD6B-4B13-854C-ED90F893C6AA"
     },
     {
@@ -2113,6 +2100,19 @@
       "board": "https://github.com/orgs/IQSS/projects/5",
       "contact_email": "rdmc_systems@unc.edu",
       "dv_hub_id": "F03093A2-8CD0-4702-95C8-DAC11339BC8F"
+    },
+    {
+      "name": "University of Physical Culture in Krakow",
+      "description": "",
+      "lat": 50.07272998,
+      "lng": 20.00123847,
+      "hostname": "akf.rodbuk.pl",
+      "metrics": true,
+      "launch_year": "2023",
+      "country": "Poland",
+      "continent": "Europe",
+      "gdcc_member": false,
+      "dv_hub_id": "0F1E7DA7-DF2B-45A8-8612-CEBE2E145439"
     },
     {
       "name": "University of Wroclaw",

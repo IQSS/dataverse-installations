@@ -661,6 +661,9 @@
       "country": "Latvia",
       "continent": "Europe",
       "gdcc_member": false,
+      "core_trust_seals": [
+        "https://doi.org/10.34894/JM7PTH"
+      ],
       "doi_authority": "10.71782",
       "contact_email": "kristaps.oskalns@vpc.lv",
       "dv_hub_id": "3F236CF2-8614-44FB-B60C-7A9DAC5AF14C"

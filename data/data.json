@@ -575,6 +575,19 @@
       "dv_hub_id": "36A4243C-C8B5-42BD-8F8E-AABB875FFFCF"
     },
     {
+      "name": "DATADOI",
+      "description": "DATADOI is a multidisciplinary open repository for sharing and publishing research data.",
+      "lat": 58.37702623,
+      "lng": 26.72105869,
+      "hostname": "datadoi.ee",
+      "launch_year": "2026",
+      "country": "Estonia",
+      "continent": "Europe",
+      "gdcc_member": false,
+      "contact_email": "datadoi@datadoi.ee",
+      "dv_hub_id": "25D8A9E7-26DC-4AF5-9B44-25FDF0EE800F"
+    },
+    {
       "name": "DataPB",
       "description": "DATAPB is an open research data repository aligned with the CARE and FAIR principles, co-funded by public and international institutions, community-governed, and open to data deposits from any discipline, format, or geographic and temporal scope.",
       "lat": -7.115,

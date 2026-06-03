@@ -18,7 +18,7 @@ assignees: ''
 
 **Latitude and longitude of the repository:**
 
-**Year when repository started operating:**
+**Year when repository started operating as a Dataverse-based repository:**
 
 # The following isn't required but is nice to have:
 

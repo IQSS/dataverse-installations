@@ -1323,7 +1323,7 @@
       "launch_year": "2025",
       "country": "USA",
       "continent": "North America",
-      "gdcc_member": false,
+      "gdcc_member": true,
       "doi_authority": "10.26027",
       "contact_email": "kbatyuk@whoi.edu",
       "dv_hub_id": "8290337E-7AF5-4E68-BC68-8F85E282FC1B"

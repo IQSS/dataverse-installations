@@ -947,6 +947,19 @@
       "dv_hub_id": "57B6E0DD-B371-4AFE-A0C0-FB22621DDD73"
     },
     {
+      "name": "Health Study Hub",
+      "description": "The Health Study Hub helps connects data providers with data consumers in the domain of clinical, public health and epidemiologic health research to foster reuse. Since the system is freely accessible via a web browser and provides explanatory information about collected information via an extensive glossary, the system can also be used by scientists of other research domains.",
+      "lat": 50.924581,
+      "lng": 6.916432,
+      "hostname": "health-study-hub.de",
+      "launch_year": "2020",
+      "country": "Germany",
+      "continent": "Europe",
+      "gdcc_member": false,
+      "contact_email": "helpdesk@nfdi4health.de",
+      "dv_hub_id": "A73735C9-F137-4186-8858-C0C894E5C06D"
+    },
+    {
       "name": "HeiDATA",
       "description": "Open for Heidelberg University affiliated researchers to deposit data.",
       "lat": 49.39875,

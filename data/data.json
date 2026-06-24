@@ -2079,6 +2079,19 @@
       "dv_hub_id": "E57F902D-D890-44FA-B74C-A3A6441EF963"
     },
     {
+      "name": "UD Dataverse",
+      "description": "UD Dataverse is the institutional research data repository for the University of Delaware. This repository allows UD researchers of all levels to archive, share, and discover research datasets. UD Dataverse is supported by the UD Library, Museums and Press, and UDIT Research Cyberinfrastructure.",
+      "lat": 39.67807192,
+      "lng": -75.75292187,
+      "hostname": "dataverse.udel.edu",
+      "launch_year": "2026",
+      "country": "USA",
+      "continent": "North America",
+      "gdcc_member": false,
+      "contact_email": "lib-rdsg@udel.edu",
+      "dv_hub_id": "12FEEF88-9ACE-4AAD-A29D-4A5F31DF8306"
+    },
+    {
       "name": "ULi\u00e8ge Open Data Repository",
       "description": "The ULi\u00e8ge Dataverse is the ULi\u00e8ge institutional open data sharing repository, used by ULi\u00e8ge researchers to share datasets with the global scientific community, according to the FAIR data principles.",
       "lat": 50.64127729,

@@ -69,6 +69,7 @@ class ByCountry extends HTMLElement {
 <style>
   table { border-collapse: collapse; }
   th, td { border: 1px solid #ccc; padding: 0.4em 0.75em; }
+  td:nth-child(2) { text-align: right; }
 </style>
 <h3>${byCountryFinal.length} Countries</slot></h3>
 <table>

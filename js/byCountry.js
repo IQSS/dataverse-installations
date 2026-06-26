@@ -80,8 +80,7 @@ class ByCountry extends HTMLElement {
   <tr>
      <td>${country.name}</td>
      <td>${country.installations.length}</td>
-     <!--TODO: Get rid of commas from javascript template literals: https://stackoverflow.com/questions/62690538/why-are-there-commas-in-my-output-when-i-use-map-in-a-template-literal -->
-     <td>${country.installations}</td>
+     <td>${country.installations.join(', ')}</td>
   </tr>
   `;
     })

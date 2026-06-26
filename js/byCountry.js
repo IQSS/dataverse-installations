@@ -66,9 +66,12 @@ class ByCountry extends HTMLElement {
         byCountryFinal.push(dataPerCountry);
       }
       this.shadowRoot.innerHTML = `
+<style>
+  table { border-collapse: collapse; }
+  th, td { border: 1px solid #ccc; padding: 0.4em 0.75em; }
+</style>
 <h3>${byCountryFinal.length} Countries</slot></h3>
-<!-- TODO: Use css for table border -->
-<table border=1>
+<table>
   <tr>
     <th>Name</th>
     <th>#</th>

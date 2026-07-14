@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Dataverse Collection Trees</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" type="image/x-icon" href="docs/images/favicon.ico" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <style>
+      main {
+        width: min(42rem, calc(100% - 2rem));
+        margin: 3rem auto;
+      }
+
+      h1 {
+        margin-bottom: 0.25rem;
+      }
+
+      .introduction {
+        margin-top: 0;
+        color: #555;
+      }
+
+      label {
+        display: block;
+        margin: 2rem 0 0.4rem;
+        font-weight: bold;
+      }
+
+      select {
+        box-sizing: border-box;
+        width: 100%;
+        padding: 0.65rem;
+        border: 1px solid #aaa;
+        border-radius: 0.25rem;
+        background: #fff;
+        color: inherit;
+        font: inherit;
+      }
+
+      #status {
+        min-height: 1.5rem;
+        margin: 0.75rem 0;
+        color: #555;
+      }
+
+      #status.error {
+        color: #a11;
+      }
+
+      #stats {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+        gap: 0.75rem;
+        margin: 1rem 0 0;
+      }
+
+      #stats div {
+        padding: 1rem;
+        border: 1px solid #ddd;
+        border-radius: 0.25rem;
+        background: #f7f7f7;
+      }
+
+      #stats dt {
+        color: #555;
+      }
+
+      #stats dd {
+        margin: 0.2rem 0 0;
+        color: #c55b28;
+        font-size: 1.35rem;
+        font-weight: bold;
+      }
+
+      #dataviz {
+        margin-top: 2rem;
+      }
+
+      .tree-controls {
+        display: flex;
+        gap: 0.5rem;
+        margin-bottom: 1rem;
+      }
+
+      .tree-controls button {
+        padding: 0.5rem 0.75rem;
+        border: 1px solid #aaa;
+        border-radius: 0.25rem;
+        background: #fff;
+        color: inherit;
+        font: inherit;
+        cursor: pointer;
+      }
+
+      .tree-controls button:hover,
+      .tree-controls button:focus {
+        border-color: #c55b28;
+        background: #f7f7f7;
+      }
+
+      .tree,
+      .tree ul {
+        margin: 0;
+        padding-left: 1.25rem;
+        list-style: none;
+      }
+
+      .tree {
+        padding-left: 0;
+      }
+
+      .tree ul {
+        margin-left: 0.4rem;
+        border-left: 1px solid #ddd;
+      }
+
+      .tree li {
+        margin: 0.35rem 0;
+      }
+
+      .tree summary {
+        cursor: pointer;
+      }
+
+      .tree a {
+        color: #245a8d;
+        text-decoration: none;
+      }
+
+      .tree a:hover,
+      .tree a:focus {
+        text-decoration: underline;
+      }
+
+      .tree .collection-meta {
+        margin-left: 0.4rem;
+        color: #666;
+        font-size: 0.9em;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>Dataverse Collection Trees</h1>
+      <p class="introduction">Select an installation to see its collection as a tree.</p>
+
+      <label for="installation">Dataverse installation</label>
+      <select id="installation" disabled>
+        <option>Loading installations…</option>
+      </select>
+
+      <p id="status" role="status" aria-live="polite"></p>
+
+      <section id="stats-section" hidden>
+        <h2>Stats</h2>
+        <dl id="stats">
+          <div>
+            <dt>Root collection</dt>
+            <dd id="root-name"></dd>
+          </div>
+          <div>
+            <dt>Direct children</dt>
+            <dd id="direct-children"></dd>
+          </div>
+          <div>
+            <dt>Total collections</dt>
+            <dd id="total-collections"></dd>
+          </div>
+          <div>
+            <dt>Maximum depth</dt>
+            <dd id="maximum-depth"></dd>
+          </div>
+          <div>
+            <dt>Payload size</dt>
+            <dd id="payload-size"></dd>
+          </div>
+          <div>
+            <dt>Response time</dt>
+            <dd id="response-time"></dd>
+          </div>
+        </dl>
+      </section>
+
+      <section id="dataviz" hidden>
+        <h2>Dataviz</h2>
+        <div class="tree-controls">
+          <button id="expand-all" type="button" aria-controls="tree-container">Expand all</button>
+          <button id="collapse-all" type="button" aria-controls="tree-container">Collapse all</button>
+        </div>
+        <div id="tree-container"></div>
+      </section>
+    </main>
+
+    <script>
+      const TIMEOUT_MS = 5000;
+      const installationSelect = document.getElementById('installation');
+      const status = document.getElementById('status');
+      const statsSection = document.getElementById('stats-section');
+      const dataviz = document.getElementById('dataviz');
+      const treeContainer = document.getElementById('tree-container');
+      let activeController;
+
+      function setStatus(message, isError = false) {
+        status.textContent = message;
+        status.classList.toggle('error', isError);
+      }
+
+      function setTreeError(message, requiresNewerVersion = false) {
+        setStatus(message, true);
+
+        if (requiresNewerVersion) {
+          const issueLink = document.createElement('a');
+          issueLink.href = 'https://github.com/IQSS/dataverse/pull/7178';
+          issueLink.target = '_blank';
+          issueLink.rel = 'noopener';
+          issueLink.textContent = 'IQSS/dataverse#7178';
+          status.append(
+            document.createTextNode(' You must be running Dataverse 5.5 or newer to visualize collections as a tree. See '),
+            issueLink,
+            document.createTextNode('.')
+          );
+        }
+      }
+
+      function isOlderThanTreeVersion(version) {
+        const match = String(version).match(/^(\d+)\.(\d+)/);
+        if (!match) {
+          return false;
+        }
+
+        const major = Number(match[1]);
+        const minor = Number(match[2]);
+        return major < 5 || (major === 5 && minor < 5);
+      }
+
+      async function getDataverseVersion(baseUrl) {
+        const controller = new AbortController();
+        const timeout = window.setTimeout(() => controller.abort(), TIMEOUT_MS);
+
+        try {
+          const response = await fetch(`${baseUrl}/api/info/version`, {
+            headers: { Accept: 'application/json' },
+            signal: controller.signal
+          });
+          if (!response.ok) {
+            return null;
+          }
+
+          const result = await response.json();
+          return result.status === 'OK' ? result.data?.version : null;
+        } catch (error) {
+          return null;
+        } finally {
+          window.clearTimeout(timeout);
+        }
+      }
+
+      function getTreeStats(root) {
+        let totalCollections = 0;
+        let maximumDepth = 0;
+
+        function visit(collection) {
+          totalCollections += 1;
+          maximumDepth = Math.max(maximumDepth, collection.depth || 0);
+          (collection.children || []).forEach(visit);
+        }
+
+        visit(root);
+        return {
+          rootName: root.name,
+          directChildren: (root.children || []).length,
+          totalCollections,
+          maximumDepth
+        };
+      }
+
+      function displayStats(treeStats, payloadBytes, elapsedMilliseconds) {
+        document.getElementById('root-name').textContent = treeStats.rootName;
+        document.getElementById('direct-children').textContent = treeStats.directChildren.toLocaleString();
+        document.getElementById('total-collections').textContent = treeStats.totalCollections.toLocaleString();
+        document.getElementById('maximum-depth').textContent = treeStats.maximumDepth.toLocaleString();
+        document.getElementById('payload-size').textContent = `${payloadBytes.toLocaleString()} bytes`;
+        document.getElementById('response-time').textContent = `${(elapsedMilliseconds / 1000).toFixed(2)} seconds`;
+        statsSection.hidden = false;
+      }
+
+      function createCollectionLabel(collection, baseUrl) {
+        const fragment = document.createDocumentFragment();
+        const link = document.createElement('a');
+        const meta = document.createElement('span');
+        const childCount = (collection.children || []).length;
+
+        link.href = `${baseUrl}/dataverse/${encodeURIComponent(collection.alias)}`;
+        link.target = '_blank';
+        link.rel = 'noopener';
+        link.textContent = collection.name;
+        meta.className = 'collection-meta';
+        meta.textContent = `(${collection.alias}${childCount ? `, ${childCount} ${childCount === 1 ? 'child' : 'children'}` : ''})`;
+        fragment.append(link, meta);
+        return fragment;
+      }
+
+      function createCollectionNode(collection, baseUrl, expanded = false) {
+        const listItem = document.createElement('li');
+        const children = collection.children || [];
+
+        if (children.length === 0) {
+          listItem.append(createCollectionLabel(collection, baseUrl));
+          return listItem;
+        }
+
+        const details = document.createElement('details');
+        const summary = document.createElement('summary');
+        const childList = document.createElement('ul');
+
+        details.open = expanded;
+        summary.append(createCollectionLabel(collection, baseUrl));
+        children.forEach(child => childList.append(createCollectionNode(child, baseUrl)));
+        details.append(summary, childList);
+        listItem.append(details);
+        return listItem;
+      }
+
+      function displayTree(root, baseUrl) {
+        const tree = document.createElement('ul');
+        tree.className = 'tree';
+        tree.append(createCollectionNode(root, baseUrl, true));
+        treeContainer.replaceChildren(tree);
+        dataviz.hidden = false;
+      }
+
+      function setAllBranches(open) {
+        treeContainer.querySelectorAll('details').forEach(details => {
+          details.open = open;
+        });
+      }
+
+      async function loadTree() {
+        const installation = JSON.parse(installationSelect.value);
+        const baseUrl = `https://${installation.hostname.replace(/\/$/, '')}`;
+        const controller = new AbortController();
+        const timeout = window.setTimeout(() => controller.abort(), TIMEOUT_MS);
+        const startedAt = performance.now();
+
+        if (activeController) {
+          activeController.abort();
+        }
+        activeController = controller;
+        statsSection.hidden = true;
+        dataviz.hidden = true;
+        treeContainer.replaceChildren();
+        setStatus(`Loading ${installation.name}…`);
+
+        try {
+          const response = await fetch(`${baseUrl}/api/info/metrics/tree`, {
+            headers: { Accept: 'application/json' },
+            signal: controller.signal
+          });
+
+          if (!response.ok) {
+            throw new Error(`The server returned HTTP ${response.status}.`);
+          }
+
+          const payload = await response.text();
+          const elapsedMilliseconds = performance.now() - startedAt;
+          const result = JSON.parse(payload);
+
+          if (result.status !== 'OK' || !result.data) {
+            throw new Error('The server returned an unexpected response.');
+          }
+
+          const payloadBytes = new Blob([payload]).size;
+          displayStats(getTreeStats(result.data), payloadBytes, elapsedMilliseconds);
+          displayTree(result.data, baseUrl);
+          setStatus('');
+        } catch (error) {
+          if (controller !== activeController) {
+            return;
+          }
+
+          let errorMessage;
+          const fetchFailed = /failed to fetch/i.test(error.message);
+          if (error.name === 'AbortError') {
+            errorMessage = 'The Dataverse tree is taking too long to load. Please try again later.';
+          } else {
+            const treeUrl = `${baseUrl}/api/info/metrics/tree`;
+            errorMessage = `Unable to load the Dataverse tree from ${installation.hostname}. ${error.name}: ${error.message}. Request: ${treeUrl}.`;
+
+            if (!navigator.onLine) {
+              errorMessage += ' Your browser appears to be offline.';
+            } else if (fetchFailed) {
+              errorMessage += ' The browser did not expose the underlying network reason. Check the browser developer console for CORS, DNS, TLS certificate, or connectivity errors.';
+            }
+          }
+          setTreeError(errorMessage);
+
+          const version = await getDataverseVersion(baseUrl);
+          if (controller === activeController && version) {
+            if (fetchFailed) {
+              errorMessage += ` The version endpoint reports Dataverse ${version}, confirming that the server is reachable.`;
+            }
+            setTreeError(errorMessage, isOlderThanTreeVersion(version));
+          }
+        } finally {
+          window.clearTimeout(timeout);
+        }
+      }
+
+      async function loadInstallations() {
+        try {
+          const response = await fetch('data/data.json');
+          if (!response.ok) {
+            throw new Error(`The server returned HTTP ${response.status}.`);
+          }
+
+          const result = await response.json();
+          const installations = result.installations
+            .filter(installation => installation.metrics === true)
+            .sort((left, right) => left.hostname.localeCompare(right.hostname));
+
+          installationSelect.replaceChildren(
+            ...installations.map(installation => {
+              const option = document.createElement('option');
+              option.value = JSON.stringify(installation);
+              option.textContent = installation.hostname;
+              return option;
+            })
+          );
+          installationSelect.disabled = false;
+          await loadTree();
+        } catch (error) {
+          installationSelect.replaceChildren(new Option('Unable to load installations'));
+          setStatus(`Unable to load the installation list. ${error.message}`, true);
+        }
+      }
+
+      installationSelect.addEventListener('change', loadTree);
+      document.getElementById('expand-all').addEventListener('click', () => setAllBranches(true));
+      document.getElementById('collapse-all').addEventListener('click', () => setAllBranches(false));
+      loadInstallations();
+    </script>
+  </body>
+</html>

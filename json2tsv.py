@@ -14,6 +14,7 @@ with open('dataverse-installations.tsv', 'w', newline='') as tsvfile:
         'continent',
         'latitude',
         'longitude',
+        'contact_email',
         'about_url',
         'description',
     ]
@@ -26,6 +27,7 @@ with open('dataverse-installations.tsv', 'w', newline='') as tsvfile:
         hostname = i['hostname']
         latitude = i['lat']
         longitude = i['lng']
+        contact_email = i.get('contact_email', None)
         about_url = i.get('about_url', None)
         description = i['description']
         output.writerow([
@@ -36,6 +38,7 @@ with open('dataverse-installations.tsv', 'w', newline='') as tsvfile:
             continent,
             latitude,
             longitude,
+            contact_email,
             about_url,
             description,
         ])

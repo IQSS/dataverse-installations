@@ -5,13 +5,15 @@ import csv
 import json
 import io
 import os
+import ssl
 
 mydict = {}
 mylist = []
 
 # Data from dataverse.org/metrics (if version of Dataverse is new enough).
 metrics_url = 'https://metrics.dataverse.org/global/config.json'
-response = urlrequest.urlopen(metrics_url)
+metrics_context = ssl._create_unverified_context()
+response = urlrequest.urlopen(metrics_url, context=metrics_context)
 metrics_json = json.loads(response.read().decode(response.info().get_param('charset') or 'utf-8'))
 metrics_list = []
 for i in metrics_json['installations']:

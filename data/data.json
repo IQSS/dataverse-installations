@@ -1167,7 +1167,8 @@
       "launch_year": "2021",
       "country": "Italy",
       "continent": "Europe",
-      "gdcc_member": false,
+      "gdcc_member": true,
+      "doi_authority": "10.48557",
       "contact_email": "rdm@iit.it",
       "dv_hub_id": "68EF9EBE-4806-46BF-B554-380CA5CC8DCD"
     },

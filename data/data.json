@@ -73,6 +73,7 @@
       "lat": -22.874936,
       "lng": -43.245379,
       "hostname": "arcadados.fiocruz.br",
+      "metrics": true,
       "launch_year": "2020",
       "country": "Brazil",
       "continent": "South America",

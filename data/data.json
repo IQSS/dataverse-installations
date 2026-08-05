@@ -72,12 +72,14 @@
       "description": "Arca Dados is Fiocruz's official repository to archive, publish, disseminate, preserve and share digital research data produced by the Fiocruz community or in partnership with other research institutes or bodies, with the objective of promoting new research, ensuring the reproducibility or replicability of existing research, and promoting Open and Citizen Science. Its objective is to stimulate the wide circulation of scientific knowledge, strengthening the institutional commitment to Open Science and the free access of information in health, in addition to providing transparency and fostering collaboration between researchers, educators, academics, managers, graduate students, for the advancement of knowledge and the creation of solutions that meet society's demands. For more information, email dataabertos@fiocruz.br",
       "lat": -22.874936,
       "lng": -43.245379,
-      "hostname": "dadosdepesquisa.fiocruz.br",
-      "metrics": true,
+      "hostname": "arcadados.fiocruz.br",
       "launch_year": "2020",
       "country": "Brazil",
       "continent": "South America",
       "gdcc_member": false,
+      "core_trust_seals": [
+        "https://doi.org/10.34894/BSELBC"
+      ],
       "doi_authority": "10.35078",
       "contact_email": "dadosabertos@fiocruz.br",
       "dv_hub_id": "099DB632-D3D8-4AFA-9DC1-17BBEA2FEC23"

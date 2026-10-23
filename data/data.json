@@ -2103,6 +2103,9 @@
       "launch_year": "2023",
       "country": "Belgium",
       "continent": "Europe",
+      "harvesting_sets": [
+        "all_doi_1058119_ULG"
+      ],
       "gdcc_member": false,
       "doi_authority": "10.58119",
       "contact_email": "dataverse.admin@uliege.be",

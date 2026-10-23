@@ -722,7 +722,7 @@
       "core_trust_seals": [
         "https://www.coretrustseal.org/wp-content/uploads/2020/03/DataverseNO.pdf"
       ],
-      "doi_authority": "10.1871",
+      "doi_authority": "10.18710",
       "board": "https://github.com/orgs/IQSS/projects/14",
       "contact_email": "support@dataverse.no",
       "dv_hub_id": "424854C4-0339-4A04-808E-F3AE39B840BD"

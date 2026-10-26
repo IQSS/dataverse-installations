@@ -714,7 +714,7 @@
       "launch_year": "2017",
       "country": "Norway",
       "continent": "Europe",
-      "about_url": "https://site.uit.no/dataverseno/about/",
+      "about_url": "https://info.dataverse.no/about",
       "harvesting_sets": [
         "dataverseno"
       ],

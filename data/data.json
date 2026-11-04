@@ -2067,6 +2067,18 @@
       "dv_hub_id": "E2FE7220-D4EE-4BCC-9D7C-B29B53EB3A68"
     },
     {
+      "name": "UCB Research Data Repository",
+      "description": "The UCB Research Data Repository is an institutional infrastructure designed to support the management, preservation, publication, and dissemination of research data produced by the Universidad Cat\u00f3lica Boliviana \"San Pablo\". The repository is part of the university's strategy to strengthen its research ecosystem, promote open science, and encourage the adoption of FAIR data principles.",
+      "lat": -16.52252675,
+      "lng": -68.11129383,
+      "hostname": "dataverse.ucb.edu.bo",
+      "launch_year": "2026",
+      "country": "Bolivia",
+      "continent": "South America",
+      "gdcc_member": false,
+      "contact_email": "jgalarza@ucb.edu.bo"
+    },
+    {
       "name": "UCLA Dataverse",
       "description": "UCLA Dataverse allows for the sharing and storage of data from UCLA research. This makes it accessible, discoverable and reusable by the public. The platform also hosts sub-dataverses for different campus groups like schools or departments.",
       "lat": 34.0689,
